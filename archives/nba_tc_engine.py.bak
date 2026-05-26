@@ -1,0 +1,686 @@
+#!/usr/bin/env python3
+"""
+NBA TC Engine v5.0 — Full-Stat Player Props Engine
+===================================================
+Covers ALL four prop categories per player:
+  • Points (PTS)
+  • Rebounds (REB)
+  • Assists (AST)
+  • 3-Point Shots Made (3PM)
+
+TC Formula:
+  TC stat = stat × 0.85  (ACTIVE)
+          = stat × 0.55  (Q — reduced further from 0.65)
+          = 0            (OUT)
+
+TC Target (T) = floor(TC stat × 0.88)
+  → T is your conservative floor for each stat category
+  → Bet UNDER when T < Market Line with edge ≥ +3.0 and hit_rate ≥ 75%
+
+Game Total:
+  TC_final = raw_combined_PTS × VAR_FACTOR (when spread provided)
+           = raw_combined_PTS + PACE_ADJ    (no spread)
+  TC_Line  = round(TC_final + K_GAP, 1)
+  K_GAP    = 9.3  (historical gap between TC final and market total)
+
+Signal: OVER when actual_total > TC_Line
+       UNDER when actual_total < TC_Line
+"""
+
+from dataclasses import dataclass, field
+from typing import List, Dict, Any, Optional
+import argparse
+import json
+
+# ── CONSTANTS ────────────────────────────────────────────────────────────────
+CONS_PTS     = 0.85   # conservative multiplier for all stat categories
+Q_MULT       = 0.55   # questionable reduction
+OUT_MULT     = 0.0    # out = zero
+LINE_FACTOR  = 0.88    # derive game line from TC final
+K_GAP        = 9.3    # historical gap between TC final and market total
+VAR_LOW      = 0.76    # pace adjustment when spread is small
+VAR_HIGH     = 0.82    # pace adjustment when spread is large (≥8 pts)
+PACE_ADJ     = 8.0    # flat pace adjustment when no spread
+MIN_EDGE     = 3.0    # minimum edge (L − T) to consider a prop valid
+MIN_HIT_RATE = 0.75   # 75% historical hit rate minimum
+KELLY_FRAC   = 0.25   # Kelly fraction for bet sizing
+MIN_KELLY    = 0.01   # minimum Kelly fraction
+
+# ── PLAYER ──────────────────────────────────────────────────────────────────
+@dataclass
+class Player:
+    name:   str
+    pos:    str
+    ht:     str
+    pts:    float
+    reb:    float
+    ast:    float
+    tpm:    float     # 3-point shots made
+    status: str = "ACTIVE"   # ACTIVE | Q | OUT
+
+    def tc_raw(self, stat: float) -> float:
+        if self.status == "OUT":
+            return 0.0
+        c = stat * CONS_PTS
+        return round(c * Q_MULT, 1) if self.status == "Q" else round(c, 1)
+
+    def tc_target(self, stat: float) -> int:
+        return int(self.tc_raw(stat) * LINE_FACTOR)
+
+    def proj(self) -> Dict[str, Any]:
+        return {
+            "TC_PTS":  self.tc_raw(self.pts),
+            "TC_REB":  self.tc_raw(self.reb),
+            "TC_AST":  self.tc_raw(self.ast),
+            "TC_3PM": self.tc_raw(self.tpm),
+            "T_PTS":   self.tc_target(self.pts),
+            "T_REB":   self.tc_target(self.reb),
+            "T_AST":   self.tc_target(self.ast),
+            "T_3PM":   self.tc_target(self.tpm),
+            "STATUS":  self.status,
+        }
+
+
+# ── TEAM ────────────────────────────────────────────────────────────────────
+@dataclass
+class Team:
+    code:    str
+    name:    str
+    players: List[Player] = field(default_factory=list)
+    injury_notes: List[str] = field(default_factory=list)
+
+    def add(self, p: Player):
+        self.players.append(p)
+
+    def starters(self) -> List[Player]:
+        return [p for p in self.players if p.status != "OUT"][:5]
+
+    def bench(self) -> List[Player]:
+        start_names = {p.name for p in self.starters()}
+        return [p for p in self.players if p.name not in start_names and p.status != "OUT"]
+
+    def active(self) -> List[Player]:
+        return [p for p in self.players if p.status != "OUT"]
+
+    def _sum_tc(self, key: str) -> float:
+        return round(sum(p.proj()[key] for p in self.active()), 1)
+
+    def totals(self) -> Dict[str, float]:
+        return {
+            "TC_PTS":  self._sum_tc("TC_PTS"),
+            "TC_REB":  self._sum_tc("TC_REB"),
+            "TC_AST":  self._sum_tc("TC_AST"),
+            "TC_3PM":  self._sum_tc("TC_3PM"),
+        }
+
+    def bench_totals(self) -> Dict[str, float]:
+        bench = self.bench()
+        return {
+            "TC_PTS":  round(sum(p.proj()["TC_PTS"] for p in bench), 1),
+            "TC_REB":  round(sum(p.proj()["TC_REB"] for p in bench), 1),
+            "TC_AST":  round(sum(p.proj()["TC_AST"] for p in bench), 1),
+            "TC_3PM":  round(sum(p.proj()["TC_3PM"] for p in bench), 1),
+        }
+
+
+# ── GAME ────────────────────────────────────────────────────────────────────
+class Game:
+    def __init__(self, away_code: str, home_code: str,
+                 sport: str = "NBA",
+                 market_total: float = None,
+                 market_spread: float = None,
+                 prop_lines: Dict[str, Dict[str, float]] = None,
+                 bankroll: float = 1000):
+        self.away_code     = away_code
+        self.home_code    = home_code
+        self.sport        = sport
+        self.market_total = market_total
+        self.market_spread = market_spread
+        self.prop_lines   = prop_lines or {}
+        self.bankroll     = bankroll
+
+        self.away = self._build_team(away_code)
+        self.home = self._build_team(home_code)
+
+    def _build_team(self, code: str) -> Team:
+        rosters = NBA_ROSTERS if self.sport == "NBA" else WNBA_ROSTERS
+        teams_map = NBA_TEAMS if self.sport == "NBA" else WNBA_TEAMS
+        t = Team(code, teams_map.get(code, code))
+        for p_data in rosters.get(code, []):
+            t.add(Player(*p_data))
+        return t
+
+    def _tc_raw_combined(self) -> float:
+        return round(self.away.totals()["TC_PTS"] + self.home.totals()["TC_PTS"], 1)
+
+    def _tc_final(self) -> float:
+        raw = self._tc_raw_combined()
+        if self.market_spread is not None:
+            factor = VAR_HIGH if abs(self.market_spread) >= 8 else VAR_LOW
+            return round(raw * factor, 1)
+        return round(raw + PACE_ADJ, 1)
+
+    def _tc_line(self) -> float:
+        tc_final = self._tc_final()
+        return round(tc_final + K_GAP, 1)
+
+    def _tc_edge(self) -> float:
+        if self.market_total is None:
+            return 0.0
+        return round(self._tc_line() - self.market_total, 1)
+
+    def _signal(self) -> str:
+        return "UNDER" if self._tc_edge() > 0 else "OVER"
+
+    def _kelly_bet(self) -> float:
+        edge = self._tc_edge()
+        if edge <= 0:
+            return 0.0
+        odds = 110
+        implied = odds / 100.0
+        k = KELLY_FRAC * abs(edge) / (implied - 1)
+        return max(round(k, 4), MIN_KELLY if abs(edge) >= MIN_EDGE else 0)
+
+    def get_tc_line(self)  -> float: return self._tc_line()
+    def get_tc_final(self) -> float: return self._tc_final()
+    def get_signal(self)   -> str:   return self._signal()
+    def get_edge(self)     -> float: return self._tc_edge()
+
+    def full_report(self):
+        self._print_game_header()
+        self._print_totals_section()
+        self._print_starting_lineup_table(self.away, "AWAY", self.away_code)
+        self._print_starting_lineup_table(self.home, "HOME", self.home_code)
+        self._print_player_props_section(self.away)
+        self._print_player_props_section(self.home)
+        self._print_system_summary()
+
+    def _print_game_header(self):
+        print(f"\n{'═'*80}")
+        print(f"  🏀  {self.away.name}  @  {self.home.name}  |  TC v5.0 FULL STAT PROPS")
+        print(f"{'═'*80}")
+        if self.market_total:
+            print(f"  Market Total: {self.market_total}   |   TC Line: {self.get_tc_line()}   |   Edge: {self.get_edge():+.1f}")
+        if self.market_spread is not None:
+            print(f"  Market Spread: {self.market_spread:+.1f}   |   TC Final: {self.get_tc_final()}")
+        print(f"  Signal: {self.get_signal()}  |  Kelly%: {self._kelly_bet()*100:.1f}%  |  Bankroll: ${self.bankroll:,.0f}")
+        print(f"{'─'*80}")
+
+    def _print_totals_section(self):
+        aw_tot  = self.away.totals()
+        hm_tot  = self.home.totals()
+        aw_bench = self.away.bench_totals()
+        hm_bench = self.home.bench_totals()
+
+        print(f"\n  TEAM TOTALS BREAKDOWN")
+        print(f"  {'Category':<10} {'AWAY TC':>10} {'HOME TC':>10} {'COMBINED':>10}")
+        print(f"  {'-'*42}")
+        for cat in ["TC_PTS", "TC_REB", "TC_AST", "TC_3PM"]:
+            label = cat.replace("TC_", "")
+            aw_v = aw_tot[cat]
+            hm_v = hm_tot[cat]
+            combined = round(aw_v + hm_v, 1)
+            print(f"  {label:<10} {aw_v:>10.1f} {hm_v:>10.1f} {combined:>10.1f}")
+
+        print(f"\n  BENCH TOTALS")
+        print(f"  {'Category':<10} {'AWAY BENCH':>12} {'HOME BENCH':>12}")
+        print(f"  {'-'*36}")
+        for cat in ["TC_PTS", "TC_REB", "TC_AST", "TC_3PM"]:
+            label = cat.replace("TC_", "")
+            print(f"  {label:<10} {aw_bench[cat]:>12.1f} {hm_bench[cat]:>12.1f}")
+
+        print(f"\n  GAME TC SUMMARY")
+        tc_raw   = self._tc_raw_combined()
+        tc_final = self.get_tc_final()
+        tc_line  = self.get_tc_line()
+        factor_lbl = "VAR_HIGH" if self.market_spread and abs(self.market_spread) >= 8 else "VAR_LOW/PACE"
+        print(f"  Raw Combined TC PTS:  {tc_raw:.1f}")
+        print(f"  TC Final (adj):       {tc_final:.1f}  ({factor_lbl})")
+        print(f"  TC Line:              {tc_line:.1f}  (TC_final + K={K_GAP})")
+        if self.market_total:
+            edge = self.get_edge()
+            arrow = "↑" if edge > 0 else "↓"
+            print(f"  Market Total:         {self.market_total}   |   Edge: {edge:+.1f} {arrow}")
+        print(f"{'─'*80}")
+
+    def _print_starting_lineup_table(self, team: Team, label: str, code: str):
+        starters = team.starters()
+        bench    = team.bench()
+
+        print(f"\n  {label} ({code}) — STARTING LINEUP (5)")
+        print(f"  {'Player':<22} {'POS':>4} {'HT':>5} "
+              f"{'TC_PTS':>7} {'TC_REB':>7} {'TC_AST':>7} {'TC_3PM':>7}  "
+              f"{'T_PTS':>6} {'T_REB':>6} {'T_AST':>6} {'T_3PM':>6} "
+              f"{'STATUS':>6}")
+        print(f"  {'-'*105}")
+        for p in starters:
+            proj = p.proj()
+            flag = "⚠️ Q" if p.status == "Q" else ("❌ OUT" if p.status == "OUT" else "✅ OK")
+            print(f"  {p.name:<22} {p.pos:>4} {p.ht:>5} "
+                  f"{proj['TC_PTS']:>7.1f} {proj['TC_REB']:>7.1f} {proj['TC_AST']:>7.1f} {proj['TC_3PM']:>7.1f}  "
+                  f"{proj['T_PTS']:>6} {proj['T_REB']:>6} {proj['T_AST']:>6} {proj['T_3PM']:>6} "
+                  f"{flag:>6}")
+
+        bench_t = team.bench_totals()
+        print(f"  {'─'*105}")
+        print(f"  {'BENCH TOTAL':22} {'':<4} {'':<5} "
+              f"{bench_t['TC_PTS']:>7.1f} {bench_t['TC_REB']:>7.1f} {bench_t['TC_AST']:>7.1f} {bench_t['TC_3PM']:>7.1f}  "
+              f"{'':>6} {'':>6} {'':>6} {'':>6}")
+
+        team_t = team.totals()
+        print(f"  {'TEAM TOTAL':22} {'':<4} {'':<5} "
+              f"{team_t['TC_PTS']:>7.1f} {team_t['TC_REB']:>7.1f} {team_t['TC_AST']:>7.1f} {team_t['TC_3PM']:>7.1f}")
+
+    def _print_player_props_section(self, team: Team):
+        print(f"\n  PLAYER PROPS — {team.name} ({team.code}) — PTS | REB | AST | 3PM")
+        print(f"  TC = stat×{CONS_PTS} | Q×{Q_MULT} | T = floor(TC×{LINE_FACTOR})")
+        print(f"  Valid: EDGE(L−T)≥{MIN_EDGE}  |  BET: UNDER when T < L")
+        print(f"  {'Player':<22} {'POS':>4} {'STAT':>4} "
+              f"{'L':>6} {'T':>6} {'E':>6} {'VALID?':>7} "
+              f"{'L':>6} {'T':>6} {'E':>6} {'VALID?':>7} "
+              f"{'L':>6} {'T':>6} {'E':>6} {'VALID?':>7} "
+              f"{'L':>6} {'T':>6} {'E':>6} {'VALID?':>7}")
+        print(f"  {'-'*150}")
+
+        for p in team.active():
+            proj = p.proj()
+            flag = "⚠️Q" if p.status == "Q" else "✅"
+
+            lines = self.prop_lines.get(p.name, {})
+            L_pts = lines.get("PTS", p.pts)
+            L_reb = lines.get("REB", p.reb)
+            L_ast = lines.get("AST", p.ast)
+            L_3pm = lines.get("3PM", p.tpm)
+
+            T_pts, T_reb, T_ast, T_3pm = proj["T_PTS"], proj["T_REB"], proj["T_AST"], proj["T_3PM"]
+            E_pts = L_pts - T_pts
+            E_reb = L_reb - T_reb
+            E_ast = L_ast - T_ast
+            E_3pm = L_3pm - T_3pm
+
+            v_pts = "✅" if E_pts >= MIN_EDGE else "⚠️ "
+            v_reb = "✅" if E_reb >= MIN_EDGE else "⚠️ "
+            v_ast = "✅" if E_ast >= MIN_EDGE else "⚠️ "
+            v_3pm = "✅" if E_3pm >= MIN_EDGE else "⚠️ "
+
+            # Print one row per stat category (PTS / REB / AST / 3PM)
+            for cat, L, T, E, v in [("PTS",L_pts,T_pts,E_pts,v_pts),
+                                      ("REB",L_reb,T_reb,E_reb,v_reb),
+                                      ("AST",L_ast,T_ast,E_ast,v_ast),
+                                      ("3PM",L_3pm,T_3pm,E_3pm,v_3pm)]:
+                marker = "  " if cat != "PTS" else f"  {p.name:<22} {p.pos:>4} {flag:>4}"
+                print(f"  {marker} {cat:>4} "
+                      f"{L:>6.1f} {T:>6d} {E:>+6.1f} {v:>7}", end="")
+                if cat == "3PM":
+                    print()  # end the row
+
+        print(f"  {'─'*150}")
+        print(f"  LEGEND: L=Market Line | T=TC Target (conservative floor) | E=Edge (L−T) | ✅=Valid(Edge≥{MIN_EDGE}) | ⚠️=Below threshold")
+        print(f"  BET: UNDER when T < L with Edge ≥ {MIN_EDGE} → TC floor sits below market, giving you edge")
+
+    def _print_system_summary(self):
+        print(f"\n{'═'*80}")
+        print(f"  TC SYSTEM SUMMARY — {self.away.code} @ {self.home.code}")
+        print(f"{'═'*80}")
+        if self.market_total:
+            tc_line = self.get_tc_line()
+            mkt = self.market_total
+            diff = self.get_edge()
+            print(f"  Game Total:   TC_Line={tc_line:.1f}  |  Market={mkt:.1f}  |  Edge={diff:+.1f}")
+            print(f"  Signal: {self.get_signal()}  |  Bet: OVER if actual>{tc_line:.1f}  |  UNDER if actual<{tc_line:.1f}")
+        print(f"\n  TC FORMULA REFERENCE:")
+        print(f"    Player TC  = stat × {CONS_PTS} (ACTIVE) | × {Q_MULT} (Q) | × {OUT_MULT} (OUT)")
+        print(f"    Player T   = floor(TC × {LINE_FACTOR})")
+        print(f"    Game TC_Final = raw_PTS × {VAR_HIGH} (spread≥8) or ×{VAR_LOW} (spread<8) or +{PACE_ADJ} (no spread)")
+        print(f"    Game TC_Line  = TC_Final + K={K_GAP}")
+        print(f"{'═'*80}\n")
+
+    def to_dict(self) -> Dict[str, Any]:
+        return {
+            "matchup":      f"{self.away_code} @ {self.home_code}",
+            "sport":        self.sport,
+            "market_total": self.market_total,
+            "market_spread": self.market_spread,
+            "tc_final":     self.get_tc_final(),
+            "tc_line":      self.get_tc_line(),
+            "signal":       self.get_signal(),
+            "edge":         self.get_edge(),
+            "kelly_pct":    self._kelly_bet() * 100,
+            "away_totals":  self.away.totals(),
+            "home_totals":  self.home.totals(),
+            "away_players": [{**{"name":p.name,"pos":p.pos,"ht":p.ht,"status":p.status}, **p.proj()}
+                             for p in self.away.active()],
+            "home_players": [{**{"name":p.name,"pos":p.pos,"ht":p.ht,"status":p.status}, **p.proj()}
+                             for p in self.home.active()],
+        }
+
+
+# ── HELPER ───────────────────────────────────────────────────────────────────
+def _p(name, pos, ht, pts, reb, ast, tpm, status="ACTIVE"):
+    return (name, pos, ht, pts, reb, ast, tpm, status)
+
+
+# ── TEAM / ROSTER DATA ───────────────────────────────────────────────────────
+NBA_TEAMS = {
+    "NYK": "New York Knicks",       "PHI": "Philadelphia 76ers",
+    "BOS": "Boston Celtics",        "CLE": "Cleveland Cavaliers",
+    "OKC": "Oklahoma City Thunder", "MIN": "Minnesota Timberwolves",
+    "DEN": "Denver Nuggets",         "DET": "Detroit Pistons",
+    "SAS": "San Antonio Spurs",      "MIA": "Miami Heat",
+    "MIL": "Milwaukee Bucks",        "LAL": "Los Angeles Lakers",
+    "GSW": "Golden State Warriors",  "LAC": "LA Clippers",
+    "DAL": "Dallas Mavericks",       "PHX": "Phoenix Suns",
+    "IND": "Indiana Pacers",         "HOU": "Houston Rockets",
+    "ATL": "Atlanta Hawks",          "CHA": "Charlotte Hornets",
+    "CHI": "Chicago Bulls",          "BKN": "Brooklyn Nets",
+    "NOP": "New Orleans Pelicans",   "SAC": "Sacramento Kings",
+    "POR": "Portland Trail Blazers", "UTA": "Utah Jazz",
+    "TOR": "Toronto Raptors",        "WAS": "Washington Wizards",
+    "ORL": "Orlando Magic",
+}
+
+NBA_ROSTERS = {
+    "PHI": [
+        _p("Tyrese Maxey",       "G","6-5", 24.5, 4.5, 5.5, 2.5),
+        _p("Paul George",        "F","6-8", 20.0, 5.5, 4.0, 2.8, "Q"),
+        _p("Joel Embiid",        "C","7-0", 28.0,11.0, 5.5, 1.8, "OUT"),
+        _p("Ochai Agbaji",       "G","6-5",  9.0, 3.5, 2.5, 1.5),
+        _p("Kelly Oubre Jr.",    "F","6-7", 14.5, 5.0, 1.5, 1.2),
+        _p("Jared McCain",       "G","6-3", 14.5, 3.5, 2.5, 1.5),
+        _p("Justin Edwards",     "F","6-8",  8.5, 3.5, 1.5, 1.2),
+        _p("Jeff Dowtin Jr.",    "G","6-4",  8.0, 2.5, 4.0, 0.8),
+        _p("Gregory Jackson",   "F","6-9",  7.0, 4.0, 1.0, 1.0),
+    ],
+    "NYK": [
+        _p("Mikal Bridges",      "F","6-6", 21.0, 4.5, 3.5, 2.8),
+        _p("Josh Hart",         "G","6-4", 15.5, 4.5, 5.0, 2.0),
+        _p("Karl-Anthony Towns", "C","7-0", 25.0,12.5, 3.5, 2.2),
+        _p("Jalen Brunson",     "G","6-2", 24.5, 3.5, 6.5, 2.2, "Q"),
+        _p("Miles McBride",     "G","6-2", 10.5, 2.5, 3.0, 2.0),
+        _p("OG Anunoby",        "F","6-7", 17.5, 5.0, 2.0, 2.5),
+        _p("Cameron Payne",     "G","6-4",  7.5, 2.0, 3.5, 1.2),
+        _p("Jacob Topp",        "F","6-8",  6.5, 3.5, 1.0, 0.8),
+        _p("Jericho Sims",      "C","6-10", 5.5, 5.0, 0.5, 0.3),
+    ],
+    "BOS": [
+        _p("Jayson Tatum",      "F","6-8", 28.5, 7.5, 5.0, 2.9),
+        _p("Jaylen Brown",      "G","6-6", 24.0, 6.0, 4.0, 2.5),
+        _p("Derrick White",     "G","6-4", 15.5, 4.0, 4.5, 2.2),
+        _p("Kristaps Porzingis","F","7-2", 20.0, 7.0, 2.5, 2.8, "OUT"),
+        _p("Jrue Holiday",      "G","6-4", 14.5, 5.0, 6.0, 2.0),
+        _p("Sam Hauser",        "F","6-5",  8.5, 3.5, 1.5, 1.8),
+        _p("Luke Kornet",       "C","7-0",  6.5, 4.5, 1.0, 0.5),
+        _p("Payton Pritchard",  "G","6-1",  9.5, 2.5, 3.0, 2.0),
+        _p("Baylor Scheierman", "G","6-5",  7.0, 2.5, 1.5, 1.5),
+        _p("Al Horford",        "F","6-9", 11.0, 5.5, 3.5, 1.8),
+    ],
+    "CLE": [
+        _p("Donovan Mitchell",   "G","6-1", 24.5, 5.0, 4.5, 3.0),
+        _p("Darius Garland",    "G","6-1", 20.0, 3.5, 6.0, 2.5),
+        _p("Evan Mobley",       "F","6-11",18.0, 9.0, 3.5, 1.2),
+        _p("Jarrett Allen",     "C","6-9", 14.0, 8.0, 2.0, 0.5),
+        _p("Max Strus",         "F","6-5", 12.5, 4.5, 3.5, 2.5),
+        _p("Isaac Okoro",       "G","6-5", 10.0, 3.5, 3.0, 1.2),
+        _p("Georges Niang",     "F","6-5",  9.0, 3.0, 1.5, 2.0),
+        _p("Caris LeVert",      "G","6-5", 11.5, 3.5, 3.5, 1.8, "Q"),
+        _p("Tristan Thompson",  "C","6-9",  6.0, 5.5, 1.0, 0.0),
+        _p("Ty Jerome",        "G","6-5",  5.5, 2.0, 2.5, 1.0),
+    ],
+    "OKC": [
+        _p("Shai Gilgeous-Alexander","G","6-6",27.5,5.5,6.5,2.2),
+        _p("Jalen Williams",   "F","6-5", 19.0, 4.5, 4.0, 2.0),
+        _p("Chet Holmgren",    "C","7-0", 16.0, 7.5, 2.5, 1.5),
+        _p("Lu Dort",           "G","6-4", 13.5, 4.0, 2.5, 2.5),
+        _p("Isaiah Hartenstein","C","6-11",12.0, 8.5, 3.5, 0.8),
+        _p("Josh Giddey",       "G","6-8", 12.5, 6.5, 5.5, 1.5),
+        _p("Jaylen Duren",      "C","6-10", 8.5, 5.5, 1.5, 0.3),
+        _p("Cason Wallace",    "G","6-4",  8.0, 2.5, 2.0, 1.5),
+        _p("Kenrich Williams",  "F","6-7",  7.0, 4.5, 2.0, 1.0),
+    ],
+    "MIN": [
+        _p("Anthony Edwards",   "G","6-4", 26.0, 5.5, 5.0, 3.2),
+        _p("Julius Randle",    "F","6-4", 18.5, 9.0, 4.5, 1.8),
+        _p("Rudy Gobert",       "C","7-1", 14.0,11.5, 1.5, 0.0),
+        _p("Jaden McDaniels",  "F","6-9", 12.0, 4.5, 2.0, 1.5),
+        _p("Mike Conley",       "G","6-0", 11.0, 3.0, 5.5, 2.0),
+        _p("Naz Reid",          "C","6-9", 13.5, 5.5, 2.5, 1.8),
+        _p("Nickeil Alexander-Walker","G","6-5",11.5,3.0,2.5,2.0),
+        _p("Kyle Anderson",    "F","6-9",  8.5, 4.5, 3.5, 0.8),
+    ],
+    "DEN": [
+        _p("Nikola Jokic",     "C","6-11",26.5,12.0,9.5,1.8),
+        _p("Jamal Murray",      "G","6-4", 21.5, 4.5, 5.5, 2.5),
+        _p("Michael Porter Jr.","F","6-10",16.5, 6.5, 2.0, 2.5),
+        _p("Aaron Gordon",      "F","6-8", 14.0, 5.5, 2.5, 1.2),
+        _p("Kentavious Caldwell-Pope","G","6-5",11.5,3.5,2.0,2.0),
+        _p("Christian Braun",   "G","6-5",  8.5, 3.5, 1.5, 1.0),
+        _p("Peyton Watson",    "F","6-8",  7.5, 3.0, 1.5, 0.8),
+    ],
+    "DET": [
+        _p("Cade Cunningham",   "G","6-6", 22.0, 5.5, 7.5, 2.2),
+        _p("Jaden Ivey",       "G","6-4", 17.5, 4.5, 4.0, 2.0),
+        _p("Jalen Duren",       "C","6-10",13.5, 8.0, 2.0, 0.5),
+        _p("Ausar Thompson",   "F","6-7", 12.5, 5.5, 3.5, 1.2),
+        _p("Tim Hardaway Jr.",  "F","6-5", 14.0, 4.0, 2.5, 2.5),
+        _p("Marcus Sasser",    "G","6-2", 10.5, 2.5, 3.0, 1.8),
+        _p("Simone Fontecchio","F","6-8",  8.5, 3.5, 1.5, 1.2),
+        _p("Killian Hayes",    "G","6-5",  9.0, 3.0, 4.5, 1.2, "Q"),
+    ],
+    "GSW": [
+        _p("Stephen Curry",   "G","6-2", 24.5, 4.5, 6.0, 3.5),
+        _p("Jimmy Butler",     "F","6-7", 20.0, 5.5, 4.5, 1.5, "Q"),
+        _p("Draymond Green",   "F","6-6", 11.5, 7.5, 6.5, 1.0),
+        _p("Jonathan Kuminga", "F","6-8", 16.5, 5.5, 2.5, 1.5),
+        _p("Buddy Hield",      "G","6-4", 13.0, 4.5, 2.5, 3.0),
+        _p("Andrew Wiggins",  "F","6-7", 12.0, 4.5, 2.0, 2.0),
+        _p("Kevon Looney",    "C","6-9",  6.5, 6.5, 2.0, 0.3),
+        _p("Gary Payton II",   "G","6-3",  7.0, 3.0, 1.5, 1.0),
+        _p("Moses Moody",      "G","6-5",  8.0, 3.0, 1.5, 1.2),
+        _p("Trayce Jackson-Davis","F","6-9", 7.0, 4.5, 1.0, 0.5),
+    ],
+    "LAC": [
+        _p("Kawhi Leonard",   "F","6-7", 23.5, 6.0, 4.0, 2.5),
+        _p("James Harden",    "G","6-5", 21.0, 5.0, 8.5, 2.8),
+        _p("Ivica Zubac",      "C","7-0", 12.0, 9.5, 2.0, 0.0),
+        _p("Norman Powell",   "G","6-3", 16.5, 3.5, 2.5, 2.2),
+        _p("Terance Mann",    "G","6-5", 11.0, 4.5, 3.0, 1.5),
+        _p("Amir Coffey",      "F","6-5",  9.0, 3.5, 2.0, 1.5),
+        _p("Derrick Jones Jr.","F","6-6", 10.5, 4.5, 1.5, 1.2),
+        _p("Kris Dunn",       "G","6-4",  8.0, 3.5, 4.5, 0.8),
+        _p("Nicolas Batum",   "F","6-8",  7.5, 4.0, 2.5, 1.2),
+        _p("Ben Simmons",    "G","6-10", 8.5, 7.5, 6.5, 0.3, "Q"),
+    ],
+    "SAS": [
+        _p("Victor Wembanyama","C","7-4", 23.0,10.5,4.0,2.2),
+        _p("Chris Paul",       "G","6-0", 10.0, 3.5, 6.5, 1.2),
+        _p("Devin Vassell",   "G","6-5", 17.0, 4.0, 3.0, 2.5),
+        _p("Keldon Johnson",  "F","6-5", 15.0, 5.0, 2.5, 2.2),
+        _p("Jeremy Sochan",   "F","6-9", 11.0, 5.5, 3.0, 1.0),
+        _p("Zach Collins",    "C","7-0", 10.0, 5.5, 2.0, 0.5),
+        _p("Devonte Graham",   "G","6-1",  8.5, 2.0, 3.5, 1.8),
+        _p("Doug McDermott",  "F","6-7",  7.5, 2.5, 1.0, 1.5),
+        _p("Malaki Branham",  "G","6-5",  8.0, 2.0, 2.0, 1.0),
+        _p("Sandro Mamukelashvili","F/C","6-10",9.5,5.0,1.5,0.8),
+    ],
+    "MIA": [
+        _p("Jimmy Butler",     "F","6-7", 20.0, 5.5, 4.5, 1.5),
+        _p("Tyler Herro",     "G","6-5", 21.0, 4.5, 4.0, 2.8),
+        _p("Bam Adebayo",     "C","6-9", 18.5,10.0, 4.0, 0.5),
+        _p("Nikola Jovic",    "F","6-10",13.0, 5.5, 3.0, 1.5),
+        _p("Duncan Robinson",  "G","6-8", 11.5, 3.5, 2.5, 3.0),
+        _p("Jaime Jaquez Jr.","F","6-6", 12.0, 4.5, 3.0, 1.5),
+        _p("Kevin Love",      "F","6-8",  8.5, 6.5, 2.0, 1.5),
+        _p("Kyle Lowry",      "G","6-0",  7.5, 3.0, 5.0, 1.3),
+        _p("Cody Zeller",    "C","6-10", 6.0, 5.0, 1.0, 0.3),
+    ],
+    "MIL": [
+        _p("Giannis Antetokounmpo","F","6-11",27.5,11.5,5.5,1.2),
+        _p("Damian Lillard",  "G","6-2", 24.5, 4.5, 7.0, 3.2),
+        _p("Khris Middleton", "F","6-7", 15.5, 5.5, 4.0, 2.2),
+        _p("Brook Lopez",    "C","7-1", 12.5, 6.5, 1.5, 2.0),
+        _p("Bobby Portis",    "F","6-10",11.5, 7.0, 1.5, 1.5),
+        _p("Donte DiVincenzo","G","6-4", 10.5, 3.5, 2.5, 2.2),
+        _p("Pat Connaughton", "G","6-5",  7.5, 4.0, 1.5, 1.5),
+    ],
+    "LAL": [
+        _p("Luka Doncic",    "G","6-7", 28.5, 7.5, 8.5, 3.0),
+        _p("LeBron James",    "F","6-9", 24.5, 7.5, 8.0, 2.5, "Q"),
+        _p("Austin Reaves",   "G","6-5", 16.5, 4.5, 5.0, 2.0),
+        _p("Rui Hachimura",   "F","6-8", 12.5, 5.0, 1.5, 1.2),
+        _p("Jordan Reaves",  "G","6-5",  7.5, 3.0, 1.5, 1.2),
+        _p("Gabe Vincent",   "G","6-4",  7.0, 2.0, 2.5, 1.0),
+        _p("Dorian Finney-Smith","F","6-8",7.5, 4.5, 1.5, 1.8),
+        _p("Julius Randle",   "F","6-4", 18.5, 9.0, 4.5, 1.8),
+    ],
+    "HOU": [
+        _p("Alperen Sengun",  "C","6-9", 19.5, 9.5, 4.5, 0.8),
+        _p("Jalen Green",    "G","6-4", 21.0, 4.5, 3.5, 3.0),
+        _p("Amen Thompson",   "F","6-8", 12.5, 6.5, 4.0, 1.2),
+        _p("Fred VanVleet",  "G","6-0", 14.0, 3.5, 5.5, 2.5),
+        _p("Jabari Smith Jr.", "F","6-10",12.0, 6.5, 1.8, 1.5),
+        _p("Tari Eason",      "F","6-8", 11.5, 5.5, 1.5, 1.2),
+        _p("Cam Whitmore",   "G","6-5", 10.5, 3.5, 1.5, 1.0),
+    ],
+    "ATL": [
+        _p("Trae Young",      "G","6-1", 25.5, 3.5, 9.5, 2.8),
+        _p("Zach LaVine",    "G","6-5", 22.5, 4.5, 4.0, 3.2),
+        _p("Jalen Johnson",  "F","6-9", 14.0, 6.5, 3.5, 1.2),
+        _p("Domantas Sabonis","C","6-10",14.0, 9.0, 5.5, 0.5),
+        _p("De'Andre Hunter", "F","6-8", 15.0, 4.5, 2.0, 2.2),
+        _p("Onyeka Okongwu","C","6-10",10.5, 6.5, 1.5, 0.8),
+        _p("Vit Krejci",      "G","6-7",  7.5, 3.5, 3.0, 1.2),
+    ],
+    "ORL": [
+        _p("Paolo Banchero",  "F","6-10",23.5, 6.5, 4.0, 2.0),
+        _p("Franz Wagner",   "F","6-10",19.5, 5.0, 3.0, 1.5),
+        _p("Jalen Suggs",    "G","6-5", 16.5, 4.0, 4.5, 1.5),
+        _p("Wendell Carter Jr.","C","6-6",14.5, 9.0, 2.5, 0.8),
+        _p("Cole Anthony",   "G","6-2", 13.0, 4.5, 3.5, 1.2),
+        _p("Goga Bitadze",   "C","6-11",10.5, 6.0, 2.0, 0.5),
+        _p("Jonathan Isaac",  "F","6-10", 6.5, 4.0, 1.0, 0.5),
+        _p("Caleb Houstan",  "F","6-8",  7.0, 3.0, 1.5, 0.8),
+    ],
+    "TOR": [
+        _p("Scottie Barnes",  "F","6-8", 20.5, 6.5, 4.5, 1.5),
+        _p("RJ Barrett",    "G","6-6", 19.5, 5.5, 3.5, 2.0),
+        _p("Immanuel Quickley","G","6-2",14.5, 4.0, 4.5, 2.0),
+        _p("Jakob Poeltl",   "C","7-0", 11.5, 8.5, 2.0, 0.0),
+        _p("Ochai Agbaji",    "G","6-5",  9.0, 3.5, 2.5, 1.5),
+        _p("Jamal Shead",    "G","6-2",  8.0, 3.0, 4.0, 1.0),
+        _p("Jonathan Mogbo","F","6-8",  7.5, 5.5, 2.0, 0.5),
+    ],
+    "IND": [
+        _p("Tyrese Haliburton","G","6-5", 21.0, 4.0, 8.5, 3.2),
+        _p("Pascal Siakam",  "F","6-8", 20.0, 6.5, 4.5, 1.8),
+        _p("Myles Turner",   "C","6-11",15.5, 8.0, 2.0, 1.2),
+        _p("Bennedict Mathurin","G","6-5",17.5, 4.5, 2.5, 2.0),
+        _p("Aaron Nesmith",  "F","6-5", 11.0, 4.0, 2.0, 2.0),
+        _p("Obi Toppin",     "F","6-8", 11.5, 4.0, 2.0, 1.5),
+        _p("Jalen Smith",   "F","6-10", 9.5, 5.5, 1.0, 1.0),
+        _p("Andrew Nembhard","G","6-4",  9.0, 2.5, 4.0, 1.2),
+    ],
+}
+
+for _c in ["CHI","BKN","NOP","SAC","POR","UTA","WAS","CHA"]:
+    NBA_ROSTERS.setdefault(_c, [])
+
+WNBA_TEAMS = {
+    "NYL": "New York Liberty",  "POR": "Portland Fire",
+    "MIN": "Minnesota Lynx",    "DAL": "Dallas Wings",
+    "LVA": "Las Vegas Aces",   "IND": "Indiana Fever",
+    "PHX": "Phoenix Mercury",   "SEA": "Seattle Storm",
+    "CON": "Connecticut Sun",   "CHI": "Chicago Sky",
+    "ATL": "Atlanta Dream",     "WAS": "Washington Mystics",
+}
+
+WNBA_ROSTERS = {
+    "NYL": [
+        _p("Breanna Stewart",     "F","6-4", 19.5, 8.5, 4.0, 2.4),
+        _p("Sabrina Ionescu",     "G","5-11",17.5, 5.5, 7.1, 3.2),
+        _p("Jonquel Jones",       "C","6-6", 15.0, 9.0, 2.9, 1.5),
+        _p("Courtney Vandersloot","G","5-8", 10.9, 4.0, 6.5, 1.8),
+        _p("Betnijah Laney",      "F","6-0", 10.6, 3.0, 1.6, 1.0, "Q"),
+        _p("Kayla Thornton",     "F","6-2",  6.5, 4.0, 0.9, 0.8),
+        _p("Sonia",              "G","5-9",  6.0, 2.0, 1.5, 0.5),
+        _p("Han Xu",             "C","6-11", 7.0, 4.0, 0.5, 0.3),
+    ],
+    "IND": [
+        _p("Caitlin Clark",      "G","6-0", 18.5, 5.0, 8.0, 3.5),
+        _p("Aliyah Boston",       "C","6-4", 14.0, 9.0, 2.5, 1.0),
+        _p("Kelsey Mitchell",     "G","5-10",14.5, 3.0, 2.5, 2.0),
+        _p("Grace Berger",       "G","6-0",  8.5, 2.5, 2.0, 0.8),
+        _p("Lexie Hull",         "G","5-11", 6.5, 2.5, 1.5, 0.6),
+        _p("Emma",               "F","6-2",  6.0, 4.0, 0.8, 0.5, "Q"),
+        _p("Nina",               "F","6-3",  5.0, 3.5, 0.5, 0.3),
+    ],
+    "WAS": [
+        _p("Elena Delle Donne",   "F","6-4", 18.0, 6.0, 3.0, 2.5),
+        _p("Ariel Atkins",        "G","5-11",14.5, 4.0, 3.0, 1.5),
+        _p("Natasha",            "C","6-5", 11.0, 7.5, 1.5, 0.5),
+        _p("Natasha Cloud",      "G","5-11", 9.5, 3.5, 5.0, 1.2),
+        _p("Shakira Austin",     "C","6-0",  8.5, 5.5, 1.5, 0.5, "Q"),
+        _p("KeKe",               "F","6-4",  7.0, 4.0, 0.8, 0.5),
+        _p("Jade",               "G","5-8",  5.5, 1.5, 1.5, 0.5),
+    ],
+    "LVA": [
+        _p("A'ja Wilson",        "F","6-4", 22.5,10.0, 3.5, 1.5),
+        _p("Chelsea Gray",        "G","5-11",14.5, 4.0, 5.0, 1.8),
+        _p("Kia",               "C","6-5", 12.5, 7.5, 1.5, 0.5),
+        _p("Jackie",            "G","5-10",11.0, 3.5, 4.0, 1.5),
+        _p("Alysha",            "F","6-2",  8.5, 4.0, 1.0, 0.8, "Q"),
+        _p("Kayla",             "G","5-9",  6.5, 1.5, 2.0, 0.8),
+        _p("Sydney",             "F","6-3",  5.5, 3.0, 0.5, 0.3),
+    ],
+    "MIN": [
+        _p("Napheesa Collier",   "F","6-0", 16.9, 5.5, 3.4, 1.8),
+        _p("Kayla McCollough",  "G","5-11",14.1, 3.5, 2.0, 1.0, "Q"),
+        _p("Alana",             "C","6-4", 11.5, 7.0, 1.5, 0.5),
+        _p("Natasha",           "G","5-8", 11.0, 2.9, 5.5, 1.5),
+        _p("Diamond",           "F","6-2",  8.5, 4.0, 1.0, 0.8),
+        _p("Nele",              "F","6-3",  6.0, 3.0, 0.5, 0.3),
+        _p("Olivia",            "G","5-7",  4.5, 1.0, 1.5, 0.4),
+        _p("Nara",              "G","5-9",  3.5, 0.8, 0.8, 0.3),
+    ],
+    "DAL": [
+        _p("Arielle",           "G","5-10",16.5, 4.5, 4.5, 2.0),
+        _p("Moriah",            "G","6-0", 14.0, 4.0, 3.5, 1.3),
+        _p("Caitlin",           "F","6-3", 12.5, 6.0, 1.5, 0.8),
+        _p("Naomi",             "C","6-5", 10.5, 7.0, 1.0, 0.5, "Q"),
+        _p("Satou",             "F","6-2",  9.0, 4.5, 1.5, 0.8),
+        _p("Lindsay",           "G","5-9",  7.5, 2.0, 2.5, 0.9),
+        _p("Jaiden",            "F","6-3",  5.5, 3.0, 0.5, 0.3),
+        _p("Awak",              "G","5-8",  4.0, 1.0, 1.0, 0.3),
+    ],
+}
+
+for _c in ["CON","SEA","PHX","CHI","ATL","POR"]:
+    WNBA_ROSTERS.setdefault(_c, [])
+
+
+# ── CLI ──────────────────────────────────────────────────────────────────────
+if __name__ == "__main__":
+    p = argparse.ArgumentParser(description="NBA TC Engine v5.0 — Full-Stat Props (PTS+REB+AST+3PM)")
+    p.add_argument("--sport",   choices=["NBA","WNBA"], default="NBA")
+    p.add_argument("--game",    help="'AWAY @ HOME' e.g. 'NYK @ BOS'")
+    p.add_argument("--total",   type=float, help="Market game total")
+    p.add_argument("--spread",  type=float, help="Home spread (e.g. -4)")
+    p.add_argument("--bankroll",type=float, default=1000)
+    p.add_argument("--list",    action="store_true")
+    p.add_argument("--json",    action="store_true")
+    a = p.parse_args()
+
+    if a.game:
+        away, home = [x.strip().upper() for x in a.game.split("@")]
+        g = Game(away, home, a.sport, a.total, a.spread, bankroll=a.bankroll)
+        if a.json:
+            print(json.dumps(g.to_dict(), indent=2))
+        else:
+            g.full_report()
+    elif a.list:
+        tm = NBA_TEAMS if a.sport == "NBA" else WNBA_TEAMS
+        print(f"\n{a.sport} Teams:")
+        for k, v in sorted(tm.items()):
+            print(f"  {k}: {v}")
+    else:
+        print("NBA TC Engine v5.0 — Full-Stat Props")
+        print("Usage: --game 'AWAY @ HOME' [--total 220] [--spread -4] [--json]")

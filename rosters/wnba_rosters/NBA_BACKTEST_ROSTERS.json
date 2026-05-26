@@ -1,0 +1,1402 @@
+{
+  "generated_at": "2026-05-22 21:25:20",
+  "teams": {
+    "BOS": {
+      "team_name": "Boston Celtics",
+      "source_file": "sports_tc.py / master_tc.py",
+      "starters": [
+        {
+          "name": "Jayson Tatum",
+          "pos": "F",
+          "ht": "6-8",
+          "ppg": 25.5,
+          "rpg": 8.0,
+          "apg": 5.0,
+          "tpm": 2.8,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Jaylen Brown",
+          "pos": "F",
+          "ht": "6-6",
+          "ppg": 23.0,
+          "rpg": 6.0,
+          "apg": 4.0,
+          "tpm": 2.5,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Kristaps Porzingis",
+          "pos": "C",
+          "ht": "7-1",
+          "ppg": 20.0,
+          "rpg": 7.5,
+          "apg": 2.5,
+          "tpm": 2.0,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Derrick White",
+          "pos": "G",
+          "ht": "6-4",
+          "ppg": 15.5,
+          "rpg": 4.5,
+          "apg": 4.5,
+          "tpm": 2.2,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Jrue Holiday",
+          "pos": "G",
+          "ht": "6-4",
+          "ppg": 14.5,
+          "rpg": 5.0,
+          "apg": 6.0,
+          "tpm": 2.0,
+          "status": "ACTIVE"
+        }
+      ],
+      "bench": [
+        {
+          "name": "Al Horford",
+          "pos": "F",
+          "ht": "6-9",
+          "ppg": 11.0,
+          "rpg": 5.5,
+          "apg": 3.5,
+          "tpm": 1.8,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Payton Pritchard",
+          "pos": "G",
+          "ht": "6-1",
+          "ppg": 9.0,
+          "rpg": 2.5,
+          "apg": 3.0,
+          "tpm": 2.0,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Sam Hauser",
+          "pos": "F",
+          "ht": "6-5",
+          "ppg": 8.0,
+          "rpg": 3.5,
+          "apg": 1.5,
+          "tpm": 1.8,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Luke Kornet",
+          "pos": "C",
+          "ht": "7-0",
+          "ppg": 6.0,
+          "rpg": 4.0,
+          "apg": 1.0,
+          "tpm": 0.5,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Neemias Queta",
+          "pos": "C",
+          "ht": "7-0",
+          "ppg": 5.5,
+          "rpg": 4.0,
+          "apg": 0.5,
+          "tpm": 0.0,
+          "status": "ACTIVE"
+        }
+      ],
+      "injury_notes": [
+        "No injuries listed. Treat all rostered players as ACTIVE until pregame report updates."
+      ],
+      "backtest_ready": true
+    },
+    "CLE": {
+      "team_name": "Cleveland Cavaliers",
+      "source_file": "sports_tc.py / master_tc.py",
+      "starters": [
+        {
+          "name": "Donovan Mitchell",
+          "pos": "G",
+          "ht": "6-1",
+          "ppg": 24.5,
+          "rpg": 5.0,
+          "apg": 4.5,
+          "tpm": 3.0,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Darius Garland",
+          "pos": "G",
+          "ht": "6-1",
+          "ppg": 20.0,
+          "rpg": 3.5,
+          "apg": 6.0,
+          "tpm": 2.5,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Evan Mobley",
+          "pos": "F",
+          "ht": "6-11",
+          "ppg": 18.0,
+          "rpg": 9.0,
+          "apg": 3.5,
+          "tpm": 1.2,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Jarrett Allen",
+          "pos": "C",
+          "ht": "6-9",
+          "ppg": 14.0,
+          "rpg": 8.0,
+          "apg": 2.0,
+          "tpm": 0.5,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Max Strus",
+          "pos": "F",
+          "ht": "6-5",
+          "ppg": 12.5,
+          "rpg": 4.5,
+          "apg": 3.5,
+          "tpm": 2.5,
+          "status": "ACTIVE"
+        }
+      ],
+      "bench": [
+        {
+          "name": "Caris LeVert",
+          "pos": "G",
+          "ht": "6-5",
+          "ppg": 11.5,
+          "rpg": 3.5,
+          "apg": 3.5,
+          "tpm": 1.8,
+          "status": "Q"
+        },
+        {
+          "name": "Isaac Okoro",
+          "pos": "G",
+          "ht": "6-5",
+          "ppg": 10.0,
+          "rpg": 3.5,
+          "apg": 3.0,
+          "tpm": 1.2,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Georges Niang",
+          "pos": "F",
+          "ht": "6-5",
+          "ppg": 9.0,
+          "rpg": 3.0,
+          "apg": 1.5,
+          "tpm": 2.0,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Tristan Thompson",
+          "pos": "C",
+          "ht": "6-9",
+          "ppg": 6.0,
+          "rpg": 5.5,
+          "apg": 1.0,
+          "tpm": 0.0,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Ty Jerome",
+          "pos": "G",
+          "ht": "6-5",
+          "ppg": 5.5,
+          "rpg": 2.0,
+          "apg": 2.5,
+          "tpm": 1.0,
+          "status": "ACTIVE"
+        }
+      ],
+      "injury_notes": [
+        "QUESTIONABLE: Caris LeVert"
+      ],
+      "backtest_ready": true
+    },
+    "DEN": {
+      "team_name": "Denver Nuggets",
+      "source_file": "sports_tc.py / master_tc.py",
+      "starters": [
+        {
+          "name": "Nikola Jokic",
+          "pos": "C",
+          "ht": "6-11",
+          "ppg": 26.5,
+          "rpg": 12.0,
+          "apg": 9.5,
+          "tpm": 1.8,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Jamal Murray",
+          "pos": "G",
+          "ht": "6-4",
+          "ppg": 21.5,
+          "rpg": 4.5,
+          "apg": 5.5,
+          "tpm": 2.5,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Michael Porter Jr.",
+          "pos": "F",
+          "ht": "6-10",
+          "ppg": 16.5,
+          "rpg": 6.5,
+          "apg": 2.0,
+          "tpm": 2.5,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Aaron Gordon",
+          "pos": "F",
+          "ht": "6-8",
+          "ppg": 14.0,
+          "rpg": 5.5,
+          "apg": 2.5,
+          "tpm": 1.2,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Kentavious Caldwell-Pope",
+          "pos": "G",
+          "ht": "6-5",
+          "ppg": 11.5,
+          "rpg": 3.5,
+          "apg": 2.0,
+          "tpm": 2.0,
+          "status": "ACTIVE"
+        }
+      ],
+      "bench": [
+        {
+          "name": "Christian Braun",
+          "pos": "G",
+          "ht": "6-5",
+          "ppg": 8.5,
+          "rpg": 3.5,
+          "apg": 1.5,
+          "tpm": 1.0,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Peyton Watson",
+          "pos": "F",
+          "ht": "6-8",
+          "ppg": 7.5,
+          "rpg": 3.0,
+          "apg": 1.5,
+          "tpm": 0.8,
+          "status": "ACTIVE"
+        }
+      ],
+      "injury_notes": [
+        "No injuries listed. Treat all rostered players as ACTIVE until pregame report updates."
+      ],
+      "backtest_ready": true
+    },
+    "DET": {
+      "team_name": "Detroit Pistons",
+      "source_file": "sports_tc.py / master_tc.py",
+      "starters": [
+        {
+          "name": "Cade Cunningham",
+          "pos": "G",
+          "ht": "6-6",
+          "ppg": 22.0,
+          "rpg": 5.5,
+          "apg": 7.5,
+          "tpm": 2.2,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Jaden Ivey",
+          "pos": "G",
+          "ht": "6-4",
+          "ppg": 17.5,
+          "rpg": 4.5,
+          "apg": 4.0,
+          "tpm": 2.0,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Tim Hardaway Jr.",
+          "pos": "F",
+          "ht": "6-5",
+          "ppg": 14.0,
+          "rpg": 4.0,
+          "apg": 2.5,
+          "tpm": 2.5,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Jalen Duren",
+          "pos": "C",
+          "ht": "6-10",
+          "ppg": 13.5,
+          "rpg": 8.0,
+          "apg": 2.0,
+          "tpm": 0.5,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Ausar Thompson",
+          "pos": "F",
+          "ht": "6-7",
+          "ppg": 12.5,
+          "rpg": 5.5,
+          "apg": 3.5,
+          "tpm": 1.2,
+          "status": "ACTIVE"
+        }
+      ],
+      "bench": [
+        {
+          "name": "Marcus Sasser",
+          "pos": "G",
+          "ht": "6-2",
+          "ppg": 10.5,
+          "rpg": 2.5,
+          "apg": 3.0,
+          "tpm": 1.8,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Killian Hayes",
+          "pos": "G",
+          "ht": "6-5",
+          "ppg": 9.0,
+          "rpg": 3.0,
+          "apg": 4.5,
+          "tpm": 1.2,
+          "status": "Q"
+        },
+        {
+          "name": "Simone Fontecchio",
+          "pos": "F",
+          "ht": "6-8",
+          "ppg": 8.5,
+          "rpg": 3.5,
+          "apg": 1.5,
+          "tpm": 1.2,
+          "status": "ACTIVE"
+        }
+      ],
+      "injury_notes": [
+        "QUESTIONABLE: Killian Hayes"
+      ],
+      "backtest_ready": true
+    },
+    "GSW": {
+      "team_name": "Golden State Warriors",
+      "source_file": "sports_tc.py / master_tc.py",
+      "starters": [
+        {
+          "name": "Stephen Curry",
+          "pos": "G",
+          "ht": "6-2",
+          "ppg": 24.5,
+          "rpg": 4.5,
+          "apg": 6.0,
+          "tpm": 3.5,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Jimmy Butler",
+          "pos": "F",
+          "ht": "6-7",
+          "ppg": 20.0,
+          "rpg": 5.5,
+          "apg": 4.5,
+          "tpm": 1.5,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Jonathan Kuminga",
+          "pos": "F",
+          "ht": "6-8",
+          "ppg": 16.5,
+          "rpg": 5.5,
+          "apg": 2.5,
+          "tpm": 1.5,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Buddy Hield",
+          "pos": "G",
+          "ht": "6-4",
+          "ppg": 13.0,
+          "rpg": 4.5,
+          "apg": 2.5,
+          "tpm": 3.0,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Andrew Wiggins",
+          "pos": "F",
+          "ht": "6-7",
+          "ppg": 12.0,
+          "rpg": 4.5,
+          "apg": 2.0,
+          "tpm": 2.0,
+          "status": "ACTIVE"
+        }
+      ],
+      "bench": [
+        {
+          "name": "Draymond Green",
+          "pos": "F",
+          "ht": "6-6",
+          "ppg": 11.5,
+          "rpg": 7.5,
+          "apg": 6.5,
+          "tpm": 1.0,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Moses Moody",
+          "pos": "G",
+          "ht": "6-5",
+          "ppg": 8.0,
+          "rpg": 3.0,
+          "apg": 1.5,
+          "tpm": 1.2,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Gary Payton II",
+          "pos": "G",
+          "ht": "6-3",
+          "ppg": 7.0,
+          "rpg": 3.0,
+          "apg": 1.5,
+          "tpm": 1.0,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Trayce Jackson-Davis",
+          "pos": "F",
+          "ht": "6-9",
+          "ppg": 7.0,
+          "rpg": 4.5,
+          "apg": 1.0,
+          "tpm": 0.5,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Kevon Looney",
+          "pos": "C",
+          "ht": "6-9",
+          "ppg": 6.5,
+          "rpg": 6.5,
+          "apg": 2.0,
+          "tpm": 0.3,
+          "status": "ACTIVE"
+        }
+      ],
+      "injury_notes": [
+        "No injuries listed. Treat all rostered players as ACTIVE until pregame report updates."
+      ],
+      "backtest_ready": true
+    },
+    "LAC": {
+      "team_name": "LA Clippers",
+      "source_file": "sports_tc.py / master_tc.py",
+      "starters": [
+        {
+          "name": "Kawhi Leonard",
+          "pos": "F",
+          "ht": "6-7",
+          "ppg": 23.5,
+          "rpg": 6.0,
+          "apg": 4.0,
+          "tpm": 2.5,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "James Harden",
+          "pos": "G",
+          "ht": "6-5",
+          "ppg": 21.0,
+          "rpg": 5.0,
+          "apg": 8.5,
+          "tpm": 2.8,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Norman Powell",
+          "pos": "G",
+          "ht": "6-3",
+          "ppg": 16.5,
+          "rpg": 3.5,
+          "apg": 2.5,
+          "tpm": 2.2,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Ivica Zubac",
+          "pos": "C",
+          "ht": "7-0",
+          "ppg": 12.0,
+          "rpg": 9.5,
+          "apg": 2.0,
+          "tpm": 0.0,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Terance Mann",
+          "pos": "G",
+          "ht": "6-5",
+          "ppg": 11.0,
+          "rpg": 4.5,
+          "apg": 3.0,
+          "tpm": 1.5,
+          "status": "ACTIVE"
+        }
+      ],
+      "bench": [
+        {
+          "name": "Derrick Jones Jr.",
+          "pos": "F",
+          "ht": "6-6",
+          "ppg": 10.5,
+          "rpg": 4.5,
+          "apg": 1.5,
+          "tpm": 1.2,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Amir Coffey",
+          "pos": "F",
+          "ht": "6-5",
+          "ppg": 9.0,
+          "rpg": 3.5,
+          "apg": 2.0,
+          "tpm": 1.5,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Ben Simmons",
+          "pos": "G",
+          "ht": "6-10",
+          "ppg": 8.5,
+          "rpg": 7.5,
+          "apg": 6.5,
+          "tpm": 0.3,
+          "status": "Q"
+        },
+        {
+          "name": "Kris Dunn",
+          "pos": "G",
+          "ht": "6-4",
+          "ppg": 8.0,
+          "rpg": 3.5,
+          "apg": 4.5,
+          "tpm": 0.8,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Nicolas Batum",
+          "pos": "F",
+          "ht": "6-8",
+          "ppg": 7.5,
+          "rpg": 4.0,
+          "apg": 2.5,
+          "tpm": 1.2,
+          "status": "ACTIVE"
+        }
+      ],
+      "injury_notes": [
+        "QUESTIONABLE: Ben Simmons"
+      ],
+      "backtest_ready": true
+    },
+    "LAL": {
+      "team_name": "Los Angeles Lakers",
+      "source_file": "sports_tc.py / master_tc.py",
+      "starters": [
+        {
+          "name": "Luka Doncic",
+          "pos": "G",
+          "ht": "6-7",
+          "ppg": 28.5,
+          "rpg": 7.5,
+          "apg": 8.5,
+          "tpm": 3.0,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "LeBron James",
+          "pos": "F",
+          "ht": "6-9",
+          "ppg": 25.5,
+          "rpg": 7.5,
+          "apg": 8.0,
+          "tpm": 2.0,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Austin Reaves",
+          "pos": "G",
+          "ht": "6-5",
+          "ppg": 16.5,
+          "rpg": 4.5,
+          "apg": 4.5,
+          "tpm": 2.0,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Rui Hachimura",
+          "pos": "F",
+          "ht": "6-8",
+          "ppg": 13.5,
+          "rpg": 5.0,
+          "apg": 1.5,
+          "tpm": 1.2,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Jaxson Hayes",
+          "pos": "C",
+          "ht": "6-10",
+          "ppg": 9.5,
+          "rpg": 5.5,
+          "apg": 1.5,
+          "tpm": 0.3,
+          "status": "ACTIVE"
+        }
+      ],
+      "bench": [
+        {
+          "name": "Dorian Finney-Smith",
+          "pos": "F",
+          "ht": "6-7",
+          "ppg": 9.0,
+          "rpg": 4.0,
+          "apg": 1.5,
+          "tpm": 1.8,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Jordan Goodwin",
+          "pos": "G",
+          "ht": "6-4",
+          "ppg": 8.0,
+          "rpg": 3.5,
+          "apg": 3.0,
+          "tpm": 1.2,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Gabe Vincent",
+          "pos": "G",
+          "ht": "6-3",
+          "ppg": 7.5,
+          "rpg": 2.0,
+          "apg": 2.5,
+          "tpm": 1.5,
+          "status": "ACTIVE"
+        }
+      ],
+      "injury_notes": [
+        "No injuries listed. Treat all rostered players as ACTIVE until pregame report updates."
+      ],
+      "backtest_ready": true
+    },
+    "MIA": {
+      "team_name": "Miami Heat",
+      "source_file": "sports_tc.py / master_tc.py",
+      "starters": [
+        {
+          "name": "Tyler Herro",
+          "pos": "G",
+          "ht": "6-5",
+          "ppg": 21.0,
+          "rpg": 4.5,
+          "apg": 4.0,
+          "tpm": 2.8,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Jimmy Butler",
+          "pos": "F",
+          "ht": "6-7",
+          "ppg": 20.0,
+          "rpg": 5.5,
+          "apg": 4.5,
+          "tpm": 1.5,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Bam Adebayo",
+          "pos": "C",
+          "ht": "6-9",
+          "ppg": 18.5,
+          "rpg": 10.0,
+          "apg": 4.0,
+          "tpm": 0.5,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Nikola Jovic",
+          "pos": "F",
+          "ht": "6-10",
+          "ppg": 13.0,
+          "rpg": 5.5,
+          "apg": 3.0,
+          "tpm": 1.5,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Jaime Jaquez Jr.",
+          "pos": "F",
+          "ht": "6-6",
+          "ppg": 12.0,
+          "rpg": 4.5,
+          "apg": 3.0,
+          "tpm": 1.5,
+          "status": "ACTIVE"
+        }
+      ],
+      "bench": [
+        {
+          "name": "Duncan Robinson",
+          "pos": "G",
+          "ht": "6-8",
+          "ppg": 11.5,
+          "rpg": 3.5,
+          "apg": 2.5,
+          "tpm": 3.0,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Kevin Love",
+          "pos": "F",
+          "ht": "6-8",
+          "ppg": 8.5,
+          "rpg": 6.5,
+          "apg": 2.0,
+          "tpm": 1.5,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Kyle Lowry",
+          "pos": "G",
+          "ht": "6-0",
+          "ppg": 7.5,
+          "rpg": 3.0,
+          "apg": 5.0,
+          "tpm": 1.3,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Cody Zeller",
+          "pos": "C",
+          "ht": "7-0",
+          "ppg": 6.5,
+          "rpg": 5.5,
+          "apg": 1.0,
+          "tpm": 0.3,
+          "status": "ACTIVE"
+        }
+      ],
+      "injury_notes": [
+        "No injuries listed. Treat all rostered players as ACTIVE until pregame report updates."
+      ],
+      "backtest_ready": true
+    },
+    "MIL": {
+      "team_name": "Milwaukee Bucks",
+      "source_file": "sports_tc.py / master_tc.py",
+      "starters": [
+        {
+          "name": "Giannis Antetokounmpo",
+          "pos": "F",
+          "ht": "6-11",
+          "ppg": 29.5,
+          "rpg": 11.5,
+          "apg": 5.5,
+          "tpm": 1.2,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Damian Lillard",
+          "pos": "G",
+          "ht": "6-2",
+          "ppg": 24.5,
+          "rpg": 4.5,
+          "apg": 7.0,
+          "tpm": 3.2,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Khris Middleton",
+          "pos": "F",
+          "ht": "6-7",
+          "ppg": 15.5,
+          "rpg": 5.0,
+          "apg": 4.5,
+          "tpm": 2.0,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Bobby Portis",
+          "pos": "F",
+          "ht": "6-10",
+          "ppg": 13.0,
+          "rpg": 7.5,
+          "apg": 1.5,
+          "tpm": 1.5,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Brook Lopez",
+          "pos": "C",
+          "ht": "7-1",
+          "ppg": 12.0,
+          "rpg": 6.5,
+          "apg": 1.5,
+          "tpm": 1.8,
+          "status": "ACTIVE"
+        }
+      ],
+      "bench": [
+        {
+          "name": "Donte DiVincenzo",
+          "pos": "G",
+          "ht": "6-4",
+          "ppg": 12.0,
+          "rpg": 4.0,
+          "apg": 3.0,
+          "tpm": 2.5,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Pat Connaughton",
+          "pos": "G",
+          "ht": "6-5",
+          "ppg": 9.0,
+          "rpg": 4.5,
+          "apg": 1.5,
+          "tpm": 2.0,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "AJ Green",
+          "pos": "G",
+          "ht": "6-4",
+          "ppg": 8.0,
+          "rpg": 2.5,
+          "apg": 1.5,
+          "tpm": 2.2,
+          "status": "ACTIVE"
+        }
+      ],
+      "injury_notes": [
+        "No injuries listed. Treat all rostered players as ACTIVE until pregame report updates."
+      ],
+      "backtest_ready": true
+    },
+    "NYK": {
+      "team_name": "New York Knicks",
+      "source_file": "sports_tc.py / master_tc.py",
+      "starters": [
+        {
+          "name": "Jalen Brunson",
+          "pos": "G",
+          "ht": "6-2",
+          "ppg": 20.5,
+          "rpg": 3.5,
+          "apg": 6.5,
+          "tpm": 2.0,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Julius Randle",
+          "pos": "F",
+          "ht": "6-4",
+          "ppg": 18.5,
+          "rpg": 9.0,
+          "apg": 4.5,
+          "tpm": 1.8,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "OG Anunoby",
+          "pos": "F",
+          "ht": "6-7",
+          "ppg": 16.0,
+          "rpg": 5.0,
+          "apg": 2.0,
+          "tpm": 2.0,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Mikal Bridges",
+          "pos": "F",
+          "ht": "6-6",
+          "ppg": 14.5,
+          "rpg": 4.5,
+          "apg": 3.0,
+          "tpm": 2.0,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Donte DiVincenzo",
+          "pos": "G",
+          "ht": "6-4",
+          "ppg": 12.0,
+          "rpg": 4.0,
+          "apg": 3.0,
+          "tpm": 2.5,
+          "status": "ACTIVE"
+        }
+      ],
+      "bench": [
+        {
+          "name": "Josh Hart",
+          "pos": "G",
+          "ht": "6-3",
+          "ppg": 10.5,
+          "rpg": 4.5,
+          "apg": 3.5,
+          "tpm": 1.5,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Bojan Bogdanovic",
+          "pos": "F",
+          "ht": "6-6",
+          "ppg": 9.5,
+          "rpg": 3.0,
+          "apg": 1.5,
+          "tpm": 1.8,
+          "status": "Q"
+        },
+        {
+          "name": "Precious Achiuwa",
+          "pos": "F",
+          "ht": "6-8",
+          "ppg": 7.5,
+          "rpg": 5.0,
+          "apg": 1.0,
+          "tpm": 0.8,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Mitchell Robinson",
+          "pos": "C",
+          "ht": "7-0",
+          "ppg": 7.0,
+          "rpg": 8.0,
+          "apg": 1.0,
+          "tpm": 0.0,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Jerome Robinson",
+          "pos": "G",
+          "ht": "6-5",
+          "ppg": 5.0,
+          "rpg": 2.0,
+          "apg": 1.5,
+          "tpm": 0.8,
+          "status": "ACTIVE"
+        }
+      ],
+      "injury_notes": [
+        "QUESTIONABLE: Bojan Bogdanovic"
+      ],
+      "backtest_ready": true
+    },
+    "OKC": {
+      "team_name": "Oklahoma City Thunder",
+      "source_file": "sports_tc.py / master_tc.py",
+      "starters": [
+        {
+          "name": "Shai Gilgeous-Alexander",
+          "pos": "G",
+          "ht": "6-6",
+          "ppg": 27.5,
+          "rpg": 5.5,
+          "apg": 6.5,
+          "tpm": 2.2,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Jalen Williams",
+          "pos": "F",
+          "ht": "6-5",
+          "ppg": 19.0,
+          "rpg": 4.5,
+          "apg": 4.0,
+          "tpm": 2.0,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Chet Holmgren",
+          "pos": "C",
+          "ht": "7-0",
+          "ppg": 16.0,
+          "rpg": 7.5,
+          "apg": 2.5,
+          "tpm": 1.5,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Lu Dort",
+          "pos": "G",
+          "ht": "6-4",
+          "ppg": 13.5,
+          "rpg": 4.0,
+          "apg": 2.5,
+          "tpm": 2.5,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Josh Giddey",
+          "pos": "G",
+          "ht": "6-8",
+          "ppg": 12.5,
+          "rpg": 6.5,
+          "apg": 5.5,
+          "tpm": 1.5,
+          "status": "ACTIVE"
+        }
+      ],
+      "bench": [
+        {
+          "name": "Isaiah Hartenstein",
+          "pos": "C",
+          "ht": "6-11",
+          "ppg": 12.0,
+          "rpg": 8.5,
+          "apg": 3.5,
+          "tpm": 0.8,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Jaylen Duren",
+          "pos": "C",
+          "ht": "6-10",
+          "ppg": 8.5,
+          "rpg": 5.5,
+          "apg": 1.5,
+          "tpm": 0.3,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Cason Wallace",
+          "pos": "G",
+          "ht": "6-4",
+          "ppg": 8.0,
+          "rpg": 2.5,
+          "apg": 2.0,
+          "tpm": 1.5,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Kenrich Williams",
+          "pos": "F",
+          "ht": "6-7",
+          "ppg": 7.0,
+          "rpg": 4.5,
+          "apg": 2.0,
+          "tpm": 1.0,
+          "status": "ACTIVE"
+        }
+      ],
+      "injury_notes": [
+        "No injuries listed. Treat all rostered players as ACTIVE until pregame report updates."
+      ],
+      "backtest_ready": true
+    },
+    "PHI": {
+      "team_name": "Philadelphia 76ers",
+      "source_file": "sports_tc.py / master_tc.py",
+      "starters": [
+        {
+          "name": "Joel Embiid",
+          "pos": "C",
+          "ht": "7-0",
+          "ppg": 28.5,
+          "rpg": 11.0,
+          "apg": 5.5,
+          "tpm": 1.8,
+          "status": "Q"
+        },
+        {
+          "name": "Tyrese Maxey",
+          "pos": "G",
+          "ht": "6-2",
+          "ppg": 22.0,
+          "rpg": 4.0,
+          "apg": 5.5,
+          "tpm": 2.5,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Paul George",
+          "pos": "F",
+          "ht": "6-8",
+          "ppg": 18.0,
+          "rpg": 5.5,
+          "apg": 4.0,
+          "tpm": 2.8,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Jared McCain",
+          "pos": "G",
+          "ht": "6-4",
+          "ppg": 14.0,
+          "rpg": 3.5,
+          "apg": 3.0,
+          "tpm": 2.0,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Kelly Oubre Jr.",
+          "pos": "F",
+          "ht": "6-5",
+          "ppg": 13.0,
+          "rpg": 5.0,
+          "apg": 2.0,
+          "tpm": 1.5,
+          "status": "ACTIVE"
+        }
+      ],
+      "bench": [
+        {
+          "name": "Guerschon Yabusele",
+          "pos": "F",
+          "ht": "6-8",
+          "ppg": 11.0,
+          "rpg": 5.5,
+          "apg": 1.5,
+          "tpm": 1.2,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Eric Gordon",
+          "pos": "G",
+          "ht": "6-3",
+          "ppg": 9.0,
+          "rpg": 2.0,
+          "apg": 2.5,
+          "tpm": 2.0,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Justin Edwards",
+          "pos": "F",
+          "ht": "6-8",
+          "ppg": 7.5,
+          "rpg": 3.5,
+          "apg": 1.0,
+          "tpm": 0.8,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Kyle Lowry",
+          "pos": "G",
+          "ht": "6-0",
+          "ppg": 7.5,
+          "rpg": 3.0,
+          "apg": 5.0,
+          "tpm": 1.3,
+          "status": "ACTIVE"
+        }
+      ],
+      "injury_notes": [
+        "OUT: Mo Bamba",
+        "QUESTIONABLE: Joel Embiid"
+      ],
+      "backtest_ready": true
+    },
+    "SAS": {
+      "team_name": "San Antonio Spurs",
+      "source_file": "NBA_Conference_Finals_TC_Config.md",
+      "backtest_ready": true,
+      "injury_notes": "DeAaron Fox: Q (ankle)",
+      "starters": [
+        {
+          "name": "Victor Wembanyama",
+          "position": "F",
+          "ppg": 28.0,
+          "rpg": 10.5,
+          "apg": 4.0,
+          "tpm": 2.5,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Stephon Castle",
+          "position": "G",
+          "ppg": 15.0,
+          "rpg": 4.5,
+          "apg": 4.0,
+          "tpm": 1.2,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "DeAaron Fox",
+          "position": "G",
+          "ppg": 24.5,
+          "rpg": 5.5,
+          "apg": 6.5,
+          "tpm": 1.8,
+          "status": "Q"
+        },
+        {
+          "name": "Devin Vassell",
+          "position": "G",
+          "ppg": 13.0,
+          "rpg": 4.0,
+          "apg": 2.5,
+          "tpm": 2.0,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Keldon Johnson",
+          "position": "F",
+          "ppg": 14.0,
+          "rpg": 4.5,
+          "apg": 2.0,
+          "tpm": 2.0,
+          "status": "ACTIVE"
+        }
+      ],
+      "bench": [
+        {
+          "name": "Dylan Harper",
+          "position": "G",
+          "ppg": 12.0,
+          "rpg": 4.5,
+          "apg": 3.5,
+          "tpm": 1.0,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Julian Champagnie",
+          "position": "F",
+          "ppg": 10.0,
+          "rpg": 4.5,
+          "apg": 1.5,
+          "tpm": 1.8,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Harrison Barnes",
+          "position": "F",
+          "ppg": 11.0,
+          "rpg": 4.5,
+          "apg": 1.5,
+          "tpm": 1.5,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Luke Kornet",
+          "position": "C",
+          "ppg": 7.0,
+          "rpg": 5.5,
+          "apg": 1.5,
+          "tpm": 0.5,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Carter Bryant",
+          "position": "F",
+          "ppg": 5.0,
+          "rpg": 3.0,
+          "apg": 0.8,
+          "tpm": 0.5,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Kelly Olynyk",
+          "position": "F",
+          "ppg": 6.0,
+          "rpg": 3.0,
+          "apg": 2.0,
+          "tpm": 0.8,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "David Jones Garcia",
+          "position": "F",
+          "ppg": 4.5,
+          "rpg": 2.5,
+          "apg": 0.8,
+          "tpm": 0.5,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Mason Plumlee",
+          "position": "C",
+          "ppg": 4.0,
+          "rpg": 5.0,
+          "apg": 1.5,
+          "tpm": 0.0,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Emanuel Miller",
+          "position": "F",
+          "ppg": 4.0,
+          "rpg": 3.0,
+          "apg": 1.0,
+          "tpm": 0.5,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Jordan McLaughlin",
+          "position": "G",
+          "ppg": 3.5,
+          "rpg": 1.5,
+          "apg": 2.0,
+          "tpm": 0.5,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Lindy Waters III",
+          "position": "F",
+          "ppg": 4.0,
+          "rpg": 2.5,
+          "apg": 1.0,
+          "tpm": 1.0,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Bismack Biyombo",
+          "position": "C",
+          "ppg": 3.0,
+          "rpg": 5.0,
+          "apg": 0.5,
+          "tpm": 0.0,
+          "status": "ACTIVE"
+        },
+        {
+          "name": "Harrison Ingram",
+          "position": "F",
+          "ppg": 3.0,
+          "rpg": 3.0,
+          "apg": 0.8,
+          "tpm": 0.3,
+          "status": "ACTIVE"
+        }
+      ]
+    }
+  }
+}

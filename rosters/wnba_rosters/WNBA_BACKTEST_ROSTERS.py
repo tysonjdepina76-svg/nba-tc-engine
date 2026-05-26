@@ -1,0 +1,2255 @@
+"""WNBA backtest roster export — generated from canonical team files."""
+GENERATED_AT = '2026-05-22 20:44:44'
+WNBA_BACKTEST_ROSTERS = 
+{
+    "ATL": {
+        "team_name": "Atlanta Dream",
+        "source_file": "WNBA_ATL_Dream.py",
+        "starters": [
+            {
+                "name": "Naz Hillmon",
+                "pos": "F",
+                "ht": "6-2",
+                "ppg": 7.3,
+                "rpg": 5.0,
+                "apg": 1.0,
+                "tpm": 0.7,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Amy Okonkwo",
+                "pos": "F",
+                "ht": "6-2",
+                "ppg": 0.0,
+                "rpg": 0.0,
+                "apg": 0.0,
+                "tpm": 0.0,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Te-Hina Paopao",
+                "pos": "G",
+                "ht": "5-9",
+                "ppg": 9.0,
+                "rpg": 3.3,
+                "apg": 2.3,
+                "tpm": 0.9,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Jordin Canada",
+                "pos": "G",
+                "ht": "5-6",
+                "ppg": 14.0,
+                "rpg": 4.0,
+                "apg": 5.3,
+                "tpm": 1.4,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Angel Reese",
+                "pos": "F",
+                "ht": "6-4",
+                "ppg": 10.7,
+                "rpg": 12.7,
+                "apg": 2.3,
+                "tpm": 1.1,
+                "status": "ACTIVE"
+            }
+        ],
+        "bench": [
+            {
+                "name": "Rhyne Howard",
+                "pos": "G",
+                "ht": "6-2",
+                "ppg": 14.5,
+                "rpg": 4.5,
+                "apg": 4.5,
+                "tpm": 1.5,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Madina Okot",
+                "pos": "C",
+                "ht": "6-6",
+                "ppg": 7.3,
+                "rpg": 6.7,
+                "apg": 0.3,
+                "tpm": 0.7,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Allisha Gray",
+                "pos": "G",
+                "ht": "6-0",
+                "ppg": 25.0,
+                "rpg": 7.0,
+                "apg": 1.3,
+                "tpm": 2.5,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Isobel Borlase",
+                "pos": "G",
+                "ht": "5-11",
+                "ppg": 1.0,
+                "rpg": 0.3,
+                "apg": 0.0,
+                "tpm": 0.1,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Indya Nivar",
+                "pos": "G",
+                "ht": "5-10",
+                "ppg": 0.0,
+                "rpg": 3.5,
+                "apg": 1.5,
+                "tpm": 0.0,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Sika Kone",
+                "pos": "F",
+                "ht": "6-3",
+                "ppg": 0.0,
+                "rpg": 0.7,
+                "apg": 0.0,
+                "tpm": 0.0,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Aaliyah Nye",
+                "pos": "G-F",
+                "ht": "6-0",
+                "ppg": 0.0,
+                "rpg": 0.0,
+                "apg": 0.0,
+                "tpm": 0.0,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Brionna Jones",
+                "pos": "F",
+                "ht": "6-3",
+                "ppg": 0.0,
+                "rpg": 0.0,
+                "apg": 0.0,
+                "tpm": 0.0,
+                "status": "ACTIVE"
+            }
+        ],
+        "injury_notes": [
+            "No injuries listed in May 22, 2026 live scrape; treat all rostered players as ACTIVE until pregame report updates."
+        ],
+        "backtest_ready": true
+    },
+    "CHI": {
+        "team_name": "Chicago Sky",
+        "source_file": "WNBA_CHI_Sky.py",
+        "starters": [
+            {
+                "name": "Jacy Sheldon",
+                "pos": "G",
+                "ht": "5-10",
+                "ppg": 9.0,
+                "rpg": 2.4,
+                "apg": 2.8,
+                "tpm": 0.9,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Elizabeth Williams",
+                "pos": "C-F",
+                "ht": "6-3",
+                "ppg": 4.0,
+                "rpg": 4.4,
+                "apg": 0.8,
+                "tpm": 0.4,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Skylar Diggins",
+                "pos": "G",
+                "ht": "5-9",
+                "ppg": 12.8,
+                "rpg": 4.8,
+                "apg": 5.3,
+                "tpm": 1.3,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Rickea Jackson",
+                "pos": "F",
+                "ht": "6-2",
+                "ppg": 18.0,
+                "rpg": 4.8,
+                "apg": 2.0,
+                "tpm": 1.8,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "DiJonai Carrington",
+                "pos": "G-F",
+                "ht": "5-11",
+                "ppg": 0.0,
+                "rpg": 0.0,
+                "apg": 0.0,
+                "tpm": 0.0,
+                "status": "ACTIVE"
+            }
+        ],
+        "bench": [
+            {
+                "name": "Natasha Cloud",
+                "pos": "G",
+                "ht": "5-10",
+                "ppg": 11.5,
+                "rpg": 5.3,
+                "apg": 4.8,
+                "tpm": 1.2,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Kamilla Cardoso",
+                "pos": "C",
+                "ht": "6-7",
+                "ppg": 14.4,
+                "rpg": 10.4,
+                "apg": 2.4,
+                "tpm": 1.4,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Gabriela Jaquez",
+                "pos": "G",
+                "ht": "6-0",
+                "ppg": 12.4,
+                "rpg": 5.6,
+                "apg": 1.4,
+                "tpm": 1.2,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Sydney Taylor",
+                "pos": "G",
+                "ht": "5-9",
+                "ppg": 3.3,
+                "rpg": 0.3,
+                "apg": 0.7,
+                "tpm": 0.3,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Maddy Westbeld",
+                "pos": "F",
+                "ht": "6-3",
+                "ppg": 0.0,
+                "rpg": 0.0,
+                "apg": 0.0,
+                "tpm": 0.0,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Courtney Vandersloot",
+                "pos": "G",
+                "ht": "5-8",
+                "ppg": 0.0,
+                "rpg": 0.0,
+                "apg": 0.0,
+                "tpm": 0.0,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Rachel Banham",
+                "pos": "G",
+                "ht": "5-10",
+                "ppg": 6.2,
+                "rpg": 0.2,
+                "apg": 0.8,
+                "tpm": 0.6,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Azura Stevens",
+                "pos": "F-C",
+                "ht": "6-6",
+                "ppg": 0.0,
+                "rpg": 0.0,
+                "apg": 0.0,
+                "tpm": 0.0,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Aicha Coulibaly",
+                "pos": "G",
+                "ht": "6-0",
+                "ppg": 4.0,
+                "rpg": 1.5,
+                "apg": 0.8,
+                "tpm": 0.4,
+                "status": "ACTIVE"
+            }
+        ],
+        "injury_notes": [
+            "No injuries listed in May 22, 2026 live scrape; treat all rostered players as ACTIVE until pregame report updates."
+        ],
+        "backtest_ready": true
+    },
+    "CON": {
+        "team_name": "Connecticut Sun",
+        "source_file": "WNBA_CON_Sun.py",
+        "starters": [
+            {
+                "name": "Diamond Miller",
+                "pos": "F",
+                "ht": "6-1",
+                "ppg": 8.2,
+                "rpg": 2.5,
+                "apg": 0.7,
+                "tpm": 0.8,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Hailey Van Lith",
+                "pos": "G",
+                "ht": "5-9",
+                "ppg": 9.3,
+                "rpg": 1.0,
+                "apg": 2.8,
+                "tpm": 0.9,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Ashlon Jackson",
+                "pos": "G",
+                "ht": "6-0",
+                "ppg": 4.0,
+                "rpg": 1.0,
+                "apg": 1.0,
+                "tpm": 0.4,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Charlisse Leger-Walker",
+                "pos": "G",
+                "ht": "5-10",
+                "ppg": 8.0,
+                "rpg": 1.7,
+                "apg": 2.3,
+                "tpm": 0.8,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Gianna Kneepkens",
+                "pos": "G",
+                "ht": "5-11",
+                "ppg": 3.5,
+                "rpg": 2.2,
+                "apg": 0.5,
+                "tpm": 0.4,
+                "status": "ACTIVE"
+            }
+        ],
+        "bench": [
+            {
+                "name": "Aaliyah Edwards",
+                "pos": "F",
+                "ht": "6-3",
+                "ppg": 10.0,
+                "rpg": 3.0,
+                "apg": 1.0,
+                "tpm": 1.0,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Olivia Nelson-Ododa",
+                "pos": "C",
+                "ht": "6-5",
+                "ppg": 6.7,
+                "rpg": 3.0,
+                "apg": 2.3,
+                "tpm": 0.7,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Raegan Beers",
+                "pos": "F",
+                "ht": "6-4",
+                "ppg": 5.6,
+                "rpg": 3.8,
+                "apg": 0.8,
+                "tpm": 0.6,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Saniya Rivers",
+                "pos": "G",
+                "ht": "6-1",
+                "ppg": 6.7,
+                "rpg": 2.3,
+                "apg": 4.8,
+                "tpm": 0.7,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Aneesah Morrow",
+                "pos": "F",
+                "ht": "6-1",
+                "ppg": 12.0,
+                "rpg": 9.7,
+                "apg": 1.2,
+                "tpm": 1.2,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Kennedy Burke",
+                "pos": "G-F",
+                "ht": "6-1",
+                "ppg": 7.7,
+                "rpg": 4.2,
+                "apg": 3.3,
+                "tpm": 0.8,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Nell Angloma",
+                "pos": "F",
+                "ht": "6-1",
+                "ppg": 7.7,
+                "rpg": 2.7,
+                "apg": 0.3,
+                "tpm": 0.8,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Brittney Griner",
+                "pos": "C",
+                "ht": "6-9",
+                "ppg": 15.0,
+                "rpg": 5.7,
+                "apg": 2.0,
+                "tpm": 1.5,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Leila Lacan",
+                "pos": "G",
+                "ht": "5-11",
+                "ppg": 0.0,
+                "rpg": 0.0,
+                "apg": 0.0,
+                "tpm": 0.0,
+                "status": "ACTIVE"
+            }
+        ],
+        "injury_notes": [
+            "No injuries listed in May 22, 2026 live scrape; treat all rostered players as ACTIVE until pregame report updates."
+        ],
+        "backtest_ready": true
+    },
+    "DAL": {
+        "team_name": "Dallas Wings",
+        "source_file": "WNBA_DAL_Wings.py",
+        "starters": [
+            {
+                "name": "Odyssey Sims",
+                "pos": "G",
+                "ht": "5-8",
+                "ppg": 8.4,
+                "rpg": 0.8,
+                "apg": 3.2,
+                "tpm": 0.8,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Paige Bueckers",
+                "pos": "G",
+                "ht": "6-0",
+                "ppg": 20.8,
+                "rpg": 2.8,
+                "apg": 5.2,
+                "tpm": 2.1,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Costanza Verona",
+                "pos": "G",
+                "ht": "5-6",
+                "ppg": 0.0,
+                "rpg": 0.0,
+                "apg": 0.0,
+                "tpm": 0.0,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Alysha Clark",
+                "pos": "F",
+                "ht": "5-11",
+                "ppg": 2.0,
+                "rpg": 1.5,
+                "apg": 0.0,
+                "tpm": 0.2,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Alanna Smith",
+                "pos": "F",
+                "ht": "6-4",
+                "ppg": 4.8,
+                "rpg": 4.0,
+                "apg": 2.2,
+                "tpm": 0.5,
+                "status": "ACTIVE"
+            }
+        ],
+        "bench": [
+            {
+                "name": "Aziaha James",
+                "pos": "G",
+                "ht": "5-10",
+                "ppg": 6.4,
+                "rpg": 2.4,
+                "apg": 0.4,
+                "tpm": 0.6,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "JJ Quinerly",
+                "pos": "G",
+                "ht": "5-8",
+                "ppg": 0.0,
+                "rpg": 0.0,
+                "apg": 0.0,
+                "tpm": 0.0,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Dulcy Fankam Mendjiadeu",
+                "pos": "F-C",
+                "ht": "6-3",
+                "ppg": 0.0,
+                "rpg": 0.0,
+                "apg": 0.0,
+                "tpm": 0.0,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Maddy Siegrist",
+                "pos": "F",
+                "ht": "6-2",
+                "ppg": 7.2,
+                "rpg": 2.2,
+                "apg": 0.8,
+                "tpm": 0.7,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Arike Ogunbowale",
+                "pos": "G",
+                "ht": "5-8",
+                "ppg": 17.4,
+                "rpg": 2.2,
+                "apg": 3.0,
+                "tpm": 1.7,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Li Yueru",
+                "pos": "C",
+                "ht": "6-7",
+                "ppg": 3.7,
+                "rpg": 4.3,
+                "apg": 1.0,
+                "tpm": 0.4,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Jessica Shepard",
+                "pos": "F",
+                "ht": "6-4",
+                "ppg": 12.4,
+                "rpg": 9.8,
+                "apg": 6.8,
+                "tpm": 1.2,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Awak Kuier",
+                "pos": "F",
+                "ht": "6-6",
+                "ppg": 3.0,
+                "rpg": 2.0,
+                "apg": 1.2,
+                "tpm": 0.3,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Azzi Fudd",
+                "pos": "G",
+                "ht": "5-11",
+                "ppg": 8.8,
+                "rpg": 1.0,
+                "apg": 1.0,
+                "tpm": 0.9,
+                "status": "ACTIVE"
+            }
+        ],
+        "injury_notes": [
+            "No injuries listed in May 22, 2026 live scrape; treat all rostered players as ACTIVE until pregame report updates."
+        ],
+        "backtest_ready": true
+    },
+    "GSV": {
+        "team_name": "Golden State Valkyries",
+        "source_file": "WNBA_GSV_Valkyries.py",
+        "starters": [
+            {
+                "name": "Gabby Williams",
+                "pos": "F",
+                "ht": "5-11",
+                "ppg": 15.0,
+                "rpg": 4.5,
+                "apg": 2.5,
+                "tpm": 1.5,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Kaitlyn Chen",
+                "pos": "G",
+                "ht": "5-9",
+                "ppg": 5.5,
+                "rpg": 2.5,
+                "apg": 1.3,
+                "tpm": 0.6,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Laeticia Amihere",
+                "pos": "F",
+                "ht": "6-3",
+                "ppg": 6.0,
+                "rpg": 4.8,
+                "apg": 1.8,
+                "tpm": 0.6,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Juste Jocyte",
+                "pos": "G-F",
+                "ht": "6-0",
+                "ppg": 0.0,
+                "rpg": 0.0,
+                "apg": 0.0,
+                "tpm": 0.0,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Kayla Thornton",
+                "pos": "F",
+                "ht": "6-1",
+                "ppg": 10.8,
+                "rpg": 5.5,
+                "apg": 0.5,
+                "tpm": 1.1,
+                "status": "ACTIVE"
+            }
+        ],
+        "bench": [
+            {
+                "name": "Kaila Charles",
+                "pos": "G-F",
+                "ht": "6-1",
+                "ppg": 8.0,
+                "rpg": 6.5,
+                "apg": 1.5,
+                "tpm": 0.8,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Miela Sowah",
+                "pos": "G",
+                "ht": "5-10",
+                "ppg": 0.0,
+                "rpg": 0.0,
+                "apg": 0.0,
+                "tpm": 0.0,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Ashten Prechtel",
+                "pos": "F",
+                "ht": "6-5",
+                "ppg": 0.0,
+                "rpg": 0.0,
+                "apg": 0.0,
+                "tpm": 0.0,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Iliana Rupert",
+                "pos": "C",
+                "ht": "6-4",
+                "ppg": 0.0,
+                "rpg": 0.0,
+                "apg": 0.0,
+                "tpm": 0.0,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Janelle Salaun",
+                "pos": "F",
+                "ht": "6-2",
+                "ppg": 14.8,
+                "rpg": 3.0,
+                "apg": 1.0,
+                "tpm": 1.5,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Tiffany Hayes",
+                "pos": "G",
+                "ht": "5-10",
+                "ppg": 5.0,
+                "rpg": 0.5,
+                "apg": 1.5,
+                "tpm": 0.5,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Veronica Burton",
+                "pos": "G",
+                "ht": "5-9",
+                "ppg": 14.5,
+                "rpg": 3.0,
+                "apg": 7.3,
+                "tpm": 1.5,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Cecilia Zandalasini",
+                "pos": "F",
+                "ht": "6-2",
+                "ppg": 8.0,
+                "rpg": 2.0,
+                "apg": 1.0,
+                "tpm": 0.8,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Ndjakalenga Mwenentanda",
+                "pos": "G",
+                "ht": "6-2",
+                "ppg": 0.0,
+                "rpg": 0.0,
+                "apg": 0.0,
+                "tpm": 0.0,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Kiah Stokes",
+                "pos": "C",
+                "ht": "6-3",
+                "ppg": 5.0,
+                "rpg": 5.3,
+                "apg": 2.0,
+                "tpm": 0.5,
+                "status": "ACTIVE"
+            }
+        ],
+        "injury_notes": [
+            "No injuries listed in May 22, 2026 live scrape; treat all rostered players as ACTIVE until pregame report updates."
+        ],
+        "backtest_ready": true
+    },
+    "IND": {
+        "team_name": "Indiana Fever",
+        "source_file": "WNBA_IND_Fever.py",
+        "starters": [
+            {
+                "name": "Kelsey Mitchell",
+                "pos": "G",
+                "ht": "5-8",
+                "ppg": 23.0,
+                "rpg": 1.0,
+                "apg": 2.0,
+                "tpm": 2.3,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Myisha Hines-Allen",
+                "pos": "F",
+                "ht": "6-2",
+                "ppg": 5.8,
+                "rpg": 3.8,
+                "apg": 3.4,
+                "tpm": 0.6,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Raven Johnson",
+                "pos": "G",
+                "ht": "5-8",
+                "ppg": 2.6,
+                "rpg": 2.2,
+                "apg": 1.2,
+                "tpm": 0.3,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Aliyah Boston",
+                "pos": "C-F",
+                "ht": "6-5",
+                "ppg": 15.0,
+                "rpg": 5.8,
+                "apg": 2.3,
+                "tpm": 1.5,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Sophie Cunningham",
+                "pos": "G",
+                "ht": "6-1",
+                "ppg": 8.2,
+                "rpg": 3.4,
+                "apg": 1.4,
+                "tpm": 0.8,
+                "status": "ACTIVE"
+            }
+        ],
+        "bench": [
+            {
+                "name": "Lexie Hull",
+                "pos": "G",
+                "ht": "6-2",
+                "ppg": 7.0,
+                "rpg": 3.6,
+                "apg": 0.8,
+                "tpm": 0.7,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Damiris Dantas",
+                "pos": "C-F",
+                "ht": "6-4",
+                "ppg": 4.0,
+                "rpg": 1.0,
+                "apg": 0.3,
+                "tpm": 0.4,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Justine Pissott",
+                "pos": "G-F",
+                "ht": "6-4",
+                "ppg": 0.0,
+                "rpg": 0.0,
+                "apg": 0.0,
+                "tpm": 0.0,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Makayla Timpson",
+                "pos": "F-C",
+                "ht": "6-2",
+                "ppg": 4.2,
+                "rpg": 3.0,
+                "apg": 0.6,
+                "tpm": 0.4,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Caitlin Clark",
+                "pos": "G",
+                "ht": "6-0",
+                "ppg": 24.3,
+                "rpg": 5.0,
+                "apg": 9.0,
+                "tpm": 2.4,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Bree Hall",
+                "pos": "G",
+                "ht": "6-1",
+                "ppg": 0.0,
+                "rpg": 0.0,
+                "apg": 0.0,
+                "tpm": 0.0,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Monique Billings",
+                "pos": "F",
+                "ht": "6-4",
+                "ppg": 8.0,
+                "rpg": 6.5,
+                "apg": 1.8,
+                "tpm": 0.8,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Tyasha Harris",
+                "pos": "G",
+                "ht": "5-10",
+                "ppg": 2.6,
+                "rpg": 1.2,
+                "apg": 2.4,
+                "tpm": 0.3,
+                "status": "ACTIVE"
+            }
+        ],
+        "injury_notes": [
+            "No injuries listed in May 22, 2026 live scrape; treat all rostered players as ACTIVE until pregame report updates."
+        ],
+        "backtest_ready": true
+    },
+    "LVA": {
+        "team_name": "Las Vegas Aces",
+        "source_file": "WNBA_LVA_Aces.py",
+        "starters": [
+            {
+                "name": "Jackie Young",
+                "pos": "G",
+                "ht": "6-0",
+                "ppg": 11.2,
+                "rpg": 5.0,
+                "apg": 6.2,
+                "tpm": 1.1,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Kierstan Bell",
+                "pos": "F",
+                "ht": "6-1",
+                "ppg": 0.0,
+                "rpg": 2.3,
+                "apg": 0.7,
+                "tpm": 0.0,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Janiah Barker",
+                "pos": "F",
+                "ht": "6-4",
+                "ppg": 0.0,
+                "rpg": 0.0,
+                "apg": 0.0,
+                "tpm": 0.0,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "NaLyssa Smith",
+                "pos": "F",
+                "ht": "6-4",
+                "ppg": 9.2,
+                "rpg": 5.4,
+                "apg": 1.2,
+                "tpm": 0.9,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Stephanie Talbot",
+                "pos": "F",
+                "ht": "6-2",
+                "ppg": 3.0,
+                "rpg": 2.4,
+                "apg": 1.4,
+                "tpm": 0.3,
+                "status": "ACTIVE"
+            }
+        ],
+        "bench": [
+            {
+                "name": "Dana Evans",
+                "pos": "G",
+                "ht": "5-6",
+                "ppg": 0.0,
+                "rpg": 0.0,
+                "apg": 0.0,
+                "tpm": 0.0,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Chelsea Gray",
+                "pos": "G",
+                "ht": "5-11",
+                "ppg": 12.0,
+                "rpg": 4.4,
+                "apg": 6.6,
+                "tpm": 1.2,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Brianna Turner",
+                "pos": "F-C",
+                "ht": "6-3",
+                "ppg": 0.8,
+                "rpg": 3.0,
+                "apg": 0.2,
+                "tpm": 0.1,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "A'ja Wilson",
+                "pos": "C",
+                "ht": "6-4",
+                "ppg": 25.0,
+                "rpg": 5.6,
+                "apg": 2.4,
+                "tpm": 2.5,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Chennedy Carter",
+                "pos": "G",
+                "ht": "5-9",
+                "ppg": 19.4,
+                "rpg": 2.8,
+                "apg": 2.0,
+                "tpm": 1.9,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Jewell Loyd",
+                "pos": "G",
+                "ht": "5-11",
+                "ppg": 6.4,
+                "rpg": 3.2,
+                "apg": 1.6,
+                "tpm": 0.6,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Cheyenne Parker-Tyus",
+                "pos": "F",
+                "ht": "6-4",
+                "ppg": 4.0,
+                "rpg": 2.4,
+                "apg": 0.6,
+                "tpm": 0.4,
+                "status": "ACTIVE"
+            }
+        ],
+        "injury_notes": [
+            "No injuries listed in May 22, 2026 live scrape; treat all rostered players as ACTIVE until pregame report updates."
+        ],
+        "backtest_ready": true
+    },
+    "LAS": {
+        "team_name": "Los Angeles Sparks",
+        "source_file": "WNBA_LAS_Sparks.py",
+        "starters": [
+            {
+                "name": "Ta'Niya Latson",
+                "pos": "G",
+                "ht": "5-8",
+                "ppg": 0.7,
+                "rpg": 0.3,
+                "apg": 0.0,
+                "tpm": 0.1,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Chance Gray",
+                "pos": "G",
+                "ht": "5-9",
+                "ppg": 1.2,
+                "rpg": 0.8,
+                "apg": 0.4,
+                "tpm": 0.1,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Laura Ziegler",
+                "pos": "F",
+                "ht": "6-2",
+                "ppg": 0.0,
+                "rpg": 0.0,
+                "apg": 0.0,
+                "tpm": 0.0,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Dearica Hamby",
+                "pos": "F",
+                "ht": "6-3",
+                "ppg": 19.0,
+                "rpg": 8.8,
+                "apg": 2.4,
+                "tpm": 1.9,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Jihyun Park",
+                "pos": "G",
+                "ht": "6-1",
+                "ppg": 1.3,
+                "rpg": 0.7,
+                "apg": 1.0,
+                "tpm": 0.1,
+                "status": "ACTIVE"
+            }
+        ],
+        "bench": [
+            {
+                "name": "Ariel Atkins",
+                "pos": "G",
+                "ht": "5-10",
+                "ppg": 7.0,
+                "rpg": 2.3,
+                "apg": 2.3,
+                "tpm": 0.7,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Kelsey Plum",
+                "pos": "G",
+                "ht": "5-8",
+                "ppg": 24.6,
+                "rpg": 1.4,
+                "apg": 5.8,
+                "tpm": 2.5,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Rae Burrell",
+                "pos": "G-F",
+                "ht": "6-2",
+                "ppg": 8.4,
+                "rpg": 2.6,
+                "apg": 1.6,
+                "tpm": 0.8,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Erica Wheeler",
+                "pos": "G",
+                "ht": "5-7",
+                "ppg": 4.6,
+                "rpg": 1.4,
+                "apg": 4.6,
+                "tpm": 0.5,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Sania Feagin",
+                "pos": "F",
+                "ht": "6-3",
+                "ppg": 0.0,
+                "rpg": 0.0,
+                "apg": 0.0,
+                "tpm": 0.0,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Kate Martin",
+                "pos": "G",
+                "ht": "6-0",
+                "ppg": 3.7,
+                "rpg": 0.3,
+                "apg": 0.0,
+                "tpm": 0.4,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Cameron Brink",
+                "pos": "F",
+                "ht": "6-4",
+                "ppg": 8.0,
+                "rpg": 3.6,
+                "apg": 1.0,
+                "tpm": 0.8,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Nneka Ogwumike",
+                "pos": "F",
+                "ht": "6-2",
+                "ppg": 15.6,
+                "rpg": 6.6,
+                "apg": 2.0,
+                "tpm": 1.6,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Emma Cannon",
+                "pos": "F",
+                "ht": "6-2",
+                "ppg": 3.0,
+                "rpg": 0.0,
+                "apg": 0.0,
+                "tpm": 0.3,
+                "status": "ACTIVE"
+            }
+        ],
+        "injury_notes": [
+            "No injuries listed in May 22, 2026 live scrape; treat all rostered players as ACTIVE until pregame report updates."
+        ],
+        "backtest_ready": true
+    },
+    "MIN": {
+        "team_name": "Minnesota Lynx",
+        "source_file": "WNBA_MIN_Lynx.py",
+        "starters": [
+            {
+                "name": "Natasha Howard",
+                "pos": "F",
+                "ht": "6-2",
+                "ppg": 15.2,
+                "rpg": 7.2,
+                "apg": 3.6,
+                "tpm": 1.5,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Liatu King",
+                "pos": "F",
+                "ht": "5-11",
+                "ppg": 9.0,
+                "rpg": 7.0,
+                "apg": 0.0,
+                "tpm": 0.9,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Maya Caldwell",
+                "pos": "G",
+                "ht": "5-11",
+                "ppg": 5.4,
+                "rpg": 1.8,
+                "apg": 1.6,
+                "tpm": 0.5,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Olivia Miles",
+                "pos": "G",
+                "ht": "5-10",
+                "ppg": 15.2,
+                "rpg": 4.2,
+                "apg": 5.6,
+                "tpm": 1.5,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Anastasiia Olairi Kosu",
+                "pos": "F",
+                "ht": "6-1",
+                "ppg": 3.0,
+                "rpg": 1.4,
+                "apg": 0.6,
+                "tpm": 0.3,
+                "status": "ACTIVE"
+            }
+        ],
+        "bench": [
+            {
+                "name": "Antonia Delaere",
+                "pos": "G",
+                "ht": "5-11",
+                "ppg": 2.6,
+                "rpg": 0.4,
+                "apg": 1.6,
+                "tpm": 0.3,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Courtney Williams",
+                "pos": "G",
+                "ht": "5-8",
+                "ppg": 15.6,
+                "rpg": 5.4,
+                "apg": 4.0,
+                "tpm": 1.6,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Eliska Hamzova",
+                "pos": "G",
+                "ht": "6-0",
+                "ppg": 2.0,
+                "rpg": 2.3,
+                "apg": 0.7,
+                "tpm": 0.2,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Nia Coffey",
+                "pos": "F",
+                "ht": "6-1",
+                "ppg": 7.8,
+                "rpg": 5.4,
+                "apg": 1.2,
+                "tpm": 0.8,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Dorka Juhasz",
+                "pos": "F",
+                "ht": "6-5",
+                "ppg": 0.0,
+                "rpg": 0.0,
+                "apg": 0.0,
+                "tpm": 0.0,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Kayla McBride",
+                "pos": "G",
+                "ht": "5-11",
+                "ppg": 15.6,
+                "rpg": 4.6,
+                "apg": 1.8,
+                "tpm": 1.6,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Emma Cechova",
+                "pos": "C",
+                "ht": "6-4",
+                "ppg": 8.3,
+                "rpg": 3.7,
+                "apg": 0.0,
+                "tpm": 0.8,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Napheesa Collier",
+                "pos": "F",
+                "ht": "6-1",
+                "ppg": 0.0,
+                "rpg": 0.0,
+                "apg": 0.0,
+                "tpm": 0.0,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Emese Hof",
+                "pos": "C",
+                "ht": "6-3",
+                "ppg": 2.5,
+                "rpg": 1.5,
+                "apg": 1.0,
+                "tpm": 0.2,
+                "status": "ACTIVE"
+            }
+        ],
+        "injury_notes": [
+            "No injuries listed in May 22, 2026 live scrape; treat all rostered players as ACTIVE until pregame report updates."
+        ],
+        "backtest_ready": true
+    },
+    "NYL": {
+        "team_name": "New York Liberty",
+        "source_file": "WNBA_NYL_Liberty.py",
+        "starters": [
+            {
+                "name": "Satou Sabally",
+                "pos": "F",
+                "ht": "6-4",
+                "ppg": 5.0,
+                "rpg": 4.0,
+                "apg": 2.0,
+                "tpm": 0.5,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Marine Fauthoux",
+                "pos": "G",
+                "ht": "5-9",
+                "ppg": 0.0,
+                "rpg": 0.0,
+                "apg": 0.0,
+                "tpm": 0.0,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Rebekah Gardner",
+                "pos": "G",
+                "ht": "6-1",
+                "ppg": 10.4,
+                "rpg": 3.2,
+                "apg": 2.2,
+                "tpm": 1.0,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Rebecca Allen",
+                "pos": "F-G",
+                "ht": "6-2",
+                "ppg": 4.0,
+                "rpg": 2.0,
+                "apg": 1.5,
+                "tpm": 0.4,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Alex Fowler",
+                "pos": "F",
+                "ht": "6-2",
+                "ppg": 6.0,
+                "rpg": 0.0,
+                "apg": 0.5,
+                "tpm": 0.6,
+                "status": "ACTIVE"
+            }
+        ],
+        "bench": [
+            {
+                "name": "Leonie Fiebich",
+                "pos": "F",
+                "ht": "6-4",
+                "ppg": 0.0,
+                "rpg": 0.0,
+                "apg": 0.0,
+                "tpm": 0.0,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Raquel Carrera",
+                "pos": "C",
+                "ht": "6-3",
+                "ppg": 0.0,
+                "rpg": 0.0,
+                "apg": 0.0,
+                "tpm": 0.0,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Pauline Astier",
+                "pos": "G",
+                "ht": "5-11",
+                "ppg": 14.8,
+                "rpg": 4.0,
+                "apg": 3.6,
+                "tpm": 1.5,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Sabrina Ionescu",
+                "pos": "G",
+                "ht": "5-11",
+                "ppg": 0.0,
+                "rpg": 0.0,
+                "apg": 0.0,
+                "tpm": 0.0,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Han Xu",
+                "pos": "C",
+                "ht": "6-11",
+                "ppg": 4.0,
+                "rpg": 1.8,
+                "apg": 0.6,
+                "tpm": 0.4,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Marine Johannes",
+                "pos": "G",
+                "ht": "5-10",
+                "ppg": 12.6,
+                "rpg": 3.2,
+                "apg": 4.2,
+                "tpm": 1.3,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Breanna Stewart",
+                "pos": "F",
+                "ht": "6-4",
+                "ppg": 22.0,
+                "rpg": 9.0,
+                "apg": 2.6,
+                "tpm": 2.2,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Jonquel Jones",
+                "pos": "C",
+                "ht": "6-6",
+                "ppg": 12.4,
+                "rpg": 7.4,
+                "apg": 2.4,
+                "tpm": 1.2,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Betnijah Laney-Hamilton",
+                "pos": "G-F",
+                "ht": "6-0",
+                "ppg": 8.3,
+                "rpg": 2.3,
+                "apg": 2.3,
+                "tpm": 0.8,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Julie Vanloo",
+                "pos": "G",
+                "ht": "5-8",
+                "ppg": 5.8,
+                "rpg": 2.0,
+                "apg": 5.4,
+                "tpm": 0.6,
+                "status": "ACTIVE"
+            }
+        ],
+        "injury_notes": [
+            "No injuries listed in May 22, 2026 live scrape; treat all rostered players as ACTIVE until pregame report updates."
+        ],
+        "backtest_ready": true
+    },
+    "PHX": {
+        "team_name": "Phoenix Mercury",
+        "source_file": "WNBA_PHX_Mercury.py",
+        "starters": [
+            {
+                "name": "Noemie Brochant",
+                "pos": "F-G",
+                "ht": "5-11",
+                "ppg": 4.0,
+                "rpg": 2.2,
+                "apg": 0.3,
+                "tpm": 0.4,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Kahleah Copper",
+                "pos": "G-F",
+                "ht": "6-1",
+                "ppg": 18.5,
+                "rpg": 2.5,
+                "apg": 2.5,
+                "tpm": 1.9,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Natasha Mack",
+                "pos": "F-C",
+                "ht": "6-3",
+                "ppg": 10.3,
+                "rpg": 8.7,
+                "apg": 1.7,
+                "tpm": 1.0,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Shay Ciezki",
+                "pos": "G",
+                "ht": "5-7",
+                "ppg": 0.0,
+                "rpg": 0.0,
+                "apg": 0.0,
+                "tpm": 0.0,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Monique Akoa Makani",
+                "pos": "G",
+                "ht": "5-10",
+                "ppg": 0.0,
+                "rpg": 0.0,
+                "apg": 0.0,
+                "tpm": 0.0,
+                "status": "ACTIVE"
+            }
+        ],
+        "bench": [
+            {
+                "name": "Valeriane Ayayi",
+                "pos": "F",
+                "ht": "6-1",
+                "ppg": 4.3,
+                "rpg": 2.8,
+                "apg": 1.3,
+                "tpm": 0.4,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Quionche Carter",
+                "pos": "F",
+                "ht": "5-11",
+                "ppg": 0.7,
+                "rpg": 0.7,
+                "apg": 0.3,
+                "tpm": 0.1,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Kiana Williams",
+                "pos": "G",
+                "ht": "5-8",
+                "ppg": 5.3,
+                "rpg": 0.3,
+                "apg": 0.5,
+                "tpm": 0.5,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "DeWanna Bonner",
+                "pos": "F-G",
+                "ht": "6-4",
+                "ppg": 10.7,
+                "rpg": 6.3,
+                "apg": 1.5,
+                "tpm": 1.1,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Alyssa Thomas",
+                "pos": "F",
+                "ht": "6-2",
+                "ppg": 17.7,
+                "rpg": 7.2,
+                "apg": 8.2,
+                "tpm": 1.8,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Jovana Nogic",
+                "pos": "G",
+                "ht": "6-0",
+                "ppg": 15.3,
+                "rpg": 1.2,
+                "apg": 2.2,
+                "tpm": 1.5,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Kyara Linskens",
+                "pos": "C",
+                "ht": "6-4",
+                "ppg": 2.8,
+                "rpg": 2.2,
+                "apg": 0.6,
+                "tpm": 0.3,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Sami Whitcomb",
+                "pos": "G",
+                "ht": "5-10",
+                "ppg": 0.0,
+                "rpg": 0.0,
+                "apg": 0.0,
+                "tpm": 0.0,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Marta Suarez",
+                "pos": "F",
+                "ht": "6-3",
+                "ppg": 6.0,
+                "rpg": 1.0,
+                "apg": 0.0,
+                "tpm": 0.6,
+                "status": "ACTIVE"
+            }
+        ],
+        "injury_notes": [
+            "No injuries listed in May 22, 2026 live scrape; treat all rostered players as ACTIVE until pregame report updates."
+        ],
+        "backtest_ready": true
+    },
+    "POR": {
+        "team_name": "Portland Fire",
+        "source_file": "WNBA_POR_Fire.py",
+        "starters": [
+            {
+                "name": "Carla Leite",
+                "pos": "G",
+                "ht": "5-9",
+                "ppg": 15.0,
+                "rpg": 2.7,
+                "apg": 3.3,
+                "tpm": 1.5,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Jordan Harrison",
+                "pos": "G",
+                "ht": "5-6",
+                "ppg": 4.0,
+                "rpg": 0.0,
+                "apg": 4.0,
+                "tpm": 0.4,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Sarah Ashlee Barker",
+                "pos": "G",
+                "ht": "6-0",
+                "ppg": 10.0,
+                "rpg": 3.8,
+                "apg": 1.8,
+                "tpm": 1.0,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Bridget Carleton",
+                "pos": "F",
+                "ht": "6-2",
+                "ppg": 16.8,
+                "rpg": 3.0,
+                "apg": 1.8,
+                "tpm": 1.7,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Holly Winterburn",
+                "pos": "G",
+                "ht": "5-11",
+                "ppg": 3.0,
+                "rpg": 1.5,
+                "apg": 2.5,
+                "tpm": 0.3,
+                "status": "ACTIVE"
+            }
+        ],
+        "bench": [
+            {
+                "name": "Teja Oblak",
+                "pos": "G",
+                "ht": "5-8",
+                "ppg": 0.0,
+                "rpg": 0.0,
+                "apg": 0.0,
+                "tpm": 0.0,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Nyadiew Puoch",
+                "pos": "F",
+                "ht": "6-3",
+                "ppg": 5.6,
+                "rpg": 2.2,
+                "apg": 0.8,
+                "tpm": 0.6,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Luisa Geiselsoder",
+                "pos": "C",
+                "ht": "6-4",
+                "ppg": 6.6,
+                "rpg": 4.0,
+                "apg": 2.2,
+                "tpm": 0.7,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Megan Gustafson",
+                "pos": "C",
+                "ht": "6-4",
+                "ppg": 7.4,
+                "rpg": 2.6,
+                "apg": 0.4,
+                "tpm": 0.7,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Frieda Buhner",
+                "pos": "F-C",
+                "ht": "6-2",
+                "ppg": 2.0,
+                "rpg": 1.7,
+                "apg": 0.0,
+                "tpm": 0.2,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Emily Engstler",
+                "pos": "F",
+                "ht": "6-1",
+                "ppg": 8.2,
+                "rpg": 2.8,
+                "apg": 1.0,
+                "tpm": 0.8,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Serah Williams",
+                "pos": "F",
+                "ht": "6-4",
+                "ppg": 2.5,
+                "rpg": 2.8,
+                "apg": 0.5,
+                "tpm": 0.2,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Karlie Samuelson",
+                "pos": "G",
+                "ht": "6-0",
+                "ppg": 0.0,
+                "rpg": 0.0,
+                "apg": 0.0,
+                "tpm": 0.0,
+                "status": "ACTIVE"
+            }
+        ],
+        "injury_notes": [
+            "No injuries listed in May 22, 2026 live scrape; treat all rostered players as ACTIVE until pregame report updates."
+        ],
+        "backtest_ready": true
+    },
+    "SEA": {
+        "team_name": "Seattle Storm",
+        "source_file": "WNBA_SEA_Storm.py",
+        "starters": [
+            {
+                "name": "Natisha Hiedeman",
+                "pos": "G",
+                "ht": "5-8",
+                "ppg": 12.2,
+                "rpg": 2.0,
+                "apg": 3.6,
+                "tpm": 1.2,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Flau'jae Johnson",
+                "pos": "G",
+                "ht": "5-10",
+                "ppg": 10.8,
+                "rpg": 4.6,
+                "apg": 1.0,
+                "tpm": 1.1,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Taylor Thierry",
+                "pos": "G-F",
+                "ht": "6-1",
+                "ppg": 6.0,
+                "rpg": 2.0,
+                "apg": 0.0,
+                "tpm": 0.6,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Jade Melbourne",
+                "pos": "G",
+                "ht": "5-10",
+                "ppg": 13.0,
+                "rpg": 1.4,
+                "apg": 4.2,
+                "tpm": 1.3,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Zia Cooke",
+                "pos": "G",
+                "ht": "5-9",
+                "ppg": 9.8,
+                "rpg": 3.2,
+                "apg": 1.8,
+                "tpm": 1.0,
+                "status": "ACTIVE"
+            }
+        ],
+        "bench": [
+            {
+                "name": "Lexie Brown",
+                "pos": "G",
+                "ht": "5-9",
+                "ppg": 5.0,
+                "rpg": 2.2,
+                "apg": 1.4,
+                "tpm": 0.5,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Awa Fam",
+                "pos": "C",
+                "ht": "6-4",
+                "ppg": 0.0,
+                "rpg": 0.0,
+                "apg": 0.0,
+                "tpm": 0.0,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Ezi Magbegor",
+                "pos": "F-C",
+                "ht": "6-6",
+                "ppg": 0.0,
+                "rpg": 0.0,
+                "apg": 0.0,
+                "tpm": 0.0,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Dominique Malonga",
+                "pos": "C",
+                "ht": "6-6",
+                "ppg": 16.0,
+                "rpg": 7.3,
+                "apg": 0.3,
+                "tpm": 1.6,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Taina Mair",
+                "pos": "G",
+                "ht": "5-9",
+                "ppg": 0.0,
+                "rpg": 0.0,
+                "apg": 1.0,
+                "tpm": 0.0,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Jordan Horston",
+                "pos": "F",
+                "ht": "6-2",
+                "ppg": 1.4,
+                "rpg": 2.8,
+                "apg": 1.0,
+                "tpm": 0.1,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Stefanie Dolson",
+                "pos": "C",
+                "ht": "6-5",
+                "ppg": 7.4,
+                "rpg": 4.0,
+                "apg": 1.4,
+                "tpm": 0.7,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Katie Lou Samuelson",
+                "pos": "G",
+                "ht": "6-3",
+                "ppg": 0.0,
+                "rpg": 0.0,
+                "apg": 0.0,
+                "tpm": 0.0,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Mackenzie Holmes",
+                "pos": "F",
+                "ht": "6-3",
+                "ppg": 5.8,
+                "rpg": 4.0,
+                "apg": 0.6,
+                "tpm": 0.6,
+                "status": "ACTIVE"
+            }
+        ],
+        "injury_notes": [
+            "No injuries listed in May 22, 2026 live scrape; treat all rostered players as ACTIVE until pregame report updates."
+        ],
+        "backtest_ready": true
+    },
+    "TOR": {
+        "team_name": "Toronto Tempo",
+        "source_file": "WNBA_TOR_Tempo.py",
+        "starters": [
+            {
+                "name": "Kiki Rice",
+                "pos": "G",
+                "ht": "5-11",
+                "ppg": 11.3,
+                "rpg": 3.8,
+                "apg": 2.2,
+                "tpm": 1.1,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Laura Juskaite",
+                "pos": "F",
+                "ht": "6-4",
+                "ppg": 7.8,
+                "rpg": 3.8,
+                "apg": 1.2,
+                "tpm": 0.8,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Marina Mabrey",
+                "pos": "G",
+                "ht": "6-1",
+                "ppg": 17.8,
+                "rpg": 3.8,
+                "apg": 2.2,
+                "tpm": 1.8,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Teonni Key",
+                "pos": "F",
+                "ht": "6-4",
+                "ppg": 3.3,
+                "rpg": 3.0,
+                "apg": 0.3,
+                "tpm": 0.3,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Nyara Sabally",
+                "pos": "F",
+                "ht": "6-5",
+                "ppg": 9.3,
+                "rpg": 6.0,
+                "apg": 2.5,
+                "tpm": 0.9,
+                "status": "ACTIVE"
+            }
+        ],
+        "bench": [
+            {
+                "name": "Maria Conde",
+                "pos": "F",
+                "ht": "6-3",
+                "ppg": 5.7,
+                "rpg": 3.3,
+                "apg": 1.0,
+                "tpm": 0.6,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Kia Nurse",
+                "pos": "G",
+                "ht": "6-0",
+                "ppg": 6.5,
+                "rpg": 1.3,
+                "apg": 0.8,
+                "tpm": 0.7,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Lexi Held",
+                "pos": "G",
+                "ht": "5-9",
+                "ppg": 1.0,
+                "rpg": 0.3,
+                "apg": 0.7,
+                "tpm": 0.1,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Temi Fagbenle",
+                "pos": "C",
+                "ht": "6-5",
+                "ppg": 2.0,
+                "rpg": 1.0,
+                "apg": 1.0,
+                "tpm": 0.2,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Brittney Sykes",
+                "pos": "G",
+                "ht": "5-11",
+                "ppg": 22.3,
+                "rpg": 4.3,
+                "apg": 4.7,
+                "tpm": 2.2,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Isabelle Harrison",
+                "pos": "F",
+                "ht": "6-5",
+                "ppg": 0.0,
+                "rpg": 0.0,
+                "apg": 0.0,
+                "tpm": 0.0,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Julie Allemand",
+                "pos": "G",
+                "ht": "5-10",
+                "ppg": 3.3,
+                "rpg": 2.3,
+                "apg": 4.0,
+                "tpm": 0.3,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Nikolina Milic",
+                "pos": "C",
+                "ht": "6-3",
+                "ppg": 3.5,
+                "rpg": 1.0,
+                "apg": 0.5,
+                "tpm": 0.4,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Mariella Fasoula",
+                "pos": "C",
+                "ht": "6-4",
+                "ppg": 2.0,
+                "rpg": 1.0,
+                "apg": 0.5,
+                "tpm": 0.2,
+                "status": "ACTIVE"
+            }
+        ],
+        "injury_notes": [
+            "No injuries listed in May 22, 2026 live scrape; treat all rostered players as ACTIVE until pregame report updates."
+        ],
+        "backtest_ready": true
+    },
+    "WAS": {
+        "team_name": "Washington Mystics",
+        "source_file": "WNBA_WAS_Mystics.py",
+        "starters": [
+            {
+                "name": "Shakira Austin",
+                "pos": "C",
+                "ht": "6-5",
+                "ppg": 16.3,
+                "rpg": 8.5,
+                "apg": 3.0,
+                "tpm": 1.6,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Alicia Florez Getino",
+                "pos": "G",
+                "ht": "5-9",
+                "ppg": 0.0,
+                "rpg": 0.0,
+                "apg": 0.0,
+                "tpm": 0.0,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Rori Harmon",
+                "pos": "G",
+                "ht": "5-6",
+                "ppg": 1.5,
+                "rpg": 1.8,
+                "apg": 2.3,
+                "tpm": 0.2,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Alex Wilson",
+                "pos": "G",
+                "ht": "5-9",
+                "ppg": 3.0,
+                "rpg": 1.8,
+                "apg": 0.8,
+                "tpm": 0.3,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Darianna Littlepage-Buggs",
+                "pos": "G-F",
+                "ht": "6-1",
+                "ppg": 0.0,
+                "rpg": 0.0,
+                "apg": 0.0,
+                "tpm": 0.0,
+                "status": "ACTIVE"
+            }
+        ],
+        "bench": [
+            {
+                "name": "Georgia Amoore",
+                "pos": "G",
+                "ht": "5-6",
+                "ppg": 5.8,
+                "rpg": 1.3,
+                "apg": 4.3,
+                "tpm": 0.6,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Michaela Onyenwere",
+                "pos": "F",
+                "ht": "6-0",
+                "ppg": 0.0,
+                "rpg": 0.0,
+                "apg": 0.0,
+                "tpm": 0.0,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Cassandre Prosper",
+                "pos": "G",
+                "ht": "6-3",
+                "ppg": 4.5,
+                "rpg": 2.0,
+                "apg": 1.3,
+                "tpm": 0.5,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Sonia Citron",
+                "pos": "G",
+                "ht": "6-1",
+                "ppg": 20.0,
+                "rpg": 3.5,
+                "apg": 1.8,
+                "tpm": 2.0,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Cotie McMahon",
+                "pos": "G",
+                "ht": "6-0",
+                "ppg": 10.0,
+                "rpg": 3.0,
+                "apg": 1.5,
+                "tpm": 1.0,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Angela Dugalic",
+                "pos": "F",
+                "ht": "6-4",
+                "ppg": 2.3,
+                "rpg": 2.5,
+                "apg": 0.3,
+                "tpm": 0.2,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Lucy Olsen",
+                "pos": "G",
+                "ht": "5-10",
+                "ppg": 4.3,
+                "rpg": 0.0,
+                "apg": 1.3,
+                "tpm": 0.4,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Kiki Iriafen",
+                "pos": "F",
+                "ht": "6-3",
+                "ppg": 16.5,
+                "rpg": 12.8,
+                "apg": 2.3,
+                "tpm": 1.7,
+                "status": "ACTIVE"
+            },
+            {
+                "name": "Lauren Betts",
+                "pos": "C",
+                "ht": "6-7",
+                "ppg": 5.5,
+                "rpg": 3.0,
+                "apg": 0.5,
+                "tpm": 0.6,
+                "status": "ACTIVE"
+            }
+        ],
+        "injury_notes": [
+            "No injuries listed in May 22, 2026 live scrape; treat all rostered players as ACTIVE until pregame report updates."
+        ],
+        "backtest_ready": true
+    }
+}

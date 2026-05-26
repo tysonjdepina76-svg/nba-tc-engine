@@ -1,0 +1,1 @@
+Run with --report to generate markdown output

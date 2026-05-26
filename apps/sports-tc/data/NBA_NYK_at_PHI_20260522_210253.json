@@ -1,0 +1,821 @@
+{
+  "generated_at": "2026-05-22 21:02:53",
+  "sport": "NBA",
+  "market_total": null,
+  "market_spread": null,
+  "rule": "TC applies only to player props. Team/game totals are raw projections only.",
+  "away": {
+    "code": "NYK",
+    "name": "New York Knicks",
+    "injury_notes": [
+      "Use live pregame injury report to override local status before betting."
+    ],
+    "raw_totals": {
+      "pts": 121.0,
+      "reb": 48.5,
+      "ast": 27.5,
+      "tpm": 15.2
+    },
+    "tc_prop_totals": {
+      "pts": 99.1,
+      "reb": 37.7,
+      "ast": 20.1,
+      "tpm": 10.2
+    },
+    "starters": [
+      {
+        "name": "Jalen Brunson",
+        "role": "STARTER",
+        "pos": "G",
+        "ht": "6-2",
+        "status": "ACTIVE",
+        "minutes": null,
+        "usage": null,
+        "raw": {
+          "pts": 20.5,
+          "reb": 3.5,
+          "ast": 6.5,
+          "tpm": 2.0
+        },
+        "tc_prop_floor": {
+          "pts": 17.4,
+          "reb": 2.8,
+          "ast": 4.9,
+          "tpm": 1.4
+        },
+        "prop_targets": {
+          "pts": 17,
+          "reb": 2,
+          "ast": 4,
+          "tpm": 1
+        }
+      },
+      {
+        "name": "OG Anunoby",
+        "role": "STARTER",
+        "pos": "F",
+        "ht": "6-7",
+        "status": "ACTIVE",
+        "minutes": null,
+        "usage": null,
+        "raw": {
+          "pts": 16.0,
+          "reb": 5.0,
+          "ast": 2.0,
+          "tpm": 2.0
+        },
+        "tc_prop_floor": {
+          "pts": 13.6,
+          "reb": 4.0,
+          "ast": 1.5,
+          "tpm": 1.4
+        },
+        "prop_targets": {
+          "pts": 13,
+          "reb": 4,
+          "ast": 1,
+          "tpm": 1
+        }
+      },
+      {
+        "name": "Julius Randle",
+        "role": "STARTER",
+        "pos": "F",
+        "ht": "6-4",
+        "status": "ACTIVE",
+        "minutes": null,
+        "usage": null,
+        "raw": {
+          "pts": 18.5,
+          "reb": 9.0,
+          "ast": 4.5,
+          "tpm": 1.8
+        },
+        "tc_prop_floor": {
+          "pts": 15.7,
+          "reb": 7.2,
+          "ast": 3.4,
+          "tpm": 1.3
+        },
+        "prop_targets": {
+          "pts": 15,
+          "reb": 7,
+          "ast": 3,
+          "tpm": 1
+        }
+      },
+      {
+        "name": "Mikal Bridges",
+        "role": "STARTER",
+        "pos": "F",
+        "ht": "6-6",
+        "status": "ACTIVE",
+        "minutes": null,
+        "usage": null,
+        "raw": {
+          "pts": 14.5,
+          "reb": 4.5,
+          "ast": 3.0,
+          "tpm": 2.0
+        },
+        "tc_prop_floor": {
+          "pts": 12.3,
+          "reb": 3.6,
+          "ast": 2.2,
+          "tpm": 1.4
+        },
+        "prop_targets": {
+          "pts": 12,
+          "reb": 3,
+          "ast": 2,
+          "tpm": 1
+        }
+      },
+      {
+        "name": "Donte DiVincenzo",
+        "role": "STARTER",
+        "pos": "G",
+        "ht": "6-4",
+        "status": "ACTIVE",
+        "minutes": null,
+        "usage": null,
+        "raw": {
+          "pts": 12.0,
+          "reb": 4.0,
+          "ast": 3.0,
+          "tpm": 2.5
+        },
+        "tc_prop_floor": {
+          "pts": 10.2,
+          "reb": 3.2,
+          "ast": 2.2,
+          "tpm": 1.8
+        },
+        "prop_targets": {
+          "pts": 10,
+          "reb": 3,
+          "ast": 2,
+          "tpm": 1
+        }
+      }
+    ],
+    "bench": [
+      {
+        "name": "Josh Hart",
+        "role": "BENCH",
+        "pos": "G",
+        "ht": "6-3",
+        "status": "ACTIVE",
+        "minutes": null,
+        "usage": null,
+        "raw": {
+          "pts": 10.5,
+          "reb": 4.5,
+          "ast": 3.5,
+          "tpm": 1.5
+        },
+        "tc_prop_floor": {
+          "pts": 8.9,
+          "reb": 3.6,
+          "ast": 2.6,
+          "tpm": 1.0
+        },
+        "prop_targets": {
+          "pts": 8,
+          "reb": 3,
+          "ast": 2,
+          "tpm": 1
+        }
+      },
+      {
+        "name": "Precious Achiuwa",
+        "role": "BENCH",
+        "pos": "F",
+        "ht": "6-8",
+        "status": "ACTIVE",
+        "minutes": null,
+        "usage": null,
+        "raw": {
+          "pts": 7.5,
+          "reb": 5.0,
+          "ast": 1.0,
+          "tpm": 0.8
+        },
+        "tc_prop_floor": {
+          "pts": 6.4,
+          "reb": 4.0,
+          "ast": 0.8,
+          "tpm": 0.6
+        },
+        "prop_targets": {
+          "pts": 6,
+          "reb": 4,
+          "ast": 0,
+          "tpm": 0
+        }
+      },
+      {
+        "name": "Bojan Bogdanovic",
+        "role": "BENCH",
+        "pos": "F",
+        "ht": "6-6",
+        "status": "Q",
+        "minutes": null,
+        "usage": null,
+        "raw": {
+          "pts": 9.5,
+          "reb": 3.0,
+          "ast": 1.5,
+          "tpm": 1.8
+        },
+        "tc_prop_floor": {
+          "pts": 4.4,
+          "reb": 1.3,
+          "ast": 0.6,
+          "tpm": 0.7
+        },
+        "prop_targets": {
+          "pts": 4,
+          "reb": 1,
+          "ast": 0,
+          "tpm": 0
+        }
+      },
+      {
+        "name": "Mitchell Robinson",
+        "role": "BENCH",
+        "pos": "C",
+        "ht": "7-0",
+        "status": "ACTIVE",
+        "minutes": null,
+        "usage": null,
+        "raw": {
+          "pts": 7.0,
+          "reb": 8.0,
+          "ast": 1.0,
+          "tpm": 0.0
+        },
+        "tc_prop_floor": {
+          "pts": 6.0,
+          "reb": 6.4,
+          "ast": 0.8,
+          "tpm": 0.0
+        },
+        "prop_targets": {
+          "pts": 6,
+          "reb": 6,
+          "ast": 0,
+          "tpm": 0
+        }
+      },
+      {
+        "name": "Jerome Robinson",
+        "role": "BENCH",
+        "pos": "G",
+        "ht": "6-5",
+        "status": "ACTIVE",
+        "minutes": null,
+        "usage": null,
+        "raw": {
+          "pts": 5.0,
+          "reb": 2.0,
+          "ast": 1.5,
+          "tpm": 0.8
+        },
+        "tc_prop_floor": {
+          "pts": 4.2,
+          "reb": 1.6,
+          "ast": 1.1,
+          "tpm": 0.6
+        },
+        "prop_targets": {
+          "pts": 4,
+          "reb": 1,
+          "ast": 1,
+          "tpm": 0
+        }
+      }
+    ]
+  },
+  "home": {
+    "code": "PHI",
+    "name": "Philadelphia 76ers",
+    "injury_notes": [
+      "Use live pregame injury report to override local status before betting."
+    ],
+    "raw_totals": {
+      "pts": 130.5,
+      "reb": 43.0,
+      "ast": 30.0,
+      "tpm": 15.9
+    },
+    "tc_prop_totals": {
+      "pts": 99.9,
+      "reb": 30.4,
+      "ast": 20.7,
+      "tpm": 10.6
+    },
+    "starters": [
+      {
+        "name": "Tyrese Maxey",
+        "role": "STARTER",
+        "pos": "G",
+        "ht": "6-2",
+        "status": "ACTIVE",
+        "minutes": null,
+        "usage": null,
+        "raw": {
+          "pts": 22.0,
+          "reb": 4.0,
+          "ast": 5.5,
+          "tpm": 2.5
+        },
+        "tc_prop_floor": {
+          "pts": 18.7,
+          "reb": 3.2,
+          "ast": 4.1,
+          "tpm": 1.8
+        },
+        "prop_targets": {
+          "pts": 18,
+          "reb": 3,
+          "ast": 4,
+          "tpm": 1
+        }
+      },
+      {
+        "name": "Paul George",
+        "role": "STARTER",
+        "pos": "F",
+        "ht": "6-8",
+        "status": "ACTIVE",
+        "minutes": null,
+        "usage": null,
+        "raw": {
+          "pts": 18.0,
+          "reb": 5.5,
+          "ast": 4.0,
+          "tpm": 2.8
+        },
+        "tc_prop_floor": {
+          "pts": 15.3,
+          "reb": 4.4,
+          "ast": 3.0,
+          "tpm": 2.0
+        },
+        "prop_targets": {
+          "pts": 15,
+          "reb": 4,
+          "ast": 3,
+          "tpm": 2
+        }
+      },
+      {
+        "name": "Joel Embiid",
+        "role": "STARTER",
+        "pos": "C",
+        "ht": "7-0",
+        "status": "Q",
+        "minutes": null,
+        "usage": null,
+        "raw": {
+          "pts": 28.5,
+          "reb": 11.0,
+          "ast": 5.5,
+          "tpm": 1.8
+        },
+        "tc_prop_floor": {
+          "pts": 13.3,
+          "reb": 4.8,
+          "ast": 2.3,
+          "tpm": 0.7
+        },
+        "prop_targets": {
+          "pts": 13,
+          "reb": 4,
+          "ast": 2,
+          "tpm": 0
+        }
+      },
+      {
+        "name": "Jared McCain",
+        "role": "STARTER",
+        "pos": "G",
+        "ht": "6-4",
+        "status": "ACTIVE",
+        "minutes": null,
+        "usage": null,
+        "raw": {
+          "pts": 14.0,
+          "reb": 3.5,
+          "ast": 3.0,
+          "tpm": 2.0
+        },
+        "tc_prop_floor": {
+          "pts": 11.9,
+          "reb": 2.8,
+          "ast": 2.2,
+          "tpm": 1.4
+        },
+        "prop_targets": {
+          "pts": 11,
+          "reb": 2,
+          "ast": 2,
+          "tpm": 1
+        }
+      },
+      {
+        "name": "Guerschon Yabusele",
+        "role": "STARTER",
+        "pos": "F",
+        "ht": "6-8",
+        "status": "ACTIVE",
+        "minutes": null,
+        "usage": null,
+        "raw": {
+          "pts": 11.0,
+          "reb": 5.5,
+          "ast": 1.5,
+          "tpm": 1.2
+        },
+        "tc_prop_floor": {
+          "pts": 9.3,
+          "reb": 4.4,
+          "ast": 1.1,
+          "tpm": 0.8
+        },
+        "prop_targets": {
+          "pts": 9,
+          "reb": 4,
+          "ast": 1,
+          "tpm": 0
+        }
+      }
+    ],
+    "bench": [
+      {
+        "name": "Justin Edwards",
+        "role": "BENCH",
+        "pos": "F",
+        "ht": "6-8",
+        "status": "ACTIVE",
+        "minutes": null,
+        "usage": null,
+        "raw": {
+          "pts": 7.5,
+          "reb": 3.5,
+          "ast": 1.0,
+          "tpm": 0.8
+        },
+        "tc_prop_floor": {
+          "pts": 6.4,
+          "reb": 2.8,
+          "ast": 0.8,
+          "tpm": 0.6
+        },
+        "prop_targets": {
+          "pts": 6,
+          "reb": 2,
+          "ast": 0,
+          "tpm": 0
+        }
+      },
+      {
+        "name": "Kelly Oubre Jr.",
+        "role": "BENCH",
+        "pos": "F",
+        "ht": "6-5",
+        "status": "ACTIVE",
+        "minutes": null,
+        "usage": null,
+        "raw": {
+          "pts": 13.0,
+          "reb": 5.0,
+          "ast": 2.0,
+          "tpm": 1.5
+        },
+        "tc_prop_floor": {
+          "pts": 11.0,
+          "reb": 4.0,
+          "ast": 1.5,
+          "tpm": 1.0
+        },
+        "prop_targets": {
+          "pts": 11,
+          "reb": 4,
+          "ast": 1,
+          "tpm": 1
+        }
+      },
+      {
+        "name": "Eric Gordon",
+        "role": "BENCH",
+        "pos": "G",
+        "ht": "6-3",
+        "status": "ACTIVE",
+        "minutes": null,
+        "usage": null,
+        "raw": {
+          "pts": 9.0,
+          "reb": 2.0,
+          "ast": 2.5,
+          "tpm": 2.0
+        },
+        "tc_prop_floor": {
+          "pts": 7.6,
+          "reb": 1.6,
+          "ast": 1.9,
+          "tpm": 1.4
+        },
+        "prop_targets": {
+          "pts": 7,
+          "reb": 1,
+          "ast": 1,
+          "tpm": 1
+        }
+      },
+      {
+        "name": "Kyle Lowry",
+        "role": "BENCH",
+        "pos": "G",
+        "ht": "6-0",
+        "status": "ACTIVE",
+        "minutes": null,
+        "usage": null,
+        "raw": {
+          "pts": 7.5,
+          "reb": 3.0,
+          "ast": 5.0,
+          "tpm": 1.3
+        },
+        "tc_prop_floor": {
+          "pts": 6.4,
+          "reb": 2.4,
+          "ast": 3.8,
+          "tpm": 0.9
+        },
+        "prop_targets": {
+          "pts": 6,
+          "reb": 2,
+          "ast": 3,
+          "tpm": 0
+        }
+      },
+      {
+        "name": "Mo Bamba",
+        "role": "BENCH",
+        "pos": "C",
+        "ht": "7-0",
+        "status": "OUT",
+        "minutes": null,
+        "usage": null,
+        "raw": {
+          "pts": 6.5,
+          "reb": 5.5,
+          "ast": 1.0,
+          "tpm": 0.8
+        },
+        "tc_prop_floor": {
+          "pts": 0.0,
+          "reb": 0.0,
+          "ast": 0.0,
+          "tpm": 0.0
+        },
+        "prop_targets": {
+          "pts": 0,
+          "reb": 0,
+          "ast": 0,
+          "tpm": 0
+        }
+      }
+    ]
+  },
+  "raw_game_totals": {
+    "pts": 251.5,
+    "reb": 91.5,
+    "ast": 57.5,
+    "tpm": 31.1
+  },
+  "prop_candidates": [
+    {
+      "team": "PHI",
+      "player": "Joel Embiid",
+      "role": "STARTER",
+      "stat": "PTS",
+      "raw_projection": 28.5,
+      "tc_floor": 13.3,
+      "target_whole_number": 13,
+      "gap": 15.2,
+      "status": "Q"
+    },
+    {
+      "team": "PHI",
+      "player": "Joel Embiid",
+      "role": "STARTER",
+      "stat": "REB",
+      "raw_projection": 11.0,
+      "tc_floor": 4.8,
+      "target_whole_number": 4,
+      "gap": 6.2,
+      "status": "Q"
+    },
+    {
+      "team": "NYK",
+      "player": "Bojan Bogdanovic",
+      "role": "BENCH",
+      "stat": "PTS",
+      "raw_projection": 9.5,
+      "tc_floor": 4.4,
+      "target_whole_number": 4,
+      "gap": 5.1,
+      "status": "Q"
+    },
+    {
+      "team": "PHI",
+      "player": "Tyrese Maxey",
+      "role": "STARTER",
+      "stat": "PTS",
+      "raw_projection": 22.0,
+      "tc_floor": 18.7,
+      "target_whole_number": 18,
+      "gap": 3.3,
+      "status": "ACTIVE"
+    },
+    {
+      "team": "PHI",
+      "player": "Joel Embiid",
+      "role": "STARTER",
+      "stat": "AST",
+      "raw_projection": 5.5,
+      "tc_floor": 2.3,
+      "target_whole_number": 2,
+      "gap": 3.2,
+      "status": "Q"
+    },
+    {
+      "team": "NYK",
+      "player": "Jalen Brunson",
+      "role": "STARTER",
+      "stat": "PTS",
+      "raw_projection": 20.5,
+      "tc_floor": 17.4,
+      "target_whole_number": 17,
+      "gap": 3.1,
+      "status": "ACTIVE"
+    },
+    {
+      "team": "NYK",
+      "player": "Jalen Brunson",
+      "role": "STARTER",
+      "stat": "AST",
+      "raw_projection": 6.5,
+      "tc_floor": 4.9,
+      "target_whole_number": 4,
+      "gap": 1.6,
+      "status": "ACTIVE"
+    },
+    {
+      "team": "NYK",
+      "player": "Bojan Bogdanovic",
+      "role": "BENCH",
+      "stat": "3PM",
+      "raw_projection": 1.8,
+      "tc_floor": 0.7,
+      "target_whole_number": 0,
+      "gap": 1.1,
+      "status": "Q"
+    },
+    {
+      "team": "PHI",
+      "player": "Joel Embiid",
+      "role": "STARTER",
+      "stat": "3PM",
+      "raw_projection": 1.8,
+      "tc_floor": 0.7,
+      "target_whole_number": 0,
+      "gap": 1.1,
+      "status": "Q"
+    },
+    {
+      "team": "PHI",
+      "player": "Paul George",
+      "role": "STARTER",
+      "stat": "3PM",
+      "raw_projection": 2.8,
+      "tc_floor": 2.0,
+      "target_whole_number": 2,
+      "gap": 0.8,
+      "status": "ACTIVE"
+    },
+    {
+      "team": "NYK",
+      "player": "Donte DiVincenzo",
+      "role": "STARTER",
+      "stat": "3PM",
+      "raw_projection": 2.5,
+      "tc_floor": 1.8,
+      "target_whole_number": 1,
+      "gap": 0.7,
+      "status": "ACTIVE"
+    },
+    {
+      "team": "PHI",
+      "player": "Tyrese Maxey",
+      "role": "STARTER",
+      "stat": "3PM",
+      "raw_projection": 2.5,
+      "tc_floor": 1.8,
+      "target_whole_number": 1,
+      "gap": 0.7,
+      "status": "ACTIVE"
+    },
+    {
+      "team": "NYK",
+      "player": "Jalen Brunson",
+      "role": "STARTER",
+      "stat": "3PM",
+      "raw_projection": 2.0,
+      "tc_floor": 1.4,
+      "target_whole_number": 1,
+      "gap": 0.6,
+      "status": "ACTIVE"
+    },
+    {
+      "team": "NYK",
+      "player": "OG Anunoby",
+      "role": "STARTER",
+      "stat": "3PM",
+      "raw_projection": 2.0,
+      "tc_floor": 1.4,
+      "target_whole_number": 1,
+      "gap": 0.6,
+      "status": "ACTIVE"
+    },
+    {
+      "team": "NYK",
+      "player": "Mikal Bridges",
+      "role": "STARTER",
+      "stat": "3PM",
+      "raw_projection": 2.0,
+      "tc_floor": 1.4,
+      "target_whole_number": 1,
+      "gap": 0.6,
+      "status": "ACTIVE"
+    },
+    {
+      "team": "PHI",
+      "player": "Jared McCain",
+      "role": "STARTER",
+      "stat": "3PM",
+      "raw_projection": 2.0,
+      "tc_floor": 1.4,
+      "target_whole_number": 1,
+      "gap": 0.6,
+      "status": "ACTIVE"
+    },
+    {
+      "team": "PHI",
+      "player": "Eric Gordon",
+      "role": "BENCH",
+      "stat": "3PM",
+      "raw_projection": 2.0,
+      "tc_floor": 1.4,
+      "target_whole_number": 1,
+      "gap": 0.6,
+      "status": "ACTIVE"
+    },
+    {
+      "team": "NYK",
+      "player": "Julius Randle",
+      "role": "STARTER",
+      "stat": "3PM",
+      "raw_projection": 1.8,
+      "tc_floor": 1.3,
+      "target_whole_number": 1,
+      "gap": 0.5,
+      "status": "ACTIVE"
+    },
+    {
+      "team": "NYK",
+      "player": "Josh Hart",
+      "role": "BENCH",
+      "stat": "3PM",
+      "raw_projection": 1.5,
+      "tc_floor": 1.0,
+      "target_whole_number": 1,
+      "gap": 0.5,
+      "status": "ACTIVE"
+    },
+    {
+      "team": "PHI",
+      "player": "Kelly Oubre Jr.",
+      "role": "BENCH",
+      "stat": "3PM",
+      "raw_projection": 1.5,
+      "tc_floor": 1.0,
+      "target_whole_number": 1,
+      "gap": 0.5,
+      "status": "ACTIVE"
+    }
+  ]
+}

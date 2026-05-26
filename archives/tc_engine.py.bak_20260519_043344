@@ -1,0 +1,698 @@
+"""
+tc_engine.py — Triple Conservative Betting Engine
+==================================================
+Unified NBA + WNBA TC engine. Single source of truth.
+
+TC Formula:
+    TC_pts  = (pts + reb + ast + tpm) × 0.85 × status_factor
+    status: ACTIVE×1.0 | Q×0.55 | OUT×0.0
+    Line    = TC_pts × 0.88
+    Edge    = TC_cal − market_total
+    TC_cal  = TC_raw / W_factor   (NBA=0.912 | WNBA=0.934)
+
+Usage:
+    python tc_engine.py --backtest
+    python tc_engine.py --game "PHI @ BOS" --total 208.5 --spread -11.5
+    python tc_engine.py --list-teams
+    python tc_engine.py --sport WNBA --game "MIN @ DAL"
+
+API:
+    uvicorn tc_engine:app --host 0.0.0.0 --port 8001
+"""
+
+from dataclasses import dataclass, field
+from typing import List, Dict, Any, Optional
+import argparse
+import json
+import math
+
+# ── Constants ────────────────────────────────────────────────────────────────
+
+CONS_PTS   = 0.85   # conservative points weight
+CONS_REB   = 0.12   # rebound contribution weight
+CONS_AST   = 0.10   # assist contribution weight
+CONS_3PM   = 0.08   # 3pm contribution weight
+LINE_FACTOR= 0.88   # line derivation from TC
+Q_FACTOR   = 0.55   # questionable status reduction
+OUT_FACTOR = 0.0   # out status = zero contribution
+MIN_EDGE   = 1.0    # minimum edge to bet
+
+W_FACTOR   = {"NBA": 0.912, "WNBA": 0.934}
+
+KELLY_FRAC = 0.50   # Kelly fraction for stake sizing
+MIN_HR     = 0.57   # minimum hit-rate threshold
+
+# Odds lookup for standard -110 / +260
+ODDS = {"standard": -110, "parlay_2": -110, "parlay_3": +260}
+
+# ── Data Models ─────────────────────────────────────────────────────────────
+
+@dataclass
+class Player:
+    name: str
+    pos: str
+    ht: str
+    pts: float
+    reb: float
+    ast: float
+    tpm: float
+    status: str = "ACTIVE"
+
+    def tc_pts(self) -> float:
+        factor = {"ACTIVE": 1.0, "Q": Q_FACTOR, "OUT": OUT_FACTOR}.get(self.status, 1.0)
+        return round((self.pts + self.reb + self.ast + self.tpm) * CONS_PTS * factor, 1)
+
+    def as_dict(self) -> dict:
+        return {
+            "name":   self.name,
+            "pos":    self.pos,
+            "ht":     self.ht,
+            "tc_pts": self.tc_pts(),
+            "status": self.status,
+            "raw":    {"pts": self.pts, "reb": self.reb, "ast": self.ast, "tpm": self.tpm},
+        }
+
+@dataclass
+class Team:
+    abbr: str
+    name: str
+    players: List[Player]
+    injury_notes: List[str] = field(default_factory=list)
+
+    def tc_total(self) -> float:
+        return round(sum(p.tc_pts() for p in self.players), 1)
+
+    def tc_starters(self) -> float:
+        return round(sum(p.tc_pts() for p in self.players[:5]), 1)
+
+    def bench_total(self) -> float:
+        bench = self.players[5:]
+        return round(sum(p.tc_pts() for p in bench), 1) if bench else 0.0
+
+    def active_players(self) -> List[Player]:
+        return [p for p in self.players if p.status != "OUT"]
+
+    def as_dict(self) -> dict:
+        return {
+            "abbr":    self.abbr,
+            "name":    self.name,
+            "tc_total": self.tc_total(),
+            "tc_starters": self.tc_starters(),
+            "bench_total": self.bench_total(),
+            "players":    [p.as_dict() for p in self.players],
+            "injury_notes": self.injury_notes,
+        }
+
+# ── Rosters ─────────────────────────────────────────────────────────────────
+
+def _P(name, pos, ht, pts, reb, ast, tpm, status="ACTIVE"):
+    return Player(name, pos, ht, pts, reb, ast, tpm, status)
+
+# ── NBA Teams ───────────────────────────────────────────────────────────────
+
+NBA_TEAMS: Dict[str, Team] = {
+
+    "PHI": Team("PHI", "Philadelphia 76ers", [
+        _P("Joel Embiid",      "C",  "7-0",  34.0, 10.5, 4.5, 1.8, "OUT"),
+        _P("Paul George",      "F",  "6-8",  22.0,  5.5, 3.5, 2.5, "OUT"),
+        _P("Tyrese Maxey",     "G",  "6-2",  26.5,  4.0, 6.0, 2.2),
+        _P("Kelly Oubre Jr.",  "F",  "6-7",  18.5,  5.5, 2.0, 1.8),
+        _P("Jared McCain",     "G",  "6-3",  15.5,  3.5, 2.5, 2.5),
+        _P("Andre Drummond",   "C",  "6-10", 9.5,  10.0, 2.0, 0.0),
+        _P("Kyle Lowry",       "G",  "6-0",   8.0,  3.0, 5.0, 1.5),
+        _P("Reggie Jackson",   "G",  "6-3",   9.5,  2.5, 4.5, 1.5),
+        _P("KJ Martin",        "F",  "6-7",   7.5,  3.0, 1.0, 0.8),
+        _P("Justin Edwards",   "F",  "6-8",   7.0,  2.5, 1.0, 0.5),
+    ], ["Joel Embiid OUT (knee)", "Paul George OUT (ankle)"]),
+
+    "BOS": Team("BOS", "Boston Celtics", [
+        _P("Jayson Tatum",       "F",  "6-8", 28.5,  7.5, 5.0, 2.9),
+        _P("Jaylen Brown",        "G",  "6-6", 24.5,  5.5, 4.0, 2.2),
+        _P("Kristaps Porzingis", "C",  "7-1", 20.0,  7.0, 2.5, 2.8, "Q"),
+        _P("Derrick White",       "G",  "6-4", 16.5,  4.0, 5.0, 2.5),
+        _P("Jrue Holiday",        "G",  "6-4", 14.5,  5.0, 6.0, 1.8),
+        _P("Al Horford",          "F",  "6-9", 12.5,  6.0, 3.5, 2.0),
+        _P("Payton Pritchard",   "G",  "6-1", 11.5,  3.0, 3.5, 2.8),
+        _P("Luke Kornet",         "C",  "7-0",  8.0,  5.0, 2.0, 0.5),
+        _P("Sam Hauser",          "F",  "6-8",  7.5,  3.0, 1.5, 1.5),
+        _P("Baylor Scheinman",   "F",  "6-9",  5.5,  3.0, 2.0, 0.8),
+    ], ["Kristaps Porzingis Q (illness)"]),
+
+    "DEN": Team("DEN", "Denver Nuggets", [
+        _P("Nikola Jokic",         "C",  "6-11", 29.5, 12.5, 10.0, 1.8),
+        _P("Jamal Murray",          "G",  "6-4",  22.0,  4.5,  6.0, 2.0),
+        _P("Michael Porter Jr.",   "F",  "6-10", 18.5,  6.5,  2.0, 2.5),
+        _P("Aaron Gordon",          "F",  "6-9",  16.5,  6.0,  3.0, 1.2),
+        _P("Russell Westbrook",     "G",  "6-3",  12.5,  5.0,  6.5, 1.5),
+        _P("Christian Braun",      "G",  "6-6",  11.5,  4.5,  2.5, 1.2),
+        _P("Peyton Watson",        "F",  "6-8",   8.5,  3.5,  1.5, 0.8),
+        _P("Zeke Nnaji",            "C",  "6-11",  6.5,  3.5,  0.5, 0.3),
+        _P("Julian Strawther",     "G",  "6-6",   7.0,  2.5,  1.5, 1.0),
+        _P("Hunter Tyson",         "F",  "6-8",   5.5,  3.0,  1.0, 0.5),
+    ], []),
+
+    "LAC": Team("LAC", "LA Clippers", [
+        _P("James Harden",        "G",  "6-5",  21.0,  5.5,  8.5, 2.5),
+        _P("Kawhi Leonard",       "F",  "6-7",  22.0,  6.0,  3.5, 2.0, "OUT"),
+        _P("Norman Powell",       "G",  "6-5",  21.5,  3.5,  2.5, 3.2),
+        _P("Ivica Zubac",          "C",  "7-0",  15.5, 10.5,  2.0, 0.0),
+        _P("Derrick Jones Jr.",   "F",  "6-6",  10.5,  4.0,  1.5, 1.2),
+        _P("Nicolas Batum",       "F",  "6-8",   8.0,  4.0,  2.5, 1.5),
+        _P("Bones Hyland",         "G",  "6-3",  12.0,  3.0,  3.5, 2.2),
+        _P("Kevin Brown",          "F",  "6-7",   8.5,  4.5,  2.0, 1.0),
+        _P("Mo Bamba",            "C",  "7-0",   6.5,  5.5,  1.0, 0.8),
+        _P("Kris Dunn",            "G",  "6-4",   7.5,  2.5,  4.0, 0.8),
+    ], ["Kawhi Leonard OUT (knee)"]),
+
+    "ORL": Team("ORL", "Orlando Magic", [
+        _P("Paolo Banchero",      "F",  "6-10", 25.0,  7.0,  4.5, 2.0, "Q"),
+        _P("Franz Wagner",        "F",  "7-0",  22.0,  5.0,  4.0, 1.8, "OUT"),
+        _P("Jalen Suggs",          "G",  "6-5",  16.5,  4.0,  4.5, 1.5),
+        _P("Wendell Carter Jr.",  "C",  "6-6",  14.5,  9.0,  2.5, 0.8),
+        _P("Cole Anthony",        "G",  "6-2",  13.0,  4.5,  3.5, 1.2),
+        _P("Goga Bitadze",         "C",  "6-11", 10.5,  6.0,  2.0, 0.5),
+        _P("Jonathan Isaac",      "F",  "6-10",  6.5,  4.0,  1.0, 0.5),
+        _P("Caleb Houstan",       "F",  "6-8",   7.0,  3.0,  1.5, 0.8),
+        _P("Joe Ingles",           "F",  "6-8",   6.0,  2.5,  3.5, 1.2),
+        _P("Admiral Schofield",   "G",  "6-5",   5.5,  2.0,  1.0, 0.8),
+    ], ["Franz Wagner OUT (calf)", "Paolo Banchero Q (ankle)"]),
+
+    "DET": Team("DET", "Detroit Pistons", [
+        _P("Cade Cunningham",     "G",  "6-7",  25.5,  6.5,  9.5, 2.0),
+        _P("Jaden Ivey",           "G",  "6-5",  18.0,  4.5,  4.5, 1.8),
+        _P("Tim Hardaway Jr.",    "F",  "6-6",  15.5,  4.5,  2.5, 2.5),
+        _P("Jalen Duren",         "C",  "6-11", 13.5,  9.5,  2.5, 0.0),
+        _P("Isaiah Stewart",       "F",  "6-8",  12.5,  8.0,  2.0, 1.2),
+        _P("Ausar Thompson",       "G",  "6-7",  11.5,  5.0,  4.5, 0.8),
+        _P("Dorion Murray",        "G",  "6-5",  10.5,  3.5,  2.5, 1.5),
+        _P("Tobias Harris",       "F",  "6-8",   9.5,  4.5,  3.0, 1.0),
+        _P("Dennis Schröder",     "G",  "6-1",  13.5,  2.5,  6.5, 1.8),
+        _P("Simone Fontecchio",   "F",  "6-8",   8.5,  3.5,  1.5, 1.2),
+    ], []),
+
+    "POR": Team("POR", "Portland Trail Blazers", [
+        _P("Scoot Henderson",    "G",  "6-3",  18.5,  4.5,  7.5, 1.5),
+        _P("Anfernee Simons",     "G",  "6-5",  21.5,  3.5,  4.5, 3.0),
+        _P("Jerami Grant",        "F",  "6-8",  18.0,  5.0,  2.5, 2.2),
+        _P("Deandre Ayton",       "C",  "7-0",  16.5, 10.0,  2.0, 0.0),
+        _P("Toukam Saop",         "F",  "6-9",  15.5,  7.5,  2.5, 1.2),
+        _P("Shaedon Sharpe",      "G",  "6-6",  15.0,  4.0,  2.5, 2.0),
+        _P("Rayan Rupert",        "G",  "6-7",   8.5,  3.0,  2.0, 1.2),
+        _P("Kris Murray",         "F",  "6-8",   8.0,  3.5,  1.5, 0.8),
+        _P("Jabari Walker",       "F",  "6-6",   7.5,  5.0,  1.0, 0.8),
+        _P("Duop Reath",          "C",  "6-10",  9.5,  4.5,  1.0, 0.5),
+    ], []),
+
+    "SA": Team("SA", "San Antonio Spurs", [
+        _P("Victor Wembanyama", "F", "7-4", 27.5, 10.5, 4.0, 3.2),
+        _P("Chris Paul",         "G", "6-0", 12.0,  4.0, 8.5, 1.5),
+        _P("Devin Vassell",      "G", "6-6", 19.5,  4.5, 3.5, 2.8),
+        _P("Jeremy Sochan",      "F", "6-9", 14.0,  6.5, 3.5, 1.0),
+        _P("Keldon Johnson",     "F", "6-6", 16.5,  5.5, 2.5, 2.2),
+        _P("Zach Collins",       "C", "7-0", 11.5,  6.5, 3.0, 0.8),
+        _P("Devonte Graham",      "G", "6-2", 10.0,  2.5, 4.5, 2.0),
+        _P("Doug McDermott",     "F", "6-8",  9.5,  3.0, 1.5, 1.5),
+        _P("Malo Malos",         "G", "6-5",  8.5,  3.0, 2.5, 0.8),
+        _P("Seth Curry",         "G", "6-2",  9.5,  2.0, 2.0, 1.8),
+    ], []),
+}
+
+# ── WNBA Teams ───────────────────────────────────────────────────────────────
+
+WNBA_TEAMS: Dict[str, Team] = {
+
+    "MIN": Team("MIN", "Minnesota Lynx", [
+        _P("Napheesa Collier", "F", "6-1", 20.0, 6.5, 3.5, 1.8),
+        _P("Alana Smith",      "G", "5-9", 14.5, 3.5, 5.5, 1.5, "Q"),
+        _P("Kayla McBride",    "G", "5-11",16.0, 4.0, 4.0, 2.8),
+        _P("Sylvia Fowles",    "C", "6-6", 15.5,10.0, 2.0, 0.0),
+        _P("Crystal Dangerfield","G","5-5", 12.0, 3.0, 3.5, 1.2),
+        _P("Natalie Achonwu",  "C", "6-5",  9.5, 7.0, 2.0, 0.5),
+        _P("Olivia Olu",       "F", "6-2",  7.0, 4.0, 1.5, 1.0),
+        _P("Tiffany Mitchell", "G", "5-10", 9.0, 2.5, 3.0, 1.2),
+        _P("Nizhoni Cowboy",   "F", "6-3",  6.5, 4.0, 1.0, 0.8),
+        _P("Khayla Vazien",    "G", "5-8",  5.0, 2.0, 3.5, 0.8),
+    ], ["Alana Smith Q (ankle)"]),
+
+    "DAL": Team("DAL", "Dallas Wings", [
+        _P("Arielle Wiggins",  "F", "6-4", 17.0, 6.0, 2.5, 1.2),
+        _P("Satou Sabally",    "F", "6-4", 18.5, 7.5, 4.0, 2.0, "Q"),
+        _P("Odyssey Sims",     "G", "5-8", 15.0, 3.5, 6.0, 1.5),
+        _P("Teaira McCowan",   "C", "7-0", 16.0,11.0, 1.5, 0.0),
+        _P("Crystal Dangerfield","G","5-5", 11.5, 2.5, 3.5, 1.0),
+        _P("Moriah Jefferson", "G", "5-7", 10.0, 2.0, 5.5, 1.2),
+        _P("Natasha Howard",    "F", "6-4", 14.0, 6.5, 2.0, 1.0, "OUT"),
+        _P("Joyner Woods",     "G", "5-10", 8.5, 2.5, 3.0, 1.2),
+        _P("Aaliyah Wilson",    "G", "6-0",  6.0, 3.0, 2.0, 0.8),
+        _P("Jade Melbourne",   "G", "5-9",  5.5, 2.0, 2.5, 0.8),
+    ], ["Satou Sabally Q (hip)", "Natasha Howard OUT (knee)"]),
+
+    "NYL": Team("NYL", "New York Liberty", [
+        _P("Breanna Stewart",  "F", "6-4", 23.0, 9.0, 4.0, 2.5),
+        _P("Jonquel Jones",    "C", "6-6", 18.5, 9.5, 3.5, 1.8),
+        _P("Sabrina Ionescu",  "G", "5-11",20.5, 5.0, 7.5, 3.2),
+        _P("Kayla Thornton",   "F", "6-2", 11.0, 5.5, 2.5, 1.5),
+        _P("Svetlana Petrov",  "G", "5-10",10.0, 3.5, 4.5, 1.8),
+        _P("JiSu Park",        "C", "6-5", 10.5, 7.0, 1.5, 0.5),
+        _P("Marine Johannès",  "G", "6-0", 11.5, 3.0, 4.0, 2.2),
+        _P("Michele Taylor",   "F", "6-3",  7.5, 4.0, 1.5, 1.0),
+        _P("Nadiya",           "G", "5-9",  5.0, 2.0, 3.0, 0.8),
+        _P("Kaleai",           "F", "6-2",  5.5, 3.5, 1.0, 0.5),
+    ], []),
+
+    "LVA": Team("LVA", "Las Vegas Aces", [
+        _P("A'ja Wilson",      "F", "6-4", 25.0,10.5, 3.5, 1.5),
+        _P("Chelsea Gray",     "G", "5-11",17.5, 4.0, 6.5, 2.0),
+        _P("Kia Wilson",        "G", "5-8", 15.0, 3.5, 5.0, 2.5),
+        _P("Candace Parker",    "F", "6-4", 14.5, 8.0, 4.5, 1.2),
+        _P("Dearica Hamby",    "F", "6-2", 13.0, 7.5, 3.0, 1.5),
+        _P("Jasmine Thomas",   "G", "5-8",  9.5, 2.5, 5.0, 1.8),
+        _P("Sydney Colson",    "G", "5-8",  6.0, 2.0, 4.0, 1.0),
+        _P("Kamera Conrad",    "F", "6-2",  7.5, 4.5, 1.5, 0.8),
+        _P("Cayla George",     "F", "6-4",  8.0, 5.0, 2.0, 1.2),
+        _P("Queen Al",         "C", "6-6",  6.5, 5.5, 1.0, 0.5),
+    ], []),
+
+    "CON": Team("CON", "Connecticut Sun", [
+        _P("Alyssa Thomas",    "F", "6-3", 16.0, 8.5, 7.5, 1.0),
+        _P("DeWanna Bonner",   "F", "6-4", 18.0, 7.0, 4.0, 2.0),
+        _P("Brionna Jones",    "C", "6-3", 14.5, 7.5, 2.0, 0.8),
+        _P("Natasha Cloud",     "G", "5-11",12.0, 3.5, 6.0, 1.5),
+        _P("Megan McKenna",    "G", "5-10",10.5, 2.5, 4.5, 2.0),
+        _P("Ellienne",         "F", "6-2",  7.0, 4.0, 1.5, 1.0),
+        _P("Lindsay Wisdom",   "C", "6-5",  8.5, 5.5, 1.5, 0.5),
+        _P("Jasmine Nwajei",   "G", "5-9",  6.5, 2.0, 2.5, 1.2),
+        _P("Paige Tolowan",   "F", "6-2",  5.5, 3.5, 1.0, 0.8),
+        _P("Diana",            "G", "5-8",  5.0, 2.0, 3.0, 0.8),
+    ], []),
+
+    "SEA": Team("SEA", "Seattle Storm", [
+        _P("Sue Bird",         "G", "5-9", 14.0, 3.0, 7.0, 2.5),
+        _P("Natasha Howard",    "F", "6-4", 17.5, 8.0, 3.5, 1.8),
+        _P("Ezi Magbegor",     "C", "6-5", 15.0, 8.5, 2.0, 1.0),
+        _P("Jillian",          "G", "5-11",13.0, 4.0, 5.0, 1.8),
+        _P("Mercedes",         "F", "6-3", 10.5, 5.5, 2.5, 1.5),
+        _P("Kennedy",          "G", "5-10", 9.0, 2.5, 4.0, 1.2),
+        _P("Satou",            "F", "6-3",  7.5, 4.5, 1.5, 1.0),
+        _P("Kylie",            "G", "5-9",  6.0, 2.0, 3.5, 0.8),
+        _P("Arike",            "G", "5-7",  8.5, 2.0, 3.0, 1.5),
+        _P("Lily",             "C", "6-4",  5.5, 4.5, 1.0, 0.5),
+    ], []),
+
+    "IND": Team("IND", "Indiana Fever", [
+        _P("Aliyah Boston",    "F", "6-5", 17.0, 9.5, 2.5, 0.8),
+        _P("Caitlin Clark",    "G", "6-0", 22.5, 5.5, 8.5, 3.5),
+        _P("NaLyssa Smith",    "F", "6-2", 15.0, 7.0, 2.0, 1.2),
+        _P(" Kelsey Mitchell",  "G", "5-8", 18.0, 3.5, 3.5, 2.5),
+        _P("Miriam",           "F", "6-3", 10.5, 5.5, 1.5, 0.8),
+        _P(" Erika",           "C", "6-4",  9.0, 6.5, 1.5, 0.5),
+        _P("Lexie",            "G", "5-9",  7.5, 2.5, 3.5, 1.2),
+        _P("Jade",             "G", "5-8",  8.0, 2.0, 4.0, 1.5),
+        _P("Khayla",           "F", "6-2",  6.5, 4.0, 1.0, 0.8),
+        _P("Jillian",          "G", "5-10", 5.5, 2.0, 3.0, 0.8),
+    ], []),
+}
+
+# ── Team Registry ─────────────────────────────────────────────────────────────
+
+TEAM_REGISTRY = {"NBA": NBA_TEAMS, "WNBA": WNBA_TEAMS}
+
+def get_teams(sport: str) -> Dict[str, Team]:
+    return TEAM_REGISTRY.get(sport.upper(), NBA_TEAMS)
+
+def get_team(abbr: str, sport: str = "NBA") -> Team:
+    teams = get_teams(sport)
+    abbr = abbr.upper()
+    if abbr not in teams:
+        raise ValueError(f"Unknown {sport} team: {abbr}. Available: {list(teams.keys())}")
+    return teams[abbr]
+
+# ── TC Core Math ──────────────────────────────────────────────────────────────
+
+def calc_tc(player: Player) -> float:
+    """Single-player TC points."""
+    return player.tc_pts()
+
+def calc_team_tc(team: Team) -> Dict[str, float]:
+    """Team TC breakdown: starters, bench, total."""
+    return {
+        "tc_total":    team.tc_total(),
+        "tc_starters": team.tc_starters(),
+        "bench_total": team.bench_total(),
+    }
+
+def _hit_rate(edge: float, hr_tiers=None) -> float:
+    """Convert edge gap to hit-rate probability."""
+    if hr_tiers is None:
+        hr_tiers = ((10, 0.72), (7, 0.68), (5, 0.64), (3, 0.60), (0, 0.57))
+    for threshold, rate in hr_tiers:
+        if abs(edge) >= threshold:
+            return rate
+    return 0.57
+
+def _kelly(bankroll: float, edge: float, odds: int = -110,
+           fraction: float = KELLY_FRAC) -> float:
+    """Kelly stake = bankroll × Kelly fraction."""
+    if edge <= 0:
+        return 0.0
+    b = abs(odds) / 100 if odds > 0 else 100 / abs(odds)
+    p = min(0.72, 0.52 + min(edge, 10) * 0.02)
+    q  = 1 - p
+    kelly = (b * p - q) / b if b > 0 else 0.0
+    return round(max(0.0, bankroll * kelly * fraction), 2)
+
+# ── Game Projection ──────────────────────────────────────────────────────────
+
+def calc_game(
+    home: Team,
+    away: Team,
+    market_total: float,
+    market_spread: float,
+    sport: str = "NBA",
+) -> Dict[str, Any]:
+    """Full game projection with edge, lean, and spread analysis."""
+    w_factor = W_FACTOR.get(sport.upper(), 0.912)
+
+    h_tc  = home.tc_total()
+    a_tc  = away.tc_total()
+
+    raw_total   = round(h_tc + a_tc, 1)
+    cal_total   = round(raw_total / w_factor, 1)
+    edge        = round(cal_total - market_total, 1)
+
+    home_line   = round(h_tc * LINE_FACTOR)
+    away_line   = round(a_tc * LINE_FACTOR)
+    tc_spread   = round(home_line - away_line, 1)
+
+    total_lean  = "OVER" if edge > 3 else ("UNDER" if edge < -3 else "PASS")
+    spread_abs  = abs(market_spread)
+    tc_favored  = "HOME" if tc_spread > 0 else "AWAY"
+    spread_lean = "HOME" if tc_spread > spread_abs else (
+                  "AWAY" if tc_spread < -spread_abs else "PASS")
+
+    return {
+        "home":         home.as_dict(),
+        "away":         away.as_dict(),
+        "tc_raw":       {"home": h_tc, "away": a_tc, "combined": raw_total},
+        "tc_cal":       {"cal_total": cal_total, "w_factor": w_factor},
+        "edge":         edge,
+        "market_total": market_total,
+        "total_lean":   total_lean,
+        "tc_spread":    tc_spread,
+        "market_spread": market_spread,
+        "spread_lean":  spread_lean,
+        "tc_favored":   tc_favored,
+        "lines":        {"home_line": home_line, "away_line": away_line},
+    }
+
+# ── Betting Stakes ────────────────────────────────────────────────────────────
+
+def build_bets(
+    home_abbr: str,
+    away_abbr: str,
+    market_total: float,
+    market_spread: float,
+    bankroll: float = 1000.0,
+    sport: str = "NBA",
+) -> Dict[str, Any]:
+    """Build bet legs from a game projection. Returns stake info and legs."""
+    teams = get_teams(sport)
+    home  = teams[home_abbr.upper()]
+    away  = teams[away_abbr.upper()]
+
+    proj  = calc_game(home, away, market_total, market_spread, sport)
+    edge  = proj["edge"]
+    w_factor = W_FACTOR.get(sport.upper(), 0.912)
+
+    # ── Total bet ──────────────────────────────────────────────────────────
+    if abs(edge) < 3:
+        total_leg  = None
+        total_bet  = "PASS"
+        stake_total = 0.0
+        unit_total  = 0.0
+    else:
+        unit_total  = round(abs(edge) * 0.20, 2)
+        stake_total = round(unit_total * bankroll / 100, 2)
+        total_bet   = "OVER" if edge > 0 else "UNDER"
+        total_leg   = {
+            "pick":  f"{total_bet} {market_total}",
+            "type":  "total",
+            "edge":  edge,
+            "units": unit_total,
+            "stake": stake_total,
+            "to_win": round(stake_total * 1.91, 2),
+        }
+
+    # ── Spread bet ─────────────────────────────────────────────────────────
+    if proj["spread_lean"] == "PASS":
+        spread_leg  = None
+        stake_spread = 0.0
+    else:
+        spread_edge = round(proj["tc_spread"] - abs(market_spread), 1)
+        stake_spread = round(bankroll * 0.01, 2)
+        spread_leg = {
+            "pick":  f"{home_abbr.upper()} {proj['tc_spread']:+.1f}",
+            "type":  "spread",
+            "edge":  spread_edge,
+            "units": 1.0,
+            "stake": stake_spread,
+            "to_win": round(stake_spread * 1.91, 2),
+        }
+
+    legs = [l for l in [total_leg, spread_leg] if l]
+    total_stake = round(stake_total + stake_spread, 2)
+
+    return {
+        "bankroll":   bankroll,
+        "total_stake": total_stake,
+        "legs":       legs,
+        "sport":      sport,
+        "w_factor":   w_factor,
+    }
+
+def project_game(
+    home_abbr: str,
+    away_abbr: str,
+    market_total: float,
+    market_spread: float,
+    series: str = "",
+    game_time: str = "TBD",
+    bankroll: float = 1000.0,
+    sport: str = "NBA",
+) -> Dict[str, Any]:
+    """Full structured game projection with betting recommendations."""
+    teams = get_teams(sport)
+    home  = teams[home_abbr.upper()]
+    away  = teams[away_abbr.upper()]
+
+    proj  = calc_game(home, away, market_total, market_spread, sport)
+    bets  = build_bets(home_abbr, away_abbr, market_total, market_spread,
+                        bankroll, sport)
+
+    return {
+        "meta": {
+            "home":      home_abbr.upper(),
+            "away":      away_abbr.upper(),
+            "series":    series,
+            "game_time": game_time,
+            "sport":     sport,
+            "w_factor":  W_FACTOR.get(sport.upper(), 0.912),
+        },
+        "tc": {
+            "home_tc":       proj["home"]["tc_total"],
+            "away_tc":       proj["away"]["tc_total"],
+            "tc_raw_combined": proj["tc_raw"]["combined"],
+            "tc_cal_combined": proj["tc_cal"]["cal_total"],
+            "edge":          proj["edge"],
+            "market_total":  market_total,
+            "total_lean":    proj["total_lean"],
+        },
+        "starters": {
+            "home": proj["home"]["players"][:5],
+            "away": proj["away"]["players"][:5],
+        },
+        "bench": {
+            "home": round(proj["home"]["tc_total"] - proj["home"]["tc_starters"], 1),
+            "away": round(proj["away"]["tc_total"] - proj["away"]["tc_starters"], 1),
+        },
+        "injuries": {
+            "home": proj["home"]["injury_notes"],
+            "away": proj["away"]["injury_notes"],
+        },
+        "spread": {
+            "tc_spread":     proj["tc_spread"],
+            "market_spread": market_spread,
+            "lean":          proj["spread_lean"],
+            "tc_favored":    proj["tc_favored"],
+        },
+        "bets": bets,
+    }
+
+# ── Backtest ─────────────────────────────────────────────────────────────────
+
+BACKTEST_GAMES = [
+    # NBA Apr 19
+    {"home": "BOS", "away": "PHI", "date": "2026-04-19",
+     "market_total": 208.5, "market_spread": -11.5,
+     "actual_total": 216, "actual_winner": "BOS"},
+    {"home": "DEN", "away": "LAC", "date": "2026-04-19",
+     "market_total": 216.5, "market_spread": -4.5,
+     "actual_total": 222, "actual_winner": "DEN"},
+    {"home": "DET", "away": "ORL", "date": "2026-04-19",
+     "market_total": 200.5, "market_spread": -5.5,
+     "actual_total": 207, "actual_winner": "DET"},
+    {"home": "SA",  "away": "POR", "date": "2026-04-19",
+     "market_total": 206.5, "market_spread": -8.5,
+     "actual_total": 226, "actual_winner": "SA"},
+]
+
+def run_backtest(sport: str = "NBA") -> Dict[str, Any]:
+    teams = get_teams(sport)
+    results = []
+    for g in BACKTEST_GAMES:
+        home = teams[g["home"]]
+        away = teams[g["away"]]
+        proj = calc_game(home, away, g["market_total"], g["market_spread"], sport)
+
+        edge        = proj["edge"]
+        cal_total   = proj["tc_cal"]["cal_total"]
+        actual      = g["actual_total"]
+
+        total_hit   = ("OVER" if edge > 0 else "UNDER") == (
+                      "OVER" if actual > g["market_total"] else "UNDER")
+
+        tc_spred    = proj["tc_spread"]
+        mkt_spread  = g["market_spread"]
+        # tc_spread > 0 means home TC line > away TC line → HOME favored
+        # Correct spread hit: TC's favored side must match actual winner
+        tc_favored_home = tc_spred > 0
+        actual_is_home   = g["actual_winner"] == g["home"]
+        spread_hit  = tc_favored_home == actual_is_home
+
+        parlay_hit  = total_hit and spread_hit
+
+        results.append({
+            "game":         f"{g['away']} @ {g['home']}",
+            "date":         g["date"],
+            "tc_total":     cal_total,
+            "market_total": g["market_total"],
+            "actual_total": actual,
+            "edge":         edge,
+            "total_lean":   proj["total_lean"],
+            "total_hit":    total_hit,
+            "tc_spread":    tc_spred,
+            "market_spread": mkt_spread,
+            "tc_favored":   tc_favored_home,
+            "actual_winner": g["actual_winner"],
+            "spread_hit":   spread_hit,
+            "parlay_hit":   parlay_hit,
+        })
+
+    n = len(results)
+    total_hr   = round(sum(r["total_hit"] for r in results) / n * 100, 1)
+    spread_hr  = round(sum(r["spread_hit"] for r in results) / n * 100, 1)
+    parlay_hr  = round(sum(r["parlay_hit"] for r in results) / n * 100, 1)
+    avg_edge   = round(sum(r["edge"] for r in results) / n, 1)
+
+    return {
+        "games":   results,
+        "summary": {
+            "sport":           sport,
+            "total_games":     n,
+            "total_hit_rate":  total_hr,
+            "spread_hit_rate": spread_hr,
+            "parlay_hit_rate": parlay_hr,
+            "avg_edge":        avg_edge,
+            "w_factor":        W_FACTOR.get(sport.upper(), 0.912),
+        },
+    }
+
+# ── FastAPI App ───────────────────────────────────────────────────────────────
+
+try:
+    from fastapi import FastAPI, HTTPException
+    from pydantic import BaseModel
+    FASTAPI_AVAILABLE = True
+except ImportError:
+    FASTAPI_AVAILABLE = False
+
+app = FastAPI(title="TC Engine", version="1.0.0")
+
+class GameRequest(BaseModel):
+    home:          str
+    away:          str
+    market_total:  float
+    market_spread: float
+    series:        str = ""
+    game_time:     str = "TBD"
+    bankroll:      float = 1000.0
+    sport:         str = "NBA"
+
+@app.get("/")
+def root():
+    return {
+        "message": "TC Engine API",
+        "endpoints": ["/health", "/teams", "/backtest", "/project"],
+    }
+
+@app.get("/health")
+def health():
+    return {s: W_FACTOR[s] for s in W_FACTOR}
+
+@app.get("/teams")
+def list_teams(sport: str = "NBA"):
+    return {abbr: t.name for abbr, t in get_teams(sport).items()}
+
+@app.get("/backtest")
+def backtest(sport: str = "NBA"):
+    return run_backtest(sport)
+
+@app.post("/project")
+def project(req: GameRequest):
+    try:
+        return project_game(req.home, req.away, req.market_total,
+                            req.market_spread, req.series, req.game_time,
+                            req.bankroll, req.sport)
+    except ValueError as e:
+        raise HTTPException(status_code=404, detail=str(e))
+
+# ── CLI ─────────────────────────────────────────────────────────────────────
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="TC Engine CLI")
+    parser.add_argument("--sport",   default="NBA", choices=["NBA", "WNBA"])
+    parser.add_argument("--backtest", action="store_true")
+    parser.add_argument("--game",    type=str,
+                        help="'AWAY @ HOME', e.g. 'PHI @ BOS'")
+    parser.add_argument("--total",   type=float, default=210.5)
+    parser.add_argument("--spread",  type=float, default=-5.0)
+    parser.add_argument("--bankroll", type=float, default=1000.0)
+    parser.add_argument("--list-teams", action="store_true")
+    args = parser.parse_args()
+
+    if args.backtest:
+        print(json.dumps(run_backtest(args.sport), indent=2))
+
+    elif args.list_teams:
+        for abbr, team in get_teams(args.sport).items():
+            print(f"{abbr}: {team.name}")
+            if team.injury_notes:
+                for n in team.injury_notes:
+                    print(f"   {n}")
+
+    elif args.game:
+        parts = args.game.split("@")
+        if len(parts) < 2:
+            print("Usage: --game 'AWAY @ HOME'")
+            raise SystemExit(1)
+        away = parts[0].strip().upper()
+        home = parts[1].strip().upper()
+        print(json.dumps(project_game(
+            home, away, args.total, args.spread,
+            series="CLI", game_time="CLI", bankroll=args.bankroll,
+            sport=args.sport,
+        ), indent=2))
+
+    else:
+        print("Options: --backtest | --game 'AWAY @ HOME' | --list-teams")
+        print("API:     uvicorn tc_engine:app --host 0.0.0.0 --port 8001")

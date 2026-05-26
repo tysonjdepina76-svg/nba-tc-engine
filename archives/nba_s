@@ -1,0 +1,17 @@
+# Backtest vs Actuals
+games = [
+    ("NYK","PHI", 144, 114, 213.5),
+    ("OKC","LAL", 118, 96, 225.5),
+    ("SA","MIN", 93, 118, 222.5),
+    ("DET","CLE", 70, 82, None),
+]
+for g in games:
+    a,h,asc,hsc,tot = g
+    ta = TEAMS[a]; th = TEAMS[h]
+    tc_a = sum(p.tc_pts() + p.tc_reb() + p.tc_ast() + p.tc_3pm() for p in ta["players"] if p.status != "OUT")
+    tc_h = sum(p.tc_pts() + p.tc_reb() + p.tc_ast() + p.tc_3pm() for p in th["players"] if p.status != "OUT")
+    tc_comb = tc_a + tc_h
+    actual = asc + hsc
+    diff = actual - tc_comb
+    pct = diff / tc_comb * 100
+    print(f"{a}@{h}: actual={actual} | TC={tc_comb:.0f} | diff={diff:+.0f} ({pct:+.1f}%) | tot={tot}")
