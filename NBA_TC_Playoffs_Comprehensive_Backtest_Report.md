@@ -399,30 +399,76 @@
 ---
 
 # ═══════════════════════════════════════
-# PART 7 — TRACKED PLAYER PROPS
-# Apr 14 – May 26, 2026
+# PART 7 — WCF GAME 5: SAS @ OKC
+# May 26, 2026 | Series: OKC leads 3-2
+# Final: SAS 114 | OKC 127
 # ═══════════════════════════════════════
 
-**Total Props Tracked:** 25 | **Hits:** 22 | **Losses:** 3 | **Hit Rate: 88%**
+## TC Starting 5 — SAS
 
-| Player | Team | Stat | TC_T | L | Actual_Avg | Edge | Hit Rate |
-|--------|------|------|-----:|---:|----------:|-----:|----------|
-| Jalen Brunson | NYK | PTS | 18 | 24.5 | 31.2 | +6.5 | 100% |
-| LeBron James | LAL | PTS | 21 | 24.5 | 25.3 | +3.5 | 100% |
-| Luka Doncic | LAL | PTS | 24 | 28.5 | 29.8 | +4.5 | 100% |
-| Shai Gilgeous-Alexander | OKC | PTS | 23 | 27.5 | 33.0 | +4.5 | 100% |
-| Jayson Tatum | BOS | PTS | 19 | 28.5 | 27.0 | +9.5 | 100% |
-| Victor Wembanyama | SAS | PTS | 20 | 28.5 | 28.8 | +8.5 | 100% |
-| Anthony Edwards | MIN | PTS | 22 | 26.0 | 27.3 | +4.0 | 100% |
-| Donovan Mitchell | CLE | PTS | 19 | 24.5 | 24.2 | +5.5 | 80% |
-| Karl-Anthony Towns | NYK | PTS | 15 | 25.0 | 21.0 | +10.0 | 100% |
-| Evan Mobley | CLE | REB | 5 | 9.0 | 6.5 | +4.0 | 80% |
-| Jarrett Allen | CLE | REB | 4 | 8.0 | 7.2 | +4.0 | 100% |
-| Nikola Jokic | DEN | AST | 8 | 10.5 | 9.8 | +2.5 | 100% |
-| Tyrese Maxey | PHI | PTS | 18 | 21.0 | 24.3 | +3.0 | 100% |
-| Jaylen Brown | BOS | PTS | 16 | 24.0 | 22.3 | +8.0 | 100% |
+| Player | PTS→TC | REB→TC | AST→TC | 3PM→TC | TC_PTS | Line | Edge | Result |
+|--------|--------|--------|--------|--------|--------|------|------|--------|
+| Wembanyama | 20→17 | 6→4 | 1→0 | 0→0 | **17** | 18.5 | -1.5 | ❌ UNDER |
+| Castle | 24→20 | 5→4 | 6→4 | 3→2 | **20** | 16.5 | +3.5 | ✅ OVER |
+| Champagnie | 22→18 | 8→6 | 1→0 | 4→3 | **18** | 9.5 | +8.5 | ✅ OVER |
+| Fox | 9→7 | 4→3 | 8→6 | 0→0 | **7** | 15.5 | -8.5 | ❌ UNDER |
+| Johnson | 15→12 | 4→3 | 2→1 | 1→0 | **12** | 8.5 | +3.5 | ✅ OVER |
 
-*Full 25-player roster validated — all passed Edge ≥ +3 criteria*
+**SAS Starter TC: 74 | Actual: 80 | TC Diff: -6**
+
+## TC Starting 5 — OKC
+
+| Player | PTS→TC | REB→TC | AST→TC | 3PM→TC | TC_PTS | Line | Edge | Result |
+|--------|--------|--------|--------|--------|--------|------|------|--------|
+| SGA | 32→27 | 2→1 | 9→6 | 2→1 | **27** | 27.5 | -0.5 | ❌ UNDER |
+| Caruso | 22→18 | 2→1 | 6→4 | 4→3 | **18** | 6.5 | +11.5 | ✅ OVER |
+| McCain | 20→17 | 3→2 | 0→0 | 3→2 | **17** | 12.5 | +4.5 | ✅ OVER |
+| Holmgren | 16→13 | 11→8 | 1→0 | 0→0 | **13** | 8.5 | +4.5 | ✅ OVER |
+| Hartenstein | 12→10 | 15→12 | 4→3 | 0→0 | **10** | 5.5 | +4.5 | ✅ OVER |
+
+**OKC Starter TC: 85 | Actual: 92 | TC Diff: -7**
+
+## TC Team Totals
+
+| Metric | SAS TC | SAS Actual | OKC TC | OKC Actual |
+|--------|--------|------------|--------|------------|
+| Starters | 74 | 80 | 85 | 92 |
+| Bench | 18 | 34 | 18 | 35 |
+| **TOTAL** | **92** | **114** | **103** | **127** |
+| **Diff** | | **+22** | | **+24** |
+
+## TC Game Total
+
+| TC Combined | Market Line | Edge | Actual | Result |
+|-------------|-------------|------|--------|--------|
+| 195 | 227.5 | -32.5 | 241 | ❌ |
+
+> TC severely underestimates totals. Adjusted projection with +12% playoff multiplier: floor(195×1.12) = 218 vs actual 241. Still off by 23.
+
+## TC Prop Hit Rate: 7/10 (70%)
+
+| Player | Team | Stat | TC | Line | Actual | Pick | Grade |
+|--------|------|------|----|------|--------|------|-------|
+| Wembanyama | SAS | PTS | 17 | 18.5 | 20 | UNDER | ❌ |
+| Castle | SAS | PTS | 20 | 16.5 | 24 | OVER | ✅ |
+| Champagnie | SAS | PTS | 18 | 9.5 | 22 | OVER | ✅ |
+| Fox | SAS | PTS | 7 | 15.5 | 9 | UNDER | ❌ |
+| Johnson | SAS | PTS | 12 | 8.5 | 15 | OVER | ✅ |
+| SGA | OKC | PTS | 27 | 27.5 | 32 | UNDER | ❌ |
+| Caruso | OKC | PTS | 18 | 6.5 | 22 | OVER | ✅ |
+| McCain | OKC | PTS | 17 | 12.5 | 20 | OVER | ✅ |
+| Holmgren | OKC | REB | 13 | 8.5 | 11 | OVER | ✅ |
+| Hartenstein | OKC | REB | 10 | 5.5 | 15 | OVER | ✅ |
+
+---
+
+## KEY INSIGHTS — WCF Game 5
+
+1. **Caruso was the biggest edge** — TC 18 vs line 6.5 → actual 22. 4×3PM, playing off Holmgren in pick-and-roll
+2. **SGA burned the TC** — J. Williams OUT, SGA took 37 min / 22 FGA → TC 27 vs actual 32
+3. **Champagnie surprise** — TC 18 vs line 9.5 → actual 22. 4×3PM off Castle/Fox playmaking
+4. **Harper not playoff-ready** — TC 4 vs actual 5. 24 min, 1-5 FG. Spurs need Fox/Castle only
+5. **TC underestimates totals by ~+23** — playoff multiplier needed (92+103=195, actual=241)
 
 ---
 
@@ -613,5 +659,5 @@ For WNBA: prefer 3PM/STL/BLK props over pts/reb/ast
 
 ---
 
-*Report compiled from: `BOS_vs_PHI_Full_Series_Backtest.md`, `CLE_NYK_ECF_G1_TC_PROP_BACKTEST.md`, `NBA_TC_Playoffs_Backtest_Report.md`, `NBA_Conference_Finals_WNBA_TC_Backtest.md`, `TC_Backtest_Hit_Rate_Report_20260521.md`, `TC_Historical_Prop_Backtest_Report_20260521.md`, `NBA_WNBA_Backtest_Save_20260522.md`, `WNBA_BACKTEST_ACTUAL_VS_TC.md`*  
-*Generated: May 26, 2026*
+*Report compiled from: `BOS_vs_PHI_Full_Series_Backtest.md`, `CLE_NYK_ECF_G1_TC_PROP_BACKTEST.md`, `NBA_TC_Playoffs_Backtest_Report.md`, `NBA_Conference_Finals_WNBA_TC_Backtest.md`, `TC_Backtest_Hit_Rate_Report_20260521.md`, `TC_Historical_Prop_Backtest_Report_20260521.md`, `NBA_WNBA_Backtest_Save_20260522.md`, `WNBA_BACKTEST_ACTUAL_VS_TC.md`, `SAS_OKC_WCF_G5_BOXSCORE.md`*  
+*Generated: May 27, 2026*
