@@ -1,0 +1,32 @@
+# WNBA Final Box Score — DAL 69 @ ATL 86
+
+**Event:** 401856927  
+**Date:** 2026-05-22T23:30Z  
+**Source:** ESPN API
+
+| Team | Player | POS | MIN | PTS | REB | AST | 3PM |
+|---|---|---|---:|---:|---:|---:|---:|
+| DAL | Jessica Shepard | F | 31 | 10 | 11 | 2 | 0 |
+| DAL | Alanna Smith | F | 10 | 2 | 2 | 0 | 0 |
+| DAL | Odyssey Sims | G | 21 | 14 | 1 | 5 | 1 |
+| DAL | Arike Ogunbowale | G | 25 | 2 | 0 | 1 | 0 |
+| DAL | Paige Bueckers | G | 31 | 7 | 1 | 7 | 1 |
+| DAL | Alysha Clark | F | 4 | 0 | 0 | 0 | 0 |
+| DAL | Maddy Siegrist | F | 17 | 5 | 2 | 1 | 1 |
+| DAL | Awak Kuier | F | 17 | 16 | 4 | 0 | 2 |
+| DAL | Li Yueru | C | 5 | 0 | 0 | 0 | 0 |
+| DAL | Azzi Fudd | G | 21 | 7 | 1 | 0 | 1 |
+| DAL | Aziaha James | G | 18 | 6 | 4 | 5 | 1 |
+| DAL | JJ Quinerly | G |  | 0 | 0 | 0 | 0 |
+| ATL | Naz Hillmon | F | 36 | 6 | 3 | 2 | 0 |
+| ATL | Angel Reese | F | 32 | 15 | 9 | 2 | 0 |
+| ATL | Allisha Gray | G | 34 | 16 | 4 | 1 | 0 |
+| ATL | Jordin Canada | G | 30 | 9 | 5 | 6 | 1 |
+| ATL | Rhyne Howard | G | 35 | 25 | 4 | 8 | 2 |
+| ATL | Sika Kone | F | 4 | 2 | 1 | 0 | 0 |
+| ATL | Madina Okot | C | 8 | 0 | 5 | 0 | 0 |
+| ATL | Te-Hina Paopao | G | 13 | 9 | 2 | 2 | 3 |
+| ATL | Aaliyah Nye | G | 1 | 0 | 0 | 0 | 0 |
+| ATL | Indya Nivar | G | 5 | 2 | 1 | 1 | 0 |
+| ATL | Isobel Borlase | G | 2 | 2 | 1 | 0 | 0 |
+| ATL | Brionna Jones | F |  | 0 | 0 | 0 | 0 |

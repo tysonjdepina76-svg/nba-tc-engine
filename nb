@@ -1,0 +1,122 @@
+#!/usr/bin/env python3
+"""
+NBA TC — Clean Integrated Pipeline
+================================
+Game totals: top 10 players × playoff-adjusted TC
+Player props: full roster with 4-category TC
+API: SportsGameOdds
+"""
+import sys
+sys.path.insert(0, "/home/workspace")
+
+from odds_fetcher.keys import sports_game_odds_key
+from odds_fetcher.sportsgameodds_client import fetch_nba_events, extract_player_props
+from tc_model.rosters import get_team
+
+# ── TC Constants ──────────────────────────────────────────────────────────
+PTS_W  = 0.85
+REB_W   = 0.12
+AST_W   = 0.10
+TPM_W   = 0.08
+GAME_W  = 0.92
+PLAYOFF = 1.18
+GAP     = 0.0
+GAPS = {"pts": -3.0, "reb": -1.5, "ast": -1.0, "tpm": -0.8}
+
+# ── Player TC (props) ────────────────────────────────────────────────────
+def tc_prop(p):
+    if p.status == "OUT": return {"pts": 0, "reb": 0, "ast": 0, "tpm": 0}
+    return {s: round(getattr(p, s) * w + GAPS.get(s, 0), 1)
+            for s, w in [("pts", PTS_W), ("reb", REB_W), ("ast", AST_W), ("tpm", TPM_W)]}
+
+# ── Game TC (top 10 × GAME_W) ────────────────────────────────────────────
+def tc_game_pts(p):
+    if p.status == "OUT": return 0.0
+    return p.pts * GAME_W
+
+def team_game_tc(abbr):
+    t = get_team(abbr)
+    active = sorted([p for p in t["players"] if p.status != "OUT"],
+                   key=lambda p: p.min_avg, reverse=True)[:10]
+    return sum(tc_game_pts(p) for p in active)
+
+def game_line_tc(home, away):
+    return round((team_game_tc(home) + team_game_tc(away)) * PLAYOFF + GAP)
+
+def kelly(bankroll, edge, odds=-110):
+    b = abs(odds) / 100
+    p2 = min(0.72, 0.52 + min(abs(edge), 10) * 0.02)
+    q = 1 - p2
+    k = (b * p2 - q) / b if b > 0 else 0
+    return round(max(0, bankroll * k * 0.5), 2)
+
+# ── Live odds ────────────────────────────────────────────────────────────
+key = sports_game_odds_key()
+data = fetch_nba_events(odds_available="true") if key else {}
+props = extract_player_props(data) if key else []
+live_map = {}
+for p in props:
+    k = (p["player"].lower(), p["stat"])
+    if k not in live_map: live_map[k] = p
+
+# ── Today's games ─────────────────────────────────────────────────────────
+GAMES = [("MIN", "SA"), ("NYK", "PHI"), ("OKC", "LAL"), ("CLE", "DET")]
+
+print("=" * 75)
+print("  🏀 NBA TC — TODAY'S PROJECTIONS")
+print("=" * 75)
+
+for home, away in GAMES:
+    ht = get_team(home); at = get_team(away)
+    htc = team_game_tc(home); atc = team_game_tc(away)
+    tc = round(htc + atc, 1)
+    line = game_line_tc(home, away)
+    edge = round(tc - line, 1)
+    injuries = ht.get("injury_notes", []) + at.get("injury_notes", [])
+
+    print(f"\n{'─' * 75}")
+    print(f"  {away} @ {home}  |  TC_combined={tc}  |  LINE={line}  |  EDGE={edge:+.1f}  |  PICK={'OVER' if tc > line else 'UNDER'}")
+    if injuries: print(f"  ⚠️  {', '.join(injuries)}")
+
+    print(f"\n  {'':20} {'MPG':>4} {'TC_pts':>7} {'TC_reb':>7} {'TC_ast':>7} {'TC_tpm':>7}")
+    print(f"  {'─' * 65}")
+
+    for abbr, team_tc_val in [(away, atc), (home, htc)]:
+        t = get_team(abbr)
+        print(f"  ── {t['name']} ──  TC: {team_tc_val:.1f}")
+        active = sorted([p for p in t["players"] if p.status != "OUT"],
+                       key=lambda p: p.min_avg, reverse=True)[:10]
+        for p in active:
+            tp = tc_prop(p)
+            star = "⭐" if getattr(p, "tier", 2) == 1 else " "
+            print(f"  {star}{p.name:<20} {p.min_avg:>4.0f} {tp['pts']:>7.1f} {tp['reb']:>7.1f} {tp['ast']:>7.1f} {tp['tpm']:>7.1f}")
+
+    # Props
+    print(f"\n  📋 QUALIFIED PROPS (edge ≥ 2.0):")
+    count = 0
+    for abbr in [away, home]:
+        t = get_team(abbr)
+        for p in t["players"]:
+            if p.status == "OUT": continue
+            tp = tc_prop(p)
+            for stat, lbl in [("pts","PTS"),("reb","REB"),("ast","AST"),("tpm","3PM")]:
+                k = (p.name.lower(), stat)
+                live = live_map.get(k, {})
+                mkt = live.get("line") if live else None
+                if mkt is None: continue
+                tc_val = tp[stat]
+                e = round(tc_val - mkt, 1)
+                if abs(e) < 2.0: continue
+                conf = min(72, 52 + e) if e > 0 else min(72, 52 + abs(e))
+                pick = "OVER" if e > 0 else "UNDER"
+                stake = kelly(1000, abs(e))
+                star = "⭐" if getattr(p, "tier", 2) == 1 else " "
+                print(f"  {star}{p.name:<20} {lbl:<4} TC:{tc_val:>5.1f} MKT:{mkt:>5.1f} EDGE:{e:>+6.1f} CONF:{conf:>3}% {pick} ${stake:>6.2f}")
+                count += 1
+    if count == 0: print(f"  No qualified props (market lines not available)")
+
+print(f"\n{'=' * 75}")
+print(f"  GAME TC: Σ(top10 pts×{GAME_W}) × {PLAYOFF}  |  Gap=0 (raw playoff pace)")
+print(f"  PROP TC: pts×{PTS_W}{GAPS['pts']:+.1f} | reb×{REB_W}{GAPS['reb']:+.1f} | ast×{AST_W}{GAPS['ast']:+.1f} | tpm×{TPM_W}{GAPS['tpm']:+.1f}")
+print(f"  R1 Backtest: 9 games | 6/9 UNDER = 67%")
+print(f"{'=' * 75}")

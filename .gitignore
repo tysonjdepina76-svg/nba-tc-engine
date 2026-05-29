@@ -1,0 +1,5 @@
+# Only ignore build artifacts, not source
+*.pyc
+__pycache__/
+*.log
+.env

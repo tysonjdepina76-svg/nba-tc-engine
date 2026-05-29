@@ -1,0 +1,165 @@
+{
+  "version": "9.0.0",
+  "generated": "2026-05-28T11:55:12.376033",
+  "diagnostics": {
+    "passed": 12,
+    "total": 12
+  },
+  "nba_backtest": {
+    "games": [
+      {
+        "game": "PHI@BOS",
+        "date": "2026-04-19",
+        "market_total": 208.5,
+        "v8_combined": 214.2,
+        "actual_total": 216,
+        "v8_gap": 5.7,
+        "v8_lean": "OVER",
+        "actual_lean": "OVER",
+        "v8_hit": true,
+        "tc_combined": 143.3,
+        "tc_line": 126,
+        "tc_edge": 17.3,
+        "tc_signal": "OVER"
+      },
+      {
+        "game": "LAC@DEN",
+        "date": "2026-04-19",
+        "market_total": 216.5,
+        "v8_combined": 204.3,
+        "actual_total": 222,
+        "v8_gap": -12.2,
+        "v8_lean": "UNDER",
+        "actual_lean": "OVER",
+        "v8_hit": false,
+        "tc_combined": 132.1,
+        "tc_line": 116,
+        "tc_edge": 16.1,
+        "tc_signal": "OVER"
+      },
+      {
+        "game": "ORL@DET",
+        "date": "2026-04-19",
+        "market_total": 200.5,
+        "v8_combined": 213.0,
+        "actual_total": 207,
+        "v8_gap": 12.5,
+        "v8_lean": "OVER",
+        "actual_lean": "OVER",
+        "v8_hit": true,
+        "tc_combined": 134.1,
+        "tc_line": 118,
+        "tc_edge": 16.1,
+        "tc_signal": "OVER"
+      },
+      {
+        "game": "POR@SAS",
+        "date": "2026-04-19",
+        "market_total": 206.5,
+        "v8_combined": 240.7,
+        "actual_total": 226,
+        "v8_gap": 34.2,
+        "v8_lean": "OVER",
+        "actual_lean": "OVER",
+        "v8_hit": true,
+        "tc_combined": 157.2,
+        "tc_line": 138,
+        "tc_edge": 19.2,
+        "tc_signal": "OVER"
+      }
+    ],
+    "summary": {
+      "sport": "NBA",
+      "n": 4,
+      "v8_hit_rate": 75.0
+    }
+  },
+  "wnba_backtest": {
+    "games": [
+      {
+        "game": "MIN@NYL",
+        "date": "2025-10-10",
+        "market_total": 161.5,
+        "v8_combined": 202.5,
+        "actual_total": 161,
+        "v8_gap": 41.0,
+        "v8_lean": "OVER",
+        "actual_lean": "UNDER",
+        "v8_hit": false,
+        "tc_combined": 122.4,
+        "tc_line": 107,
+        "tc_edge": 15.4,
+        "tc_signal": "OVER"
+      },
+      {
+        "game": "NYL@LVA",
+        "date": "2025-10-13",
+        "market_total": 162.5,
+        "v8_combined": 222.5,
+        "actual_total": 162,
+        "v8_gap": 60.0,
+        "v8_lean": "OVER",
+        "actual_lean": "UNDER",
+        "v8_hit": false,
+        "tc_combined": 139.4,
+        "tc_line": 122,
+        "tc_edge": 17.4,
+        "tc_signal": "OVER"
+      }
+    ],
+    "summary": {
+      "sport": "WNBA",
+      "n": 2,
+      "v8_hit_rate": 0.0
+    }
+  },
+  "sample_projection": {
+    "matchup": "SAS @ OKC",
+    "series": "WCF",
+    "tc_combined_pts": 145.2,
+    "tc_line": 127,
+    "tc_edge": 18.2,
+    "tc_signal": "OVER",
+    "v8_combined": 227.5,
+    "v8_gap": 9.0,
+    "v8_lean": "OVER",
+    "spread_lean": "AWAY",
+    "prop_candidates": [
+      {
+        "player": "Shai Gilgeous-Alexander",
+        "tc_pts": 24.2,
+        "line": 21,
+        "edge": 3.2,
+        "direction": "OVER"
+      },
+      {
+        "player": "Jalen Williams",
+        "tc_pts": 12.7,
+        "line": 11,
+        "edge": 1.7,
+        "direction": "OVER"
+      },
+      {
+        "player": "Chet Holmgren",
+        "tc_pts": 10.6,
+        "line": 9,
+        "edge": 1.6,
+        "direction": "OVER"
+      },
+      {
+        "player": "Isaiah Hartenstein",
+        "tc_pts": 3.8,
+        "line": 3,
+        "edge": 0.8,
+        "direction": "OVER"
+      },
+      {
+        "player": "Luguentz Dort",
+        "tc_pts": 5.1,
+        "line": 4,
+        "edge": 1.1,
+        "direction": "OVER"
+      }
+    ]
+  }
+}

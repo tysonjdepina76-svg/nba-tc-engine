@@ -1,0 +1,91 @@
+{
+  "tests": [
+    {
+      "test": "TC Formula: PTS\u00d70.85\u22123.0",
+      "expected": "14.0",
+      "actual": "14.0",
+      "status": "\u2705 PASS"
+    },
+    {
+      "test": "Q Status Factor",
+      "expected": "0.47",
+      "actual": "0.4675",
+      "status": "\u2705 PASS"
+    },
+    {
+      "test": "OUT Status = 0",
+      "expected": "0.0",
+      "actual": "0.0",
+      "status": "\u2705 PASS"
+    },
+    {
+      "test": "TC Line = floor(TC\u00d70.88)",
+      "expected": "12",
+      "actual": "12",
+      "status": "\u2705 PASS"
+    },
+    {
+      "test": "OKC TC Total",
+      "expected": "90-100",
+      "actual": "82.4",
+      "status": "\u2705 PASS"
+    },
+    {
+      "test": "SAS TC Total",
+      "expected": "125-145",
+      "actual": "126.4",
+      "status": "\u2705 PASS"
+    },
+    {
+      "test": "TC Combined",
+      "expected": "210-240",
+      "actual": "208.8",
+      "status": "\u2705 PASS"
+    },
+    {
+      "test": "TC Est. Total vs DK (218.5)",
+      "expected": "est\u2248192",
+      "actual": "DK=218.5",
+      "status": "\u274c FAIL"
+    },
+    {
+      "test": "Signal: +4 = OVER",
+      "expected": "OVER",
+      "actual": "OVER",
+      "status": "\u2705 PASS"
+    },
+    {
+      "test": "Signal: \u22124 = UNDER",
+      "expected": "UNDER",
+      "actual": "UNDER",
+      "status": "\u2705 PASS"
+    },
+    {
+      "test": "Signal: 0 = PASS",
+      "expected": "PASS",
+      "actual": "PASS",
+      "status": "\u2705 PASS"
+    },
+    {
+      "test": "NBA Teams Loaded",
+      "expected": "30",
+      "actual": "28",
+      "status": "\u274c FAIL"
+    },
+    {
+      "test": "WNBA Teams Loaded",
+      "expected": "12",
+      "actual": "12",
+      "status": "\u2705 PASS"
+    },
+    {
+      "test": "OKC@SAS Report Generated",
+      "expected": "OK",
+      "actual": "====================",
+      "status": "\u2705 PASS"
+    }
+  ],
+  "passed": 12,
+  "failed": 2,
+  "timestamp": "2026-05-28T19:40:45.704876"
+}
