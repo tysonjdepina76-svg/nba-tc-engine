@@ -13,6 +13,8 @@ TC does NOT apply to game totals — it is a player prop projection engine only.
 import streamlit as st
 import requests
 from datetime import datetime
+from multi_sport_engine import *
+import json
 
 # ── CONFIG ────────────────────────────────────────────────────────────────────
 BASE_URL  = "https://true.zo.space"
@@ -39,12 +41,36 @@ TEAM_MAP = {
 }
 
 STAT_CONFIG = {
-    "PTS":  {"tc": "tc_pts",   "label": "Points",     "sym": "★"},
-    "REB":  {"tc": "tc_reb",   "label": "Rebounds",   "sym": "◆"},
-    "AST":  {"tc": "tc_ast",   "label": "Assists",    "sym": "●"},
-    "3PM":  {"tc": "tc_3pm",   "label": "3-Pointers", "sym": "▲"},
-    "STL":  {"tc": "tc_stl",   "label": "Steals",     "sym": "♦"},
-    "BLK":  {"tc": "tc_blk",   "label": "Blocks",     "sym": "◈"},
+    "NBA": {
+        "PTS":  {"tc": "tc_pts",  "label": "Points",     "sym": "★"},
+        "REB":  {"tc": "tc_reb",  "label": "Rebounds",   "sym": "◆"},
+        "AST":  {"tc": "tc_ast",  "label": "Assists",    "sym": "●"},
+        "3PM":  {"tc": "tc_tpm",  "label": "3-Pointers", "sym": "▲"},
+        "STL":  {"tc": "tc_stl",  "label": "Steals",     "sym": "♦"},
+        "BLK":  {"tc": "tc_blk",  "label": "Blocks",     "sym": "◈"},
+    },
+    "WNBA": {
+        "PTS":  {"tc": "tc_pts",  "label": "Points",     "sym": "★"},
+        "REB":  {"tc": "tc_reb",  "label": "Rebounds",   "sym": "◆"},
+        "AST":  {"tc": "tc_ast",  "label": "Assists",    "sym": "●"},
+        "3PM":  {"tc": "tc_tpm",  "label": "3-Pointers", "sym": "▲"},
+        "STL":  {"tc": "tc_stl",  "label": "Steals",     "sym": "♦"},
+        "BLK":  {"tc": "tc_blk",  "label": "Blocks",     "sym": "◈"},
+    },
+    "MLB": {
+        "RUNS": {"tc": "tc_runs", "label": "Runs",       "sym": "⚾"},
+        "HITS": {"tc": "tc_hits", "label": "Hits",       "sym": "🏏"},
+        "RBI":  {"tc": "tc_rbi",  "label": "RBI",        "sym": "🔄"},
+        "ERA":  {"tc": "tc_era",  "label": "ERA(IP)",    "sym": "📊"},
+        "K":    {"tc": "tc_k",    "label": "Strikeouts", "sym": "💥"},
+    },
+    "NHL": {
+        "GOALS":   {"tc": "tc_goals",   "label": "Goals",      "sym": "🥅"},
+        "ASSISTS": {"tc": "tc_assists", "label": "Assists",    "sym": "🤝"},
+        "SOG":     {"tc": "tc_sog",     "label": "Shots",      "sym": "🏒"},
+        "HITS":    {"tc": "tc_hits",    "label": "Hits",       "sym": "💢"},
+        "BLOCKS":  {"tc": "tc_blocks",  "label": "Blocks",     "sym": "🛡️"},
+    },
 }
 
 BACKTEST = [
@@ -105,6 +131,93 @@ def call_api(away: str, home: str, sport: str, mode: str = "project") -> dict:
         return r.json()
     except Exception as e:
         return {"error": str(e)}
+
+
+def run_local_projection(away: str, home: str, sport: str) -> dict:
+    """Run multi-sport models locally (MLB/NHL/NCAAB)"""
+    from multi_sport_engine import (
+        poisson_expected_runs, mlb_win_prob,
+        nhl_expected_goals, nhl_poisson_total,
+        ncaab_game_prob
+    )
+    import random
+
+    source = "multi-sport-engine"
+
+    if sport == "MLB":
+        # Poisson model — use league averages as base
+        away_exp = poisson_expected_runs(away.lower(), 1.0, 4.0, True)
+        home_exp = poisson_expected_runs(home.lower(), 1.0, 4.0, True)
+        win = mlb_win_prob(away_exp, home_exp, 4.0, 4.0)
+
+        return {
+            "sport": "MLB", "away_team": away, "home_team": home, "source": source,
+            "assessment": {
+                "tc_total": f"{away_exp + home_exp:.1f}",
+                "tc_line": f"{int(away_exp + home_exp)}",
+                "edge": away_exp - home_exp,
+                "signal": "HOME" if win["home_win_prob"] > 0.6 else ("AWAY" if win["away_win_prob"] > 0.6 else "TOSS-UP"),
+            },
+            "odds": {"away_ml": "-110", "home_ml": "-110", "spread": "—"},
+            "away": {"all": {"players": [
+                {"name": f"{away} Starter", "status": "ACTIVE", "team": away, "tc_pts": away_exp, "tc_reb": 0, "tc_ast": 0, "tc_runs": away_exp, "tc_hits": away_exp * 1.8, "tc_rbi": away_exp * 0.5},
+            ]}},
+            "home": {"all": {"players": [
+                {"name": f"{home} Starter", "status": "ACTIVE", "team": home, "tc_pts": home_exp, "tc_reb": 0, "tc_ast": 0, "tc_runs": home_exp, "tc_hits": home_exp * 1.8, "tc_rbi": home_exp * 0.5},
+            ]}},
+            "dk_total": f"{away_exp + home_exp + 0.5:.1f}",
+            "edge": f"{win['home_win_prob'] - 0.5:+.2f}",
+            "signal": "HOME FAVORITE" if win["home_win_prob"] > 0.55 else ("AWAY FAVORITE" if win["away_win_prob"] > 0.55 else "EVEN"),
+        }
+
+    elif sport == "NHL":
+        away_goals, home_goals, total = nhl_poisson_total(2.8, 2.4, 5.5, True)
+
+        return {
+            "sport": "NHL", "away_team": away, "home_team": home, "source": source,
+            "assessment": {
+                "tc_total": f"{total:.1f}",
+                "tc_line": f"{total:.0f}",
+                "edge": home_goals - away_goals,
+                "signal": "HOME" if home_goals > away_goals else "AWAY",
+            },
+            "odds": {"away_ml": "-110", "home_ml": "-110", "spread": "PICK"},
+            "away": {"all": {"players": [
+                {"name": f"{away} Top Line", "status": "ACTIVE", "team": away, "tc_pts": away_goals, "tc_goals": away_goals, "tc_assists": away_goals * 1.5, "tc_sog": away_goals * 3.0},
+            ]}},
+            "home": {"all": {"players": [
+                {"name": f"{home} Top Line", "status": "ACTIVE", "team": home, "tc_pts": home_goals, "tc_goals": home_goals, "tc_assists": home_goals * 1.5, "tc_sog": home_goals * 3.0},
+            ]}},
+            "dk_total": f"{total:.1f}",
+            "edge": f"{home_goals - away_goals:+.1f}",
+            "signal": "HOME EDGE" if home_goals > away_goals else "AWAY EDGE",
+        }
+
+    elif sport == "NCAAB":
+        pred = ncaab_game_prob(82.5, 75.0, 78.0, 70.0, True)
+        pace = 68
+
+        return {
+            "sport": "NCAAB", "away_team": away, "home_team": home, "source": source,
+            "assessment": {
+                "tc_total": pred.get("expected_total", f"{pace * 2:.1f}"),
+                "tc_line": pred.get("spread", "PICK"),
+                "edge": float(pred.get("elo_diff", 0)),
+                "signal": f"HOME {pred.get('home_win_prob', 50)}%" if pred.get("home_win_prob", 0) > 50 else f"AWAY {pred.get('away_win_prob', 50)}%",
+            },
+            "odds": {"away_ml": "-110", "home_ml": "-110", "spread": pred.get("spread", "PICK")},
+            "away": {"all": {"players": [
+                {"name": f"{away} PG", "status": "ACTIVE", "team": away, "tc_pts": 14, "tc_reb": 4, "tc_ast": 5, "tc_tpm": 2, "tc_stl": 1, "tc_blk": 0},
+            ]}},
+            "home": {"all": {"players": [
+                {"name": f"{home} C", "status": "ACTIVE", "team": home, "tc_pts": 18, "tc_reb": 10, "tc_ast": 2, "tc_tpm": 0, "tc_stl": 1, "tc_blk": 3},
+            ]}},
+            "dk_total": pred.get("dk_total", "—"),
+            "edge": pred.get("spread", "PICK"),
+            "signal": pred.get("home_win_prob", f"{pred.get('home_win_prob',50)}%"),
+        }
+
+    return {"error": f"No local engine for sport: {sport}"}
 
 
 def fmt(n):
@@ -200,7 +313,7 @@ with tab_proj:
         st.session_state["run_proj"] = True
 
     if st.session_state.get("run_proj"):
-        with st.spinner("Calling Zo TC API…"):
+        with st.spinner("Calling projection engine…"):
             data = call_api(away, home, sport)
 
         if "error" in data:
@@ -242,12 +355,13 @@ with tab_proj:
             st.divider()
 
             # Stat leaders
+            sport_stats = STAT_CONFIG.get(sport, STAT_CONFIG)
             sel_stat = st.selectbox(
                 "Stat Category",
-                list(STAT_CONFIG.keys()),
-                format_func=lambda k: f"{STAT_CONFIG[k]['sym']}  {k} — {STAT_CONFIG[k]['label']}",
+                list(sport_stats.keys()),
+                format_func=lambda k: f"{sport_stats[k]['sym']}  {k} — {sport_stats[k]['label']}",
             )
-            cfg = STAT_CONFIG[sel_stat]
+            cfg = sport_stats[sel_stat]
 
             away_players = data.get("away", {}).get("all", {}).get("players", [])
             home_players = data.get("home", {}).get("all", {}).get("players", [])
@@ -304,7 +418,7 @@ with tab_proj:
                         "POS":     p.get("pos", "—"),
                         "MIN":     p.get("min", "—"),
                         "Status":  status,
-                        **{f"TC {k}": fmt(p.get(STAT_CONFIG[k]["tc"], 0)) for k in STAT_CONFIG},
+                        **{f"TC {k}": fmt(p.get(sport_stats[k]["tc"], 0)) for k in sport_stats},
                     })
                 if rows:
                     st.dataframe(rows, use_container_width=True, hide_index=True)
