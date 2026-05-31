@@ -92,29 +92,10 @@ BACKTEST = [
     {"date":"05/10","away":"NYK","home":"PHI","away_score":144,"home_score":114,"actual":258,"dk":226.5,"tc_est":237.4,"edge":+10.9,"signal":"OVER","result":"OVER","hit":True,"round":"Semifinals"},
     {"date":"05/11","away":"DET","home":"CLE","away_score":103,"home_score":112,"actual":215,"dk":228.5,"tc_est":197.8,"edge":-30.7,"signal":"UNDER","result":"UNDER","hit":True,"round":"Semifinals"},
     {"date":"05/11","away":"OKC","home":"LAL","away_score":115,"home_score":110,"actual":225,"dk":226.5,"tc_est":207.0,"edge":-19.5,"signal":"UNDER","result":"UNDER","hit":True,"round":"Semifinals"},
-    {"date":"05/12","away":"SAS","home":"MIN","away_score":126,"home_score":97, "actual":223,"dk":218.5,"tc_est":205.2,"edge":-13.3,"signal":"UNDER","result":"OVER","hit":False,"round":"Semifinals"},
-    {"date":"05/13","away":"CLE","home":"DET","away_score":117,"home_score":113,"actual":230,"dk":230.0,"tc_est":211.6,"edge":-18.4,"signal":"UNDER","result":"PUSH","hit":False,"round":"Semifinals"},
-    {"date":"05/15","away":"DET","home":"CLE","away_score":115,"home_score":94, "actual":209,"dk":228.5,"tc_est":192.3,"edge":-36.2,"signal":"UNDER","result":"UNDER","hit":True,"round":"Semifinals"},
-    {"date":"05/15","away":"MIN","home":"SAS","away_score":109,"home_score":139,"actual":248,"dk":220.0,"tc_est":228.2,"edge":+8.2,"signal":"OVER","result":"OVER","hit":True,"round":"Semifinals"},
-    {"date":"05/17","away":"CLE","home":"DET","away_score":125,"home_score":94, "actual":219,"dk":229.5,"tc_est":201.5,"edge":-28.0,"signal":"UNDER","result":"UNDER","hit":True,"round":"Semifinals"},
-    {"date":"04/18","away":"ATL","home":"NYK","away_score":102,"home_score":113,"actual":215,"dk":226.5,"tc_est":197.8,"edge":-28.7,"signal":"UNDER","result":"UNDER","hit":True,"round":"Round 1"},
-    {"date":"04/19","away":"ORL","home":"DET","away_score":101,"home_score":112,"actual":213,"dk":212.5,"tc_est":196.0,"edge":-16.5,"signal":"UNDER","result":"OVER","hit":False,"round":"Round 1"},
-    {"date":"04/19","away":"PHI","home":"BOS","away_score":91, "home_score":123,"actual":214,"dk":222.5,"tc_est":196.9,"edge":-25.6,"signal":"UNDER","result":"UNDER","hit":True,"round":"Round 1"},
-    {"date":"04/19","away":"CLE","home":"TOR","away_score":126,"home_score":113,"actual":239,"dk":232.5,"tc_est":219.9,"edge":-12.6,"signal":"UNDER","result":"OVER","hit":False,"round":"Round 1"},
-    {"date":"04/19","away":"PHX","home":"OKC","away_score":84, "home_score":119,"actual":203,"dk":226.5,"tc_est":186.8,"edge":-39.7,"signal":"UNDER","result":"UNDER","hit":True,"round":"Round 1"},
-    {"date":"04/19","away":"MIN","home":"SAS","away_score":104,"home_score":102,"actual":206,"dk":220.5,"tc_est":189.5,"edge":-31.0,"signal":"UNDER","result":"UNDER","hit":True,"round":"Round 1"},
-    {"date":"04/20","away":"ATL","home":"NYK","away_score":107,"home_score":106,"actual":213,"dk":227.5,"tc_est":196.0,"edge":-31.5,"signal":"UNDER","result":"UNDER","hit":True,"round":"Round 1"},
-    {"date":"04/21","away":"MIN","home":"SAS","away_score":95, "home_score":133,"actual":228,"dk":221.5,"tc_est":209.8,"edge":-11.7,"signal":"UNDER","result":"OVER","hit":False,"round":"Round 1"},
-    {"date":"04/25","away":"NYK","home":"ATL","away_score":114,"home_score":98, "actual":212,"dk":225.5,"tc_est":195.0,"edge":-30.5,"signal":"UNDER","result":"UNDER","hit":True,"round":"Round 1"},
-    {"date":"04/26","away":"DET","home":"ORL","away_score":88, "home_score":94, "actual":182,"dk":213.5,"tc_est":167.4,"edge":-46.1,"signal":"UNDER","result":"UNDER","hit":True,"round":"Round 1"},
-    {"date":"04/26","away":"CLE","home":"TOR","away_score":89, "home_score":93, "actual":182,"dk":233.5,"tc_est":167.4,"edge":-66.1,"signal":"UNDER","result":"UNDER","hit":True,"round":"Round 1"},
-    {"date":"04/27","away":"OKC","home":"PHX","away_score":131,"home_score":122,"actual":253,"dk":228.5,"tc_est":232.8,"edge":+4.3,"signal":"PASS","result":"OVER","hit":False,"round":"Round 1"},
-    {"date":"04/28","away":"NYK","home":"ATL","away_score":126,"home_score":97, "actual":223,"dk":224.5,"tc_est":205.2,"edge":-19.3,"signal":"UNDER","result":"UNDER","hit":True,"round":"Round 1"},
-    {"date":"04/28","away":"MIN","home":"SAS","away_score":97, "home_score":126,"actual":223,"dk":222.0,"tc_est":205.2,"edge":-16.8,"signal":"UNDER","result":"OVER","hit":False,"round":"Round 1"},
-    {"date":"05/01","away":"ORL","home":"DET","away_score":79, "home_score":93, "actual":172,"dk":214.0,"tc_est":158.2,"edge":-55.8,"signal":"UNDER","result":"UNDER","hit":True,"round":"Round 1"},
-    {"date":"05/01","away":"SAS","home":"MIN","away_score":139,"home_score":109,"actual":248,"dk":220.5,"tc_est":228.2,"edge":+7.7,"signal":"OVER","result":"OVER","hit":True,"round":"Round 1"},
-    {"date":"05/02","away":"BOS","home":"PHI","away_score":91, "home_score":118,"actual":209,"dk":220.0,"tc_est":192.3,"edge":-27.7,"signal":"UNDER","result":"UNDER","hit":True,"round":"Round 1"},
-    {"date":"05/03","away":"DET","home":"ORL","away_score":116,"home_score":94, "actual":210,"dk":214.5,"tc_est":193.2,"edge":-21.3,"signal":"UNDER","result":"UNDER","hit":True,"round":"Round 1"},
+    {"date":"05/12","away":"SAS","home":"MIN","away_score":126,"home_score":97,"actual":223,"dk":218.5,"tc_est":205.2,"edge":-13.3,"signal":"UNDER","result":"OVER","hit":False,"round":"Semifinals"},
+
+    # ── WNBA BACKTEST ──
+    {"date":"05/31","away":"LV","home":"GS","away_score":None,"home_score":None,"actual":None,"dk":None,"tc_est":315.8,"edge":0,"signal":"UNDER","result":"PENDING","hit":None,"round":"WNBA Regular","live":True,"sport":"WNBA"},
 ]
 
 
