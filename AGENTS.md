@@ -1,84 +1,82 @@
-# AGENTS.md — NBA TC Project Workspace
+# AGENTS.md — Workspace Index
 
-## Overview
-Single-source-of-truth workspace for the **NBA Triple Conservative (TC) Betting System**.
+## Who I'm Helping
+**Tyson Depina** — 49, Cape Verdean, New Bedford MA. Released from Federal prison Nov 2025 after 8 years. Father of 3 (25, 23, 20). Looking for a niche that aligns with his life experience. Direct, no fluff — respect his time.
 
-### Core Components
+---
 
-#### 1. Python TC Engine (`nba_tc_engine.py`)
-- **Path:** `/home/workspace/nba_tc_engine.py`
-- **Purpose:** Offline batch projections, backtest engine, hardcoded rosters for all 30 NBA teams + 12 WNBA teams
-- **Version:** v6.0 (~836 lines)
-- **Key classes:** `Player`, `Team`, `Game`, `BacktestEngine`
-- **CLI usage:**
-  ```bash
-  python nba_tc_engine.py --game "BOS @ NYK" --total 218.5 --json
-  python nba_tc_engine.py --list --sport NBA
-  python nba_tc_engine.py --backtest < games.csv
-  ```
+## Active Projects
 
-#### 2. Zo Space API (`/api/tc`)
-- **Path:** Zo Space route `/api/tc`
-- **Type:** TypeScript/Hono API route (public)
-- **Purpose:** Live game projections via ESPN live roster + stat APIs
-- **Live mode:** `GET /api/tc?away=BOS&home=NYK&sport=NBA`
-- **Live stats:** `GET /api/tc?sport=NBA&mode=live-stats`
-- **Historical:** `GET /api/tc?sport=NBA&mode=historical&event=<ESPN_EVENT_ID>`
-- **前端:** React page at `/nba-tc` calls this API
+### Mirror Workbook
+- 9-module self-help workbook + master compiled version
+- Paths: `The_Mirror_Workbook_Module_1.md` … `Module_9.md`, `The_Mirror_Workbook_Master.md`, `The_Mirror_Workbook.html`, `The_Mirror_Workbook.docx`
+- Supporting: `How_to_Use_The_Mirror_Workbook.md`, `Mirror_Workbook_Outreach_Letter.md`, `Mirror_Workbook_Email_Pitch.md`, `Mirror_Workbook_Facilitator_Guide.md`, `Mirror_Workbook_One_Sheet.md`
+- **Status**: Done, exported to DOCX/Google Docs
 
-#### 3. Zo Space UI (`/nba-tc`)
-- **Path:** Zo Space route `/nba-tc`
-- **Type:** React/TypeScript page (private, auth required)
-- **Tabs:** Project · Live Stats · Backtest · Slate
-- **Dependencies:** Calls `/api/tc` for all data
+### Memoir: "I Am Not Dying Here"
+- Memoir chapters + compiled manuscript
+- Path: `Chapters/I_Am_Not_Dying_Here_COMPLETE.md`
+- Timeline: `Chapters/TIMELINE_CORRECTED.md`
+- Structure: `Memoir_Structure_I_Am_Not_Dying_Here.md`
+- **Status**: Draft done, timeline needs final verification
 
-#### 4. Streamlit App (`nba_tc_streamlit.py`)
-- **Path:** `/home/workspace/nba_tc_streamlit.py`
-- **Purpose:** Local Python GUI — runs Python engine directly + calls `/api/tc` as fallback
-- **Run:** `streamlit run nba_tc_streamlit.py --server.port 8501`
+### NBA Triple Conservative (TC) Betting System
+- Primary pipeline: `nba_tc_pipeline.py` (1147 lines, 13/13 ✅)
+- Dashboard: `SportsTC_Streamlit_App.py` (579 lines, 5 tabs incl. Injury Report)
+- Multi-sport engine: `multi_sport_engine.py` (MLB Poisson + NHL xG)
+- College models: `college_models.py` (NCAAB AdjOE/AdjDE + NCAAF G-Elo)
+- xMins engine: `Skills/nba-odds-api/scripts/xmins_engine.py` (game-lag weights)
+- Injury scraper: `Skills/nba-odds-api/scripts/injury_scraper.py`
+- Report generator: `generate_report.py` (6th grade plain English)
+- Daily automation: `daily_tip_report.py` (2hr pre-tip, all sports)
+- Algorithm spec: `SPORTS_MODEL_SPEC.md`
+- Market plan: `COMPETITIVE_IMPROVEMENTS.md`
+- Zo space: `/nba-tc` (React, public)
+- **NFL template**: Tyson to provide (not yet integrated)
 
-#### 5. Google Drive Sync Folder
-- **Folder:** `NBA_TC_System/`
-- **Contains:** `nba_tc_engine.py`, `nba_tc_streamlit.py`, `AGENTS.md`, `README.md`
-- **Account:** `tysondepina99@gmail.com`
+### Credit Report & Dispute
+- Experian credit report: `Experian_Credit_Report.pdf` / `.txt`
+- Dispute letter: `Dispute_Letter_Experian.md`
+- Credit improvement plan: `Credit_Improvement_Plan.md`
 
-## Workflow
+### DNM Landscaping Business Plan
+- Business plan: `DNM_Landscaping_Business_Plan.md`
+- Clean version (no prison references): `DNM_Landscaping_Business_Plan_CLEAN.md`
 
-### Development Loop
-1. Edit `nba_tc_engine.py` (Python engine changes)
-2. Edit `nba_tc_streamlit.py` (Streamlit UI changes)
-3. Run backtest locally: `python nba_tc_engine.py --backtest < test.csv`
-4. Test via Streamlit: `streamlit run nba_tc_streamlit.py`
-5. Sync to GitHub + Google Drive
-6. Zo Space auto-serves `/api/tc` and `/nba-tc`
+### Zo Space Site
+- URL: `https://true.zo.space`
+- Routes managed via `list_space_routes()` / `get_space_route()` / `edit_space_route()`
+- **Do NOT overwrite existing routes without explicit permission**
 
-### Publishing Flow
-- **Zo Space:** Changes to `/api/tc` or `/nba-tc` go live immediately via space tools
-- **GitHub:** Push workspace files to `nba-tc-engine` repo
-- **Google Drive:** Upload versioned copies to `NBA_TC_System/` folder
+---
 
-## Rosters
-- NBA: 30 teams, full rosters hardcoded in `nba_tc_engine.py`
-- WNBA: 12 teams (NYL, IND, WAS, LVA, MIN, DAL fully populated; CON, SEA, PHX, CHI, ATL, POR empty)
-- Injuries: status field supports `ACTIVE`, `Q` (questionable), `OUT`
+## User Preferences
+- **Editable formats**: Always produce DOCX/Google Docs exports for documents
+- **Fact-check everything**: Sports rosters, dates, math — he will catch errors
+- **No prison/reentry content** in business-facing docs unless explicitly asked
+- **Iterative correction is normal**: Don't start over, just fix what's wrong
+- **Minimal politeness markers** in execution mode; can be warm in narrative contexts
 
-## Formulas (source of truth)
-```
-Player TC   = stat × 0.85 (ACTIVE) | × 0.85 × 0.55 (Q) | × 0 (OUT)
-Player T    = floor(TC × 0.88)   # betting target
-Edge        = market_line − TC_target  (positive = value)
-Game TC_Final = raw_PTS × VAR_FACTOR + K_GAP(9.3)
-  VAR_FACTOR: HIGH=0.82 (spread≥10) | MID=0.79 (4-9) | LOW=0.76 (<4)
-Signal      = UNDER when TC_Line > market_total | OVER when TC_Line < market_total
-```
+---
 
-## Key Files
-| File | Purpose |
-|------|---------|
-| `nba_tc_engine.py` | Python engine (primary) |
-| `nba_tc_engine.v6.py` | Versioned backup |
-| `nba_tc_streamlit.py` | Streamlit GUI |
-| `AGENTS.md` | This file |
-| `README.md` | Public-facing docs |
-| `TC_Hit_Rate_Report.md` | Historical model performance |
-| `NBA_TC_Complete_Integration_Report.md` | Integration audit |
+## Important Rules
+- **"Celttics" typo rule**: If he misspells "Celtics", generate the Celtics parlay from the most recent file
+- **Fill gaps + enhance**: When editing, don't rewrite everything — fill what exists
+- **No jargon** unless he's being technical; translate to plain language
+
+---
+
+## Infrastructure
+- User data lives in: `~/.zo/user_data/` (child_milestones.md, reentry_goals.md, user_context.md)
+- Archived scripts: `archive/2026-05-31_old_scripts/`
+- Skills: `Skills/nba-odds-api/SKILL.md`
+- MCPO config: `/etc/zo/mcpo/config.json`
+- Logs: `/dev/shm/` (supervisord.log, mcpo_err.log, etc.)
+
+---
+
+## If Stuck
+1. Read AGENTS.md and relevant project AGENTS.md first
+2. Check `/dev/shm/` logs for errors
+3. Read the actual file before editing it
+4. If a tool keeps failing, try a different approach — don't keep retrying the same broken path

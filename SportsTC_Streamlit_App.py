@@ -171,17 +171,21 @@ with st.sidebar:
     st.caption("`Edge = TC − Line`")
     st.divider()
     st.markdown("**DK Game Totals**")
-    st.caption("Stored *separately*. TC does NOT apply to game totals — player props only.")
+    st.caption("TC does NOT apply to game totals — TC is for player props ONLY.")
+    st.caption("DK totals stored independently as market reference lines.")
     st.divider()
-    dk_total_override  = st.number_input("DK Total Override",  value=0.0, step=0.5, format="%.1f")
-    dk_spread_override = st.number_input("DK Spread Override", value=0.0, step=0.5, format="%.1f")
+    dk_total_override  = st.number_input("DK Total Override",  value=0.0, step=0.5, format="%.1f",
+                                help="Override the API DK total. 0 = use API value.")
+    dk_spread_override = st.number_input("DK Spread Override", value=0.0, step=0.5, format="%.1f",
+                                help="Override the API DK spread. 0 = use API value.")
     st.divider()
     st.caption(f"Session: {datetime.now().strftime('%H:%M:%S')}")
 
 # ── MAIN TABS ────────────────────────────────────────────────────────────────
-tab_proj, tab_live, tab_backtest, tab_slate = st.tabs([
+tab_proj, tab_live, tab_injury, tab_backtest, tab_slate = st.tabs([
     "📊  Project Game",
     "📡  Live Stats",
+    "🏥  Injury Report",
     "📈  Backtest",
     "📋  Slate",
 ])
@@ -217,17 +221,21 @@ with tab_proj:
             with m4: st.metric("Signal", signal)
             st.caption(f"{data.get('sport','')} · {data.get('away_team','')} @ {data.get('home_team','')} · {data.get('source','')}")
 
-            # Odds + DK card
+            # Odds + DK card — sidebar overrides wired here
+            effective_dk_total = dk_total_override if dk_total_override != 0.0 else (data.get("dk_total") or "—")
+            effective_spread    = dk_spread_override if dk_spread_override != 0.0 else (odds.get("spread") or "—")
+            override_active     = (dk_total_override != 0.0 or dk_spread_override != 0.0)
+
             o1, o2, o3, o4 = st.columns(4)
             with o1:
                 ml = odds.get("away_ml") or odds.get("home_ml") or "—"
                 st.metric("ML", f"{data.get('away_team','AWAY')} {ml}")
             with o2:
-                sp = odds.get("spread") or "—"
-                st.metric("Spread", sp)
+                badge = " OVERRIDE" if dk_spread_override != 0.0 else ""
+                st.metric("Spread", f"{effective_spread}{badge}")
             with o3:
-                dk = data.get("dk_total") or "—"
-                st.metric("DK Total", dk)
+                badge = " OVERRIDE" if dk_total_override != 0.0 else ""
+                st.metric("DK Total", f"{effective_dk_total}{badge}" if override_active else effective_dk_total)
             with o4:
                 st.metric("TC Line", fmt(tc_line))
 
@@ -310,6 +318,14 @@ with tab_proj:
 # ─────────────────────────────────────────────────────────────────────────────
 with tab_live:
     sport_live = st.selectbox("Sport", SPORTS, key="live_sport")
+    auto_refresh = st.checkbox("🔄 Auto-refresh every 60s", value=False, key="auto_refresh_live")
+    if auto_refresh:
+        try:
+            from streamlit_autorefresh import st_autorefresh
+            count = st_autorefresh(interval=60_000, limit=None, key="live_refresh_counter")
+            st.caption(f"Auto-refresh #{count} · {datetime.now().strftime('%H:%M:%S')}")
+        except ImportError:
+            st.warning("Install streamlit-autorefresh for auto-refresh: pip install streamlit-autorefresh")
     if st.button("🔄  Refresh Live Stats", use_container_width=True):
         st.session_state["refresh_live"] = True
 
@@ -346,6 +362,82 @@ with tab_live:
                     st.caption("No player box-score data for this game yet.")
     else:
         st.info("Click **Refresh Live Stats** to load today's games.")
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# TAB 3 — INJURY REPORT
+# ─────────────────────────────────────────────────────────────────────────────
+with tab_injury:
+    st.markdown("### 🏥  Team Injury Report")
+    st.caption("Filters all players on a roster by injury/status designation. TC impact shown — OUT players contribute 0 to projections.")
+
+    # Team selectors — pick any two teams to compare
+    inj_sport = st.selectbox("Sport", SPORTS, key="inj_sport")
+    inj_away  = st.selectbox("Away Team", TEAM_MAP.get(inj_sport, NBA_TEAMS), key="inj_away")
+    inj_home  = st.selectbox("Home Team", TEAM_MAP.get(inj_sport, NBA_TEAMS), key="inj_home",
+                             index=(TEAM_MAP.get(inj_sport, NBA_TEAMS).index(inj_away) + 1) % len(TEAM_MAP.get(inj_sport, NBA_TEAMS)))
+
+    # Status filter
+    inj_filter = st.pills("Filter", ["All", "OUT", "Questionable", "Active"], default="All", selection_mode="single")
+
+    if st.button("🔍  Load Injury Report", use_container_width=True):
+        with st.spinner(f"Fetching {inj_away} @ {inj_home} roster..."):
+            inj_data = call_api(inj_away, inj_home, inj_sport)
+
+        if "error" in inj_data:
+            st.error(inj_data["error"])
+        elif inj_data:
+            def make_injury_rows(side_data, team_label):
+                rows = []
+                for p in side_data.get("all", {}).get("players", []):
+                    status = str(p.get("status", "ACTIVE")).upper()
+                    tc     = float(p.get("tc_tot", 0) or 0)
+                    sf     = status_factor(p.get("status", ""))
+                    tc_adj = tc * sf
+                    if inj_filter == "OUT" and status != "OUT":
+                        continue
+                    if inj_filter == "Questionable" and "Q" not in status and status != "DOUBTFUL":
+                        continue
+                    if inj_filter == "Active" and status not in ("ACTIVE", ""):
+                        continue
+                    badge = "🔴 OUT" if status == "OUT" else "🟡 Q" if "Q" in status or status == "DOUBTFUL" else "🟢 ACTIVE"
+                    rows.append({
+                        "Team":      team_label,
+                        "Player":    p.get("name", "—"),
+                        "Pos":       p.get("pos", "—"),
+                        "Status":    badge,
+                        "TC Raw":    round(tc, 1),
+                        "TC Adj":    round(tc_adj, 1),
+                        "Impact":    "❌ None" if status == "OUT" else "⚠️ Reduced" if tc_adj < tc else "✅ Full",
+                    })
+                return rows
+
+            away_rows = make_injury_rows(inj_data.get("away", {}), inj_data.get("away_team", inj_away))
+            home_rows = make_injury_rows(inj_data.get("home", {}), inj_data.get("home_team", inj_home))
+            all_rows  = away_rows + home_rows
+
+            # Summary metrics
+            out_count  = sum(1 for r in all_rows if "OUT" in r["Status"])
+            q_count    = sum(1 for r in all_rows if "Q" in r["Status"])
+            tc_loss    = sum(r["TC Raw"] - r["TC Adj"] for r in all_rows)
+
+            m1, m2, m3 = st.columns(3)
+            with m1: st.metric("OUT Players", out_count)
+            with m2: st.metric("Questionable", q_count)
+            with m3: st.metric("TC Points Lost", f"−{tc_loss:.1f}")
+
+            if all_rows:
+                st.dataframe(all_rows, use_container_width=True, hide_index=True)
+            else:
+                st.success("No players match the current filter.")
+
+            # Injury notes from API
+            for team_key, team_label in [("away", inj_data.get("away_team", "")), ("home", inj_data.get("home_team", ""))]:
+                inj_notes = inj_data.get(team_key, {}).get("injuries", [])
+                if inj_notes:
+                    st.markdown(f"**{team_label} injury notes:** {', '.join(inj_notes)}")
+        else:
+            st.warning("No data returned. Try a different team pair.")
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -398,7 +490,7 @@ with tab_backtest:
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# TAB 4 — SLATE
+# TAB 5 — SLATE
 # ─────────────────────────────────────────────────────────────────────────────
 with tab_slate:
     sport_slate = st.selectbox("Sport", SPORTS, key="slate_sport")

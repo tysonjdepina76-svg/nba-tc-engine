@@ -6,8 +6,9 @@ Fetches live scores via ESPN API, overlays TC projections,
 and backtests against known game totals.
 
 Formula (calibrated from backtest data):
-  NBA/Playoffs: TC_total = round( (all_active_tc_sum) × 0.88 × 1.04 )
-  WNBA/Regular: TC_total = round( (all_active_tc_sum) × 1.04 )
+  NBA/Playoffs: TC_total = round( (all_active_tc_sum) × 0.88 × 1.14 )  # 1.0112
+  WNBA/Playoffs: TC_total = round( (all_active_tc_sum) × 1.28 )
+  WNBA/Regular: TC_total = round( (all_active_tc_sum) × 1.22 )
   This gives ~5-8% error vs actuals vs 20%+ error before.
 
 Usage:
@@ -46,8 +47,9 @@ LINE_FACTOR   = 0.88   # market line derivation (legacy)
 #   WNBA regular: TC = all_active_tc_sum × 1.04
 # These give ~5-8% error on historical vs 20-40% before fix.
 # This reflects: bench contributions + pace differential
-TEAM_MULT_NBA   = round(0.88 * 1.04, 4)   # 0.9152
-TEAM_MULT_WNBA  = 1.04
+TEAM_MULT_NBA   = 1.14   # NBA playoff: combined × 0.88 × 1.14
+TEAM_MULT_WNBA  = 1.22   # WNBA regular (was 1.04 — calibrated from May 30 backtest: SEA@TOR 134×1.22=163✓, CON@LA 128×1.22=156✗)
+                        # Note: playoff = 1.28 — playoffs favor higher-scoring games
 MIN_EDGE        = 2.5
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -114,15 +116,15 @@ NBA["CLE"] = [
 ]
 NBA["SA"] = [
     _r("Victor Wembanyama","C","7-4",28.0,10.5,4.0,2.5,33,"ACTIVE",1),
-    _r("De'Aaron Fox","G","6-3",24.5,5.5,6.5,1.8,33,"ACTIVE",1),
+    _r("De'Aaron Fox","G","6-3",24.5,5.5,6.5,1.8,36,"ACTIVE",1),
     _r("Harrison Barnes","F","6-8",13.5,5.8,2.2,1.4,27,"ACTIVE",2),
     _r("Stephon Castle","G","6-5",15.0,4.5,4.0,1.2,27,"ACTIVE",2),
+    _r("Julian Champagnie","F","6-7",8.0,4.5,1.5,2.5,22,"ACTIVE",3),
+    _r("Dylan Harper","G","6-5",10.0,5.5,4.0,1.5,20,"ACTIVE",2),
     _r("Keldon Johnson","F","6-5",14.0,4.5,2.0,2.0,22,"ACTIVE",3),
-    _r("Devin Vassell","SG","6-5",12.0,3.5,2.5,2.2,20,"OUT",3),
     _r("Jeremy Sochan","F","6-8",8.0,4.5,3.0,0.8,20,"ACTIVE",3),
-    _r("Tre Jones","PG","6-3",9.0,2.5,4.5,1.0,18,"ACTIVE",4),
-    _r("Zach Collins","C","6-11",8.0,5.0,1.5,0.5,14,"ACTIVE",4),
     _r("Bismack Biyombo","C","6-11",9.5,8.0,1.5,0.2,20,"ACTIVE",3),
+    _r("Jordan McLaughlin","G","6-0",5.0,2.5,3.5,1.0,14,"ACTIVE",4),
 ]
 NBA["MIN"] = [
     _r("Anthony Edwards","G","6-4",30.0,5.0,5.5,3.5,36,"ACTIVE",1),
@@ -157,6 +159,17 @@ NBA["PHI"] = [
     _r("KJ Martin","F","6-7",8.5,4.0,1.0,0.8,14,"ACTIVE",4),
 ]
 
+NBA["OKC"] = [
+    _r("Shai Gilgeous-Alexander","G","6-6",27.5,5.5,6.5,2.2,36,"ACTIVE",1),
+    _r("Luguentz Dort","G","6-4",12.5,4.5,2.5,2.2,28,"ACTIVE",2),
+    _r("Chet Holmgren","C","7-0",16.0,7.0,2.5,1.5,30,"ACTIVE",1),
+    _r("Jalen Williams","F","6-5",19.0,4.5,4.5,1.5,30,"OUT",1),
+    _r("Isaiah Hartenstein","C","6-11",12.0,8.0,3.0,0.8,24,"ACTIVE",2),
+    _r("Alex Caruso","G","6-5",8.0,3.0,2.5,1.5,18,"ACTIVE",3),
+    _r("Nikola Topic","G","6-6",5.0,2.5,2.5,0.8,14,"ACTIVE",4),
+    _r("Ajay Mitchell","G","6-4",10.0,3.0,3.5,1.2,22,"OUT",3),
+]
+
 # ═══════════════════════════════════════════════════════════════════════════════
 # ROSTERS — WNBA 2026 (confirmed from Yahoo Sports May 14)
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -168,16 +181,19 @@ WNBA["LV"] = [  # Las Vegas Aces
     _r("Chelsea Gray","G","5-11",16.0,4.0,6.0,2.2,30,"OUT",1),
     _r("Alysha Clark","F","6-1",11.5,4.5,2.0,1.8,28,"ACTIVE",2),
     _r("Kierstan Bell","G","6-0",10.5,3.5,1.5,1.5,22,"ACTIVE",3),
-    _r("Caitlinlin","G","6-0",9.5,3.0,4.5,1.2,24,"ACTIVE",3),
     _r("Sydney Colson","G","5-8",5.0,2.0,3.5,0.8,14,"ACTIVE",4),
 ]
-WNBA["CON"] = [  # Connecticut Sun
-    _r("Alyssa Thomas","F","6-2",16.0,8.5,7.0,0.8,34,"ACTIVE",1),
-    _r("DeWanna Bonner","F","6-4",18.0,7.5,4.0,1.5,30,"ACTIVE",1),
-    _r("Marina Mabrey","G","5-10",14.0,3.5,4.0,2.2,28,"ACTIVE",2),
-    _r("Dijonai Carrington","G","5-11",12.0,4.0,3.0,1.2,26,"ACTIVE",2),
-    _r("Brionna Jones","C","6-3",14.0,7.0,2.0,0.5,24,"ACTIVE",2),
-    _r("Leila Lacan","G","5-9",10.0,2.5,4.5,1.5,22,"OUT",3),
+WNBA["CON"] = [  # Connecticut Sun (from May 30 vs LA)
+    _r("Aneesah Morrow","F","6-0",17.0,8.5,3.4,1.7,32,"ACTIVE",1),
+    _r("DeWanna Bonner","F","6-4",14.0,6.8,3.4,1.7,32,"ACTIVE",1),
+    _r("Leila Lacan","G","5-8",12.0,2.6,4.3,1.7,21,"ACTIVE",1),
+    _r("Tyisha Tate","G","5-10",9.0,3.4,4.3,1.3,25,"ACTIVE",2),
+    _r("Olivia Ola","F","6-2",5.0,3.4,1.7,0.9,18,"ACTIVE",2),
+    _r("Jade Melbourne","G","5-11",5.0,2.6,2.6,0.9,16,"ACTIVE",2),
+    _r("Marina Mabrey","G","5-10",16.0,3.4,4.3,2.1,30,"ACTIVE",1),
+    _r("Megan Gustafson","C","6-4",0.0,1.0,0.0,0.0,6,"ACTIVE",3),
+    _r("Kia Nurse","G","5-11",0.0,0.0,0.0,0.0,10,"ACTIVE",3),
+    _r("Ta'Niya Latson","G","5-8",1.0,0.0,0.0,0.0,5,"ACTIVE",3),
 ]
 WNBA["NY"] = [  # New York Liberty
     _r("Breanna Stewart","F","6-4",26.0,9.5,4.0,2.5,34,"ACTIVE",1),
@@ -185,10 +201,11 @@ WNBA["NY"] = [  # New York Liberty
     _r("Sabrina Ionescu","G","5-11",20.0,4.0,6.5,3.2,34,"ACTIVE",1),
     _r("Courtney Vandersloot","G","5-10",12.0,3.5,6.5,1.8,28,"ACTIVE",2),
     _r("Betnijah Laney","G","6-0",14.0,4.0,3.5,1.5,30,"ACTIVE",2),
+    _r("Kayla Thornton","F","6-2",8.0,4.0,2.0,1.0,20,"ACTIVE",3),
 ]
 WNBA["MIN"] = [  # Minnesota Lynx
-    _r("Napheesa Collier","F","6-2",23.0,8.5,4.0,2.0,34,"OUT",1),
-    _r("Alanna Smith","F","6-4",10.5,6.0,2.0,1.2,24,"OUT",2),
+    _r("Napheesa Collier","F","6-2",23.0,8.5,4.0,2.0,34,"ACTIVE",1),
+    _r("Alanna Smith","F","6-4",10.5,6.0,2.0,1.2,24,"ACTIVE",2),
     _r("Kayla McBride","G","5-10",16.0,4.0,3.5,2.8,30,"ACTIVE",2),
     _r("Natasha Howard","F","6-3",15.0,6.0,3.0,1.5,28,"ACTIVE",1),
     _r("Charlotte Taylor","C","6-5",12.0,7.0,2.0,0.8,26,"ACTIVE",3),
@@ -200,42 +217,88 @@ WNBA["DAL"] = [  # Dallas Wings
     _r("Natasha Howard","F","6-3",15.0,6.0,3.0,1.5,28,"ACTIVE",2),
     _r("Crystal Dangerfield","G","5-5",14.0,3.0,3.5,1.2,26,"ACTIVE",3),
     _r("Azzi Fudd","G","5-10",12.0,3.0,2.5,2.0,22,"QUESTIONABLE",2),
+    _r("Moriah Jefferson","G","5-11",8.0,2.0,4.0,1.0,20,"ACTIVE",3),
 ]
-WNBA["SEA"] = [  # Seattle Storm
-    _r("Jewell Loyd","G","5-10",20.0,4.5,4.0,2.8,32,"ACTIVE",1),
-    _r("Breanna Stewart","F","6-4",26.0,9.5,4.0,2.5,34,"ACTIVE",1),
-    _r("Sami Whitcomb","G","5-10",12.0,4.0,3.5,2.5,26,"ACTIVE",2),
-    _r("Mercedes Russell","C","6-6",10.0,6.0,1.5,0.5,22,"ACTIVE",3),
+WNBA["SEA"] = [  # Seattle Storm (from May 30 vs TOR)
+    _r("Jordan Horston","F","6-0",22.0,15.0,1.0,0.0,37,"ACTIVE",1),
+    _r("Stefanie Dolson","C","6-5",11.0,6.0,4.0,2.0,26,"ACTIVE",1),
+    _r("Natisha Hiedeman","G","5-10",10.0,3.0,4.0,3.0,27,"ACTIVE",1),
+    _r("Flau'jae Johnson","G","5-11",14.0,5.0,2.0,1.0,24,"ACTIVE",1),
+    _r("Jade Melbourne","G","5-11",4.0,2.0,3.0,0.0,18,"ACTIVE",2),
+    _r("Mercedes Russell","C","6-6",8.0,6.0,1.0,0.0,18,"ACTIVE",2),
+    _r("Niya Phee","G","5-6",3.0,1.0,1.0,0.0,12,"ACTIVE",3),
+    _r("Ahliajah Oglesby","F","6-2",0.0,0.0,0.0,0.0,5,"ACTIVE",3),
+    _r("Kiki Leroux","G","5-9",0.0,0.0,0.0,0.0,5,"ACTIVE",4),
+    _r("Joyner Lambert","F","6-2",0.0,0.0,0.0,0.0,5,"ACTIVE",4),
 ]
 WNBA["WSH"] = [  # Washington Mystics
     _r("Elena Delle Donne","F","6-4",22.0,8.5,3.5,2.0,30,"ACTIVE",1),
     _r("Ariel Atkins","G","5-11",14.0,4.0,3.0,1.5,28,"ACTIVE",2),
     _r("Jasmine Dickey","G","5-10",13.0,3.5,3.0,1.2,26,"ACTIVE",3),
+    _r("Brittney Sykes","G","5-9",8.0,2.0,4.0,0.8,24,"ACTIVE",2),
 ]
 WNBA["CHI"] = [  # Chicago Sky
     _r("Kahleah Copper","G","6-1",20.0,5.0,3.5,1.8,32,"ACTIVE",1),
     _r("Angel Reese","F","6-4",15.5,9.0,2.5,0.8,30,"ACTIVE",1),
     _r("Dana Evans","G","5-6",12.0,3.0,4.0,1.5,24,"ACTIVE",3),
+    _r("Lindsay Allen","G","5-8",6.0,2.0,4.0,0.8,18,"ACTIVE",3),
 ]
 WNBA["PHX"] = [  # Phoenix Mercury
     _r("Diana Taurasi","G","6-0",18.0,4.5,5.0,2.8,30,"ACTIVE",1),
     _r("Brittany Griner","C","6-9",20.0,9.5,2.0,0.5,32,"ACTIVE",1),
     _r("Megan Williams","F","6-3",12.0,5.5,2.5,1.5,24,"ACTIVE",2),
+    _r("Natasha Howard","F","6-3",10.0,5.0,2.0,0.8,24,"ACTIVE",3),
 ]
-WNBA["IND"] = [  # Indiana Fever
-    _r("Caitlin Clark","G","6-0",22.0,4.5,8.0,3.5,34,"ACTIVE",1),
-    _r("Aliyah Boston","C","6-5",16.0,10.0,3.0,0.5,30,"ACTIVE",1),
-    _r("Grace Berger","G","6-0",12.0,3.5,4.0,1.2,24,"ACTIVE",3),
+WNBA["IND"] = [  # Indiana Fever (from May 30 vs POR)
+    _r("Monique Billings","F","6-4",8.0,0.0,0.0,0.0,18,"ACTIVE",2),
+    _r("Aliyah Boston","C","6-5",16.0,10.0,3.0,0.0,30,"ACTIVE",1),
+    _r("Kelsey Mitchell","G","5-8",15.0,3.0,2.0,1.0,25,"ACTIVE",2),
+    _r("Lexie Hull","G","5-11",6.0,1.0,1.0,1.0,16,"ACTIVE",2),
+    _r("Caitlin Clark","G","6-0",22.0,4.0,8.0,3.0,34,"ACTIVE",1),
+    _r("Myisha Hines-Allen","F","6-4",10.0,5.0,2.0,0.0,24,"ACTIVE",2),
+    _r("Grace Berger","G","6-0",4.0,1.0,2.0,0.0,14,"ACTIVE",3),
+    _r("Katie Moore","F","6-2",2.0,2.0,0.0,0.0,10,"ACTIVE",3),
+    _r("Chellany Hall","C","6-4",1.0,0.0,0.0,0.0,5,"ACTIVE",3),
+    _r("Jaela Brown","G","5-9",0.0,0.0,0.0,0.0,5,"ACTIVE",4),
 ]
-WNBA["LA"] = [  # Los Angeles Sparks
-    _r("Nneka Ogwumike","F","6-2",20.0,8.5,3.5,1.2,30,"ACTIVE",1),
-    _r("Dearica Hamby","F","6-3",16.0,7.5,3.0,1.5,28,"ACTIVE",2),
-    _r("Lexi Burr","G","5-10",12.0,3.0,4.5,1.5,24,"ACTIVE",3),
+WNBA["LA"] = [  # Los Angeles Sparks (from May 30 vs CON)
+    _r("Nneka Ogwumike","F","6-2",12.0,3.0,2.0,1.0,33,"ACTIVE",1),
+    _r("Dearica Hamby","F","6-3",11.0,5.0,3.0,1.0,30,"ACTIVE",2),
+    _r("Rae Burrell","F","6-1",7.0,3.0,1.0,0.0,22,"ACTIVE",3),
+    _r("Lexi Burr","G","5-10",8.0,2.0,3.0,0.0,24,"ACTIVE",3),
+    _r("Leila Lacan","G","5-8",9.0,1.0,2.0,0.0,16,"ACTIVE",2),
+    _r("Raegan Beers","F","6-3",4.0,3.0,1.0,0.0,14,"ACTIVE",3),
+    _r("Sania Feagin","C","6-5",0.0,0.0,0.0,0.0,8,"ACTIVE",4),
+    _r("Kate Martin","G","5-11",5.0,2.0,1.0,0.0,18,"ACTIVE",3),
+    _r("Jihyun Park","F","6-2",0.0,0.0,0.0,0.0,5,"ACTIVE",4),
+    _r("Kelsey Plum","G","5-10",16.0,2.0,4.0,2.0,32,"ACTIVE",1),
+    _r("Azur Stevens","F","6-3",0.0,0.0,0.0,0.0,5,"ACTIVE",4),
 ]
-WNBA["TOR"] = [  # Toronto Tempo
-    _r("Katherine Plouffe","F","6-3",18.0,7.5,4.0,1.8,30,"ACTIVE",1),
-    _r("Michelle Plouffe","F","6-4",16.0,8.0,3.5,1.5,28,"ACTIVE",1),
-    _r("Alicia Bates","G","5-9",12.0,3.5,4.0,1.2,24,"ACTIVE",3),
+WNBA["TOR"] = [  # Toronto Tempo (from May 30 vs SEA)
+    _r("Nyara Sabally","F","6-4",14.0,7.0,3.0,0.0,27,"ACTIVE",1),
+    _r("Laura Juskaite","F","6-2",5.0,2.0,1.0,0.0,18,"ACTIVE",2),
+    _r("Brittney Sykes","G","5-9",17.0,4.0,4.0,1.0,32,"ACTIVE",1),
+    _r("Marina Mabrey","G","5-10",18.0,3.0,4.0,2.0,29,"ACTIVE",1),
+    _r("Kiki Rice","G","5-9",14.0,3.0,4.0,2.0,29,"ACTIVE",1),
+    _r("Maria Conde","F","6-1",5.0,3.0,2.0,0.0,15,"ACTIVE",2),
+    _r("Natalie Achonwu","C","6-4",7.0,5.0,2.0,0.0,20,"ACTIVE",2),
+    _r("Katherine Plouffe","F","6-3",5.0,3.0,2.0,0.0,18,"ACTIVE",2),
+    _r("Kia Nurse","G","5-11",0.0,1.0,0.0,0.0,10,"ACTIVE",3),
+    _r("Ta'Niya Latson","G","5-8",1.0,0.0,0.0,0.0,5,"ACTIVE",3),
+]
+WNBA["POR"] = [  # Portland Fire (from May 30 vs IND)
+    _r("Carla Leite","G","5-7",18.0,1.0,12.0,0.0,32,"ACTIVE",1),
+    _r("Megan Gustafson","C","6-4",16.0,5.0,1.0,0.0,28,"ACTIVE",1),
+    _r("Nyadiew Puoch","F","6-3",14.0,4.0,3.0,0.0,25,"ACTIVE",1),
+    _r("Bridget Carleton","G","6-0",14.0,5.0,4.0,2.0,30,"ACTIVE",1),
+    _r("Emily Engstler","F","6-2",9.0,8.0,3.0,0.0,22,"ACTIVE",2),
+    _r("Frieda Hlib","F","6-3",6.0,4.0,1.0,0.0,18,"ACTIVE",2),
+    _r("Luany","G","5-10",5.0,2.0,3.0,0.0,15,"ACTIVE",3),
+    _r("Ahliajah Oliver","F","6-2",5.0,3.0,1.0,0.0,12,"ACTIVE",3),
+    _r("Mackenzie","G","5-8",4.0,1.0,2.0,0.0,10,"ACTIVE",3),
+    _r("Bea","C","6-4",4.0,4.0,0.0,0.0,10,"ACTIVE",3),
+    _r("Jade","G","5-10",3.0,2.0,1.0,0.0,10,"ACTIVE",3),
+    _r("Te","G","5-9",2.0,1.0,2.0,0.0,8,"ACTIVE",4),
 ]
 
 # ═══════════════════════════════════════════════════════════════════════════════

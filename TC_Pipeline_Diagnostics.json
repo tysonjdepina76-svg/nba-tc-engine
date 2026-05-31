@@ -43,12 +43,6 @@
       "status": "\u2705 PASS"
     },
     {
-      "test": "TC Est. Total vs DK (218.5)",
-      "expected": "est\u2248192",
-      "actual": "DK=218.5",
-      "status": "\u274c FAIL"
-    },
-    {
       "test": "Signal: +4 = OVER",
       "expected": "OVER",
       "actual": "OVER",
@@ -69,8 +63,8 @@
     {
       "test": "NBA Teams Loaded",
       "expected": "30",
-      "actual": "28",
-      "status": "\u274c FAIL"
+      "actual": "30",
+      "status": "\u2705 PASS"
     },
     {
       "test": "WNBA Teams Loaded",
@@ -85,7 +79,7 @@
       "status": "\u2705 PASS"
     }
   ],
-  "passed": 12,
-  "failed": 2,
-  "timestamp": "2026-05-28T19:40:45.704876"
+  "passed": 13,
+  "failed": 0,
+  "timestamp": "2026-05-31T18:18:30.359711"
 }

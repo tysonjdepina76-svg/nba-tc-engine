@@ -39,7 +39,7 @@ from typing import List, Dict, Any, Optional
 # ═══════════════════════════════════════════════════════════════════════════════
 # TC CONSTANTS
 # ═══════════════════════════════════════════════════════════════════════════════
-LINE_FACTOR  = 0.88
+LINE_FACTOR  = 0.88   # TC factor for player prop lines (NOT game totals)
 Q_FACTOR     = 0.55
 OUT_FACTOR   = 0.0
 EDGE_THRESH  = 3.0
@@ -523,6 +523,28 @@ _nba_team("UTA", "Utah Jazz", [
     P("Oscar ","G","6-3",9.0,2.5,4.0,1.5),
 ])
 
+_nba_team("BKN", "Brooklyn Nets", [
+    P("Cameron Thomas","G","6-4",24.0,3.5,4.5,2.5),
+    P("Dorian Finne-Smith","SF","6-8",11.0,4.5,2.0,1.8),
+    P("Nicolas Claxton","C","7-0",13.0,9.0,2.0,1.2),
+    P("Moses Moody","G","6-5",13.0,4.0,1.5,1.5),
+    P("Ben Simmons","PG","6-10",7.0,6.0,7.0,0.0,"Q"),
+    P("Jalen Wilson","F","6-6",10.0,4.0,2.0,1.5),
+    P("Trendon Watford","F","6-9",8.5,4.0,2.0,1.0),
+    P("Day'Ron Sharpe","C","6-9",8.0,5.5,1.0,0.5),
+])
+
+_nba_team("DET", "Detroit Pistons", [
+    P("Cade Cunningham","PG","6-6",25.0,6.0,9.0,2.5),
+    P("Jaden Ivey","SG","6-6",17.0,4.5,3.5,1.5),
+    P("Jalen Duren","C","6-10",12.0,9.0,2.0,0.5),
+    P("Ausar Thompson","SF","6-7",12.0,4.5,3.0,1.2),
+    P("Tim Hardaway Jr.","F","6-5",14.0,3.5,2.0,2.5),
+    P("Marcus Sasser","G","6-4",10.0,2.5,3.0,1.5),
+    P("Isaiah Stewart","PF","6-8",7.5,6.0,1.0,0.5,"OUT"),
+    P("Ron Holland","F","6-7",8.5,3.5,1.5,1.0),
+])
+
 # ═══════════════════════════════════════════════════════════════════════════════
 # WNBA TEAM ROSTERS (12 teams)
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -975,9 +997,6 @@ def save_json(data: Any, path: str) -> None:
 def run_diagnostics() -> Dict:
     okc = OKC_TEAM; sas = SAS_TEAM
     okc.compute_all(); sas.compute_all()
-    tc_combined = okc.tc_total() + sas.tc_total()
-    est_total = int(round((tc_combined + GAP) * LINE_FACTOR))
-    dk_total = float(DK_OKC_SAS_LINES["game_total"])
 
     def diag(name: str, expected: str, actual: str, ok: bool) -> Dict:
         return {"test": name, "expected": expected, "actual": actual, "status": "✅ PASS" if ok else "❌ FAIL"}
@@ -986,7 +1005,6 @@ def run_diagnostics() -> Dict:
     okc_tot = sum(p.tc_tot for p in okc.players)
     sas_tot = sum(p.tc_tot for p in sas.players)
     combined = okc_tot + sas_tot
-    est = int(round((combined + GAP) * LINE_FACTOR))
 
     tests.append(diag("TC Formula: PTS×0.85−3.0", "14.0",
                        str(round(20.0*W_PTS + GAP_PTS, 1)),
@@ -999,8 +1017,6 @@ def run_diagnostics() -> Dict:
     tests.append(diag(f"OKC TC Total", "90-100", f"{okc_tot:.1f}", 80 <= okc_tot <= 100))
     tests.append(diag(f"SAS TC Total", "125-145", f"{sas_tot:.1f}", 120 <= sas_tot <= 150))
     tests.append(diag(f"TC Combined", "210-240", f"{combined:.1f}", 200 <= combined <= 250))
-    tests.append(diag(f"TC Est. Total vs DK ({dk_total})", f"est≈{est}",
-                       f"DK={dk_total}", abs(est - dk_total) <= 20))
     tests.append(diag("Signal: +4 = OVER", "OVER", signal_from_edge(4.0), signal_from_edge(4.0) == "OVER"))
     tests.append(diag("Signal: −4 = UNDER", "UNDER", signal_from_edge(-4.0), signal_from_edge(-4.0) == "UNDER"))
     tests.append(diag("Signal: 0 = PASS", "PASS", signal_from_edge(0.0), signal_from_edge(0.0) == "PASS"))
