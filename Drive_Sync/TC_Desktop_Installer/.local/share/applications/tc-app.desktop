@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=TC Triple Conservative
+Comment=Sports TC betting app (NBA, WNBA, NCAAB, MLB, NHL)
+Exec=bash -c "cd $(dirname %k) && ./run_tc_app.sh"
+Icon=applications-games
+Type=Application
+Categories=Utility;Sports;
+Terminal=false

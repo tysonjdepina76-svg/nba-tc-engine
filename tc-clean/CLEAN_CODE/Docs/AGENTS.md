@@ -1,0 +1,94 @@
+# AGENTS.md — TC Workspace (Clean, Integrated)
+
+## Overview
+Single source of truth for the **Triple Conservative (TC) sports betting system**. NBA + WNBA + NCAAB + MLB + NHL.
+
+## Components
+
+### 1. Daily Pick Capture (`Projects/daily_picks.py`)
+- **Path:** `/home/workspace/Projects/daily_picks.py`
+- **Run:** `python3 daily_picks.py NBA WNBA`
+- **Output:**
+  - `/home/workspace/Daily_Log/YYYY-MM-DD/picks.csv` (47 picks today)
+  - `/home/workspace/Daily_Log/YYYY-MM-DD/proj_SPORT_MATCHUP.json` (full rosters)
+  - `/home/workspace/Daily_Log/last_run.json` (summary)
+- **Today's run:** 3 games, 47 picks, signals: 1 OVER + 2 UNDER
+
+### 2. Streamlit Dashboard (`Dashboard/SportsTC_Streamlit_App.py`)
+- **Path:** `/home/workspace/SportsTC_Streamlit_App.py`
+- **Run:** `streamlit run SportsTC_Streamlit_App.py --server.port 8510`
+- **URL:** http://localhost:8510
+- **6 tabs:** Project · Live Stats · Injury · Backtest · Parlay · Slate (auto-populated)
+- **Slate tab:** pulls live ESPN data, auto-projects TC for each game, shows edge vs DK total
+
+### 3. API Endpoint (`/api/tc`)
+- **Path:** Zo Space route (TypeScript/Hono)
+- **URL:** https://true.zo.space/api/tc
+- **Modes:** project (default), live-stats, historical
+- **Includes:** `valid_props` array with player prop projections ready to backtest
+
+### 4. TC Engine (`Engine/nba_tc_pipeline.py`)
+- **Path:** `/home/workspace/tc-clean/CLEAN_CODE/Engine/nba_tc_pipeline.py`
+- **Multi-sport support:** NBA + WNBA + NCAAB + MLB + NHL
+- **Rosters:** hardcoded for all 30 NBA teams + 12 WNBA teams
+
+### 5. Formulas
+```
+Player TC   = stat × 0.85 (ACTIVE) | × 0.85 × 0.55 (Q) | × 0 (OUT)
+Player T    = floor(TC × 0.88)   # betting target
+Edge        = TC − market_line  (positive = value)
+Signal      = OVER when diff > 2 | UNDER when diff < -2 | PASS otherwise
+```
+
+### 6. Chromebook Desktop (`TC_Desktop_Installer/`)
+- Run TC app locally on Chromebook via Crostini Linux
+- `bash run_tc_app.sh` → opens browser to localhost:8501
+
+### 7. Parlay Builder (2026-06-02 update)
+
+## Workflow
+1. **Daily 9 AM:** automation runs `daily_picks.py`, captures picks, emails summary
+2. **Pre-game:** open dashboard, review slate tab, click any game to load into Project
+3. **Live:** track picks, update results in `picks.csv` after games
+4. **Weekly:** review backtest tab to find best/worst stats, adjust thresholds
+
+## Daily Log Structure
+```
+/home/workspace/Daily_Log/
+├── last_run.json
+└── YYYY-MM-DD/
+    ├── picks.csv           # ALL picks across all games
+    ├── proj_NBA_NYK@SAS.json   # Full roster + TC for each game
+    ├── proj_WNBA_SEA@DAL.json
+    └── proj_WNBA_MIN@PHX.json
+```
+
+## Backtesting
+- Read `picks.csv` for a date, compute hit rate by:
+  - stat (PTS, REB, AST, 3PM, STL, BLK)
+  - direction (OVER vs UNDER)
+  - team (NYK, SAS, etc.)
+  - matchup
+- Update `result` column in `picks.csv` after games
+- Thresholds live in `daily_picks.py` — edit and re-run to adjust
+
+## Automation
+- **Rule:** Any TC/picks/edge/betting mention triggers daily log refresh
+- **Daily 9 AM:** automation runs `daily_picks.py` and emails summary
+- **Manual:** `python3 /home/workspace/Projects/daily_picks.py NBA WNBA`
+
+## Key Files
+| File | Purpose |
+|------|---------|
+| `Projects/daily_picks.py` | Daily log capture |
+| `Dashboard/SportsTC_Streamlit_App.py` | Streamlit GUI |
+| `Engine/nba_tc_pipeline.py` | Multi-sport engine |
+| `TC_Desktop_Installer/` | Chromebook installer |
+| `Daily_Log/` | Per-day pick logs |
+
+## Secrets
+- `SPORTSGAMEODDS_API_KEY` in `/root/.zo_secrets` (space server env)
+- Free tier: events but no odds. Falls back to ESPN for DK totals.
+
+## Updates
+- **2026-06-01:** Built `daily_picks.py`, slate tab, 47-pick log, daily automation

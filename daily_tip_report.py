@@ -134,7 +134,7 @@ def get_prop_lines(home_abbr: str, away_abbr: str, sport: str) -> Dict:
 def generate_game_report(game: Dict, injuries: List[Dict],
                         props: Dict, tc_data: Dict) -> str:
     """Generate plain-English report for one game."""
-    from generate_report import nba_report, ncaab_report  # lazy import
+    from generate_report import nba_report  # lazy import
 
     home = game["home_abbr"]
     away = game["away_abbr"]
@@ -149,8 +149,8 @@ def generate_game_report(game: Dict, injuries: List[Dict],
             tip_time=game.get("start_time","TBD"),
             injuries=game_injuries,
             tc_props=tc_data.get("props", []),
-            game_total_line=props.get("game_total", 218.0),
-            spread_line=props.get("home_spread", 0.0),
+            game_total_line=props.get("game_total") or 218.0,
+            spread_line=props.get("home_spread") or 0.0,
             home_pace=tc_data.get("home_pace", 99.8),
             away_pace=tc_data.get("away_pace", 99.8),
             sport=sport,

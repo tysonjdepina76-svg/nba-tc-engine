@@ -1,0 +1,60 @@
+{
+  "timestamp": "2026-06-02T13:03:58.183600",
+  "sports": [
+    "NBA",
+    "WNBA"
+  ],
+  "games_logged": 3,
+  "picks_logged": 49,
+  "errors": [],
+  "summaries": [
+    {
+      "date": "2026-06-02",
+      "sport": "NBA",
+      "matchup": "NYK@SAS",
+      "away_team": "NYK",
+      "home_team": "SAS",
+      "tc_combined": 278,
+      "tc_line": 244,
+      "market_total": 218.5,
+      "dk_total": 218.5,
+      "edge": 25.5,
+      "signal": "OVER",
+      "source": "live ESPN NBA roster/stat APIs",
+      "valid_prop_count": 19,
+      "roster_size": 72
+    },
+    {
+      "date": "2026-06-02",
+      "sport": "WNBA",
+      "matchup": "SEA@DAL",
+      "away_team": "SEA",
+      "home_team": "DAL",
+      "tc_combined": 172.5,
+      "tc_line": 151,
+      "market_total": null,
+      "dk_total": null,
+      "edge": 0,
+      "signal": "NO MARKET",
+      "source": "live ESPN WNBA roster/stat APIs",
+      "valid_prop_count": 16,
+      "roster_size": 58
+    },
+    {
+      "date": "2026-06-02",
+      "sport": "WNBA",
+      "matchup": "MIN@PHX",
+      "away_team": "MIN",
+      "home_team": "PHX",
+      "tc_combined": 178.1,
+      "tc_line": 156,
+      "market_total": null,
+      "dk_total": null,
+      "edge": 0,
+      "signal": "NO MARKET",
+      "source": "live ESPN WNBA roster/stat APIs",
+      "valid_prop_count": 14,
+      "roster_size": 56
+    }
+  ]
+}
