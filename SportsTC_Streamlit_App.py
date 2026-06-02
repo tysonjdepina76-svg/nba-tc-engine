@@ -108,7 +108,7 @@ def call_api(away: str, home: str, sport: str, mode: str = "project") -> dict:
         r = requests.get(f"{BASE_URL}/api/tc", params=params, timeout=30,
                          headers={"Accept": "application/json"})
         if not r.ok:
-            return {"error": f"API {r.status.status_code}: {r.text[:200]}"}
+            return {"error": f"API {r.status_code}: {r.text[:200]}"}
         return r.json()
     except Exception as e:
         return {"error": str(e)}
@@ -231,9 +231,7 @@ st.set_page_config(
     page_icon="🏀",
     layout="wide",
     menu_items={
-        "About": "Sports TC Dashboard · NBA + WNBA + NCAAB + MLB + NHL\n"
-                 "Powered by Zo Computer · TC Engine v4\n"
-                 "TC applies to player props ONLY — DK game totals stored independently",
+        "About": "Sports TC Dashboard · NBA + WNBA + NCAAB + MLB + NHL | Powered by Zo Computer | TC applies to player props ONLY",
     },
 )
 
@@ -276,12 +274,12 @@ with st.sidebar:
     st.caption(f"Session: {datetime.now().strftime('%H:%M:%S')}")
 
 # ── MAIN TABS ────────────────────────────────────────────────────────────────
-tab_proj, tab_live, tab_injury, tab_backtest, tab_slate = st.tabs([
+tab_proj, tab_live, tab_injury, tab_backtest, tab_parlay = st.tabs([
     "📊  Project Game",
     "📡  Live Stats",
     "🏥  Injury Report",
     "📈  Backtest",
-    "📋  Slate",
+    "💰  Parlay Builder",
 ])
 
 
@@ -372,9 +370,9 @@ with tab_proj:
                     sym = sym_map.get(sel_stat, "•")
                     st.markdown(
                         f"**{sym}  {player.get('name','?')}**  ({player.get('team','')})  "
-                        f"{'🔴 OUT' if status=='OUT' else '🟡 Q' if status!='ACTIVE' else '🟢 ACTIVE'}\n"
+                        f"{'🔴 OUT' if status=='OUT' else '🟡 Q' if status!='ACTIVE' else '🟢 ACTIVE'}"
                         f"- TC {sel_stat}: **{tc_v:.1f}**  |  Line: {line_v:.1f}  |  "
-                        f"Edge: {edge_emoji(edge_v)} {edge_v:+.1f}\n"
+                        f"Edge: {edge_emoji(edge_v)} {edge_v:+.1f}"
                         f"- Pos: {player.get('pos','—')}  |  Min: {player.get('min','—')}"
                     )
                     syms = player.get("symbols", [])
@@ -585,85 +583,100 @@ with tab_backtest:
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# TAB 5 — SLATE
+# TAB 5 — PARLAY BUILDER (Top 8 Window + custom picker)
 # ─────────────────────────────────────────────────────────────────────────────
-with tab_slate:
-    sport_slate = st.selectbox("Sport", SPORTS, key="slate_sport")
-    st.info(
-        "**Slate View** loads all active games for the selected sport. "
-        "Shows DK game totals (stored independently of TC) and TC edge signals. "
-        "Use DK totals as market lines; compare with TC player prop projections for your picks."
-    )
-    if st.button("📡  Load Slate", use_container_width=True):
-        st.session_state["load_slate"] = True
+with tab_parlay:
+    st.markdown("### 💰 Parlay Builder")
+    st.caption("Build multi-leg parlays using live projections and custom picks.")
+    st.divider()
 
-    if st.session_state.get("load_slate"):
-        with st.spinner("Loading slate from Zo API…"):
-            slate = call_api("", "", sport_slate, mode="live-stats")
+    # Leg 1: Pick a game
+    leg1_sport = st.selectbox("Leg 1 Sport", SPORTS)
+    leg1_away = st.selectbox("Leg 1 Away", TEAM_MAP.get(leg1_sport, NBA_TEAMS))
+    leg1_home = st.selectbox("Leg 1 Home", TEAM_MAP.get(leg1_sport, NBA_TEAMS))
 
-        if "error" in slate:
-            st.error(slate["error"])
-        elif slate:
-            games = slate.get("games", [])
-            st.success(f"**{len(games)}** game(s) found · {slate.get('timestamp','')}")
+    leg1_proj = call_api(leg1_away, leg1_home, leg1_sport)
+    leg1_tc = "—"
+    leg1_edge = "—"
+    leg1_signal = "—"
+    if leg1_proj and "error" not in leg1_proj:
+        a = leg1_proj.get("assessment", {}) or {}
+        leg1_tc = a.get("tc_total") or leg1_proj.get("tc_combined") or "—"
+        leg1_edge = leg1_proj.get("edge") or a.get("edge") or "—"
+        leg1_signal = leg1_proj.get("signal") or a.get("signal") or "NO MARKET"
 
-            if not games:
-                st.warning(
-                    f"No active {sport_slate} games right now. "
-                    "Check back during the season or on game days."
-                )
-            else:
-                slate_rows = []
-                for g in games:
-                    aw      = g.get("away", {})
-                    hm      = g.get("home", {})
-                    dk_tot  = g.get("dk_total") or g.get("total") or "—"
-                    aw_lead = aw.get("leaders") or {}
-                    hm_lead = hm.get("leaders") or {}
+    st.markdown(f"**Leg 1:** {leg1_sport} — {leg1_away} @ {leg1_home}")
+    st.metric("TC Total", fmt(leg1_tc))
+    st.metric("Edge", f"{leg1_edge:+.1f}" if isinstance(leg1_edge, (int, float)) else fmt(leg1_edge))
+    st.metric("Signal", leg1_signal)
+    st.divider()
 
-                    edge_v  = "—"
-                    signal  = "—"
-                    if aw_lead and hm_lead:
-                        try:
-                            aw_pts = sum(float(v) for v in aw_lead.values() if v)
-                            hm_pts = sum(float(v) for v in hm_lead.values() if v)
-                            tc_c   = round((aw_pts + hm_pts) * 0.92, 1)
-                            tc_l   = round(tc_c * 0.88, 1)
-                            dk_f   = float(dk_tot)
-                            ev     = tc_c - dk_f
-                            edge_v = f"{ev:+.1f}"
-                            signal = "OVER" if ev > 2 else "UNDER" if ev < -2 else "PASS"
-                        except (TypeError, ValueError):
-                            pass
+    # Leg 2: Pick a game
+    leg2_sport = st.selectbox("Leg 2 Sport", SPORTS)
+    leg2_away = st.selectbox("Leg 2 Away", TEAM_MAP.get(leg2_sport, NBA_TEAMS))
+    leg2_home = st.selectbox("Leg 2 Home", TEAM_MAP.get(leg2_sport, NBA_TEAMS))
 
-                    slate_rows.append({
-                        "Time":        g.get("date", "—"),
-                        "Away Team":   aw.get("team", "?"),
-                        "Home Team":   hm.get("team", "?"),
-                        "Away Score":  aw.get("score", "—"),
-                        "Home Score":  hm.get("score", "—"),
-                        "Status":      g.get("status", "—"),
-                        "Detail":      g.get("detail", "—"),
-                        "DK Total":    dk_tot,
-                        "TC Edge":     edge_v,
-                        "Signal":      signal,
-                    })
+    leg2_proj = call_api(leg2_away, leg2_home, leg2_sport)
+    leg2_tc = "—"
+    leg2_edge = "—"
+    leg2_signal = "—"
+    if leg2_proj and "error" not in leg2_proj:
+        a = leg2_proj.get("assessment", {}) or {}
+        leg2_tc = a.get("tc_total") or leg2_proj.get("tc_combined") or "—"
+        leg2_edge = leg2_proj.get("edge") or a.get("edge") or "—"
+        leg2_signal = leg2_proj.get("signal") or a.get("signal") or "NO MARKET"
 
-                st.dataframe(slate_rows, use_container_width=True, hide_index=True)
+    st.markdown(f"**Leg 2:** {leg2_sport} — {leg2_away} @ {leg2_home}")
+    st.metric("TC Total", fmt(leg2_tc))
+    st.metric("Edge", f"{leg2_edge:+.1f}" if isinstance(leg2_edge, (int, float)) else fmt(leg2_edge))
+    st.metric("Signal", leg2_signal)
+    st.divider()
 
-                st.markdown("---")
-                st.markdown(
-                    "**How DK Totals Work Here:**\n\n"
-                    "1. DK opened totals are stored per game as `dk_total` from the market.\n"
-                    "2. TC does **NOT** apply to game totals — it is the *player prop projection engine*.\n"
-                    "3. Compare TC player projections (PTS / REB / AST / 3PM / STL / BLK) "
-                    "against DraftKings prop lines for your picks.\n"
-                    "4. DK game totals are the market benchmark for game-level OVER/UNDER bets."
-                )
-        else:
-            st.caption("Click **Load Slate** to fetch today's games.")
-    else:
-        st.caption("Click **Load Slate** to load today's games.")
+    # Leg 3: Pick a game
+    leg3_sport = st.selectbox("Leg 3 Sport", SPORTS)
+    leg3_away = st.selectbox("Leg 3 Away", TEAM_MAP.get(leg3_sport, NBA_TEAMS))
+    leg3_home = st.selectbox("Leg 3 Home", TEAM_MAP.get(leg3_sport, NBA_TEAMS))
+
+    leg3_proj = call_api(leg3_away, leg3_home, leg3_sport)
+    leg3_tc = "—"
+    leg3_edge = "—"
+    leg3_signal = "—"
+    if leg3_proj and "error" not in leg3_proj:
+        a = leg3_proj.get("assessment", {}) or {}
+        leg3_tc = a.get("tc_total") or leg3_proj.get("tc_combined") or "—"
+        leg3_edge = leg3_proj.get("edge") or a.get("edge") or "—"
+        leg3_signal = leg3_proj.get("signal") or a.get("signal") or "NO MARKET"
+
+    st.markdown(f"**Leg 3:** {leg3_sport} — {leg3_away} @ {leg3_home}")
+    st.metric("TC Total", fmt(leg3_tc))
+    st.metric("Edge", f"{leg3_edge:+.1f}" if isinstance(leg3_edge, (int, float)) else fmt(leg3_edge))
+    st.metric("Signal", leg3_signal)
+    st.divider()
+
+    # Parlay Summary
+    st.markdown("### Parlay Summary")
+    st.markdown(f"**Legs:** {leg1_sport} + {leg2_sport} + {leg3_sport}")
+    st.markdown(f"**TC Totals:** {fmt(leg1_tc)} + {fmt(leg2_tc)} + {fmt(leg3_tc)}")
+    st.markdown(f"**Edge:** {leg1_edge} + {leg2_edge} + {leg3_edge}")
+    st.markdown(f"**Signals:** {leg1_signal} + {leg2_signal} + {leg3_signal}")
+    st.divider()
+
+    # Parlay Action
+    st.markdown("### Parlay Action")
+    st.caption("Click **Build Parlay** to lock in this multi-leg parlay.")
+    if st.button("🔒 Build Parlay", use_container_width=True):
+        st.session_state["parlay"] = {
+            "legs": [
+                {"sport": leg1_sport, "away": leg1_away, "home": leg1_home, "tc": leg1_tc, "edge": leg1_edge, "signal": leg1_signal},
+                {"sport": leg2_sport, "away": leg2_away, "home": leg2_home, "tc": leg2_tc, "edge": leg2_edge, "signal": leg2_signal},
+                {"sport": leg3_sport, "away": leg3_away, "home": leg3_home, "tc": leg3_tc, "edge": leg3_edge, "signal": leg3_signal},
+            ],
+            "total_tc": sum(float(leg.get("tc", "0")) for leg in st.session_state["parlay"]["legs"]),
+            "total_edge": sum(float(leg.get("edge", "0")) for leg in st.session_state["parlay"]["legs"]),
+            "signals": [leg.get("signal") for leg in st.session_state["parlay"]["legs"]],
+        }
+        st.success("✅ Parlay locked in!")
+
 
 # ── FOOTER ───────────────────────────────────────────────────────────────────
 st.markdown("---")
