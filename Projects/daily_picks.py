@@ -29,7 +29,7 @@ LOG_DIR.mkdir(exist_ok=True)
 ED_THRESHOLD = 2.0  # TC edge threshold to call OVER/UNDER signal
 
 def fetch_live_slate(sport):
-    """Fetch live slate for a sport."""
+    """Fetch live slate for a sport. Returns games (future + recent)."""
     try:
         r = requests.get(
             f"{API_BASE}/api/tc",
@@ -42,6 +42,24 @@ def fetch_live_slate(sport):
         return {"error": f"HTTP {r.status_code}"}
     except Exception as e:
         return {"error": str(e)}
+
+
+def filter_future_games(games, sport):
+    """Return only games that haven't been completed yet.
+
+    ESPN sometimes surfaces recent games for ~12h after they end. For a daily
+    betting log we only want UPCOMING games with active DK lines.
+    """
+    out = []
+    for g in games or []:
+        if g.get("completed"):
+            continue
+        # If a status field is set to "Final", drop it too
+        st = (g.get("status") or "").lower()
+        if "final" in st:
+            continue
+        out.append(g)
+    return out
 
 
 def fetch_game_projection(sport, away, home):
@@ -112,7 +130,7 @@ def extract_game_summary(projection, sport, matchup):
 
 
 def run_daily_log(sports=("NBA", "WNBA")):
-    """Run the full daily log capture."""
+    """Run the full daily log capture. Filters out completed games."""
     now = datetime.now()
     today_dir = LOG_DIR / now.strftime("%Y-%m-%d")
     today_dir.mkdir(exist_ok=True)
@@ -120,6 +138,7 @@ def run_daily_log(sports=("NBA", "WNBA")):
     all_picks = []
     all_summaries = []
     errors = []
+    skipped_completed = 0
 
     for sport in sports:
         print(f"[{now.strftime('%H:%M:%S')}] Fetching {sport} slate...")
@@ -128,10 +147,13 @@ def run_daily_log(sports=("NBA", "WNBA")):
             errors.append(f"{sport} slate: {slate['error']}")
             continue
 
-        games = slate.get("games", [])
-        # Save raw slate
+        raw_games = slate.get("games", [])
+        games = filter_future_games(raw_games, sport)
+        skipped_completed += len(raw_games) - len(games)
+
+        # Save raw slate (full, including completed games, for backtest)
         (today_dir / f"slate_{sport}.json").write_text(json.dumps(slate, indent=2))
-        print(f"  Found {len(games)} {sport} game(s)")
+        print(f"  Slate has {len(raw_games)} game(s); {len(games)} upcoming after filtering completed")
 
         for g in games:
             away = g.get("away", {}).get("team", "")
@@ -152,9 +174,13 @@ def run_daily_log(sports=("NBA", "WNBA")):
             # Extract picks + summary
             picks = extract_picks(proj, sport, matchup)
             summary = extract_game_summary(proj, sport, matchup)
+            # Mark which picks have a real DK market line
+            pending = sum(1 for p in picks if p.get("market_line") in (None, ""))
+            summary["pending_props_no_dk"] = pending
+            summary["picks_with_dk"] = len(picks) - pending
             all_picks.extend(picks)
             all_summaries.append(summary)
-            print(f"    -> {len(picks)} valid picks, signal={summary['signal']}")
+            print(f"    -> {len(picks)} valid picks, signal={summary['signal']} (DK: {len(picks) - pending}, pending: {pending})")
 
     # Write flat CSV (append mode to preserve history)
     csv_path = today_dir / "picks.csv"
@@ -169,7 +195,6 @@ def run_daily_log(sports=("NBA", "WNBA")):
         if write_header:
             w.writeheader()
         for p in all_picks:
-            # Ensure all fields exist
             row = {k: p.get(k, "") for k in csv_fields}
             w.writerow(row)
 
@@ -183,12 +208,13 @@ def run_daily_log(sports=("NBA", "WNBA")):
         "sports": list(sports),
         "games_logged": len(all_summaries),
         "picks_logged": len(all_picks),
+        "completed_games_skipped": skipped_completed,
         "errors": errors,
         "summaries": all_summaries,
     }
     (LOG_DIR / "last_run.json").write_text(json.dumps(last_run, indent=2))
 
-    print(f"\nDone: {len(all_summaries)} games, {len(all_picks)} picks")
+    print(f"\nDone: {len(all_summaries)} games, {len(all_picks)} picks (skipped {skipped_completed} completed games)")
     if errors:
         print(f"Errors: {len(errors)}")
         for e in errors:
