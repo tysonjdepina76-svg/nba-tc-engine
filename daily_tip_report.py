@@ -59,11 +59,18 @@ def get_todays_games(sport: str) -> List[Dict]:
     games = []
     for event in data.get("events", []):
         comp = event.get("competitions", [{}])[0]
-        home = comp.get("home", {})
-        away = comp.get("away", {})
-        status = event.get("status", {})
+        competitors = comp.get("competitors", [])
+        home = {}
+        away = {}
+        for c in competitors:
+            if c.get("homeAway") == "home":
+                home = c.get("team", {})
+            elif c.get("homeAway") == "away":
+                away = c.get("team", {})
 
         venue = comp.get("venue", {}).get("fullName", "TBD")
+
+        status = event.get("status", {})
 
         # Game time
         start_time = None
@@ -74,10 +81,10 @@ def get_todays_games(sport: str) -> List[Dict]:
 
         games.append({
             "id": event.get("id", ""),
-            "away_abbr": away.get("team", {}).get("abbreviation", ""),
-            "away_name": away.get("team", {}).get("displayName", ""),
-            "home_abbr": home.get("team", {}).get("abbreviation", ""),
-            "home_name": home.get("team", {}).get("displayName", ""),
+            "away_abbr": away.get("abbreviation", ""),
+            "away_name": away.get("displayName", ""),
+            "home_abbr": home.get("abbreviation", ""),
+            "home_name": home.get("displayName", ""),
             "start_time": start_time or "TBD",
             "venue": venue,
             "sport": sport,

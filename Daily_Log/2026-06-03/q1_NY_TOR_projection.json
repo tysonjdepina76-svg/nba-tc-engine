@@ -1,0 +1,213 @@
+{
+  "timestamp": "2026-06-03T23:59:55.545562",
+  "status": "End of Period",
+  "period": 1,
+  "clock": "0.0",
+  "away": {
+    "team": "NY",
+    "score": "17",
+    "players": [
+      {
+        "name": "Breanna Stewart",
+        "min": "8",
+        "pts": 0,
+        "reb": 3,
+        "ast": 2,
+        "tpm": 0,
+        "stl": 0,
+        "blk": 1
+      },
+      {
+        "name": "Leonie Fiebich",
+        "min": "6",
+        "pts": 0,
+        "reb": 0,
+        "ast": 0,
+        "tpm": 0,
+        "stl": 0,
+        "blk": 0
+      },
+      {
+        "name": "Jonquel Jones",
+        "min": "7",
+        "pts": 12,
+        "reb": 4,
+        "ast": 0,
+        "tpm": 2,
+        "stl": 0,
+        "blk": 0
+      },
+      {
+        "name": "Marine Johannes",
+        "min": "8",
+        "pts": 5,
+        "reb": 1,
+        "ast": 0,
+        "tpm": 1,
+        "stl": 1,
+        "blk": 0
+      },
+      {
+        "name": "Pauline Astier",
+        "min": "8",
+        "pts": 0,
+        "reb": 0,
+        "ast": 2,
+        "tpm": 0,
+        "stl": 0,
+        "blk": 0
+      },
+      {
+        "name": "Satou Sabally",
+        "min": "4",
+        "pts": 0,
+        "reb": 1,
+        "ast": 0,
+        "tpm": 0,
+        "stl": 0,
+        "blk": 0
+      },
+      {
+        "name": "Han Xu",
+        "min": "3",
+        "pts": 0,
+        "reb": 1,
+        "ast": 0,
+        "tpm": 0,
+        "stl": 0,
+        "blk": 0
+      },
+      {
+        "name": "Rebekah Gardner",
+        "min": "2",
+        "pts": 0,
+        "reb": 0,
+        "ast": 0,
+        "tpm": 0,
+        "stl": 1,
+        "blk": 0
+      },
+      {
+        "name": "Betnijah Laney-Hamilton",
+        "min": "2",
+        "pts": 0,
+        "reb": 0,
+        "ast": 0,
+        "tpm": 0,
+        "stl": 0,
+        "blk": 0
+      }
+    ]
+  },
+  "home": {
+    "team": "TOR",
+    "score": "20",
+    "players": [
+      {
+        "name": "Nyara Sabally",
+        "min": "6",
+        "pts": 5,
+        "reb": 2,
+        "ast": 1,
+        "tpm": 1,
+        "stl": 0,
+        "blk": 0
+      },
+      {
+        "name": "Laura Juskaite",
+        "min": "6",
+        "pts": 2,
+        "reb": 2,
+        "ast": 1,
+        "tpm": 0,
+        "stl": 1,
+        "blk": 0
+      },
+      {
+        "name": "Brittney Sykes",
+        "min": "7",
+        "pts": 2,
+        "reb": 0,
+        "ast": 1,
+        "tpm": 0,
+        "stl": 2,
+        "blk": 0
+      },
+      {
+        "name": "Marina Mabrey",
+        "min": "9",
+        "pts": 2,
+        "reb": 1,
+        "ast": 1,
+        "tpm": 0,
+        "stl": 0,
+        "blk": 1
+      },
+      {
+        "name": "Kiki Rice",
+        "min": "8",
+        "pts": 2,
+        "reb": 2,
+        "ast": 1,
+        "tpm": 0,
+        "stl": 0,
+        "blk": 0
+      },
+      {
+        "name": "Maria Conde",
+        "min": "4",
+        "pts": 5,
+        "reb": 1,
+        "ast": 0,
+        "tpm": 1,
+        "stl": 0,
+        "blk": 0
+      },
+      {
+        "name": "Nikolina Milic",
+        "min": "3",
+        "pts": 2,
+        "reb": 0,
+        "ast": 0,
+        "tpm": 0,
+        "stl": 0,
+        "blk": 0
+      },
+      {
+        "name": "Kia Nurse",
+        "min": "2",
+        "pts": 0,
+        "reb": 0,
+        "ast": 0,
+        "tpm": 0,
+        "stl": 0,
+        "blk": 0
+      },
+      {
+        "name": "Julie Allemand",
+        "min": "3",
+        "pts": 0,
+        "reb": 0,
+        "ast": 0,
+        "tpm": 0,
+        "stl": 0,
+        "blk": 0
+      }
+    ]
+  },
+  "projections": {
+    "naive_x4": {
+      "away": 68,
+      "home": 80,
+      "spread": -12,
+      "total": 148
+    },
+    "pace_adjusted": {
+      "away": 65,
+      "home": 77,
+      "spread": -12,
+      "total": 142,
+      "pace_pct": 0.26
+    }
+  }
+}

@@ -44,6 +44,14 @@ STAT_CONS = {
     "blk": 0.80,
     "tpm": 0.85,
 }
+STAT_BAYES_ALPHA = {
+    "pts": 2.0,
+    "reb": 2.5,
+    "ast": 2.5,
+    "stl": 5.0,
+    "blk": 5.0,
+    "tpm": 2.5,
+}
 # Min-pick filter (drop noise)
 MIN_AVG = {"pts": 0.5, "reb": 0.5, "ast": 0.5, "stl": 0.05, "blk": 0.05, "tpm": 0.05}
 # Starter-locked gate
@@ -109,11 +117,13 @@ def main():
     parser.add_argument("--no-pace", action="store_true", help="disable team-pace adjustment")
     parser.add_argument("--no-b2b", action="store_true", help="disable B2B/rest adjustment")
     parser.add_argument("--no-starters", action="store_true", help="disable starter-locked gate")
+    parser.add_argument("--no-bayes", action="store_true", help="disable Bayesian shrinkage")
     args = parser.parse_args()
 
     use_pace = not args.no_pace
     use_b2b = not args.no_b2b
     use_starters = not args.no_starters
+    use_bayes = not args.no_bayes
 
     today = datetime.now(timezone.utc)
     start = today - timedelta(days=args.days)
@@ -218,9 +228,16 @@ def main():
             # B2B adjustment: if r.date is 1 day after last_game_by_team (B2B), reduce avg by 5%
             others = [x for j, x in enumerate(recs) if j != i]
             for stat in ("pts", "reb", "ast", "stl", "blk", "tpm"):
-                avg = sum(o[stat] for o in others) / len(others)
+                vals = [o[stat] for o in others]
+                avg = sum(vals) / len(vals)
                 if avg < MIN_AVG[stat]:
                     continue
+                # Bayesian shrinkage: pull toward per-stat prior with weight STAT_BAYES_ALPHA
+                # proj = (sample_mean * n + prior * ALPHA) / (n + ALPHA)
+                if use_bayes:
+                    prior = {"pts": 6, "reb": 3, "ast": 2, "stl": 0.8, "blk": 0.5, "tpm": 0.5}.get(stat, 1.0)
+                    alpha = STAT_BAYES_ALPHA[stat] if isinstance(STAT_BAYES_ALPHA, dict) else STAT_BAYES_ALPHA
+                    avg = (avg * len(vals) + prior * alpha) / (len(vals) + alpha)
                 # Team-pace adjustment
                 if use_pace and team in FAST_TEAMS:
                     avg *= 1.03
