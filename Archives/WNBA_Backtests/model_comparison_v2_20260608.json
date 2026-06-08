@@ -1,0 +1,200 @@
+{
+  "model_overall": {
+    "A_baseline": {
+      "hit": 1474,
+      "miss": 879,
+      "push": 361
+    },
+    "B_recency": {
+      "hit": 1455,
+      "miss": 870,
+      "push": 389
+    },
+    "C_bayesian": {
+      "hit": 1424,
+      "miss": 1204,
+      "push": 86
+    },
+    "D_blend": {
+      "hit": 1434,
+      "miss": 1210,
+      "push": 70
+    },
+    "E_regression": {
+      "hit": 995,
+      "miss": 1623,
+      "push": 96
+    }
+  },
+  "model_by_stat": {
+    "A_baseline": {
+      "pts": {
+        "hit": 300,
+        "miss": 271,
+        "push": 106
+      },
+      "reb": {
+        "hit": 325,
+        "miss": 237,
+        "push": 115
+      },
+      "ast": {
+        "hit": 275,
+        "miss": 276,
+        "push": 126
+      },
+      "stl": {
+        "hit": 231,
+        "miss": 29,
+        "push": 5
+      },
+      "tpm": {
+        "hit": 208,
+        "miss": 50,
+        "push": 3
+      },
+      "blk": {
+        "hit": 135,
+        "miss": 16,
+        "push": 6
+      }
+    },
+    "B_recency": {
+      "pts": {
+        "hit": 302,
+        "miss": 271,
+        "push": 104
+      },
+      "reb": {
+        "hit": 325,
+        "miss": 232,
+        "push": 120
+      },
+      "ast": {
+        "hit": 267,
+        "miss": 272,
+        "push": 138
+      },
+      "stl": {
+        "hit": 227,
+        "miss": 33,
+        "push": 5
+      },
+      "tpm": {
+        "hit": 200,
+        "miss": 45,
+        "push": 16
+      },
+      "blk": {
+        "hit": 134,
+        "miss": 17,
+        "push": 6
+      }
+    },
+    "C_bayesian": {
+      "pts": {
+        "hit": 324,
+        "miss": 345,
+        "push": 8
+      },
+      "reb": {
+        "hit": 255,
+        "miss": 396,
+        "push": 26
+      },
+      "ast": {
+        "hit": 208,
+        "miss": 442,
+        "push": 27
+      },
+      "stl": {
+        "hit": 246,
+        "miss": 6,
+        "push": 13
+      },
+      "tpm": {
+        "hit": 237,
+        "miss": 13,
+        "push": 11
+      },
+      "blk": {
+        "hit": 154,
+        "miss": 2,
+        "push": 1
+      }
+    },
+    "D_blend": {
+      "pts": {
+        "hit": 310,
+        "miss": 356,
+        "push": 11
+      },
+      "reb": {
+        "hit": 286,
+        "miss": 376,
+        "push": 15
+      },
+      "ast": {
+        "hit": 251,
+        "miss": 408,
+        "push": 18
+      },
+      "stl": {
+        "hit": 231,
+        "miss": 26,
+        "push": 8
+      },
+      "tpm": {
+        "hit": 215,
+        "miss": 34,
+        "push": 12
+      },
+      "blk": {
+        "hit": 141,
+        "miss": 10,
+        "push": 6
+      }
+    },
+    "E_regression": {
+      "pts": {
+        "hit": 294,
+        "miss": 373,
+        "push": 10
+      },
+      "reb": {
+        "hit": 258,
+        "miss": 407,
+        "push": 12
+      },
+      "ast": {
+        "hit": 176,
+        "miss": 486,
+        "push": 15
+      },
+      "stl": {
+        "hit": 104,
+        "miss": 136,
+        "push": 25
+      },
+      "tpm": {
+        "hit": 95,
+        "miss": 140,
+        "push": 26
+      },
+      "blk": {
+        "hit": 68,
+        "miss": 81,
+        "push": 8
+      }
+    }
+  },
+  "coefficients": {
+    "bias": 0.6440076161277801,
+    "stat_avg": 0.7370518842515527,
+    "min_avg": -0.0031811623930942563,
+    "starter": 0.7883932598763745,
+    "b2b": 0.0,
+    "intercept": -5.684341886080802e-14
+  },
+  "training_rows": 2714
+}
