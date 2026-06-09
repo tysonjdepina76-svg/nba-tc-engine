@@ -10,7 +10,6 @@ metadata:
   author: true.zo.computer
 allowed-tools: Bash, Read, Write
 ---
-
 # NBA Odds API Skill
 
 ## What it does
@@ -79,3 +78,12 @@ Valid picks require edge ≥ 2 pts (legs) or ≥ 3 pts (props).
 - `player_points` = Player props (points)
 - `player_rebounds` = Player props (rebounds)
 - `player_assists` = Player props (assists)
+
+## Enricher (new)
+- `scripts/odds_enricher.py` — two-step player prop injector for daily_picks.py
+  - Step 1: fetch sports-wide odds (h2h,spreads,totals) to get game IDs
+  - Step 2: fetch event-specific odds (player_points, player_rebounds, player_assists)
+  - Returns game odds + per-player PTS/REB/AST lines from DK
+  
+## Key status
+- `ODDS_API_KEY` (`0ba199e...`) — ✅ working for NBA + WNBA, 5 bo

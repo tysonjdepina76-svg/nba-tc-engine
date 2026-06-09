@@ -21,6 +21,9 @@ from pathlib import Path
 # Add workspace root for imports
 WORKSPACE = Path("/home/workspace")
 sys.path.insert(0, str(WORKSPACE))
+sys.path.insert(0, str(WORKSPACE / "Skills" / "nba-odds-api" / "scripts"))
+
+from odds_enricher import enrich_player_lines
 
 API_BASE = "https://true.zo.space"
 LOG_DIR = WORKSPACE / "Daily_Log"
@@ -166,6 +169,16 @@ def run_daily_log(sports=("NBA", "WNBA")):
             if "error" in proj:
                 errors.append(f"{sport} {matchup}: {proj['error']}")
                 continue
+
+            # Enrich with live Odds API player prop lines
+            odds_enrichment = None
+            try:
+                odds_enrichment = enrich_player_lines(sport, away, home)
+                if odds_enrichment and odds_enrichment.get("player_lines"):
+                    proj["odds_api_lines"] = odds_enrichment
+                    print(f"    → Odds API: {odds_enrichment.get('player_count', 0)} players enriched via {odds_enrichment.get('book', '?')}")
+            except Exception as oe:
+                print(f"    ⚠️ Odds enrichment skipped: {oe}")
 
             # Save raw projection
             safe = matchup.replace("@", "_at_")
