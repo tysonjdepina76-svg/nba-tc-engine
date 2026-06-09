@@ -5,7 +5,7 @@
   "away_team": "SAS",
   "home_team": "NYK",
   "source": "live ESPN NBA roster/stat APIs",
-  "timestamp": "2026-06-09T01:16:16.067Z",
+  "timestamp": "2026-06-09T18:04:48.422Z",
   "injury_source": "ESPN NBA injuries \u00b7 27 teams \u00b7 126 players",
   "injury_counts": {
     "away": 0,
@@ -15,35 +15,35 @@
   },
   "tc_combined": 275.5,
   "tc_line": 284,
-  "market_total": null,
-  "edge": 0,
-  "signal": "NO MARKET",
-  "dk_total": null,
+  "market_total": 216.5,
+  "edge": 67.5,
+  "signal": "OVER",
+  "dk_total": 216.5,
   "odds": {
-    "total": null,
-    "spread": null,
-    "away_spread": null,
-    "home_spread": null,
-    "spread_pick": null,
-    "away_ml": null,
-    "home_ml": null,
-    "ml_source": "ESPN (fallback)"
+    "total": 216.5,
+    "spread": 1.5,
+    "away_spread": 1.5,
+    "home_spread": -1.5,
+    "spread_pick": "NYK",
+    "away_ml": 105,
+    "home_ml": -125,
+    "ml_source": "ESPN DraftKings embedded"
   },
   "assessment": {
     "tc_total": 275.5,
     "tc_line": 284,
-    "edge": 0,
-    "signal": "NO MARKET",
-    "total_lean": "NO MARKET",
+    "edge": 67.5,
+    "signal": "OVER",
+    "total_lean": "OVER",
     "spread_pick": "SAS",
-    "summary": "No market line available.",
+    "summary": "TC combined 275.5 vs DK 216.5 (edge +67.5) \u2192 lean OVER. Spread: SAS.",
     "roster_rule": "live mode uses current roster/stat/injury APIs only"
   },
   "game_assessment": {
-    "total_lean": "NO MARKET",
+    "total_lean": "OVER",
     "spread_pick": "SAS",
     "roster_rule": "live mode uses current roster/stat/injury APIs only",
-    "summary": "No market line available."
+    "summary": "TC combined 275.5 vs DK 216.5 (edge +67.5) \u2192 lean OVER."
   },
   "roster_counts": {
     "away": 18,
@@ -3012,7 +3012,7 @@
         "role": "START",
         "stat": "PTS",
         "direction": "OVER",
-        "market_line": 29.5,
+        "market_line": null,
         "tc_projection": 19.9,
         "tc_target": 17,
         "edge": 2.9,
@@ -3023,7 +3023,7 @@
         "status": "ACTIVE",
         "valid": true,
         "threshold": 2,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -3034,7 +3034,7 @@
         "role": "START",
         "stat": "REB",
         "direction": "NO BET",
-        "market_line": 11.5,
+        "market_line": null,
         "tc_projection": 9.4,
         "tc_target": 8,
         "edge": 1.4,
@@ -3045,7 +3045,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 1.5,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -3056,7 +3056,7 @@
         "role": "START",
         "stat": "AST",
         "direction": "NO BET",
-        "market_line": 3.5,
+        "market_line": null,
         "tc_projection": 3,
         "tc_target": 2,
         "edge": 1,
@@ -3067,7 +3067,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 1.5,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -3089,7 +3089,7 @@
         "status": "ACTIVE",
         "valid": true,
         "threshold": 0.8,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -3111,7 +3111,7 @@
         "status": "ACTIVE",
         "valid": true,
         "threshold": 0.8,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -3133,7 +3133,7 @@
         "status": "ACTIVE",
         "valid": true,
         "threshold": 0.8,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -3276,7 +3276,7 @@
         "role": "START",
         "stat": "PTS",
         "direction": "OVER",
-        "market_line": 17.5,
+        "market_line": null,
         "tc_projection": 13.3,
         "tc_target": 11,
         "edge": 2.3,
@@ -3287,7 +3287,7 @@
         "status": "ACTIVE",
         "valid": true,
         "threshold": 2,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -3298,7 +3298,7 @@
         "role": "START",
         "stat": "REB",
         "direction": "NO BET",
-        "market_line": 4.5,
+        "market_line": null,
         "tc_projection": 3.7,
         "tc_target": 3,
         "edge": 0.7,
@@ -3309,7 +3309,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 1.5,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -3320,7 +3320,7 @@
         "role": "START",
         "stat": "AST",
         "direction": "NO BET",
-        "market_line": 7.5,
+        "market_line": null,
         "tc_projection": 4.8,
         "tc_target": 4,
         "edge": 0.8,
@@ -3331,7 +3331,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 1.5,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -3353,7 +3353,7 @@
         "status": "ACTIVE",
         "valid": true,
         "threshold": 0.8,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -3375,7 +3375,7 @@
         "status": "ACTIVE",
         "valid": true,
         "threshold": 0.8,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -3397,7 +3397,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 0.8,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -3408,7 +3408,7 @@
         "role": "START",
         "stat": "PTS",
         "direction": "NO BET",
-        "market_line": 6.5,
+        "market_line": null,
         "tc_projection": 12.8,
         "tc_target": 11,
         "edge": 1.8,
@@ -3419,7 +3419,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 2,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -3430,7 +3430,7 @@
         "role": "START",
         "stat": "REB",
         "direction": "NO BET",
-        "market_line": 1.5,
+        "market_line": null,
         "tc_projection": 4.6,
         "tc_target": 4,
         "edge": 0.6,
@@ -3441,7 +3441,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 1.5,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -3452,7 +3452,7 @@
         "role": "START",
         "stat": "AST",
         "direction": "NO BET",
-        "market_line": 0.5,
+        "market_line": null,
         "tc_projection": 1.7,
         "tc_target": 1,
         "edge": 0.7,
@@ -3463,7 +3463,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 1.5,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -3485,7 +3485,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 0.8,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -3507,7 +3507,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 0.8,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -3529,7 +3529,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 0.8,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -3540,7 +3540,7 @@
         "role": "BENCH",
         "stat": "PTS",
         "direction": "OVER",
-        "market_line": 14.5,
+        "market_line": null,
         "tc_projection": 12,
         "tc_target": 10,
         "edge": 2,
@@ -3551,7 +3551,7 @@
         "status": "ACTIVE",
         "valid": true,
         "threshold": 2,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -3562,7 +3562,7 @@
         "role": "BENCH",
         "stat": "REB",
         "direction": "NO BET",
-        "market_line": 5.5,
+        "market_line": null,
         "tc_projection": 3.2,
         "tc_target": 2,
         "edge": 1.2,
@@ -3573,7 +3573,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 1.5,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -3584,7 +3584,7 @@
         "role": "BENCH",
         "stat": "AST",
         "direction": "NO BET",
-        "market_line": 1.5,
+        "market_line": null,
         "tc_projection": 2.2,
         "tc_target": 1,
         "edge": 1.2,
@@ -3595,7 +3595,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 1.5,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -3617,7 +3617,7 @@
         "status": "ACTIVE",
         "valid": true,
         "threshold": 0.8,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -3639,7 +3639,7 @@
         "status": "ACTIVE",
         "valid": true,
         "threshold": 0.8,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -3661,7 +3661,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 0.8,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -3672,7 +3672,7 @@
         "role": "BENCH",
         "stat": "PTS",
         "direction": "OVER",
-        "market_line": 14.5,
+        "market_line": null,
         "tc_projection": 10,
         "tc_target": 8,
         "edge": 2,
@@ -3683,7 +3683,7 @@
         "status": "ACTIVE",
         "valid": true,
         "threshold": 2,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -3694,7 +3694,7 @@
         "role": "BENCH",
         "stat": "REB",
         "direction": "NO BET",
-        "market_line": 7.5,
+        "market_line": null,
         "tc_projection": 2.9,
         "tc_target": 2,
         "edge": 0.9,
@@ -3705,7 +3705,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 1.5,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -3716,7 +3716,7 @@
         "role": "BENCH",
         "stat": "AST",
         "direction": "NO BET",
-        "market_line": 3.5,
+        "market_line": null,
         "tc_projection": 3.3,
         "tc_target": 2,
         "edge": 1.3,
@@ -3727,7 +3727,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 1.5,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -3749,7 +3749,7 @@
         "status": "ACTIVE",
         "valid": true,
         "threshold": 0.8,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -3760,7 +3760,7 @@
         "role": "BENCH",
         "stat": "STL",
         "direction": "NO BET",
-        "market_line": 1.5,
+        "market_line": null,
         "tc_projection": 0.6,
         "tc_target": 0,
         "edge": 0.6,
@@ -3771,7 +3771,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 0.8,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -3793,7 +3793,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 0.8,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -3804,7 +3804,7 @@
         "role": "BENCH",
         "stat": "PTS",
         "direction": "NO BET",
-        "market_line": 9.5,
+        "market_line": null,
         "tc_projection": 8,
         "tc_target": 7,
         "edge": 1,
@@ -3815,7 +3815,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 2,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -3826,7 +3826,7 @@
         "role": "BENCH",
         "stat": "REB",
         "direction": "NO BET",
-        "market_line": 4.5,
+        "market_line": null,
         "tc_projection": 3.5,
         "tc_target": 3,
         "edge": 0.5,
@@ -3837,7 +3837,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 1.5,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -3848,7 +3848,7 @@
         "role": "BENCH",
         "stat": "AST",
         "direction": "NO BET",
-        "market_line": 1.5,
+        "market_line": null,
         "tc_projection": 1.2,
         "tc_target": 1,
         "edge": 0.2,
@@ -3859,7 +3859,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 1.5,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -3881,7 +3881,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 0.8,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -3903,7 +3903,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 0.8,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -3925,7 +3925,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 0.8,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -4332,7 +4332,7 @@
         "role": "BENCH",
         "stat": "PTS",
         "direction": "NO BET",
-        "market_line": 1.5,
+        "market_line": null,
         "tc_projection": 4.6,
         "tc_target": 4,
         "edge": 0.6,
@@ -4343,7 +4343,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 2,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -4354,7 +4354,7 @@
         "role": "BENCH",
         "stat": "REB",
         "direction": "NO BET",
-        "market_line": 2.5,
+        "market_line": null,
         "tc_projection": 3.3,
         "tc_target": 2,
         "edge": 1.3,
@@ -4365,7 +4365,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 1.5,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -4376,7 +4376,7 @@
         "role": "BENCH",
         "stat": "AST",
         "direction": "NO BET",
-        "market_line": 2.5,
+        "market_line": null,
         "tc_projection": 1,
         "tc_target": 0,
         "edge": 1,
@@ -4387,7 +4387,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 1.5,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -4409,7 +4409,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 0.8,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -4431,7 +4431,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 0.8,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -4453,7 +4453,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 0.8,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -5388,7 +5388,7 @@
         "role": "START",
         "stat": "PTS",
         "direction": "NO BET",
-        "market_line": 10.5,
+        "market_line": null,
         "tc_projection": 12.5,
         "tc_target": 11,
         "edge": 1.5,
@@ -5399,7 +5399,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 2,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -5410,7 +5410,7 @@
         "role": "START",
         "stat": "REB",
         "direction": "NO BET",
-        "market_line": 2.5,
+        "market_line": null,
         "tc_projection": 3.3,
         "tc_target": 2,
         "edge": 1.3,
@@ -5421,7 +5421,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 1.5,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -5432,7 +5432,7 @@
         "role": "START",
         "stat": "AST",
         "direction": "NO BET",
-        "market_line": 1.5,
+        "market_line": null,
         "tc_projection": 2.5,
         "tc_target": 2,
         "edge": 0.5,
@@ -5443,7 +5443,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 1.5,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -5465,7 +5465,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 0.8,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -5476,7 +5476,7 @@
         "role": "START",
         "stat": "STL",
         "direction": "OVER",
-        "market_line": 1.5,
+        "market_line": null,
         "tc_projection": 1,
         "tc_target": 0,
         "edge": 1,
@@ -5487,7 +5487,7 @@
         "status": "ACTIVE",
         "valid": true,
         "threshold": 0.8,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -5509,7 +5509,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 0.8,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -5520,7 +5520,7 @@
         "role": "START",
         "stat": "PTS",
         "direction": "OVER",
-        "market_line": 25.5,
+        "market_line": null,
         "tc_projection": 16.3,
         "tc_target": 14,
         "edge": 2.3,
@@ -5531,7 +5531,7 @@
         "status": "ACTIVE",
         "valid": true,
         "threshold": 2,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -5542,7 +5542,7 @@
         "role": "START",
         "stat": "REB",
         "direction": "NO BET",
-        "market_line": 3.5,
+        "market_line": null,
         "tc_projection": 2.7,
         "tc_target": 2,
         "edge": 0.7,
@@ -5553,7 +5553,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 1.5,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -5564,7 +5564,7 @@
         "role": "START",
         "stat": "AST",
         "direction": "OVER",
-        "market_line": 4.5,
+        "market_line": null,
         "tc_projection": 4.5,
         "tc_target": 3,
         "edge": 1.5,
@@ -5575,7 +5575,7 @@
         "status": "ACTIVE",
         "valid": true,
         "threshold": 1.5,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -5597,7 +5597,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 0.8,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -5619,7 +5619,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 0.8,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -5641,7 +5641,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 0.8,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -5652,7 +5652,7 @@
         "role": "START",
         "stat": "PTS",
         "direction": "OVER",
-        "market_line": 17.5,
+        "market_line": null,
         "tc_projection": 11.3,
         "tc_target": 9,
         "edge": 2.3,
@@ -5663,7 +5663,7 @@
         "status": "ACTIVE",
         "valid": true,
         "threshold": 2,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -5674,7 +5674,7 @@
         "role": "START",
         "stat": "REB",
         "direction": "NO BET",
-        "market_line": 4.5,
+        "market_line": null,
         "tc_projection": 3.8,
         "tc_target": 3,
         "edge": 0.8,
@@ -5685,7 +5685,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 1.5,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -5696,7 +5696,7 @@
         "role": "START",
         "stat": "AST",
         "direction": "NO BET",
-        "market_line": 1.5,
+        "market_line": null,
         "tc_projection": 1.4,
         "tc_target": 1,
         "edge": 0.4,
@@ -5707,7 +5707,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 1.5,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -5729,7 +5729,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 0.8,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -5740,7 +5740,7 @@
         "role": "START",
         "stat": "STL",
         "direction": "OVER",
-        "market_line": 1.5,
+        "market_line": null,
         "tc_projection": 1,
         "tc_target": 0,
         "edge": 1,
@@ -5751,7 +5751,7 @@
         "status": "ACTIVE",
         "valid": true,
         "threshold": 0.8,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -5773,7 +5773,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 0.8,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -5784,7 +5784,7 @@
         "role": "START",
         "stat": "PTS",
         "direction": "NO BET",
-        "market_line": 14.5,
+        "market_line": null,
         "tc_projection": 8.9,
         "tc_target": 7,
         "edge": 1.9,
@@ -5795,7 +5795,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 2,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -5806,7 +5806,7 @@
         "role": "START",
         "stat": "REB",
         "direction": "NO BET",
-        "market_line": 9.5,
+        "market_line": null,
         "tc_projection": 6,
         "tc_target": 5,
         "edge": 1,
@@ -5817,7 +5817,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 1.5,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -5828,7 +5828,7 @@
         "role": "START",
         "stat": "AST",
         "direction": "NO BET",
-        "market_line": 3.5,
+        "market_line": null,
         "tc_projection": 2.9,
         "tc_target": 2,
         "edge": 0.9,
@@ -5839,7 +5839,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 1.5,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -5861,7 +5861,7 @@
         "status": "ACTIVE",
         "valid": true,
         "threshold": 0.8,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -5872,7 +5872,7 @@
         "role": "START",
         "stat": "STL",
         "direction": "OVER",
-        "market_line": 1.5,
+        "market_line": null,
         "tc_projection": 0.9,
         "tc_target": 0,
         "edge": 0.9,
@@ -5883,7 +5883,7 @@
         "status": "ACTIVE",
         "valid": true,
         "threshold": 0.8,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -5905,7 +5905,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 0.8,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -6180,7 +6180,7 @@
         "role": "BENCH",
         "stat": "PTS",
         "direction": "NO BET",
-        "market_line": 3.5,
+        "market_line": null,
         "tc_projection": 6.4,
         "tc_target": 5,
         "edge": 1.4,
@@ -6191,7 +6191,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 2,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -6202,7 +6202,7 @@
         "role": "BENCH",
         "stat": "REB",
         "direction": "OVER",
-        "market_line": 4.5,
+        "market_line": null,
         "tc_projection": 6.8,
         "tc_target": 5,
         "edge": 1.8,
@@ -6213,7 +6213,7 @@
         "status": "ACTIVE",
         "valid": true,
         "threshold": 1.5,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -6235,7 +6235,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 1.5,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -6257,7 +6257,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 0.8,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -6279,7 +6279,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 0.8,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -6301,7 +6301,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 0.8,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -6312,7 +6312,7 @@
         "role": "BENCH",
         "stat": "PTS",
         "direction": "NO BET",
-        "market_line": 6.5,
+        "market_line": null,
         "tc_projection": 7.1,
         "tc_target": 6,
         "edge": 1.1,
@@ -6323,7 +6323,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 2,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -6334,7 +6334,7 @@
         "role": "BENCH",
         "stat": "REB",
         "direction": "NO BET",
-        "market_line": 2.5,
+        "market_line": null,
         "tc_projection": 1.4,
         "tc_target": 1,
         "edge": 0.4,
@@ -6345,7 +6345,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 1.5,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -6356,7 +6356,7 @@
         "role": "BENCH",
         "stat": "AST",
         "direction": "NO BET",
-        "market_line": 1.5,
+        "market_line": null,
         "tc_projection": 1.3,
         "tc_target": 1,
         "edge": 0.3,
@@ -6367,7 +6367,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 1.5,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -6389,7 +6389,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 0.8,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -6411,7 +6411,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 0.8,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -6422,7 +6422,7 @@
         "role": "BENCH",
         "stat": "BLK",
         "direction": "NO BET",
-        "market_line": 1.5,
+        "market_line": null,
         "tc_projection": 0.1,
         "tc_target": 0,
         "edge": 0.1,
@@ -6433,7 +6433,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 0.8,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -6444,7 +6444,7 @@
         "role": "BENCH",
         "stat": "PTS",
         "direction": "NO BET",
-        "market_line": 2.5,
+        "market_line": null,
         "tc_projection": 6.8,
         "tc_target": 5,
         "edge": 1.8,
@@ -6455,7 +6455,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 2,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -6466,7 +6466,7 @@
         "role": "BENCH",
         "stat": "REB",
         "direction": "NO BET",
-        "market_line": 0.5,
+        "market_line": null,
         "tc_projection": 2,
         "tc_target": 1,
         "edge": 1,
@@ -6477,7 +6477,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 1.5,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -6488,7 +6488,7 @@
         "role": "BENCH",
         "stat": "AST",
         "direction": "NO BET",
-        "market_line": 1.5,
+        "market_line": null,
         "tc_projection": 2.7,
         "tc_target": 2,
         "edge": 0.7,
@@ -6499,7 +6499,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 1.5,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -6521,7 +6521,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 0.8,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -6543,7 +6543,7 @@
         "status": "ACTIVE",
         "valid": true,
         "threshold": 0.8,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -6565,7 +6565,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 0.8,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -6576,7 +6576,7 @@
         "role": "BENCH",
         "stat": "PTS",
         "direction": "NO BET",
-        "market_line": 4.5,
+        "market_line": null,
         "tc_projection": 6,
         "tc_target": 5,
         "edge": 1,
@@ -6587,7 +6587,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 2,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -6598,7 +6598,7 @@
         "role": "BENCH",
         "stat": "REB",
         "direction": "NO BET",
-        "market_line": 1.5,
+        "market_line": null,
         "tc_projection": 1.4,
         "tc_target": 1,
         "edge": 0.4,
@@ -6609,7 +6609,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 1.5,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -6620,7 +6620,7 @@
         "role": "BENCH",
         "stat": "AST",
         "direction": "NO BET",
-        "market_line": 1.5,
+        "market_line": null,
         "tc_projection": 1.6,
         "tc_target": 1,
         "edge": 0.6,
@@ -6631,7 +6631,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 1.5,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -6653,7 +6653,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 0.8,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -6675,7 +6675,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 0.8,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -6697,7 +6697,7 @@
         "status": "ACTIVE",
         "valid": false,
         "threshold": 0.8,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -7678,7 +7678,7 @@
         "role": "START",
         "stat": "PTS",
         "direction": "OVER",
-        "market_line": 29.5,
+        "market_line": null,
         "tc_projection": 19.9,
         "tc_target": 17,
         "edge": 2.9,
@@ -7689,7 +7689,7 @@
         "status": "ACTIVE",
         "valid": true,
         "threshold": 2,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -7711,7 +7711,7 @@
         "status": "ACTIVE",
         "valid": true,
         "threshold": 0.8,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -7733,7 +7733,7 @@
         "status": "ACTIVE",
         "valid": true,
         "threshold": 0.8,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -7755,7 +7755,7 @@
         "status": "ACTIVE",
         "valid": true,
         "threshold": 0.8,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -7766,7 +7766,7 @@
         "role": "START",
         "stat": "PTS",
         "direction": "OVER",
-        "market_line": 17.5,
+        "market_line": null,
         "tc_projection": 13.3,
         "tc_target": 11,
         "edge": 2.3,
@@ -7777,7 +7777,7 @@
         "status": "ACTIVE",
         "valid": true,
         "threshold": 2,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -7799,7 +7799,7 @@
         "status": "ACTIVE",
         "valid": true,
         "threshold": 0.8,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -7821,7 +7821,7 @@
         "status": "ACTIVE",
         "valid": true,
         "threshold": 0.8,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -7832,7 +7832,7 @@
         "role": "BENCH",
         "stat": "PTS",
         "direction": "OVER",
-        "market_line": 14.5,
+        "market_line": null,
         "tc_projection": 12,
         "tc_target": 10,
         "edge": 2,
@@ -7843,7 +7843,7 @@
         "status": "ACTIVE",
         "valid": true,
         "threshold": 2,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -7865,7 +7865,7 @@
         "status": "ACTIVE",
         "valid": true,
         "threshold": 0.8,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -7887,7 +7887,7 @@
         "status": "ACTIVE",
         "valid": true,
         "threshold": 0.8,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -7898,7 +7898,7 @@
         "role": "BENCH",
         "stat": "PTS",
         "direction": "OVER",
-        "market_line": 14.5,
+        "market_line": null,
         "tc_projection": 10,
         "tc_target": 8,
         "edge": 2,
@@ -7909,7 +7909,7 @@
         "status": "ACTIVE",
         "valid": true,
         "threshold": 2,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -7931,7 +7931,7 @@
         "status": "ACTIVE",
         "valid": true,
         "threshold": 0.8,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -8074,7 +8074,7 @@
         "role": "START",
         "stat": "STL",
         "direction": "OVER",
-        "market_line": 1.5,
+        "market_line": null,
         "tc_projection": 1,
         "tc_target": 0,
         "edge": 1,
@@ -8085,7 +8085,7 @@
         "status": "ACTIVE",
         "valid": true,
         "threshold": 0.8,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -8096,7 +8096,7 @@
         "role": "START",
         "stat": "PTS",
         "direction": "OVER",
-        "market_line": 25.5,
+        "market_line": null,
         "tc_projection": 16.3,
         "tc_target": 14,
         "edge": 2.3,
@@ -8107,7 +8107,7 @@
         "status": "ACTIVE",
         "valid": true,
         "threshold": 2,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -8118,7 +8118,7 @@
         "role": "START",
         "stat": "AST",
         "direction": "OVER",
-        "market_line": 4.5,
+        "market_line": null,
         "tc_projection": 4.5,
         "tc_target": 3,
         "edge": 1.5,
@@ -8129,7 +8129,7 @@
         "status": "ACTIVE",
         "valid": true,
         "threshold": 1.5,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -8140,7 +8140,7 @@
         "role": "START",
         "stat": "PTS",
         "direction": "OVER",
-        "market_line": 17.5,
+        "market_line": null,
         "tc_projection": 11.3,
         "tc_target": 9,
         "edge": 2.3,
@@ -8151,7 +8151,7 @@
         "status": "ACTIVE",
         "valid": true,
         "threshold": 2,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -8162,7 +8162,7 @@
         "role": "START",
         "stat": "STL",
         "direction": "OVER",
-        "market_line": 1.5,
+        "market_line": null,
         "tc_projection": 1,
         "tc_target": 0,
         "edge": 1,
@@ -8173,7 +8173,7 @@
         "status": "ACTIVE",
         "valid": true,
         "threshold": 0.8,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -8195,7 +8195,7 @@
         "status": "ACTIVE",
         "valid": true,
         "threshold": 0.8,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -8206,7 +8206,7 @@
         "role": "START",
         "stat": "STL",
         "direction": "OVER",
-        "market_line": 1.5,
+        "market_line": null,
         "tc_projection": 0.9,
         "tc_target": 0,
         "edge": 0.9,
@@ -8217,7 +8217,7 @@
         "status": "ACTIVE",
         "valid": true,
         "threshold": 0.8,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -8250,7 +8250,7 @@
         "role": "BENCH",
         "stat": "REB",
         "direction": "OVER",
-        "market_line": 4.5,
+        "market_line": null,
         "tc_projection": 6.8,
         "tc_target": 5,
         "edge": 1.8,
@@ -8261,7 +8261,7 @@
         "status": "ACTIVE",
         "valid": true,
         "threshold": 1.5,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       },
       {
         "date": "2026-06-09",
@@ -8283,1089 +8283,10 @@
         "status": "ACTIVE",
         "valid": true,
         "threshold": 0.8,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+        "dk_source": null
       }
     ],
-    "with_dk_line": [
-      {
-        "date": "2026-06-09",
-        "league": "NBA",
-        "game": "SAS@NYK",
-        "team": "SAS",
-        "player": "Victor Wembanyama",
-        "role": "START",
-        "stat": "PTS",
-        "direction": "OVER",
-        "market_line": 29.5,
-        "tc_projection": 19.9,
-        "tc_target": 17,
-        "edge": 2.9,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 23.4,
-        "status": "ACTIVE",
-        "valid": true,
-        "threshold": 2,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
-      },
-      {
-        "date": "2026-06-09",
-        "league": "NBA",
-        "game": "SAS@NYK",
-        "team": "SAS",
-        "player": "Victor Wembanyama",
-        "role": "START",
-        "stat": "REB",
-        "direction": "NO BET",
-        "market_line": 11.5,
-        "tc_projection": 9.4,
-        "tc_target": 8,
-        "edge": 1.4,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 11,
-        "status": "ACTIVE",
-        "valid": false,
-        "threshold": 1.5,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
-      },
-      {
-        "date": "2026-06-09",
-        "league": "NBA",
-        "game": "SAS@NYK",
-        "team": "SAS",
-        "player": "Victor Wembanyama",
-        "role": "START",
-        "stat": "AST",
-        "direction": "NO BET",
-        "market_line": 3.5,
-        "tc_projection": 3,
-        "tc_target": 2,
-        "edge": 1,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 3.5,
-        "status": "ACTIVE",
-        "valid": false,
-        "threshold": 1.5,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
-      },
-      {
-        "date": "2026-06-09",
-        "league": "NBA",
-        "game": "SAS@NYK",
-        "team": "SAS",
-        "player": "Stephon Castle",
-        "role": "START",
-        "stat": "PTS",
-        "direction": "OVER",
-        "market_line": 17.5,
-        "tc_projection": 13.3,
-        "tc_target": 11,
-        "edge": 2.3,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 15.6,
-        "status": "ACTIVE",
-        "valid": true,
-        "threshold": 2,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
-      },
-      {
-        "date": "2026-06-09",
-        "league": "NBA",
-        "game": "SAS@NYK",
-        "team": "SAS",
-        "player": "Stephon Castle",
-        "role": "START",
-        "stat": "REB",
-        "direction": "NO BET",
-        "market_line": 4.5,
-        "tc_projection": 3.7,
-        "tc_target": 3,
-        "edge": 0.7,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 4.4,
-        "status": "ACTIVE",
-        "valid": false,
-        "threshold": 1.5,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
-      },
-      {
-        "date": "2026-06-09",
-        "league": "NBA",
-        "game": "SAS@NYK",
-        "team": "SAS",
-        "player": "Stephon Castle",
-        "role": "START",
-        "stat": "AST",
-        "direction": "NO BET",
-        "market_line": 7.5,
-        "tc_projection": 4.8,
-        "tc_target": 4,
-        "edge": 0.8,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 5.6,
-        "status": "ACTIVE",
-        "valid": false,
-        "threshold": 1.5,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
-      },
-      {
-        "date": "2026-06-09",
-        "league": "NBA",
-        "game": "SAS@NYK",
-        "team": "SAS",
-        "player": "Keldon Johnson",
-        "role": "START",
-        "stat": "PTS",
-        "direction": "NO BET",
-        "market_line": 6.5,
-        "tc_projection": 12.8,
-        "tc_target": 11,
-        "edge": 1.8,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 15.1,
-        "status": "ACTIVE",
-        "valid": false,
-        "threshold": 2,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
-      },
-      {
-        "date": "2026-06-09",
-        "league": "NBA",
-        "game": "SAS@NYK",
-        "team": "SAS",
-        "player": "Keldon Johnson",
-        "role": "START",
-        "stat": "REB",
-        "direction": "NO BET",
-        "market_line": 1.5,
-        "tc_projection": 4.6,
-        "tc_target": 4,
-        "edge": 0.6,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 5.4,
-        "status": "ACTIVE",
-        "valid": false,
-        "threshold": 1.5,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
-      },
-      {
-        "date": "2026-06-09",
-        "league": "NBA",
-        "game": "SAS@NYK",
-        "team": "SAS",
-        "player": "Keldon Johnson",
-        "role": "START",
-        "stat": "AST",
-        "direction": "NO BET",
-        "market_line": 0.5,
-        "tc_projection": 1.7,
-        "tc_target": 1,
-        "edge": 0.7,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 2,
-        "status": "ACTIVE",
-        "valid": false,
-        "threshold": 1.5,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
-      },
-      {
-        "date": "2026-06-09",
-        "league": "NBA",
-        "game": "SAS@NYK",
-        "team": "SAS",
-        "player": "Devin Vassell",
-        "role": "BENCH",
-        "stat": "PTS",
-        "direction": "OVER",
-        "market_line": 14.5,
-        "tc_projection": 12,
-        "tc_target": 10,
-        "edge": 2,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 14.1,
-        "status": "ACTIVE",
-        "valid": true,
-        "threshold": 2,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
-      },
-      {
-        "date": "2026-06-09",
-        "league": "NBA",
-        "game": "SAS@NYK",
-        "team": "SAS",
-        "player": "Devin Vassell",
-        "role": "BENCH",
-        "stat": "REB",
-        "direction": "NO BET",
-        "market_line": 5.5,
-        "tc_projection": 3.2,
-        "tc_target": 2,
-        "edge": 1.2,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 3.8,
-        "status": "ACTIVE",
-        "valid": false,
-        "threshold": 1.5,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
-      },
-      {
-        "date": "2026-06-09",
-        "league": "NBA",
-        "game": "SAS@NYK",
-        "team": "SAS",
-        "player": "Devin Vassell",
-        "role": "BENCH",
-        "stat": "AST",
-        "direction": "NO BET",
-        "market_line": 1.5,
-        "tc_projection": 2.2,
-        "tc_target": 1,
-        "edge": 1.2,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 2.6,
-        "status": "ACTIVE",
-        "valid": false,
-        "threshold": 1.5,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
-      },
-      {
-        "date": "2026-06-09",
-        "league": "NBA",
-        "game": "SAS@NYK",
-        "team": "SAS",
-        "player": "Dylan Harper",
-        "role": "BENCH",
-        "stat": "PTS",
-        "direction": "OVER",
-        "market_line": 14.5,
-        "tc_projection": 10,
-        "tc_target": 8,
-        "edge": 2,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 11.8,
-        "status": "ACTIVE",
-        "valid": true,
-        "threshold": 2,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
-      },
-      {
-        "date": "2026-06-09",
-        "league": "NBA",
-        "game": "SAS@NYK",
-        "team": "SAS",
-        "player": "Dylan Harper",
-        "role": "BENCH",
-        "stat": "REB",
-        "direction": "NO BET",
-        "market_line": 7.5,
-        "tc_projection": 2.9,
-        "tc_target": 2,
-        "edge": 0.9,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 3.4,
-        "status": "ACTIVE",
-        "valid": false,
-        "threshold": 1.5,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
-      },
-      {
-        "date": "2026-06-09",
-        "league": "NBA",
-        "game": "SAS@NYK",
-        "team": "SAS",
-        "player": "Dylan Harper",
-        "role": "BENCH",
-        "stat": "AST",
-        "direction": "NO BET",
-        "market_line": 3.5,
-        "tc_projection": 3.3,
-        "tc_target": 2,
-        "edge": 1.3,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 3.9,
-        "status": "ACTIVE",
-        "valid": false,
-        "threshold": 1.5,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
-      },
-      {
-        "date": "2026-06-09",
-        "league": "NBA",
-        "game": "SAS@NYK",
-        "team": "SAS",
-        "player": "Dylan Harper",
-        "role": "BENCH",
-        "stat": "STL",
-        "direction": "NO BET",
-        "market_line": 1.5,
-        "tc_projection": 0.6,
-        "tc_target": 0,
-        "edge": 0.6,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 0.8,
-        "status": "ACTIVE",
-        "valid": false,
-        "threshold": 0.8,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
-      },
-      {
-        "date": "2026-06-09",
-        "league": "NBA",
-        "game": "SAS@NYK",
-        "team": "SAS",
-        "player": "Julian Champagnie",
-        "role": "BENCH",
-        "stat": "PTS",
-        "direction": "NO BET",
-        "market_line": 9.5,
-        "tc_projection": 8,
-        "tc_target": 7,
-        "edge": 1,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 9.4,
-        "status": "ACTIVE",
-        "valid": false,
-        "threshold": 2,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
-      },
-      {
-        "date": "2026-06-09",
-        "league": "NBA",
-        "game": "SAS@NYK",
-        "team": "SAS",
-        "player": "Julian Champagnie",
-        "role": "BENCH",
-        "stat": "REB",
-        "direction": "NO BET",
-        "market_line": 4.5,
-        "tc_projection": 3.5,
-        "tc_target": 3,
-        "edge": 0.5,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 4.1,
-        "status": "ACTIVE",
-        "valid": false,
-        "threshold": 1.5,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
-      },
-      {
-        "date": "2026-06-09",
-        "league": "NBA",
-        "game": "SAS@NYK",
-        "team": "SAS",
-        "player": "Julian Champagnie",
-        "role": "BENCH",
-        "stat": "AST",
-        "direction": "NO BET",
-        "market_line": 1.5,
-        "tc_projection": 1.2,
-        "tc_target": 1,
-        "edge": 0.2,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 1.4,
-        "status": "ACTIVE",
-        "valid": false,
-        "threshold": 1.5,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
-      },
-      {
-        "date": "2026-06-09",
-        "league": "NBA",
-        "game": "SAS@NYK",
-        "team": "SAS",
-        "player": "Luke Kornet",
-        "role": "BENCH",
-        "stat": "PTS",
-        "direction": "NO BET",
-        "market_line": 1.5,
-        "tc_projection": 4.6,
-        "tc_target": 4,
-        "edge": 0.6,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 5.4,
-        "status": "ACTIVE",
-        "valid": false,
-        "threshold": 2,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
-      },
-      {
-        "date": "2026-06-09",
-        "league": "NBA",
-        "game": "SAS@NYK",
-        "team": "SAS",
-        "player": "Luke Kornet",
-        "role": "BENCH",
-        "stat": "REB",
-        "direction": "NO BET",
-        "market_line": 2.5,
-        "tc_projection": 3.3,
-        "tc_target": 2,
-        "edge": 1.3,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 3.9,
-        "status": "ACTIVE",
-        "valid": false,
-        "threshold": 1.5,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
-      },
-      {
-        "date": "2026-06-09",
-        "league": "NBA",
-        "game": "SAS@NYK",
-        "team": "SAS",
-        "player": "Luke Kornet",
-        "role": "BENCH",
-        "stat": "AST",
-        "direction": "NO BET",
-        "market_line": 2.5,
-        "tc_projection": 1,
-        "tc_target": 0,
-        "edge": 1,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 1.2,
-        "status": "ACTIVE",
-        "valid": false,
-        "threshold": 1.5,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
-      },
-      {
-        "date": "2026-06-09",
-        "league": "NBA",
-        "game": "SAS@NYK",
-        "team": "NYK",
-        "player": "Mikal Bridges",
-        "role": "START",
-        "stat": "PTS",
-        "direction": "NO BET",
-        "market_line": 10.5,
-        "tc_projection": 12.5,
-        "tc_target": 11,
-        "edge": 1.5,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 14.7,
-        "status": "ACTIVE",
-        "valid": false,
-        "threshold": 2,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
-      },
-      {
-        "date": "2026-06-09",
-        "league": "NBA",
-        "game": "SAS@NYK",
-        "team": "NYK",
-        "player": "Mikal Bridges",
-        "role": "START",
-        "stat": "REB",
-        "direction": "NO BET",
-        "market_line": 2.5,
-        "tc_projection": 3.3,
-        "tc_target": 2,
-        "edge": 1.3,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 3.9,
-        "status": "ACTIVE",
-        "valid": false,
-        "threshold": 1.5,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
-      },
-      {
-        "date": "2026-06-09",
-        "league": "NBA",
-        "game": "SAS@NYK",
-        "team": "NYK",
-        "player": "Mikal Bridges",
-        "role": "START",
-        "stat": "AST",
-        "direction": "NO BET",
-        "market_line": 1.5,
-        "tc_projection": 2.5,
-        "tc_target": 2,
-        "edge": 0.5,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 2.9,
-        "status": "ACTIVE",
-        "valid": false,
-        "threshold": 1.5,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
-      },
-      {
-        "date": "2026-06-09",
-        "league": "NBA",
-        "game": "SAS@NYK",
-        "team": "NYK",
-        "player": "Mikal Bridges",
-        "role": "START",
-        "stat": "STL",
-        "direction": "OVER",
-        "market_line": 1.5,
-        "tc_projection": 1,
-        "tc_target": 0,
-        "edge": 1,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 1.2,
-        "status": "ACTIVE",
-        "valid": true,
-        "threshold": 0.8,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
-      },
-      {
-        "date": "2026-06-09",
-        "league": "NBA",
-        "game": "SAS@NYK",
-        "team": "NYK",
-        "player": "Jalen Brunson",
-        "role": "START",
-        "stat": "PTS",
-        "direction": "OVER",
-        "market_line": 25.5,
-        "tc_projection": 16.3,
-        "tc_target": 14,
-        "edge": 2.3,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 19.2,
-        "status": "ACTIVE",
-        "valid": true,
-        "threshold": 2,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
-      },
-      {
-        "date": "2026-06-09",
-        "league": "NBA",
-        "game": "SAS@NYK",
-        "team": "NYK",
-        "player": "Jalen Brunson",
-        "role": "START",
-        "stat": "REB",
-        "direction": "NO BET",
-        "market_line": 3.5,
-        "tc_projection": 2.7,
-        "tc_target": 2,
-        "edge": 0.7,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 3.2,
-        "status": "ACTIVE",
-        "valid": false,
-        "threshold": 1.5,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
-      },
-      {
-        "date": "2026-06-09",
-        "league": "NBA",
-        "game": "SAS@NYK",
-        "team": "NYK",
-        "player": "Jalen Brunson",
-        "role": "START",
-        "stat": "AST",
-        "direction": "OVER",
-        "market_line": 4.5,
-        "tc_projection": 4.5,
-        "tc_target": 3,
-        "edge": 1.5,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 5.3,
-        "status": "ACTIVE",
-        "valid": true,
-        "threshold": 1.5,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
-      },
-      {
-        "date": "2026-06-09",
-        "league": "NBA",
-        "game": "SAS@NYK",
-        "team": "NYK",
-        "player": "OG Anunoby",
-        "role": "START",
-        "stat": "PTS",
-        "direction": "OVER",
-        "market_line": 17.5,
-        "tc_projection": 11.3,
-        "tc_target": 9,
-        "edge": 2.3,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 13.3,
-        "status": "ACTIVE",
-        "valid": true,
-        "threshold": 2,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
-      },
-      {
-        "date": "2026-06-09",
-        "league": "NBA",
-        "game": "SAS@NYK",
-        "team": "NYK",
-        "player": "OG Anunoby",
-        "role": "START",
-        "stat": "REB",
-        "direction": "NO BET",
-        "market_line": 4.5,
-        "tc_projection": 3.8,
-        "tc_target": 3,
-        "edge": 0.8,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 4.5,
-        "status": "ACTIVE",
-        "valid": false,
-        "threshold": 1.5,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
-      },
-      {
-        "date": "2026-06-09",
-        "league": "NBA",
-        "game": "SAS@NYK",
-        "team": "NYK",
-        "player": "OG Anunoby",
-        "role": "START",
-        "stat": "AST",
-        "direction": "NO BET",
-        "market_line": 1.5,
-        "tc_projection": 1.4,
-        "tc_target": 1,
-        "edge": 0.4,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 1.7,
-        "status": "ACTIVE",
-        "valid": false,
-        "threshold": 1.5,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
-      },
-      {
-        "date": "2026-06-09",
-        "league": "NBA",
-        "game": "SAS@NYK",
-        "team": "NYK",
-        "player": "OG Anunoby",
-        "role": "START",
-        "stat": "STL",
-        "direction": "OVER",
-        "market_line": 1.5,
-        "tc_projection": 1,
-        "tc_target": 0,
-        "edge": 1,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 1.3,
-        "status": "ACTIVE",
-        "valid": true,
-        "threshold": 0.8,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
-      },
-      {
-        "date": "2026-06-09",
-        "league": "NBA",
-        "game": "SAS@NYK",
-        "team": "NYK",
-        "player": "Josh Hart",
-        "role": "START",
-        "stat": "PTS",
-        "direction": "NO BET",
-        "market_line": 14.5,
-        "tc_projection": 8.9,
-        "tc_target": 7,
-        "edge": 1.9,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 10.5,
-        "status": "ACTIVE",
-        "valid": false,
-        "threshold": 2,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
-      },
-      {
-        "date": "2026-06-09",
-        "league": "NBA",
-        "game": "SAS@NYK",
-        "team": "NYK",
-        "player": "Josh Hart",
-        "role": "START",
-        "stat": "REB",
-        "direction": "NO BET",
-        "market_line": 9.5,
-        "tc_projection": 6,
-        "tc_target": 5,
-        "edge": 1,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 7,
-        "status": "ACTIVE",
-        "valid": false,
-        "threshold": 1.5,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
-      },
-      {
-        "date": "2026-06-09",
-        "league": "NBA",
-        "game": "SAS@NYK",
-        "team": "NYK",
-        "player": "Josh Hart",
-        "role": "START",
-        "stat": "AST",
-        "direction": "NO BET",
-        "market_line": 3.5,
-        "tc_projection": 2.9,
-        "tc_target": 2,
-        "edge": 0.9,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 3.4,
-        "status": "ACTIVE",
-        "valid": false,
-        "threshold": 1.5,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
-      },
-      {
-        "date": "2026-06-09",
-        "league": "NBA",
-        "game": "SAS@NYK",
-        "team": "NYK",
-        "player": "Josh Hart",
-        "role": "START",
-        "stat": "STL",
-        "direction": "OVER",
-        "market_line": 1.5,
-        "tc_projection": 0.9,
-        "tc_target": 0,
-        "edge": 0.9,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 1.1,
-        "status": "ACTIVE",
-        "valid": true,
-        "threshold": 0.8,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
-      },
-      {
-        "date": "2026-06-09",
-        "league": "NBA",
-        "game": "SAS@NYK",
-        "team": "NYK",
-        "player": "Mitchell Robinson",
-        "role": "BENCH",
-        "stat": "PTS",
-        "direction": "NO BET",
-        "market_line": 3.5,
-        "tc_projection": 6.4,
-        "tc_target": 5,
-        "edge": 1.4,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 7.5,
-        "status": "ACTIVE",
-        "valid": false,
-        "threshold": 2,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
-      },
-      {
-        "date": "2026-06-09",
-        "league": "NBA",
-        "game": "SAS@NYK",
-        "team": "NYK",
-        "player": "Mitchell Robinson",
-        "role": "BENCH",
-        "stat": "REB",
-        "direction": "OVER",
-        "market_line": 4.5,
-        "tc_projection": 6.8,
-        "tc_target": 5,
-        "edge": 1.8,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 8,
-        "status": "ACTIVE",
-        "valid": true,
-        "threshold": 1.5,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
-      },
-      {
-        "date": "2026-06-09",
-        "league": "NBA",
-        "game": "SAS@NYK",
-        "team": "NYK",
-        "player": "Landry Shamet",
-        "role": "BENCH",
-        "stat": "PTS",
-        "direction": "NO BET",
-        "market_line": 6.5,
-        "tc_projection": 7.1,
-        "tc_target": 6,
-        "edge": 1.1,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 8.4,
-        "status": "ACTIVE",
-        "valid": false,
-        "threshold": 2,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
-      },
-      {
-        "date": "2026-06-09",
-        "league": "NBA",
-        "game": "SAS@NYK",
-        "team": "NYK",
-        "player": "Landry Shamet",
-        "role": "BENCH",
-        "stat": "REB",
-        "direction": "NO BET",
-        "market_line": 2.5,
-        "tc_projection": 1.4,
-        "tc_target": 1,
-        "edge": 0.4,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 1.7,
-        "status": "ACTIVE",
-        "valid": false,
-        "threshold": 1.5,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
-      },
-      {
-        "date": "2026-06-09",
-        "league": "NBA",
-        "game": "SAS@NYK",
-        "team": "NYK",
-        "player": "Landry Shamet",
-        "role": "BENCH",
-        "stat": "AST",
-        "direction": "NO BET",
-        "market_line": 1.5,
-        "tc_projection": 1.3,
-        "tc_target": 1,
-        "edge": 0.3,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 1.5,
-        "status": "ACTIVE",
-        "valid": false,
-        "threshold": 1.5,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
-      },
-      {
-        "date": "2026-06-09",
-        "league": "NBA",
-        "game": "SAS@NYK",
-        "team": "NYK",
-        "player": "Landry Shamet",
-        "role": "BENCH",
-        "stat": "BLK",
-        "direction": "NO BET",
-        "market_line": 1.5,
-        "tc_projection": 0.1,
-        "tc_target": 0,
-        "edge": 0.1,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 0.1,
-        "status": "ACTIVE",
-        "valid": false,
-        "threshold": 0.8,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
-      },
-      {
-        "date": "2026-06-09",
-        "league": "NBA",
-        "game": "SAS@NYK",
-        "team": "NYK",
-        "player": "Jose Alvarado",
-        "role": "BENCH",
-        "stat": "PTS",
-        "direction": "NO BET",
-        "market_line": 2.5,
-        "tc_projection": 6.8,
-        "tc_target": 5,
-        "edge": 1.8,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 8,
-        "status": "ACTIVE",
-        "valid": false,
-        "threshold": 2,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
-      },
-      {
-        "date": "2026-06-09",
-        "league": "NBA",
-        "game": "SAS@NYK",
-        "team": "NYK",
-        "player": "Jose Alvarado",
-        "role": "BENCH",
-        "stat": "REB",
-        "direction": "NO BET",
-        "market_line": 0.5,
-        "tc_projection": 2,
-        "tc_target": 1,
-        "edge": 1,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 2.3,
-        "status": "ACTIVE",
-        "valid": false,
-        "threshold": 1.5,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
-      },
-      {
-        "date": "2026-06-09",
-        "league": "NBA",
-        "game": "SAS@NYK",
-        "team": "NYK",
-        "player": "Jose Alvarado",
-        "role": "BENCH",
-        "stat": "AST",
-        "direction": "NO BET",
-        "market_line": 1.5,
-        "tc_projection": 2.7,
-        "tc_target": 2,
-        "edge": 0.7,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 3.2,
-        "status": "ACTIVE",
-        "valid": false,
-        "threshold": 1.5,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
-      },
-      {
-        "date": "2026-06-09",
-        "league": "NBA",
-        "game": "SAS@NYK",
-        "team": "NYK",
-        "player": "Miles McBride",
-        "role": "BENCH",
-        "stat": "PTS",
-        "direction": "NO BET",
-        "market_line": 4.5,
-        "tc_projection": 6,
-        "tc_target": 5,
-        "edge": 1,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 7.1,
-        "status": "ACTIVE",
-        "valid": false,
-        "threshold": 2,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
-      },
-      {
-        "date": "2026-06-09",
-        "league": "NBA",
-        "game": "SAS@NYK",
-        "team": "NYK",
-        "player": "Miles McBride",
-        "role": "BENCH",
-        "stat": "REB",
-        "direction": "NO BET",
-        "market_line": 1.5,
-        "tc_projection": 1.4,
-        "tc_target": 1,
-        "edge": 0.4,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 1.6,
-        "status": "ACTIVE",
-        "valid": false,
-        "threshold": 1.5,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
-      },
-      {
-        "date": "2026-06-09",
-        "league": "NBA",
-        "game": "SAS@NYK",
-        "team": "NYK",
-        "player": "Miles McBride",
-        "role": "BENCH",
-        "stat": "AST",
-        "direction": "NO BET",
-        "market_line": 1.5,
-        "tc_projection": 1.6,
-        "tc_target": 1,
-        "edge": 0.6,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 1.9,
-        "status": "ACTIVE",
-        "valid": false,
-        "threshold": 1.5,
-        "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
-      }
-    ]
+    "with_dk_line": []
   },
   "valid_props": [
     {
@@ -9421,7 +8342,7 @@
       "role": "START",
       "stat": "PTS",
       "direction": "OVER",
-      "market_line": 29.5,
+      "market_line": null,
       "tc_projection": 19.9,
       "tc_target": 17,
       "edge": 2.9,
@@ -9432,7 +8353,7 @@
       "status": "ACTIVE",
       "valid": true,
       "threshold": 2,
-      "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+      "dk_source": null
     },
     {
       "date": "2026-06-09",
@@ -9454,7 +8375,7 @@
       "status": "ACTIVE",
       "valid": true,
       "threshold": 0.8,
-      "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+      "dk_source": null
     },
     {
       "date": "2026-06-09",
@@ -9476,7 +8397,7 @@
       "status": "ACTIVE",
       "valid": true,
       "threshold": 0.8,
-      "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+      "dk_source": null
     },
     {
       "date": "2026-06-09",
@@ -9498,7 +8419,7 @@
       "status": "ACTIVE",
       "valid": true,
       "threshold": 0.8,
-      "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+      "dk_source": null
     },
     {
       "date": "2026-06-09",
@@ -9509,7 +8430,7 @@
       "role": "START",
       "stat": "PTS",
       "direction": "OVER",
-      "market_line": 17.5,
+      "market_line": null,
       "tc_projection": 13.3,
       "tc_target": 11,
       "edge": 2.3,
@@ -9520,7 +8441,7 @@
       "status": "ACTIVE",
       "valid": true,
       "threshold": 2,
-      "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+      "dk_source": null
     },
     {
       "date": "2026-06-09",
@@ -9542,7 +8463,7 @@
       "status": "ACTIVE",
       "valid": true,
       "threshold": 0.8,
-      "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+      "dk_source": null
     },
     {
       "date": "2026-06-09",
@@ -9564,7 +8485,7 @@
       "status": "ACTIVE",
       "valid": true,
       "threshold": 0.8,
-      "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+      "dk_source": null
     },
     {
       "date": "2026-06-09",
@@ -9575,7 +8496,7 @@
       "role": "BENCH",
       "stat": "PTS",
       "direction": "OVER",
-      "market_line": 14.5,
+      "market_line": null,
       "tc_projection": 12,
       "tc_target": 10,
       "edge": 2,
@@ -9586,7 +8507,7 @@
       "status": "ACTIVE",
       "valid": true,
       "threshold": 2,
-      "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+      "dk_source": null
     },
     {
       "date": "2026-06-09",
@@ -9608,7 +8529,7 @@
       "status": "ACTIVE",
       "valid": true,
       "threshold": 0.8,
-      "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+      "dk_source": null
     },
     {
       "date": "2026-06-09",
@@ -9630,7 +8551,7 @@
       "status": "ACTIVE",
       "valid": true,
       "threshold": 0.8,
-      "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+      "dk_source": null
     },
     {
       "date": "2026-06-09",
@@ -9641,7 +8562,7 @@
       "role": "BENCH",
       "stat": "PTS",
       "direction": "OVER",
-      "market_line": 14.5,
+      "market_line": null,
       "tc_projection": 10,
       "tc_target": 8,
       "edge": 2,
@@ -9652,7 +8573,7 @@
       "status": "ACTIVE",
       "valid": true,
       "threshold": 2,
-      "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+      "dk_source": null
     },
     {
       "date": "2026-06-09",
@@ -9674,7 +8595,7 @@
       "status": "ACTIVE",
       "valid": true,
       "threshold": 0.8,
-      "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+      "dk_source": null
     },
     {
       "date": "2026-06-09",
@@ -9817,7 +8738,7 @@
       "role": "START",
       "stat": "STL",
       "direction": "OVER",
-      "market_line": 1.5,
+      "market_line": null,
       "tc_projection": 1,
       "tc_target": 0,
       "edge": 1,
@@ -9828,7 +8749,7 @@
       "status": "ACTIVE",
       "valid": true,
       "threshold": 0.8,
-      "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+      "dk_source": null
     },
     {
       "date": "2026-06-09",
@@ -9839,7 +8760,7 @@
       "role": "START",
       "stat": "PTS",
       "direction": "OVER",
-      "market_line": 25.5,
+      "market_line": null,
       "tc_projection": 16.3,
       "tc_target": 14,
       "edge": 2.3,
@@ -9850,7 +8771,7 @@
       "status": "ACTIVE",
       "valid": true,
       "threshold": 2,
-      "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+      "dk_source": null
     },
     {
       "date": "2026-06-09",
@@ -9861,7 +8782,7 @@
       "role": "START",
       "stat": "AST",
       "direction": "OVER",
-      "market_line": 4.5,
+      "market_line": null,
       "tc_projection": 4.5,
       "tc_target": 3,
       "edge": 1.5,
@@ -9872,7 +8793,7 @@
       "status": "ACTIVE",
       "valid": true,
       "threshold": 1.5,
-      "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+      "dk_source": null
     },
     {
       "date": "2026-06-09",
@@ -9883,7 +8804,7 @@
       "role": "START",
       "stat": "PTS",
       "direction": "OVER",
-      "market_line": 17.5,
+      "market_line": null,
       "tc_projection": 11.3,
       "tc_target": 9,
       "edge": 2.3,
@@ -9894,7 +8815,7 @@
       "status": "ACTIVE",
       "valid": true,
       "threshold": 2,
-      "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+      "dk_source": null
     },
     {
       "date": "2026-06-09",
@@ -9905,7 +8826,7 @@
       "role": "START",
       "stat": "STL",
       "direction": "OVER",
-      "market_line": 1.5,
+      "market_line": null,
       "tc_projection": 1,
       "tc_target": 0,
       "edge": 1,
@@ -9916,7 +8837,7 @@
       "status": "ACTIVE",
       "valid": true,
       "threshold": 0.8,
-      "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+      "dk_source": null
     },
     {
       "date": "2026-06-09",
@@ -9938,7 +8859,7 @@
       "status": "ACTIVE",
       "valid": true,
       "threshold": 0.8,
-      "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+      "dk_source": null
     },
     {
       "date": "2026-06-09",
@@ -9949,7 +8870,7 @@
       "role": "START",
       "stat": "STL",
       "direction": "OVER",
-      "market_line": 1.5,
+      "market_line": null,
       "tc_projection": 0.9,
       "tc_target": 0,
       "edge": 0.9,
@@ -9960,7 +8881,7 @@
       "status": "ACTIVE",
       "valid": true,
       "threshold": 0.8,
-      "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+      "dk_source": null
     },
     {
       "date": "2026-06-09",
@@ -9993,7 +8914,7 @@
       "role": "BENCH",
       "stat": "REB",
       "direction": "OVER",
-      "market_line": 4.5,
+      "market_line": null,
       "tc_projection": 6.8,
       "tc_target": 5,
       "edge": 1.8,
@@ -10004,7 +8925,7 @@
       "status": "ACTIVE",
       "valid": true,
       "threshold": 1.5,
-      "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+      "dk_source": null
     },
     {
       "date": "2026-06-09",
@@ -10026,7 +8947,7 @@
       "status": "ACTIVE",
       "valid": true,
       "threshold": 0.8,
-      "dk_source": "SportsGameOdds \u00b7 DraftKings player props"
+      "dk_source": null
     }
   ],
   "backtest_schema": [

@@ -1,66 +1,11 @@
 {
-  "timestamp": "2026-06-09T01:16:16.313204",
+  "timestamp": "2026-06-09T12:06:53.263218",
   "sports": [
     "WNBA"
   ],
-  "games_logged": 3,
-  "picks_logged": 42,
-  "completed_games_skipped": 0,
+  "games_logged": 0,
+  "picks_logged": 0,
+  "completed_games_skipped": 3,
   "errors": [],
-  "summaries": [
-    {
-      "date": "2026-06-09",
-      "sport": "WNBA",
-      "matchup": "NY@CON",
-      "away_team": "NY",
-      "home_team": "CON",
-      "tc_combined": 129.1,
-      "tc_line": 129,
-      "market_total": null,
-      "dk_total": null,
-      "edge": 0,
-      "signal": "NO MARKET",
-      "source": "live ESPN WNBA roster/stat APIs",
-      "valid_prop_count": 12,
-      "roster_size": 49,
-      "pending_props_no_dk": 12,
-      "picks_with_dk": 0
-    },
-    {
-      "date": "2026-06-09",
-      "sport": "WNBA",
-      "matchup": "IND@WSH",
-      "away_team": "IND",
-      "home_team": "WSH",
-      "tc_combined": 153.5,
-      "tc_line": 153,
-      "market_total": null,
-      "dk_total": null,
-      "edge": 0,
-      "signal": "NO MARKET",
-      "source": "live ESPN WNBA roster/stat APIs",
-      "valid_prop_count": 12,
-      "roster_size": 51,
-      "pending_props_no_dk": 12,
-      "picks_with_dk": 0
-    },
-    {
-      "date": "2026-06-09",
-      "sport": "WNBA",
-      "matchup": "SEA@LV",
-      "away_team": "SEA",
-      "home_team": "LV",
-      "tc_combined": 145.9,
-      "tc_line": 145,
-      "market_total": 162.5,
-      "dk_total": 162.5,
-      "edge": -17.5,
-      "signal": "UNDER",
-      "source": "live ESPN WNBA roster/stat APIs",
-      "valid_prop_count": 18,
-      "roster_size": 48,
-      "pending_props_no_dk": 18,
-      "picks_with_dk": 0
-    }
-  ]
+  "summaries": []
 }
