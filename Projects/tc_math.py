@@ -84,6 +84,7 @@ BAYES_ALPHA: Dict[str, float] = {
 # League prior per stat — 14-day WNBA / NBA averages. NBA is generous;
 # WNBA is set from 14d backtest means (Archives/WNBA_Backtests/).
 LEAGUE_PRIOR: Dict[str, Dict[str, float]] = {
+    "NBA":  {"pts": 11.0, "reb": 4.0, "ast": 2.5, "3pm": 1.2, "stl": 0.8},
     "WNBA": {"pts": 10.5, "reb": 3.8, "ast": 2.3, "3pm": 1.0, "stl": 0.9},
 }
 
@@ -211,7 +212,7 @@ def edge(tc_value: float, market_line: Optional[float]) -> float:
     return round(float(tc_value) - float(market_line), 1)
 
 
-def ceiling_recommendommend(tc_proj: float, market_line: Optional[float], side: str = "Over", threshold: float = 0.5) -> str:
+def ceiling_recommend(tc_proj: float, market_line: Optional[float], side: str = "Over", threshold: float = 0.5) -> str:
     """
     Recommend a ceiling bet based on TC projection and market line.
 
