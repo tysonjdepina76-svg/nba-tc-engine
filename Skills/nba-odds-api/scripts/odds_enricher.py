@@ -27,6 +27,11 @@ SPORT_MAP = {
     "WNBA": "basketball_wnba",
 }
 
+TEAM_MAP = {
+    "NBA": {},
+    "WNBA": {},
+}
+
 BOOK_PRIORITY = ["draftkings", "fanduel", "betmgm", "fanatics", "bovada"]
 
 CACHE_DIR = Path.home() / ".zo" / "odds"
