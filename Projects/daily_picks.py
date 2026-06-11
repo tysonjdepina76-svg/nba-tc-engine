@@ -10,13 +10,25 @@ Runs on a schedule (5 min before tip) and writes:
 Designed to be the single source of truth for daily picks and historical results.
 """
 
+import os
 import json
 import csv
-import os
 import sys
 import requests
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
+
+# Load secrets so SGO/ODDS_API keys are available
+try:
+    _sec = Path("/root/.zo/secrets.env")
+    if _sec.exists():
+        for _line in _sec.read_text().splitlines():
+            _line = _line.strip()
+            if _line and not _line.startswith("#") and "=" in _line:
+                _k, _v = _line.split("=", 1)
+                os.environ.setdefault(_k.strip(), _v.strip())
+except Exception as _e:
+    print(f"⚠️ secrets load failed: {_e}")
 
 # Add workspace root for imports
 WORKSPACE = Path("/home/workspace")
@@ -177,6 +189,21 @@ def run_daily_log(sports=("NBA", "WNBA")):
                 if odds_enrichment and odds_enrichment.get("player_lines"):
                     proj["odds_api_lines"] = odds_enrichment
                     print(f"    → Odds API: {odds_enrichment.get('player_count', 0)} players enriched via {odds_enrichment.get('book', '?')}")
+                    # Merge DK lines into valid_props with fuzzy name + stat mapping
+                    player_lines = odds_enrichment.get("player_lines", {})
+                    stat_map = {"PTS": "points", "REB": "rebounds", "AST": "assists", "3PM": None, "STL": None, "BLK": None}
+                    for vp in proj.get("valid_props", []):
+                        pl_name = vp.get("player", "")
+                        stat_key = vp.get("stat", "")
+                        dk_stat = stat_map.get(stat_key)
+                        if not dk_stat:
+                            continue
+                        # Fuzzy player name match (last name or substring)
+                        for dk_name in player_lines:
+                            if pl_name == dk_name or pl_name in dk_name or dk_name in pl_name:
+                                if dk_stat in player_lines[dk_name]:
+                                    vp["market_line"] = player_lines[dk_name][dk_stat]
+                                break
             except Exception as oe:
                 print(f"    ⚠️ Odds enrichment skipped: {oe}")
 

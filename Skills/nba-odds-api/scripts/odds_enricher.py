@@ -17,7 +17,7 @@ import os
 import sys
 import requests
 from pathlib import Path
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 
 ODDS_API_KEY = os.environ.get("ODDS_API_KEY", "")
 BASE_URL = "https://api.the-odds-api.com/v4"
@@ -45,11 +45,23 @@ def _find_game(sport_key, away_team, home_team):
         "regions": "us",
         "markets": "h2h,spreads,totals",
         "oddsFormat": "decimal",
+        "commenceTimeFrom": (datetime.now(timezone.utc) - timedelta(hours=12)).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "commenceTimeTo": (datetime.now(timezone.utc) + timedelta(days=2)).strftime("%Y-%m-%dT%H:%M:%SZ"),
     }
     r = requests.get(url, params=params, timeout=15)
     r.raise_for_status()
+    def norm(name):
+        if not name: return ""
+        n = name.lower().strip()
+        for suffix in [" sky", " liberty", " fever", " dream", " mercury", " wings", " aces", " storm", " tempo", " mystics", " valkyries", " fire"]:
+            n = n.replace(suffix, "")
+        return n
+    a, h = norm(away_team), norm(home_team)
     for g in r.json():
-        if g.get("home_team") == home_team and g.get("away_team") == away_team:
+        gh, ga = norm(g.get("home_team")), norm(g.get("away_team"))
+        if gh == h and ga == a:
+            return g
+        if (h in gh or gh in h) and (a in ga or ga in a):
             return g
     return None
 
