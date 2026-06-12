@@ -45,12 +45,12 @@ STAT_CONS = {
     "tpm": 0.85,
 }
 STAT_BAYES_ALPHA = {
-    "pts": 2.0,
-    "reb": 2.5,
-    "ast": 2.5,
+    "pts": 7.0,
+    "reb": 7.0,
+    "ast": 7.0,
     "stl": 5.0,
-    "blk": 5.0,
-    "tpm": 2.5,
+    "blk": 7.0,
+    "tpm": 7.0,
 }
 # Min-pick filter (drop noise)
 MIN_AVG = {"pts": 0.5, "reb": 0.5, "ast": 0.5, "stl": 0.05, "blk": 0.05, "tpm": 0.05}

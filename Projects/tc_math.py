@@ -58,6 +58,7 @@ STAT_CONS: Dict[str, float] = {
     "ast": 0.85,
     "3pm": 0.85,
     "stl": 0.80,
+    "blk": 0.80,
 }
 
 
@@ -74,18 +75,19 @@ STAT_CONS: Dict[str, float] = {
 # n_games defaults to a conservative 5 (we use rolling 5-game averages as the
 # sample mean). Override per-call if you have a per-player game log.
 BAYES_ALPHA: Dict[str, float] = {
-    "pts": 2.0,   # shooting, real signal — light shrinkage
-    "reb": 2.5,
-    "ast": 2.5,
-    "3pm": 2.5,
-    "stl": 5.0,   # noisy — heavy shrinkage
+    "pts": 7.0,
+    "reb": 7.0,
+    "ast": 7.0,
+    "3pm": 7.0,
+    "stl": 5.0,
+    "blk": 7.0,
 }
 
 # League prior per stat — 14-day WNBA / NBA averages. NBA is generous;
 # WNBA is set from 14d backtest means (Archives/WNBA_Backtests/).
 LEAGUE_PRIOR: Dict[str, Dict[str, float]] = {
-    "NBA":  {"pts": 11.0, "reb": 4.0, "ast": 2.5, "3pm": 1.2, "stl": 0.8},
-    "WNBA": {"pts": 10.5, "reb": 3.8, "ast": 2.3, "3pm": 1.0, "stl": 0.9},
+    "NBA":  {"pts": 11.0, "reb": 4.0, "ast": 2.5, "3pm": 1.2, "stl": 0.8, "blk": 0.5},
+    "WNBA": {"pts": 10.5, "reb": 3.8, "ast": 2.3, "3pm": 1.0, "stl": 0.9, "blk": 0.5},
 }
 
 

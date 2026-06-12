@@ -1,0 +1,52 @@
+{
+  "generated_at": "2026-06-12T05:09:11.066692+00:00",
+  "days": 14,
+  "games": 39,
+  "player_games": 950,
+  "picks": 3093,
+  "overall_hit_rate": 0.5491694352159469,
+  "by_stat": {
+    "PTS": {
+      "hit": 377,
+      "miss": 173,
+      "push": 15,
+      "rate": 0.6854545454545454
+    },
+    "REB": {
+      "hit": 333,
+      "miss": 223,
+      "push": 9,
+      "rate": 0.5989208633093526
+    },
+    "AST": {
+      "hit": 283,
+      "miss": 243,
+      "push": 6,
+      "rate": 0.5380228136882129
+    },
+    "STL": {
+      "hit": 250,
+      "miss": 243,
+      "push": 36,
+      "rate": 0.5070993914807302
+    },
+    "BLK": {
+      "hit": 138,
+      "miss": 276,
+      "push": 0,
+      "rate": 0.3333333333333333
+    },
+    "TPM": {
+      "hit": 272,
+      "miss": 199,
+      "push": 17,
+      "rate": 0.5774946921443737
+    }
+  },
+  "features": {
+    "per_stat_cons": true,
+    "starter_gate": true,
+    "pace_adj": true,
+    "b2b_adj": true
+  }
+}
