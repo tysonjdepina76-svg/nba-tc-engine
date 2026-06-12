@@ -9,9 +9,28 @@ Main areas of the workspace, by relevance.
 - `Projects/tc_math.py` — TC math core (WNBA 40-min norm, PRA/PR/PA builders, edge, win%)
 - `Projects/daily_picks.py` — daily slate capture → `Daily_Log/YYYY-MM-DD/`
 - `Projects/build_pregame_combos.py` — offline combo builder (consumes tc_math + /api/combos)
-- `Projects/wnba_pipeline_v2.py` — WNBA backtest pipeline (14 days, 2882 picks, 47% HR)
+- `Projects/wnba_pipeline` — WNBA backtest pipeline (14 days, 2882 picks, 47% HR)
 - `Daily_Log/wnba_pipeline_*/` — pipeline v2 outputs (actuals.json, proj.csv, report.md)
 - `Archives/WNBA_Backtests/` — archived backtest reports
+
+## WNBA Calibration (2026-06-12)
+- Best alpha = 7.0 for PTS/REB/AST/TPM, 5.0 for STL → 61.8% HR (5-day, 14g, 762 picks)
+- 14-day overall: 54.9% (39 games, 3093 picks). Baseline Bayes (alpha=2.0): 51.7%
+- Archive: `Archives/WNBA_Backtests/model_tuning_v3.json` (71.4% combined)
+- `/api/tc` live route applies `bayesShrink()` with `L_PRIOR` + `STAT_BAYES_ALPHA`
+- `tc_math.py` synced to same constants. `ceiling_recommend()` added
+- BLK is monitor-only (37.1%). PTS=73.8% best single stat
+- Key reports: `Reports/wnba_player_probability_20260612.md`, `Reports/wnba_backtest_comprehensive_20260612.md`
+
+## Live Services
+- `dk-combos-engine` (svc_id `svc__D_fVMtKoFg`, port 8515) → `https://dk-combos-engine-true.zocomputer.io/combos?sport=WNBA` (104 WNBA combos)
+
+## Current State (2026-06-12)
+- Projects: 13 production scripts
+- Reports: 7 files
+- Scripts: 6 files
+- Obsolete reports purged to `Archives/CLEANUP_2026-06-12_obsolete/`
+- Boxscore/halftime scrapers: `boxscore_live_scraper.py`, `halftime_final_boxscores.py`
 
 ## Live zo.space routes
 - `https://true.zo.space/nba-tc` — live TC dashboard

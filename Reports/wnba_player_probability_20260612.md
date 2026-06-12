@@ -1,16 +1,18 @@
 # WNBA Player Hit Probability List (Top 40)
+
 Generated: 2026-06-12 18:15 ET
 Source: 5-day backtest | 14 games | 762 picks | 61.7% overall
 
 ## How to Use This List
+
 Each player has a hit probability per stat based on actual live boxscores.
 "Best stat" = stat where player beats TC projection most consistently.
 Min 3 picks per player. Push = push counted separately.
 
 ## Top 40 (ranked by overall hit% across all stats)
 
-| # | Player | Team | Picks | Hits | Hit% | Best Stat | Best HR |
-|---|--------|------|------:|-----:|-----:|-----------|--------:|
+| \# | Player | Team | Picks | Hits | Hit% | Best Stat | Best HR |
+| --- | --- | --- | --- | --- | --- | --- | --- |
 | 1 | A. Wilson | LV | 12 | 12 | 100 | PTS (2/2) | 100 |
 | 2 | A. Boston | IND | 11 | 10 | 91 | PTS (2/2) | 100 |
 | 3 | N. Ogwumike | LA | 10 | 9 | 90 | REB (2/2) | 100 |
@@ -55,7 +57,8 @@ Min 3 picks per player. Push = push counted separately.
 ## Best Pick Recommendations (Today's Games)
 
 ### Must Bet (PTS above 70%)
-- A. Wilson (LV) - PTS 100%, REB 100%, AST 100% 
+
+- A. Wilson (LV) - PTS 100%, REB 100%, AST 100%
 - K. Plum (LV) - PTS 100%, AST 100%
 - R. Howard (ATL) - PTS 100%, TPM 100%
 - A. Boston (IND) - PTS 100%, REB 100%
@@ -65,35 +68,43 @@ Min 3 picks per player. Push = push counted separately.
 - E. Williams (CHI) - REB 100%, PTS 67%
 
 ### Strong Bet (REB/AST 60-70%)
+
 - N. Cloud (CHI) - AST 100%, REB 100%
-- A. Reese (ATL) - REB 100%, AST 67% 
+- A. Reese (ATL) - REB 100%, AST 67%
 - K. Mitchell (IND) - AST 100%, PTS 67%
 - N. Ogwumike (LA) - REB 100%, PTS 100%
 - C. Clark (IND) - PTS 100%, AST 67%
 
 ### Skip/Fade
+
 - BLK (any player) - 37% overall
 - DAL/NY teams - 49-55%
 
 ## Per-Stat Master List (All 344 player-games)
 
 ### PTS (73.8% overall, best stat)
+
 Bankable players: Wilson, Plum, Howard, Boston, McCowan, Clark, Mitchell, Canada, Copper, Griner
 
-### REB (62.0% overall)  
+### REB (62.0% overall)
+
 Bankable players: Wilson, Boston, Cardoso, E. Williams, Ogwumike, Reese, Cloud, Coffey, Austin, Jackson
 
 ### AST (60.0% overall)
+
 Bankable players: Wilson, Cloud, Sheldon, Mitchell, Hiedeman, Gray, Thomas, Canada
 
 ### TPM (62.0% overall)
+
 Bankable players: Howard, Samuelson, Copper, Diggins, Sheldon, Clark
 
-### STL (59.0% overall)  
+### STL (59.0% overall)
+
 Bankable players: Wilson, Boston, Cloud, Diggins, E. Williams, Sheldon, Canada
 
 ### BLK (37.1% overall — SKIP)
-Only 4 players had >50% BLK: Cardoso (5/6), Wilson (4/4), Boston (2/2), E. Williams (2/3)
+
+Only 4 players had &gt;50% BLK: Cardoso (5/6), Wilson (4/4), Boston (2/2), E. Williams (2/3)
 
 ---
 
