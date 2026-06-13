@@ -63,26 +63,40 @@ def calc_tc(player):
         mp = mr = ma = mt = Q_FACTOR
     else:
         mp = mr = ma = mt = 1.0
-
-    tc_pts = round(player.get("ppg", 0) * TC_FACTORS["pts"] * mp, 1)
-    tc_reb = round(player.get("rpg", 0) * TC_FACTORS["reb"] * mr, 1)
-    tc_ast = round(player.get("apg", 0) * TC_FACTORS["ast"] * ma, 1)
-    tc_tpm = round(player.get("tpm", 0) * TC_FACTORS["tpm"] * mt, 1)
+    # Sport-specific stat keys
+    stat_keys = SPORT_STAT_KEYS.get(sport, {"pts":"ppg","reb":"rpg","ast":"apg","3pm":"tpm","stl":"spg","blk":"bpg"})
+    pts_k, reb_k, ast_k, tpm_k, stl_k, blk_k = stat_keys["pts"], stat_keys["reb"], stat_keys["ast"], stat_keys["3pm"], stat_keys["stl"], stat_keys["blk"]
+    tc_pts = round(player.get(pts_k, 0) * TC_FACTORS[u["pts"]] * mp, 1)
+    tc_reb = round(player.get(reb_k, 0) * TC_FACTORS[u["reb"]] * mr, 1)
+    tc_ast = round(player.get(ast_k, 0) * TC_FACTORS[u["ast"]] * ma, 1)
+    tc_tpm = round(player.get(tpm_k, 0) * TC_FACTORS[u["3pm"]] * mt, 1)
     tc_line = round(tc_pts * LINE_FACTOR)
-    edge = round(player.get("ppg", 0) - tc_line, 1)
+    edge = round(player.get(pts_k, 0) - tc_line, 1)
     return {"tc_pts": tc_pts, "tc_reb": tc_reb, "tc_ast": tc_ast, "tc_tpm": tc_tpm,
-            "tc_line": tc_line, "edge": edge}
+            "tc_line": tc_line, "edge": edge, "pts_k": pts_k, "reb_k": reb_k, "ast_k": ast_k, "tpm_k": tpm_k, "stl_k": stl_k, "blk_k": blk_k}
 
 
 def status_icon(s):
     return "✅" if s == "ACTIVE" else "⚠️" if s in ("Q", "QUESTIONABLE") else "❌"
 
 
+# ── Sport-aware units ─────────────────────────────────────────────
+SPORT_UNITS: dict = {
+    "NBA":    {"pts":"PTS","reb":"REB","ast":"AST","3pm":"3PM","stl":"STL","blk":"BLK","points_unit":"pts","total_unit":"pts","total_label":"Game Total","period_word":"quarters","period_emoji":"🏀","score_thresh":9.3},
+    "WNBA":   {"pts":"PTS","reb":"REB","ast":"AST","3pm":"3PM","stl":"STL","blk":"BLK","points_unit":"pts","total_unit":"pts","total_label":"Game Total","period_word":"quarters","period_emoji":"🏀","score_thresh":14.0},
+    "MLB":    {"pts":"R",  "reb":"H",  "ast":"RBI","3pm":"HR", "stl":"SB", "blk":"TB", "points_unit":"runs","total_unit":"runs","total_label":"Game Total (runs)","period_word":"innings","period_emoji":"⚾","score_thresh":4.5},
+    "NHL":    {"pts":"G",  "reb":"A",  "ast":"SOG","3pm":"BLK","stl":"HITS","blk":"SV", "points_unit":"goals","total_unit":"goals","total_label":"Game Total (goals)","period_word":"periods","period_emoji":"🏒","score_thresh":3.0},
+    "SOCCER": {"pts":"G",  "reb":"A",  "ast":"SOT","3pm":"SOG","stl":"TKL","blk":"SV", "points_unit":"goals","total_unit":"goals","total_label":"Match Total (goals)","period_word":"halves","period_emoji":"⚽","score_thresh":2.5},
+}
+u = SPORT_UNITS.get(sport, SPORT_UNITS["NBA"])
+TC_FACTORS = {u["pts"]:0.85, u["reb"]:0.80, u["ast"]:0.75, u["3pm"]:0.70, u["stl"]:0.80, u["blk"]:0.75}
+
 # ── Streamlit UI ─────────────────────────────────────────────────────────────
-st.title("🏀 Sports TC — Full Roster Projections")
-st.markdown("""
-**TC Rules:** TC applies ONLY to player props (PTS×0.85, REB×0.80, AST×0.75, TPM×0.70, Q×0.55, OUT=0).  
-**Team/game totals are RAW projections only — no TC line, no TC edge.**
+st.title(f"{u['period_emoji']} {sport} TC — Full Roster Projections")
+st.markdown(f"""
+**TC Rules:** TC applies ONLY to player props ({u['pts']}×0.85, {u['reb']}×0.80, {u['ast']}×0.75, {u['3pm']}×0.70, Q×0.55, OUT=0).  
+**Team/{u['total_label'].lower()} are RAW projections only — no TC line, no TC edge.**  
+**Game structure:** {sport} = {u['period_word']}. Stat units are sport-specific (NBA/WNBA=points/rebs/asts, MLB=runs/hits/RBI, NHL=goals/assists/shots, SOCCER=goals/assists/shots).
 """)
 
 st.divider()
@@ -90,13 +104,32 @@ st.divider()
 # Game selector
 col1, col2 = st.columns(2)
 with col1:
-    sport = st.selectbox("Sport", ["NBA", "WNBA"], index=0)
+    sport = st.selectbox("Sport", ["NBA", "WNBA", "NHL", "MLB", "SOCCER"], index=0)
 with col2:
-    game_option = st.selectbox(
-        "Game",
-        ["SAS @ OKC (WCF G3)", "CLE @ NYK (ECF G3)", "Custom..."],
-        index=0
-    )
+    if sport in ("NBA", "WNBA"):
+        game_option = st.selectbox(
+            "Game",
+            ["SAS @ OKC (WCF G3)", "CLE @ NYK (ECF G3)", "Custom..."],
+            index=0
+        )
+    elif sport == "NHL":
+        game_option = st.selectbox(
+            "Game",
+            ["BOS @ NYR", "EDM @ FLA", "TOR @ TBL", "Custom..."],
+            index=0
+        )
+    elif sport == "MLB":
+        game_option = st.selectbox(
+            "Game",
+            ["NYY @ BOS", "LAD @ SF", "HOU @ SEA", "Custom..."],
+            index=0
+        )
+    else:  # SOCCER
+        game_option = st.selectbox(
+            "Game",
+            ["BRA @ ARG", "FRA @ ENG", "GER @ ESP", "Custom..."],
+            index=0
+        )
 
 custom_game = ""
 if game_option == "Custom...":
@@ -112,6 +145,33 @@ if len(parts) != 2:
 
 away_code, home_code = parts[0].strip(), parts[1].strip()
 
+# ── Non-basketball sports: call /api/tc for DK lines + ESPN scoreboard ──
+if sport in ("NHL", "MLB", "SOCCER"):
+    st.subheader(f"🏒 {sport} {away_code} @ {home_code} — DK Live Lines + ESPN Scoreboard")
+    try:
+        import requests as _rq
+        api_url = f"https://true.zo.space/api/tc?sport={sport}&away={away_code}&home={home_code}"
+        r = _rq.get(api_url, timeout=20, headers={"Accept": "application/json"})
+        r.raise_for_status()
+        data = r.json()
+        o = data.get("odds", {})
+        cols = st.columns(4)
+        with cols[0]:
+            st.metric("DK Total", o.get("total") or "—")
+        with cols[1]:
+            st.metric("Away Spread", o.get("away_spread") if o.get("away_spread") is not None else "—")
+        with cols[2]:
+            st.metric("Home Spread", o.get("home_spread") if o.get("home_spread") is not None else "—")
+        with cols[3]:
+            st.metric("Source", "DK ✓" if "DraftKings" in str(o.get("ml_source","")) else "ESPN fallback")
+        st.markdown(f"**ML:** {away_code} **{o.get('away_ml') or '—'}** / {home_code} **{o.get('home_ml') or '—'}**")
+        st.caption(f"Scoreboard: {data.get('source','')} · Status: {data.get('signal','')}")
+        with st.expander("Raw API response"):
+            st.json(data)
+    except Exception as e:
+        st.error(f"API error: {e}")
+    st.stop()
+
 # Load rosters
 away_roster = load_live_roster(away_code, sport)
 home_roster = load_live_roster(home_code, sport)
@@ -121,40 +181,35 @@ if not away_roster or not home_roster:
     st.stop()
 
 # ── RAW Game Totals (no TC) ─────────────────────────────────────────────────
+sk = SPORT_STAT_KEYS[sport]
 away_players = away_roster.get("starters", []) + away_roster.get("bench", [])
 home_players = home_roster.get("starters", []) + home_roster.get("bench", [])
 
-away_raw_pts = sum(p.get("ppg", 0) for p in away_players)
-home_raw_pts = sum(p.get("ppg", 0) for p in home_players)
-est_total = round((away_raw_pts + home_raw_pts) * 1.18)
+away_raw = sum(p.get(sk["pts"], 0) for p in away_players)
+home_raw = sum(p.get(sk["pts"], 0) for p in home_players)
+est_total = round((away_raw + home_raw) * 1.18)
 
-st.subheader(f"{away_code} @ {home_code} — Raw Game Totals (no TC)")
+st.subheader(f"{away_code} @ {home_code} — Raw {u['total_label']} (no TC)")
 col_a, col_b, col_c = st.columns(3)
 with col_a:
-    st.metric(f"{away_code} RAW PTS", f"{away_raw_pts:.1f}")
+    st.metric(f"{away_code} RAW {u['pts']}", f"{away_raw:.1f}")
 with col_b:
-    st.metric(f"{home_code} RAW PTS", f"{home_raw_pts:.1f}")
+    st.metric(f"{home_code} RAW {u['pts']}", f"{home_raw:.1f}")
 with col_c:
-    st.metric("Est Game Total", f"~{est_total}", help="Raw combined × 1.18 playoff adj")
+    st.metric(f"Est {u['total_label']}", f"~{est_total}", help=f"Raw combined × 1.18 {u['period_word']} adj")
 
-# ── Team TC Player Prop Totals ───────────────────────────────────────────────
-away_tc = {k: sum(calc_tc(p)[f"tc_{k}"] for p in away_players) for k in ["pts","reb","ast","tpm"]}
-home_tc = {k: sum(calc_tc(p)[f"tc_{k}"] for p in home_players) for k in ["pts","reb","ast","tpm"]}
+# ── Team TC Player Prop Totals ─────────────────────
+tc_keys = ["pts","reb","ast","3pm"]
+away_tc = {k: sum(calc_tc(p)[f"tc_{k}"] for p in away_players) for k in tc_keys}
+home_tc = {k: sum(calc_tc(p)[f"tc_{k}"] for p in home_players) for k in tc_keys}
 
-st.subheader("TC Player Props — Team Totals")
-col1, col2, col3, col4 = st.columns(4)
-with col1:
-    st.metric(f"{away_code} TC PTS", f"{away_tc['pts']:.1f}")
-    st.metric(f"{home_code} TC PTS", f"{home_tc['pts']:.1f}")
-with col2:
-    st.metric(f"{away_code} TC REB", f"{away_tc['reb']:.1f}")
-    st.metric(f"{home_code} TC REB", f"{home_tc['reb']:.1f}")
-with col3:
-    st.metric(f"{away_code} TC AST", f"{away_tc['ast']:.1f}")
-    st.metric(f"{home_code} TC AST", f"{home_tc['ast']:.1f}")
-with col4:
-    st.metric(f"{away_code} TC 3PM", f"{away_tc['tpm']:.1f}")
-    st.metric(f"{home_code} TC 3PM", f"{home_tc['tpm']:.1f}")
+st.subheader(f"TC Player Props — Team Totals ({sport} units)")
+stat_lab = [u["pts"], u["reb"], u["ast"], u["3pm"]]
+cols = st.columns(4)
+for i, (k, lab) in enumerate(zip(tc_keys, stat_lab)):
+    with cols[i]:
+        st.metric(f"{away_code} TC {lab}", f"{away_tc[k]:.1f}")
+        st.metric(f"{home_code} TC {lab}", f"{home_tc[k]:.1f}")
 
 st.divider()
 
@@ -181,10 +236,10 @@ def render_roster_table(team_code, players, title=""):
                     "Role": "S" if p.get("role") == "STARTER" else "B",
                     "Player": p["name"],
                     "POS": p.get("position", "?"),
-                    "TC PTS": tc["tc_pts"],
-                    "TC REB": tc["tc_reb"],
-                    "TC AST": tc["tc_ast"],
-                    "TC 3PM": tc["tc_tpm"],
+                    f"TC {u['pts']}": tc["tc_pts"],
+                    f"TC {u['reb']}": tc["tc_reb"],
+                    f"TC {u['ast']}": tc["tc_ast"],
+                    f"TC {u['3pm']}": tc["tc_tpm"],
                     "TC LINE": tc["tc_line"],
                     "EDGE": f"{edge_sign}{tc['edge']:.1f}",
                     "Status": p.get("status", "ACTIVE"),
@@ -195,8 +250,8 @@ def render_roster_table(team_code, players, title=""):
                 st.dataframe(rows, use_container_width=True, hide_index=True)
 
             team_tc_pts = sum(tc_map[p["name"]]["tc_pts"] for p in filtered)
-            team_raw_pts = sum(p.get("ppg", 0) for p in filtered)
-            st.caption(f"Team TC={team_tc_pts:.1f} pts | RAW={team_raw_pts:.1f} pts")
+            team_raw_pts = sum(p.get(sk["pts"], 0) for p in filtered)
+            st.caption(f"Team TC={team_tc_pts:.1f} {u['pts'].lower()} | RAW={team_raw_pts:.1f} {u['pts'].lower()}")
 
 
 render_roster_table(away_code, away_players, f"{away_code} (Away)")
@@ -210,16 +265,16 @@ injured = [p for p in all_players if p.get("status") != "ACTIVE"]
 if injured:
     for p in injured:
         icon = status_icon(p.get("status", "ACTIVE"))
-        st.warning(f"{icon} **{p['name']}** ({p.get('position','?')}) — {p.get('status','?')} | TC PTS: {calc_tc(p)['tc_pts']:.1f}")
+        st.warning(f"{icon} **{p['name']}** ({p.get('position','?')}) — {p.get('status','?')} | TC {u['pts']}: {calc_tc(p)['tc_pts']:.1f}")
 else:
-    st.success("✅ No injuries — all players ACTIVE")
+    st.success(f"✅ No injuries — all players ACTIVE")
 
 # ── Prop Candidate Watchlist ─────────────────────────────────────────────────
 st.divider()
 st.subheader("🎯 Prop Candidate Watchlist (gap ≥ 3.0)")
 candidates = []
 for p in all_players:
-    if p.get("status") == "OUT" or p.get("ppg", 0) < 5:
+    if p.get("status") == "OUT" or p.get(sk["pts"], 0) < 5:
         continue
     tc = calc_tc(p)
     if tc["edge"] >= 3.0:
@@ -227,7 +282,7 @@ for p in all_players:
             "Player": p["name"],
             "Team": away_code if p in away_players else home_code,
             "Role": "S" if p.get("role") == "STARTER" else "B",
-            "TC PTS": tc["tc_pts"],
+            f"TC {u['pts']}": tc["tc_pts"],
             "TC LINE": tc["tc_line"],
             "EDGE": tc["edge"],
             "Status": p.get("status", "ACTIVE"),
