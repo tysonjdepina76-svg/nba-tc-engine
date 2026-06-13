@@ -25,6 +25,12 @@ Main areas of the workspace, by relevance.
 ## Live Services
 - `dk-combos-engine` (svc_id `svc__D_fVMtKoFg`, port 8515) → `https://dk-combos-engine-true.zocomputer.io/combos?sport=WNBA` (104 WNBA combos)
 
+## SportsData.io NFL Engine (NEW — 2026-06-13)
+- **Key**: `SPORTS_DATA_API_KEY` (sportsdata.io, NFL gambling tier)
+- **Endpoints**: `GameOddsByWeek`, `PlayerPropsByWeek`
+- **Script**: `SportsData NFL pull script`
+- **Line**: `line`
+
 ## World Cup 2026 Pipeline (zero impact on basketball TC)
 - `Projects/worldcup_picks.py` — standalone daily scraper (ESPN schedule + Odds API player props)
 - Data sources: ESPN (free) for matches + The Odds API (free tier) for FanDuel player props

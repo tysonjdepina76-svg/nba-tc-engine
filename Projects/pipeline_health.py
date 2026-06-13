@@ -190,16 +190,44 @@ def check_pipeline_scripts():
 
 # ── Services check ─────────────────────────────────────────────────
 def check_services():
-    """Check if Streamlit dashboard is running."""
+    """Check if Streamlit dashboard and combos engine are running."""
     import subprocess
+    results = {}
+    # Streamlit dashboard
     try:
         result = subprocess.run(
-            ["curl", "-s", "-o", "/dev/null", "-w", "%{http_code}", "http://localhost:8510"],
+            ["curl", "-s", "-o", "/dev/null", "-w", "%{http_code}", "http://localhost:8507"],
             capture_output=True, text=True, timeout=5
         )
-        return result.stdout.strip() == "200"
+        results["streamlit_8507"] = result.stdout.strip() == "200"
     except Exception:
-        return False
+        results["streamlit_8507"] = False
+    # Combos engine
+    try:
+        result = subprocess.run(
+            ["curl", "-s", "-o", "/dev/null", "-w", "%{http_code}", "http://localhost:8515/combos?sport=NBA"],
+            capture_output=True, text=True, timeout=10
+        )
+        results["combos_8515"] = result.stdout.strip() == "200"
+    except Exception:
+        results["combos_8515"] = False
+    return results
+
+def test_combos_endpoint(sport="WNBA"):
+    """Hit the live combos engine and return combo count."""
+    import urllib.request
+    try:
+        req = urllib.request.Request(
+            f"http://localhost:8515/combos?sport={sport}",
+            headers={"Accept": "application/json"}
+        )
+        with urllib.request.urlopen(req, timeout=15) as r:
+            data = json.load(r)
+            combos = data.get("combos", [])
+            source = data.get("source", "?")
+            return True, len(combos), source
+    except Exception as e:
+        return False, 0, str(e)[:80]
 
 # ── MAIN ───────────────────────────────────────────────────────────
 def main():
@@ -295,21 +323,40 @@ def main():
     
     # 7. Services
     print(header("7. SERVICES"))
-    dash_ok = check_services()
-    print(f"  Streamlit (8510): {ok('running') if dash_ok else warn('not running')}")
+    svc = check_services()
+    print(f"  Streamlit (8507): {ok('running') if svc.get('streamlit_8507') else warn('not running')}")
+    print(f"  Combos Engine (8515): {ok('running') if svc.get('combos_8515') else fail('not running — combos unavailable')}")
     
     # 8. Combos
     print(header("8. COMBOS STATUS"))
+    # Live API test
+    for sport in ["NBA", "WNBA"]:
+        ok_c, count, source = test_combos_endpoint(sport)
+        if ok_c:
+            print(f"  {sport} live combos: {ok(f'{count} lines ready')} (source: {source})")
+        else:
+            print(f"  {sport} live combos: {fail(f'endpoint unreachable: {source}')}")
+
+    # File counts (secondary)
     combo_files = list(LOG_DIR.glob("*/combos_*.json"))
     md_files = list(LOG_DIR.glob("*/combos_*.md"))
-    print(f"  Combo JSONs: {len(combo_files)} files")
-    print(f"  Combo Markdowns: {len(md_files)} files")
     today = datetime.now().strftime("%Y-%m-%d")
     today_dir = LOG_DIR / today
     today_combo_files = list(today_dir.glob("combos_*.json"))
     today_combo_md_files = list(today_dir.glob("combos_*.md"))
-    print(f"  Today's Combo JSONs: {len(today_combo_files)} files")
-    print(f"  Today's Combo Markdowns: {len(today_combo_md_files)} files")
+
+    print(f"  Combo JSONs on disk: {len(combo_files)} total · {len(today_combo_files)} today")
+    print(f"  Combo Markdowns on disk: {len(md_files)} total · {len(today_combo_md_files)} today")
+
+    # Show today's pregame combo summary
+    summary_file = today_dir / "combos_summary.json"
+    if summary_file.exists():
+        try:
+            summary = json.loads(summary_file.read_text())
+            for s in summary[:5]:
+                print(f"    {s.get('matchup','?')} ({s.get('sport','?')}): {s.get('qualified',0)} qualified legs from {s.get('matched',0)} matched")
+        except Exception:
+            pass
     
     # ── Purge if requested ──────────────────────────────────────────
     if do_purge and logs["stale_dirs"]:

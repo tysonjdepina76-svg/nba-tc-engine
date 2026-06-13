@@ -86,7 +86,8 @@ SPORT_UNITS: dict = {
     "WNBA":   {"pts":"PTS","reb":"REB","ast":"AST","3pm":"3PM","stl":"STL","blk":"BLK","points_unit":"pts","total_unit":"pts","total_label":"Game Total","period_word":"quarters","period_emoji":"🏀","score_thresh":14.0},
     "MLB":    {"pts":"R",  "reb":"H",  "ast":"RBI","3pm":"HR", "stl":"SB", "blk":"TB", "points_unit":"runs","total_unit":"runs","total_label":"Game Total (runs)","period_word":"innings","period_emoji":"⚾","score_thresh":4.5},
     "NHL":    {"pts":"G",  "reb":"A",  "ast":"SOG","3pm":"BLK","stl":"HITS","blk":"SV", "points_unit":"goals","total_unit":"goals","total_label":"Game Total (goals)","period_word":"periods","period_emoji":"🏒","score_thresh":3.0},
-    "SOCCER": {"pts":"G",  "reb":"A",  "ast":"SOT","3pm":"SOG","stl":"TKL","blk":"SV", "points_unit":"goals","total_unit":"goals","total_label":"Match Total (goals)","period_word":"halves","period_emoji":"⚽","score_thresh":2.5},
+    "SOCCER": {"pts":"G",  "reb":"A",  "ast":"SOT","3pm":"SOG","stl":"TKL","blk":"SV", "points_unit":"goals","total_unit":"goals","total_label":"Match Total (goals)","period_word":"quarters","period_emoji":"🏈","score_thresh":2.5},
+    "NFL":    {"pts":"PY", "reb":"RY", "ast":"REC","3pm":"REY","stl":"TD", "blk":"ATT", "points_unit":"yds","total_unit":"pts","total_label":"Game Total (points)","period_word":"quarters","period_emoji":"🏈","score_thresh":3.5},
 }
 u = SPORT_UNITS.get(sport, SPORT_UNITS["NBA"])
 TC_FACTORS = {u["pts"]:0.85, u["reb"]:0.80, u["ast"]:0.75, u["3pm"]:0.70, u["stl"]:0.80, u["blk"]:0.75}
@@ -130,6 +131,12 @@ with col2:
             ["BRA @ ARG", "FRA @ ENG", "GER @ ESP", "Custom..."],
             index=0
         )
+    if sport == "NFL":
+        game_option = st.selectbox(
+            "Game",
+            ["Custom..."],
+            index=0
+        )
 
 custom_game = ""
 if game_option == "Custom...":
@@ -146,30 +153,78 @@ if len(parts) != 2:
 away_code, home_code = parts[0].strip(), parts[1].strip()
 
 # ── Non-basketball sports: call /api/tc for DK lines + ESPN scoreboard ──
-if sport in ("NHL", "MLB", "SOCCER"):
-    st.subheader(f"🏒 {sport} {away_code} @ {home_code} — DK Live Lines + ESPN Scoreboard")
-    try:
-        import requests as _rq
-        api_url = f"https://true.zo.space/api/tc?sport={sport}&away={away_code}&home={home_code}"
-        r = _rq.get(api_url, timeout=20, headers={"Accept": "application/json"})
-        r.raise_for_status()
-        data = r.json()
-        o = data.get("odds", {})
+if sport in ("NHL", "MLB", "SOCCER", "NFL"):
+    st.subheader(f"{u['period_emoji']} {sport} {away_code} @ {home_code} — Live Lines + Player Props")
+    if sport == "NFL":
+        import json, os
+        nfl_file = "/home/workspace/Daily_Log/2026-06-13/sportsdata_nfl_lines.json"
+        if not os.path.exists(nfl_file):
+            st.error("No NFL lines pulled. Run sportsdata_nfl_lines_pull.py")
+            st.stop()
+        with open(nfl_file) as f:
+            nfl_data = json.load(f)
+        # Find matching game (SportsData uses full names; match by code)
+        NFL_NAME_MAP = {
+            "KC":"Kansas City Chiefs","BUF":"Buffalo Bills","SF":"San Francisco 49ers","DAL":"Dallas Cowboys",
+            "PHI":"Philadelphia Eagles","GB":"Green Bay Packers","MIN":"Minnesota Vikings","CIN":"Cincinnati Bengals",
+            "BAL":"Baltimore Ravens","LAC":"Los Angeles Chargers","MIA":"Miami Dolphins","NYJ":"New York Jets",
+            "NE":"New England Patriots","PIT":"Pittsburgh Steelers","CLE":"Cleveland Browns","HOU":"Houston Texans",
+            "IND":"Indianapolis Colts","JAX":"Jacksonville Jaguars","TEN":"Tennessee Titans","DEN":"Denver Broncos",
+            "LV":"Las Vegas Raiders","LAR":"Los Angeles Rams","SEA":"Seattle Seahawks","ARI":"Arizona Cardinals",
+            "ATL":"Atlanta Falcons","CAR":"Carolina Panthers","NO":"New Orleans Saints","TB":"Tampa Bay Buccaneers",
+            "NYG":"New York Giants","WAS":"Washington Commanders","CHI":"Chicago Bears","DET":"Detroit Lions",
+        }
+        a_name = NFL_NAME_MAP.get(away_code, away_code)
+        h_name = NFL_NAME_MAP.get(home_code, home_code)
+        game = None
+        for g in nfl_data.get("games", []):
+            if g.get("AwayTeam")==a_name and g.get("HomeTeam")==h_name:
+                game = g; break
+        if not game:
+            st.warning(f"No NFL game found for {a_name} @ {h_name}. Try other matchup.")
+            with st.expander("All NFL matchups"): 
+                st.json([{k:v for k,v in g.items() if k in ("AwayTeam","HomeTeam","DateTime","SeasonType","Week")} for g in nfl_data.get("games",[])])
+            st.stop()
+        # Lines
         cols = st.columns(4)
-        with cols[0]:
-            st.metric("DK Total", o.get("total") or "—")
-        with cols[1]:
-            st.metric("Away Spread", o.get("away_spread") if o.get("away_spread") is not None else "—")
-        with cols[2]:
-            st.metric("Home Spread", o.get("home_spread") if o.get("home_spread") is not None else "—")
-        with cols[3]:
-            st.metric("Source", "DK ✓" if "DraftKings" in str(o.get("ml_source","")) else "ESPN fallback")
-        st.markdown(f"**ML:** {away_code} **{o.get('away_ml') or '—'}** / {home_code} **{o.get('home_ml') or '—'}**")
-        st.caption(f"Scoreboard: {data.get('source','')} · Status: {data.get('signal','')}")
-        with st.expander("Raw API response"):
-            st.json(data)
-    except Exception as e:
-        st.error(f"API error: {e}")
+        with cols[0]: st.metric("DK Total", game.get("Total") or "—")
+        with cols[1]: st.metric("Home Spread", game.get("HomePointSpread") if game.get("HomePointSpread") is not None else "—")
+        with cols[2]: st.metric("Home ML", game.get("HomeMoneyLine") or "—")
+        with cols[3]: st.metric("Source", "SportsData NFL ✓")
+        st.markdown(f"**Matchup:** {a_name} @ {h_name} | {game.get('DateTime','')[:16]} | SeasonType={game.get('SeasonType')} Week={game.get('Week')}")
+        # Player props
+        props = [p for p in nfl_data.get("props", []) if p.get("GameKey","").startswith(a_name.split()[-1][:4]+"@") or True]
+        # Filter props by game (GameKey uses 'AWAY@HOME' team codes)
+        game_props = []
+        for p in nfl_data.get("props", []):
+            gk = p.get("GameKey","")
+            if (away_code in gk.upper() and home_code in gk.upper()) or (a_name.split()[-1] in gk and h_name.split()[-1] in gk):
+                game_props.append(p)
+        st.subheader(f"Player Props ({len(game_props)} total)")
+        if game_props:
+            prop_rows = [{"Player":p.get("Name"),"Team":p.get("Team"),"Prop":p.get("PropType"),"Line":p.get("Line"),"Over":p.get("OverPayout"),"Under":p.get("UnderPayout")} for p in game_props[:50]]
+            st.dataframe(prop_rows, use_container_width=True, hide_index=True)
+            st.caption(f"Showing 50 of {len(game_props)} props — full list in Daily_Log JSON")
+        st.stop()
+    else:
+        try:
+            import requests as _rq
+            api_url = f"https://true.zo.space/api/tc?sport={sport}&away={away_code}&home={home_code}"
+            r = _rq.get(api_url, timeout=20, headers={"Accept": "application/json"})
+            r.raise_for_status()
+            data = r.json()
+            o = data.get("odds", {})
+            cols = st.columns(4)
+            with cols[0]: st.metric("DK Total", o.get("total") or "—")
+            with cols[1]: st.metric("Away Spread", o.get("away_spread") if o.get("away_spread") is not None else "—")
+            with cols[2]: st.metric("Home Spread", o.get("home_spread") if o.get("home_spread") is not None else "—")
+            with cols[3]: st.metric("Source", "DK ✓" if "DraftKings" in str(o.get("ml_source","")) else "ESPN fallback")
+            st.markdown(f"**ML:** {away_code} **{o.get('away_ml') or '—'}** / {home_code} **{o.get('home_ml') or '—'}**")
+            st.caption(f"Scoreboard: {data.get('source','')} · Status: {data.get('signal','')}")
+            with st.expander("Raw API response"):
+                st.json(data)
+        except Exception as e:
+            st.error(f"API error: {e}")
     st.stop()
 
 # Load rosters

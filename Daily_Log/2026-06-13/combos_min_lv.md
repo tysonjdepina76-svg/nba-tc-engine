@@ -11,8 +11,8 @@
 | Player | Team | Role | Stat | Dir | DK Line | TC Proj | Edge | Odds |
 |---|---|---|---|---|---|---|---|---|
 | Natasha Howard | MIN | START | PTS | UNDER | 15.5 | 12.3 | 3.2 | -126 |
-| Jackie Young | LV | START | 3PM | UNDER | 2.5 | 0.8 | 1.7 | -173 |
-| Jewell Loyd | LV | START | 3PM | UNDER | 1.5 | 0.9 | 0.6 | -150 |
+| Jackie Young | LV | START | 3PM | UNDER | 2.5 | 0.8 | 1.7 | -189 |
+| Jewell Loyd | LV | START | 3PM | UNDER | 1.5 | 0.9 | 0.6 | -159 |
 | Kayla McBride | MIN | START | 3PM | UNDER | 1.5 | 1 | 0.5 | 112 |
 
 ## All Matched Legs
