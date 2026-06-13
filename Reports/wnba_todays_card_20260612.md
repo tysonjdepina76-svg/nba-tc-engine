@@ -5,7 +5,7 @@ Generated from live slate + top-40 backtest list.
 ## Today's 6 Games
 
 | Game | Time (ET) | Teams with Data | Top Players |
-|------|-----------|-----------------|-------------|
+| --- | --- | --- | --- |
 | TOR @ WSH | 7:30 PM | WSH only | Austin |
 | GS @ SEA | 10:00 PM | SEA only | Samuelson (low sample) |
 | IND @ CON | 6:00 PM Sat | both | Boston, Clark, Mitchell, Vivians / Mabrey, Thomas, Jackson |
@@ -18,7 +18,7 @@ Generated from live slate + top-40 backtest list.
 ### LV Aces (vs MIN)
 
 | Player | Overall HR | Stats to Bet | Per-Stat HR |
-|--------|-----------|-------------|-------------|
+| --- | --- | --- | --- |
 | A. Wilson | 100% (12/12) | PTS, REB, AST | 100% all |
 | K. Plum | 90% (9/10) | PTS, AST | 100% both |
 | C. Gray | 88% (7/8) | AST | 100% |
@@ -28,7 +28,7 @@ Generated from live slate + top-40 backtest list.
 ### IND Fever (at CON)
 
 | Player | Overall HR | Stats to Bet | Per-Stat HR |
-|--------|-----------|-------------|-------------|
+| --- | --- | --- | --- |
 | A. Boston | 91% (10/11) | PTS, REB | 100% both |
 | V. Vivians | 86% (6/7) | PTS | 100% |
 | C. Clark | 69% (9/13) | PTS, AST | 100% / 67% |
@@ -38,13 +38,13 @@ Generated from live slate + top-40 backtest list.
 ### LA Sparks (at PHX)
 
 | Player | Overall HR | Stats to Bet | Per-Stat HR |
-|--------|-----------|-------------|-------------|
+| --- | --- | --- | --- |
 | N. Ogwumike | 90% (9/10) | REB, PTS | 100% both |
 
 ### MIN Lynx (at LV)
 
 | Player | Overall HR | Stats to Bet | Per-Stat HR |
-|--------|-----------|-------------|-------------|
+| --- | --- | --- | --- |
 | N. Hiedeman | 89% (8/9) | AST | 100% |
 | E. Engstler | 86% (6/7) | PTS | 100% |
 | D. Robinson | 67% (4/6) | PTS | 100% |
@@ -55,7 +55,7 @@ Generated from live slate + top-40 backtest list.
 ### CON Sun (vs IND)
 
 | Player | Overall HR | Stats to Bet | Per-Stat HR |
-|--------|-----------|-------------|-------------|
+| --- | --- | --- | --- |
 | A. Thomas | 88% (7/8) | REB | 100% |
 | A. Jackson | 86% (6/7) | REB | 100% |
 | M. Mabrey | 71% (10/14) | PTS | 100% |
@@ -64,14 +64,14 @@ Generated from live slate + top-40 backtest list.
 ### PHX Mercury (vs LA)
 
 | Player | Overall HR | Stats to Bet | Per-Stat HR |
-|--------|-----------|-------------|-------------|
+| --- | --- | --- | --- |
 | K. Copper | 86% (6/7) | PTS | 100% |
 | B. Griner | 67% (4/6) | PTS | 100% |
 
 ### DAL Wings (at POR)
 
 | Player | Overall HR | Stats to Bet | Per-Stat HR |
-|--------|-----------|-------------|-------------|
+| --- | --- | --- | --- |
 | T. McCowan | 67% (4/6) | REB | 100% |
 | L. Lacan | 67% (4/6) | AST | 100% |
 | B. Laney | 67% (4/6) | PTS | 100% |
@@ -83,13 +83,13 @@ Generated from live slate + top-40 backtest list.
 ### WSH Mystics (vs TOR)
 
 | Player | Overall HR | Stats to Bet | Per-Stat HR |
-|--------|-----------|-------------|-------------|
+| --- | --- | --- | --- |
 | S. Austin | 70% (7/10) | REB | 100% |
 
 ### SEA Storm (vs GS)
 
 | Player | Overall HR | Stats to Bet | Per-Stat HR |
-|--------|-----------|-------------|-------------|
+| --- | --- | --- | --- |
 | K. Samuelson | 80% (4/5) | TPM | 50% (1/2) — very low sample, caution |
 
 ## SKIP / NO EDGE
@@ -100,8 +100,8 @@ Generated from live slate + top-40 backtest list.
 
 ## Summary — Today's Top Bets (ranked)
 
-| # | Player | Team | Bet | Confidence |
-|---|--------|------|-----|-----------|
+| \# | Player | Team | Bet | Confidence |
+| --- | --- | --- | --- | --- |
 | 1 | A. Wilson | LV | PTS / REB / AST | 100% HR, 12 picks |
 | 2 | K. Plum | LV | PTS / AST | 90% overall |
 | 3 | A. Boston | IND | PTS / REB | 91% overall |
@@ -115,5 +115,5 @@ Generated from live slate + top-40 backtest list.
 
 ---
 
-*Source: `Reports/wnba_player_probability_20260612.md` — 5-day backtest, 14 games, 762 picks, 61.7% HR*
+*Source: `file Reports/wnba_player_probability_20260612.md` — 5-day backtest, 14 games, 762 picks, 61.7% HR*
 *Slate: The Odds API live events as of June 12, 2026 6:50 PM ET*

@@ -26,6 +26,7 @@ Single source of truth for the **Triple Conservative (TC) sports betting system*
 - **URL:** https://true.zo.space/api/tc
 - **Modes:** project (default), live-stats, historical
 - **Includes:** `valid_props` array with player prop projections ready to backtest
+- **Fixes:** route now properly sends API keys via URLSearchParams and has correct WNBA/NBA team name matching via ODDS_NAME_TO_CODE reverse-map
 
 ### 4. TC Engine (`Engine/nba_tc_pipeline.py`)
 - **Path:** `/home/workspace/tc-clean/CLEAN_CODE/Engine/nba_tc_pipeline.py`
@@ -72,6 +73,15 @@ Signal      = OVER when diff > 2 | UNDER when diff < -2 | PASS otherwise
 - Update `result` column in `picks.csv` after games
 - Thresholds live in `daily_picks.py` — edit and re-run to adjust
 
+## Recent Backtests
+
+### WNBA Live Backtest — June 11, 2026
+- **4 games:** CHI@IND (114-106) | NY@ATL (104-90) | PHX@DAL (70-85) | LV@POR (105-89)
+- **Picks graded:** 69 (28H/28M/13P = 50.0% hit rate)
+- **PTS:** 78.6% (15 picks, 11H/3M/1P) — strongest stat
+- **Files:** `Daily_Log/2026-06-11/wnba_live_actuals.json`, `wnba_live_backtest.md`, `wnba_backtest_graded.json`
+- **Pipeline:** `wnba_backtest_live.py` — ESPN v2 summary API → boxscore scrape → name-match grading
+
 ## Automation
 - **Rule:** Any TC/picks/edge/betting mention triggers daily log refresh
 - **Daily 9 AM:** automation runs `daily_picks.py` and emails summary
@@ -91,4 +101,6 @@ Signal      = OVER when diff > 2 | UNDER when diff < -2 | PASS otherwise
 - Free tier: events but no odds. Falls back to ESPN for DK totals.
 
 ## Updates
+- **2026-06-13 (final):** Full workspace purge — 31 stale files moved to `Daily_Log/_purged_20260613/` (13 boxscore/health/logs + 11 WNBA backtest artifacts + 7 root temp files + API_INTEGRATION_REPORT.md). Pipeline ran: 5 games (1 NBA + 4 WNBA), 48 picks. DK Combos engine confirmed live at `https://dk-combos-engine-true.zocomputer.io/combos?sport=WNBA` (104 WNBA combos, NBA also live). WORLD CUP is active (Canada vs Bosnia, Brazil vs Morocco, Scotland vs Haiti, Australia vs Turkey) but the TC engine is basketball-specific — soccer requires different ESPN endpoints, stats, and math; the `/api/tc` backend returns honest "not yet active" notice rather than faking projections. All zo.space routes error-free. Health check: Odds API ✅, ESPN ✅, SGO ❌ (401 — key may need rotation).
 - **2026-06-01:** Built `daily_picks.py`, slate tab, 47-pick log, daily automation
+- **Today:** `/api/tc` route now properly sends API keys via URLSearchParams and has correct WNBA/NBA team name matching via ODDS_NAME_TO_CODE reverse-map; SGO key is now properly set in secrets as SPORTSGAMEODDS_API_KEY; new pipeline_health.py diagnostic tool added; stale logs >7 days purged to _archive/

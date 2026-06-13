@@ -25,12 +25,14 @@ Main areas of the workspace, by relevance.
 ## Live Services
 - `dk-combos-engine` (svc_id `svc__D_fVMtKoFg`, port 8515) → `https://dk-combos-engine-true.zocomputer.io/combos?sport=WNBA` (104 WNBA combos)
 
-## Current State (2026-06-12)
-- Projects: 13 production scripts
+## Current State (2026-06-13)
+- Projects: 15 production scripts (added `pipeline_health.py`, `tc_pipeline.py`)
 - Reports: 7 files
-- Scripts: 6 files
-- Obsolete reports purged to `Archives/CLEANUP_2026-06-12_obsolete/`
-- Boxscore/halftime scrapers: `boxscore_live_scraper.py`, `halftime_final_boxscores.py`
+- Daily pipeline: 5 games (1 NBA + 4 WNBA), 48 picks captured
+- DK Combos: NBA + WNBA live via `dk-combos-engine` service (port 8515)
+- Workspace purge: 31 stale files → `Daily_Log/_purged_20260613/`
+- zo.space: all 5 routes healthy, zero errors
+- SGO API key needs rotation (401 Unauthorized)
 
 ## Live zo.space routes
 - `https://true.zo.space/nba-tc` — live TC dashboard
