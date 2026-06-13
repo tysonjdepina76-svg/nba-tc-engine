@@ -5,8 +5,8 @@
   "away_team": "DAL",
   "home_team": "POR",
   "source": "live ESPN WNBA roster/stat APIs",
-  "timestamp": "2026-06-13T21:09:11.039Z",
-  "injury_source": "ESPN WNBA injuries \u00b7 14 teams \u00b7 29 players",
+  "timestamp": "2026-06-13T21:44:00.604Z",
+  "injury_source": "ESPN WNBA injuries \u00b7 13 teams \u00b7 27 players",
   "injury_counts": {
     "away": 2,
     "away_out": 1,
@@ -15,35 +15,35 @@
   },
   "tc_combined": 159.4,
   "tc_line": 173,
-  "market_total": 169.5,
-  "edge": 3.5,
+  "market_total": 168.5,
+  "edge": 4.5,
   "signal": "PASS",
-  "dk_total": 169.5,
+  "dk_total": 168.5,
   "odds": {
-    "total": 169.5,
-    "spread": -5.5,
-    "away_spread": -5.5,
-    "home_spread": 5.5,
+    "total": 168.5,
+    "spread": -4.5,
+    "away_spread": -4.5,
+    "home_spread": 4.5,
     "spread_pick": "DAL",
-    "away_ml": -238,
-    "home_ml": 195,
+    "away_ml": -175,
+    "home_ml": 145,
     "ml_source": "ESPN DraftKings embedded"
   },
   "assessment": {
     "tc_total": 159.4,
     "tc_line": 173,
-    "edge": 3.5,
+    "edge": 4.5,
     "signal": "PASS",
     "total_lean": "PASS",
     "spread_pick": "DAL",
-    "summary": "TC combined 159.4 vs DK 169.5 (edge +3.5) \u2192 lean PASS. Spread: DAL.",
+    "summary": "TC combined 159.4 vs DK 168.5 (edge +4.5) \u2192 lean PASS. Spread: DAL.",
     "roster_rule": "live mode uses current roster/stat/injury APIs only"
   },
   "game_assessment": {
     "total_lean": "PASS",
     "spread_pick": "DAL",
     "roster_rule": "live mode uses current roster/stat/injury APIs only",
-    "summary": "TC combined 159.4 vs DK 169.5 (edge +3.5) \u2192 lean PASS."
+    "summary": "TC combined 159.4 vs DK 168.5 (edge +4.5) \u2192 lean PASS."
   },
   "roster_counts": {
     "away": 13,
@@ -6056,26 +6056,26 @@
   "odds_api_lines": {
     "game_odds": {
       "h2h": {
-        "Dallas Wings": 1.42,
-        "Portland Fire": 2.95
+        "Dallas Wings": 1.57,
+        "Portland Fire": 2.45
       },
       "spreads": {
         "Dallas Wings": {
-          "point": -5.5,
-          "price": 1.85
+          "point": -4.5,
+          "price": 1.93
         },
         "Portland Fire": {
-          "point": 5.5,
-          "price": 1.98
+          "point": 4.5,
+          "price": 1.89
         }
       },
       "totals": {
         "Over": {
-          "point": 169.5,
+          "point": 168.5,
           "price": 1.93
         },
         "Under": {
-          "point": 169.5,
+          "point": 168.5,
           "price": 1.89
         }
       }
@@ -6086,11 +6086,6 @@
         "points": 12.5,
         "rebounds": 10.5
       },
-      "Paige Bueckers": {
-        "assists": 5.5,
-        "points": 18.5,
-        "rebounds": 3.5
-      },
       "Carla Leite": {
         "assists": 5.5,
         "points": 13.5
@@ -6098,7 +6093,7 @@
       "Arike Ogunbowale": {
         "assists": 3.5,
         "points": 15.5,
-        "rebounds": 2.5
+        "rebounds": 3.5
       },
       "Sarah Ashlee Barker": {
         "assists": 2.5,
@@ -6106,7 +6101,7 @@
         "rebounds": 4.5
       },
       "Azzi Fudd": {
-        "points": 12.5
+        "points": 13.5
       },
       "Bridget Carleton": {
         "points": 12.5,
@@ -6121,9 +6116,9 @@
         "rebounds": 5.5
       }
     },
-    "player_count": 9,
+    "player_count": 8,
     "source": "odds_api",
     "book": "draftkings",
-    "fetched_at": "2026-06-13T21:09:11.693144+00:00"
+    "fetched_at": "2026-06-13T21:44:01.218874+00:00"
   }
 }

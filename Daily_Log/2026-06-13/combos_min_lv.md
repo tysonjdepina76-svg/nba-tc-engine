@@ -1,7 +1,7 @@
 # TC Pregame Combos — MIN@LV (WNBA)
 
 - **TC valid picks**: 9
-- **DK game total**: None
+- **DK game total**: 174.5
 - **DK ML (home/away)**: None / None
 - **Matched legs (TC + DK)**: 4
 - **Edge-qualified (≥0.5)**: 4
@@ -10,10 +10,10 @@
 
 | Player | Team | Role | Stat | Dir | DK Line | TC Proj | Edge | Odds |
 |---|---|---|---|---|---|---|---|---|
-| Natasha Howard | MIN | START | PTS | UNDER | 15.5 | 12.3 | 3.2 | None |
-| Jackie Young | LV | START | 3PM | UNDER | 2.5 | 0.8 | 1.7 | None |
-| Jewell Loyd | LV | START | 3PM | UNDER | 1.5 | 0.9 | 0.6 | None |
-| Kayla McBride | MIN | START | 3PM | UNDER | 1.5 | 1 | 0.5 | None |
+| Natasha Howard | MIN | START | PTS | UNDER | 15.5 | 12.3 | 3.2 | -126 |
+| Jackie Young | LV | START | 3PM | UNDER | 2.5 | 0.8 | 1.7 | -173 |
+| Jewell Loyd | LV | START | 3PM | UNDER | 1.5 | 0.9 | 0.6 | -150 |
+| Kayla McBride | MIN | START | 3PM | UNDER | 1.5 | 1 | 0.5 | 112 |
 
 ## All Matched Legs
 

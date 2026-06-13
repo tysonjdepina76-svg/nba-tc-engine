@@ -2,7 +2,7 @@
 
 - **TC valid picks**: 23
 - **DK game total**: 216.5
-- **DK ML (home/away)**: -205 / +170
+- **DK ML (home/away)**: -198 / +164
 - **Matched legs (TC + DK)**: 9
 - **Edge-qualified (≥2.0)**: 4
 
@@ -10,9 +10,9 @@
 
 | Player | Team | Role | Stat | Dir | DK Line | TC Proj | Edge | Odds |
 |---|---|---|---|---|---|---|---|---|
-| Jalen Brunson | NYK | START | PTS | OVER | 4.5 | 15.9 | 11.4 | -104 |
-| Karl-Anthony Towns | NYK | START | PTS | OVER | 4.5 | 13.5 | 9.0 | -104 |
-| Stephon Castle | SAS | START | PTS | OVER | 4.5 | 11.3 | 6.8 | -104 |
+| Jalen Brunson | NYK | START | PTS | OVER | 4.5 | 15.9 | 11.4 | -103 |
+| Karl-Anthony Towns | NYK | START | PTS | OVER | 4.5 | 13.5 | 9.0 | -103 |
+| Stephon Castle | SAS | START | PTS | OVER | 4.5 | 11.3 | 6.8 | -103 |
 | Victor Wembanyama | SAS | START | REB | OVER | 1.5 | 5.5 | 4.0 | -101 |
 
 ## All Matched Legs

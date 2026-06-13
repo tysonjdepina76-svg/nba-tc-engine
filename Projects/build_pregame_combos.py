@@ -132,7 +132,7 @@ def extract_dk_lines_sgo(odds: dict) -> dict:
 # ── Odds API (WNBA) ────────────────────────────────────────
 
 ODDS_SPORT_MAP = {"WNBA": "basketball_wnba", "NBA": "basketball_nba"}
-ODDS_MARKETS = "player_points,player_rebounds,player_assists,player_threes,player_steals,player_blocks"
+ODDS_MARKETS = "player_points,player_rebounds,player_assists,player_threes,player_steals,player_blocks,totals"
 
 def odds_api_events(sport: str):
     if not ODDS_KEY:
@@ -165,18 +165,25 @@ def extract_dk_lines_oddsapi(odds_data: dict) -> dict:
             mkey = market.get("key", "")
             stat = ODDS_STAT_REVERSE.get(mkey)
             if stat:
+                # Group outcomes by player name, collecting both Over and Under prices
+                player_outcomes = {}
                 for outcome in market.get("outcomes", []):
                     name = outcome.get("description") or outcome.get("name", "")
-                    if "Over" not in outcome.get("name", "") and "over" not in outcome.get("name", ""):
-                        continue
                     line = outcome.get("point")
                     price = outcome.get("price")
-                    if line is None:
+                    if line is None or name is None:
                         continue
                     try: line = float(line)
                     except (TypeError, ValueError): continue
-                    out["players"].setdefault(name, {})[stat] = {
-                        "line": line, "over_odds": price, "under_odds": None}
+                    is_over = "Over" in outcome.get("name", "") or "over" in outcome.get("name", "")
+                    if name not in player_outcomes:
+                        player_outcomes[name] = {"line": line, "over_odds": None, "under_odds": None}
+                    if is_over:
+                        player_outcomes[name]["over_odds"] = price
+                    else:
+                        player_outcomes[name]["under_odds"] = price
+                for name, data in player_outcomes.items():
+                    out["players"].setdefault(name, {})[stat] = data
             elif mkey == "totals":
                 for outcome in market.get("outcomes", []):
                     if outcome.get("name") == "Over":

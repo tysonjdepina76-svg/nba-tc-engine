@@ -34,13 +34,13 @@ Main areas of the workspace, by relevance.
 - Automation: runs 5x daily during match windows (1PM, 3PM, 5PM, 7PM, 9PM ET)
 - Note: DK soccer props not available via Odds API free tier — FanDuel primary book
 
-## Current State (2026-06-13 — UPDATED)
-- **Gamelogs integration COMPLETE**: `player_gamelogs.py` → rolling 5-game avgs wired into `/api/tc` via `loadGamelogsCache()` + `liveRoster()` override. 913 WNBA + 510 NBA players cached.
-- **Combos API live**: `/api/combos` route created, serves TC-enhanced DK combo legs from `Daily_Log/YYYY-MM-DD/combos_*.json`
-- **Workspace purged**: 14 stale root-level JSON/CSV files removed
-- **Pipeline running clean**: 5 games, 59 picks, 19 edge-qualified combo legs across all matchups
-- **All sports wired**: NBA + WNBA fully active (live rosters, DK lines, gamelogs, combos). MLB/NHL/WC = notice only.
-- zo.space: 14 routes healthy, zero errors
+## Current State (2026-06-13 — UPDATED 21:44 UTC)
+- **Pipeline clean**: `daily_picks.py NBA WNBA` → 5 games, 19 edge-qualified combo legs (NYK@SAS + IND@CON, MIN@LV, DAL@POR, LA@PHX). ZERO errors.
+- **pycache purged**: All `__pycache__/` dirs removed from workspace root, Projects/, crypto_sentinel/
+- **WNBA combos ENHANCED**: DK odds now pull BOTH OVER + UNDER outcomes, DK game totals populated for all 4 games (168.5–174.5). 103 total combos across 4 WNBA games.
+- **Gamelogs integration LIVE**: 913 WNBA + 510 NBA player 5-game rolling averages wired into `/api/tc` via `loadGamelogsCache()`
+- **Workspace clean**: No stale root-level JSON/CSV files. No orphan temp files.
+- zo.space: 14 routes healthy
 - SGO API key needs rotation (401 Unauthorized)
 
 ## Gamelogs Cache (NEW)
