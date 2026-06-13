@@ -1,38 +1,43 @@
-"""Pull per-player last-N game logs and compute rolling averages.
+"""Pull per-player last-N game logs and compute rolling averages — NBA + WNBA.
 
-For each WNBA team:
-  1) Hit /schedule to get past event IDs
-  2) Hit /summary?event= for each → box score
-  3) Aggregate per-player rolling averages
+Output: /home/workspace/Daily_Log/YYYY-MM-DD/gamelogs_cache_NBA.json
+        /home/workspace/Daily_Log/YYYY-MM-DD/gamelogs_cache_WNBA.json
 
-Output: /home/workspace/Daily_Log/YYYY-MM-DD/gamelogs_<sport>_<team>.json
+Cache format per sport:
+  { "player_name_lower": {"pts": 22.5, "reb": 8.2, "ast": 5.1, "3pm": 3.0, "stl": 1.1, "blk": 0.8, "games": 5} }
 """
-import json
-import sys
-import urllib.request
+import json, sys, urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
 
 LOG_DIR = Path("/home/workspace/Daily_Log")
-SPORT = "wnba"
 N_GAMES = 5
 
-# ESPN team IDs (verified from /apis/site/v2/sports/basketball/wnba/teams)
-WNBA_TEAM_IDS = {
-    "ATL": "20", "CHI": "19", "DAL": "3", "MIN": "8", "PHX": "11", "GSV": "129689",
-    "CON": "18", "IND": "5", "LV": "17", "LA": "6", "NY": "9", "SEA": "14",
-    "WAS": "16", "POR": "132052", "TOR": "131935",
+NBA_TEAM_IDS = {
+    "ATL":"1","BOS":"2","BKN":"17","CHA":"30","CHI":"4","CLE":"5","DAL":"6","DEN":"7",
+    "DET":"8","GSW":"9","HOU":"10","IND":"11","LAC":"12","LAL":"13","MEM":"29",
+    "MIA":"14","MIL":"15","MIN":"16","NOP":"3","NYK":"18","OKC":"25","ORL":"19",
+    "PHI":"20","PHX":"21","POR":"22","SAC":"23","SAS":"24","TOR":"28","UTA":"26","WAS":"27",
 }
 
+WNBA_TEAM_IDS = {
+    "ATL":"20","CHI":"19","DAL":"3","MIN":"8","PHX":"11","GS":"129689",
+    "CON":"18","IND":"5","LV":"17","LA":"6","NY":"9","SEA":"14",
+    "WAS":"16","POR":"132052","TOR":"131935",
+}
 
-def fetch_team_schedule(team_id: str) -> list[str]:
-    """Return list of past event IDs (most recent first) for a team."""
-    url = f"https://site.api.espn.com/apis/site/v2/sports/basketball/{SPORT}/teams/{team_id}/schedule"
+STAT_MAP = {
+    "points": "pts","rebounds": "reb","assists": "ast",
+    "threepointfieldgoalsmade": "3pm","steals": "stl","blocks": "blk",
+}
+
+def fetch_team_events(team_id, sport):
+    url = f"https://site.api.espn.com/apis/site/v2/sports/basketball/{sport}/teams/{team_id}/schedule"
     try:
-        with urllib.request.urlopen(url, timeout=10) as r:
+        with urllib.request.urlopen(url, timeout=15) as r:
             d = json.loads(r.read())
     except Exception as e:
-        print(f"  ! schedule err for team {team_id}: {e}")
+        print(f"  ! schedule err team {team_id}: {e}")
         return []
     now = datetime.now(timezone.utc).replace(tzinfo=None)
     past = []
@@ -46,94 +51,91 @@ def fetch_team_schedule(team_id: str) -> list[str]:
     past.sort(reverse=True)
     return [eid for _, eid in past[:N_GAMES * 2]]
 
-
-def fetch_game_box(event_id: str) -> dict:
-    """Fetch a single game's box score, return per-player {name_lower: {stat: val}}."""
-    url = f"https://site.api.espn.com/apis/site/v2/sports/basketball/{SPORT}/summary?event={event_id}"
+def fetch_box(event_id, sport):
+    url = f"https://site.api.espn.com/apis/site/v2/sports/basketball/{sport}/summary?event={event_id}"
     try:
-        with urllib.request.urlopen(url, timeout=10) as r:
+        with urllib.request.urlopen(url, timeout=15) as r:
             d = json.loads(r.read())
-    except Exception as e:
-        print(f"  ! box err for event {event_id}: {e}")
+    except:
         return {}
     out = {}
     for t in d.get("boxscore", {}).get("players", []):
         for grp in t.get("statistics", []):
             keys = [k.lower() for k in grp.get("keys", [])]
-            if not keys or "points" not in keys:
+            if not keys:
                 continue
             idx = {k: i for i, k in enumerate(keys)}
             for a in grp.get("athletes", []):
                 ath = a.get("athlete", {}) or {}
-                name = ath.get("displayName") or ath.get("shortName") or ath.get("name", "")
+                name = (ath.get("displayName") or ath.get("shortName") or "").strip().lower()
                 if not name:
                     continue
                 vals = a.get("stats", [])
-                row = {k: vals[i] if i < len(vals) else "" for k, i in idx.items()}
-                for k_, v_ in row.items():
-                    if "-" in str(v_) and k_.endswith("attempted"):
-                        mk = k_.replace("attempted", "made")
-                        if mk in row:
+                row = {}
+                for k, i in idx.items():
+                    if i < len(vals):
+                        raw = vals[i]
+                        mapped = STAT_MAP.get(k)
+                        if mapped:
                             try:
-                                row[k_.replace("fieldgoals", "fg").replace("threepointfieldgoals", "3p").replace("freethrows", "ft")] = int(row[mk])
-                            except ValueError:
+                                row[mapped] = int(raw)
+                            except (ValueError, TypeError):
                                 pass
-                    else:
-                        try:
-                            row[k_] = int(v_)
-                        except ValueError:
-                            pass
-                out[name.lower()] = row
+                if row:
+                    out[name] = row
             break
     return out
 
-
-def fetch_team_logs(team_code: str, team_id: str) -> dict:
-    """Aggregate rolling avgs for a team across last N_GAMES completed games."""
-    sched = fetch_team_schedule(team_id)
-    agg: dict[str, dict[str, list]] = {}
-    games_used = 0
-    for ev_id in sched:
-        box = fetch_game_box(ev_id)
-        if not box:
-            continue
-        games_used += 1
-        for pname, stats in box.items():
-            bucket = agg.setdefault(pname, {})
-            for k, v in stats.items():
-                if isinstance(v, int):
+def build_cache(sport, team_ids):
+    cache = {}
+    total_players = 0
+    for code, tid in team_ids.items():
+        events = fetch_team_events(tid, sport)
+        agg = {}
+        games_used = 0
+        for ev_id in events:
+            box = fetch_box(ev_id, sport)
+            if not box:
+                continue
+            games_used += 1
+            for pname, stats in box.items():
+                bucket = agg.setdefault(pname, {})
+                for k, v in stats.items():
                     bucket.setdefault(k, []).append(v)
-        if games_used >= N_GAMES:
-            break
-    rolling = {
-        p: {k: round(sum(v) / len(v), 2) for k, v in stats.items()}
-        for p, stats in agg.items()
-    }
-    return {
-        "team": team_code,
-        "team_id": team_id,
-        "sport": SPORT.upper(),
-        "games_used": games_used,
-        "fetched_at": datetime.now(timezone.utc).isoformat(),
-        "players": rolling,
-    }
+            if games_used >= N_GAMES:
+                break
+        for pname, stat_lists in agg.items():
+            rolling = {k: round(sum(v) / len(v), 2) for k, v in stat_lists.items()}
+            rolling["games"] = min(len(stat_lists.get("pts", [])), N_GAMES)
+            rolling["team"] = code
+            cache[pname] = rolling
+            total_players += 1
+        print(f"  {code}: {games_used} games, {len(agg)} players")
 
-
-def main(sport: str = "wnba"):
-    global SPORT
-    SPORT = sport.lower()
-    team_ids = WNBA_TEAM_IDS if SPORT == "wnba" else {}
-    if not team_ids:
-        print(f"no team map for {sport}")
-        return
     out_dir = LOG_DIR / datetime.now(timezone.utc).strftime("%Y-%m-%d")
     out_dir.mkdir(parents=True, exist_ok=True)
-    for code, tid in team_ids.items():
-        out = fetch_team_logs(code, tid)
-        path = out_dir / f"gamelogs_{SPORT}_{code}.json"
-        path.write_text(json.dumps(out, indent=2))
-        print(f"  {code}: {out['games_used']} games, {len(out['players'])} players -> {path.name}")
+    out_path = out_dir / f"gamelogs_cache_{sport.upper()}.json"
+    out_data = {
+        "sport": sport.upper(),
+        "teams_scanned": len(team_ids),
+        "players_cached": total_players,
+        "n_games": N_GAMES,
+        "fetched_at": datetime.now(timezone.utc).isoformat(),
+        "cache": cache,
+    }
+    out_path.write_text(json.dumps(out_data, indent=2))
+    print(f"  → Wrote {out_path} ({total_players} players cached)\n")
+    return out_path
 
+def main():
+    sports = [a.lower() for a in sys.argv[1:]] if len(sys.argv) > 1 else ["nba", "wnba"]
+    for sport in sports:
+        ids = NBA_TEAM_IDS if sport == "nba" else WNBA_TEAM_IDS if sport == "wnba" else None
+        if not ids:
+            print(f"Unknown sport: {sport}")
+            continue
+        print(f"\n=== {sport.upper()} ===")
+        build_cache(sport, ids)
 
 if __name__ == "__main__":
-    main(sys.argv[1] if len(sys.argv) > 1 else "wnba")
+    main()

@@ -1,0 +1,65 @@
+[
+  {
+    "id": "225b5cb299e929c06658a0340ad5b835",
+    "sport_key": "icehockey_nhl",
+    "sport_title": "NHL",
+    "commence_time": "2026-06-15T00:20:00Z",
+    "home_team": "Vegas Golden Knights",
+    "away_team": "Carolina Hurricanes",
+    "bookmakers": [
+      {
+        "key": "draftkings",
+        "title": "DraftKings",
+        "last_update": "2026-06-13T19:33:19Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-06-13T19:33:19Z",
+            "outcomes": [
+              {
+                "name": "Carolina Hurricanes",
+                "price": -115
+              },
+              {
+                "name": "Vegas Golden Knights",
+                "price": -105
+              }
+            ]
+          },
+          {
+            "key": "spreads",
+            "last_update": "2026-06-13T19:33:19Z",
+            "outcomes": [
+              {
+                "name": "Carolina Hurricanes",
+                "price": 225,
+                "point": -1.5
+              },
+              {
+                "name": "Vegas Golden Knights",
+                "price": -278,
+                "point": 1.5
+              }
+            ]
+          },
+          {
+            "key": "totals",
+            "last_update": "2026-06-13T19:33:19Z",
+            "outcomes": [
+              {
+                "name": "Over",
+                "price": -130,
+                "point": 5.5
+              },
+              {
+                "name": "Under",
+                "price": 110,
+                "point": 5.5
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

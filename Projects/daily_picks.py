@@ -207,6 +207,99 @@ def run_daily_log(sports=("NBA", "WNBA")):
             except Exception as oe:
                 print(f"    ⚠️ Odds enrichment skipped: {oe}")
 
+            # Expand stat map to include all stats
+            stat_map = {
+                "PTS": "points", "REB": "rebounds", "AST": "assists",
+                "3PM": "threePointersMade", "STL": "steals", "BLK": "blocks",
+            }
+            # Fuzzy matching helper
+            def fuzzy_match(espn_name, dk_name):
+                a = espn_name.lower().replace("'", "").replace(".", "")
+                b = dk_name.lower().replace("'", "").replace(".", "")
+                return a == b or a in b or b in a
+
+            # --- SGO enrichment (NBA player props) ---
+            sgo_path = today_dir / f"lines_sgo_{sport.lower()}.json"
+            if sport == "NBA" and sgo_path.exists():
+                try:
+                    sgo_data = json.loads(sgo_path.read_text())
+                    events = sgo_data if isinstance(sgo_data, list) else sgo_data.get("data", [])
+                    matched_sgo = 0
+                    for ev in events:
+                        ev_away = ev.get("teams", {}).get("away", {}).get("names", {}).get("short", "")
+                        ev_home = ev.get("teams", {}).get("home", {}).get("names", {}).get("short", "")
+                        if ev_away.upper() != away.upper() or ev_home.upper() != home.upper():
+                            continue
+                        odds = ev.get("odds", {})
+                        if not odds:
+                            continue
+                        # Build lookup: player_name -> {stat: bookOverUnder}
+                        sgo_lines = {}
+                        for odd_key, odd_val in odds.items():
+                            if not isinstance(odd_val, dict):
+                                continue
+                            pid = odd_val.get("playerID", "")
+                            if not pid:
+                                continue
+                            stat = odd_val.get("statID", "")
+                            line = odd_val.get("bookOverUnder")
+                            if not line or odd_val.get("betTypeID") != "ou":
+                                continue
+                            # Map SGO stat names to our stat keys
+                            sgo_stat_map = {
+                                "points": "PTS", "rebounds": "REB", "assists": "AST",
+                                "threePointersMade": "3PM", "steals": "STL", "blocks": "BLK",
+                            }
+                            our_stat = sgo_stat_map.get(stat)
+                            if not our_stat:
+                                continue
+                            player_name = pid.replace("_1_NBA", "").replace("_", " ").title().strip()
+                            if player_name not in sgo_lines:
+                                sgo_lines[player_name] = {}
+                            # SGO lines are integers; Odds API style uses floats
+                            sgo_lines[player_name][our_stat] = float(line)
+                        # Match enriched DK lines to valid_props
+                        for vp in proj.get("valid_props", []):
+                            if vp.get("market_line"):
+                                continue  # already has a DK line
+                            pl_name = vp.get("player", "")
+                            stat_key = vp.get("stat", "")
+                            for sgo_player, sgo_props in sgo_lines.items():
+                                if fuzzy_match(pl_name, sgo_player) and stat_key in sgo_props:
+                                    vp["market_line"] = sgo_props[stat_key]
+                                    matched_sgo += 1
+                                    break
+                        if matched_sgo > 0:
+                            print(f"    → SGO: {matched_sgo} props enriched ({len(sgo_lines)} players with DK lines)")
+                        break  # Found matching event
+                except Exception as sgo_e:
+                    print(f"    ⚠️ SGO enrichment skipped: {sgo_e}")
+
+            # --- Odds API enrichment (original, kept for WNBA combos) ---
+            try:
+                odds_enrichment = enrich_player_lines(sport, away, home)
+                if odds_enrichment and odds_enrichment.get("player_lines"):
+                    proj["odds_api_lines"] = odds_enrichment
+                    player_lines = odds_enrichment.get("player_lines", {})
+                    odds_count = 0
+                    for vp in proj.get("valid_props", []):
+                        if vp.get("market_line"):
+                            continue  # already has a DK line from SGO
+                        pl_name = vp.get("player", "")
+                        stat_key = vp.get("stat", "")
+                        dk_stat = stat_map.get(stat_key)
+                        if not dk_stat:
+                            continue
+                        for dk_name in player_lines:
+                            if fuzzy_match(pl_name, dk_name) and dk_stat in player_lines[dk_name]:
+                                vp["market_line"] = player_lines[dk_name][dk_stat]
+                                odds_count += 1
+                                break
+                    if odds_count > 0:
+                        print(f"    → Odds API: {odds_count} props enriched ({odds_enrichment.get('player_count', 0)} players via {odds_enrichment.get('book', '?')})")
+            except Exception as oe:
+                print(f"    ⚠️ Odds enrichment skipped: {oe}")
+
             # Save raw projection
             safe = matchup.replace("@", "_at_")
             (today_dir / f"proj_{sport}_{safe}.json").write_text(json.dumps(proj, indent=2))
@@ -222,7 +315,7 @@ def run_daily_log(sports=("NBA", "WNBA")):
             all_summaries.append(summary)
             print(f"    -> {len(picks)} valid picks, signal={summary['signal']} (DK: {len(picks) - pending}, pending: {pending})")
 
-    # Write flat CSV (append mode to preserve history)
+    # Write flat CSV — deduplicated, keeping DK-enriched versions
     csv_path = today_dir / "picks.csv"
     csv_fields = [
         "date", "league", "matchup", "team", "player", "role", "status",
@@ -230,7 +323,7 @@ def run_daily_log(sports=("NBA", "WNBA")):
         "edge", "threshold", "raw_average", "source", "actual", "result",
     ]
     write_header = not csv_path.exists()
-    with open(csv_path, "a", newline="") as f:
+    with open(csv_path, "w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=csv_fields)
         if write_header:
             w.writeheader()
@@ -259,6 +352,30 @@ def run_daily_log(sports=("NBA", "WNBA")):
         print(f"Errors: {len(errors)}")
         for e in errors:
             print(f"  - {e}")
+
+    # ── Build TC-enhanced DK combos (NBA + WNBA) ──
+    try:
+        from Projects.build_pregame_combos import build_combos, write_report
+        combo_games = [(s["sport"], s["away_team"], s["home_team"]) for s in all_summaries]
+        print(f"\nBuilding TC combos for {len(combo_games)} games...")
+        combo_summary = []
+        for sport, away, home in combo_games:
+            try:
+                r = build_combos(sport, away, home)
+            except Exception as e:
+                r = {"sport": sport, "away": away, "home": home,
+                     "legs": [], "qualified": [], "error": str(e)}
+            safe = f"{away}_{home}".lower()
+            write_report(r, today_dir / f"combos_{safe}.md", today_dir / f"combos_{safe}.json")
+            combo_summary.append({
+                "matchup": f"{away}@{home}", "sport": sport,
+                "matched": r.get("matched_legs", 0),
+                "qualified": r.get("qualified_legs", 0),
+            })
+        (today_dir / "combos_summary.json").write_text(json.dumps(combo_summary, indent=2))
+        print(f"Combos: {sum(c['qualified'] for c in combo_summary)} qualified legs across {len(combo_summary)} games")
+    except Exception as e:
+        print(f"Combo builder: {e}")
 
     return last_run
 

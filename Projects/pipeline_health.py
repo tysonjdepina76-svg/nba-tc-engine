@@ -304,8 +304,12 @@ def main():
     md_files = list(LOG_DIR.glob("*/combos_*.md"))
     print(f"  Combo JSONs: {len(combo_files)} files")
     print(f"  Combo Markdowns: {len(md_files)} files")
-    if not combo_files:
-        print(f"  {warn('No combos generated — SGO WNBA tier unavailable, Odds API combos not built yet')}")
+    today = datetime.now().strftime("%Y-%m-%d")
+    today_dir = LOG_DIR / today
+    today_combo_files = list(today_dir.glob("combos_*.json"))
+    today_combo_md_files = list(today_dir.glob("combos_*.md"))
+    print(f"  Today's Combo JSONs: {len(today_combo_files)} files")
+    print(f"  Today's Combo Markdowns: {len(today_combo_md_files)} files")
     
     # ── Purge if requested ──────────────────────────────────────────
     if do_purge and logs["stale_dirs"]:

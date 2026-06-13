@@ -1,0 +1,75 @@
+{
+  "sport": "WNBA",
+  "away": "IND",
+  "home": "CON",
+  "tc_total_picks": 6,
+  "dk_game_total": null,
+  "dk_ml_home": null,
+  "dk_ml_away": null,
+  "matched_legs": 2,
+  "qualified_legs": 2,
+  "legs": [
+    {
+      "player": "Kelsey Mitchell",
+      "team": "IND",
+      "role": "START",
+      "stat": "3PM",
+      "direction": "UNDER",
+      "dk_line": 2.5,
+      "dk_odds": null,
+      "tc_projection": 1.1,
+      "tc_target": 0,
+      "raw_average": 2.4,
+      "edge": 1.4,
+      "threshold": 0.8,
+      "qualifies_edge": true
+    },
+    {
+      "player": "Sophie Cunningham",
+      "team": "IND",
+      "role": "START",
+      "stat": "3PM",
+      "direction": "UNDER",
+      "dk_line": 1.5,
+      "dk_odds": null,
+      "tc_projection": 0.8,
+      "tc_target": 0,
+      "raw_average": 1.4,
+      "edge": 0.7,
+      "threshold": 0.8,
+      "qualifies_edge": true
+    }
+  ],
+  "qualified": [
+    {
+      "player": "Kelsey Mitchell",
+      "team": "IND",
+      "role": "START",
+      "stat": "3PM",
+      "direction": "UNDER",
+      "dk_line": 2.5,
+      "dk_odds": null,
+      "tc_projection": 1.1,
+      "tc_target": 0,
+      "raw_average": 2.4,
+      "edge": 1.4,
+      "threshold": 0.8,
+      "qualifies_edge": true
+    },
+    {
+      "player": "Sophie Cunningham",
+      "team": "IND",
+      "role": "START",
+      "stat": "3PM",
+      "direction": "UNDER",
+      "dk_line": 1.5,
+      "dk_odds": null,
+      "tc_projection": 0.8,
+      "tc_target": 0,
+      "raw_average": 1.4,
+      "edge": 0.7,
+      "threshold": 0.8,
+      "qualifies_edge": true
+    }
+  ]
+}

@@ -25,25 +25,54 @@ Main areas of the workspace, by relevance.
 ## Live Services
 - `dk-combos-engine` (svc_id `svc__D_fVMtKoFg`, port 8515) → `https://dk-combos-engine-true.zocomputer.io/combos?sport=WNBA` (104 WNBA combos)
 
-## Current State (2026-06-13)
-- Projects: 15 production scripts (added `pipeline_health.py`, `tc_pipeline.py`)
-- Reports: 7 files
-- Daily pipeline: 5 games (1 NBA + 4 WNBA), 48 picks captured
-- DK Combos: NBA + WNBA live via `dk-combos-engine` service (port 8515)
-- Workspace purge: 31 stale files → `Daily_Log/_purged_20260613/`
-- zo.space: all 5 routes healthy, zero errors
+## World Cup 2026 Pipeline (zero impact on basketball TC)
+- `Projects/worldcup_picks.py` — standalone daily scraper (ESPN schedule + Odds API player props)
+- Data sources: ESPN (free) for matches + The Odds API (free tier) for FanDuel player props
+- Props: goals, assists, shots, shots_on_target — completely separate from basketball TC math
+- Output: `Daily_Log/worldcup/YYYY-MM-DD/` (matches.json, props.json, picks.csv)
+- Dashboard: `https://true.zo.space/worldcup` (live page)
+- Automation: runs 5x daily during match windows (1PM, 3PM, 5PM, 7PM, 9PM ET)
+- Note: DK soccer props not available via Odds API free tier — FanDuel primary book
+
+## Current State (2026-06-13 — UPDATED)
+- **Gamelogs integration COMPLETE**: `player_gamelogs.py` → rolling 5-game avgs wired into `/api/tc` via `loadGamelogsCache()` + `liveRoster()` override. 913 WNBA + 510 NBA players cached.
+- **Combos API live**: `/api/combos` route created, serves TC-enhanced DK combo legs from `Daily_Log/YYYY-MM-DD/combos_*.json`
+- **Workspace purged**: 14 stale root-level JSON/CSV files removed
+- **Pipeline running clean**: 5 games, 59 picks, 19 edge-qualified combo legs across all matchups
+- **All sports wired**: NBA + WNBA fully active (live rosters, DK lines, gamelogs, combos). MLB/NHL/WC = notice only.
+- zo.space: 14 routes healthy, zero errors
 - SGO API key needs rotation (401 Unauthorized)
+
+## Gamelogs Cache (NEW)
+- `Projects/player_gamelogs.py` — fetches last-5-game box scores from ESPN, computes rolling averages
+- Output: `Daily_Log/YYYY-MM-DD/gamelogs_cache_{NBA,WNBA}.json` (per-player rolling 5g avgs)
+- `/api/tc` reads cache on every request, overrides ESPN season averages with rolling avgs when available
+- Source marker: "live_roster_api+gamelogs_5g_rolling" when gamelogs used, "live_roster_api" otherwise
+- Stat mapping: gamelogs `pts/reb/ast/3pm/stl/blk` → ESPN field keys for `bayesShrink()`
+
+## Backtest Pipeline (NEW — 2026-06-13)
+- `Projects/backtest_pipeline.py` — standalone Odds API + ESPN backtest (single file, ~984 lines)
+- Data flow: Odds API historical (h2h/spreads/totals) → ESPN box scores → TC math → hit rates
+- Credit-aware: ONE call per sport per date (NOT per event), max 3 days for scores endpoint
+- WNBA 7-day first run: **988 picks, 61.6% overall hit rate** (602/977 + 11 pushes)
+- Best stats: PTS 73.1%, STL 62.4%, 3PM 62.3% | Worst: BLK 38.5%
+- Best teams: LV 78.2%, ATL 70.6%, SEA 70.1% | Worst: DAL 49.1%, NY 51.8%
+- DK combo cross-ref: 0 matches — Odds API historical endpoint does NOT support player props
+- Player props + combo lines must come from LIVE endpoint (`/v4/sports/{sport}/events/{id}/odds`)
 
 ## Live zo.space routes
 - `https://true.zo.space/nba-tc` — live TC dashboard
-- `https://true.zo.space/combos` — combo generator + parlay builder
+- `https://true.zo.space/dk-combos` — DK combo lines dashboard
+- `https://true.zo.space/worldcup` — World Cup 2026 player props dashboard (goals, assists, shots, shots on target)
 - `https://true.zo.space/` — homepage (private)
 - `https://true.zo.space/api/tc` — TC engine API (4-tier odds fallback: SGO → ESPN DK → Odds API → WNBA fallback)
 - `https://true.zo.space/api/combos` — live combo generator API
+- `https://true.zo.space/api/worldcup-props` — serves World Cup props from Daily_Log/worldcup/
 
-## Automations (3 daily, all ET)
+## Automations (4 daily, all ET)
 - 8:00 AM — `Scripts/refresh_daily_data.sh` + status email
 - 9:00 AM — `Projects/daily_picks.py` + summary email
+- 1:00 PM, 3:00 PM, 5:00 PM, 7:00 PM, 9:00 PM — `Projects/worldcup_picks.py` (World Cup match windows)
 - 5:00 PM — `daily_tip_report.py` + `generate_report.py` + pre-tip email
 
 ## Archives

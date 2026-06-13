@@ -1,0 +1,65 @@
+[
+  {
+    "id": "6cc5c3b9cfcb1d94bed9f3ca972b3114",
+    "sport_key": "basketball_nba",
+    "sport_title": "NBA",
+    "commence_time": "2026-06-14T00:40:00Z",
+    "home_team": "San Antonio Spurs",
+    "away_team": "New York Knicks",
+    "bookmakers": [
+      {
+        "key": "draftkings",
+        "title": "DraftKings",
+        "last_update": "2026-06-13T19:32:40Z",
+        "markets": [
+          {
+            "key": "h2h",
+            "last_update": "2026-06-13T19:32:40Z",
+            "outcomes": [
+              {
+                "name": "New York Knicks",
+                "price": 170
+              },
+              {
+                "name": "San Antonio Spurs",
+                "price": -205
+              }
+            ]
+          },
+          {
+            "key": "spreads",
+            "last_update": "2026-06-13T19:32:40Z",
+            "outcomes": [
+              {
+                "name": "New York Knicks",
+                "price": -112,
+                "point": 5.5
+              },
+              {
+                "name": "San Antonio Spurs",
+                "price": -108,
+                "point": -5.5
+              }
+            ]
+          },
+          {
+            "key": "totals",
+            "last_update": "2026-06-13T19:32:40Z",
+            "outcomes": [
+              {
+                "name": "Over",
+                "price": -115,
+                "point": 215.5
+              },
+              {
+                "name": "Under",
+                "price": -105,
+                "point": 215.5
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]
