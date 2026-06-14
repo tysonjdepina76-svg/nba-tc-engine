@@ -18,6 +18,12 @@ import requests
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
+ET = timezone(timedelta(hours=-5))
+def now_et():
+    return datetime.now(ET)
+def today_et():
+    return now_et().strftime("%Y-%m-%d")
+
 # Load secrets so SGO/ODDS_API keys are available
 try:
     _sec = Path("/root/.zo/secrets.env")
@@ -101,7 +107,7 @@ def extract_picks(projection, sport, matchup):
         if not p.get("valid"):
             continue
         picks.append({
-            "date": datetime.now().strftime("%Y-%m-%d"),
+            "date": now_et().strftime("%Y-%m-%d"),
             "league": sport,
             "matchup": matchup,
             "team": p.get("team"),
@@ -127,7 +133,7 @@ def extract_game_summary(projection, sport, matchup):
     """Extract top-line game summary."""
     a = projection.get("assessment", {})
     return {
-        "date": datetime.now().strftime("%Y-%m-%d"),
+        "date": now_et().strftime("%Y-%m-%d"),
         "sport": sport,
         "matchup": matchup,
         "away_team": projection.get("away_team"),
@@ -146,7 +152,7 @@ def extract_game_summary(projection, sport, matchup):
 
 def run_daily_log(sports=("NBA", "WNBA")):
     """Run the full daily log capture. Filters out completed games."""
-    now = datetime.now()
+    now = now_et()
     today_dir = LOG_DIR / now.strftime("%Y-%m-%d")
     today_dir.mkdir(exist_ok=True)
 
@@ -191,7 +197,7 @@ def run_daily_log(sports=("NBA", "WNBA")):
                     print(f"    → Odds API: {odds_enrichment.get('player_count', 0)} players enriched via {odds_enrichment.get('book', '?')}")
                     # Merge DK lines into valid_props with fuzzy name + stat mapping
                     player_lines = odds_enrichment.get("player_lines", {})
-                    stat_map = {"PTS": "points", "REB": "rebounds", "AST": "assists", "3PM": None, "STL": None, "BLK": None}
+                    stat_map = {"PTS": "points", "REB": "rebounds", "AST": "assists", "3PM": "threePointersMade", "STL": "steals", "BLK": "blocks"}
                     for vp in proj.get("valid_props", []):
                         pl_name = vp.get("player", "")
                         stat_key = vp.get("stat", "")
@@ -207,10 +213,10 @@ def run_daily_log(sports=("NBA", "WNBA")):
             except Exception as oe:
                 print(f"    ⚠️ Odds enrichment skipped: {oe}")
 
-            # Expand stat map to include all stats
+            # Expand stat map to include all stats (Odds API keys)
             stat_map = {
                 "PTS": "points", "REB": "rebounds", "AST": "assists",
-                "3PM": "threePointersMade", "STL": "steals", "BLK": "blocks",
+                "3PM": "threes", "STL": "steals", "BLK": "blocks",
             }
             # Fuzzy matching helper
             def fuzzy_match(espn_name, dk_name):
@@ -281,6 +287,7 @@ def run_daily_log(sports=("NBA", "WNBA")):
                 if odds_enrichment and odds_enrichment.get("player_lines"):
                     proj["odds_api_lines"] = odds_enrichment
                     player_lines = odds_enrichment.get("player_lines", {})
+                    stat_map = {"PTS": "points", "REB": "rebounds", "AST": "assists", "3PM": "threes", "STL": "steals", "BLK": "blocks"}
                     odds_count = 0
                     for vp in proj.get("valid_props", []):
                         if vp.get("market_line"):
@@ -290,11 +297,15 @@ def run_daily_log(sports=("NBA", "WNBA")):
                         dk_stat = stat_map.get(stat_key)
                         if not dk_stat:
                             continue
+                        # Fuzzy player name match
                         for dk_name in player_lines:
-                            if fuzzy_match(pl_name, dk_name) and dk_stat in player_lines[dk_name]:
-                                vp["market_line"] = player_lines[dk_name][dk_stat]
-                                odds_count += 1
-                                break
+                            a = pl_name.lower().replace("'", "").replace(".", "")
+                            b = dk_name.lower().replace("'", "").replace(".", "")
+                            if a == b or a in b or b in a:
+                                if dk_stat in player_lines[dk_name]:
+                                    vp["market_line"] = player_lines[dk_name][dk_stat]
+                                    odds_count += 1
+                                    break
                     if odds_count > 0:
                         print(f"    → Odds API: {odds_count} props enriched ({odds_enrichment.get('player_count', 0)} players via {odds_enrichment.get('book', '?')})")
             except Exception as oe:

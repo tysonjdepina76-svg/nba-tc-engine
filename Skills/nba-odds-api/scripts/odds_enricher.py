@@ -4,7 +4,7 @@ Odds Enricher — Injects live player prop lines from The Odds API into the TC p
 
 Two-step fetch (required by free tier):
   1. /sports/{sport}/odds?markets=h2h,spreads,totals  → get game IDs
-  2. /sports/{sport}/events/{id}/odds?markets=player_points,player_rebounds,player_assists → get props
+  2. /sports/{sport}/events/{id}/odds?markets=player_points,player_rebounds,player_assists,player_threes,player_steals,player_blocks → get props
 
 Usage:
   Import: from odds_enricher import enrich_player_lines
@@ -29,7 +29,13 @@ SPORT_MAP = {
 
 TEAM_MAP = {
     "NBA": {},
-    "WNBA": {},
+    "WNBA": {
+        "ATL": "atlanta dream", "CHI": "chicago sky", "CON": "connecticut sun",
+        "DAL": "dallas wings", "GS": "golden state valkyries", "IND": "indiana fever",
+        "LV": "las vegas aces", "LA": "los angeles sparks", "MIN": "minnesota lynx",
+        "NY": "new york liberty", "PHX": "phoenix mercury", "POR": "portland fire",
+        "SEA": "seattle storm", "TOR": "toronto tempo", "WSH": "washington mystics",
+    },
 }
 
 BOOK_PRIORITY = ["draftkings", "fanduel", "betmgm", "fanatics", "bovada"]
@@ -50,19 +56,40 @@ def _find_game(sport_key, away_team, home_team):
     }
     r = requests.get(url, params=params, timeout=15)
     r.raise_for_status()
+    
+    league = "WNBA" if "wnba" in sport_key else "NBA"
+    team_map = TEAM_MAP.get(league, {})
+    
     def norm(name):
         if not name: return ""
         n = name.lower().strip()
-        for suffix in [" sky", " liberty", " fever", " dream", " mercury", " wings", " aces", " storm", " tempo", " mystics", " valkyries", " fire"]:
+        for suffix in [" sky", " liberty", " fever", " dream", " mercury", " wings",
+                        " aces", " storm", " tempo", " mystics", " valkyries", " fire",
+                        " lynx", " sun", " sparks"]:
             n = n.replace(suffix, "")
-        return n
+        return n.strip()
+    
     a, h = norm(away_team), norm(home_team)
     for g in r.json():
         gh, ga = norm(g.get("home_team")), norm(g.get("away_team"))
         if gh == h and ga == a:
             return g
+        
+    for g in r.json():
+        gh_full = (g.get("home_team") or "").lower()
+        ga_full = (g.get("away_team") or "").lower()
+        away_full = team_map.get(away_team.upper(), "").lower()
+        home_full = team_map.get(home_team.upper(), "").lower()
+        if away_full and away_full in ga_full and home_full and home_full in gh_full:
+            return g
+        if away_full and away_full in ga_full and not home_full and h in gh_full:
+            return g
+        if home_full and home_full in gh_full and not away_full and a in ga_full:
+            return g
+        gh, ga = norm(g.get("home_team")), norm(g.get("away_team"))
         if (h in gh or gh in h) and (a in ga or ga in a):
             return g
+
     return None
 
 
@@ -71,7 +98,7 @@ def _fetch_player_props(sport_key, game_id):
     params = {
         "apiKey": ODDS_API_KEY,
         "regions": "us",
-        "markets": "player_points,player_rebounds,player_assists",
+        "markets": "player_points,player_rebounds,player_assists,player_threes,player_steals,player_blocks",
         "oddsFormat": "decimal",
     }
     r = requests.get(url, params=params, timeout=15)
@@ -98,12 +125,15 @@ def _extract_game_odds(game_data, preferred_book):
 
 
 def _extract_props(prop_data, preferred_book):
-    """Return { player_name: { points: line, rebounds: line, assists: line } }"""
+    """Return { player_name: { points: line, rebounds: line, assists: line, threes: line, steals: line, blocks: line } }"""
     props = {}
     stat_map = {
         "player_points": "points",
         "player_rebounds": "rebounds",
         "player_assists": "assists",
+        "player_threes": "threes",
+        "player_steals": "steals",
+        "player_blocks": "blocks",
     }
     for bk in prop_data.get("bookmakers", []):
         if bk.get("key") != preferred_book:

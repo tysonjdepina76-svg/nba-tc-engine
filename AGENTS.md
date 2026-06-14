@@ -40,14 +40,23 @@ Main areas of the workspace, by relevance.
 - Automation: runs 5x daily during match windows (1PM, 3PM, 5PM, 7PM, 9PM ET)
 - Note: DK soccer props not available via Odds API free tier — FanDuel primary book
 
-## Current State (2026-06-13 — UPDATED 21:44 UTC)
-- **Pipeline clean**: `daily_picks.py NBA WNBA` → 5 games, 19 edge-qualified combo legs (NYK@SAS + IND@CON, MIN@LV, DAL@POR, LA@PHX). ZERO errors.
-- **pycache purged**: All `__pycache__/` dirs removed from workspace root, Projects/, crypto_sentinel/
-- **WNBA combos ENHANCED**: DK odds now pull BOTH OVER + UNDER outcomes, DK game totals populated for all 4 games (168.5–174.5). 103 total combos across 4 WNBA games.
-- **Gamelogs integration LIVE**: 913 WNBA + 510 NBA player 5-game rolling averages wired into `/api/tc` via `loadGamelogsCache()`
-- **Workspace clean**: No stale root-level JSON/CSV files. No orphan temp files.
-- zo.space: 14 routes healthy
-- SGO API key needs rotation (401 Unauthorized)
+## Current State (2026-06-13 — UPDATED 20:25 ET)
+- **Pipeline clean**: `daily_picks.py NBA WNBA` → 4 games, 45 picks, 15 qualified TC+DK combo legs (6 NBA + 9 WNBA). ZERO errors.
+- **WNBA combo fix**: WNBA enrichment was broken — `stat_map` had `"3PM": None` in first block; second block mapped `3PM → "threePointersMade"` but Odds API uses `"threes"`. Fixed both stat_maps, WNBA dk_props went from 0→3/4/4 across games.
+- **ET timezone fix**: `now_et()` / `today_et()` helpers added — picks no longer stamped UTC date after midnight.
+- **Odds enricher fix**: `Skills/nba-odds-api/scripts/odds_enricher.py` now fetches all 6 player prop markets (was only PTS/REB/AST) + uses WNBA_TEAM_MAP for team code matching.
+- **15 qualified WNBA combos served**: MIN@LV (3), DAL@POR (3), LA@PHX (3).
+- **pycache purged**: All `__pycache__/` dirs removed from workspace.
+- zo.space: 14 routes healthy.
+- dk-combos-engine: RUNNING, serving 112 WNBA combos via Odds API fallback.
+
+## 2026-06-13: Multi-Sport Direction-Agnostic Fix
+- `/api/tc` `fetchMultiSportDKLines` and `buildMultiSportProjection` now accept reversed matchups
+- MLB, NHL, WORLD CUP, NBA, WNBA all work regardless of which team is passed as away/home
+- Fix matches the NBA/WNBA `fetchDKOdds` pattern: checks both fwdMatch and revMatch
+- All 5 sports return 200 from `/api/tc`; DK lines populate when live games exist
+- WNBA has 6-game slate today (IND@CON, MIN@LV, DAL@POR, LA@PHX, ATL@TOR, WSH@NY)
+- Combos engine: NBA 37 lines, WNBA 115 lines ready
 
 ## Gamelogs Cache (NEW)
 - `Projects/player_gamelogs.py` — fetches last-5-game box scores from ESPN, computes rolling averages

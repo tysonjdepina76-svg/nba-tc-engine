@@ -5,8 +5,8 @@
   "away_team": "IND",
   "home_team": "CON",
   "source": "live ESPN WNBA roster/stat APIs",
-  "timestamp": "2026-06-13T21:43:57.382Z",
-  "injury_source": "ESPN WNBA injuries \u00b7 13 teams \u00b7 27 players",
+  "timestamp": "2026-06-13T23:58:59.163Z",
+  "injury_source": "ESPN WNBA injuries \u00b7 13 teams \u00b7 28 players",
   "injury_counts": {
     "away": 2,
     "away_out": 2,
@@ -15,35 +15,35 @@
   },
   "tc_combined": 167.3,
   "tc_line": 181,
-  "market_total": 170.5,
-  "edge": 10.5,
+  "market_total": 164.5,
+  "edge": 16.5,
   "signal": "OVER",
-  "dk_total": 170.5,
+  "dk_total": 164.5,
   "odds": {
-    "total": 170.5,
-    "spread": -8.5,
-    "away_spread": -8.5,
-    "home_spread": 8.5,
+    "total": 164.5,
+    "spread": -4.5,
+    "away_spread": -4.5,
+    "home_spread": 4.5,
     "spread_pick": "IND",
     "away_ml": -410,
-    "home_ml": 320,
+    "home_ml": 290,
     "ml_source": "ESPN DraftKings embedded"
   },
   "assessment": {
     "tc_total": 167.3,
     "tc_line": 181,
-    "edge": 10.5,
+    "edge": 16.5,
     "signal": "OVER",
     "total_lean": "OVER",
     "spread_pick": "CON",
-    "summary": "TC combined 167.3 vs DK 170.5 (edge +10.5) \u2192 lean OVER. Spread: CON.",
+    "summary": "TC combined 167.3 vs DK 164.5 (edge +16.5) \u2192 lean OVER. Spread: CON.",
     "roster_rule": "live mode uses current roster/stat/injury APIs only"
   },
   "game_assessment": {
     "total_lean": "OVER",
     "spread_pick": "CON",
     "roster_rule": "live mode uses current roster/stat/injury APIs only",
-    "summary": "TC combined 167.3 vs DK 170.5 (edge +10.5) \u2192 lean OVER."
+    "summary": "TC combined 167.3 vs DK 164.5 (edge +16.5) \u2192 lean OVER."
   },
   "roster_counts": {
     "away": 14,
@@ -6289,80 +6289,63 @@
   "odds_api_lines": {
     "game_odds": {
       "h2h": {
-        "Connecticut Sun": 4.2,
+        "Connecticut Sun": 3.9,
         "Indiana Fever": 1.24
       },
       "spreads": {
         "Connecticut Sun": {
-          "point": 8.5,
-          "price": 1.98
+          "point": 4.5,
+          "price": 2.0
         },
         "Indiana Fever": {
-          "point": -8.5,
-          "price": 1.85
+          "point": -4.5,
+          "price": 1.77
         }
       },
       "totals": {
         "Over": {
-          "point": 170.5,
-          "price": 1.89
+          "point": 164.5,
+          "price": 1.95
         },
         "Under": {
-          "point": 170.5,
-          "price": 1.93
+          "point": 164.5,
+          "price": 1.8
         }
       }
     },
     "player_lines": {
       "Caitlin Clark": {
-        "assists": 8.5,
-        "points": 19.5,
-        "rebounds": 4.5
-      },
-      "Le\u00efla Lacan": {
-        "assists": 4.5,
-        "points": 11.5
+        "assists": 6.5,
+        "points": 27.5,
+        "rebounds": 3.5
       },
       "Saniya Rivers": {
-        "assists": 2.5,
-        "points": 9.5,
-        "rebounds": 2.5
-      },
-      "Aliyah Boston": {
-        "assists": 2.5,
-        "points": 15.5,
-        "rebounds": 8.5
+        "assists": 3.5,
+        "points": 8.5
       },
       "Brittney Griner": {
-        "assists": 2.5,
-        "points": 12.5,
-        "rebounds": 5.5
+        "assists": 3.5,
+        "points": 7.5
       },
       "Kelsey Mitchell": {
-        "points": 19.5
+        "points": 21.5
+      },
+      "Aliyah Boston": {
+        "points": 13.5,
+        "rebounds": 10.5
       },
       "Aneesah Morrow": {
-        "points": 11.5,
-        "rebounds": 9.5
+        "points": 10.5,
+        "rebounds": 6.5
       },
       "Aaliyah Edwards": {
-        "points": 10.5,
-        "rebounds": 4.5
-      },
-      "Diamond Miller": {
-        "points": 9.5
-      },
-      "Sophie Cunningham": {
-        "points": 8.5,
-        "rebounds": 2.5
-      },
-      "Lexie Hull": {
-        "points": 7.5
+        "points": 9.5,
+        "rebounds": 3.5
       }
     },
-    "player_count": 11,
+    "player_count": 7,
     "source": "odds_api",
     "book": "draftkings",
-    "fetched_at": "2026-06-13T21:43:58.341156+00:00"
+    "fetched_at": "2026-06-13T23:58:59.817424+00:00"
   }
 }
