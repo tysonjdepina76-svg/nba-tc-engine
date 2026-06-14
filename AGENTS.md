@@ -40,7 +40,7 @@ Main areas of the workspace, by relevance.
 - Automation: runs 5x daily during match windows (1PM, 3PM, 5PM, 7PM, 9PM ET)
 - Note: DK soccer props not available via Odds API free tier — FanDuel primary book
 
-## Current State (2026-06-13 — UPDATED 20:25 ET)
+## Current State (2026-06-14 — UPDATED)
 - **Pipeline clean**: `daily_picks.py NBA WNBA` → 4 games, 45 picks, 15 qualified TC+DK combo legs (6 NBA + 9 WNBA). ZERO errors.
 - **WNBA combo fix**: WNBA enrichment was broken — `stat_map` had `"3PM": None` in first block; second block mapped `3PM → "threePointersMade"` but Odds API uses `"threes"`. Fixed both stat_maps, WNBA dk_props went from 0→3/4/4 across games.
 - **ET timezone fix**: `now_et()` / `today_et()` helpers added — picks no longer stamped UTC date after midnight.
