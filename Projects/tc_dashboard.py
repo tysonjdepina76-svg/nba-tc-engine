@@ -84,10 +84,17 @@ def load_picks() -> pd.DataFrame:
     csv_path = DATA_DIR / "picks.csv"
     if not csv_path.exists():
         return pd.DataFrame(columns=CSV_COLS), [], []
-    df = pd.read_csv(csv_path, header=None, names=CSV_COLS)
-    # Drop header rows that may have been included as data
-    df = df[df["date"] != "date"]
-    df.columns = [c.strip().lower() for c in df.columns]
+    raw = pd.read_csv(csv_path, header=None, names=CSV_COLS, dtype=str)
+    raw = raw[raw["date"] != "date"]
+    if raw.empty:
+        return pd.DataFrame(columns=[c.lower() for c in CSV_COLS])
+    # Detect: if column[0] is a valid YYYY-MM-DD date, no header was provided
+    first = str(raw.iloc[0, 0])[:10]
+    if first[0:4].isdigit() and first[5:7].isdigit() if len(first) >= 7 else False:
+        df = raw.copy()
+    else:
+        df = raw.iloc[1:].reset_index(drop=True)
+    df.columns = [c.strip().lower() for c in CSV_COLS]
     for col in ["dk_line", "tc_projection", "edge", "confidence"]:
         if col in df.columns:
             df[col] = pd.to_numeric(df[col], errors="coerce")
