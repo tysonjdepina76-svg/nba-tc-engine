@@ -112,9 +112,16 @@ def check_daily_log():
         picks_count = max(0, len(lines) - 1)
         import csv
         with open(picks_csv) as f:
-            for row in csv.DictReader(f):
-                if row.get("matchup") not in games:
-                    games.append(row["matchup"])
+            first = f.readline()
+            f.seek(0)
+            has_header = not first.replace(",", "").replace("-", "").replace("@", "").replace(".", "").replace("'", "").replace('"', "").replace(" ", "").strip().isdigit() and "matchup" not in first
+            reader = csv.reader(f)
+            if has_header:
+                next(reader, None)
+            for row in reader:
+                m = row[2].strip() if len(row) > 2 else ""
+                if m and m not in games:
+                    games.append(m)
     last_ts = "never"
     if last_run.exists():
         try:
