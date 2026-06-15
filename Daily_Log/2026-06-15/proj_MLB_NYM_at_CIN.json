@@ -1,0 +1,71 @@
+{
+  "mode": "live",
+  "sport": "MLB",
+  "matchup": "NYM@CIN",
+  "away_team": "NYM",
+  "home_team": "CIN",
+  "away_name": "New York Mets",
+  "home_name": "Cincinnati Reds",
+  "commence_time": "2026-06-15T23:10Z",
+  "event_id": "401815766",
+  "source": "ESPN MLB scoreboard + DraftKings via The Odds API",
+  "timestamp": "2026-06-15T17:32:11.591Z",
+  "tc_combined": null,
+  "tc_line": null,
+  "dk_total": 8.5,
+  "edge": null,
+  "signal": "DK LINES LIVE",
+  "odds": {
+    "total": 8.5,
+    "away_spread": 1.5,
+    "home_spread": -1.5,
+    "spread_pick": "CIN",
+    "away_ml": 119,
+    "home_ml": -143,
+    "ml_source": "DraftKings via The Odds API",
+    "espn_total": "o8.5"
+  },
+  "assessment": {
+    "summary": "MLB NYM@CIN \u2014 DK live \u00b7 total 8.5 \u00b7 spread -1.5 \u00b7 ML 119/-143.",
+    "dk_status": "DraftKings via The Odds API",
+    "roster_rule": "MLB uses ESPN scoreboard for live games + Odds API for DraftKings h2h/spreads/totals"
+  },
+  "away": {
+    "all": {
+      "players": []
+    },
+    "starters": {
+      "players": []
+    },
+    "bench": {
+      "players": []
+    },
+    "totals": {},
+    "injuries": []
+  },
+  "home": {
+    "all": {
+      "players": []
+    },
+    "starters": {
+      "players": []
+    },
+    "bench": {
+      "players": []
+    },
+    "totals": {},
+    "injuries": []
+  },
+  "valid_props": [],
+  "missing_keys": [],
+  "roster_counts": {
+    "away": 0,
+    "home": 0,
+    "away_active": 0,
+    "home_active": 0
+  },
+  "supported_sports": [
+    "MLB"
+  ],
+  "note": "MLB DK lines (h2h/spreads/totals) via The Odds API. Player props coming for MLB."
+}

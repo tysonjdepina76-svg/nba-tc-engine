@@ -1,0 +1,71 @@
+{
+  "mode": "live",
+  "sport": "MLB",
+  "matchup": "DET@HOU",
+  "away_team": "DET",
+  "home_team": "HOU",
+  "away_name": "Detroit Tigers",
+  "home_name": "Houston Astros",
+  "commence_time": "2026-06-16T00:10Z",
+  "event_id": "401815768",
+  "source": "ESPN MLB scoreboard + DraftKings via The Odds API",
+  "timestamp": "2026-06-15T17:32:12.423Z",
+  "tc_combined": null,
+  "tc_line": null,
+  "dk_total": 9,
+  "edge": null,
+  "signal": "DK LINES LIVE",
+  "odds": {
+    "total": 9,
+    "away_spread": 1.5,
+    "home_spread": -1.5,
+    "spread_pick": "HOU",
+    "away_ml": 102,
+    "home_ml": -123,
+    "ml_source": "DraftKings via The Odds API",
+    "espn_total": "o9"
+  },
+  "assessment": {
+    "summary": "MLB DET@HOU \u2014 DK live \u00b7 total 9 \u00b7 spread -1.5 \u00b7 ML 102/-123.",
+    "dk_status": "DraftKings via The Odds API",
+    "roster_rule": "MLB uses ESPN scoreboard for live games + Odds API for DraftKings h2h/spreads/totals"
+  },
+  "away": {
+    "all": {
+      "players": []
+    },
+    "starters": {
+      "players": []
+    },
+    "bench": {
+      "players": []
+    },
+    "totals": {},
+    "injuries": []
+  },
+  "home": {
+    "all": {
+      "players": []
+    },
+    "starters": {
+      "players": []
+    },
+    "bench": {
+      "players": []
+    },
+    "totals": {},
+    "injuries": []
+  },
+  "valid_props": [],
+  "missing_keys": [],
+  "roster_counts": {
+    "away": 0,
+    "home": 0,
+    "away_active": 0,
+    "home_active": 0
+  },
+  "supported_sports": [
+    "MLB"
+  ],
+  "note": "MLB DK lines (h2h/spreads/totals) via The Odds API. Player props coming for MLB."
+}

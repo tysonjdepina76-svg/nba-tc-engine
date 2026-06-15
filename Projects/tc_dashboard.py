@@ -8,6 +8,7 @@ from datetime import datetime
 from pathlib import Path
 
 import pandas as pd
+import requests
 import streamlit as st
 
 st.set_page_config(page_title="TC Picks Dashboard", page_icon="🏀", layout="wide")
@@ -178,7 +179,14 @@ with tab_basket:
 
 # ── Soccer tab content ────────────────────────────────
 with tab_soccer:
-    pass
+    st.subheader("⚽ Soccer Combos — Live & Cached")
+
+    # 1) Try the live engine first (:8516), fall back to disk
+    live_soccer = None
+    try:
+        r = requests.get("http://localhost:8516")
+    except Exception:
+        pass
 
     # ── Footer ───────────────────────────────────────────────
     st.divider()
