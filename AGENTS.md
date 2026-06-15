@@ -25,6 +25,7 @@
 - `Projects/team_game_mapper.py` — WNBA team alias canonicalization (13 teams, 72 aliases)
 - `Projects/player_gamelogs.py` — Last-5-game rolling averages via ESPN
 - `Projects/boxscore_saver.py` — Halftime + final boxscore saver (dedup-aware)
+- `Projects/mlb_tc_engine.py` — MLB TC projections
 
 ## World Cup / Soccer Stats Coverage
 - Goals, Assists, Shots, Shots on Target, **Corners**, Tackles, Fouls Committed, Cards, Passes

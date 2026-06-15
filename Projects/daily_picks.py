@@ -23,7 +23,7 @@ from pathlib import Path
 
 # ── All active sports in the pipeline ─────────────────────
 ALL_SPORTS = ("NBA", "WNBA", "MLB", "NHL")
-BASKETBALL = {"NBA", "WNBA"}  # sports with full player props + rosters
+BASKETBALL = {"NBA", "WNBA", "MLB"}  # sports with full player props + rosters
 
 ET = timezone(timedelta(hours=-5))
 def now_et():
