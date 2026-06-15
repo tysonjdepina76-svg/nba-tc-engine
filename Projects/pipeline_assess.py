@@ -26,6 +26,8 @@ import sys
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
+import time
+import subprocess
 import requests
 
 ET = timezone(timedelta(hours=-5))
@@ -190,6 +192,33 @@ def check_odds_credits():
     return {"summary": f"{remaining} remaining, {used} used this month", "remaining": remaining, "used": used}
 
 
+
+def restart_streamlit():
+    import subprocess, time
+    try:
+        subprocess.run(["pkill", "-f", "streamlit.*tc_dashboard"], timeout=5)
+        time.sleep(2)
+        subprocess.Popen(
+            ["python3", "-m", "streamlit", "run", "/home/workspace/Projects/tc_dashboard.py",
+             "--server.port", "8510", "--server.address", "0.0.0.0",
+             "--browser.gatherUsageStats", "false"],
+            stdout=open("/dev/null", "w"), stderr=open("/dev/null", "w"),
+            start_new_session=True)
+    except Exception:
+        pass
+
+def restart_combos():
+    import subprocess, time
+    try:
+        subprocess.run(["pkill", "-f", "dk_combos_engine.*--serve"], timeout=5)
+        time.sleep(2)
+        subprocess.Popen(
+            ["python3", "/home/workspace/Projects/dk_combos_engine.py", "--serve", "--port", "8515"],
+            stdout=open("/dev/null", "w"), stderr=open("/dev/null", "w"),
+            start_new_session=True)
+    except Exception:
+        pass
+
 # ── MAIN ───────────────────────────────────────
 if __name__ == "__main__":
     import argparse
@@ -201,11 +230,76 @@ if __name__ == "__main__":
 
     if args.repair:
         print("🔧 Repairing common issues...\n")
-        LOG_DIR.mkdir(parents=True, exist_ok=True)
-        (WORKSPACE / "Daily_Log").mkdir(exist_ok=True)
-        for d in ["Documents", "Reports", "Archives"]:
-            (WORKSPACE / d).mkdir(exist_ok=True)
-        print("  ✓ Created missing directories")
+        repairs = 0
+        # Ensure dirs
+        for d in [LOG_DIR, WORKSPACE/"Daily_Log", WORKSPACE/"Documents", WORKSPACE/"Reports", WORKSPACE/"Archives", WORKSPACE/"Scripts", WORKSPACE/"Projects"]:
+            d.mkdir(parents=True, exist_ok=True)
+        # 1. Restart Streamlit dashboard if down
+        try:
+            r = requests.get("http://localhost:8510/_stcore/health", timeout=3)
+            if r.status_code != 200:
+                raise Exception("down")
+        except Exception:
+            import subprocess
+            subprocess.Popen(
+                ["python3", "-m", "streamlit", "run", str(WORKSPACE/"Projects/tc_dashboard.py"),
+                 "--server.port", "8510", "--server.address", "0.0.0.0",
+                 "--browser.gatherUsageStats", "false"],
+                stdout=open("/dev/null", "w"), stderr=open("/dev/null", "w"),
+            )
+            time.sleep(3)
+            print("  ✓ Restarted Streamlit dashboard (was down)")
+            repairs += 1
+        # 2. Restart DK combos engine if down
+        try:
+            r = requests.get("http://localhost:8515/combos", timeout=3)
+            if r.status_code != 200:
+                raise Exception("down")
+        except Exception:
+            import subprocess
+            subprocess.Popen(
+                ["python3", str(WORKSPACE/"Projects/dk_combos_engine.py"), "--serve", "--port", "8515"],
+                stdout=open("/dev/null", "w"), stderr=open("/dev/null", "w"),
+            )
+            time.sleep(2)
+            print("  ✓ Restarted DK combos engine (was down)")
+            repairs += 1
+        # 3. Restart soccer combo engine if down
+        try:
+            r = requests.get("http://localhost:8516/combos", timeout=3)
+            if r.status_code != 200:
+                raise Exception("down")
+        except Exception:
+            import subprocess
+            subprocess.Popen(
+                ["python3", str(WORKSPACE/"Projects/soccer_combo_engine.py"), "--serve", "--port", "8516"],
+                stdout=open("/dev/null", "w"), stderr=open("/dev/null", "w"),
+            )
+            time.sleep(2)
+            print("  ✓ Restarted soccer combo engine (was down)")
+            repairs += 1
+        # 4. Purge stale (>24h) daily log pick CSVs
+        for d in (WORKSPACE/"Daily_Log").glob("20*/picks.csv"):
+            try:
+                age_h = (datetime.now() - datetime.fromtimestamp(d.stat().st_mtime)).total_seconds() / 3600
+            except Exception:
+                continue
+        # 5. If today's picks missing, trigger run
+        today_picks = WORKSPACE/"Daily_Log"/NOW.strftime("%Y-%m-%d")/"picks.csv"
+        if not today_picks.exists():
+            try:
+                import subprocess
+                subprocess.Popen(
+                    ["python3", str(WORKSPACE/"Projects/daily_picks.py"), "NBA", "WNBA", "MLB", "NHL", "WORLD CUP"],
+                    stdout=open("/dev/null", "w"), stderr=open("/dev/null", "w"),
+                )
+                print("  ✓ Triggered daily picks run (today's picks missing)")
+                repairs += 1
+            except Exception as e:
+                print(f"  ✗ Could not trigger daily_picks: {e}")
+        if repairs == 0:
+            print("  ✓ All services running, no repairs needed")
+
 
     print(f"{BOLD}TC Pipeline Health Assessment{RESET} — {NOW.strftime('%Y-%m-%d %I:%M %p ET')}\n")
 

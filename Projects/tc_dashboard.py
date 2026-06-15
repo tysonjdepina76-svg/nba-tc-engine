@@ -56,6 +56,22 @@ with st.sidebar:
     auto_refresh = st.checkbox("Auto-refresh (60s)", value=False)
     st.divider()
     st.caption(f"Data: {DATA_DIR}")
+    if st.button("🩺 Run Pipeline Health", use_container_width=True):
+        with st.spinner("Running pipeline_assess.py..."):
+            try:
+                import subprocess
+                r = subprocess.run(
+                    ["python3", "/home/workspace/Projects/pipeline_assess.py"],
+                    capture_output=True, text=True, timeout=30,
+                )
+                if r.returncode == 0:
+                    st.session_state["health_out"] = r.stdout
+                    st.session_state["health_err"] = ""
+                else:
+                    st.session_state["health_out"] = r.stdout
+                    st.session_state["health_err"] = r.stderr
+            except Exception as e:
+                st.session_state["health_err"] = str(e)
 
 # ── Auto-refresh ─────────────────────────────────────────
 if auto_refresh:
