@@ -156,3 +156,7 @@ Main areas of the workspace, by relevance.
 - **5 daily automations**: 1PM (pre-injury), 1:30PM (post-injury refresh), 5PM (WNBA+NBA update), 6:30PM (final pre-tip), + World Cup 5x daily
 - **Odds API**: 13,956 credits remaining (6,044 used this month — ~17k/mo pace on $30 tier, well under limit)
 - **Streamlit services**: port 8510 (tc_dashboard), port 8515 (dk-combos-engine)
+
+## 2026-06-15 (evening): Soccer Wired + Disk Cache + Tabbed Dashboard
+
+**Soccer**
