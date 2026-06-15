@@ -48,6 +48,24 @@ Main areas of the workspace, by relevance.
 - 1PM/3PM/5PM/7PM/9PM automations (agent 8e9d600e) call the new puller
 - Archive: `Archives/OBSOLETE_PROJECTS_2026-06-15/worldcup_picks.py` (362 lines, superseded)
 
+## 2026-06-15 (late morning): Team Roster Sync + API Purge + Drive Backup
+
+**NHL roster fixed:** Page `/nba-tc` NHL_TEAMS now 32 teams (added CHI, VAN, UTA, alphabetized). Matches API `/api/tc` NHL_NAME_TO_CODE (32 entries).
+
+**API purge:** Removed stale `"Arizona Coyotes":"ARI"` from NHL_NAME_TO_CODE (team moved to Utah in 2024, ARI conflicts with MLB Diamondbacks).
+
+**All 6 sports synced page↔API:**
+| Sport | Teams | Status |
+|---|---|---|
+| NBA | 30 | Clean |
+| WNBA | 15 | Clean |
+| NFL | 32 | Clean |
+| MLB | 30 | Clean |
+| NHL | 32 | Clean |
+| WORLD CUP | 41 | Clean |
+
+**Drive backup:** `TC_Dashboard_State_2026-06-15.md` uploaded to Google Drive (tysondepina99@gmail.com).
+
 ## Current State (2026-06-15 06:00 ET — UPDATED)
 
 - **ALL_SPORTS pipeline**: `daily_picks.py` now defaults to `("NBA", "WNBA", "MLB", "NHL", "WORLD CUP")`. Non-basketball sports (MLB, NHL, WORLD CUP) log DK total/spread/ML lines per game. Basketball sports (NBA, WNBA) get full player props + combos.
