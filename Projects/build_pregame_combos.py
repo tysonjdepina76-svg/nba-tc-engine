@@ -25,6 +25,7 @@ API_BASE = os.environ.get("API_BASE", "https://true.zo.space")
 
 # ── Multi-source consensus engine ──────────────────────
 sys.path.insert(0, "/home/workspace/Projects")
+from consensus_engine import fetch_consensus_for_matchup, get_best_line
 
 # ── Load secrets from /root/.zo/secrets.env if not in env ──
 SECRETS_FILE = Path("/root/.zo/secrets.env")
@@ -262,7 +263,9 @@ def build_combos(sport: str, away: str, home: str) -> dict:
             print(f"  Fetching multi-source consensus for {league}...")
             consensus = fetch_consensus_for_matchup(league, away, home)
             lines = consensus
-            print(f"  -> {len(lines['players'])} players, total={lines['game_total']}")
+            total_str = lines.get('game_total', 'N/A') if lines else 'N/A'
+            player_count = len(lines.get('players', {})) if lines else 0
+            print(f"  -> {player_count} players, total={total_str}")
         except Exception as e:
             print(f"  Odds API failed: {e}")
             return {"sport": sport, "away": away, "home": home,
@@ -287,8 +290,13 @@ def build_combos(sport: str, away: str, home: str) -> dict:
         if not dk_player or stat not in dk_player:
             continue
 
-        line = dk_player[stat]["line"]
-        consensus_src = dk_player[stat].get("consensus_source")
+        line = dk_player[stat].get("consensus")
+        consensus_src = dk_player[stat].get("consensus")
+        if line is None:
+            # Fallback to raw DK line if consensus not available
+            line = dk_player[stat].get("line")
+        if line is None:
+            continue
         consensus_sources = dk_player[stat].get("consensus_sources")
         tc_proj = p.get("tc_projection") or p.get("tc_target")
         if tc_proj is None: continue
@@ -307,7 +315,7 @@ def build_combos(sport: str, away: str, home: str) -> dict:
             "stat": p["stat"],
             "direction": direction,
             "dk_line": line,
-            "dk_odds": dk_player[stat].get("over_odds") if direction == "OVER" else dk_player[stat].get("under_odds"),
+            "dk_odds": None,
             "tc_projection": tc_proj,
             "tc_target": p.get("tc_target"),
             "raw_average": p.get("raw_average"),
@@ -327,9 +335,9 @@ def build_combos(sport: str, away: str, home: str) -> dict:
     return {
         "sport": sport, "away": away, "home": home,
         "tc_total_picks": len(valid),
-        "dk_game_total": lines["game_total"],
-        "dk_ml_home": lines["ml_home"],
-        "dk_ml_away": lines["ml_away"],
+        "dk_game_total": lines.get("game_total") if lines else None,
+        "dk_ml_home": lines.get("ml_home") if lines else None,
+        "dk_ml_away": lines.get("ml_away") if lines else None,
         "matched_legs": len(legs),
         "qualified_legs": len(qualified),
         "legs": legs,

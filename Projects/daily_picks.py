@@ -50,6 +50,7 @@ sys.path.insert(0, str(WORKSPACE / "Skills" / "nba-odds-api" / "scripts"))
 sys.path.insert(0, str(WORKSPACE / "Projects"))
 
 from consensus_engine import fetch_consensus_for_matchup, CONSENSUS_SPORT_MAP, get_best_line
+from odds_enricher import enrich_player_lines
 
 API_BASE = "https://true.zo.space"
 LOG_DIR = WORKSPACE / "Daily_Log"
@@ -274,7 +275,7 @@ def run_daily_log(sports=ALL_SPORTS):
                 # Enrich with consensus engine (multi-book fallback)
                 try:
                     matchup_key = f"{away}@{home}"
-                    cons = fetch_consensus_for_matchup(sport, matchup_key)
+                    cons = fetch_consensus_for_matchup(sport, away, home)
                     if cons and not cons.get("error") and cons.get("players"):
                         cons_count = cons.get("player_count", 0)
                         cons_books = cons.get("available_books", [])

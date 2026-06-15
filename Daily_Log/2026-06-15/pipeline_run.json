@@ -1,0 +1,168 @@
+{
+  "timestamp": "2026-06-15T20:29:49.961633+00:00",
+  "local_time": "2026-06-15 15:29:22 ET",
+  "status": "HEALTHY",
+  "checks_passed": 8,
+  "warnings": 0,
+  "failures": 0,
+  "services_repaired": 3,
+  "files_purged": 0,
+  "all_ok": [
+    "Daily Picks: all sports generated",
+    "Pregame Combos: built",
+    "Soccer TC Engine: completed",
+    "Output 'picks_csv': present",
+    "Output 'picks_json': present",
+    "Output 'last_run': present",
+    "Output 'slate_nba': present",
+    "Output 'slate_wnba': present"
+  ],
+  "warnings_list": [],
+  "failures_list": [],
+  "log": [
+    {
+      "time": "15:29:22",
+      "level": "OK",
+      "source": "Secrets",
+      "msg": "3 keys loaded"
+    },
+    {
+      "time": "15:29:22",
+      "level": "OK",
+      "source": "API_KEY",
+      "msg": "The Odds API: 0ba1...d130"
+    },
+    {
+      "time": "15:29:22",
+      "level": "OK",
+      "source": "API_KEY",
+      "msg": "SportsGameOdds: 304f...0c4d"
+    },
+    {
+      "time": "15:29:22",
+      "level": "WARN",
+      "source": "Streamlit Dashboard",
+      "msg": "port 8510 DOWN"
+    },
+    {
+      "time": "15:29:22",
+      "level": "WARN",
+      "source": "DK Combos Engine",
+      "msg": "port 8515 HTTP 404"
+    },
+    {
+      "time": "15:29:22",
+      "level": "WARN",
+      "source": "Soccer Combo Engine",
+      "msg": "port 8516 DOWN"
+    },
+    {
+      "time": "15:29:22",
+      "level": "FIX",
+      "source": "Streamlit",
+      "msg": "Restarting on port 8510..."
+    },
+    {
+      "time": "15:29:27",
+      "level": "OK",
+      "source": "Streamlit",
+      "msg": "Restarted"
+    },
+    {
+      "time": "15:29:27",
+      "level": "FIX",
+      "source": "DK Combos",
+      "msg": "Restarting on port 8515..."
+    },
+    {
+      "time": "15:29:31",
+      "level": "OK",
+      "source": "DK Combos",
+      "msg": "Restarted"
+    },
+    {
+      "time": "15:29:31",
+      "level": "FIX",
+      "source": "Soccer Combos",
+      "msg": "Restarting on port 8516..."
+    },
+    {
+      "time": "15:29:35",
+      "level": "OK",
+      "source": "Soccer Combos",
+      "msg": "Restarted"
+    },
+    {
+      "time": "15:29:35",
+      "level": "INFO",
+      "source": "DailyPicks",
+      "msg": "Running for: NBA, WNBA, MLB, NHL, WORLD CUP"
+    },
+    {
+      "time": "15:29:43",
+      "level": "OK",
+      "source": "DailyPicks",
+      "msg": "Completed (86 lines)"
+    },
+    {
+      "time": "15:29:43",
+      "level": "INFO",
+      "source": "Combos",
+      "msg": "Building pregame combos..."
+    },
+    {
+      "time": "15:29:44",
+      "level": "OK",
+      "source": "Combos",
+      "msg": "Completed"
+    },
+    {
+      "time": "15:29:44",
+      "level": "INFO",
+      "source": "Soccer",
+      "msg": "Running soccer TC engine..."
+    },
+    {
+      "time": "15:29:49",
+      "level": "OK",
+      "source": "Soccer",
+      "msg": "Completed"
+    },
+    {
+      "time": "15:29:49",
+      "level": "OK",
+      "source": "picks_csv",
+      "msg": "3031 bytes"
+    },
+    {
+      "time": "15:29:49",
+      "level": "OK",
+      "source": "picks_json",
+      "msg": "12553 bytes"
+    },
+    {
+      "time": "15:29:49",
+      "level": "OK",
+      "source": "last_run",
+      "msg": "6721 bytes"
+    },
+    {
+      "time": "15:29:49",
+      "level": "OK",
+      "source": "slate_nba",
+      "msg": "42433 bytes"
+    },
+    {
+      "time": "15:29:49",
+      "level": "OK",
+      "source": "slate_wnba",
+      "msg": "1735 bytes"
+    },
+    {
+      "time": "15:29:49",
+      "level": "OK",
+      "source": "Purge",
+      "msg": "Nothing to purge \u2014 workspace clean"
+    }
+  ]
+}

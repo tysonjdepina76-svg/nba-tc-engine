@@ -76,6 +76,7 @@ SOCCER_STATS = {
     "A":  {"name": "Assists",      "unit": "assists",   "dist": "poisson",  "avg_range": (0.0, 1.5), "dk_market": "player_assists"},
     "SOT":{"name": "Shots on Target","unit": "sot",     "dist": "normal",   "avg_range": (0.0, 3.0), "dk_market": "player_shots_on_target"},
     "S":  {"name": "Shots",        "unit": "shots",     "dist": "normal",   "avg_range": (0.0, 5.0), "dk_market": "player_shots"},
+    "COR":{"name": "Corners",      "unit": "corners",   "dist": "normal",   "avg_range": (0.0, 3.0), "dk_market": "player_corners"},
     "TKL":{"name": "Tackles",      "unit": "tackles",   "dist": "normal",   "avg_range": (0.5, 5.0), "dk_market": "player_tackles"},
     "FC": {"name": "Fouls Committed","unit": "fouls",   "dist": "normal",   "avg_range": (0.0, 3.0), "dk_market": "player_fouls"},
     "CRD":{"name": "Cards",        "unit": "cards",     "dist": "poisson",  "avg_range": (0.0, 1.0), "dk_market": "player_cards"},
@@ -84,10 +85,10 @@ SOCCER_STATS = {
 
 # Position groups with stat weights (how much each position contributes to each stat)
 POSITION_PROFILES = {
-    "GK":  {"G":0.0, "A":0.0,  "SOT":0.0, "S":0.0,  "TKL":0.1, "FC":0.05, "CRD":0.05, "PAS":0.3},
-    "DEF": {"G":0.1, "A":0.1,  "SOT":0.1, "S":0.15, "TKL":0.35,"FC":0.25, "CRD":0.35, "PAS":0.2},
-    "MID": {"G":0.2, "A":0.35, "SOT":0.3, "S":0.35, "TKL":0.35,"FC":0.4,  "CRD":0.4,  "PAS":0.35},
-    "FWD": {"G":0.7, "A":0.55, "SOT":0.6, "S":0.5,  "TKL":0.2, "FC":0.3,  "CRD":0.2,  "PAS":0.15},
+    "GK":  {"G":0.0, "A":0.0,  "SOT":0.0, "S":0.0,  "COR":0.0, "TKL":0.1, "FC":0.05, "CRD":0.05, "PAS":0.3},
+    "DEF": {"G":0.1, "A":0.1,  "SOT":0.1, "S":0.15, "COR":0.35,"TKL":0.35,"FC":0.25, "CRD":0.35, "PAS":0.2},
+    "MID": {"G":0.2, "A":0.35, "SOT":0.3, "S":0.35, "COR":0.3, "TKL":0.35,"FC":0.4,  "CRD":0.4,  "PAS":0.35},
+    "FWD": {"G":0.7, "A":0.55, "SOT":0.6, "S":0.5,  "COR":0.1, "TKL":0.2, "FC":0.3,  "CRD":0.2,  "PAS":0.15},
 }
 
 # World Cup 2026 team strength ratings (FIFA ranking + recent form proxy, 0.5-1.5 scale)
@@ -113,10 +114,10 @@ TEAM_STRENGTH = {
 
 # League-average expected stats per 90 by position (for a "default" player)
 LEAGUE_AVG_PER_90 = {
-    "GK":  {"G":0.0,  "A":0.0,  "SOT":0.0,  "S":0.0,   "TKL":0.5,  "FC":0.1,  "CRD":0.05, "PAS":28.0},
-    "DEF": {"G":0.05, "A":0.08, "SOT":0.15, "S":0.4,   "TKL":2.5,  "FC":1.2,  "CRD":0.25, "PAS":45.0},
-    "MID": {"G":0.12, "A":0.15, "SOT":0.4,  "S":1.2,   "TKL":2.0,  "FC":1.5,  "CRD":0.30, "PAS":52.0},
-    "FWD": {"G":0.35, "A":0.18, "SOT":1.2,  "S":2.5,   "TKL":0.8,  "FC":1.0,  "CRD":0.15, "PAS":28.0},
+    "GK":  {"G":0.0,  "A":0.0,  "SOT":0.0,  "S":0.0,   "COR":0.0,  "TKL":0.5,  "FC":0.1,  "CRD":0.05, "PAS":28.0},
+    "DEF": {"G":0.05, "A":0.08, "SOT":0.15, "S":0.4,   "COR":1.5,  "TKL":2.5,  "FC":1.2,  "CRD":0.25, "PAS":45.0},
+    "MID": {"G":0.12, "A":0.15, "SOT":0.4,  "S":1.2,   "COR":1.0,  "TKL":2.0,  "FC":1.5,  "CRD":0.30, "PAS":52.0},
+    "FWD": {"G":0.35, "A":0.18, "SOT":1.2,  "S":2.5,   "COR":0.3,  "TKL":0.8,  "FC":1.0,  "CRD":0.15, "PAS":28.0},
 }
 
 EDGE_THRESHOLD = 0.5   # edge threshold for OVER/UNDER signal (goals are low-volume)

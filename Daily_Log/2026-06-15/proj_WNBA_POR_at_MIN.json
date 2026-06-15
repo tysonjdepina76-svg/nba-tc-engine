@@ -5,8 +5,8 @@
   "away_team": "POR",
   "home_team": "MIN",
   "source": "live ESPN WNBA roster/stat APIs",
-  "timestamp": "2026-06-15T17:32:09.919Z",
-  "injury_source": "ESPN WNBA injuries \u00b7 14 teams \u00b7 33 players",
+  "timestamp": "2026-06-15T20:29:37.834Z",
+  "injury_source": "ESPN WNBA injuries \u00b7 14 teams \u00b7 34 players",
   "injury_counts": {
     "away": 3,
     "away_out": 0,
@@ -5858,7 +5858,7 @@
       "role": "START",
       "stat": "3PM",
       "direction": "OVER",
-      "market_line": null,
+      "market_line": 2.5,
       "tc_projection": 0.8,
       "tc_target": 0,
       "edge": 0.8,
@@ -5869,7 +5869,8 @@
       "status": "ACTIVE",
       "valid": true,
       "threshold": 0.8,
-      "dk_source": null
+      "dk_source": null,
+      "consensus_source": "odds_api"
     },
     {
       "date": "2026-06-15",
@@ -5880,7 +5881,7 @@
       "role": "START",
       "stat": "3PM",
       "direction": "OVER",
-      "market_line": null,
+      "market_line": 1.5,
       "tc_projection": 0.8,
       "tc_target": 0,
       "edge": 0.8,
@@ -5891,7 +5892,8 @@
       "status": "ACTIVE",
       "valid": true,
       "threshold": 0.8,
-      "dk_source": null
+      "dk_source": null,
+      "consensus_source": "odds_api"
     },
     {
       "date": "2026-06-15",
@@ -5924,7 +5926,7 @@
       "role": "START",
       "stat": "3PM",
       "direction": "OVER",
-      "market_line": null,
+      "market_line": 1.5,
       "tc_projection": 1,
       "tc_target": 0,
       "edge": 1,
@@ -5935,7 +5937,8 @@
       "status": "ACTIVE",
       "valid": true,
       "threshold": 0.8,
-      "dk_source": null
+      "dk_source": null,
+      "consensus_source": "odds_api"
     }
   ],
   "backtest_schema": [
@@ -5980,5 +5983,669 @@
   "keys_status": {
     "SPORTSGAMEODDS_API_KEY": true,
     "ODDS_API_KEY": true
+  },
+  "odds_api_lines": {
+    "game_odds": {
+      "h2h": {
+        "Minnesota Lynx": 1.09,
+        "Portland Fire": 8.0
+      },
+      "spreads": {
+        "Minnesota Lynx": {
+          "point": -14.5,
+          "price": 1.93
+        },
+        "Portland Fire": {
+          "point": 14.5,
+          "price": 1.89
+        }
+      },
+      "totals": {
+        "Over": {
+          "point": 168.5,
+          "price": 1.91
+        },
+        "Under": {
+          "point": 168.5,
+          "price": 1.91
+        }
+      }
+    },
+    "player_lines": {
+      "Olivia Miles": {
+        "assists": 6.5,
+        "points": 16.5,
+        "rebounds": 5.5,
+        "threes": 1.5
+      },
+      "Carla Leite": {
+        "assists": 5.5,
+        "points": 12.5,
+        "rebounds": 2.5,
+        "threes": 0.5
+      },
+      "Courtney Williams": {
+        "assists": 3.5,
+        "points": 15.5,
+        "rebounds": 5.5,
+        "threes": 1.5
+      },
+      "Sarah Ashlee Barker": {
+        "assists": 2.5,
+        "points": 9.5,
+        "rebounds": 4.5,
+        "threes": 1.5
+      },
+      "Natasha Howard": {
+        "assists": 2.5,
+        "points": 16.5,
+        "rebounds": 7.5
+      },
+      "Kayla McBride": {
+        "assists": 2.5,
+        "points": 13.5,
+        "rebounds": 3.5,
+        "threes": 1.5
+      },
+      "Bridget Carleton": {
+        "assists": 2.5,
+        "points": 12.5,
+        "rebounds": 3.5,
+        "threes": 2.5
+      },
+      "Megan Gustafson": {
+        "points": 12.5,
+        "rebounds": 4.5,
+        "threes": 0.5
+      },
+      "Emily Engstler": {
+        "points": 8.5,
+        "rebounds": 5.5,
+        "threes": 0.5
+      },
+      "Nia Coffey": {
+        "points": 7.5,
+        "rebounds": 5.5,
+        "threes": 1.5
+      }
+    },
+    "player_count": 10,
+    "source": "odds_api",
+    "book": "draftkings",
+    "fetched_at": "2026-06-15T20:29:38.012683+00:00"
+  },
+  "consensus": {
+    "players": {
+      "Carla Leite": {
+        "assists": {
+          "consensus": 5.5,
+          "all_lines": [
+            5.5,
+            5.5,
+            5.5,
+            5.5
+          ],
+          "source_count": 4,
+          "best_book": "draftkings",
+          "draftkings": 5.5,
+          "fanduel": 5.5,
+          "betrivers": 5.5,
+          "williamhill_us": 5.5
+        },
+        "points": {
+          "consensus": 12.5,
+          "all_lines": [
+            12.5,
+            12.5,
+            12.5,
+            13.5
+          ],
+          "source_count": 4,
+          "best_book": "draftkings",
+          "draftkings": 12.5,
+          "fanduel": 12.5,
+          "betrivers": 13.5,
+          "williamhill_us": 12.5
+        },
+        "rebounds": {
+          "consensus": 2.5,
+          "all_lines": [
+            2.5,
+            2.5
+          ],
+          "source_count": 2,
+          "best_book": "draftkings",
+          "draftkings": 2.5,
+          "betrivers": 2.5
+        },
+        "threes": {
+          "consensus": 0.5,
+          "all_lines": [
+            0.5,
+            0.5
+          ],
+          "source_count": 2,
+          "best_book": "draftkings",
+          "draftkings": 0.5,
+          "betrivers": 0.5
+        }
+      },
+      "Courtney Williams": {
+        "assists": {
+          "consensus": 3.5,
+          "all_lines": [
+            3.5,
+            3.5,
+            3.5,
+            3.5
+          ],
+          "source_count": 4,
+          "best_book": "draftkings",
+          "draftkings": 3.5,
+          "fanduel": 3.5,
+          "betrivers": 3.5,
+          "williamhill_us": 3.5
+        },
+        "points": {
+          "consensus": 16.0,
+          "all_lines": [
+            15.5,
+            15.5,
+            16.5,
+            16.5
+          ],
+          "source_count": 4,
+          "best_book": "draftkings",
+          "draftkings": 15.5,
+          "fanduel": 16.5,
+          "betrivers": 16.5,
+          "williamhill_us": 15.5
+        },
+        "rebounds": {
+          "consensus": 5.5,
+          "all_lines": [
+            5.5,
+            5.5,
+            5.5,
+            5.5
+          ],
+          "source_count": 4,
+          "best_book": "draftkings",
+          "draftkings": 5.5,
+          "fanduel": 5.5,
+          "betrivers": 5.5,
+          "williamhill_us": 5.5
+        },
+        "threes": {
+          "consensus": 1.5,
+          "all_lines": [
+            1.5,
+            1.5,
+            1.5,
+            1.5
+          ],
+          "source_count": 4,
+          "best_book": "draftkings",
+          "draftkings": 1.5,
+          "fanduel": 1.5,
+          "betrivers": 1.5,
+          "williamhill_us": 1.5
+        }
+      },
+      "Kayla McBride": {
+        "assists": {
+          "consensus": 2.5,
+          "all_lines": [
+            2.5,
+            2.5,
+            2.5
+          ],
+          "source_count": 3,
+          "best_book": "draftkings",
+          "draftkings": 2.5,
+          "fanduel": 2.5,
+          "betrivers": 2.5
+        },
+        "points": {
+          "consensus": 14.5,
+          "all_lines": [
+            13.5,
+            14.5,
+            14.5,
+            15.5
+          ],
+          "source_count": 4,
+          "best_book": "draftkings",
+          "draftkings": 13.5,
+          "fanduel": 14.5,
+          "betrivers": 15.5,
+          "williamhill_us": 14.5
+        },
+        "rebounds": {
+          "consensus": 3.5,
+          "all_lines": [
+            3.5,
+            3.5,
+            3.5,
+            4.5
+          ],
+          "source_count": 4,
+          "best_book": "draftkings",
+          "draftkings": 3.5,
+          "fanduel": 3.5,
+          "betrivers": 4.5,
+          "williamhill_us": 3.5
+        },
+        "threes": {
+          "consensus": 1.5,
+          "all_lines": [
+            1.5,
+            1.5,
+            1.5,
+            1.5
+          ],
+          "source_count": 4,
+          "best_book": "draftkings",
+          "draftkings": 1.5,
+          "fanduel": 1.5,
+          "betrivers": 1.5,
+          "williamhill_us": 1.5
+        }
+      },
+      "Natasha Howard": {
+        "assists": {
+          "consensus": 2.5,
+          "all_lines": [
+            2.5,
+            2.5,
+            2.5
+          ],
+          "source_count": 3,
+          "best_book": "draftkings",
+          "draftkings": 2.5,
+          "fanduel": 2.5,
+          "betrivers": 2.5
+        },
+        "points": {
+          "consensus": 16.5,
+          "all_lines": [
+            16.5,
+            16.5,
+            16.5,
+            16.5
+          ],
+          "source_count": 4,
+          "best_book": "draftkings",
+          "draftkings": 16.5,
+          "fanduel": 16.5,
+          "betrivers": 16.5,
+          "williamhill_us": 16.5
+        },
+        "rebounds": {
+          "consensus": 8.0,
+          "all_lines": [
+            7.5,
+            7.5,
+            8.5,
+            8.5
+          ],
+          "source_count": 4,
+          "best_book": "draftkings",
+          "draftkings": 7.5,
+          "fanduel": 8.5,
+          "betrivers": 8.5,
+          "williamhill_us": 7.5
+        }
+      },
+      "Olivia Miles": {
+        "assists": {
+          "consensus": 6.5,
+          "all_lines": [
+            6.5,
+            6.5,
+            6.5,
+            6.5
+          ],
+          "source_count": 4,
+          "best_book": "draftkings",
+          "draftkings": 6.5,
+          "fanduel": 6.5,
+          "betrivers": 6.5,
+          "williamhill_us": 6.5
+        },
+        "points": {
+          "consensus": 16.5,
+          "all_lines": [
+            16.5,
+            16.5,
+            16.5,
+            16.5
+          ],
+          "source_count": 4,
+          "best_book": "draftkings",
+          "draftkings": 16.5,
+          "fanduel": 16.5,
+          "betrivers": 16.5,
+          "williamhill_us": 16.5
+        },
+        "rebounds": {
+          "consensus": 5.5,
+          "all_lines": [
+            5.5,
+            5.5,
+            5.5,
+            5.5
+          ],
+          "source_count": 4,
+          "best_book": "draftkings",
+          "draftkings": 5.5,
+          "fanduel": 5.5,
+          "betrivers": 5.5,
+          "williamhill_us": 5.5
+        },
+        "threes": {
+          "consensus": 1.5,
+          "all_lines": [
+            1.5,
+            1.5,
+            1.5,
+            1.5
+          ],
+          "source_count": 4,
+          "best_book": "draftkings",
+          "draftkings": 1.5,
+          "fanduel": 1.5,
+          "betrivers": 1.5,
+          "williamhill_us": 1.5
+        }
+      },
+      "Emily Engstler": {
+        "assists": {
+          "consensus": 2.5,
+          "all_lines": [
+            2.5
+          ],
+          "source_count": 1,
+          "best_book": "betrivers",
+          "betrivers": 2.5
+        },
+        "points": {
+          "consensus": 8.5,
+          "all_lines": [
+            7.5,
+            8.5,
+            8.5,
+            8.5
+          ],
+          "source_count": 4,
+          "best_book": "draftkings",
+          "draftkings": 8.5,
+          "fanduel": 8.5,
+          "betrivers": 7.5,
+          "williamhill_us": 8.5
+        },
+        "rebounds": {
+          "consensus": 5.5,
+          "all_lines": [
+            5.5,
+            5.5,
+            5.5,
+            5.5
+          ],
+          "source_count": 4,
+          "best_book": "draftkings",
+          "draftkings": 5.5,
+          "fanduel": 5.5,
+          "betrivers": 5.5,
+          "williamhill_us": 5.5
+        },
+        "threes": {
+          "consensus": 0.5,
+          "all_lines": [
+            0.5,
+            0.5
+          ],
+          "source_count": 2,
+          "best_book": "draftkings",
+          "draftkings": 0.5,
+          "betrivers": 0.5
+        }
+      },
+      "Sarah Ashlee Barker": {
+        "assists": {
+          "consensus": 2.5,
+          "all_lines": [
+            2.5,
+            2.5
+          ],
+          "source_count": 2,
+          "best_book": "draftkings",
+          "draftkings": 2.5,
+          "betrivers": 2.5
+        },
+        "points": {
+          "consensus": 9.5,
+          "all_lines": [
+            9.5,
+            9.5,
+            9.5,
+            10.5
+          ],
+          "source_count": 4,
+          "best_book": "draftkings",
+          "draftkings": 9.5,
+          "fanduel": 9.5,
+          "betrivers": 10.5,
+          "williamhill_us": 9.5
+        },
+        "rebounds": {
+          "consensus": 4.5,
+          "all_lines": [
+            4.5,
+            4.5,
+            4.5,
+            4.5
+          ],
+          "source_count": 4,
+          "best_book": "draftkings",
+          "draftkings": 4.5,
+          "fanduel": 4.5,
+          "betrivers": 4.5,
+          "williamhill_us": 4.5
+        },
+        "threes": {
+          "consensus": 1.5,
+          "all_lines": [
+            1.5,
+            1.5,
+            1.5,
+            1.5
+          ],
+          "source_count": 4,
+          "best_book": "draftkings",
+          "draftkings": 1.5,
+          "fanduel": 1.5,
+          "betrivers": 1.5,
+          "williamhill_us": 1.5
+        }
+      },
+      "Megan Gustafson": {
+        "points": {
+          "consensus": 12.5,
+          "all_lines": [
+            12.5,
+            12.5,
+            12.5,
+            13.5
+          ],
+          "source_count": 4,
+          "best_book": "draftkings",
+          "draftkings": 12.5,
+          "fanduel": 12.5,
+          "betrivers": 13.5,
+          "williamhill_us": 12.5
+        },
+        "rebounds": {
+          "consensus": 4.5,
+          "all_lines": [
+            4.5,
+            4.5,
+            4.5,
+            4.5
+          ],
+          "source_count": 4,
+          "best_book": "draftkings",
+          "draftkings": 4.5,
+          "fanduel": 4.5,
+          "betrivers": 4.5,
+          "williamhill_us": 4.5
+        },
+        "threes": {
+          "consensus": 0.5,
+          "all_lines": [
+            0.5,
+            0.5
+          ],
+          "source_count": 2,
+          "best_book": "draftkings",
+          "draftkings": 0.5,
+          "betrivers": 0.5
+        }
+      },
+      "Bridget Carleton": {
+        "points": {
+          "consensus": 12.5,
+          "all_lines": [
+            12.5,
+            12.5,
+            12.5,
+            12.5
+          ],
+          "source_count": 4,
+          "best_book": "draftkings",
+          "draftkings": 12.5,
+          "fanduel": 12.5,
+          "betrivers": 12.5,
+          "williamhill_us": 12.5
+        },
+        "rebounds": {
+          "consensus": 3.5,
+          "all_lines": [
+            3.5,
+            3.5,
+            3.5,
+            3.5
+          ],
+          "source_count": 4,
+          "best_book": "draftkings",
+          "draftkings": 3.5,
+          "fanduel": 3.5,
+          "betrivers": 3.5,
+          "williamhill_us": 3.5
+        },
+        "threes": {
+          "consensus": 2.0,
+          "all_lines": [
+            1.5,
+            1.5,
+            2.5,
+            2.5
+          ],
+          "source_count": 4,
+          "best_book": "draftkings",
+          "draftkings": 2.5,
+          "fanduel": 2.5,
+          "betrivers": 1.5,
+          "williamhill_us": 1.5
+        },
+        "assists": {
+          "consensus": 2.5,
+          "all_lines": [
+            2.5
+          ],
+          "source_count": 1,
+          "best_book": "draftkings",
+          "draftkings": 2.5
+        }
+      },
+      "Nia Coffey": {
+        "points": {
+          "consensus": 7.5,
+          "all_lines": [
+            7.5,
+            7.5,
+            7.5,
+            7.5
+          ],
+          "source_count": 4,
+          "best_book": "draftkings",
+          "draftkings": 7.5,
+          "fanduel": 7.5,
+          "betrivers": 7.5,
+          "williamhill_us": 7.5
+        },
+        "rebounds": {
+          "consensus": 5.5,
+          "all_lines": [
+            5.5,
+            5.5,
+            5.5,
+            5.5
+          ],
+          "source_count": 4,
+          "best_book": "draftkings",
+          "draftkings": 5.5,
+          "fanduel": 5.5,
+          "betrivers": 5.5,
+          "williamhill_us": 5.5
+        },
+        "threes": {
+          "consensus": 1.5,
+          "all_lines": [
+            1.5,
+            1.5,
+            1.5,
+            1.5
+          ],
+          "source_count": 4,
+          "best_book": "draftkings",
+          "draftkings": 1.5,
+          "fanduel": 1.5,
+          "betrivers": 1.5,
+          "williamhill_us": 1.5
+        }
+      }
+    },
+    "game_total": 168.5,
+    "available_books": [
+      "draftkings",
+      "fanduel",
+      "betmgm",
+      "fanatics",
+      "bovada",
+      "betonlineag",
+      "betrivers",
+      "lowvig",
+      "williamhill_us",
+      "betus",
+      "mybookieag"
+    ],
+    "all_books_seen": [
+      "betmgm",
+      "betonlineag",
+      "betrivers",
+      "betus",
+      "bovada",
+      "draftkings",
+      "fanatics",
+      "fanduel",
+      "lowvig",
+      "mybookieag",
+      "williamhill_us"
+    ],
+    "player_count": 10,
+    "source": "odds_api",
+    "fetched_at": "2026-06-15T20:23:39.602828+00:00",
+    "_from_cache": true
   }
 }

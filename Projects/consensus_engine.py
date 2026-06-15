@@ -38,6 +38,14 @@ except Exception:
     def canonicalize_team(s):
         return None
 
+WNBA_TEAM_MAP = {
+    "ATL": "atlanta dream", "CHI": "chicago sky", "CON": "connecticut sun",
+    "DAL": "dallas wings", "GS": "golden state valkyries", "IND": "indiana fever",
+    "LV": "las vegas aces", "LA": "los angeles sparks", "MIN": "minnesota lynx",
+    "NY": "new york liberty", "PHX": "phoenix mercury", "POR": "portland fire",
+    "SEA": "seattle storm", "TOR": "toronto tempo", "WSH": "washington mystics",
+}
+
 # ── API Keys ──────────────────────────────────────────────
 ODDS_KEY = os.environ.get("ODDS_API_KEY", "")
 SGO_KEY = os.environ.get("SGO_API_KEY", os.environ.get("SPORTSGAMEODDS_API_KEY", ""))
@@ -235,12 +243,28 @@ def fetch_consensus_for_matchup(sport: str, away: str, home: str, markets=None) 
 
     ev = None
     a, h = away.upper(), home.upper()
+    team_map = WNBA_TEAM_MAP if sport.upper() == "WNBA" else {}
+    away_full = team_map.get(a, "").lower()
+    home_full = team_map.get(h, "").lower()
+
     for e in events:
-        ea = (e.get("away_team") or "").upper()
-        eh = (e.get("home_team") or "").upper()
-        if a in ea and h in eh:
+        ea = (e.get("away_team") or "").lower()
+        eh = (e.get("home_team") or "").lower()
+        # Direct abbreviation substring match
+        if a.lower() in ea and h.lower() in eh:
             ev = e; break
-        if ea in a and eh in h:
+        # Full team name match via WNBA map
+        if away_full and away_full in ea and home_full and home_full in eh:
+            ev = e; break
+        # Partial match (one team has map, other uses abbreviation)
+        if away_full and away_full in ea and h.lower() in eh:
+            ev = e; break
+        if home_full and home_full in eh and a.lower() in ea:
+            ev = e; break
+        # Reverse check with suffixes stripped
+        ea_norm = ea.split()[-1] if ea else ""
+        eh_norm = eh.split()[-1] if eh else ""
+        if a.lower() in ea_norm and h.lower() in eh_norm:
             ev = e; break
 
     if not ev:

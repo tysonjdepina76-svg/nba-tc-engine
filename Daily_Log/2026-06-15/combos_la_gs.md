@@ -1,8 +1,7 @@
 # TC Pregame Combos — LA@GS (WNBA)
 
-- **TC valid picks**: n/a
-- **DK game total**: None
+- **TC valid picks**: 7
+- **DK game total**: 176.5
 - **DK ML (home/away)**: None / None
 - **Matched legs (TC + DK)**: 0
 - **Edge-qualified (≥0.5)**: 0
-- **Note**: odds_api_error: name 'fetch_consensus_for_matchup' is not defined

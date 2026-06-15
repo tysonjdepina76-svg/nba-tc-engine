@@ -74,7 +74,7 @@ SUPPORTED_SOCCER_LEAGUES = {
 class SoccerComboLeg:
     player: str
     team: str
-    stat: str              # "goals" | "assists" | "shots" | "shots_on_target" | "points" (rare)
+    stat: str              # "goals" | "assists" | "shots" | "shots_on_target" | "corners" | "tackles" | "fouls" | "cards" | "passes" | "points" (rare)
     direction: str         # "Over" | "Under"
     line: float
     odds: int              # American
