@@ -180,13 +180,37 @@ with tab_basket:
 # ── Soccer tab content ────────────────────────────────
 with tab_soccer:
     st.subheader("⚽ Soccer Combos — Live & Cached")
-
-    # 1) Try the live engine first (:8516), fall back to disk
-    live_soccer = None
+    import json
     try:
-        r = requests.get("http://localhost:8516")
-    except Exception:
-        pass
+        live_resp = requests.get("http://localhost:8516/combos", timeout=8)
+        if live_resp.ok:
+            live_data = live_resp.json()
+            st.caption(f"Engine: {live_data.get('source','?')} • {live_data.get('count',0)} combos cached")
+            for c in live_data.get("combos", [])[:8]:
+                st.write(f"**{c.get('player','?')}** — {c.get('combo_type','?')} **{c.get('dk_line','?')}** ({c.get('dk_odds','?')})")
+        else:
+            st.caption("Engine not responding")
+    except Exception as e:
+        st.caption(f"Engine offline: {e}")
+
+    st.divider()
+    st.subheader("⚽ World Cup TC Projections — Today")
+    wc_dir = Path("/home/workspace/Daily_Log/worldcup") / datetime.now().strftime("%Y%m%d")
+    wc_proj_csv = Path("/home/workspace/Reports/wc_tc_projections_") / datetime.now().strftime("%Y%m%d")
+    wc_proj_csv = Path("/home/workspace/Reports") / f"wc_tc_projections_{datetime.now().strftime('%Y%m%d')}.csv"
+    if wc_proj_csv.exists():
+        wc_df = pd.read_csv(wc_proj_csv)
+        st.caption(f"Loaded {len(wc_df)} WC TC projections")
+        st.dataframe(wc_df.head(20), use_container_width=True, hide_index=True,
+                     column_config={"edge": st.column_config.NumberColumn("Edge", format="%.2f"),
+                                    "tc_proj": st.column_config.NumberColumn("TC", format="%.2f")})
+    else:
+        st.caption("No WC TC projection file yet — running now...")
+        with st.spinner("Running WC TC projections..."):
+            import subprocess
+            r = subprocess.run(["python3", str(Path("/home/workspace/Projects/wc_projections.py"))],
+                             capture_output=True, text=True, timeout=60)
+            st.code(r.stdout[-1500:] if r.stdout else r.stderr[-500:])
 
     # ── Footer ───────────────────────────────────────────────
     st.divider()
