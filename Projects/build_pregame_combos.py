@@ -379,7 +379,7 @@ def write_report(result: dict, out_md: Path, out_json: Path) -> None:
 
 if __name__ == "__main__":
     # Auto-detect today's slate from the TC API for all sports
-    sports_order = ["NBA", "WNBA", "NHL", "MLB", "SO"]
+    sports_order = ["WNBA"]
     summary = []
     for sport in sports_order:
         try:

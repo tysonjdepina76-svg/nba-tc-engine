@@ -360,10 +360,10 @@ def run_daily_log(sports=ALL_SPORTS):
         for e in errors:
             print(f"  - {e}")
 
-    # ── Build TC-enhanced DK combos (NBA + WNBA only) ──
+    # ── Build TC-enhanced DK combos (WNBA only) ──
     try:
         from Projects.build_pregame_combos import build_combos, write_report
-        combo_games = [(s["sport"], s["away_team"], s["home_team"]) for s in all_summaries if s["sport"] in BASKETBALL]
+        combo_games = [(s["sport"], s["away_team"], s["home_team"]) for s in all_summaries if s["sport"] == "WNBA"]
         if combo_games:
             print(f"\nBuilding TC combos for {len(combo_games)} basketball games...")
             combo_summary = []
@@ -389,7 +389,9 @@ def run_daily_log(sports=ALL_SPORTS):
 
 
 if __name__ == "__main__":
-    sports = ALL_SPORTS
+    sports_order = ["WNBA"]
     if len(sys.argv) > 1:
         sports = tuple(s.upper() for s in sys.argv[1:])
+    else:
+        sports = sports_order
     run_daily_log(sports)
