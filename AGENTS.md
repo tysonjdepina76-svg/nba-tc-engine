@@ -39,7 +39,8 @@ Main areas of the workspace, by relevance.
 - **Line**: `line`
 
 ## World Cup 2026 + Soccer Pipeline (UPDATED 2026-06-15)
-- `Projects/soccer_live_pull.py` — unified puller for ALL 11 active soccer leagues (WC, Copa Libertadores, Copa Sudamericana, Brazil Serie B, China SL, Germany DFB-Pokal, Ireland, Norway, Spain Segunda, Sweden Allsvenskan + Superettan). Replaces archived `worldcup_picks.py`
+- `Projects/worldcup_picks.py` — RESTORED (was prematurely archived). Standalone daily scraper (ESPN schedule + Odds API **FanDuel** player props: goals, assists, shots, shots_on_target). 4 WC matches today = 333 props. This is the production WC scraper.
+- `Projects/soccer_live_pull.py` — complementary: pulls h2h/spreads/totals across 49 books for 11 active soccer leagues (game lines only, since free tier blocks player props for `us,eu,uk` regions — FanDuel-only is the workaround the WC scraper uses).
 - Free Odds API tier supports game lines (h2h/spreads/totals) only — 422 on player props (needs paid tier)
 - 49 books available including DK, FD, BetMGM, BetRivers, Fanatics
 - WC 2026 schedule: 6/15-7/15 group stage, 7/16-7/31 knockout
