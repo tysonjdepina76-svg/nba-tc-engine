@@ -66,6 +66,35 @@ Main areas of the workspace, by relevance.
 
 **Drive backup:** `TC_Dashboard_State_2026-06-15.md` uploaded to Google Drive (tysondepina99@gmail.com).
 
+## 2026-06-15 (15:55 ET): Full Dashboard Audit + Gap Fixes
+
+**Audit scope:** All 15 zo.space routes, all 6 sports, every panel in `/nba-tc`.
+
+**Gaps found + fixed:**
+
+| Gap | Fix |
+|---|---|
+| `/api/dk-lines` MLB: Arizona Diamondbacks → "AZ" | Corrected to "ARI" |
+| `/api/dk-lines` NHL: missing CHI, VAN, UTA | Added all 3 (now 32 teams, matches `/api/tc` NHL_NAME_TO_CODE) |
+| `/nba-tc` NFL / Fantasy tab was a stub (tab existed, no panel) | Wired `NFLPanel()` — shows SportsData.io live lines, DK total/spread/ML, props count, quick link to Project Game tab |
+
+**Verified — all 6 sports firing:**
+| Sport | Project Game | Live Stats | DK Lines Source | Status |
+|---|---|---|---|---|
+| NBA | ✅ Full TC | ✅ ESPN scoreboard | SGO → ESPN DK → Odds API | Clean |
+| WNBA | ✅ Full TC | ✅ ESPN scoreboard | SGO → ESPN DK → Odds API → market fallbacks | Clean |
+| NFL | ✅ DK lines | ⚠️ No live players | SportsData.io cached daily | Live lines functional, no player stats |
+| WORLD CUP | ✅ DK lines | ⚠️ No live players | Odds API | Lines functional, no player stats |
+| MLB | ✅ DK lines | ⚠️ No live players | Odds API | Lines functional, no player stats |
+| NHL | ✅ DK lines | ⚠️ No live players | Odds API | Lines functional, no player stats |
+
+**Known limitations (not fixable without new data sources):**
+- Non-basketball live stats (NFL/MLB/NHL/WORLD CUP) return empty player arrays — ESPN's scoreboard API only exposes detailed player stats for basketball sports
+- World Cup page (`/worldcup`) is standalone (not integrated into `/nba-tc` dashboard)
+- WNBA player props depend on Odds API tier
+
+**Routes verified:** 15 total (8 API + 7 page routes). All sync successfully.
+
 ## Current State (2026-06-15 06:00 ET — UPDATED)
 
 - **ALL_SPORTS pipeline**: `daily_picks.py` now defaults to `("NBA", "WNBA", "MLB", "NHL", "WORLD CUP")`. Non-basketball sports (MLB, NHL, WORLD CUP) log DK total/spread/ML lines per game. Basketball sports (NBA, WNBA) get full player props + combos.
