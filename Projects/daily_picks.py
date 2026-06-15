@@ -1,8 +1,11 @@
+# TC — Triple Conservative — Trademark June 2026 — All rights reserved.
 """TC Daily Pick Log — captures every pick with full roster context for backtesting.
 
 Runs on a schedule (5 min before tip) and writes:
 - /home/workspace/Daily_Log/YYYY-MM-DD/slate_NBA.json  (raw responses)
 - /home/workspace/Daily_Log/YYYY-MM-DD/slate_WNBA.json
+- /home/workspace/Daily_Log/YYYY-MM-DD/slate_MLB.json
+- /home/workspace/Daily_Log/YYYY-MM-DD/slate_WORLD_CUP.json
 - /home/workspace/Daily_Log/YYYY-MM-DD/picks.csv         (flat backtest table)
 - /home/workspace/Daily_Log/YYYY-MM-DD/picks.json        (structured picks)
 - /home/workspace/Daily_Log/last_run.json                (latest summary)
@@ -17,6 +20,10 @@ import sys
 import requests
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
+
+# ── All active sports in the pipeline ─────────────────────
+ALL_SPORTS = ("NBA", "WNBA", "MLB", "NHL", "WORLD CUP")
+BASKETBALL = {"NBA", "WNBA"}  # sports with full player props + rosters
 
 ET = timezone(timedelta(hours=-5))
 def now_et():
@@ -40,8 +47,9 @@ except Exception as _e:
 WORKSPACE = Path("/home/workspace")
 sys.path.insert(0, str(WORKSPACE))
 sys.path.insert(0, str(WORKSPACE / "Skills" / "nba-odds-api" / "scripts"))
+sys.path.insert(0, str(WORKSPACE / "Projects"))
 
-from odds_enricher import enrich_player_lines
+from consensus_engine import fetch_consensus_for_matchup, CONSENSUS_SPORT_MAP, get_best_line
 
 API_BASE = "https://true.zo.space"
 LOG_DIR = WORKSPACE / "Daily_Log"
@@ -126,31 +134,74 @@ def extract_picks(projection, sport, matchup):
             "actual": p.get("actual"),
             "result": p.get("result", "PENDING"),
         })
+    # For non-basketball sports: extract lines-only summary picks
+    if not picks and sport not in BASKETBALL:
+        odds = projection.get("odds", {})
+        if odds.get("total") is not None:
+            picks.append({
+                "date": now_et().strftime("%Y-%m-%d"),
+                "league": sport,
+                "matchup": matchup,
+                "team": "",
+                "player": "TOTAL",
+                "role": "GAME",
+                "status": "ACTIVE",
+                "stat": "TOTAL",
+                "direction": "N/A",
+                "market_line": odds.get("total"),
+                "tc_projection": projection.get("tc_combined"),
+                "tc_target": projection.get("tc_line"),
+                "edge": projection.get("edge"),
+                "threshold": None,
+                "raw_average": None,
+                "source": odds.get("ml_source", projection.get("source", "")),
+                "actual": None,
+                "result": "PENDING",
+            })
     return picks
 
 
 def extract_game_summary(projection, sport, matchup):
-    """Extract top-line game summary."""
-    a = projection.get("assessment", {})
-    return {
-        "date": now_et().strftime("%Y-%m-%d"),
-        "sport": sport,
-        "matchup": matchup,
-        "away_team": projection.get("away_team"),
-        "home_team": projection.get("home_team"),
-        "tc_combined": projection.get("tc_combined"),
-        "tc_line": projection.get("tc_line"),
-        "market_total": projection.get("market_total"),
-        "dk_total": projection.get("dk_total"),
-        "edge": projection.get("edge"),
-        "signal": projection.get("signal"),
-        "source": projection.get("source"),
-        "valid_prop_count": len(projection.get("valid_props", [])),
-        "roster_size": sum(projection.get("roster_counts", {}).values()) if projection.get("roster_counts") else None,
-    }
+    """Extract top-line game summary — handles both basketball and multi-sport."""
+    if sport in BASKETBALL:
+        a = projection.get("assessment", {})
+        return {
+            "date": now_et().strftime("%Y-%m-%d"),
+            "sport": sport,
+            "matchup": matchup,
+            "away_team": projection.get("away_team"),
+            "home_team": projection.get("home_team"),
+            "tc_combined": projection.get("tc_combined"),
+            "tc_line": projection.get("tc_line"),
+            "market_total": projection.get("market_total"),
+            "dk_total": projection.get("dk_total"),
+            "edge": projection.get("edge"),
+            "signal": projection.get("signal"),
+            "source": projection.get("source"),
+            "valid_prop_count": len(projection.get("valid_props", [])),
+            "roster_size": sum(projection.get("roster_counts", {}).values()) if projection.get("roster_counts") else None,
+        }
+    else:
+        odds = projection.get("odds", {})
+        return {
+            "date": now_et().strftime("%Y-%m-%d"),
+            "sport": sport,
+            "matchup": matchup,
+            "away_team": projection.get("away_team"),
+            "home_team": projection.get("home_team"),
+            "tc_combined": projection.get("tc_combined"),
+            "tc_line": projection.get("tc_line"),
+            "market_total": odds.get("total"),
+            "dk_total": odds.get("total"),
+            "edge": None,
+            "signal": projection.get("signal", "NO DK LINES"),
+            "source": odds.get("ml_source", projection.get("source", "")),
+            "valid_prop_count": 0,
+            "roster_size": 0,
+        }
 
 
-def run_daily_log(sports=("NBA", "WNBA")):
+def run_daily_log(sports=ALL_SPORTS):
     """Run the full daily log capture. Filters out completed games."""
     now = now_et()
     today_dir = LOG_DIR / now.strftime("%Y-%m-%d")
@@ -169,6 +220,13 @@ def run_daily_log(sports=("NBA", "WNBA")):
             continue
 
         raw_games = slate.get("games", [])
+        # For sports with no games today, skip gracefully
+        if not raw_games:
+            print(f"  No games on slate for {sport} — skipping")
+            # Still save empty slate
+            (today_dir / f"slate_{sport}.json").write_text(json.dumps(slate, indent=2))
+            continue
+
         games = filter_future_games(raw_games, sport)
         skipped_completed += len(raw_games) - len(games)
 
@@ -188,128 +246,62 @@ def run_daily_log(sports=("NBA", "WNBA")):
                 errors.append(f"{sport} {matchup}: {proj['error']}")
                 continue
 
-            # Enrich with live Odds API player prop lines
-            odds_enrichment = None
-            try:
-                odds_enrichment = enrich_player_lines(sport, away, home)
-                if odds_enrichment and odds_enrichment.get("player_lines"):
-                    proj["odds_api_lines"] = odds_enrichment
-                    print(f"    → Odds API: {odds_enrichment.get('player_count', 0)} players enriched via {odds_enrichment.get('book', '?')}")
-                    # Merge DK lines into valid_props with fuzzy name + stat mapping
-                    player_lines = odds_enrichment.get("player_lines", {})
-                    stat_map = {"PTS": "points", "REB": "rebounds", "AST": "assists", "3PM": "threePointersMade", "STL": "steals", "BLK": "blocks"}
-                    for vp in proj.get("valid_props", []):
-                        pl_name = vp.get("player", "")
-                        stat_key = vp.get("stat", "")
-                        dk_stat = stat_map.get(stat_key)
-                        if not dk_stat:
-                            continue
-                        # Fuzzy player name match (last name or substring)
-                        for dk_name in player_lines:
-                            if pl_name == dk_name or pl_name in dk_name or dk_name in pl_name:
-                                if dk_stat in player_lines[dk_name]:
-                                    vp["market_line"] = player_lines[dk_name][dk_stat]
-                                break
-            except Exception as oe:
-                print(f"    ⚠️ Odds enrichment skipped: {oe}")
-
-            # Expand stat map to include all stats (Odds API keys)
-            stat_map = {
-                "PTS": "points", "REB": "rebounds", "AST": "assists",
-                "3PM": "threes", "STL": "steals", "BLK": "blocks",
-            }
-            # Fuzzy matching helper
-            def fuzzy_match(espn_name, dk_name):
-                a = espn_name.lower().replace("'", "").replace(".", "")
-                b = dk_name.lower().replace("'", "").replace(".", "")
-                return a == b or a in b or b in a
-
-            # --- SGO enrichment (NBA player props) ---
-            sgo_path = today_dir / f"lines_sgo_{sport.lower()}.json"
-            if sport == "NBA" and sgo_path.exists():
+            # Only enrich with player props for basketball sports
+            if sport in BASKETBALL:
+                # Enrich with live Odds API player prop lines
+                odds_enrichment = None
                 try:
-                    sgo_data = json.loads(sgo_path.read_text())
-                    events = sgo_data if isinstance(sgo_data, list) else sgo_data.get("data", [])
-                    matched_sgo = 0
-                    for ev in events:
-                        ev_away = ev.get("teams", {}).get("away", {}).get("names", {}).get("short", "")
-                        ev_home = ev.get("teams", {}).get("home", {}).get("names", {}).get("short", "")
-                        if ev_away.upper() != away.upper() or ev_home.upper() != home.upper():
-                            continue
-                        odds = ev.get("odds", {})
-                        if not odds:
-                            continue
-                        # Build lookup: player_name -> {stat: bookOverUnder}
-                        sgo_lines = {}
-                        for odd_key, odd_val in odds.items():
-                            if not isinstance(odd_val, dict):
-                                continue
-                            pid = odd_val.get("playerID", "")
-                            if not pid:
-                                continue
-                            stat = odd_val.get("statID", "")
-                            line = odd_val.get("bookOverUnder")
-                            if not line or odd_val.get("betTypeID") != "ou":
-                                continue
-                            # Map SGO stat names to our stat keys
-                            sgo_stat_map = {
-                                "points": "PTS", "rebounds": "REB", "assists": "AST",
-                                "threePointersMade": "3PM", "steals": "STL", "blocks": "BLK",
-                            }
-                            our_stat = sgo_stat_map.get(stat)
-                            if not our_stat:
-                                continue
-                            player_name = pid.replace("_1_NBA", "").replace("_", " ").title().strip()
-                            if player_name not in sgo_lines:
-                                sgo_lines[player_name] = {}
-                            # SGO lines are integers; Odds API style uses floats
-                            sgo_lines[player_name][our_stat] = float(line)
-                        # Match enriched DK lines to valid_props
+                    odds_enrichment = enrich_player_lines(sport, away, home)
+                    if odds_enrichment and odds_enrichment.get("player_lines"):
+                        proj["odds_api_lines"] = odds_enrichment
+                        print(f"    → Odds API: {odds_enrichment.get('player_count', 0)} players enriched via {odds_enrichment.get('book', '?')}")
+                        player_lines = odds_enrichment.get("player_lines", {})
+                        stat_map = {"PTS": "points", "REB": "rebounds", "AST": "assists", "3PM": "threePointersMade", "STL": "steals", "BLK": "blocks"}
                         for vp in proj.get("valid_props", []):
-                            if vp.get("market_line"):
-                                continue  # already has a DK line
                             pl_name = vp.get("player", "")
                             stat_key = vp.get("stat", "")
-                            for sgo_player, sgo_props in sgo_lines.items():
-                                if fuzzy_match(pl_name, sgo_player) and stat_key in sgo_props:
-                                    vp["market_line"] = sgo_props[stat_key]
-                                    matched_sgo += 1
+                            dk_stat = stat_map.get(stat_key)
+                            if not dk_stat:
+                                continue
+                            for dk_name in player_lines:
+                                if pl_name == dk_name or pl_name in dk_name or dk_name in pl_name:
+                                    if dk_stat in player_lines[dk_name]:
+                                        vp["market_line"] = player_lines[dk_name][dk_stat]
                                     break
-                        if matched_sgo > 0:
-                            print(f"    → SGO: {matched_sgo} props enriched ({len(sgo_lines)} players with DK lines)")
-                        break  # Found matching event
-                except Exception as sgo_e:
-                    print(f"    ⚠️ SGO enrichment skipped: {sgo_e}")
+                except Exception as oe:
+                    print(f"    ⚠️ Odds enrichment skipped: {oe}")
 
-            # --- Odds API enrichment (original, kept for WNBA combos) ---
-            try:
-                odds_enrichment = enrich_player_lines(sport, away, home)
-                if odds_enrichment and odds_enrichment.get("player_lines"):
-                    proj["odds_api_lines"] = odds_enrichment
-                    player_lines = odds_enrichment.get("player_lines", {})
-                    stat_map = {"PTS": "points", "REB": "rebounds", "AST": "assists", "3PM": "threes", "STL": "steals", "BLK": "blocks"}
-                    odds_count = 0
-                    for vp in proj.get("valid_props", []):
-                        if vp.get("market_line"):
-                            continue  # already has a DK line from SGO
-                        pl_name = vp.get("player", "")
-                        stat_key = vp.get("stat", "")
-                        dk_stat = stat_map.get(stat_key)
-                        if not dk_stat:
-                            continue
-                        # Fuzzy player name match
-                        for dk_name in player_lines:
-                            a = pl_name.lower().replace("'", "").replace(".", "")
-                            b = dk_name.lower().replace("'", "").replace(".", "")
-                            if a == b or a in b or b in a:
-                                if dk_stat in player_lines[dk_name]:
-                                    vp["market_line"] = player_lines[dk_name][dk_stat]
-                                    odds_count += 1
-                                    break
-                    if odds_count > 0:
-                        print(f"    → Odds API: {odds_count} props enriched ({odds_enrichment.get('player_count', 0)} players via {odds_enrichment.get('book', '?')})")
-            except Exception as oe:
-                print(f"    ⚠️ Odds enrichment skipped: {oe}")
+                # Enrich with consensus engine (multi-book fallback)
+                try:
+                    matchup_key = f"{away}@{home}"
+                    cons = fetch_consensus_for_matchup(sport, matchup_key)
+                    if cons and not cons.get("error") and cons.get("players"):
+                        cons_count = cons.get("player_count", 0)
+                        cons_books = cons.get("available_books", [])
+                        proj["consensus"] = cons
+                        print(f"    → Consensus: {cons_count} players, {len(cons_books)} books ({', '.join(cons_books[:3])}...)")
+                        matched = 0
+                        for vp in proj.get("valid_props", []):
+                            if vp.get("market_line"):
+                                continue
+                            line = get_best_line(cons, vp.get("player", ""), vp.get("stat", ""))
+                            if line is not None:
+                                vp["market_line"] = line
+                                vp["consensus_source"] = cons.get("source", "unknown")
+                                matched += 1
+                        if matched:
+                            print(f"    → Merged: {matched} props enriched with consensus lines")
+                    else:
+                        print(f"    ⚠️ Consensus: no data ({cons.get('error', 'no players') if cons else 'null'})")
+                except Exception as ce:
+                    print(f"    ⚠️ Consensus enrichment skipped: {ce}")
+            else:
+                # Non-basketball: log DK lines
+                odds = proj.get("odds", {})
+                if odds.get("total"):
+                    print(f"    → DK lines: total={odds.get('total')}, spread={odds.get('home_spread')}, source={odds.get('ml_source', '?')}")
+                else:
+                    print(f"    → No DK lines available ({odds.get('ml_source', odds.get('source', '?'))})")
 
             # Save raw projection
             safe = matchup.replace("@", "_at_")
@@ -318,13 +310,16 @@ def run_daily_log(sports=("NBA", "WNBA")):
             # Extract picks + summary
             picks = extract_picks(proj, sport, matchup)
             summary = extract_game_summary(proj, sport, matchup)
-            # Mark which picks have a real DK market line
-            pending = sum(1 for p in picks if p.get("market_line") in (None, ""))
-            summary["pending_props_no_dk"] = pending
-            summary["picks_with_dk"] = len(picks) - pending
+            if sport in BASKETBALL:
+                pending = sum(1 for p in picks if p.get("market_line") in (None, ""))
+                summary["pending_props_no_dk"] = pending
+                summary["picks_with_dk"] = len(picks) - pending
             all_picks.extend(picks)
             all_summaries.append(summary)
-            print(f"    -> {len(picks)} valid picks, signal={summary['signal']} (DK: {len(picks) - pending}, pending: {pending})")
+            if sport in BASKETBALL:
+                print(f"    -> {len(picks)} valid picks, signal={summary['signal']} (DK: {len(picks) - pending}, pending: {pending})")
+            else:
+                print(f"    -> {len(picks)} game-level entries, signal={summary['signal']}")
 
     # Write flat CSV — deduplicated, keeping DK-enriched versions
     csv_path = today_dir / "picks.csv"
@@ -364,27 +359,28 @@ def run_daily_log(sports=("NBA", "WNBA")):
         for e in errors:
             print(f"  - {e}")
 
-    # ── Build TC-enhanced DK combos (NBA + WNBA) ──
+    # ── Build TC-enhanced DK combos (NBA + WNBA only) ──
     try:
         from Projects.build_pregame_combos import build_combos, write_report
-        combo_games = [(s["sport"], s["away_team"], s["home_team"]) for s in all_summaries]
-        print(f"\nBuilding TC combos for {len(combo_games)} games...")
-        combo_summary = []
-        for sport, away, home in combo_games:
-            try:
-                r = build_combos(sport, away, home)
-            except Exception as e:
-                r = {"sport": sport, "away": away, "home": home,
-                     "legs": [], "qualified": [], "error": str(e)}
-            safe = f"{away}_{home}".lower()
-            write_report(r, today_dir / f"combos_{safe}.md", today_dir / f"combos_{safe}.json")
-            combo_summary.append({
-                "matchup": f"{away}@{home}", "sport": sport,
-                "matched": r.get("matched_legs", 0),
-                "qualified": r.get("qualified_legs", 0),
-            })
-        (today_dir / "combos_summary.json").write_text(json.dumps(combo_summary, indent=2))
-        print(f"Combos: {sum(c['qualified'] for c in combo_summary)} qualified legs across {len(combo_summary)} games")
+        combo_games = [(s["sport"], s["away_team"], s["home_team"]) for s in all_summaries if s["sport"] in BASKETBALL]
+        if combo_games:
+            print(f"\nBuilding TC combos for {len(combo_games)} basketball games...")
+            combo_summary = []
+            for sport, away, home in combo_games:
+                try:
+                    r = build_combos(sport, away, home)
+                except Exception as e:
+                    r = {"sport": sport, "away": away, "home": home,
+                         "legs": [], "qualified": [], "error": str(e)}
+                safe = f"{away}_{home}".lower()
+                write_report(r, today_dir / f"combos_{safe}.md", today_dir / f"combos_{safe}.json")
+                combo_summary.append({
+                    "matchup": f"{away}@{home}", "sport": sport,
+                    "matched": r.get("matched_legs", 0),
+                    "qualified": r.get("qualified_legs", 0),
+                })
+            (today_dir / "combos_summary.json").write_text(json.dumps(combo_summary, indent=2))
+            print(f"Combos: {sum(c['qualified'] for c in combo_summary)} qualified legs across {len(combo_summary)} games")
     except Exception as e:
         print(f"Combo builder: {e}")
 
@@ -392,7 +388,7 @@ def run_daily_log(sports=("NBA", "WNBA")):
 
 
 if __name__ == "__main__":
-    sports = ("NBA", "WNBA")
+    sports = ALL_SPORTS
     if len(sys.argv) > 1:
         sports = tuple(s.upper() for s in sys.argv[1:])
     run_daily_log(sports)

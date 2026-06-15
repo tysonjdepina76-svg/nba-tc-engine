@@ -8,10 +8,17 @@ Main areas of the workspace, by relevance.
 ## Sports TC Engine (primary, single source of truth)
 - `Projects/tc_math.py` — TC math core (WNBA 40-min norm, PRA/PR/PA builders, edge, win%)
 - `Projects/daily_picks.py` — daily slate capture → `Daily_Log/YYYY-MM-DD/`
-- `Projects/build_pregame_combos.py` — offline combo builder (consumes tc_math + /api/combos)
+- `Projects/build_pregame_combos.py` — offline combo builder (consumes tc_math + /api/combos). **Multi-book fallback**: DK → FanDuel → BetMGM → Fanatics → Bovada
+- `Projects/balldontlie_schedule.py` — diagnostic only: game schedules from balldontlie.io (no props/odds)
+- `Projects/tc_dashboard.py` — st
 - `Projects/wnba_pipeline` — WNBA backtest pipeline (14 days, 2882 picks, 47% HR)
 - `Daily_Log/wnba_pipeline_*/` — pipeline v2 outputs (actuals.json, proj.csv, report.md)
 - `Archives/WNBA_Backtests/` — archived backtest reports
+- `Projects/team_game_mapper.py` — 13 WNBA teams, 72 aliases (city/nickname/abbr/alternate), 3-step match (alias → token overlap → start-time proximity). ESPN is the canonical key; Odds API event_id is cross-referenced.
+- `Projects/wnba_props_live_pull.py` — fetches Odds API WNBA events, builds canonical ESPN↔Odds map, pulls DK player props per event. 6/15 first run: **300 real DK rows** (LV@DAL 140, LA@GS 160). Output:
+  - `Daily_Log/wnba_props_2026-06-15_dk.csv` — 300 rows, 9 stat markets
+  - `Daily_Log/wnba_props_2026-06-15_raw.json` — full per-book payload + canonical map
+  - `Reports/wnba_live_dk_props_20260615.md` — best-juice top-20 (heavy Under-3PM favored)
 
 ## WNBA Calibration (2026-06-12)
 - Best alpha = 7.0 for PTS/REB/AST/TPM, 5.0 for STL → 61.8% HR (5-day, 14g, 762 picks)
@@ -31,24 +38,41 @@ Main areas of the workspace, by relevance.
 - **Script**: `SportsData NFL pull script`
 - **Line**: `line`
 
-## World Cup 2026 Pipeline (zero impact on basketball TC)
-- `Projects/worldcup_picks.py` — standalone daily scraper (ESPN schedule + Odds API player props)
-- Data sources: ESPN (free) for matches + The Odds API (free tier) for FanDuel player props
-- Props: goals, assists, shots, shots_on_target — completely separate from basketball TC math
-- Output: `Daily_Log/worldcup/YYYY-MM-DD/` (matches.json, props.json, picks.csv)
-- Dashboard: `https://true.zo.space/worldcup` (live page)
-- Automation: runs 5x daily during match windows (1PM, 3PM, 5PM, 7PM, 9PM ET)
-- Note: DK soccer props not available via Odds API free tier — FanDuel primary book
+## World Cup 2026 + Soccer Pipeline (UPDATED 2026-06-15)
+- `Projects/soccer_live_pull.py` — unified puller for ALL 11 active soccer leagues (WC, Copa Libertadores, Copa Sudamericana, Brazil Serie B, China SL, Germany DFB-Pokal, Ireland, Norway, Spain Segunda, Sweden Allsvenskan + Superettan). Replaces archived `worldcup_picks.py`
+- Free Odds API tier supports game lines (h2h/spreads/totals) only — 422 on player props (needs paid tier)
+- 49 books available including DK, FD, BetMGM, BetRivers, Fanatics
+- WC 2026 schedule: 6/15-7/15 group stage, 7/16-7/31 knockout
+- Output: `Daily_Log/soccer/YYYY-MM-DD/{events,lines,summary}.json`
+- 1PM/3PM/5PM/7PM/9PM automations (agent 8e9d600e) call the new puller
+- Archive: `Archives/OBSOLETE_PROJECTS_2026-06-15/worldcup_picks.py` (362 lines, superseded)
 
-## Current State (2026-06-14 — UPDATED)
-- **Pipeline clean**: `daily_picks.py NBA WNBA` → 4 games, 45 picks, 15 qualified TC+DK combo legs (6 NBA + 9 WNBA). ZERO errors.
-- **WNBA combo fix**: WNBA enrichment was broken — `stat_map` had `"3PM": None` in first block; second block mapped `3PM → "threePointersMade"` but Odds API uses `"threes"`. Fixed both stat_maps, WNBA dk_props went from 0→3/4/4 across games.
-- **ET timezone fix**: `now_et()` / `today_et()` helpers added — picks no longer stamped UTC date after midnight.
-- **Odds enricher fix**: `Skills/nba-odds-api/scripts/odds_enricher.py` now fetches all 6 player prop markets (was only PTS/REB/AST) + uses WNBA_TEAM_MAP for team code matching.
-- **15 qualified WNBA combos served**: MIN@LV (3), DAL@POR (3), LA@PHX (3).
-- **pycache purged**: All `__pycache__/` dirs removed from workspace.
-- zo.space: 14 routes healthy.
-- dk-combos-engine: RUNNING, serving 112 WNBA combos via Odds API fallback.
+## Current State (2026-06-15 06:00 ET — UPDATED)
+
+- **ALL_SPORTS pipeline**: `daily_picks.py` now defaults to `("NBA", "WNBA", "MLB", "NHL", "WORLD CUP")`. Non-basketball sports (MLB, NHL, WORLD CUP) log DK total/spread/ML lines per game. Basketball sports (NBA, WNBA) get full player props + combos.
+- **Multi-source consensus engine**: `Projects/consensus_engine.py` — fetches ALL books (DK, FD, BetMGM, Caesars, Fanatics, Bovada, etc.), builds trimmed-mean consensus per player/stat. Daily cache avoids double-counting Odds API tokens.
+- **Sports covered**: NBA, WNBA, NHL, MLB, MLS (and EPL/LaLiga/SerieA/Ligue1/Bundesliga stubbed).
+- **build_pregame_combos.py**: NBA uses SGO (primary) → Odds API consensus (fallback). WNBA uses Odds API consensus (primary). Multi-book fallback when DK is empty.
+- **daily_picks.py**: enrichment now uses `consensus_engine.get_best_line()` instead of the old single-book `odds_enricher`.
+- **BallDontLie diagnostic**: `Projects/balldontlie_schedule.py` — schedule-only tool (no props, no projections). Needs `BALLDONTLIE_API_KEY` in secrets.
+- **Streamlit dashboard**: `Projects/tc_dashboard.py` — merged into real pipeline data (`Daily_Log/YYYY-MM-DD/picks.csv`). Run: `streamlit run Projects/tc_dashboard.py --server.port 8518`
+- **Tokens saved**: Consensus engine caches per-event → one Odds API call per event per day (was 2+ with old approach).
+- **Pipeline clean**: `daily_picks.py NBA WNBA` → 0 errors, 0 upcoming (all Saturday games completed).
+
+## 2026-06-15: Team-Game Mapper + Live WNBA DK Props (BREAKTHROUGH)
+
+**Root cause of 7-day empty WNBA slate:** team aliases across books (SGO/Odds API/SportsData/BetMGM) did not match internal 3-letter codes. SGO is also WNBA-unavailable at our tier.
+
+**Fix shipped:** `Projects/team_game_mapper.py` — 13 WNBA teams, 72 aliases (city/nickname/abbr/alternate), 3-step match (alias → token overlap → start-time proximity). ESPN is the canonical key; Odds API event_id is cross-referenced.
+
+**Live pull:** `Projects/wnba_props_live_pull.py` — fetches Odds API WNBA events, builds canonical ESPN↔Odds map, pulls DK player props per event. 6/15 first run: **300 real DK rows** (LV@DAL 140, LA@GS 160). Output:
+- `Daily_Log/wnba_props_2026-06-15_dk.csv` — 300 rows, 9 stat markets
+- `Daily_Log/wnba_props_2026-06-15_raw.json` — full per-book payload + canonical map
+- `Reports/wnba_live_dk_props_20260615.md` — best-juice top-20 (heavy Under-3PM favored)
+
+**Game-line coverage gap:** WAS@CON (6/17) and NY@CHI (6/18) have no DK props posted yet (24-48h out). POR@MIN (6/16) is now mapped after adding Portland Fire + Toronto Tempo to the alias dict.
+
+**Integration:** `consensus_engine.py` now imports `canon_abbr` from `team_game_mapper` and uses it to canonicalize Odds API bookmaker team names.
 
 ## 2026-06-13: Multi-Sport Direction-Agnostic Fix
 - `/api/tc` `fetchMultiSportDKLines` and `buildMultiSportProjection` now accept reversed matchups
@@ -84,11 +108,19 @@ Main areas of the workspace, by relevance.
 - `https://true.zo.space/api/combos` — live combo generator API
 - `https://true.zo.space/api/worldcup-props` — serves World Cup props from Daily_Log/worldcup/
 
-## Automations (4 daily, all ET)
-- 8:00 AM — `Scripts/refresh_daily_data.sh` + status email
-- 9:00 AM — `Projects/daily_picks.py` + summary email
-- 1:00 PM, 3:00 PM, 5:00 PM, 7:00 PM, 9:00 PM — `Projects/worldcup_picks.py` (World Cup match windows)
-- 5:00 PM — `daily_tip_report.py` + `generate_report.py` + pre-tip email
+## Automations (10 daily, 1 weekly — all ET)
+
+**Boxscore Pipeline (NEW — 2026-06-15):**
+- 8:30 PM, 10:30 PM, 12:30 AM — `Projects/boxscore_saver.py` → halftime + final boxscores. **Dedup-aware**: event_id registry prevents double-saving. Output: `Daily_Log/halftime/`, `Daily_Log/final/`, registry at `Daily_Log/boxscore_registry.json`
+- 4:00 AM — `Scripts/system_cleanup.sh` → dedup boxscores, purge stale caches, rotate logs >30d, pipeline health snapshot, Google Drive sync
+- Monday 9:00 AM — `Scripts/health_check.py` → full system health report (API keys, endpoints, services, data freshness, boxscore registry count)
+
+**TC Pipeline (ALL SPORTS — updated 2026-06-15):**
+- 1:00 PM — Baseline Slate Capture (all sports): `python3 Projects/daily_picks.py NBA WNBA MLB NHL WORLD CUP`
+- 1:30 PM — Post-Injury Refresh (all sports): same + combos
+- 5:00 PM — All Sports Pre-Tip Update: same + combos
+- 6:30 PM — Final Pre-Tip (all sports): same + combos + health check
+- 1:00 PM, 3:00 PM, 5:00 PM, 7:00 PM, 9:00 PM — `Projects/soccer_live_pull.py` (World Cup match windows — FanDuel player props)
 
 ## Archives
 - `Archives/INTEGRATION_2026-06-09_obsolete/` — 21 files archived on this pass (orphan Projects + orphan root files)
@@ -96,8 +128,8 @@ Main areas of the workspace, by relevance.
 - `Archives/WNBA_Backtests/` — historical backtest runs
 
 ## Daily Pipeline Output
-- `Daily_Log/<YYYY-MM-DD>/` — slate_NBA.json, slate_WNBA.json, picks.{csv,json}, proj_*.json, combos_*.md, combos_summary.json, dk_scrape_*.json
-- `Daily_Log/last_run.json` — latest summary
+- `Daily_Log/<YYYY-MM-DD>/` — slate_NBA.json, slate_WNBA.json, slate_MLB.json, slate_NHL.json, slate_WORLD_CUP.json, picks.{csv,json}, proj_*.json, combos_*.md, combos_summary.json
+- `Daily_Log/last_run.json` — latest summary across all sports
 - `Daily_Log/refresh_daily_data_<YYYYMMDD>.log` — pipeline log
 - `Reports/nba_pre_tip_<YYYYMMDD>.md` + `Reports/wnba_pre_tip_<YYYYMMDD>.md`
 
@@ -114,3 +146,13 @@ Main areas of the workspace, by relevance.
 - Use `edit_space_route()` for zo.space edits, NEVER file tools on those routes
 - Use `edit_automation()` to update scheduled agents
 - `AGENTS.md` (this) + `SYSTEM_MAP.md` are durable memory for future agents
+
+## 2026-06-14: Multi-Sport Consensus Engine + Pipeline Assessment
+
+- `Projects/consensus_engine.py` — multi-book consensus (DK→FD→BetMGM→Caesars→Fanatics→Bovada), trimmed-mean aggregation, daily token cache
+- `list_sport_games()` — zero-token-cost events list for any sport (no odds call)
+- `Projects/pipeline_assess.py` — single command health check: API keys, routes, dashboards, automations, daily log, cache, credits remaining. Run: `python3 Projects/pipeline_assess.py`
+- `Projects/tc_dashboard.py` — Streamlit dashboard on port 8510, reads real pipeline data from Daily_Log
+- **5 daily automations**: 1PM (pre-injury), 1:30PM (post-injury refresh), 5PM (WNBA+NBA update), 6:30PM (final pre-tip), + World Cup 5x daily
+- **Odds API**: 13,956 credits remaining (6,044 used this month — ~17k/mo pace on $30 tier, well under limit)
+- **Streamlit services**: port 8510 (tc_dashboard), port 8515 (dk-combos-engine)

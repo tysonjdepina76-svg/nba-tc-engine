@@ -1,420 +1,352 @@
 #!/usr/bin/env python3
-"""TC Pipeline Health Check — full diagnostic + maintenance tool.
+"""TC Pipeline Health Check — run locally to audit the entire system.
 
-Tests every component of the Triple Conservative sports betting pipeline:
-  API keys → Odds feeds → ESPN rosters → Route endpoints → Daily logs → Combos
+Checks:
+  1. API key presence (secrets file)
+  2. External connectivity (SGO, Odds API, ESPN) with actual auth
+  3. zo.space routes (/api/tc, /api/combos, /api/dk-lines)
+  4. Local services (Streamlit, DK Combos Engine)
+  5. Pipeline scripts (presence check)
+  6. Daily log freshness
+  7. NFL engine status
+  8. Workspace cleanliness (>30 day stale files)
 
 Usage:
-  python3 pipeline_health.py            # full diagnostic
-  python3 pipeline_health.py --purge    # archive old logs (keeps last 7 days)
-  python3 pipeline_health.py --test     # test only (no maintenance)
-  python3 pipeline_health.py --report   # generate markdown report
+  python3 /home/workspace/Projects/pipeline_health.py
+  python3 /home/workspace/Projects/pipeline_health.py --json   # machine-readable
+  python3 /home/workspace/Projects/pipeline_health.py --quick  # skip slow HTTP checks
 """
 
 import json
 import os
-import re
 import sys
 import time
-import urllib.request
-import urllib.error
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timezone
 from pathlib import Path
-from collections import defaultdict
 
+SECRETS_FILE = "/root/.zo/secrets.env"
 WORKSPACE = Path("/home/workspace")
 LOG_DIR = WORKSPACE / "Daily_Log"
 PROJ_DIR = WORKSPACE / "Projects"
-SECRETS_FILE = "/root/.zo/secrets.env"
-SPACE_BASE = "http://localhost:3099"
 
-# ── Color helpers ──────────────────────────────────────────────────
-G = "\033[32m"; R = "\033[31m"; Y = "\033[33m"; B = "\033[34m"; C = "\033[36m"; X = "\033[0m"
-def ok(s): return f"{G}✓{X} {s}"
-def fail(s): return f"{R}✗{X} {s}"
-def warn(s): return f"{Y}⚠{X} {s}"
-def info(s): return f"{B}ℹ{X} {s}"
-def header(s): return f"\n{C}{'='*60}{X}\n{C}  {s}{X}\n{C}{'='*60}{X}"
+ALL_GOOD = []
+WARNINGS = []
+FAILURES = []
 
-# ── Secrets loader ─────────────────────────────────────────────────
+
 def load_secrets():
     secrets = {}
     try:
-        raw = Path(SECRETS_FILE).read_text()
-        for line in raw.split("\n"):
-            m = re.match(r'^\s*export\s+(\w+)\s*=\s*["\']?([^"\'#\s]+)', line)
-            if m:
-                secrets[m.group(1)] = m.group(2)
+        for line in Path(SECRETS_FILE).read_text().splitlines():
+            line = line.strip()
+            if not line or line.startswith("#"):
+                continue
+            if "=" in line:
+                k, v = line.split("=", 1)
+                secrets[k.strip()] = v.strip()
     except Exception:
         pass
-    # also check env
-    for key in ["ODDS_API_KEY", "Theoddsapi", "SPORTSGAMEODDS_API_KEY", "SportsDataIo"]:
-        if key not in secrets and os.environ.get(key):
-            secrets[key] = os.environ[key]
     return secrets
 
-# ── API tests ──────────────────────────────────────────────────────
-def test_odds_api(key):
-    try:
-        req = urllib.request.Request(
-            f"https://api.the-odds-api.com/v4/sports/?apiKey={key}",
-            headers={"User-Agent": "TC-HealthCheck/1.0"}
-        )
-        with urllib.request.urlopen(req, timeout=10) as r:
-            data = json.load(r)
-            return True, f"{len(data)} sports available"
-    except Exception as e:
-        return False, str(e)[:80]
 
-def test_sgo_api(key):
-    try:
-        req = urllib.request.Request(
-            "https://api.sportsgameodds.com/v2/events?leagueID=NBA",
-            headers={"X-Api-Key": key, "Accept": "application/json", "User-Agent": "TC-HealthCheck/1.0"}
-        )
-        with urllib.request.urlopen(req, timeout=10) as r:
-            data = json.load(r)
-            if data.get("success") == False:
-                return False, data.get("error", "unknown SGO error")[:80]
-            return True, f"{len(data.get('data',[]))} NBA events"
-    except Exception as e:
-        return False, str(e)[:80]
+def check(label, ok, detail="", warn=False):
+    status = "✅" if ok else "⚠️" if warn else "❌"
+    msg = f"  {status} {label}"
+    if detail:
+        msg += f" — {detail}"
+    print(msg)
+    if ok:
+        ALL_GOOD.append(label)
+    elif warn:
+        WARNINGS.append(f"{label}: {detail}")
+    else:
+        FAILURES.append(f"{label}: {detail}")
 
-def test_espn_endpoint():
-    try:
-        req = urllib.request.Request(
-            "https://site.api.espn.com/apis/site/v2/sports/basketball/wnba/scoreboard",
-            headers={"User-Agent": "Mozilla/5.0", "Accept": "application/json"}
-        )
-        with urllib.request.urlopen(req, timeout=10) as r:
-            data = json.load(r)
-            events = data.get("events", [])
-            return True, f"{len(events)} WNBA games on scoreboard"
-    except Exception as e:
-        return False, str(e)[:80]
 
-def test_space_route(path, desc=""):
-    try:
-        req = urllib.request.Request(
-            f"{SPACE_BASE}{path}",
-            headers={"Accept": "application/json"}
-        )
-        with urllib.request.urlopen(req, timeout=60) as r:
-            data = json.load(r)
-            if "error" in data:
-                return False, f"route error: {data['error']}"
-            return True, f"responded ({desc})"
-    except Exception as e:
-        return False, str(e)[:80]
-
-# ── WNBA game test ─────────────────────────────────────────────────
-def test_wnba_games():
-    """Get today's WNBA schedule from Odds API."""
-    secrets = load_secrets()
-    odds_key = secrets.get("Theoddsapi") or secrets.get("ODDS_API_KEY", "")
-    if not odds_key:
-        return []
-    try:
-        req = urllib.request.Request(
-            f"https://api.the-odds-api.com/v4/sports/basketball_wnba/odds?apiKey={odds_key}&regions=us&markets=h2h,spreads,totals&bookmakers=draftkings&oddsFormat=american",
-            headers={"User-Agent": "Mozilla/5.0"}
-        )
-        with urllib.request.urlopen(req, timeout=15) as r:
-            events = json.load(r)
-            games = []
-            for ev in events:
-                games.append({
-                    "away": ev.get("away_team", "?"),
-                    "home": ev.get("home_team", "?"),
-                    "commence": ev.get("commence_time", ""),
-                })
-            return games
-    except Exception:
-        return []
-
-# ── Log analysis ───────────────────────────────────────────────────
-def analyze_logs():
-    if not LOG_DIR.exists():
-        return {"dirs": 0, "files": 0, "date_range": "none", "stale_dirs": []}
-    
-    date_dirs = []
-    stale_dirs = []
-    now = datetime.now(timezone.utc)
-    
-    for entry in sorted(LOG_DIR.iterdir()):
-        if not entry.is_dir():
-            continue
-        m = re.match(r"^(\d{4}-\d{2}-\d{2})$", entry.name)
-        if not m:
-            continue
-        try:
-            dt = datetime.strptime(m.group(1), "%Y-%m-%d").replace(tzinfo=timezone.utc)
-            age = (now - dt).days
-            file_count = len(list(entry.iterdir()))
-            date_dirs.append((entry.name, file_count, age))
-            if age > 7:
-                stale_dirs.append(entry.name)
-        except ValueError:
-            pass
-    
-    total_files = sum(d[1] for d in date_dirs)
-    
-    return {
-        "dirs": len(date_dirs),
-        "files": total_files,
-        "date_range": f"{date_dirs[0][0]} → {date_dirs[-1][0]}" if date_dirs else "none",
-        "stale_dirs": stale_dirs,
-        "by_date": date_dirs,
-    }
-
-# ── Pipeline scripts check ─────────────────────────────────────────
-def check_pipeline_scripts():
-    scripts = {
-        "daily_picks.py": "Daily pick capture (NBA+WNBA)",
-        "tc_math.py": "TC math engine (CONS, bayesShrink)",
-        "wnba_pipeline_v2.py": "WNBA backtest pipeline",
-        "dk_combos_engine.py": "DK combo lines from SGO",
-        "build_pregame_combos.py": "Pregame combo builder",
-        "reconcile_picks_vs_box.py": "Live boxscore reconciliation",
-        "recompute_bayes.py": "Bayesian recomputation",
-    }
-    results = {}
-    for script, desc in scripts.items():
-        path = PROJ_DIR / script
-        results[script] = {
-            "exists": path.exists(),
-            "size": path.stat().st_size if path.exists() else 0,
-            "desc": desc,
-        }
-    return results
-
-# ── Services check ─────────────────────────────────────────────────
-def check_services():
-    """Check if Streamlit dashboard and combos engine are running."""
-    import subprocess
-    results = {}
-    # Streamlit dashboard
-    try:
-        result = subprocess.run(
-            ["curl", "-s", "-o", "/dev/null", "-w", "%{http_code}", "http://localhost:8507"],
-            capture_output=True, text=True, timeout=5
-        )
-        results["streamlit_8507"] = result.stdout.strip() == "200"
-    except Exception:
-        results["streamlit_8507"] = False
-    # Combos engine
-    try:
-        result = subprocess.run(
-            ["curl", "-s", "-o", "/dev/null", "-w", "%{http_code}", "http://localhost:8515/combos?sport=NBA"],
-            capture_output=True, text=True, timeout=10
-        )
-        results["combos_8515"] = result.stdout.strip() == "200"
-    except Exception:
-        results["combos_8515"] = False
-    return results
-
-def test_combos_endpoint(sport="WNBA"):
-    """Hit the live combos engine and return combo count."""
-    import urllib.request
-    try:
-        req = urllib.request.Request(
-            f"http://localhost:8515/combos?sport={sport}",
-            headers={"Accept": "application/json"}
-        )
-        with urllib.request.urlopen(req, timeout=15) as r:
-            data = json.load(r)
-            combos = data.get("combos", [])
-            source = data.get("source", "?")
-            return True, len(combos), source
-    except Exception as e:
-        return False, 0, str(e)[:80]
-
-# ── MAIN ───────────────────────────────────────────────────────────
 def main():
-    args = set(sys.argv[1:])
-    do_purge = "--purge" in args
-    do_report = "--report" in args
-    
-    print(header("TC PIPELINE HEALTH CHECK"))
-    print(f"  Timestamp: {datetime.now().isoformat()}")
-    print(f"  Host: true.zo.computer")
-    
-    # 1. API Keys
-    print(header("1. API KEYS"))
+    json_out = "--json" in sys.argv
+    quick = "--quick" in sys.argv
+
+    if not json_out:
+        print("=" * 60)
+        print("  TC PIPELINE HEALTH CHECK")
+        print(f"  {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')}")
+        print("=" * 60)
+
     secrets = load_secrets()
-    
-    odds_key = secrets.get("Theoddsapi") or secrets.get("ODDS_API_KEY", "")
-    sgo_key = secrets.get("SPORTSGAMEODDS_API_KEY") or secrets.get("SportsDataIo", "")
-    
-    print(f"  The Odds API: {'found' if odds_key else fail('MISSING')} ({odds_key[:8]}...{odds_key[-4:] if len(odds_key)>12 else ''})")
-    print(f"  SportsGameOdds: {'found' if sgo_key else fail('MISSING')} ({sgo_key[:8]}...{sgo_key[-4:] if len(sgo_key)>12 else ''})")
-    
-    # 2. API Connectivity
-    print(header("2. API CONNECTIVITY"))
-    
-    if odds_key:
-        ok1, msg1 = test_odds_api(odds_key)
-        print(f"  Odds API: {ok(msg1) if ok1 else fail(msg1)}")
-    else:
-        print(f"  Odds API: {fail('no key — SKIPPED')}")
-    
-    if sgo_key:
-        ok2, msg2 = test_sgo_api(sgo_key)
-        print(f"  SGO API: {ok(msg2) if ok2 else fail(msg2)}")
-    else:
-        print(f"  SGO API: {fail('no key — SKIPPED')}")  
-    
-    ok3, msg3 = test_espn_endpoint()
-    print(f"  ESPN API: {ok(msg3) if ok3 else fail(msg3)}")
-    
-    # 3. Route Endpoints
-    print(header("3. ROUTE ENDPOINTS (zo.space)"))
-    
-    ok4, msg4 = test_space_route("/api/tc?diag=1", "diag")
-    print(f"  /api/tc (diag): {ok(msg4) if ok4 else fail(msg4)}")
-    
-    ok5, msg5 = test_space_route("/api/tc?sport=WNBA&away=WSH&home=NY", "WNBA WSH@NY")
-    if ok5:
-        try:
-            req = urllib.request.Request(f"{SPACE_BASE}/api/tc?sport=WNBA&away=WSH&home=NY", headers={"Accept": "application/json"})
-            with urllib.request.urlopen(req, timeout=90) as r:
-                d = json.load(r)
-                dk_total = d.get("dk_total")
-                valid_props = len(d.get("valid_props", []))
-                players_away = d.get("roster_counts", {}).get("away_active", 0)
-                players_home = d.get("roster_counts", {}).get("home_active", 0)
-                print(f"    → DK total: {dk_total} | Valid props: {valid_props} | Rosters: {players_away}+{players_home} active players")
-        except Exception:
-            print(f"    → response received but parse failed")
-    else:
-        print(f"  /api/tc (WNBA): {fail(msg5)}")
-    
-    ok6, msg6 = test_space_route("/api/tc?mode=live-stats&sport=WNBA", "live-stats WNBA")
-    print(f"  /api/tc (live-stats): {ok(msg6) if ok6 else fail(msg6)}")
-    
-    # 4. WNBA Slate
-    print(header("4. WNBA SLATE (from Odds API)"))
-    games = test_wnba_games()
-    if games:
-        for g in games:
-            ts = g.get("commence", "")[:16].replace("T", " ")
-            print(f"  {g['away']} @ {g['home']}  |  {ts}")
-    else:
-        print(f"  {fail('No WNBA games returned')}")
-    
-    # 5. Pipeline Scripts
-    print(header("5. PIPELINE SCRIPTS"))
-    scripts = check_pipeline_scripts()
-    for name, info in scripts.items():
-        status = ok(f"{info['size']:,} bytes") if info["exists"] else fail("MISSING")
-        print(f"  {name}: {status} — {info['desc']}")
-    
-    # 6. Daily Logs
-    print(header("6. DAILY LOGS"))
-    logs = analyze_logs()
-    print(f"  Date dirs: {logs['dirs']} ({logs['files']} files)  |  Range: {logs['date_range']}")
-    if logs["stale_dirs"]:
-        print(f"  {warn(f'{len(logs["stale_dirs"])} stale dirs (>7 days): {logs["stale_dirs"]}')}")
-    
-    for name, count, age in logs.get("by_date", []):
-        bar = "█" * min(count, 20)
-        age_tag = f" ({age}d ago)" if age > 0 else " (today)"
-        print(f"    {name}: {count:3d} files {bar}{age_tag}")
-    
-    # 7. Services
-    print(header("7. SERVICES"))
-    svc = check_services()
-    print(f"  Streamlit (8507): {ok('running') if svc.get('streamlit_8507') else warn('not running')}")
-    print(f"  Combos Engine (8515): {ok('running') if svc.get('combos_8515') else fail('not running — combos unavailable')}")
-    
-    # 8. Combos
-    print(header("8. COMBOS STATUS"))
-    # Live API test
-    for sport in ["NBA", "WNBA"]:
-        ok_c, count, source = test_combos_endpoint(sport)
-        if ok_c:
-            print(f"  {sport} live combos: {ok(f'{count} lines ready')} (source: {source})")
+
+    # ── 1. API KEYS ──
+    if not json_out:
+        print("\n── API Keys ──")
+    key_checks = {
+        "ODDS_API_KEY": "The Odds API ($25/mo)",
+        "SPORTSGAMEODDS_API_KEY": "SportsGameOdds (primary feed)",
+        "SPORTS_DATA_API_KEY": "SportsData.io ($99/mo NFL)",
+    }
+    for name, desc in key_checks.items():
+        val = secrets.get(name, "")
+        if val and len(val) > 5:
+            masked = val[:4] + "..." + val[-4:]
+            check(f"{name} ({desc})", True, masked)
         else:
-            print(f"  {sport} live combos: {fail(f'endpoint unreachable: {source}')}")
+            check(f"{name} ({desc})", False, "MISSING from secrets file")
 
-    # File counts (secondary)
-    combo_files = list(LOG_DIR.glob("*/combos_*.json"))
-    md_files = list(LOG_DIR.glob("*/combos_*.md"))
-    today = datetime.now().strftime("%Y-%m-%d")
-    today_dir = LOG_DIR / today
-    today_combo_files = list(today_dir.glob("combos_*.json"))
-    today_combo_md_files = list(today_dir.glob("combos_*.md"))
+    # ── 2. EXTERNAL CONNECTIVITY ──
+    if not quick and not json_out:
+        print("\n── External APIs ──")
 
-    print(f"  Combo JSONs on disk: {len(combo_files)} total · {len(today_combo_files)} today")
-    print(f"  Combo Markdowns on disk: {len(md_files)} total · {len(today_combo_md_files)} today")
+    odds_key = secrets.get("ODDS_API_KEY", "")
+    sgo_key = secrets.get("SPORTSGAMEODDS_API_KEY", "")
 
-    # Show today's pregame combo summary
-    summary_file = today_dir / "combos_summary.json"
-    if summary_file.exists():
+    if not quick:
+        import requests
+
+        # ESPN
         try:
-            summary = json.loads(summary_file.read_text())
-            for s in summary[:5]:
-                print(f"    {s.get('matchup','?')} ({s.get('sport','?')}): {s.get('qualified',0)} qualified legs from {s.get('matched',0)} matched")
-        except Exception:
-            pass
-    
-    # ── Purge if requested ──────────────────────────────────────────
-    if do_purge and logs["stale_dirs"]:
-        print(header("PURGE: ARCHIVING STALE LOGS"))
-        archive_dir = LOG_DIR / "_archive"
-        archive_dir.mkdir(exist_ok=True)
-        for stale in logs["stale_dirs"]:
-            src = LOG_DIR / stale
-            dst = archive_dir / stale
-            if dst.exists():
-                print(f"  {warn(f'{stale} already archived — skipping')}")
+            r = requests.get(
+                "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard",
+                timeout=10,
+            )
+            check("ESPN API", r.ok, f"HTTP {r.status_code}")
+        except Exception as e:
+            check("ESPN API", False, str(e)[:80])
+
+        # The Odds API
+        if odds_key:
+            try:
+                r = requests.get(
+                    f"https://api.the-odds-api.com/v4/sports/basketball_wnba/odds/",
+                    params={"apiKey": odds_key, "regions": "us", "markets": "h2h"},
+                    timeout=10,
+                )
+                ok = r.ok or r.status_code == 422
+                detail = f"HTTP {r.status_code}"
+                if r.status_code == 401:
+                    detail += " (bad key)"
+                elif r.status_code == 422:
+                    detail += " (no games — OK)"
+                check("The Odds API", ok, detail)
+            except Exception as e:
+                check("The Odds API", False, str(e)[:80])
+        else:
+            check("The Odds API", False, "No API key")
+
+        # SportsGameOdds (NBA)
+        if sgo_key:
+            try:
+                r = requests.get(
+                    "https://api.sportsgameodds.com/v2/events?leagueID=NBA",
+                    headers={"x-api-key": sgo_key},
+                    timeout=10,
+                )
+                check("SportsGameOdds (NBA)", r.ok, f"HTTP {r.status_code}")
+            except Exception as e:
+                check("SportsGameOdds (NBA)", False, str(e)[:80])
+
+            # WNBA tier check
+            try:
+                r2 = requests.get(
+                    "https://api.sportsgameodds.com/v2/events?leagueID=WNBA",
+                    headers={"x-api-key": sgo_key},
+                    timeout=10,
+                )
+                data = r2.json()
+                if data.get("success") is False and data.get("error"):
+                    check("SportsGameOdds (WNBA)", False, data["error"], warn=True)
+                elif r2.ok:
+                    check("SportsGameOdds (WNBA)", True, f"HTTP {r2.status_code}")
+                else:
+                    check("SportsGameOdds (WNBA)", False, f"HTTP {r2.status_code}")
+            except Exception as e:
+                check("SportsGameOdds (WNBA)", False, str(e)[:80], warn=True)
+        else:
+            check("SportsGameOdds (NBA)", False, "No API key")
+
+    # ── 3. ZO.SPACE ROUTES ──
+    if not quick and not json_out:
+        print("\n── Zo.Space Routes ──")
+
+    if not quick:
+        route_checks = [
+            ("/api/tc (NBA)", "https://true.zo.space/api/tc?sport=NBA&mode=live-stats"),
+            ("/api/tc (WNBA)", "https://true.zo.space/api/tc?sport=WNBA&mode=live-stats"),
+            ("/api/daily-log", "https://true.zo.space/api/daily-log"),
+            ("/api/combos", "https://true.zo.space/api/combos"),
+            ("/api/dk-lines", "https://true.zo.space/api/dk-lines"),
+        ]
+        for name, url in route_checks:
+            try:
+                r = requests.get(url, timeout=20, headers={"Accept": "application/json"})
+                data = r.json()
+                ok = not data.get("error") and r.ok
+                check(name, ok, f"HTTP {r.status_code}" if ok else str(data.get("error", f"HTTP {r.status_code}"))[:60])
+            except Exception as e:
+                check(name, False, str(e)[:80])
+
+    # ── 4. LOCAL SERVICES ──
+    if not quick and not json_out:
+        print("\n── Local Services ──")
+
+    if not quick:
+        # Streamlit
+        streamlit_ok = False
+        for port in [8507, 8510, 8501]:
+            try:
+                r = requests.get(f"http://localhost:{port}", timeout=5)
+                check(f"Streamlit :{port}", True, f"HTTP {r.status_code}")
+                streamlit_ok = True
+                break
+            except Exception:
                 continue
-            import shutil
-            shutil.move(str(src), str(dst))
-            print(f"  {ok(f'Moved {stale} → _archive/')}")
-        print(f"  {ok('Purge complete')}")
-    
-    # ── Report file ─────────────────────────────────────────────────
-    if do_report:
-        report_path = LOG_DIR / f"pipeline_health_{datetime.now().strftime('%Y%m%d_%H%M%S')}.md"
-        lines = []
-        lines.append("# TC Pipeline Health Report")
-        lines.append(f"**Generated:** {datetime.now().isoformat()}")
-        lines.append("")
-        lines.append("## API Keys")
-        lines.append(f"- The Odds API: `{odds_key[:8]}...` {'✓' if odds_key else '✗ MISSING'}")
-        lines.append(f"- SportsGameOdds: `{sgo_key[:8]}...` {'✓' if sgo_key else '✗ MISSING'}")
-        lines.append("")
-        lines.append("## API Connectivity")
-        lines.append(f"- Odds API: {'✓' if ok1 else '✗'} {msg1}")
-        lines.append(f"- SGO API: {'✓' if ok2 else '✗'} {msg2}")
-        lines.append(f"- ESPN API: {'✓' if ok3 else '✗'} {msg3}")
-        lines.append("")
-        lines.append("## Route Endpoints")
-        lines.append(f"- /api/tc diag: {'✓' if ok4 else '✗'}")
-        lines.append(f"- /api/tc WNBA: {'✓' if ok5 else '✗'}")
-        lines.append(f"- /api/tc live-stats: {'✓' if ok6 else '✗'}")
-        lines.append("")
-        lines.append("## WNBA Slate")
-        for g in games:
-            lines.append(f"- {g['away']} @ {g['home']}")
-        if not games:
-            lines.append("- No games returned")
-        lines.append("")
-        lines.append("## Logs")
-        lines.append(f"- {logs['dirs']} date dirs, {logs['files']} files, range {logs['date_range']}")
-        if logs["stale_dirs"]:
-            lines.append(f"- {len(logs['stale_dirs'])} stale dirs: {', '.join(logs['stale_dirs'])}")
-        lines.append("")
-        lines.append("## Pipeline Scripts")
-        for name, info in scripts.items():
-            lines.append(f"- `{name}`: {'✓' if info['exists'] else '✗'} — {info['desc']}")
-        
-        report_path.write_text("\n".join(lines))
-        print(f"\n  {ok(f'Report saved: {report_path}')}")
-    
-    print(header("DIAGNOSTIC COMPLETE"))
-    return 0
+        if not streamlit_ok:
+            check("Streamlit", False, "Not running on any port")
+
+        # DK Combos Engine
+        try:
+            r = requests.get(
+                "https://dk-combos-engine-true.zocomputer.io/combos?sport=WNBA",
+                timeout=10,
+            )
+            check("DK Combos Engine", r.ok, f"HTTP {r.status_code}")
+        except Exception as e:
+            check("DK Combos Engine", False, str(e)[:80])
+
+    # ── 5. PIPELINE SCRIPTS ──
+    if not json_out:
+        print("\n── Pipeline Scripts ──")
+
+    scripts = [
+        "daily_picks.py",
+        "consensus_engine.py",
+        "build_pregame_combos.py",
+    ]
+    for s in scripts:
+        p = PROJ_DIR / s
+        check(s, p.exists(), "OK" if p.exists() else "MISSING")
+
+    # ── 6. DAILY LOG FRESHNESS ──
+    if not json_out:
+        print("\n── Daily Log ──")
+
+    last_run_file = LOG_DIR / "last_run.json"
+    if last_run_file.exists():
+        try:
+            last = json.loads(last_run_file.read_text())
+            ts = last.get("timestamp", "")[:19]
+            games = last.get("games_logged", 0)
+            picks = last.get("picks_logged", 0)
+            errors = last.get("errors", [])
+            age_h = (datetime.now(timezone.utc) - datetime.fromisoformat(last["timestamp"])).total_seconds() / 3600
+            fresh = age_h < 24
+            detail = f"{ts} — {games} games, {picks} picks ({age_h:.1f}h ago)"
+            if errors:
+                detail += f" | {len(errors)} errors"
+            check("Last run", fresh, detail, warn=not fresh)
+        except Exception as e:
+            check("Last run", False, str(e)[:80])
+    else:
+        check("Last run", False, "No last_run.json found")
+
+    # Recent logs
+    try:
+        date_dirs = sorted(
+            [d for d in LOG_DIR.iterdir() if d.is_dir() and len(d.name) == 10 and d.name[4] == "-"],
+            reverse=True,
+        )[:7]
+        for d in date_dirs:
+            files = list(d.iterdir())
+            picks_file = d / "picks.json"
+            if picks_file.exists():
+                try:
+                    picks = json.loads(picks_file.read_text())
+                    n = len(picks) if isinstance(picks, list) else 0
+                    check(f"  {d.name}", True, f"{n} picks, {len(files)} files")
+                except Exception:
+                    check(f"  {d.name}", True, f"{len(files)} files")
+            else:
+                check(f"  {d.name}", True, f"{len(files)} files (no picks)")
+    except Exception as e:
+        check("Daily log dirs", False, str(e)[:80])
+
+    # ── 7. NFL ENGINE ──
+    if not json_out:
+        print("\n── NFL Engine ──")
+
+    nfl_script = WORKSPACE / "archive" / "nfl-backtest-data" / "sportsdata_nfl_engine_v3.py"
+    check("Engine script", nfl_script.exists(), "OK" if nfl_script.exists() else "MISSING")
+
+    today = datetime.now().strftime("%Y-%m-%d")
+    nfl_data = LOG_DIR / today / "nfl_full_2026REG_W1.json"
+    if nfl_data.exists():
+        try:
+            data = json.loads(nfl_data.read_text())
+            sd = data.get("sportsdata", {})
+            games = len(sd.get("games", []))
+            props = len(sd.get("props", []))
+            check("W1 data pull", games > 0, f"{games} games, {props} props from SportsData.io")
+        except Exception as e:
+            check("W1 data pull", False, str(e)[:80])
+    else:
+        check("W1 data pull", False, "No NFL data file today", warn=True)
+
+    # ── 8. WORKSPACE CLEANLINESS ──
+    if not json_out:
+        print("\n── Workspace Cleanliness ──")
+
+    stale = []
+    now = time.time()
+    for f in WORKSPACE.iterdir():
+        if f.is_file() and f.suffix in (".py", ".md", ".csv", ".json"):
+            try:
+                age_days = (now - f.stat().st_mtime) / 86400
+                if age_days > 30:
+                    stale.append(f.name)
+            except Exception:
+                pass
+
+    if stale:
+        check("Root workspace", False, f"{len(stale)} stale files: {', '.join(stale[:5])}")
+    else:
+        check("Root workspace", True, "Clean — no stale files")
+
+    # ── 9. SUMMARY ──
+    if not json_out:
+        total = len(ALL_GOOD) + len(WARNINGS) + len(FAILURES)
+        print("\n" + "=" * 60)
+        if not FAILURES and not WARNINGS:
+            print("  🟢 HEALTHY — All checks passed")
+        elif not FAILURES and WARNINGS:
+            print(f"  🟡 DEGRADED — {len(WARNINGS)} warning(s)")
+        elif FAILURES:
+            print(f"  🔴 UNHEALTHY — {len(FAILURES)} failure(s), {len(WARNINGS)} warning(s)")
+        print(f"  ✅ {len(ALL_GOOD)} passed  |  ⚠️ {len(WARNINGS)} warnings  |  ❌ {len(FAILURES)} failures")
+        if WARNINGS:
+            print("\n  Warnings:")
+            for w in WARNINGS:
+                print(f"    ⚠️  {w}")
+        if FAILURES:
+            print("\n  Failures:")
+            for f in FAILURES:
+                print(f"    ❌  {f}")
+        print("=" * 60)
+
+    # JSON output
+    if json_out:
+        result = {
+            "status": "HEALTHY" if not FAILURES else "DEGRADED" if not FAILURES else "UNHEALTHY",
+            "timestamp": datetime.now(timezone.utc).isoformat(),
+            "passed": len(ALL_GOOD),
+            "warnings": len(WARNINGS),
+            "failures": len(FAILURES),
+            "warning_details": WARNINGS,
+            "failure_details": FAILURES,
+        }
+        if FAILURES:
+            result["status"] = "UNHEALTHY"
+        elif WARNINGS:
+            result["status"] = "DEGRADED"
+        print(json.dumps(result, indent=2))
+
 
 if __name__ == "__main__":
-    sys.exit(main())
+    main()

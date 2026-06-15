@@ -1,5 +1,5 @@
 """
-Build DK pregame combos using TC projections + live DK lines.
+Build DK pregame combos using TC projections + Multi-Source Consensus Lines.
 
 Inputs:
 - TC projections from /api/tc (sport, away, home, mode=project)
@@ -14,6 +14,7 @@ Outputs:
 import json
 import os
 import re
+import sys
 import requests
 from datetime import datetime
 from pathlib import Path
@@ -21,6 +22,9 @@ from pathlib import Path
 SGO_KEY = os.environ.get("SGO_API_KEY", os.environ.get("SPORTSGAMEODDS_API_KEY", ""))
 ODDS_KEY = os.environ.get("ODDS_API_KEY", os.environ.get("THEODDSAPI", ""))
 API_BASE = os.environ.get("API_BASE", "https://true.zo.space")
+
+# ── Multi-source consensus engine ──────────────────────
+sys.path.insert(0, "/home/workspace/Projects")
 
 # ── Load secrets from /root/.zo/secrets.env if not in env ──
 SECRETS_FILE = Path("/root/.zo/secrets.env")
@@ -48,6 +52,8 @@ ODDS_STAT_REVERSE = {
     "player_assists": "assists", "player_threes": "threes",
     "player_steals": "steals", "player_blocks": "blocks",
 }
+
+BOOK_PRIORITY = ["draftkings", "fanduel", "betmgm", "caesars", "fanatics", "bovada"]
 
 # ── Team name normalizers ──────────────────────────────────
 WNBA_TEAM_NORM = {
@@ -150,22 +156,27 @@ def odds_api_player_lines(event_id: str, sport: str):
     r = requests.get(
         f"https://api.the-odds-api.com/v4/sports/{sport_path}/events/{event_id}/odds",
         params={"apiKey": ODDS_KEY, "regions": "us", "markets": ODDS_MARKETS,
-                "oddsFormat": "american", "bookmakers": "draftkings"},
+                "oddsFormat": "american"},
         timeout=20)
     r.raise_for_status()
     return r.json()
 
-def extract_dk_lines_oddsapi(odds_data: dict) -> dict:
-    """Pull DK player-prop OU lines from Odds API per-event response."""
-    out = {"players": {}, "game_total": None, "ml_home": None, "ml_away": None}
-    for bm in odds_data.get("bookmakers", []):
-        if bm.get("key") != "draftkings":
+def extract_dk_lines_oddsapi_multi(odds_data: dict) -> dict:
+    out = {"players": {}, "game_total": None, "ml_home": None, "ml_away": None, "book_used": {}}
+    avail = {bm.get("key") for bm in odds_data.get("bookmakers", []) if bm.get("key")}
+    books = [b for b in BOOK_PRIORITY if b in avail]
+    by_book = {}
+    for bk_key in BOOK_PRIORITY:
+        if bk_key not in avail:
             continue
+        bm = next((b for b in odds_data["bookmakers"] if b.get("key") == bk_key), None)
+        if not bm:
+            continue
+        book_players = {}
         for market in bm.get("markets", []):
             mkey = market.get("key", "")
             stat = ODDS_STAT_REVERSE.get(mkey)
             if stat:
-                # Group outcomes by player name, collecting both Over and Under prices
                 player_outcomes = {}
                 for outcome in market.get("outcomes", []):
                     name = outcome.get("description") or outcome.get("name", "")
@@ -183,15 +194,26 @@ def extract_dk_lines_oddsapi(odds_data: dict) -> dict:
                     else:
                         player_outcomes[name]["under_odds"] = price
                 for name, data in player_outcomes.items():
-                    out["players"].setdefault(name, {})[stat] = data
+                    book_players.setdefault(name, {})[stat] = data
             elif mkey == "totals":
                 for outcome in market.get("outcomes", []):
                     if outcome.get("name") == "Over":
-                        out["game_total"] = outcome.get("point")
+                        if not out["game_total"]:
+                            out["game_total"] = outcome.get("point")
             elif mkey == "h2h":
-                for outcome in market.get("outcomes", []):
-                    if outcome.get("name") == outcome.get("description"):
-                        pass  # team-specific ML
+                pass
+        by_book[bk_key] = book_players
+    
+    collected_names = set()
+    for bk_key in books:
+        for name, stats in by_book.get(bk_key, {}).items():
+            norm_name = name.lower().replace("'", "").replace(",", "").strip()
+            for stat, data in stats.items():
+                key = (norm_name, stat)
+                if key not in collected_names:
+                    collected_names.add(key)
+                    out["players"].setdefault(name, {})[stat] = data
+                    out["book_used"][(name, stat)] = bk_key
     return out
 
 # ── TC Projection + Combo Builder ──────────────────────────
@@ -212,7 +234,7 @@ def build_combos(sport: str, away: str, home: str) -> dict:
     print(f"  -> {len(valid)} TC valid props")
 
     league = sport.upper()
-    dk = {"players": {}, "game_total": None, "ml_home": None, "ml_away": None}
+    lines = {"players": {}, "game_total": None, "ml_home": None, "ml_away": None, "book_used": {}}
     use_odds_api = False
 
     if league == "NBA":
@@ -228,8 +250,8 @@ def build_combos(sport: str, away: str, home: str) -> dict:
             print(f"  No SGO event matched {away}@{home} — trying Odds API fallback")
             use_odds_api = True
         else:
-            dk = extract_dk_lines_sgo(ev.get("odds", {}))
-            print(f"  -> {len(dk['players'])} players, total={dk['game_total']}")
+            lines = extract_dk_lines_sgo(ev.get("odds", {}))
+            print(f"  -> {len(lines['players'])} players, total={lines['game_total']}")
 
     elif league == "WNBA":
         print(f"  Fetching Odds API events for WNBA...")
@@ -237,30 +259,16 @@ def build_combos(sport: str, away: str, home: str) -> dict:
 
     if use_odds_api:
         try:
-            oapi_events = odds_api_events(league)
-            print(f"  -> {len(oapi_events)} Odds API events")
-            ev = None
-            # Match by team name (Odds API uses full names)
-            for e in oapi_events:
-                away_name = e.get("away_team", "")
-                home_name = e.get("home_team", "")
-                if team_contains(away_name, away, league) and team_contains(home_name, home, league):
-                    ev = e; break
-            if not ev:
-                print(f"  No Odds API event matched {away}@{home}")
-                return {"sport": sport, "away": away, "home": home,
-                        "legs": [], "qualified": [], "note": "no event"}
-            print(f"  -> Matched: {ev.get('away_team')} @ {ev.get('home_team')}")
-            eid = ev.get("id")
-            oapi_lines = odds_api_player_lines(eid, league)
-            dk = extract_dk_lines_oddsapi(oapi_lines)
-            print(f"  -> {len(dk['players'])} players with DK props, total={dk['game_total']}")
+            print(f"  Fetching multi-source consensus for {league}...")
+            consensus = fetch_consensus_for_matchup(league, away, home)
+            lines = consensus
+            print(f"  -> {len(lines['players'])} players, total={lines['game_total']}")
         except Exception as e:
             print(f"  Odds API failed: {e}")
             return {"sport": sport, "away": away, "home": home,
                     "legs": [], "qualified": [], "note": f"odds_api_error: {e}"}
 
-    if not dk or not dk.get("players"):
+    if not lines or not lines.get("players"):
         return {"sport": sport, "away": away, "home": home,
                 "legs": [], "qualified": [], "note": "no DK player lines"}
 
@@ -272,7 +280,7 @@ def build_combos(sport: str, away: str, home: str) -> dict:
         if not stat: continue
 
         dk_player = None
-        for dk_name, dk_stats in dk["players"].items():
+        for dk_name, dk_stats in lines["players"].items():
             if match_player_name(player_name, dk_name):
                 dk_player = dk_stats
                 break
@@ -280,6 +288,8 @@ def build_combos(sport: str, away: str, home: str) -> dict:
             continue
 
         line = dk_player[stat]["line"]
+        consensus_src = dk_player[stat].get("consensus_source")
+        consensus_sources = dk_player[stat].get("consensus_sources")
         tc_proj = p.get("tc_projection") or p.get("tc_target")
         if tc_proj is None: continue
 
@@ -304,6 +314,8 @@ def build_combos(sport: str, away: str, home: str) -> dict:
             "edge": edge,
             "threshold": p.get("threshold"),
             "qualifies_edge": edge >= min_edge,
+            "consensus_source": consensus_src,
+            "consensus_sources": consensus_sources,
         })
 
     legs.sort(key=lambda x: -abs(x["edge"]))
@@ -315,9 +327,9 @@ def build_combos(sport: str, away: str, home: str) -> dict:
     return {
         "sport": sport, "away": away, "home": home,
         "tc_total_picks": len(valid),
-        "dk_game_total": dk["game_total"],
-        "dk_ml_home": dk["ml_home"],
-        "dk_ml_away": dk["ml_away"],
+        "dk_game_total": lines["game_total"],
+        "dk_ml_home": lines["ml_home"],
+        "dk_ml_away": lines["ml_away"],
         "matched_legs": len(legs),
         "qualified_legs": len(qualified),
         "legs": legs,
@@ -358,31 +370,36 @@ def write_report(result: dict, out_md: Path, out_json: Path) -> None:
 
 
 if __name__ == "__main__":
-    today_games = [
-        ("NBA", "NYK", "SAS"),
-        ("WNBA", "IND", "CON"),
-        ("WNBA", "MIN", "LV"),
-        ("WNBA", "DAL", "POR"),
-        ("WNBA", "LA", "PHX"),
-    ]
+    # Auto-detect today's slate from the TC API for all sports
+    sports_order = ["NBA", "WNBA", "NHL", "MLB", "SO"]
     summary = []
-    for sport, away, home in today_games:
+    for sport in sports_order:
         try:
-            r = build_combos(sport, away, home)
+            # Fetch today's slate for the sport
+            r = requests.get(f"{API_BASE}/api/tc",
+                params={"sport": sport, "mode": "slate"},
+                headers={"Accept": "application/json"}, timeout=120)
+            r.raise_for_status()
+            slate = r.json()
+            for away, home in slate.get("games", []):
+                r = build_combos(sport, away, home)
+                safe = f"{away}_{home}".lower()
+                write_report(r, LOG_DIR / f"combos_{safe}.md", LOG_DIR / f"combos_{safe}.json")
+                summary.append({
+                    "matchup": f"{away}@{home}", "sport": sport,
+                    "matched": r.get("matched_legs", 0),
+                    "qualified": r.get("qualified_legs", 0),
+                    "dk_total": r.get("dk_game_total"),
+                    "note": r.get("note") or r.get("error", ""),
+                })
         except Exception as e:
             print(f"  ERROR: {e}")
-            r = {"sport": sport, "away": away, "home": home,
-                 "legs": [], "qualified": [], "error": str(e)}
-        safe = f"{away}_{home}".lower()
-        write_report(r, LOG_DIR / f"combos_{safe}.md", LOG_DIR / f"combos_{safe}.json")
-        summary.append({
-            "matchup": f"{away}@{home}", "sport": sport,
-            "matched": r.get("matched_legs", 0),
-            "qualified": r.get("qualified_legs", 0),
-            "dk_total": r.get("dk_game_total"),
-            "note": r.get("note") or r.get("error", ""),
-        })
-        print()
+            summary.append({
+                "matchup": "", "sport": sport,
+                "matched": 0, "qualified": 0,
+                "dk_total": None,
+                "note": str(e),
+            })
     (LOG_DIR / "combos_summary.json").write_text(json.dumps(summary, indent=2))
     print("=== COMBOS SUMMARY ===")
     print(json.dumps(summary, indent=2))

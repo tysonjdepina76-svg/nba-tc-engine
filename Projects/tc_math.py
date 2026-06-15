@@ -1,3 +1,4 @@
+# TC — Triple Conservative — Trademark June 2026 — All rights reserved.
 """
 tc_math.py — Triple Conservative math helpers (the actual TC math the Gemini
 docs call out by name).
