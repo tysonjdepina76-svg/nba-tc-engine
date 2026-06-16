@@ -61,7 +61,7 @@
 - `Daily_Log/last_run.json` — Latest run summary
 - `Daily_Log/last_run_soccer.json` — Soccer run summary
 
-## Automations (8 active)
+## Automations (10 active)
 | Time (ET) | Name | Status |
 |-----------|------|--------|
 | 1:00 PM | Slate Capture (Pre-Injury) | ✅ |
@@ -70,7 +70,9 @@
 | 5:00 PM | WNBA Pre-Tip Update | ✅ |
 | 6:30 PM | Final Pre-Tip Capture + Cleanup | ✅ |
 | 8:30/10:30 PM + 12:30 AM | Boxscore Capture (Halftime + Final) | ✅ |
+| 2:00 AM | Daily Backtest (Odds API + ESPN settlement) | ✅ |
 | 4:00 AM | Daily System Maintenance | ✅ |
+| Mon 8:00 AM | Weekly 30-Day Backtest Rollup | ✅ |
 | Mon 9:00 AM | Weekly System Health Check | ✅ |
 
 ## Key Rules
