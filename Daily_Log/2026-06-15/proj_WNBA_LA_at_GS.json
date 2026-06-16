@@ -5,7 +5,7 @@
   "away_team": "LA",
   "home_team": "GS",
   "source": "live ESPN WNBA roster/stat APIs",
-  "timestamp": "2026-06-16T03:29:52.341Z",
+  "timestamp": "2026-06-16T03:30:41.728Z",
   "injury_source": "ESPN WNBA injuries \u00b7 15 teams \u00b7 36 players",
   "injury_counts": {
     "away": 1,
@@ -23,18 +23,18 @@
     "total": 153.5,
     "spread": 17.5,
     "away_spread": 17.5,
-    "home_spread": -17.5,
+    "home_spread": -16.5,
     "spread_pick": "GS",
     "away_ml": 3500,
     "home_ml": -10000,
     "ml_source": "Best across DK/FD/BetMGM",
     "bookmaker_breakdown": {
       "DK": {
-        "total": 152.5,
-        "away_ml": 3000,
-        "home_ml": -20000,
-        "away_spread": 17.5,
-        "home_spread": -17.5,
+        "total": 153.5,
+        "away_ml": 2500,
+        "home_ml": -15000,
+        "away_spread": 16.5,
+        "home_spread": -16.5,
         "book": "draftkings"
       },
       "FD": {
@@ -55,9 +55,9 @@
       }
     },
     "best_books": {
-      "total": "BetMGM",
+      "total": "DK",
       "ml": "BetMGM",
-      "spread": "DK"
+      "spread": "FD"
     }
   },
   "assessment": {
@@ -6172,27 +6172,27 @@
   "odds_api_lines": {
     "game_odds": {
       "h2h": {
-        "Golden State Valkyries": 1.0,
-        "Los Angeles Sparks": 31.0
+        "Golden State Valkyries": 1.01,
+        "Los Angeles Sparks": 26.0
       },
       "spreads": {
         "Golden State Valkyries": {
-          "point": -17.5,
-          "price": 1.83
+          "point": -16.5,
+          "price": 1.87
         },
         "Los Angeles Sparks": {
-          "point": 17.5,
-          "price": 1.91
+          "point": 16.5,
+          "price": 1.87
         }
       },
       "totals": {
         "Over": {
-          "point": 152.5,
-          "price": 1.83
+          "point": 153.5,
+          "price": 1.95
         },
         "Under": {
-          "point": 152.5,
-          "price": 1.91
+          "point": 153.5,
+          "price": 1.8
         }
       }
     },
@@ -6208,28 +6208,24 @@
       },
       "Janelle Salaun": {
         "points": 13.5,
-        "rebounds": 4.5,
+        "rebounds": 3.5,
         "threes": 2.5
-      },
-      "Kelsey Plum": {
-        "points": 13.5,
-        "threes": 1.5
-      },
-      "Cameron Brink": {
-        "points": 11.5,
-        "threes": 0.5
-      },
-      "Gabby Williams": {
-        "points": 11.5,
-        "threes": 0.5
       },
       "Nneka Ogwumike": {
         "points": 11.5,
         "rebounds": 9.5,
         "threes": 1.5
       },
-      "Rae Burrell": {
+      "Gabby Williams": {
         "points": 11.5,
+        "threes": 0.5
+      },
+      "Cameron Brink": {
+        "points": 10.5,
+        "threes": 0.5
+      },
+      "Rae Burrell": {
+        "points": 10.5,
         "threes": 0.5
       },
       "Cecilia Zandalasini": {
@@ -6240,12 +6236,15 @@
         "points": 7.5,
         "threes": 0.5
       },
-      "Kiah Stokes": {
-        "rebounds": 5.5
-      },
       "Dearica Hamby": {
         "rebounds": 5.5,
         "threes": 0.5
+      },
+      "Kiah Stokes": {
+        "rebounds": 5.5
+      },
+      "Kelsey Plum": {
+        "threes": 1.5
       },
       "Kayla Thornton": {
         "threes": 0.5
@@ -6254,7 +6253,7 @@
     "player_count": 13,
     "source": "odds_api",
     "book": "draftkings",
-    "fetched_at": "2026-06-16T03:29:52.582027+00:00"
+    "fetched_at": "2026-06-16T03:30:41.893315+00:00"
   },
   "consensus": {
     "players": {
@@ -6579,6 +6578,6 @@
     "player_count": 13,
     "source": "odds_api",
     "fetched_at": "2026-06-16T03:29:52.799216+00:00",
-    "_from_cache": false
+    "_from_cache": true
   }
 }

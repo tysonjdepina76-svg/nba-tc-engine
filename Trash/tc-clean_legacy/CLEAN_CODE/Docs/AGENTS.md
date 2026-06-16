@@ -1,7 +1,7 @@
 # AGENTS.md — TC Workspace (Clean, Integrated)
 
 ## Overview
-Single source of truth for the **Triple Conservative (TC) sports betting system**. NBA + WNBA + NCAAB + MLB + NHL + **NFL (2026)**.
+Single source of truth for the **Triple Conservative (TC) sports betting system**. NBA + WNBA + MLB + NHL + NCAAB + **NFL (2026)**.
 
 ## Components
 
