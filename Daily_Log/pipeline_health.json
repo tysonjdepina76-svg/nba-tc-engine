@@ -1,8 +1,8 @@
 {
-  "timestamp": "2026-06-16T03:29:57.937495+00:00",
-  "local_time": "2026-06-15 22:29:43 ET",
+  "timestamp": "2026-06-16T04:47:41.596552+00:00",
+  "local_time": "2026-06-15 23:47:25 ET",
   "status": "HEALTHY",
-  "checks_passed": 7,
+  "checks_passed": 8,
   "warnings": 0,
   "failures": 0,
   "services_repaired": 2,
@@ -10,6 +10,7 @@
   "all_ok": [
     "Daily Picks: all sports generated",
     "Pregame Combos: built",
+    "Soccer TC Engine: completed",
     "Output 'picks_csv': present",
     "Output 'picks_json': present",
     "Output 'last_run': present",
@@ -20,121 +21,175 @@
   "failures_list": [],
   "log": [
     {
-      "time": "22:29:43",
+      "time": "23:47:25",
       "level": "OK",
       "source": "Secrets",
       "msg": "3 keys loaded"
     },
     {
-      "time": "22:29:43",
+      "time": "23:47:25",
       "level": "OK",
       "source": "API_KEY",
       "msg": "The Odds API: 0ba1...d130"
     },
     {
-      "time": "22:29:43",
+      "time": "23:47:25",
       "level": "OK",
       "source": "API_KEY",
       "msg": "SportsGameOdds: 304f...0c4d"
     },
     {
-      "time": "22:29:43",
+      "time": "23:47:25",
+      "level": "OK",
+      "source": "ESPN",
+      "msg": "HTTP 200"
+    },
+    {
+      "time": "23:47:25",
+      "level": "OK",
+      "source": "Odds API",
+      "msg": "HTTP 200 (5899 req left)"
+    },
+    {
+      "time": "23:47:25",
+      "level": "OK",
+      "source": "SGO",
+      "msg": "HTTP 200"
+    },
+    {
+      "time": "23:47:25",
+      "level": "FAIL",
+      "source": "TC Projections API",
+      "msg": "HTTP 503"
+    },
+    {
+      "time": "23:47:25",
+      "level": "OK",
+      "source": "NBA TC Dashboard",
+      "msg": "HTTP 200"
+    },
+    {
+      "time": "23:47:25",
+      "level": "OK",
+      "source": "Combos API",
+      "msg": "HTTP 200"
+    },
+    {
+      "time": "23:47:26",
+      "level": "OK",
+      "source": "World Cup Dashboard",
+      "msg": "HTTP 200"
+    },
+    {
+      "time": "23:47:26",
       "level": "OK",
       "source": "Streamlit Dashboard",
       "msg": "port 8510 HTTP 200"
     },
     {
-      "time": "22:29:43",
+      "time": "23:47:26",
       "level": "WARN",
       "source": "DK Combos Engine",
       "msg": "port 8515 HTTP 404"
     },
     {
-      "time": "22:29:43",
+      "time": "23:47:26",
       "level": "WARN",
       "source": "Soccer Combo Engine",
       "msg": "port 8516 HTTP 404"
     },
     {
-      "time": "22:29:43",
+      "time": "23:47:26",
       "level": "FIX",
       "source": "DK Combos",
       "msg": "Restarting on port 8515..."
     },
     {
-      "time": "22:29:47",
+      "time": "23:47:30",
       "level": "OK",
       "source": "DK Combos",
       "msg": "Restarted"
     },
     {
-      "time": "22:29:47",
+      "time": "23:47:30",
       "level": "FIX",
       "source": "Soccer Combos",
       "msg": "Restarting on port 8516..."
     },
     {
-      "time": "22:29:51",
+      "time": "23:47:34",
       "level": "OK",
       "source": "Soccer Combos",
       "msg": "Restarted"
     },
     {
-      "time": "22:29:51",
+      "time": "23:47:34",
       "level": "INFO",
       "source": "DailyPicks",
-      "msg": "Running for: WNBA, MLB"
+      "msg": "Running for: WNBA, MLB, WORLD CUP"
     },
     {
-      "time": "22:29:56",
+      "time": "23:47:36",
       "level": "OK",
       "source": "DailyPicks",
-      "msg": "Completed (28 lines)"
+      "msg": "Completed (11 lines)"
     },
     {
-      "time": "22:29:56",
+      "time": "23:47:36",
       "level": "INFO",
       "source": "Combos",
       "msg": "Building pregame combos..."
     },
     {
-      "time": "22:29:57",
+      "time": "23:47:36",
       "level": "OK",
       "source": "Combos",
       "msg": "Completed"
     },
     {
-      "time": "22:29:57",
+      "time": "23:47:36",
+      "level": "INFO",
+      "source": "Soccer",
+      "msg": "Running soccer TC engine..."
+    },
+    {
+      "time": "23:47:41",
+      "level": "OK",
+      "source": "Soccer",
+      "msg": "Completed"
+    },
+    {
+      "time": "23:47:41",
       "level": "OK",
       "source": "picks_csv",
-      "msg": "12021 bytes"
+      "msg": "98 bytes"
     },
     {
-      "time": "22:29:57",
+      "time": "23:47:41",
       "level": "OK",
       "source": "picks_json",
-      "msg": "60403 bytes"
+      "msg": "440 bytes"
     },
     {
-      "time": "22:29:57",
+      "time": "23:47:41",
       "level": "OK",
       "source": "last_run",
-      "msg": "2024 bytes"
+      "msg": "675 bytes"
     },
     {
-      "time": "22:29:57",
+      "time": "23:47:41",
       "level": "OK",
       "source": "slate_nba",
       "msg": "42433 bytes"
     },
     {
-      "time": "22:29:57",
+      "time": "23:47:41",
       "level": "OK",
       "source": "slate_wnba",
-      "msg": "107385 bytes"
+      "msg": "107504 bytes"
     },
     {
-      "time": "22:29:57",
+      "time": "23:47:41",
       "level": "OK",
       "source": "Purge",
       "msg": "Nothing to purge \u2014 workspace clean"
