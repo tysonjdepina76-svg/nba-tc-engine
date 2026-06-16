@@ -5,7 +5,7 @@
   "away_team": "LV",
   "home_team": "DAL",
   "source": "live ESPN WNBA roster/stat APIs",
-  "timestamp": "2026-06-15T23:59:42.192Z",
+  "timestamp": "2026-06-16T00:34:04.852Z",
   "injury_source": "ESPN WNBA injuries \u00b7 14 teams \u00b7 33 players",
   "injury_counts": {
     "away": 3,
@@ -15,37 +15,66 @@
   },
   "tc_combined": 145,
   "tc_line": 159,
-  "market_total": 177.5,
-  "edge": -18.5,
+  "market_total": 183.5,
+  "edge": -24.5,
   "signal": "UNDER",
-  "dk_total": 177.5,
+  "dk_total": 183.5,
   "odds": {
-    "total": 177.5,
-    "spread": -2.5,
-    "away_spread": -2.5,
-    "home_spread": 2.5,
-    "spread_pick": "LV",
-    "away_ml": -170,
-    "home_ml": 142,
-    "ml_source": "ESPN DraftKings embedded",
-    "bookmaker_breakdown": null,
-    "best_books": null
+    "total": 183.5,
+    "spread": 4.5,
+    "away_spread": 4.5,
+    "home_spread": -4.5,
+    "spread_pick": "DAL",
+    "away_ml": 150,
+    "home_ml": -184,
+    "ml_source": "Best across FD/DK/BetMGM",
+    "bookmaker_breakdown": {
+      "FD": {
+        "total": 183.5,
+        "away_ml": 142,
+        "home_ml": -184,
+        "away_spread": 4.5,
+        "home_spread": -4.5,
+        "book": "fanduel"
+      },
+      "DK": {
+        "total": 182.5,
+        "away_ml": 150,
+        "home_ml": -195,
+        "away_spread": 4.5,
+        "home_spread": -4.5,
+        "book": "draftkings"
+      },
+      "BetMGM": {
+        "total": 183.5,
+        "away_ml": 150,
+        "home_ml": -200,
+        "away_spread": 4.5,
+        "home_spread": -4.5,
+        "book": "betmgm"
+      }
+    },
+    "best_books": {
+      "total": "FD",
+      "ml": "DK",
+      "spread": "FD"
+    }
   },
   "assessment": {
     "tc_total": 145,
     "tc_line": 159,
-    "edge": -18.5,
+    "edge": -24.5,
     "signal": "UNDER",
     "total_lean": "UNDER",
     "spread_pick": "DAL",
-    "summary": "TC combined 145 vs DK 177.5 (edge -18.5) \u2192 lean UNDER. Spread: DAL.",
+    "summary": "TC combined 145 vs DK 183.5 (edge -24.5) \u2192 lean UNDER. Spread: DAL.",
     "roster_rule": "live mode uses current roster/stat/injury APIs only"
   },
   "game_assessment": {
     "total_lean": "UNDER",
     "spread_pick": "DAL",
     "roster_rule": "live mode uses current roster/stat/injury APIs only",
-    "summary": "TC combined 145 vs DK 177.5 (edge -18.5) \u2192 lean UNDER."
+    "summary": "TC combined 145 vs DK 183.5 (edge -24.5) \u2192 lean UNDER."
   },
   "roster_counts": {
     "away": 12,
@@ -1937,7 +1966,7 @@
     },
     "rows": [
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -1959,7 +1988,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -1981,7 +2010,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -2003,7 +2032,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -2025,7 +2054,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -2047,7 +2076,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -2069,7 +2098,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -2091,7 +2120,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -2113,7 +2142,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -2135,7 +2164,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -2157,7 +2186,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -2179,7 +2208,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -2201,7 +2230,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -2223,7 +2252,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -2245,7 +2274,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -2267,7 +2296,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -2289,7 +2318,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -2311,7 +2340,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -2333,7 +2362,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -2355,7 +2384,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -2377,7 +2406,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -2399,7 +2428,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -2421,7 +2450,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -2443,7 +2472,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -2465,7 +2494,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -2487,7 +2516,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -2509,7 +2538,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -2531,7 +2560,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -2553,7 +2582,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -2575,7 +2604,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -2597,7 +2626,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -2619,7 +2648,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -2641,7 +2670,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -2663,7 +2692,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -2685,7 +2714,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -2707,7 +2736,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -2729,7 +2758,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -2751,7 +2780,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -2773,7 +2802,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -2795,7 +2824,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -2817,7 +2846,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -2839,7 +2868,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -2861,7 +2890,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -2883,7 +2912,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -2905,7 +2934,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -2927,7 +2956,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -2949,7 +2978,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -2971,7 +3000,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -2993,7 +3022,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -3015,7 +3044,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -3037,7 +3066,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -3059,7 +3088,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -3081,7 +3110,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -3103,7 +3132,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -3125,7 +3154,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -3147,7 +3176,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -3169,7 +3198,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -3191,7 +3220,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -3213,7 +3242,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -3235,7 +3264,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -3257,7 +3286,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -3279,7 +3308,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -3301,7 +3330,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -3323,7 +3352,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -3345,7 +3374,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -3367,7 +3396,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -3389,7 +3418,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -3411,7 +3440,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -3433,7 +3462,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -3455,7 +3484,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -3477,7 +3506,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -3499,7 +3528,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -3521,7 +3550,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -3543,7 +3572,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -3565,7 +3594,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -3587,7 +3616,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -3609,7 +3638,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -3631,7 +3660,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -3653,7 +3682,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -3675,7 +3704,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -3697,7 +3726,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -3719,7 +3748,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -3741,7 +3770,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -3763,7 +3792,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -3785,7 +3814,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -3807,7 +3836,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -3829,7 +3858,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -3851,7 +3880,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -3873,7 +3902,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -3895,7 +3924,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -3917,7 +3946,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -3939,7 +3968,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -3961,7 +3990,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -3983,7 +4012,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -4005,7 +4034,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -4027,7 +4056,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -4049,7 +4078,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -4071,7 +4100,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -4093,7 +4122,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -4115,7 +4144,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -4137,7 +4166,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -4159,7 +4188,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -4181,7 +4210,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -4203,7 +4232,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -4225,7 +4254,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -4247,7 +4276,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -4269,7 +4298,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -4291,7 +4320,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -4313,7 +4342,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -4335,7 +4364,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -4357,7 +4386,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -4379,7 +4408,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -4401,7 +4430,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -4423,7 +4452,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -4445,7 +4474,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -4467,7 +4496,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -4489,7 +4518,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -4511,7 +4540,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -4533,7 +4562,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -4555,7 +4584,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -4577,7 +4606,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -4599,7 +4628,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -4621,7 +4650,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -4643,7 +4672,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -4665,7 +4694,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -4687,7 +4716,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -4709,7 +4738,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -4731,7 +4760,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -4753,7 +4782,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -4775,7 +4804,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -4797,7 +4826,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -4819,7 +4848,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -4841,7 +4870,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -4863,7 +4892,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -4885,7 +4914,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -4907,7 +4936,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -4929,7 +4958,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -4951,7 +4980,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -4973,7 +5002,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -4995,7 +5024,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -5017,7 +5046,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -5039,7 +5068,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -5061,7 +5090,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -5083,7 +5112,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -5105,7 +5134,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -5127,7 +5156,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -5149,7 +5178,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -5171,7 +5200,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -5193,7 +5222,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -5215,7 +5244,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -5239,7 +5268,7 @@
     ],
     "valid": [
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -5261,7 +5290,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -5283,7 +5312,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -5305,7 +5334,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "LV",
@@ -5327,7 +5356,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -5349,7 +5378,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -5371,7 +5400,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -5393,7 +5422,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -5415,7 +5444,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -5437,7 +5466,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-15",
+        "date": "2026-06-16",
         "league": "WNBA",
         "game": "LV@DAL",
         "team": "DAL",
@@ -5463,7 +5492,7 @@
   },
   "valid_props": [
     {
-      "date": "2026-06-15",
+      "date": "2026-06-16",
       "league": "WNBA",
       "game": "LV@DAL",
       "team": "LV",
@@ -5485,7 +5514,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-15",
+      "date": "2026-06-16",
       "league": "WNBA",
       "game": "LV@DAL",
       "team": "LV",
@@ -5493,7 +5522,7 @@
       "role": "START",
       "stat": "3PM",
       "direction": "OVER",
-      "market_line": 1.5,
+      "market_line": 2.5,
       "tc_projection": 0.9,
       "tc_target": 0,
       "edge": 0.9,
@@ -5508,7 +5537,7 @@
       "consensus_source": "odds_api"
     },
     {
-      "date": "2026-06-15",
+      "date": "2026-06-16",
       "league": "WNBA",
       "game": "LV@DAL",
       "team": "LV",
@@ -5531,7 +5560,7 @@
       "consensus_source": "odds_api"
     },
     {
-      "date": "2026-06-15",
+      "date": "2026-06-16",
       "league": "WNBA",
       "game": "LV@DAL",
       "team": "LV",
@@ -5539,7 +5568,7 @@
       "role": "START",
       "stat": "3PM",
       "direction": "OVER",
-      "market_line": 2.5,
+      "market_line": 1.5,
       "tc_projection": 0.8,
       "tc_target": 0,
       "edge": 0.8,
@@ -5554,7 +5583,7 @@
       "consensus_source": "odds_api"
     },
     {
-      "date": "2026-06-15",
+      "date": "2026-06-16",
       "league": "WNBA",
       "game": "LV@DAL",
       "team": "DAL",
@@ -5562,7 +5591,7 @@
       "role": "START",
       "stat": "PTS",
       "direction": "OVER",
-      "market_line": 14.5,
+      "market_line": 13.5,
       "tc_projection": 10.1,
       "tc_target": 8,
       "edge": 2.1,
@@ -5576,7 +5605,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-15",
+      "date": "2026-06-16",
       "league": "WNBA",
       "game": "LV@DAL",
       "team": "DAL",
@@ -5599,7 +5628,7 @@
       "consensus_source": "odds_api"
     },
     {
-      "date": "2026-06-15",
+      "date": "2026-06-16",
       "league": "WNBA",
       "game": "LV@DAL",
       "team": "DAL",
@@ -5621,7 +5650,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-15",
+      "date": "2026-06-16",
       "league": "WNBA",
       "game": "LV@DAL",
       "team": "DAL",
@@ -5629,7 +5658,7 @@
       "role": "START",
       "stat": "PTS",
       "direction": "OVER",
-      "market_line": 19.5,
+      "market_line": 16.5,
       "tc_projection": 10.1,
       "tc_target": 8,
       "edge": 2.1,
@@ -5643,7 +5672,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-15",
+      "date": "2026-06-16",
       "league": "WNBA",
       "game": "LV@DAL",
       "team": "DAL",
@@ -5666,7 +5695,7 @@
       "consensus_source": "odds_api"
     },
     {
-      "date": "2026-06-15",
+      "date": "2026-06-16",
       "league": "WNBA",
       "game": "LV@DAL",
       "team": "DAL",
@@ -5735,78 +5764,76 @@
   "odds_api_lines": {
     "game_odds": {
       "h2h": {
-        "Dallas Wings": 2.42,
-        "Las Vegas Aces": 1.59
+        "Dallas Wings": 1.51,
+        "Las Vegas Aces": 2.5
       },
       "spreads": {
         "Dallas Wings": {
-          "point": 3.5,
-          "price": 1.87
+          "point": -4.5,
+          "price": 1.95
         },
         "Las Vegas Aces": {
-          "point": -3.5,
-          "price": 1.95
+          "point": 4.5,
+          "price": 1.8
         }
       },
       "totals": {
         "Over": {
-          "point": 177.5,
-          "price": 1.89
+          "point": 182.5,
+          "price": 1.87
         },
         "Under": {
-          "point": 177.5,
-          "price": 1.93
+          "point": 182.5,
+          "price": 1.87
         }
       }
     },
     "player_lines": {
       "Chelsea Gray": {
-        "assists": 6.5,
-        "points": 12.5,
+        "assists": 8.5,
+        "points": 9.5,
         "rebounds": 3.5,
-        "threes": 2.5
+        "threes": 1.5
       },
       "Jackie Young": {
-        "assists": 6.5,
-        "points": 17.5,
-        "rebounds": 4.5,
+        "assists": 7.5,
+        "points": 15.5,
+        "rebounds": 3.5,
         "threes": 1.5
       },
       "Paige Bueckers": {
-        "assists": 5.5,
-        "points": 19.5,
+        "assists": 6.5,
+        "points": 16.5,
         "rebounds": 3.5,
         "threes": 1.5
       },
       "Jessica Shepard": {
         "assists": 5.5,
-        "points": 11.5,
+        "points": 17.5,
         "rebounds": 11.5
       },
+      "Arike Ogunbowale": {
+        "assists": 4.5,
+        "points": 13.5,
+        "rebounds": 3.5,
+        "threes": 1.5
+      },
       "A'ja Wilson": {
-        "assists": 3.5,
-        "points": 25.5,
+        "points": 29.5,
         "rebounds": 9.5,
         "threes": 0.5
       },
-      "Arike Ogunbowale": {
-        "assists": 3.5,
-        "points": 14.5,
-        "rebounds": 2.5,
-        "threes": 1.5
-      },
       "Azzi Fudd": {
-        "points": 13.5,
+        "points": 11.5,
         "threes": 1.5
-      },
-      "NaLyssa Smith": {
-        "points": 10.5,
-        "rebounds": 7.5
       },
       "Jewell Loyd": {
+        "points": 9.5,
+        "threes": 2.5
+      },
+      "NaLyssa Smith": {
         "points": 7.5,
-        "rebounds": 2.5,
-        "threes": 1.5
+        "rebounds": 6.5
       },
       "Aziaha James": {
         "points": 6.5
@@ -5815,194 +5842,146 @@
     "player_count": 10,
     "source": "odds_api",
     "book": "draftkings",
-    "fetched_at": "2026-06-15T23:59:42.335140+00:00"
+    "fetched_at": "2026-06-16T00:34:05.019767+00:00"
   },
   "consensus": {
     "players": {
-      "A'ja Wilson": {
+      "Chelsea Gray": {
         "assists": {
+          "consensus": 8.5,
+          "all_lines": [
+            8.5,
+            8.5
+          ],
+          "source_count": 2,
+          "best_book": "draftkings",
+          "draftkings": 8.5,
+          "fanduel": 8.5
+        },
+        "points": {
+          "consensus": 9.0,
+          "all_lines": [
+            8.5,
+            9.5
+          ],
+          "source_count": 2,
+          "best_book": "draftkings",
+          "draftkings": 9.5,
+          "fanduel": 8.5
+        },
+        "rebounds": {
           "consensus": 3.5,
           "all_lines": [
             3.5,
-            3.5,
-            3.5,
             3.5
           ],
-          "source_count": 4,
+          "source_count": 2,
           "best_book": "draftkings",
           "draftkings": 3.5,
-          "fanduel": 3.5,
-          "betrivers": 3.5,
-          "williamhill_us": 3.5
-        },
-        "points": {
-          "consensus": 25.5,
-          "all_lines": [
-            25.5,
-            25.5,
-            25.5,
-            26.5
-          ],
-          "source_count": 4,
-          "best_book": "draftkings",
-          "draftkings": 25.5,
-          "fanduel": 25.5,
-          "betrivers": 26.5,
-          "williamhill_us": 25.5
-        },
-        "rebounds": {
-          "consensus": 9.5,
-          "all_lines": [
-            9.5,
-            9.5,
-            9.5,
-            9.5
-          ],
-          "source_count": 4,
-          "best_book": "draftkings",
-          "draftkings": 9.5,
-          "fanduel": 9.5,
-          "betrivers": 9.5,
-          "williamhill_us": 9.5
+          "fanduel": 3.5
         },
         "threes": {
           "consensus": 1.5,
           "all_lines": [
-            0.5,
-            1.5,
             1.5,
             1.5
           ],
-          "source_count": 4,
+          "source_count": 2,
           "best_book": "draftkings",
           "draftkings": 1.5,
-          "fanduel": 0.5,
-          "betrivers": 1.5,
-          "williamhill_us": 1.5
+          "fanduel": 1.5
+        }
+      },
+      "Jackie Young": {
+        "assists": {
+          "consensus": 7.5,
+          "all_lines": [
+            7.5,
+            7.5
+          ],
+          "source_count": 2,
+          "best_book": "draftkings",
+          "draftkings": 7.5,
+          "fanduel": 7.5
+        },
+        "points": {
+          "consensus": 16.0,
+          "all_lines": [
+            15.5,
+            16.5
+          ],
+          "source_count": 2,
+          "best_book": "draftkings",
+          "draftkings": 15.5,
+          "fanduel": 16.5
+        },
+        "rebounds": {
+          "consensus": 4.0,
+          "all_lines": [
+            3.5,
+            4.5
+          ],
+          "source_count": 2,
+          "best_book": "draftkings",
+          "draftkings": 3.5,
+          "fanduel": 4.5
+        },
+        "threes": {
+          "consensus": 1.5,
+          "all_lines": [
+            1.5,
+            1.5
+          ],
+          "source_count": 2,
+          "best_book": "draftkings",
+          "draftkings": 1.5,
+          "fanduel": 1.5
         }
       },
       "Paige Bueckers": {
         "assists": {
-          "consensus": 5.5,
+          "consensus": 6.5,
           "all_lines": [
-            5.5,
-            5.5,
-            5.5,
-            5.5
+            6.5,
+            6.5
           ],
-          "source_count": 4,
+          "source_count": 2,
           "best_book": "draftkings",
-          "draftkings": 5.5,
-          "fanduel": 5.5,
-          "betrivers": 5.5,
-          "williamhill_us": 5.5
+          "draftkings": 6.5,
+          "fanduel": 6.5
         },
         "points": {
-          "consensus": 19.5,
+          "consensus": 16.0,
           "all_lines": [
-            18.5,
-            19.5,
-            19.5,
-            19.5
+            15.5,
+            16.5
           ],
-          "source_count": 4,
+          "source_count": 2,
           "best_book": "draftkings",
-          "draftkings": 19.5,
-          "fanduel": 19.5,
-          "betrivers": 18.5,
-          "williamhill_us": 19.5
+          "draftkings": 16.5,
+          "fanduel": 15.5
         },
         "rebounds": {
           "consensus": 3.5,
           "all_lines": [
             3.5,
-            3.5,
-            3.5,
             3.5
           ],
-          "source_count": 4,
+          "source_count": 2,
           "best_book": "draftkings",
           "draftkings": 3.5,
-          "fanduel": 3.5,
-          "betrivers": 3.5,
-          "williamhill_us": 3.5
+          "fanduel": 3.5
         },
         "threes": {
           "consensus": 1.5,
           "all_lines": [
             1.5,
-            1.5,
-            1.5,
             1.5
           ],
-          "source_count": 4,
+          "source_count": 2,
           "best_book": "draftkings",
           "draftkings": 1.5,
-          "fanduel": 1.5,
-          "betrivers": 1.5,
-          "williamhill_us": 1.5
-        }
-      },
-      "Chelsea Gray": {
-        "assists": {
-          "consensus": 6.5,
-          "all_lines": [
-            6.5,
-            6.5,
-            6.5,
-            6.5
-          ],
-          "source_count": 4,
-          "best_book": "draftkings",
-          "draftkings": 6.5,
-          "fanduel": 6.5,
-          "betrivers": 6.5,
-          "williamhill_us": 6.5
-        },
-        "points": {
-          "consensus": 11.5,
-          "all_lines": [
-            11.5,
-            11.5,
-            11.5,
-            13.5
-          ],
-          "source_count": 4,
-          "best_book": "draftkings",
-          "draftkings": 11.5,
-          "fanduel": 11.5,
-          "betrivers": 13.5,
-          "williamhill_us": 11.5
-        },
-        "rebounds": {
-          "consensus": 3.5,
-          "all_lines": [
-            3.5,
-            3.5,
-            3.5,
-            3.5
-          ],
-          "source_count": 4,
-          "best_book": "draftkings",
-          "draftkings": 3.5,
-          "fanduel": 3.5,
-          "betrivers": 3.5,
-          "williamhill_us": 3.5
-        },
-        "threes": {
-          "consensus": 2.5,
-          "all_lines": [
-            1.5,
-            2.5,
-            2.5,
-            2.5
-          ],
-          "source_count": 4,
-          "best_book": "draftkings",
-          "draftkings": 2.5,
-          "fanduel": 1.5,
-          "betrivers": 2.5,
-          "williamhill_us": 2.5
+          "fanduel": 1.5
         }
       },
       "Jessica Shepard": {
@@ -6010,315 +5989,234 @@
           "consensus": 5.5,
           "all_lines": [
             5.5,
-            5.5,
-            5.5,
             5.5
           ],
-          "source_count": 4,
+          "source_count": 2,
           "best_book": "draftkings",
           "draftkings": 5.5,
-          "fanduel": 5.5,
-          "betrivers": 5.5,
-          "williamhill_us": 5.5
+          "fanduel": 5.5
         },
         "points": {
-          "consensus": 12.5,
+          "consensus": 18.0,
           "all_lines": [
-            12.5,
-            12.5,
-            12.5,
-            12.5
+            17.5,
+            18.5
           ],
-          "source_count": 4,
+          "source_count": 2,
           "best_book": "draftkings",
-          "draftkings": 12.5,
-          "fanduel": 12.5,
-          "betrivers": 12.5,
-          "williamhill_us": 12.5
+          "draftkings": 17.5,
+          "fanduel": 18.5
         },
         "rebounds": {
-          "consensus": 10.5,
+          "consensus": 12.0,
           "all_lines": [
-            10.5,
-            10.5,
-            10.5,
-            10.5
+            11.5,
+            12.5
           ],
-          "source_count": 4,
+          "source_count": 2,
           "best_book": "draftkings",
-          "draftkings": 10.5,
-          "fanduel": 10.5,
-          "betrivers": 10.5,
-          "williamhill_us": 10.5
+          "draftkings": 11.5,
+          "fanduel": 12.5
         }
       },
       "Arike Ogunbowale": {
         "assists": {
-          "consensus": 3.5,
-          "all_lines": [
-            3.5,
-            3.5,
-            3.5,
-            3.5
-          ],
-          "source_count": 4,
-          "best_book": "draftkings",
-          "draftkings": 3.5,
-          "fanduel": 3.5,
-          "betrivers": 3.5,
-          "williamhill_us": 3.5
-        },
-        "points": {
-          "consensus": 14.5,
-          "all_lines": [
-            14.5,
-            14.5,
-            14.5,
-            14.5
-          ],
-          "source_count": 4,
-          "best_book": "draftkings",
-          "draftkings": 14.5,
-          "fanduel": 14.5,
-          "betrivers": 14.5,
-          "williamhill_us": 14.5
-        },
-        "rebounds": {
-          "consensus": 3.5,
-          "all_lines": [
-            3.5,
-            3.5,
-            3.5,
-            3.5
-          ],
-          "source_count": 4,
-          "best_book": "draftkings",
-          "draftkings": 3.5,
-          "fanduel": 3.5,
-          "betrivers": 3.5,
-          "williamhill_us": 3.5
-        },
-        "threes": {
-          "consensus": 1.5,
-          "all_lines": [
-            1.5,
-            1.5,
-            1.5,
-            1.5
-          ],
-          "source_count": 4,
-          "best_book": "draftkings",
-          "draftkings": 1.5,
-          "fanduel": 1.5,
-          "betrivers": 1.5,
-          "williamhill_us": 1.5
-        }
-      },
-      "Jackie Young": {
-        "assists": {
-          "consensus": 6.5,
-          "all_lines": [
-            6.5,
-            6.5,
-            6.5,
-            6.5
-          ],
-          "source_count": 4,
-          "best_book": "draftkings",
-          "draftkings": 6.5,
-          "fanduel": 6.5,
-          "betrivers": 6.5,
-          "williamhill_us": 6.5
-        },
-        "points": {
-          "consensus": 16.5,
-          "all_lines": [
-            16.5,
-            16.5,
-            16.5,
-            16.5
-          ],
-          "source_count": 4,
-          "best_book": "draftkings",
-          "draftkings": 16.5,
-          "fanduel": 16.5,
-          "betrivers": 16.5,
-          "williamhill_us": 16.5
-        },
-        "rebounds": {
           "consensus": 4.5,
           "all_lines": [
             4.5,
-            4.5,
-            4.5,
             4.5
           ],
-          "source_count": 4,
+          "source_count": 2,
           "best_book": "draftkings",
           "draftkings": 4.5,
-          "fanduel": 4.5,
-          "betrivers": 4.5,
-          "williamhill_us": 4.5
+          "fanduel": 4.5
         },
-        "threes": {
-          "consensus": 1.5,
-          "all_lines": [
-            1.5,
-            1.5,
-            1.5,
-            2.5
-          ],
-          "source_count": 4,
-          "best_book": "draftkings",
-          "draftkings": 1.5,
-          "fanduel": 2.5,
-          "betrivers": 1.5,
-          "williamhill_us": 1.5
-        }
-      },
-      "Jewell Loyd": {
         "points": {
-          "consensus": 7.5,
+          "consensus": 13.0,
           "all_lines": [
-            7.5,
-            7.5,
-            7.5
+            12.5,
+            13.5
           ],
-          "source_count": 3,
+          "source_count": 2,
           "best_book": "draftkings",
-          "draftkings": 7.5,
-          "betrivers": 7.5,
-          "williamhill_us": 7.5
+          "draftkings": 13.5,
+          "fanduel": 12.5
+        },
+        "rebounds": {
+          "consensus": 3.5,
+          "all_lines": [
+            3.5,
+            3.5
+          ],
+          "source_count": 2,
+          "best_book": "draftkings",
+          "draftkings": 3.5,
+          "fanduel": 3.5
         },
         "threes": {
           "consensus": 1.5,
           "all_lines": [
-            1.5,
-            1.5,
             1.5,
             1.5
           ],
-          "source_count": 4,
+          "source_count": 2,
           "best_book": "draftkings",
           "draftkings": 1.5,
-          "fanduel": 1.5,
-          "betrivers": 1.5,
-          "williamhill_us": 1.5
+          "fanduel": 1.5
+        }
+      },
+      "A'ja Wilson": {
+        "points": {
+          "consensus": 30.0,
+          "all_lines": [
+            29.5,
+            30.5
+          ],
+          "source_count": 2,
+          "best_book": "draftkings",
+          "draftkings": 29.5,
+          "fanduel": 30.5
         },
         "rebounds": {
+          "consensus": 10.0,
+          "all_lines": [
+            9.5,
+            10.5
+          ],
+          "source_count": 2,
+          "best_book": "draftkings",
+          "draftkings": 9.5,
+          "fanduel": 10.5
+        },
+        "threes": {
+          "consensus": 0.5,
+          "all_lines": [
+            0.5
+          ],
+          "source_count": 1,
+          "best_book": "draftkings",
+          "draftkings": 0.5
+        },
+        "assists": {
           "consensus": 2.5,
           "all_lines": [
             2.5
           ],
           "source_count": 1,
-          "best_book": "draftkings",
-          "draftkings": 2.5
+          "best_book": "fanduel",
+          "fanduel": 2.5
         }
       },
       "Azzi Fudd": {
         "points": {
-          "consensus": 13.5,
+          "consensus": 11.5,
           "all_lines": [
-            13.5,
-            13.5,
-            13.5,
-            14.5
+            11.5,
+            11.5
           ],
-          "source_count": 4,
+          "source_count": 2,
           "best_book": "draftkings",
-          "draftkings": 14.5,
-          "fanduel": 13.5,
-          "betrivers": 13.5,
-          "williamhill_us": 13.5
+          "draftkings": 11.5,
+          "fanduel": 11.5
         },
         "threes": {
           "consensus": 1.5,
           "all_lines": [
             1.5,
-            1.5,
-            1.5,
             1.5
           ],
-          "source_count": 4,
+          "source_count": 2,
           "best_book": "draftkings",
           "draftkings": 1.5,
-          "fanduel": 1.5,
-          "betrivers": 1.5,
-          "williamhill_us": 1.5
+          "fanduel": 1.5
+        }
+      },
+      "Jewell Loyd": {
+        "points": {
+          "consensus": 9.0,
+          "all_lines": [
+            8.5,
+            9.5
+          ],
+          "source_count": 2,
+          "best_book": "draftkings",
+          "draftkings": 9.5,
+          "fanduel": 8.5
         },
-        "rebounds": {
+        "threes": {
           "consensus": 2.5,
           "all_lines": [
+            2.5,
             2.5
           ],
-          "source_count": 1,
+          "source_count": 2,
           "best_book": "draftkings",
-          "draftkings": 2.5
+          "draftkings": 2.5,
+          "fanduel": 2.5
         }
       },
       "NaLyssa Smith": {
         "points": {
-          "consensus": 10.5,
+          "consensus": 8.0,
           "all_lines": [
-            10.5,
-            10.5,
-            10.5,
-            11.5
+            7.5,
+            8.5
           ],
-          "source_count": 4,
+          "source_count": 2,
           "best_book": "draftkings",
-          "draftkings": 10.5,
-          "fanduel": 10.5,
-          "betrivers": 11.5,
-          "williamhill_us": 10.5
+          "draftkings": 7.5,
+          "fanduel": 8.5
         },
         "rebounds": {
           "consensus": 6.5,
           "all_lines": [
             6.5,
-            6.5,
+            6.5
+          ],
+          "source_count": 2,
+          "best_book": "draftkings",
+          "draftkings": 6.5,
+          "fanduel": 6.5
+        }
+      },
+      "Aziaha James": {
+        "points": {
+          "consensus": 6.5,
+          "all_lines": [
             6.5,
             6.5
           ],
-          "source_count": 4,
+          "source_count": 2,
           "best_book": "draftkings",
           "draftkings": 6.5,
-          "fanduel": 6.5,
-          "betrivers": 6.5,
-          "williamhill_us": 6.5
+          "fanduel": 6.5
         }
       }
     },
-    "game_total": 176.5,
+    "game_total": 183.5,
     "available_books": [
       "draftkings",
       "fanduel",
       "betmgm",
       "fanatics",
       "bovada",
-      "betonlineag",
       "betrivers",
-      "lowvig",
       "williamhill_us",
-      "betus",
       "mybookieag"
     ],
     "all_books_seen": [
       "betmgm",
-      "betonlineag",
       "betrivers",
-      "betus",
       "bovada",
       "draftkings",
       "fanatics",
       "fanduel",
-      "lowvig",
       "mybookieag",
       "williamhill_us"
     ],
-    "player_count": 9,
+    "player_count": 10,
     "source": "odds_api",
-    "fetched_at": "2026-06-15T20:23:40.439146+00:00",
-    "_from_cache": true
+    "fetched_at": "2026-06-16T00:34:05.168714+00:00",
+    "_from_cache": false
   }
 }

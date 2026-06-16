@@ -6,7 +6,7 @@ One command that runs every check, repairs issues, generates picks/combos
 for ALL sports, purges old files, saves, and generates a daily report.
 
 Covers:
-  NBA, WNBA, MLB, NHL, WORLD CUP — consensus lines, TC projections, DK combos
+  WNBA, MLB, WORLD CUP — consensus lines, TC projections, DK combos
   Soccer stats: Goals, Assists, Shots, SOT, Corners, Tackles, Fouls, Cards, Passes
   Dashboard: Streamlit (8510), DK Combos (8515), Soccer Combos (8516)
 
@@ -51,7 +51,10 @@ PROJ_DIR = WORKSPACE / "Projects"
 SECRETS_FILE = Path("/root/.zo/secrets.env")
 
 API_BASE = os.environ.get("API_BASE", "https://true.zo.space")
-ALL_SPORTS = ["NBA", "WNBA", "MLB", "NHL", "WORLD CUP"]
+ALL_SPORTS = ["WNBA", "MLB", "WORLD CUP"]
+
+# NBA and NHL are gated behind disabled flag in /api/tc + /api/dk-lines.
+# To reactivate: remove the gate from those routes, then add back to this list.
 
 LOG = []  # [(timestamp, level, source, message)]
 
@@ -515,8 +518,8 @@ def main():
     parser = argparse.ArgumentParser(description="TC Pipeline Master — Self-Healing Daily Runner")
     parser.add_argument("--quick", action="store_true", help="Skip slow HTTP checks")
     parser.add_argument("--dry-run", action="store_true", help="Check only, no repairs or runs")
-    parser.add_argument("--sports", default="NBA,WNBA,MLB,NHL,WORLD CUP",
-                       help="Comma-separated sports list")
+    parser.add_argument("--sports", default="WNBA,MLB,WORLD CUP",
+                       help="Comma-separated sports list (e.g. WNBA,MLB,WORLD CUP). NBA and NHL are currently gated.")
     parser.add_argument("--no-push", action="store_true", help="Skip git push")
     parser.add_argument("--skip-combos", action="store_true", help="Skip combo building")
     args = parser.parse_args()

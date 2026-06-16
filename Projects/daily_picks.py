@@ -114,7 +114,8 @@ def extract_picks(projection, sport, matchup):
     picks = []
     valid_props = projection.get("valid_props", [])
     for p in valid_props:
-        if not p.get("valid"):
+        # MLB/WC/NHL props don't have "valid" key — they're pre-filtered by the engine
+        if "valid" in p and not p.get("valid"):
             continue
         picks.append({
             "date": now_et().strftime("%Y-%m-%d"),
@@ -136,8 +137,32 @@ def extract_picks(projection, sport, matchup):
             "actual": p.get("actual"),
             "result": p.get("result", "PENDING"),
         })
-    # For non-basketball sports: extract lines-only summary picks
-    if not picks and sport not in BASKETBALL:
+    # For NBA/WNBA: if no valid props but odds are available, add a TOTAL pick placeholder
+    if not picks and sport in BASKETBALL:
+        odds = projection.get("odds", {})
+        if odds.get("total") is not None:
+            picks.append({
+                "date": now_et().strftime("%Y-%m-%d"),
+                "league": sport,
+                "matchup": matchup,
+                "team": "",
+                "player": "TOTAL",
+                "role": "GAME",
+                "status": "ACTIVE",
+                "stat": "TOTAL",
+                "direction": "N/A",
+                "market_line": odds.get("total"),
+                "tc_projection": projection.get("tc_combined"),
+                "tc_target": projection.get("tc_line"),
+                "edge": projection.get("edge"),
+                "threshold": None,
+                "raw_average": None,
+                "source": odds.get("ml_source", projection.get("source", "")),
+                "actual": None,
+                "result": "PENDING",
+            })
+    # For non-basketball: also add game-level pick if no player props yet
+    elif not picks and sport not in BASKETBALL:
         odds = projection.get("odds", {})
         if odds.get("total") is not None:
             picks.append({
@@ -182,9 +207,13 @@ def extract_game_summary(projection, sport, matchup):
             "source": projection.get("source"),
             "valid_prop_count": len(projection.get("valid_props", [])),
             "roster_size": sum(projection.get("roster_counts", {}).values()) if projection.get("roster_counts") else None,
+            "pending_props_no_dk": len(projection.get("prop_backtest", {}).get("rows", [])) - len([r for r in projection.get("prop_backtest", {}).get("rows", []) if r.get("market_line")]),
+            "picks_with_dk": len([r for r in projection.get("prop_backtest", {}).get("rows", []) if r.get("market_line")]),
         }
     else:
         odds = projection.get("odds", {})
+        roster_counts = projection.get("roster_counts", {})
+        vp = projection.get("valid_props", [])
         return {
             "date": now_et().strftime("%Y-%m-%d"),
             "sport": sport,
@@ -195,11 +224,13 @@ def extract_game_summary(projection, sport, matchup):
             "tc_line": projection.get("tc_line"),
             "market_total": odds.get("total"),
             "dk_total": odds.get("total"),
-            "edge": None,
+            "edge": projection.get("edge"),
             "signal": projection.get("signal", "NO DK LINES"),
             "source": odds.get("ml_source", projection.get("source", "")),
-            "valid_prop_count": 0,
-            "roster_size": 0,
+            "valid_prop_count": len(vp),
+            "roster_size": sum(roster_counts.values()) if roster_counts else 0,
+            "pending_props_no_dk": 0,
+            "picks_with_dk": len(vp),
         }
 
 
