@@ -9,7 +9,7 @@
   "commence_time": "2026-06-16T01:00Z",
   "event_id": "760427",
   "source": "ESPN WORLD CUP scoreboard + no matching event",
-  "timestamp": "2026-06-15T21:01:54.731Z",
+  "timestamp": "2026-06-15T23:59:52.700Z",
   "tc_combined": null,
   "tc_line": null,
   "dk_total": "o2.5",
@@ -23,7 +23,9 @@
     "away_ml": null,
     "home_ml": null,
     "ml_source": "no matching event",
-    "espn_total": "o2.5"
+    "espn_total": "o2.5",
+    "bookmaker_breakdown": null,
+    "best_books": null
   },
   "assessment": {
     "summary": "WORLD CUP NZL@IRN \u2014 DK live \u00b7 no DK lines pulled yet.",
@@ -67,5 +69,6 @@
   "supported_sports": [
     "WORLD CUP"
   ],
-  "note": "WORLD CUP DK lines (h2h/spreads/totals) via The Odds API. Player props coming for WORLD CUP."
+  "prop_rows": [],
+  "note": "WORLD CUP full roster projection via ESPN + TC engine. DK game lines via The Odds API."
 }

@@ -22,8 +22,9 @@ from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
 # ── All active sports in the pipeline ─────────────────────
-ALL_SPORTS = ("NBA", "WNBA", "MLB", "NHL")
-BASKETBALL = {"NBA", "WNBA", "MLB"}  # sports with full player props + rosters
+ALL_SPORTS = ("NBA", "WNBA", "MLB", "NHL", "WORLD_CUP")
+BASKETBALL = {"NBA", "WNBA"}  # sports with full player props + rosters
+MLB_SPORTS = {"MLB"}  # sports with
 
 ET = timezone(timedelta(hours=-5))
 def now_et():
@@ -389,7 +390,7 @@ def run_daily_log(sports=ALL_SPORTS):
 
 
 if __name__ == "__main__":
-    sports_order = ["WNBA"]
+    sports_order = ["WNBA", "MLB"]
     if len(sys.argv) > 1:
         sports = tuple(s.upper() for s in sys.argv[1:])
     else:

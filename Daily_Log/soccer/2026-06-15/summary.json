@@ -1,77 +1,77 @@
 {
-  "pulled_at": "2026-06-15T11:23:47.600064+00:00",
+  "pulled_at": "2026-06-15T23:59:41.755321+00:00",
   "cache_ttl_min": 30,
   "leagues_monitored": 11,
   "leagues_with_lines": 6,
-  "events_total": 139,
-  "lines_fresh": 0,
-  "lines_cached": 115,
-  "credits_remaining_last": null,
+  "events_total": 141,
+  "lines_fresh": 114,
+  "lines_cached": 0,
+  "credits_remaining_last": "7513",
   "per_league": [
     {
       "sport_key": "soccer_fifa_world_cup",
-      "events": 60,
-      "from_cache": true,
+      "events": 58,
+      "from_cache": false,
       "status": 200
     },
     {
       "sport_key": "soccer_conmebol_copa_libertadores",
       "events": 9,
-      "from_cache": true,
+      "from_cache": false,
       "status": 200
     },
     {
       "sport_key": "soccer_conmebol_copa_sudamericana",
       "events": 10,
-      "from_cache": true,
+      "from_cache": false,
       "status": 200
     },
     {
       "sport_key": "soccer_brazil_serie_b",
-      "events": 11,
-      "from_cache": true,
+      "events": 12,
+      "from_cache": false,
       "status": 200
     },
     {
       "sport_key": "soccer_china_superleague",
       "events": 8,
-      "from_cache": true,
+      "from_cache": false,
       "status": 200
     },
     {
       "sport_key": "soccer_germany_dfb_pokal",
       "events": 17,
-      "from_cache": true,
+      "from_cache": false,
       "status": 200
     },
     {
       "sport_key": "soccer_league_of_ireland",
-      "events": 5,
-      "from_cache": true,
+      "events": 7,
+      "from_cache": false,
       "status": 200
     },
     {
       "sport_key": "soccer_norway_eliteserien",
       "events": 1,
-      "from_cache": true,
+      "from_cache": false,
       "status": 200
     },
     {
       "sport_key": "soccer_spain_segunda_division",
       "events": 1,
-      "from_cache": true,
+      "from_cache": false,
       "status": 200
     },
     {
       "sport_key": "soccer_sweden_allsvenskan",
       "events": 8,
-      "from_cache": true,
+      "from_cache": false,
       "status": 200
     },
     {
       "sport_key": "soccer_sweden_superettan",
-      "events": 9,
-      "from_cache": true,
+      "events": 10,
+      "from_cache": false,
       "status": 200
     }
   ]

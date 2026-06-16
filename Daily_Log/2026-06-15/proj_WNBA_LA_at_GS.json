@@ -5,8 +5,8 @@
   "away_team": "LA",
   "home_team": "GS",
   "source": "live ESPN WNBA roster/stat APIs",
-  "timestamp": "2026-06-15T21:01:50.992Z",
-  "injury_source": "ESPN WNBA injuries \u00b7 14 teams \u00b7 34 players",
+  "timestamp": "2026-06-15T23:59:43.447Z",
+  "injury_source": "ESPN WNBA injuries \u00b7 14 teams \u00b7 33 players",
   "injury_counts": {
     "away": 0,
     "away_out": 0,
@@ -25,9 +25,11 @@
     "away_spread": 5.5,
     "home_spread": -5.5,
     "spread_pick": "GS",
-    "away_ml": 180,
-    "home_ml": -218,
-    "ml_source": "ESPN DraftKings embedded"
+    "away_ml": 185,
+    "home_ml": -225,
+    "ml_source": "ESPN DraftKings embedded",
+    "bookmaker_breakdown": null,
+    "best_books": null
   },
   "assessment": {
     "tc_total": 172,
@@ -6534,34 +6536,34 @@
   "odds_api_lines": {
     "game_odds": {
       "h2h": {
-        "Golden State Valkyries": 1.46,
-        "Los Angeles Sparks": 2.8
+        "Golden State Valkyries": 1.44,
+        "Los Angeles Sparks": 2.85
       },
       "spreads": {
         "Golden State Valkyries": {
           "point": -5.5,
-          "price": 1.98
+          "price": 1.93
         },
         "Los Angeles Sparks": {
           "point": 5.5,
-          "price": 1.85
+          "price": 1.89
         }
       },
       "totals": {
         "Over": {
           "point": 173.5,
-          "price": 1.95
+          "price": 1.93
         },
         "Under": {
           "point": 173.5,
-          "price": 1.87
+          "price": 1.89
         }
       }
     },
     "player_lines": {
       "Veronica Burton": {
         "assists": 6.5,
-        "points": 14.5,
+        "points": 15.5,
         "rebounds": 3.5,
         "threes": 1.5
       },
@@ -6621,7 +6623,7 @@
     "player_count": 11,
     "source": "odds_api",
     "book": "draftkings",
-    "fetched_at": "2026-06-15T21:01:51.164584+00:00"
+    "fetched_at": "2026-06-15T23:59:43.632846+00:00"
   },
   "consensus": {
     "players": {

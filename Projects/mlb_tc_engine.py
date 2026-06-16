@@ -1,526 +1,751 @@
-"""MLB TC Projection Engine — fetches MLB rosters, season stats, and generates TC projections.
-
-Integrates with the /api/tc API route and daily_picks.py pipeline.
+#!/usr/bin/env python3
 """
-import json
-import requests
-from datetime import datetime
-from pathlib import Path
-from typing import Dict, List, Optional, Tuple
+MLB Triple Conservative Engine v1.0
+====================================
+Player prop projections for batting and pitching stats using ESPN season averages
+and The Odds API for live DK lines.
 
-ET = __import__('datetime').timezone(__import__('datetime').timedelta(hours=-5))
+TC Formulas (MLB):
+  Batter TC = stat_avg × 0.85 (ACTIVE) | × 0.85 × 0.55 (Q/questionable) | × 0 (OUT)
+  Pitcher TC = stat_avg × 0.80 (ACTIVE) | × 0.80 × 0.55 (Q) | × 0 (OUT)
 
-# ── ESPN endpoints ───────────────────────────────────────
-ESPN_MLB_TEAMS = "https://site.api.espn.com/apis/site/v2/sports/baseball/mlb/teams"
-ESPN_MLB_SCOREBOARD = "https://site.api.espn.com/apis/site/v2/sports/baseball/mlb/scoreboard"
-ESPN_MLB_TEAM_ROSTER = "https://site.api.espn.com/apis/site/v2/sports/baseball/mlb/teams/{code}/roster"
-ESPN_MLB_SEASON_STATS = "https://sports.core.api.espn.com/v2/sports/baseball/leagues/mlb/seasons/{year}/types/2/athletes/{id}/statistics"
+  LINE = floor(TC × 0.88)
+  EDGE = TC - LINE
+  SIGNAL: edge > 2.0 → OVER | edge < -2.0 → UNDER | else → PASS
 
-# ── ESPN World Cup endpoints ────────────────────────────
-ESPN_WC_TEAMS = "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/teams"
-ESPN_WC_SCOREBOARD = "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard"
-ESPN_WC_TEAM_ROSTER = "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/teams/{code}/roster"
+Usage:
+  python3 mlb_tc_engine.py --game "MIA@PHI" --report
+  python3 mlb_tc_engine.py --slate
+  python3 mlb_tc_engine.py --backtest 2026-06-14
 
-# ── TC Constants for MLB ─────────────────────────────────
-MLB_BAYES_ALPHA: Dict[str, float] = {
-    "hits": 15.0, "hr": 10.0, "rbi": 15.0, "runs": 15.0, "sb": 8.0, "avg": 100.0,
-    "so": 15.0, "era": 20.0,
+Author: Tyson | Zo Computer | TC Pipeline
+"""
+
+import argparse, csv, datetime, json, math, os, requests, sys
+from dataclasses import dataclass, field
+from typing import List, Dict, Any, Optional, Tuple
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# TC Constants (MLB-specific)
+# ═══════════════════════════════════════════════════════════════════════════════
+LINE_FACTOR = 0.88
+Q_FACTOR = 0.55
+OUT_FACTOR = 0.0
+EDGE_THRESH = 2.0
+
+BATTER_WEIGHT = 0.85
+PITCHER_WEIGHT = 0.80
+GAP_BATTER = 0.0
+GAP_PITCHER = -0.5
+
+# Markets we track - map stat name to odds API market key
+BATTER_MARKETS = {
+    "hits": "batter_hits",
+    "rbi": "batter_rbis",
+    "runs": "batter_runs_scored",
+    "hr": "batter_home_runs",
+    "total_bases": "batter_total_bases",
+    "sb": "batter_stolen_bases",
+    "singles": "batter_singles",
+    "doubles": "batter_doubles",
+    "walks": "batter_walks",
 }
-MLB_PRIOR: Dict[str, float] = {
-    "hits": 0.95, "hr": 0.12, "rbi": 0.45, "runs": 0.45, "sb": 0.10, "avg": 0.250,
-    "so": 1.0, "era": 4.20,
-}
-MLB_STAT_CONS: Dict[str, float] = {
-    "hits": 0.82, "hr": 0.75, "rbi": 0.82, "runs": 0.82, "sb": 0.70, "avg": 0.88,
-    "so": 0.82, "era": 0.78,
-}
-MLB_LINE_FACTOR = 0.85
-MLB_EDGE_THRESHOLDS: Dict[str, float] = {
-    "H": 0.5, "HR": 0.2, "RBI": 0.5, "R": 0.5, "SB": 0.2, "AVG": 0.030,
-    "K": 1.0, "ERA": 0.75,
-}
-MLB_Q_MULT = 0.45  # questionable player multiplier
 
-# ── Team code map (ESPN abbreviation → our code) ─────────
-MLB_CODE_MAP: Dict[str, str] = {
-    "ARI": "ARI", "ATL": "ATL", "BAL": "BAL", "BOS": "BOS",
-    "CHC": "CHC", "CHW": "CHW", "CIN": "CIN", "CLE": "CLE",
-    "COL": "COL", "DET": "DET", "HOU": "HOU", "KC": "KC",
-    "LAA": "LAA", "LAD": "LAD", "MIA": "MIA", "MIL": "MIL",
-    "MIN": "MIN", "NYM": "NYM", "NYY": "NYY", "OAK": "OAK",
-    "PHI": "PHI", "PIT": "PIT", "SD": "SD", "SF": "SF",
-    "SEA": "SEA", "STL": "STL", "TB": "TB", "TEX": "TEX",
-    "TOR": "TOR", "WSH": "WSH", "ATH": "ATH",
+PITCHER_MARKETS = {
+    "strikeouts": "pitcher_strikeouts",
+    "hits_allowed": "pitcher_hits_allowed",
+    "walks": "pitcher_walks",
+    "earned_runs": "pitcher_earned_runs",
+    "outs": "pitcher_outs",
 }
 
-WC_CODE_MAP: Dict[str, str] = {}
+# MLB Team ID mapping (ESPN IDs)
+MLB_TEAM_IDS = {
+    "ARI": 29, "ATH": 11, "ATL": 15, "BAL": 1, "BOS": 2,
+    "CHC": 16, "CHW": 4, "CIN": 17, "CLE": 5, "COL": 27,
+    "DET": 6, "HOU": 18, "KC": 7, "LAA": 3, "LAD": 19,
+    "MIA": 28, "MIL": 8, "MIN": 9, "NYM": 21, "NYY": 10,
+    "PIT": 23, "PHI": 22, "SD": 25, "SEA": 12, "SF": 26,
+    "STL": 24, "TB": 30, "TEX": 13, "TOR": 14, "WSH": 20,
+}
 
-HEADERS = {"User-Agent": "Mozilla/5.0 TC", "Accept": "application/json"}
+MLB_TEAM_NAMES = {
+    "ARI": "Arizona Diamondbacks", "ATH": "Athletics", "ATL": "Atlanta Braves",
+    "BAL": "Baltimore Orioles", "BOS": "Boston Red Sox", "CHC": "Chicago Cubs",
+    "CHW": "Chicago White Sox", "CIN": "Cincinnati Reds", "CLE": "Cleveland Guardians",
+    "COL": "Colorado Rockies", "DET": "Detroit Tigers", "HOU": "Houston Astros",
+    "KC": "Kansas City Royals", "LAA": "Los Angeles Angels", "LAD": "Los Angeles Dodgers",
+    "MIA": "Miami Marlins", "MIL": "Milwaukee Brewers", "MIN": "Minnesota Twins",
+    "NYM": "New York Mets", "NYY": "New York Yankees", "PIT": "Pittsburgh Pirates",
+    "PHI": "Philadelphia Phillies", "SD": "San Diego Padres", "SEA": "Seattle Mariners",
+    "SF": "San Francisco Giants", "STL": "St. Louis Cardinals", "TB": "Tampa Bay Rays",
+    "TEX": "Texas Rangers", "TOR": "Toronto Blue Jays", "WSH": "Washington Nationals",
+}
 
-
-def load_wc_teams() -> Dict[str, str]:
-    """Load World Cup team code map from ESPN."""
-    global WC_CODE_MAP
-    if WC_CODE_MAP:
-        return WC_CODE_MAP
-    try:
-        r = requests.get(ESPN_WC_TEAMS, headers=HEADERS, timeout=15)
-        if r.ok:
-            data = r.json()
-            sports = data.get("sports", [{}])[0]
-            leagues = sports.get("leagues", [{}])[0]
-            for t in leagues.get("teams", []):
-                tm = t.get("team", {})
-                code = tm.get("abbreviation", "").upper()
-                if code:
-                    WC_CODE_MAP[code] = code
-    except Exception:
-        pass
-    return WC_CODE_MAP
-
-
-def round_n(n, d=1):
-    return round(float(n or 0), d)
-
-
-def status_factor(status: str) -> float:
-    s = str(status or "ACTIVE").upper()
-    if "OUT" in s or "DNP" in s or "INJURED" in s:
-        return 0
-    if "QUESTION" in s or "DOUBTFUL" in s or "Q" == s or "GTD" in s or "DAY" in s:
-        return MLB_Q_MULT
-    return 1.0
-
-
-def bayes_shrink(stat: str, raw: float, n: int = 5) -> float:
-    alpha = MLB_BAYES_ALPHA.get(stat, 10.0)
-    prior = MLB_PRIOR.get(stat, 0.5)
-    return ((raw or 0) * n + prior * alpha) / (n + alpha)
+# Odds API team name mapping
+ODDS_TO_ESPN_TEAM = {
+    "Miami Marlins": "MIA", "Philadelphia Phillies": "PHI",
+    "Kansas City Royals": "KC", "Washington Nationals": "WSH",
+    "New York Mets": "NYM", "Cincinnati Reds": "CIN",
+    "San Diego Padres": "SD", "St. Louis Cardinals": "STL",
+    "Colorado Rockies": "COL", "Chicago Cubs": "CHC",
+    "Minnesota Twins": "MIN", "Texas Rangers": "TEX",
+    "Detroit Tigers": "DET", "Houston Astros": "HOU",
+    "Los Angeles Angels": "LAA", "Arizona Diamondbacks": "ARI",
+    "Pittsburgh Pirates": "PIT", "Athletics": "ATH",
+    "Tampa Bay Rays": "TB", "Los Angeles Dodgers": "LAD",
+    "Atlanta Braves": "ATL", "Boston Red Sox": "BOS",
+    "Baltimore Orioles": "BAL", "Cleveland Guardians": "CLE",
+    "Chicago White Sox": "CHW", "Milwaukee Brewers": "MIL",
+    "New York Yankees": "NYY", "Toronto Blue Jays": "TOR",
+    "San Francisco Giants": "SF", "Seattle Mariners": "SEA",
+}
 
 
-def tc_for(stat: str, raw: float, status: str = "ACTIVE") -> float:
-    shrunk = bayes_shrink(stat, raw)
-    cons = MLB_STAT_CONS.get(stat, 0.80)
-    return round_n(shrunk * cons * status_factor(status), 3 if stat == "avg" else 1)
+@dataclass
+class MLBPlayer:
+    name: str
+    pos: str
+    team: str
+    status: str = "ACTIVE"
 
+    # Batting season averages (per game)
+    hits_avg: float = 0.0
+    rbi_avg: float = 0.0
+    runs_avg: float = 0.0
+    hr_avg: float = 0.0
+    total_bases_avg: float = 0.0
+    sb_avg: float = 0.0
+    singles_avg: float = 0.0
+    doubles_avg: float = 0.0
+    walks_avg: float = 0.0
+    avg_batting: float = 0.0
+    games_played: int = 0
 
-def line_from_tc(tc_val: float, stat: str = "hits") -> float:
-    if stat == "avg":
-        return round_n(tc_val * MLB_LINE_FACTOR, 3)
-    return max(0.5, round_n(tc_val * MLB_LINE_FACTOR, 1))
+    # Pitching season averages (per start/appearance)
+    strikeouts_avg: float = 0.0
+    hits_allowed_avg: float = 0.0
+    walks_allowed_avg: float = 0.0
+    earned_runs_avg: float = 0.0
+    outs_avg: float = 0.0
+    era: float = 0.0
+    appearances: int = 0
 
+    # TC computed values
+    tc_hits: float = 0.0
+    tc_rbi: float = 0.0
+    tc_runs: float = 0.0
+    tc_hr: float = 0.0
+    tc_total_bases: float = 0.0
+    tc_sb: float = 0.0
+    tc_singles: float = 0.0
+    tc_doubles: float = 0.0
+    tc_walks: float = 0.0
+    tc_strikeouts: float = 0.0
+    tc_hits_allowed: float = 0.0
+    tc_walks_allowed: float = 0.0
+    tc_earned_runs: float = 0.0
+    tc_outs: float = 0.0
 
-def edge_from(tc_val: float, line_val: float) -> float:
-    return round_n(tc_val - (line_val or 0), 1)
+    # Market lines
+    lines: Dict[str, float] = field(default_factory=dict)
+    edges: Dict[str, float] = field(default_factory=dict)
 
+    def sf(self) -> float:
+        s = self.status.upper()
+        if s in ("OUT", "DNP", "INJURED"):
+            return OUT_FACTOR
+        if any(x in s for x in ("Q", "QUESTIONABLE", "DOUBTFUL", "GTD")):
+            return Q_FACTOR
+        return 1.0
 
-def fetch_mlb_roster(team_code: str) -> List[dict]:
-    """Fetch full MLB roster from ESPN for a team."""
-    code = team_code.lower()
-    players = []
-    try:
-        r = requests.get(ESPN_MLB_TEAM_ROSTER.format(code=code), headers=HEADERS, timeout=15)
-        if not r.ok:
-            return players
-        data = r.json()
-        for group in data.get("athletes", []):
-            pos_group = group.get("position", "")
-            for item in group.get("items", []):
-                ath = item
-                players.append({
-                    "id": str(ath.get("id", "")),
-                    "name": f"{ath.get('firstName', '')} {ath.get('lastName', '')}".strip(),
-                    "pos": ath.get("position", {}).get("abbreviation", pos_group),
-                    "pos_group": pos_group,
-                    "jersey": ath.get("jersey", ""),
-                    "ht": ath.get("displayHeight", ""),
-                    "wt": ath.get("displayWeight", ""),
-                    "bats": ath.get("bats", ""),
-                    "throws": ath.get("throws", ""),
-                    "status": "ACTIVE",
-                })
-    except Exception as e:
-        print(f"[MLB roster {team_code}] error: {e}")
-    return players
+    def compute_batter(self):
+        sf = self.sf()
+        w = BATTER_WEIGHT
+        self.tc_hits = round(max(0.0, self.hits_avg * w * sf + GAP_BATTER), 1)
+        self.tc_rbi = round(max(0.0, self.rbi_avg * w * sf + GAP_BATTER), 1)
+        self.tc_runs = round(max(0.0, self.runs_avg * w * sf + GAP_BATTER), 1)
+        self.tc_hr = round(max(0.0, self.hr_avg * w * sf + GAP_BATTER), 1)
+        self.tc_total_bases = round(max(0.0, self.total_bases_avg * w * sf + GAP_BATTER), 1)
+        self.tc_sb = round(max(0.0, self.sb_avg * w * sf + GAP_BATTER), 1)
+        self.tc_singles = round(max(0.0, self.singles_avg * w * sf + GAP_BATTER), 1)
+        self.tc_doubles = round(max(0.0, self.doubles_avg * w * sf + GAP_BATTER), 1)
+        self.tc_walks = round(max(0.0, self.walks_avg * w * sf + GAP_BATTER), 1)
 
+    def compute_pitcher(self):
+        sf = self.sf()
+        w = PITCHER_WEIGHT
+        self.tc_strikeouts = round(max(0.0, self.strikeouts_avg * w * sf + GAP_PITCHER), 1)
+        self.tc_hits_allowed = round(max(0.0, self.hits_allowed_avg * w * sf - GAP_PITCHER), 1)
+        self.tc_walks_allowed = round(max(0.0, self.walks_allowed_avg * w * sf - GAP_PITCHER), 1)
+        self.tc_earned_runs = round(max(0.0, self.earned_runs_avg * w * sf - GAP_PITCHER), 1)
+        self.tc_outs = round(max(0.0, self.outs_avg * w * sf + GAP_PITCHER), 1)
 
-def fetch_mlb_season_stats(athlete_id: str, year: int = 2026) -> dict:
-    """Fetch current-season MLB stats for an athlete."""
-    try:
-        url = ESPN_MLB_SEASON_STATS.format(year=year, id=athlete_id)
-        r = requests.get(url, headers=HEADERS, timeout=10)
-        if not r.ok:
-            return {}
-        data = r.json()
-        splits = data.get("splits", {})
-        batting = {}
-        pitching = {}
-        for cat in splits.get("categories", []):
-            cname = cat.get("name", "")
-            stats = {s["name"]: s.get("value", 0) for s in cat.get("stats", [])}
-            if cname == "batting":
-                batting = stats
-            elif cname == "pitching":
-                pitching = stats
-        # Compute per-game averages
-        gp = float(batting.get("gamesPlayed", pitching.get("gamesPlayed", 1))) or 1
-        gs = float(batting.get("gamesStarted", pitching.get("gamesStarted", gp))) or gp
-        is_pitcher = bool(pitching and pitching.get("inningsPitched", 0))
-        result = {
-            "games_played": int(gp),
-            "games_started": int(gs),
-            "is_pitcher": is_pitcher,
-        }
-        if is_pitcher:
-            ip = float(pitching.get("inningsPitched", 0)) or 1
-            result.update({
-                "era": round_n(float(pitching.get("ERA", pitching.get("earnedRunAverage", 4.5))), 2),
-                "strikeouts": float(pitching.get("strikeOuts", pitching.get("strikeouts", 0))),
-                "wins": float(pitching.get("wins", 0)),
-                "whip": round_n(float(pitching.get("WHIP", pitching.get("walksAndHitsPerInning", 1.35))), 2),
-                "k_per_game": round_n(float(pitching.get("strikeOuts", 0)) / gp, 1) if gp else 0,
-                "ip_per_game": round_n(ip / gp, 1) if gp else 0,
-            })
-        else:
-            result.update({
-                "avg": round_n(float(batting.get("avg", 0.250)), 3),
-                "hits": float(batting.get("hits", 0)),
-                "home_runs": float(batting.get("homeRuns", 0)),
-                "rbi": float(batting.get("RBIs", 0)),
-                "runs": float(batting.get("runs", 0)),
-                "stolen_bases": float(batting.get("stolenBases", 0)),
-                "ops": round_n(float(batting.get("OPS", batting.get("onBasePlusSlugging", 0.700))), 3),
-                "h_per_game": round_n(float(batting.get("hits", 0)) / gp, 2) if gp else 0,
-                "hr_per_game": round_n(float(batting.get("homeRuns", 0)) / gp, 2) if gp else 0,
-                "rbi_per_game": round_n(float(batting.get("RBIs", 0)) / gp, 2) if gp else 0,
-                "r_per_game": round_n(float(batting.get("runs", 0)) / gp, 2) if gp else 0,
-                "sb_per_game": round_n(float(batting.get("stolenBases", 0)) / gp, 2) if gp else 0,
-            })
-        return result
-    except Exception as e:
-        return {"error": str(e)}
+    def compute_all(self):
+        self.compute_batter()
+        self.compute_pitcher()
 
-
-def annotate_mlb_player(player: dict) -> dict:
-    """Add TC projections to an MLB player dict."""
-    p = dict(player)
-    stats = p.get("season_stats", {})
-    is_p = stats.get("is_pitcher", False)
-
-    if is_p:
-        raw_k = stats.get("k_per_game", 0)
-        p["raw_k"] = round_n(raw_k, 1)
-        p["tc_k"] = tc_for("so", raw_k, p.get("status", "ACTIVE"))
-        p["line_k"] = line_from_tc(p["tc_k"], "so")
-        p["edge_k"] = edge_from(p["tc_k"], p["line_k"])
-        p["raw_era"] = stats.get("era", 4.50)
-        p["tc_era"] = tc_for("era", p["raw_era"], p.get("status", "ACTIVE"))
-    else:
-        p["raw_h"] = round_n(stats.get("h_per_game", 0), 2)
-        p["raw_hr"] = round_n(stats.get("hr_per_game", 0), 2)
-        p["raw_rbi"] = round_n(stats.get("rbi_per_game", 0), 2)
-        p["raw_r"] = round_n(stats.get("r_per_game", 0), 2)
-        p["raw_sb"] = round_n(stats.get("sb_per_game", 0), 2)
-        p["raw_avg"] = stats.get("avg", 0.250)
-        p["tc_h"] = tc_for("hits", p["raw_h"], p.get("status", "ACTIVE"))
-        p["line_h"] = line_from_tc(p["tc_h"], "hits")
-        p["edge_h"] = edge_from(p["tc_h"], p["line_h"])
-        p["tc_hr"] = tc_for("hr", p["raw_hr"], p.get("status", "ACTIVE"))
-        p["line_hr"] = line_from_tc(p["tc_hr"], "hr")
-        p["edge_hr"] = edge_from(p["tc_hr"], p["line_hr"])
-        p["tc_rbi"] = tc_for("rbi", p["raw_rbi"], p.get("status", "ACTIVE"))
-        p["line_rbi"] = line_from_tc(p["tc_rbi"], "rbi")
-        p["edge_rbi"] = edge_from(p["tc_rbi"], p["line_rbi"])
-        p["tc_r"] = tc_for("runs", p["raw_r"], p.get("status", "ACTIVE"))
-        p["line_r"] = line_from_tc(p["tc_r"], "runs")
-        p["edge_r"] = edge_from(p["tc_r"], p["line_r"])
-        p["tc_sb"] = tc_for("sb", p["raw_sb"], p.get("status", "ACTIVE"))
-        p["line_sb"] = line_from_tc(p["tc_sb"], "sb")
-        p["edge_sb"] = edge_from(p["tc_sb"], p["line_sb"])
-        p["tc_avg"] = tc_for("avg", p["raw_avg"], p.get("status", "ACTIVE"))
-    return p
-
-
-def build_mlb_projection(sport: str, away_code: str, home_code: str) -> dict:
-    """Build a full MLB TC projection for a matchup."""
-    away = away_code.upper()
-    home = home_code.upper()
-    now = datetime.now(ET).isoformat()
-
-    # Fetch rosters
-    away_roster = fetch_mlb_roster(away)
-    home_roster = fetch_mlb_roster(home)
-
-    # Fetch season stats for all players
-    for p in away_roster + home_roster:
-        pid = p.get("id")
-        if pid:
-            stats = fetch_mlb_season_stats(pid)
-            p["season_stats"] = stats
-            if stats.get("is_pitcher"):
-                p["role"] = "PITCHER"
-            else:
-                p["role"] = "BATTER"
-
-    # Annotate with TC projections
-    away_annotated = [annotate_mlb_player(p) for p in away_roster]
-    home_annotated = [annotate_mlb_player(p) for p in home_roster]
-
-    # Sort by playing time / production
-    def score(p):
-        if p.get("season_stats", {}).get("is_pitcher"):
-            return p.get("season_stats", {}).get("games_started", 0)
-        return p.get("season_stats", {}).get("games_started", 0) * 2 + p.get("season_stats", {}).get("hits", 0)
-
-    away_sorted = sorted(away_annotated, key=score, reverse=True)
-    home_sorted = sorted(home_annotated, key=score, reverse=True)
-
-    # Determine projected starters (top 8 position players + starting pitcher for each team)
-    away_players_all = away_sorted
-    home_players_all = home_sorted
-
-    # Identify starting pitchers (most games started)
-    away_sp = [p for p in away_sorted if p.get("season_stats", {}).get("is_pitcher")]
-    home_sp = [p for p in home_sorted if p.get("season_stats", {}).get("is_pitcher")]
-
-    # For projection display, highlight top batters and starting pitchers
-    def leader_symbols(players, stat_keys):
-        active = [p for p in players if status_factor(p.get("status", "ACTIVE")) > 0]
-        for p in players:
-            p["symbols"] = []
-        symbols = [("H", "★H"), ("HR", "◆HR"), ("RBI", "▲RBI"), ("R", "●R"), ("SB", "◇SB")]
-        for rk, sym in symbols:
-            key = f"raw_{rk.lower().replace('★','').replace('◆','').replace('▲','').replace('●','').replace('◇','')}"
-            raw_key = {"H": "raw_h", "HR": "raw_hr", "RBI": "raw_rbi", "R": "raw_r", "SB": "raw_sb"}[rk]
-            vals = [float(p.get(raw_key, 0) or 0) for p in active]
-            if not vals:
-                continue
-            mv = max(vals)
-            if mv <= 0:
-                continue
-            for p in active:
-                if float(p.get(raw_key, 0) or 0) == mv:
-                    p["symbols"].append(sym)
-        return players
-
-    away_players_all = leader_symbols(away_players_all, ["H", "HR", "RBI", "R", "SB"])
-    home_players_all = leader_symbols(home_players_all, ["H", "HR", "RBI", "R", "SB"])
-
-    # Summarize
-    def summarize_team(players, team_code):
-        batters = [p for p in players if not p.get("season_stats", {}).get("is_pitcher")]
-        pitchers = [p for p in players if p.get("season_stats", {}).get("is_pitcher")]
-        active_b = [p for p in batters if status_factor(p.get("status", "ACTIVE")) > 0]
-        tc_h = round_n(sum(p.get("tc_h", 0) for p in active_b), 1)
-        tc_hr = round_n(sum(p.get("tc_hr", 0) for p in active_b), 1)
-        tc_rbi = round_n(sum(p.get("tc_rbi", 0) for p in active_b), 1)
-        tc_r = round_n(sum(p.get("tc_r", 0) for p in active_b), 1)
+    def dict(self) -> dict:
         return {
-            "team": team_code,
-            "all": {"players": players},
-            "starters": {"players": players[:9]},  # top 9 by playing time
-            "bench": {"players": players[9:]},
-            "totals": {
-                "tc_hits": tc_h, "tc_hr": tc_hr, "tc_rbi": tc_rbi, "tc_runs": tc_r,
-                "active_batters": len(active_b),
-                "active_pitchers": len([p for p in pitchers if status_factor(p.get("status", "ACTIVE")) > 0]),
+            "name": self.name, "pos": self.pos, "team": self.team,
+            "status": self.status,
+            "batting": {
+                "hits_avg": self.hits_avg, "rbi_avg": self.rbi_avg,
+                "runs_avg": self.runs_avg, "hr_avg": self.hr_avg,
+                "total_bases_avg": self.total_bases_avg, "sb_avg": self.sb_avg,
+                "singles_avg": self.singles_avg, "doubles_avg": self.doubles_avg,
+                "walks_avg": self.walks_avg, "avg": self.avg_batting,
+                "games": self.games_played,
             },
-            "injuries": [],
-            "injury_summary": {"total": 0, "out": 0, "questionable": 0, "source": "ESPN MLB roster"},
+            "pitching": {
+                "strikeouts_avg": self.strikeouts_avg, "hits_allowed_avg": self.hits_allowed_avg,
+                "walks_allowed_avg": self.walks_allowed_avg, "earned_runs_avg": self.earned_runs_avg,
+                "outs_avg": self.outs_avg, "era": self.era,
+                "appearances": self.appearances,
+            },
+            "tc_batting": {
+                "hits": self.tc_hits, "rbi": self.tc_rbi, "runs": self.tc_runs,
+                "hr": self.tc_hr, "total_bases": self.tc_total_bases,
+                "sb": self.tc_sb, "singles": self.tc_singles,
+                "doubles": self.tc_doubles, "walks": self.tc_walks,
+            },
+            "tc_pitching": {
+                "strikeouts": self.tc_strikeouts, "hits_allowed": self.tc_hits_allowed,
+                "walks_allowed": self.tc_walks_allowed, "earned_runs": self.tc_earned_runs,
+                "outs": self.tc_outs,
+            },
+            "lines": self.lines,
+            "edges": self.edges,
         }
 
-    away_summary = summarize_team(away_sorted, away)
-    home_summary = summarize_team(home_sorted, home)
 
-    # Generate prop rows
-    prop_rows = []
-    for team_side, players in [(away, away_sorted), (home, home_sorted)]:
-        for p in players:
-            if p.get("season_stats", {}).get("is_pitcher"):
-                for stat, raw_key, tc_key, line_key, edge_key, label in [
-                    ("K", "raw_k", "tc_k", "line_k", "edge_k", "Strikeouts"),
-                ]:
-                    edge = p.get(edge_key, 0)
-                    th = MLB_EDGE_THRESHOLDS.get(stat, 1.0)
-                    direction = "OVER" if edge >= th else ("UNDER" if edge <= -th else "NO BET")
-                    prop_rows.append({
-                        "date": datetime.now(ET).strftime("%Y-%m-%d"),
-                        "league": "MLB",
-                        "game": f"{away}@{home}",
-                        "team": team_side,
-                        "player": p["name"],
-                        "role": "SP" if p.get("season_stats", {}).get("games_started", 0) >= 3 else "PITCHER",
-                        "stat": stat,
-                        "direction": direction,
-                        "market_line": None,
-                        "tc_projection": p.get(tc_key),
-                        "tc_target": p.get(line_key),
-                        "edge": edge,
-                        "actual": None,
-                        "result": "PENDING",
-                        "source": "mlb_tc_engine",
-                        "raw_average": p.get(raw_key),
-                        "status": p.get("status", "ACTIVE"),
-                        "valid": edge > 0,
-                        "threshold": th,
-                    })
-            else:
-                for stat, raw_key, tc_key, line_key, edge_key, label in [
-                    ("H", "raw_h", "tc_h", "line_h", "edge_h", "Hits"),
-                    ("HR", "raw_hr", "tc_hr", "line_hr", "edge_hr", "Home Runs"),
-                    ("RBI", "raw_rbi", "tc_rbi", "line_rbi", "edge_rbi", "RBI"),
-                    ("R", "raw_r", "tc_r", "line_r", "edge_r", "Runs"),
-                    ("SB", "raw_sb", "tc_sb", "line_sb", "edge_sb", "Stolen Bases"),
-                ]:
-                    edge = p.get(edge_key, 0)
-                    th = MLB_EDGE_THRESHOLDS.get(stat, 0.5)
-                    direction = "OVER" if edge >= th else ("UNDER" if edge <= -th else "NO BET")
-                    prop_rows.append({
-                        "date": datetime.now(ET).strftime("%Y-%m-%d"),
-                        "league": "MLB",
-                        "game": f"{away}@{home}",
-                        "team": team_side,
-                        "player": p["name"],
-                        "role": "START" if p.get("season_stats", {}).get("games_started", 0) >= (p.get("season_stats", {}).get("games_played", 1) * 0.7) else "BENCH",
-                        "stat": stat,
-                        "direction": direction,
-                        "market_line": None,
-                        "tc_projection": p.get(tc_key),
-                        "tc_target": p.get(line_key),
-                        "edge": edge,
-                        "actual": None,
-                        "result": "PENDING",
-                        "source": "mlb_tc_engine",
-                        "raw_average": p.get(raw_key),
-                        "status": p.get("status", "ACTIVE"),
-                        "valid": edge > 0,
-                        "threshold": th,
-                    })
+# ═══════════════════════════════════════════════════════════════════════════════
+# ESPN STATS FETCH
+# ═══════════════════════════════════════════════════════════════════════════════
 
-    valid_props = [r for r in prop_rows if r.get("valid")]
+def fetch_espn_mlb_stats(team_abbr: str, lookback_days: int = 30) -> List[MLBPlayer]:
+    """
+    Fetch MLB player stats by aggregating recent ESPN boxscores.
+    Returns a list of MLBPlayer with season averages computed from recent games.
+    """
+    # For now, fetch the most recent completed game boxscore and use those stats
+    # as a snapshot. Full season averaging would require multiple boxscore pulls.
+    team_id = MLB_TEAM_IDS.get(team_abbr)
+    if not team_id:
+        print(f"Unknown team: {team_abbr}")
+        return []
 
-    return {
-        "mode": "live",
-        "sport": sport,
-        "matchup": f"{away}@{home}",
-        "away_team": away,
-        "home_team": home,
-        "source": f"ESPN MLB roster + {datetime.now().year} season stats",
-        "timestamp": now,
-        "tc_combined": None,
-        "tc_line": None,
-        "market_total": None,
-        "edge": None,
-        "signal": "MLB PROJECTION",
-        "odds": {},
-        "assessment": {
-            "summary": f"MLB {away}@{home} — {len(away_roster)}+{len(home_roster)} players projected.",
-            "roster_rule": "MLB uses ESPN roster + 2026 season stats for per-game projections",
-        },
-        "roster_counts": {
-            "away": len(away_roster),
-            "home": len(home_roster),
-            "away_active": len([p for p in away_sorted if status_factor(p.get("status", "ACTIVE")) > 0]),
-            "home_active": len([p for p in home_sorted if status_factor(p.get("status", "ACTIVE")) > 0]),
-        },
-        "away": away_summary,
-        "home": home_summary,
-        "valid_props": valid_props,
-        "prop_rows": prop_rows,
-        "pick_filters": MLB_EDGE_THRESHOLDS,
-        "stat_categories": list(MLB_EDGE_THRESHOLDS.keys()),
-        "note": "MLB TC projections. DK player props not available via The Odds API — lines are TC-derived targets.",
-    }
-
-
-# ── World Cup / Soccer ──────────────────────────────────
-def fetch_wc_roster(team_code: str) -> List[dict]:
-    """Fetch World Cup team roster from ESPN."""
-    code = team_code.lower()
     players = []
+
     try:
-        r = requests.get(ESPN_WC_TEAM_ROSTER.format(code=code), headers=HEADERS, timeout=15)
-        if not r.ok:
-            return players
+        # Try to get recent completed games for this team
+        from datetime import datetime, timedelta
+        end_date = datetime.now()
+        start_date = end_date - timedelta(days=lookback_days)
+        date_str = start_date.strftime("%Y%m%d")
+
+        scoreboard_url = f"https://site.api.espn.com/apis/site/v2/sports/baseball/mlb/scoreboard?dates={date_str}&limit=100"
+        r = requests.get(scoreboard_url, timeout=15)
+
+        if r.status_code != 200:
+            print(f"  Error fetching scoreboard: {r.status_code}")
+            return []
+
         data = r.json()
-        for group in data.get("athletes", []):
-            pos_group = group.get("position", "")
-            for item in group.get("items", []):
-                ath = item
-                players.append({
-                    "id": str(ath.get("id", "")),
-                    "name": ath.get("displayName", f"{ath.get('firstName', '')} {ath.get('lastName', '')}").strip(),
-                    "pos": ath.get("position", {}).get("abbreviation", pos_group),
-                    "pos_group": pos_group,
-                    "jersey": ath.get("jersey", ""),
-                    "ht": ath.get("displayHeight", ""),
-                    "wt": ath.get("displayWeight", ""),
-                    "nationality": ath.get("nationality", ""),
-                    "status": "ACTIVE",
-                })
+        events = data.get("events", [])
+
+        # Find games involving our team that are completed
+        team_games = []
+        for evt in events:
+            competitions = evt.get("competitions", [])
+            for comp in competitions:
+                competitors = comp.get("competitors", [])
+                abbrs = [c.get("team", {}).get("abbreviation", "") for c in competitors]
+                status = comp.get("status", {}).get("type", {}).get("name", "")
+                if team_abbr in abbrs and status == "STATUS_FINAL":
+                    team_games.append(evt)
+
+        if not team_games:
+            # Fall back to the most recent game even if pending
+            for evt in events:
+                competitions = evt.get("competitions", [])
+                for comp in competitions:
+                    competitors = comp.get("competitors", [])
+                    abbrs = [c.get("team", {}).get("abbreviation", "") for c in competitors]
+                    if team_abbr in abbrs:
+                        team_games.append(evt)
+                        break
+
+        # Process each game's boxscore
+        hitter_stats: Dict[str, Dict[str, List[float]]] = {}
+        pitcher_stats: Dict[str, Dict[str, List[float]]] = {}
+
+        for game in team_games[:min(len(team_games), 10)]:  # max 10 games for now
+            game_id = game.get("id")
+            summary_url = f"https://site.api.espn.com/apis/site/v2/sports/baseball/mlb/summary?event={game_id}"
+            sr = requests.get(summary_url, timeout=15)
+
+            if sr.status_code != 200:
+                continue
+
+            sd = sr.json()
+            bs = sd.get("boxscore", {})
+            players_by_team = bs.get("players", [])
+
+            for pt in players_by_team:
+                pt_team = pt.get("team", {}).get("abbreviation", "")
+                if pt_team != team_abbr:
+                    continue
+
+                stats_groups = pt.get("statistics", [])
+                for sg in stats_groups:
+                    stype = sg.get("type") or sg.get("name", "")
+                    athletes = sg.get("athletes", [])
+
+                    for a in athletes:
+                        if not isinstance(a, dict):
+                            continue
+                        athlete = a.get("athlete", {})
+                        player_name = athlete.get("displayName") or athlete.get("fullName") or ""
+                        if not player_name:
+                            continue
+
+                        pos = athlete.get("position", {})
+                        pos_abbr = pos.get("abbreviation", "") if isinstance(pos, dict) else str(pos)
+                        stats_vals = a.get("stats", [])
+
+                        if stype == "batting" and len(stats_vals) >= 12:
+                            # keys: hits-atBats, atBats, runs, hits, RBIs, homeRuns, walks, strikeouts, pitches, avg, onBasePct, slugAvg
+                            key = player_name
+                            if key not in hitter_stats:
+                                hitter_stats[key] = {"pos": pos_abbr, "vals": {k: [] for k in BATTER_MARKETS}}
+                                hitter_stats[key]["vals"]["avg"] = []
+                                hitter_stats[key]["vals"]["games"] = []
+
+                            try:
+                                runs_v = float(stats_vals[2]) if stats_vals[2] else 0.0
+                                hits_v = float(stats_vals[3]) if stats_vals[3] else 0.0
+                                rbi_v = float(stats_vals[4]) if stats_vals[4] else 0.0
+                                hr_v = float(stats_vals[5]) if stats_vals[5] else 0.0
+                                walks_v = float(stats_vals[6]) if stats_vals[6] else 0.0
+                                so_v = float(stats_vals[7]) if stats_vals[7] else 0.0
+                                avg_v = float(stats_vals[9]) if stats_vals[9] else 0.0
+                                slug_v = float(stats_vals[11]) if len(stats_vals) > 11 and stats_vals[11] else 0.0
+                            except (ValueError, IndexError):
+                                continue
+
+                            # Estimate total bases from slugging: SLG = TB / AB, so TB ≈ SLG * AB
+                            at_bats_raw = stats_vals[1]
+                            try:
+                                at_bats = float(at_bats_raw) if at_bats_raw else 0.0
+                            except (ValueError, IndexError):
+                                at_bats = 0.0
+
+                            total_bases_v = slug_v * at_bats if at_bats > 0 else 0.0
+
+                            # Estimate singles and doubles from hits and TB: 
+                            # TB = singles + 2*doubles + 3*triples + 4*HR
+                            # Simplified: use the boxscore hits-atBats (e.g. "2-4") to get single-game hits
+                            # For now use hits as proxy for singles (we'll build better later)
+                            hits_at_bats_raw = stats_vals[0]
+                            try:
+                                game_hits = int(hits_at_bats_raw.split("-")[0]) if hits_at_bats_raw else 0
+                            except (ValueError, IndexError):
+                                game_hits = int(hits_v)
+
+                            hitter_stats[key]["vals"]["hits"].append(hits_v)
+                            hitter_stats[key]["vals"]["runs"].append(runs_v)
+                            hitter_stats[key]["vals"]["rbi"].append(rbi_v)
+                            hitter_stats[key]["vals"]["hr"].append(hr_v)
+                            hitter_stats[key]["vals"]["total_bases"].append(total_bases_v)
+                            hitter_stats[key]["vals"]["walks"].append(walks_v)
+                            hitter_stats[key]["vals"]["singles"].append(game_hits)  # simplified
+                            hitter_stats[key]["vals"]["doubles"].append(0.0)  # to refine
+                            hitter_stats[key]["vals"]["sb"].append(0.0)  # not in basic boxscore
+                            hitter_stats[key]["vals"]["avg"].append(avg_v)
+                            hitter_stats[key]["vals"]["games"].append(1)
+
+                        elif stype == "pitching" and len(stats_vals) >= 10:
+                            key = player_name
+                            if key not in pitcher_stats:
+                                pitcher_stats[key] = {"pos": pos_abbr, "vals": {k: [] for k in PITCHER_MARKETS}}
+                                pitcher_stats[key]["vals"]["era"] = []
+                                pitcher_stats[key]["vals"]["appearances"] = []
+
+                            try:
+                                so_v = float(stats_vals[5]) if stats_vals[5] else 0.0
+                                hits_v = float(stats_vals[1]) if stats_vals[1] else 0.0
+                                era_v = float(stats_vals[8]) if stats_vals[8] else 0.0
+                            except (ValueError, IndexError):
+                                continue
+
+                            # For outs: innings pitched * 3
+                            inn_raw = stats_vals[0]
+                            try:
+                                inn = float(inn_raw) if inn_raw else 0.0
+                            except (ValueError, IndexError):
+                                inn = 0.0
+                            outs_v = inn * 3
+
+                            try:
+                                walks_v = float(stats_vals[4]) if stats_vals[4] else 0.0
+                                er_v = float(stats_vals[3]) if stats_vals[3] else 0.0
+                            except (ValueError, IndexError):
+                                walks_v = 0.0
+                                er_v = 0.0
+
+                            pitcher_stats[key]["vals"]["strikeouts"].append(so_v)
+                            pitcher_stats[key]["vals"]["hits_allowed"].append(hits_v)
+                            pitcher_stats[key]["vals"]["walks"].append(walks_v)
+                            pitcher_stats[key]["vals"]["earned_runs"].append(er_v)
+                            pitcher_stats[key]["vals"]["outs"].append(outs_v)
+                            pitcher_stats[key]["vals"]["era"].append(era_v)
+                            pitcher_stats[key]["vals"]["appearances"].append(1)
+
+        # Convert aggregated stats to players
+        all_names = set(list(hitter_stats.keys()) + list(pitcher_stats.keys()))
+        for name in all_names:
+            p = MLBPlayer(name=name, pos="", team=team_abbr)
+
+            if name in hitter_stats:
+                p.pos = hitter_stats[name]["pos"]
+                v = hitter_stats[name]["vals"]
+                ng = len(v.get("games", [1]))
+                if ng > 0:
+                    p.hits_avg = round(sum(v["hits"]) / ng, 2)
+                    p.rbi_avg = round(sum(v["rbi"]) / ng, 2)
+                    p.runs_avg = round(sum(v["runs"]) / ng, 2)
+                    p.hr_avg = round(sum(v["hr"]) / ng, 2)
+                    p.total_bases_avg = round(sum(v["total_bases"]) / ng, 2)
+                    p.sb_avg = round(sum(v["sb"]) / ng, 2)
+                    p.singles_avg = round(sum(v["singles"]) / ng, 2)
+                    p.doubles_avg = round(sum(v["doubles"]) / ng, 2)
+                    p.walks_avg = round(sum(v["walks"]) / ng, 2)
+                    p.avg_batting = round(sum(v["avg"]) / ng, 3)
+                    p.games_played = ng
+
+            if name in pitcher_stats:
+                if not p.pos:
+                    p.pos = pitcher_stats[name]["pos"]
+                v = pitcher_stats[name]["vals"]
+                na = len(v.get("appearances", [1]))
+                if na > 0:
+                    p.strikeouts_avg = round(sum(v["strikeouts"]) / na, 1)
+                    p.hits_allowed_avg = round(sum(v["hits_allowed"]) / na, 1)
+                    p.walks_allowed_avg = round(sum(v["walks"]) / na, 1)
+                    p.earned_runs_avg = round(sum(v["earned_runs"]) / na, 1)
+                    p.outs_avg = round(sum(v["outs"]) / na, 1)
+                    p.era = round(sum(v["era"]) / na, 2)
+                    p.appearances = na
+
+            p.compute_all()
+            players.append(p)
+
     except Exception as e:
-        print(f"[WC roster {team_code}] error: {e}")
+        print(f"  Error fetching stats for {team_abbr}: {e}")
+        return []
+
     return players
 
 
-def build_wc_projection(sport: str, away_code: str, home_code: str) -> dict:
-    """Build World Cup projection with rosters."""
-    away = away_code.upper()
-    home = home_code.upper()
-    now = datetime.now(ET).isoformat()
+# ═══════════════════════════════════════════════════════════════════════════════
+# ODDS API FETCH
+# ═══════════════════════════════════════════════════════════════════════════════
 
-    away_roster = fetch_wc_roster(away)
-    home_roster = fetch_wc_roster(home)
+def load_api_key() -> str:
+    secrets_file = "/root/.zo/secrets.env"
+    if os.path.exists(secrets_file):
+        with open(secrets_file) as f:
+            for line in f:
+                line = line.strip()
+                if line and not line.startswith("#") and "=" in line:
+                    k, v = line.split("=", 1)
+                    os.environ.setdefault(k.strip(), v.strip())
+    return os.environ.get("ODDS_API_KEY", "")
 
-    def annotate(p):
-        p["symbols"] = []
-        return p
 
-    away_players = [annotate(p) for p in away_roster]
-    home_players = [annotate(p) for p in home_roster]
+def fetch_mlb_player_lines(game_id: str) -> Dict[str, Dict[str, float]]:
+    """
+    Fetch DK player prop lines for an MLB game.
+    Returns {player_name: {stat_key: line_value}}
+    """
+    key = load_api_key()
+    if not key:
+        return {}
 
-    return {
-        "mode": "live",
-        "sport": sport,
-        "matchup": f"{away}@{home}",
-        "away_team": away,
-        "home_team": home,
-        "source": "ESPN World Cup roster",
-        "timestamp": now,
-        "tc_combined": None,
-        "tc_line": None,
-        "market_total": None,
-        "edge": None,
-        "signal": "SOCCER ROSTERS",
-        "odds": {},
-        "assessment": {
-            "summary": f"World Cup {away}@{home} — {len(away_roster)}+{len(home_roster)} players.",
-            "roster_rule": "World Cup uses ESPN team rosters. DK player props not available for soccer.",
-        },
-        "roster_counts": {
-            "away": len(away_roster),
-            "home": len(home_roster),
-            "away_active": len(away_players),
-            "home_active": len(home_players),
-        },
-        "away": {"all": {"players": away_players}, "starters": {"players": away_players[:11]}, "bench": {"players": away_players[11:]}, "totals": {}, "injuries": []},
-        "home": {"all": {"players": home_players}, "starters": {"players": home_players[:11]}, "bench": {"players": home_players[11:]}, "totals": {}, "injuries": []},
-        "valid_props": [],
-        "note": "World Cup soccer projection. DK player props and game lines not available. Rosters only.",
+    player_lines: Dict[str, Dict[str, float]] = {}
+
+    # Build market list
+    all_markets = list(BATTER_MARKETS.values()) + list(PITCHER_MARKETS.values())
+    market_str = ",".join(all_markets)
+
+    url = f"https://api.the-odds-api.com/v4/sports/baseball_mlb/events/{game_id}/odds"
+    try:
+        r = requests.get(url, params={
+            "apiKey": key,
+            "regions": "us",
+            "markets": market_str,
+            "bookmakers": "draftkings",
+            "oddsFormat": "american",
+        }, timeout=15)
+
+        if r.status_code != 200:
+            print(f"  Odds API error: {r.status_code} {r.text[:120]}")
+            return {}
+
+        data = r.json()
+        for bm in data.get("bookmakers", []):
+            if bm.get("key") != "draftkings":
+                continue
+            for market in bm.get("markets", []):
+                market_key = market.get("key", "")
+                # Map market key to stat name
+                stat_name = None
+                for sn, mk in BATTER_MARKETS.items():
+                    if mk == market_key:
+                        stat_name = sn
+                        break
+                if not stat_name:
+                    for sn, mk in PITCHER_MARKETS.items():
+                        if mk == market_key:
+                            stat_name = sn
+                            break
+                if not stat_name:
+                    continue
+
+                for outcome in market.get("outcomes", []):
+                    player_desc = outcome.get("description", "")
+                    line = outcome.get("point")
+                    if player_desc and line is not None:
+                        if player_desc not in player_lines:
+                            player_lines[player_desc] = {}
+                        player_lines[player_desc][stat_name] = line
+
+    except Exception as e:
+        print(f"  Error fetching player lines: {e}")
+
+    return player_lines
+
+
+def fetch_mlb_game_lines() -> List[Dict]:
+    """Fetch MLB game odds with ML/spread/total from The Odds API."""
+    key = load_api_key()
+    if not key:
+        return []
+
+    try:
+        r = requests.get(
+            "https://api.the-odds-api.com/v4/sports/baseball_mlb/odds",
+            params={
+                "apiKey": key,
+                "regions": "us",
+                "markets": "h2h,spreads,totals",
+                "bookmakers": "draftkings",
+                "oddsFormat": "american",
+            },
+            timeout=15,
+        )
+        if r.status_code != 200:
+            return []
+
+        games = r.json()
+        parsed = []
+        for g in games:
+            home_team = g.get("home_team", "")
+            away_team = g.get("away_team", "")
+            game_id = g.get("id", "")
+            commence = g.get("commence_time", "")
+
+            home_abbr = ODDS_TO_ESPN_TEAM.get(home_team, "")
+            away_abbr = ODDS_TO_ESPN_TEAM.get(away_team, "")
+
+            dk_data = {"total": None, "spread": None, "ml_home": None, "ml_away": None}
+            for bm in g.get("bookmakers", []):
+                if bm.get("key") != "draftkings":
+                    continue
+                for market in bm.get("markets", []):
+                    mk = market.get("key", "")
+                    outcomes = market.get("outcomes", [])
+                    if mk == "totals" and outcomes:
+                        dk_data["total"] = outcomes[0].get("point")
+                    elif mk == "spreads" and outcomes:
+                        dk_data["spread"] = outcomes[0].get("point")
+                    elif mk == "h2h" and outcomes:
+                        for o in outcomes:
+                            if o.get("name") == home_team:
+                                dk_data["ml_home"] = o.get("price")
+                            elif o.get("name") == away_team:
+                                dk_data["ml_away"] = o.get("price")
+
+            parsed.append({
+                "game_id": game_id,
+                "home_team": home_team,
+                "away_team": away_team,
+                "home_abbr": home_abbr,
+                "away_abbr": away_abbr,
+                "commence_time": commence,
+                "dk_total": dk_data["total"],
+                "dk_spread": dk_data["spread"],
+                "dk_ml_home": dk_data["ml_home"],
+                "dk_ml_away": dk_data["ml_away"],
+            })
+
+        return parsed
+
+    except Exception as e:
+        print(f"Error fetching MLB game lines: {e}")
+        return []
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PROJECTION ENGINE
+# ═══════════════════════════════════════════════════════════════════════════════
+
+def project_mlb_game(home_abbr: str, away_abbr: str, game_id: str = None,
+                     dk_total: float = None) -> Dict:
+    """Generate full TC projection for an MLB matchup."""
+    result = {
+        "sport": "MLB",
+        "home_team": home_abbr,
+        "away_team": away_abbr,
+        "dk_total": dk_total,
+        "source": "ESPN + The Odds API",
     }
 
+    # Fetch rosters with stats
+    print(f"  Fetching stats for {away_abbr}...")
+    away_players = fetch_espn_mlb_stats(away_abbr)
+    print(f"  Fetching stats for {home_abbr}...")
+    home_players = fetch_espn_mlb_stats(home_abbr)
 
-# ── CLI test ────────────────────────────────────────────
-if __name__ == "__main__":
-    import sys
-    sport = sys.argv[1] if len(sys.argv) > 1 else "MLB"
-    away = sys.argv[2] if len(sys.argv) > 2 else "MIA"
-    home = sys.argv[3] if len(sys.argv) > 3 else "PHI"
+    # Fetch DK player prop lines
+    player_lines = {}
+    if game_id:
+        print(f"  Fetching DK player lines for {away_abbr} @ {home_abbr}...")
+        player_lines = fetch_mlb_player_lines(game_id)
 
-    if sport.upper() == "MLB":
-        result = build_mlb_projection("MLB", away, home)
+    # Apply DK lines to players
+    for p in away_players + home_players:
+        dk_lines = player_lines.get(p.name, {})
+        for stat_name, line_val in dk_lines.items():
+            p.lines[stat_name] = line_val
+            # Map to TC stat
+            tc_attr = f"tc_{stat_name}"
+            tc_val = getattr(p, tc_attr, 0.0)
+            if tc_val > 0:
+                edge = round(tc_val - line_val, 2)
+                p.edges[stat_name] = edge
+
+    # Generate valid props (edge-qualified)
+    valid_props = []
+    for p in away_players + home_players:
+        for stat_name, line_val in p.lines.items():
+            tc_val = getattr(p, f"tc_{stat_name}", 0.0)
+            edge = p.edges.get(stat_name, 0.0)
+            direction = "OVER" if edge > 0 else "UNDER"
+            signal = "PASS"
+            if abs(edge) >= EDGE_THRESH:
+                signal = direction
+
+            valid_props.append({
+                "player": p.name,
+                "team": p.team,
+                "pos": p.pos,
+                "stat": stat_name,
+                "market_line": line_val,
+                "tc_projection": tc_val,
+                "edge": edge,
+                "direction": direction,
+                "signal": signal,
+                "status": p.status,
+            })
+
+    result["away_players"] = [p.dict() for p in away_players]
+    result["home_players"] = [p.dict() for p in home_players]
+    result["valid_props"] = sorted(valid_props, key=lambda x: abs(x["edge"]), reverse=True)
+    result["roster_counts"] = {
+        "away_total": len(away_players),
+        "home_total": len(home_players),
+    }
+
+    return result
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# MAIN CLI
+# ═══════════════════════════════════════════════════════════════════════════════
+def main():
+    parser = argparse.ArgumentParser(description="MLB TC Engine v1.0")
+    parser.add_argument("--game", type=str, help="Matchup like 'MIA@PHI'")
+    parser.add_argument("--slate", action="store_true", help="Full MLB slate")
+    parser.add_argument("--report", action="store_true", help="Generate markdown report")
+    parser.add_argument("--backtest", type=str, help="Date for historical backtest (YYYY-MM-DD)")
+    parser.add_argument("--output", type=str, default="", help="JSON output path")
+    args = parser.parse_args()
+
+    if args.game:
+        parts = args.game.split("@")
+        if len(parts) == 2:
+            away, home = parts[0].strip(), parts[1].strip()
+            # Find game ID from live odds
+            games = fetch_mlb_game_lines()
+            game_id = None
+            dk_total = None
+            for g in games:
+                if g["away_abbr"] == away and g["home_abbr"] == home:
+                    game_id = g["game_id"]
+                    dk_total = g["dk_total"]
+                    break
+
+            print(f"\n{'='*60}")
+            print(f"MLB TC PROJECTION: {away} @ {home}")
+            if dk_total:
+                print(f"DK Total: {dk_total}")
+            print(f"{'='*60}")
+
+            proj = project_mlb_game(home, away, game_id, dk_total)
+            print(f"\nAway ({away}): {len(proj['away_players'])} players")
+            print(f"Home ({home}): {len(proj['home_players'])} players")
+            print(f"Valid Props: {len(proj['valid_props'])}")
+
+            # Show top props
+            if proj["valid_props"]:
+                print(f"\n{'Player':<22} {'Stat':<12} {'TC_Proj':>7} {'DK_Line':>7} {'Edge':>6} {'Signal':<6}")
+                print("-" * 65)
+                for vp in proj["valid_props"][:20]:
+                    sig = vp["signal"]
+                    print(f"{vp['player']:<22} {vp['stat']:<12} {vp['tc_projection']:>7.1f} {vp['market_line']:>7.1f} {vp['edge']:>+6.1f} {sig:<6}")
+
+            if args.output:
+                with open(args.output, "w") as f:
+                    json.dump(proj, f, indent=2)
+                print(f"\nSaved to {args.output}")
+
+    elif args.slate:
+        games = fetch_mlb_game_lines()
+        print(f"\nMLB SLATE: {len(games)} games with DK lines")
+        for g in games:
+            print(f"  {g['away_abbr']} @ {g['home_abbr']} | Total: {g['dk_total']} | {g['commence_time']}")
+        if args.output:
+            with open(args.output, "w") as f:
+                json.dump(games, f, indent=2)
+
+    elif args.backtest:
+        print(f"MLB Backtest for {args.backtest}")
+        # Historical backtest logic will be added
+        result = {"sport": "MLB", "date": args.backtest, "status": "pending"}
+        if args.output:
+            with open(args.output, "w") as f:
+                json.dump(result, f, indent=2)
+
     else:
-        result = build_wc_projection("WORLD_CUP", away, home)
+        print("MLB TC Engine v1.0")
+        print("  --game 'MIA@PHI' --report    Game projection")
+        print("  --slate                       Full slate with DK totals")
+        print("  --backtest 2026-06-14         Historical backtest")
+        print("  --output path.json            Save output")
 
-    # Only output the JSON — no extra prints (API route parses this)
-    print(json.dumps(result, indent=2, default=str))
+
+if __name__ == "__main__":
+    main()

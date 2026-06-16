@@ -1,16 +1,16 @@
 {
   "mode": "live_stats",
   "sport": "MLB",
-  "timestamp": "2026-06-15T21:01:51.483Z",
+  "timestamp": "2026-06-15T23:59:43.825Z",
   "games": [
     {
       "id": "401815765",
       "matchup": "MIA@PHI",
       "name": "Miami Marlins at Philadelphia Phillies",
       "date": "2026-06-15T22:40Z",
-      "status": "Scheduled",
-      "detail": "Scheduled",
-      "period": 1,
+      "status": "In Progress",
+      "detail": "Bottom 4th",
+      "period": 4,
       "clock": "0:00",
       "completed": false,
       "away": {
@@ -21,7 +21,7 @@
       "home": {
         "team": "PHI",
         "name": "Philadelphia Phillies",
-        "score": 0
+        "score": 3
       },
       "leaders": [],
       "players": []
@@ -31,20 +31,20 @@
       "matchup": "KC@WSH",
       "name": "Kansas City Royals at Washington Nationals",
       "date": "2026-06-15T22:45Z",
-      "status": "Scheduled",
-      "detail": "Scheduled",
-      "period": 1,
+      "status": "In Progress",
+      "detail": "Middle 5th",
+      "period": 5,
       "clock": "0:00",
       "completed": false,
       "away": {
         "team": "KC",
         "name": "Kansas City Royals",
-        "score": 0
+        "score": 3
       },
       "home": {
         "team": "WSH",
         "name": "Washington Nationals",
-        "score": 0
+        "score": 2
       },
       "leaders": [],
       "players": []
@@ -54,9 +54,9 @@
       "matchup": "NYM@CIN",
       "name": "New York Mets at Cincinnati Reds",
       "date": "2026-06-15T23:10Z",
-      "status": "Scheduled",
-      "detail": "Scheduled",
-      "period": 1,
+      "status": "In Progress",
+      "detail": "Bottom 2nd",
+      "period": 2,
       "clock": "0:00",
       "completed": false,
       "away": {
@@ -67,7 +67,7 @@
       "home": {
         "team": "CIN",
         "name": "Cincinnati Reds",
-        "score": 0
+        "score": 9
       },
       "leaders": [],
       "players": []
@@ -77,9 +77,9 @@
       "matchup": "SD@STL",
       "name": "San Diego Padres at St. Louis Cardinals",
       "date": "2026-06-15T23:45Z",
-      "status": "Scheduled",
-      "detail": "Scheduled",
-      "period": 1,
+      "status": "In Progress",
+      "detail": "Top 2nd",
+      "period": 2,
       "clock": "0:00",
       "completed": false,
       "away": {
