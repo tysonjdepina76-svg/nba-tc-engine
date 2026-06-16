@@ -1,6 +1,8 @@
 # Workspace Index
 
-> **2026-06-15 — NBA/NHL gating:** `/api/tc` and `/api/dk-lines` gated NBA + NHL (disabled). Pipeline defaults to WNBA/MLB/World Cup. Streamlit dashboard shut down for NBA, services consolidated to WNBA + soccer only.
+> **2026-06-16 — NBA/NHL off-season:** NBA Finals and Stanley Cup Final are both done. SGO endpoints for NBA and NHL are blocked (HTTP 503). The pipeline no longer calls NBA or NHL — `daily_picks.py`, `pipeline_master.py`, and all 1PM/1:30PM/5PM/6:30PM/2AM automations now run WNBA + MLB + World Cup only. To reactivate when next season starts: ungate `/api/tc` + `/api/dk-lines` for NBA/NHL, restore `["NBA","NHL","WNBA","MLB","WORLD_CUP"]` in `daily_picks.py ALL_SPORTS`, and add NBA/NHL back to all automation sport lists.
+
+> **2026-06-15 — NBA/NHL gating (now superseded):** `/api/tc` and `/api/dk-lines` were gated to disable NBA + NHL. Pipeline defaults to WNBA/MLB/World Cup. Streamlit dashboard shut down for NBA, services consolidated to WNBA + soccer only.
 
 > **Workspace cleaned:** Obsolete root files (`SportsTC_Streamlit_App.py`, `daily_tip_report.py`, `generate_report.py`, etc.) moved to `Archives/root_cleanup_2026-06-15/`. `__pycache__` dirs purged. Inactive duplicate automation deleted.
 
@@ -43,7 +45,7 @@
 | `/` | Page | Homepage |
 | `/nba-tc` | Page | WNBA/MLB/World Cup TC Dashboard |
 | `/dk-combos` | Page | DK Combos Dashboard |
-| `/worldcup` | Page | World Cup Props |
+| `/worldcup` | Page | World Cup Props — stat-by-stat team leaders, FanDuel primary book (DK has no props). 9-stat tabs (goals, assists, shots, SOT, corners, tackles, cards, fouls, passes) — Odds API currently returns assists/shots/SOT only. |
 | `/speaking` | Page | Tyson DePina — Speaking Engagements (public) |
 | `/mirror-workbook` | Page | The Mirror Workbook (private) |
 | `/api/tc` | API | TC projections (WNBA, MLB, WORLD CUP) |
@@ -54,7 +56,7 @@
 | `/api/daily-log` | API | Daily log access |
 | `/api/wnba-boxscores` | API | WNBA boxscore history |
 | `/api/worldcup-odds` | API | World Cup odds |
-| `/api/worldcup-props` | API | World Cup player props |
+| `/api/worldcup-props` | API | World Cup player props + stat leaders per team |
 
 ## Daily Pipeline Output
 - `Daily_Log/YYYY-MM-DD/` — picks.{csv,json}, slate_*.json, proj_*.json, combos_*.md, pipeline_report.md
