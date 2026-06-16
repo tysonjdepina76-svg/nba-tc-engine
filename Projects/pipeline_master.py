@@ -128,11 +128,11 @@ def check_external_apis(secrets: dict, quick: bool = False) -> dict:
             status["odds_api"] = False
             log("FAIL", "Odds API", str(e)[:80])
 
-    # SportsGameOdds
+    # SportsGameOdds — check with WNBA (NBA/NHL off-season, SGO returns 503 for them)
     sgo_key = secrets.get("SPORTSGAMEODDS_API_KEY", "")
     if sgo_key:
         try:
-            r = requests.get("https://api.sportsgameodds.com/v2/events?leagueID=NBA",
+            r = requests.get("https://api.sportsgameodds.com/v2/events?leagueID=WNBA",
                            headers={"x-api-key": sgo_key}, timeout=10)
             status["sgo"] = r.ok
             log("OK" if r.ok else "FAIL", "SGO", f"HTTP {r.status_code}")

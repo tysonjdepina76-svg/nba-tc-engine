@@ -48,9 +48,11 @@ PROP_MARKETS = [
     "player_assists",
     "player_shots_on_target",
     "player_shots",
+    "player_tackles",
+    "player_fouls",
 ]
 # Books to try in priority order
-BOOK_PRIORITY = ["draftkings", "fanduel", "betmgm"]
+BOOK_PRIORITY = ["fanduel", "draftkings", "betmgm", "caesars", "fanatics"]
 
 
 def fetch_espn_matches(date_str=None):
@@ -180,6 +182,8 @@ def extract_props(prop_data, preferred_book="draftkings"):
         "player_assists": "assists",
         "player_shots_on_target": "shots_on_target",
         "player_shots": "shots",
+        "player_tackles": "tackles",
+        "player_fouls": "fouls",
     }
     for bk in prop_data.get("bookmakers", []):
         if bk.get("key") != preferred_book:
