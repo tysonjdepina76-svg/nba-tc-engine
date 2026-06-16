@@ -13,14 +13,17 @@ metadata:
 # SportsGameOdds (SGO)
 
 ## Status
-✅ **Connected** — key `SPORTSGAMEODDS_API_KEY` loaded from `/root/.zo/secrets.env`
-⚠️ **WNBA unavailable** at current subscription tier — NBA works, WNBA shows "leagueID unavailable"
-✅ **NBA**: fully functional with SGO v2 API
+✅ **Connected** — key `SPORTSGAMEODDS_API_KEY` loaded from `/root/.zo/secrets.env` (confirmed 2026-06-15)
+⚠️ **WNBA unavailable** at current subscription tier — `leagueID=WNBA` returns 400: "unavailable at your current subscription tier. Upgrade to unlock"
+⚠️ **NBA offseason** — v2 events endpoint returns 2024 historical data with 0 odds markets (season complete; NYK 2026 champs)
+✅ **Fallback active** — The Odds API (`ODDS_API_KEY`) covers all WNBA lines seamlessly
+✅ **Available leagues**: MLB, MLS, NCAAF, NHL, NBA, NCAAB, NFL, UEFA_CHAMPIONS_LEAGUE
 
 ## Usage
-- Events list: `GET /v2/events?leagueID=NBA`
+- Events list: `GET /v2/events?leagueID=<LEAGUE>` where LEAGUE is one of the 8 available leagues above
 - Player props (per-event): parsed from `oddID` format `{stat}-{PLAYER}-{league}-game-ou-over`
 - DK odds extracted via `byBookmaker.draftkings.overUnder`
+- WNBA fallback: when SGO returns tier-limited error, pipeline gracefully degrades to Odds API
 
 ## Pipeline integration
 - `/api/tc` calls this as Tier 1 (PRIMARY paid feed)
