@@ -30,11 +30,13 @@ HT_DIR = LOG_DIR / "halftime"
 FIN_DIR = LOG_DIR / "final"
 DUPE_DIR = LOG_DIR / "_dupes"
 REG = LOG_DIR / "boxscore_registry.json"
+MLB_DIR = LOG_DIR / "mlb_boxscores"
 
-for d in [LOG_DIR, HT_DIR, FIN_DIR]:
+for d in [LOG_DIR, HT_DIR, FIN_DIR, MLB_DIR]:
     d.mkdir(parents=True, exist_ok=True)
 
 LEAGUE = {"WNBA": "basketball/wnba", "NBA": "basketball/nba"}
+MLB_LEAGUE = {"MLB": "baseball/mlb"}
 
 # ══════ registry ═══════════════════════════════════════════════════════
 
@@ -47,16 +49,20 @@ def _loadreg() -> dict:
 def _savereg(r: dict):
     REG.write_text(json.dumps(r, indent=2))
 
-def already_saved(eid: str, boxtype: str) -> bool:
+def already_saved(eid: str, boxtype: str, search_dir: Path | None = None) -> bool:
     reg = _loadreg()
     key = f"{eid}:{boxtype}"
     if key in reg:
         return True
-    tgt = HT_DIR if boxtype == "halftime" else FIN_DIR
-    for f in tgt.glob(f"*_{eid}_*.json"):
-        reg[f"{eid}:{boxtype}"] = f.stat().st_mtime
-        _savereg(reg)
-        return True
+    if search_dir is not None:
+        dirs = [search_dir]
+    else:
+        dirs = [HT_DIR if boxtype == "halftime" else FIN_DIR]
+    for tgt in dirs:
+        for f in tgt.glob(f"*_{eid}_*.json"):
+            reg[f"{eid}:{boxtype}"] = f.stat().st_mtime
+            _savereg(reg)
+            return True
     return False
 
 def mark_saved(eid: str, boxtype: str):
@@ -285,6 +291,101 @@ def rebuild_registry():
     _savereg(reg)
     print(f"  📋 Registry rebuilt: {len(reg)} entries")
 
+# ══════ MLB  ══════════════════════════════════════════════════════════
+
+def build_mlb_final(s: dict, eid: str, dstr: str) -> dict | None:
+    comp = (s.get("header") or {}).get("competitions", [{}])[0]
+    cs = comp.get("competitors", [])
+    teams = {}
+    for c in cs:
+        teams[c.get("homeAway", "")] = c.get("team", {}).get("displayName", "?")
+    batting = {}
+    pitching = {}
+    for grp in (s.get("boxscore") or {}).get("players", []):
+        tn = grp.get("team", {}).get("displayName", "?")
+        for sbh in grp.get("statistics", []):
+            keys = sbh.get("keys", [])
+            if not keys:
+                continue
+            is_pitching = "ERA" in keys or "fullInnings" in str(keys[0])
+            target = pitching if is_pitching else batting
+            for ath in sbh.get("athletes", []):
+                nm = ath.get("athlete", {}).get("displayName", "?")
+                if not nm or nm == "?":
+                    continue
+                raw = ath.get("stats", [])
+                row = {"name": nm, "team": tn}
+                if is_pitching:
+                    def _gp(field, idx_key):
+                        if idx_key in keys and keys.index(idx_key) < len(raw):
+                            row[field] = str(raw[keys.index(idx_key)])
+                    _gp("ip", "fullInnings.partInnings")
+                    _gp("h", "hits")
+                    _gp("r", "runs")
+                    _gp("er", "earnedRuns")
+                    _gp("bb", "walks")
+                    _gp("so", "strikeouts")
+                    _gp("hr", "homeRuns")
+                    _gp("era", "ERA")
+                    _gp("pitches", "pitches")
+                else:
+                    def _gb(field, idx_key):
+                        if idx_key in keys and keys.index(idx_key) < len(raw):
+                            row[field] = str(raw[keys.index(idx_key)])
+                    _gb("ab", "atBats")
+                    _gb("r", "runs")
+                    _gb("h", "hits")
+                    _gb("rbi", "RBIs")
+                    _gb("hr", "homeRuns")
+                    _gb("bb", "walks")
+                    _gb("so", "strikeouts")
+                    _gb("avg", "avg")
+                target[nm] = row
+
+    away = teams.get("away", "?")
+    home = teams.get("home", "?")
+    away_score = _int(next((c.get("score") for c in cs if c.get("homeAway") == "away"), 0))
+    home_score = _int(next((c.get("score") for c in cs if c.get("homeAway") == "home"), 0))
+    return {
+        "event_id": eid, "sport": "mlb", "date": dstr,
+        "scraped_at": datetime.now(timezone.utc).isoformat(),
+        "type": "final",
+        "batting": batting, "pitching": pitching,
+        "score": {"away": away_score, "home": home_score},
+        "away_team": away, "home_team": home
+    }
+
+def scan_and_save_mlb(mode: str = "all"):
+    today = datetime.now(timezone.utc).strftime("%Y%m%d")
+    for sp, spath in MLB_LEAGUE.items():
+        sb = _sb(spath, today)
+        events = sb.get("events", [])
+        if not events:
+            print(f"  MLB: no events on {today}")
+            continue
+        print(f"  MLB: {len(events)} event(s) on {today}")
+        saved = 0
+        for ev in events:
+            eid = str(ev.get("id", ""))
+            if not eid:
+                continue
+            status = (ev.get("status") or {}).get("type") or {}
+            state = status.get("state", "")
+            away = (ev.get("competitions", [{}])[0].get("competitors", [{}])[0]
+                    .get("team", {}).get("abbreviation", "?"))
+            home = (ev.get("competitions", [{}])[0].get("competitors", [{}])[1]
+                    .get("team", {}).get("abbreviation", "?"))
+            if mode in ("all", "final") and state == "post":
+                if not already_saved(eid, "final", MLB_DIR):
+                    summary = _sum(spath, eid)
+                    if summary:
+                        bx = build_mlb_final(summary, eid, today)
+                        if bx and save_box(bx, MLB_DIR):
+                            saved += 1
+                else:
+                    print(f"    [{state}] {away}@{home} — already saved ✓")
+        print(f"  MLB saved {saved} finals")
+
 # ══════ soccer  ══════════════════════════════════════════════════════
 
 def scan_and_save_soccer(mode: str = "final"):
@@ -302,6 +403,9 @@ def scan_and_save_soccer(mode: str = "final"):
 # ══════ main scanner  ══════════════════════════════════════════════════
 
 def scan_and_save(sport: str | None = None, mode: str = "all"):
+    if sport == "MLB":
+        scan_and_save_mlb(mode=mode)
+        return
     sports = [sport] if sport else list(LEAGUE)
     today = datetime.now(timezone.utc).strftime("%Y%m%d")
 
@@ -312,6 +416,8 @@ def scan_and_save(sport: str | None = None, mode: str = "all"):
             scan_and_save_soccer(mode=mode)
             continue
         
+        if sp == "MLB":
+            continue
         spath = LEAGUE[sp]
         sb = _sb(spath, today)
         events = sb.get("events", [])
@@ -340,7 +446,6 @@ def scan_and_save(sport: str | None = None, mode: str = "all"):
                 if not already_saved(eid, "halftime"):
                     summary = _sum(spath, eid)
                     if summary:
-                        # build minimal final for team names, then build halftime
                         final = build_final(summary, eid, sp)
                         if final:
                             ht = build_halftime(summary, final)
@@ -362,12 +467,35 @@ def scan_and_save(sport: str | None = None, mode: str = "all"):
                 else:
                     print(f"{pref} — final already saved ✓")
 
+    # ── MLB capture ──
+    if sport is None or sport == "MLB":
+        saved_mlb = 0
+        for sp, spath in MLB_LEAGUE.items():
+            sb = _sb(spath, today)
+            events = sb.get("events", [])
+            if not events:
+                continue
+            for ev in events:
+                eid = str(ev.get("id", ""))
+                if not eid:
+                    continue
+                status = (ev.get("status") or {}).get("type") or {}
+                state = status.get("state", "")
+                if state == "post":
+                    if not already_saved(eid, "final", MLB_DIR):
+                        summary = _sum(spath, eid)
+                        if summary:
+                            bx = build_mlb_final(summary, eid, today)
+                            if bx and save_box(bx, MLB_DIR):
+                                saved_mlb += 1
+        print(f"  MLB saved {saved_mlb} finals")
+
     print(f"\n📊 {saved_ht} new halftime, {saved_final} new final boxscores")
 
 
 def main():
     ap = argparse.ArgumentParser(description="Dedup-aware boxscore saver")
-    ap.add_argument("--sport", choices=list(LEAGUE), default=None)
+    ap.add_argument("--sport", choices=list(LEAGUE) + ["MLB"], default=None)
     ap.add_argument("--mode", choices=["all", "halftime", "final"], default="all")
     ap.add_argument("--purge-dupes", action="store_true")
     args = ap.parse_args()

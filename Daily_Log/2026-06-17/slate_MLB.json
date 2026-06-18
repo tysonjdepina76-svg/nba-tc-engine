@@ -1,7 +1,7 @@
 {
   "mode": "live_stats",
   "sport": "MLB",
-  "timestamp": "2026-06-18T03:26:20.072Z",
+  "timestamp": "2026-06-18T04:17:06.026Z",
   "games": [
     {
       "id": "401815778",
@@ -307,20 +307,20 @@
       "matchup": "BAL@SEA",
       "name": "Baltimore Orioles at Seattle Mariners",
       "date": "2026-06-18T01:40Z",
-      "status": "In Progress",
-      "detail": "Middle 7th",
-      "period": 7,
+      "status": "Final",
+      "detail": "Final",
+      "period": 9,
       "clock": "0:00",
-      "completed": false,
+      "completed": true,
       "away": {
         "team": "BAL",
         "name": "Baltimore Orioles",
-        "score": 4
+        "score": 5
       },
       "home": {
         "team": "SEA",
         "name": "Seattle Mariners",
-        "score": 1
+        "score": 3
       },
       "leaders": [],
       "players": []
@@ -331,19 +331,19 @@
       "name": "Pittsburgh Pirates at Athletics Athletics",
       "date": "2026-06-18T01:40Z",
       "status": "In Progress",
-      "detail": "Bottom 6th",
-      "period": 6,
+      "detail": "End 8th",
+      "period": 8,
       "clock": "0:00",
       "completed": false,
       "away": {
         "team": "PIT",
         "name": "Pittsburgh Pirates",
-        "score": 7
+        "score": 12
       },
       "home": {
         "team": "ATH",
         "name": "Athletics",
-        "score": 0
+        "score": 3
       },
       "leaders": [],
       "players": []

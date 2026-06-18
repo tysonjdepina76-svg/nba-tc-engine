@@ -54,7 +54,8 @@ def check_env(name: str) -> tuple[str, bool]:
 
 def check_url(url: str, label: str, timeout: int = 8) -> tuple[str, bool]:
     try:
-        with urllib.request.urlopen(url, timeout=timeout) as r:
+        req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 TC-HealthCheck"})
+        with urllib.request.urlopen(req, timeout=timeout) as r:
             ok = r.status == 200
             return check(label, ok, f"HTTP {r.status}"), ok
     except urllib.error.HTTPError as e:
@@ -75,7 +76,8 @@ def check_odds_api() -> tuple[str, bool]:
     if not key:
         return check("Odds API key works", False, "ODDS_API_KEY not set"), False
     try:
-        with urllib.request.urlopen(f"https://api.the-odds-api.com/v4/sports/?apiKey={key}", timeout=10) as r:
+        req = urllib.request.Request(f"https://api.the-odds-api.com/v4/sports/?apiKey={key}", headers={"User-Agent": "Mozilla/5.0 TC-HealthCheck"})
+        with urllib.request.urlopen(req, timeout=10) as r:
             data = json.loads(r.read())
             count = len(data) if isinstance(data, list) else 0
             return check("Odds API key works", count > 0, f"{count} sports"), count > 0
@@ -85,7 +87,8 @@ def check_odds_api() -> tuple[str, bool]:
 
 def check_espn() -> tuple[str, bool]:
     try:
-        with urllib.request.urlopen("https://site.api.espn.com/apis/site/v2/sports/basketball/wnba/scoreboard", timeout=10) as r:
+        req = urllib.request.Request("https://site.api.espn.com/apis/site/v2/sports/basketball/wnba/scoreboard", headers={"User-Agent": "Mozilla/5.0 TC-HealthCheck"})
+        with urllib.request.urlopen(req, timeout=10) as r:
             d = json.loads(r.read())
             n = len(d.get("events", []))
             return check("ESPN scoreboard", n > 0, f"{n} WNBA events"), n > 0
@@ -94,13 +97,13 @@ def check_espn() -> tuple[str, bool]:
 
 
 def check_streamlit() -> tuple[str, bool]:
-    """Check if any service is on :8507."""
+    """Check if any service is on :8510."""
     try:
-        out = subprocess.run(["curl", "-s", "-o", "/dev/null", "-w", "%{http_code}", "http://localhost:8507/_stcore/health"], capture_output=True, text=True, timeout=8)
+        out = subprocess.run(["curl", "-s", "-o", "/dev/null", "-w", "%{http_code}", "http://localhost:8510/_stcore/health"], capture_output=True, text=True, timeout=8)
         code = out.stdout.strip()
-        return check("Streamlit on :8507", code == "200", f"HTTP {code}"), code == "200"
+        return check("Streamlit on :8510", code == "200", f"HTTP {code}"), code == "200"
     except Exception as e:
-        return check("Streamlit on :8507", False, str(e)[:60]), False
+        return check("Streamlit on :8510", False, str(e)[:60]), False
 
 
 def check_today_picks() -> tuple[str, bool, dict]:

@@ -7,6 +7,9 @@
 > - **World Cup ESPN fix:** api_scan.py changed from `soccer/World%20Cup/scoreboard` (HTTP 400) → `soccer/fifa.world/scoreboard` (HTTP 200). Registry now 8/12 OK.
 > - **Purge:** Removed empty cache dir, archived duplicate .py files from `Archives/source_cleanup_2026-06-17/`, purged all __pycache__ dirs.
 
+> **2026-06-18 — MLB boxscore support + June 14-17 backfill:**
+> -
+
 > **2026-06-16 — NBA/NHL off-season:** NBA Finals and Stanley Cup Final are both done. SGO endpoints for NBA and NHL are blocked (HTTP 503). The pipeline no longer calls NBA or NHL — `daily_picks.py`, `pipeline_master.py`, and all automations now run WNBA + MLB + World Cup only.
 
 > **2026-06-17 — API Registry + Unified Cache System:** `Projects/api_scan.py` probes 12 endpoints (Odds API, SGO, ESPN, SportsDataIO) and writes `Daily_Log/api_registry.json` with scan timestamp, status, latency, free_tier flag, and `last_used_at`. `Projects/api_cache.py` provides `cached_get(name, url, ttl)` — primary read path; disk cache `Daily_Log/cache/api/{name}.json`, default 2-hour TTL, registry auto-bumped on hit. `python3 Projects/api_cache.py warm` pre-populates from registry. Cache hits: ~1ms (vs 50-200ms network). Run scan whenever a new API is added or rate limit issues surface.
