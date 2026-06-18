@@ -78,7 +78,7 @@ def load_secrets() -> dict:
             k, _, v = line.partition("=")
             secrets[k.strip()] = v.strip().strip('"').strip("'")
     for k, v in secrets.items():
-        os.environ.setdefault(k, v)
+        os.environ[k] = v  # FORCE overwrite so empty/rotated env vars can't shadow secrets.env
     return secrets
 
 
