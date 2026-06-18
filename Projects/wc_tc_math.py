@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+
+# TC — Triple Conservative — Trademark June 2026 — All rights reserved.
 """
 World Cup TC Math - Bayesian calibration for FIFA World Cup player props.
 Same architecture as tc_math.py (NBA/WNBA) but calibrated from 11,555 player-matches

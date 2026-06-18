@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+
+# TC — Triple Conservative — Trademark June 2026 — All rights reserved.
 """SportsData.io NFL engine — pulls pregame odds + player props.
 
 Working endpoints (NFL only, gambling tier):

@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+
+# TC — Triple Conservative — Trademark June 2026 — All rights reserved.
 """
 TC Pipeline Master — Self-Healing Daily Runner
 ================================================

@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+
+# TC — Triple Conservative — Trademark June 2026 — All rights reserved.
 """TC Live Dashboard — Reads real pipeline output from Daily_Log/ and displays it."""
 
 import json

@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+
+# TC — Triple Conservative — Trademark June 2026 — All rights reserved.
 """
 World Cup Boxscore Backtest Puller
 Fetches ESPN final box scores for completed FIFA World Cup 2026 matches and writes

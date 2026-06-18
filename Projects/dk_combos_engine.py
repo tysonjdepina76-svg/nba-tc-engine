@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+
+# TC — Triple Conservative — Trademark June 2026 — All rights reserved.
 """dk_combos_engine.py — DK Combo Lines from SportsGameOdds.
 
 No TC projection overlay. Just raw DraftKings PRA/PR/PA combo lines from SGO.

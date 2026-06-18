@@ -4,330 +4,48 @@
     "name": "Senegal at France",
     "short_name": "SEN @ FRA",
     "date": "2026-06-16T19:00Z",
-    "status": "Scheduled",
-    "status_detail": "Scheduled",
-    "completed": false,
+    "status": "Full Time",
+    "status_detail": "FT",
+    "completed": true,
     "period": 0,
     "teams": [
       {
         "name": "France",
         "abbrev": "FRA",
-        "score": "0",
+        "score": "3",
         "homeAway": "home"
       },
       {
         "name": "Senegal",
         "abbrev": "SEN",
-        "score": "0",
+        "score": "1",
         "homeAway": "away"
       }
     ],
-    "odds_game_id": "73a4fcd14cc9766b9b9bfd50b8ca153a",
-    "player_props": {
-      "Michael Olise": {
-        "assists": {
-          "line": 0.5,
-          "over_price": 170
-        },
-        "shots": {
-          "line": 4.0,
-          "over_price": 120
-        },
-        "shots_on_target": {
-          "line": 4.0,
-          "over_price": 2500
-        }
-      },
-      "Kylian Mbappe": {
-        "assists": {
-          "line": 0.5,
-          "over_price": 195
-        },
-        "shots": {
-          "line": 4.0,
-          "over_price": -270
-        },
-        "shots_on_target": {
-          "line": 4.0,
-          "over_price": 500
-        }
-      },
-      "Ousmane Dembele": {
-        "assists": {
-          "line": 0.5,
-          "over_price": 210
-        },
-        "shots": {
-          "line": 4.0,
-          "over_price": 140
-        },
-        "shots_on_target": {
-          "line": 2.0,
-          "over_price": 230
-        }
-      },
-      "Desire Doue": {
-        "assists": {
-          "line": 0.5,
-          "over_price": 240
-        },
-        "shots": {
-          "line": 4.0,
-          "over_price": 240
-        },
-        "shots_on_target": {
-          "line": 2.0,
-          "over_price": 250
-        }
-      },
-      "Theo Hernandez": {
-        "assists": {
-          "line": 0.5,
-          "over_price": 370
-        },
-        "shots": {
-          "line": 2.0,
-          "over_price": 250
-        },
-        "shots_on_target": {
-          "line": 2.0,
-          "over_price": 1700
-        }
-      },
-      "Aurelien Tchouameni": {
-        "assists": {
-          "line": 0.5,
-          "over_price": 500
-        },
-        "shots": {
-          "line": 4.0,
-          "over_price": 1300
-        },
-        "shots_on_target": {
-          "line": 2.0,
-          "over_price": 1700
-        }
-      },
-      "Jules Kounde": {
-        "assists": {
-          "line": 0.5,
-          "over_price": 500
-        },
-        "shots": {
-          "line": 2.0,
-          "over_price": 750
-        },
-        "shots_on_target": {
-          "line": 1.0,
-          "over_price": 400
-        }
-      },
-      "Adrien Rabiot": {
-        "assists": {
-          "line": 0.5,
-          "over_price": 500
-        },
-        "shots": {
-          "line": 4.0,
-          "over_price": 1300
-        },
-        "shots_on_target": {
-          "line": 2.0,
-          "over_price": 650
-        }
-      },
-      "Sadio Mane": {
-        "assists": {
-          "line": 0.5,
-          "over_price": 550
-        },
-        "shots": {
-          "line": 4.0,
-          "over_price": 550
-        },
-        "shots_on_target": {
-          "line": 2.0,
-          "over_price": 500
-        }
-      },
-      "El Hadji Diouf": {
-        "assists": {
-          "line": 0.5,
-          "over_price": 650
-        },
-        "shots": {
-          "line": 2.0,
-          "over_price": 800
-        },
-        "shots_on_target": {
-          "line": 1.0,
-          "over_price": 650
-        }
-      },
-      "Ismaila Sarr": {
-        "assists": {
-          "line": 0.5,
-          "over_price": 700
-        },
-        "shots": {
-          "line": 4.0,
-          "over_price": 1000
-        },
-        "shots_on_target": {
-          "line": 2.0,
-          "over_price": 850
-        }
-      },
-      "Lamine Camara": {
-        "assists": {
-          "line": 0.5,
-          "over_price": 850
-        },
-        "shots": {
-          "line": 4.0,
-          "over_price": 2200
-        },
-        "shots_on_target": {
-          "line": 2.0,
-          "over_price": 2700
-        }
-      },
-      "Krepin Diatta": {
-        "assists": {
-          "line": 0.5,
-          "over_price": 850
-        },
-        "shots": {
-          "line": 2.0,
-          "over_price": 800
-        },
-        "shots_on_target": {
-          "line": 1.0,
-          "over_price": 500
-        }
-      },
-      "Nicolas Jackson": {
-        "assists": {
-          "line": 0.5,
-          "over_price": 900
-        },
-        "shots": {
-          "line": 4.0,
-          "over_price": 650
-        },
-        "shots_on_target": {
-          "line": 2.0,
-          "over_price": 500
-        }
-      },
-      "Dayot Upamecano": {
-        "assists": {
-          "line": 0.5,
-          "over_price": 1000
-        },
-        "shots": {
-          "line": 2.0,
-          "over_price": 550
-        },
-        "shots_on_target": {
-          "line": 2.0,
-          "over_price": 3000
-        }
-      },
-      "William Saliba": {
-        "assists": {
-          "line": 0.5,
-          "over_price": 1000
-        },
-        "shots": {
-          "line": 2.0,
-          "over_price": 1000
-        },
-        "shots_on_target": {
-          "line": 1.0,
-          "over_price": 490
-        }
-      },
-      "Idrissa Gana Gueye": {
-        "assists": {
-          "line": 0.5,
-          "over_price": 1200
-        },
-        "shots": {
-          "line": 2.0,
-          "over_price": 300
-        },
-        "shots_on_target": {
-          "line": 1.0,
-          "over_price": 400
-        }
-      },
-      "Pape Alassane Gueye": {
-        "assists": {
-          "line": 0.5,
-          "over_price": 1600
-        },
-        "shots": {
-          "line": 4.0,
-          "over_price": 1000
-        },
-        "shots_on_target": {
-          "line": 2.0,
-          "over_price": 1200
-        }
-      },
-      "Moussa Niakhate": {
-        "assists": {
-          "line": 0.5,
-          "over_price": 2000
-        },
-        "shots": {
-          "line": 1.0,
-          "over_price": 240
-        },
-        "shots_on_target": {
-          "line": 1.0,
-          "over_price": 850
-        }
-      },
-      "Kalidou Koulibaly": {
-        "assists": {
-          "line": 0.5,
-          "over_price": 2000
-        },
-        "shots": {
-          "line": 1.0,
-          "over_price": 175
-        },
-        "shots_on_target": {
-          "line": 1.0,
-          "over_price": 650
-        }
-      }
-    },
-    "book": "fanduel",
-    "fetched_at": "2026-06-16T18:16:02.729449+00:00"
+    "player_props": {},
+    "book": "none",
+    "fetched_at": "2026-06-16T23:02:02.587219+00:00"
   },
   {
     "espn_id": "760430",
     "name": "Norway at Iraq",
     "short_name": "NOR @ IRQ",
     "date": "2026-06-16T22:00Z",
-    "status": "Scheduled",
-    "status_detail": "Scheduled",
+    "status": "Halftime",
+    "status_detail": "HT",
     "completed": false,
     "period": 0,
     "teams": [
       {
         "name": "Iraq",
         "abbrev": "IRQ",
-        "score": "0",
+        "score": "1",
         "homeAway": "home"
       },
       {
         "name": "Norway",
         "abbrev": "NOR",
-        "score": "0",
+        "score": "2",
         "homeAway": "away"
       }
     ],
@@ -336,147 +54,161 @@
       "Martin Odegaard": {
         "assists": {
           "line": 0.5,
-          "over_price": 160
+          "over_price": 340
         },
         "shots": {
-          "line": 6.0,
-          "over_price": 2000
+          "line": 2.0,
+          "over_price": -270
         },
         "shots_on_target": {
           "line": 2.0,
-          "over_price": 330
+          "over_price": 850
         }
       },
       "Antonio Nusa": {
         "assists": {
           "line": 0.5,
-          "over_price": 200
+          "over_price": 380
         },
         "shots": {
-          "line": 6.0,
-          "over_price": 800
+          "line": 2.0,
+          "over_price": -110
         },
         "shots_on_target": {
           "line": 2.0,
-          "over_price": 220
+          "over_price": 550
         }
       },
       "Julian Ryerson": {
         "assists": {
           "line": 0.5,
-          "over_price": 200
+          "over_price": 400
         },
         "shots": {
           "line": 2.0,
-          "over_price": 380
+          "over_price": 1100
         },
         "shots_on_target": {
-          "line": 2.0,
-          "over_price": 3000
+          "line": 1.0,
+          "over_price": 550
         }
       },
       "Alexander Sorloth": {
         "assists": {
           "line": 0.5,
-          "over_price": 210
+          "over_price": 410
         },
         "shots": {
           "line": 6.0,
-          "over_price": 340
+          "over_price": 450
         },
         "shots_on_target": {
           "line": 2.0,
-          "over_price": 100
+          "over_price": 300
         }
       },
       "Fredrik Aursnes": {
         "assists": {
           "line": 0.5,
-          "over_price": 240
+          "over_price": 490
         },
         "shots": {
           "line": 2.0,
-          "over_price": -105
+          "over_price": 340
         },
         "shots_on_target": {
           "line": 2.0,
-          "over_price": 800
-        }
-      },
-      "David Moller Wolfe": {
-        "assists": {
-          "line": 0.5,
-          "over_price": 370
-        },
-        "shots": {
-          "line": 2.0,
-          "over_price": 480
-        },
-        "shots_on_target": {
-          "line": 2.0,
-          "over_price": 2200
-        }
-      },
-      "Kristoffer Ajer": {
-        "assists": {
-          "line": 0.5,
-          "over_price": 380
-        },
-        "shots": {
-          "line": 2.0,
-          "over_price": 410
-        },
-        "shots_on_target": {
-          "line": 1.0,
-          "over_price": 370
-        }
-      },
-      "Erling Braut Haaland": {
-        "assists": {
-          "line": 0.5,
-          "over_price": 420
-        },
-        "shots": {
-          "line": 6.0,
-          "over_price": 105
-        },
-        "shots_on_target": {
-          "line": 2.0,
-          "over_price": -300
-        }
-      },
-      "Torbjorn Lysaker Heggem": {
-        "assists": {
-          "line": 0.5,
-          "over_price": 650
-        },
-        "shots": {
-          "line": 2.0,
-          "over_price": 480
-        },
-        "shots_on_target": {
-          "line": 1.0,
-          "over_price": 370
+          "over_price": 2000
         }
       },
       "Sander Berge": {
         "assists": {
           "line": 0.5,
-          "over_price": 700
+          "over_price": 600
         },
         "shots": {
           "line": 2.0,
-          "over_price": -105
+          "over_price": 350
         },
         "shots_on_target": {
           "line": 2.0,
-          "over_price": 700
+          "over_price": 1800
+        }
+      },
+      "Kristoffer Ajer": {
+        "assists": {
+          "line": 0.5,
+          "over_price": 650
+        },
+        "shots": {
+          "line": 1.0,
+          "over_price": 180
+        },
+        "shots_on_target": {
+          "line": 1.0,
+          "over_price": 650
+        }
+      },
+      "Erling Braut Haaland": {
+        "assists": {
+          "line": 0.5,
+          "over_price": 750
+        },
+        "shots": {
+          "line": 6.0,
+          "over_price": -450
+        },
+        "shots_on_target": {
+          "line": 4.0,
+          "over_price": -425
         }
       },
       "Ali Al-Hamadi": {
         "assists": {
           "line": 0.5,
+          "over_price": 1100
+        },
+        "shots": {
+          "line": 6.0,
+          "over_price": 500
+        },
+        "shots_on_target": {
+          "line": 2.0,
           "over_price": 900
+        }
+      },
+      "Torbjorn Lysaker Heggem": {
+        "assists": {
+          "line": 0.5,
+          "over_price": 1200
+        },
+        "shots": {
+          "line": 1.0,
+          "over_price": 200
+        },
+        "shots_on_target": {
+          "line": 1.0,
+          "over_price": 650
+        }
+      },
+      "Ali Jasim Elaibi Al Tameemi": {
+        "assists": {
+          "line": 0.5,
+          "over_price": 1200
+        },
+        "shots": {
+          "line": 2.0,
+          "over_price": 320
+        },
+        "shots_on_target": {
+          "line": 2.0,
+          "over_price": 1900
+        }
+      },
+      "Ibraheem Bayesh": {
+        "assists": {
+          "line": 0.5,
+          "over_price": 1400
         },
         "shots": {
           "line": 2.0,
@@ -484,97 +216,55 @@
         },
         "shots_on_target": {
           "line": 2.0,
-          "over_price": 550
-        }
-      },
-      "Ali Jasim Elaibi Al Tameemi": {
-        "assists": {
-          "line": 0.5,
-          "over_price": 950
-        },
-        "shots": {
-          "line": 2.0,
-          "over_price": 165
-        },
-        "shots_on_target": {
-          "line": 2.0,
-          "over_price": 1200
-        }
-      },
-      "Ibraheem Bayesh": {
-        "assists": {
-          "line": 0.5,
-          "over_price": 1100
-        },
-        "shots": {
-          "line": 2.0,
-          "over_price": 210
-        },
-        "shots_on_target": {
-          "line": 2.0,
-          "over_price": 1700
+          "over_price": 2000
         }
       },
       "Aymen Hussein": {
         "assists": {
           "line": 0.5,
-          "over_price": 1200
+          "over_price": 1500
         },
         "shots": {
-          "line": 2.0,
-          "over_price": -115
+          "line": 6.0,
+          "over_price": 1900
         },
         "shots_on_target": {
           "line": 2.0,
-          "over_price": 600
-        }
-      },
-      "Hussein Ali": {
-        "assists": {
-          "line": 0.5,
-          "over_price": 1600
-        },
-        "shots": {
-          "line": 1.0,
-          "over_price": 185
-        },
-        "shots_on_target": {
-          "line": 1.0,
-          "over_price": 950
-        }
-      },
-      "Amir Al Ammari": {
-        "assists": {
-          "line": 0.5,
-          "over_price": 1600
-        },
-        "shots": {
-          "line": 2.0,
-          "over_price": 500
-        },
-        "shots_on_target": {
-          "line": 1.0,
-          "over_price": 440
+          "over_price": 150
         }
       },
       "Merchas Doski": {
         "assists": {
           "line": 0.5,
-          "over_price": 1700
+          "over_price": 2000
         },
         "shots": {
           "line": 1.0,
-          "over_price": 200
+          "over_price": 300
         },
         "shots_on_target": {
           "line": 1.0,
-          "over_price": 950
+          "over_price": 1200
         }
       },
-      "Zidane Iqbal": {
+      "Hussein Ali": {
         "assists": {
           "line": 0.5,
-          "over_price": 1900
+          "over_price": 2000
+        },
+        "shots": {
+          "line": 1.0,
+          "over_price": 290
+        },
+        "shots_on_target": {
+          "line": 1.0,
+          "over_price": 1300
+        }
+      },
+      "Zaid Ismail": {
+        "assists": {
+          "line": 0.5,
+          "over_price": 2200
         },
         "shots": {
           "line": 2.0,
@@ -582,40 +272,60 @@
         },
         "shots_on_target": {
           "line": 1.0,
-          "over_price": 430
+          "over_price": 420
+        }
+      },
+      "Akam Hashim": {
+        "assists": {
+          "line": 0.5,
+          "over_price": 3300
+        },
+        "shots": {
+          "line": 2.0,
+          "over_price": 370
+        },
+        "shots_on_target": {
+          "line": 1.0,
+          "over_price": 1100
         }
       },
       "Zaid Tahseen": {
         "assists": {
           "line": 0.5,
-          "over_price": 2700
+          "over_price": 3500
         },
         "shots": {
-          "line": 1.0,
-          "over_price": 250
+          "line": 3.0,
+          "over_price": 370
         },
         "shots_on_target": {
           "line": 1.0,
-          "over_price": 1000
+          "over_price": 1200
         }
       },
-      "Rebin Sulaka": {
-        "assists": {
-          "line": 0.5,
-          "over_price": 3000
-        },
+      "Amir Al Ammari": {
         "shots": {
-          "line": 1.0,
-          "over_price": 250
+          "line": 2.0,
+          "over_price": 550
         },
         "shots_on_target": {
           "line": 1.0,
-          "over_price": 1000
+          "over_price": 550
+        }
+      },
+      "David Moller Wolfe": {
+        "shots": {
+          "line": 1.0,
+          "over_price": 195
+        },
+        "shots_on_target": {
+          "line": 1.0,
+          "over_price": 480
         }
       }
     },
     "book": "fanduel",
-    "fetched_at": "2026-06-16T18:16:02.729449+00:00"
+    "fetched_at": "2026-06-16T23:02:02.587219+00:00"
   },
   {
     "espn_id": "760433",
@@ -648,12 +358,12 @@
           "over_price": 125
         },
         "shots": {
-          "line": 4.0,
-          "over_price": -210
+          "line": 3.0,
+          "over_price": -550
         },
         "shots_on_target": {
-          "line": 2.0,
-          "over_price": -150
+          "line": 1.0,
+          "over_price": -700
         }
       },
       "Julian Alvarez": {
@@ -662,26 +372,12 @@
           "over_price": 250
         },
         "shots": {
-          "line": 4.0,
-          "over_price": -105
+          "line": 1.0,
+          "over_price": -7000
         },
         "shots_on_target": {
-          "line": 2.0,
-          "over_price": -105
-        }
-      },
-      "Thiago Almada": {
-        "assists": {
-          "line": 0.5,
-          "over_price": 280
-        },
-        "shots": {
-          "line": 4.0,
-          "over_price": 330
-        },
-        "shots_on_target": {
-          "line": 2.0,
-          "over_price": 220
+          "line": 1.0,
+          "over_price": -475
         }
       },
       "Enzo Fernandez": {
@@ -690,12 +386,26 @@
           "over_price": 290
         },
         "shots": {
-          "line": 4.0,
-          "over_price": 600
+          "line": 1.0,
+          "over_price": -700
         },
         "shots_on_target": {
-          "line": 2.0,
-          "over_price": 380
+          "line": 1.0,
+          "over_price": -150
+        }
+      },
+      "Thiago Almada": {
+        "assists": {
+          "line": 0.5,
+          "over_price": 290
+        },
+        "shots": {
+          "line": 1.0,
+          "over_price": -1250
+        },
+        "shots_on_target": {
+          "line": 1.0,
+          "over_price": -230
         }
       },
       "Alexis Mac Allister": {
@@ -704,12 +414,12 @@
           "over_price": 360
         },
         "shots": {
-          "line": 4.0,
-          "over_price": 800
+          "line": 1.0,
+          "over_price": -550
         },
         "shots_on_target": {
-          "line": 2.0,
-          "over_price": 440
+          "line": 1.0,
+          "over_price": -125
         }
       },
       "Rodrigo Javier De Paul": {
@@ -718,32 +428,32 @@
           "over_price": 370
         },
         "shots": {
-          "line": 4.0,
-          "over_price": 2200
+          "line": 1.0,
+          "over_price": -280
         },
         "shots_on_target": {
-          "line": 2.0,
-          "over_price": 800
+          "line": 1.0,
+          "over_price": 130
         }
       },
       "Lautaro Martinez": {
         "assists": {
           "line": 0.5,
-          "over_price": 410
+          "over_price": 400
         },
         "shots": {
-          "line": 4.0,
-          "over_price": -135
+          "line": 1.0,
+          "over_price": -10000
         },
         "shots_on_target": {
-          "line": 2.0,
-          "over_price": 105
+          "line": 1.0,
+          "over_price": -450
         }
       },
       "Marcos Senesi": {
         "assists": {
           "line": 0.5,
-          "over_price": 460
+          "over_price": 440
         },
         "shots": {
           "line": 1.0,
@@ -751,7 +461,7 @@
         },
         "shots_on_target": {
           "line": 1.0,
-          "over_price": 350
+          "over_price": 340
         }
       },
       "Nahuel Molina": {
@@ -764,8 +474,8 @@
           "over_price": -120
         },
         "shots_on_target": {
-          "line": 2.0,
-          "over_price": 1800
+          "line": 1.0,
+          "over_price": 220
         }
       },
       "Nicolas Tagliafico": {
@@ -775,11 +485,11 @@
         },
         "shots": {
           "line": 1.0,
-          "over_price": -140
+          "over_price": -145
         },
         "shots_on_target": {
-          "line": 2.0,
-          "over_price": 1700
+          "line": 1.0,
+          "over_price": 220
         }
       },
       "Riyad Mahrez": {
@@ -788,12 +498,12 @@
           "over_price": 600
         },
         "shots": {
-          "line": 4.0,
-          "over_price": 1400
+          "line": 1.0,
+          "over_price": -330
         },
         "shots_on_target": {
-          "line": 2.0,
-          "over_price": 800
+          "line": 1.0,
+          "over_price": 130
         }
       },
       "Nicolas Otamendi": {
@@ -806,8 +516,8 @@
           "over_price": -120
         },
         "shots_on_target": {
-          "line": 2.0,
-          "over_price": 2000
+          "line": 1.0,
+          "over_price": 250
         }
       },
       "Facundo Medina": {
@@ -827,29 +537,15 @@
       "Houssem Aouar": {
         "assists": {
           "line": 0.5,
-          "over_price": 800
+          "over_price": 850
         },
         "shots": {
           "line": 1.0,
           "over_price": -195
         },
         "shots_on_target": {
-          "line": 2.0,
-          "over_price": 1600
-        }
-      },
-      "Cristian Romero": {
-        "assists": {
-          "line": 0.5,
-          "over_price": 850
-        },
-        "shots": {
           "line": 1.0,
-          "over_price": -120
-        },
-        "shots_on_target": {
-          "line": 2.0,
-          "over_price": 2200
+          "over_price": 210
         }
       },
       "Fares Chaibi": {
@@ -862,8 +558,8 @@
           "over_price": -220
         },
         "shots_on_target": {
-          "line": 2.0,
-          "over_price": 2000
+          "line": 1.0,
+          "over_price": 250
         }
       },
       "Ibrahim Maza": {
@@ -876,8 +572,22 @@
           "over_price": -220
         },
         "shots_on_target": {
-          "line": 2.0,
-          "over_price": 1800
+          "line": 1.0,
+          "over_price": 230
+        }
+      },
+      "Cristian Romero": {
+        "assists": {
+          "line": 0.5,
+          "over_price": 900
+        },
+        "shots": {
+          "line": 1.0,
+          "over_price": -120
+        },
+        "shots_on_target": {
+          "line": 1.0,
+          "over_price": 260
         }
       },
       "Rayan Ait Nouri": {
@@ -891,7 +601,7 @@
         },
         "shots_on_target": {
           "line": 1.0,
-          "over_price": 650
+          "over_price": 600
         }
       },
       "Hicham Boudaoui": {
@@ -904,8 +614,8 @@
           "over_price": -145
         },
         "shots_on_target": {
-          "line": 2.0,
-          "over_price": 2500
+          "line": 1.0,
+          "over_price": 290
         }
       },
       "Rafik Belghali": {
@@ -928,12 +638,12 @@
           "over_price": 1300
         },
         "shots": {
-          "line": 4.0,
-          "over_price": 850
+          "line": 1.0,
+          "over_price": -475
         },
         "shots_on_target": {
-          "line": 2.0,
-          "over_price": 600
+          "line": 1.0,
+          "over_price": 105
         }
       },
       "Nabil Bentaleb": {
@@ -953,7 +663,7 @@
       "Lisandro Martinez": {
         "assists": {
           "line": 0.5,
-          "over_price": 1500
+          "over_price": 1400
         },
         "shots": {
           "line": 1.0,
@@ -961,7 +671,7 @@
         },
         "shots_on_target": {
           "line": 1.0,
-          "over_price": 350
+          "over_price": 360
         }
       },
       "Jaouen Hadjam": {
@@ -975,7 +685,7 @@
         },
         "shots_on_target": {
           "line": 1.0,
-          "over_price": 800
+          "over_price": 750
         }
       },
       "Aissa Mandi": {
@@ -985,7 +695,7 @@
         },
         "shots": {
           "line": 1.0,
-          "over_price": 180
+          "over_price": 185
         },
         "shots_on_target": {
           "line": 1.0,
@@ -994,6 +704,6 @@
       }
     },
     "book": "fanduel",
-    "fetched_at": "2026-06-16T18:16:02.729449+00:00"
+    "fetched_at": "2026-06-16T23:02:02.587219+00:00"
   }
 ]

@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+
+# TC — Triple Conservative — Trademark June 2026 — All rights reserved.
 """
 WNBA Live Props Pull — uses the new team_game_mapper to resolve Odds API events
 to our canonical ESPN abbrs, then pulls DK player props for tonight's slate.

@@ -285,6 +285,20 @@ def rebuild_registry():
     _savereg(reg)
     print(f"  📋 Registry rebuilt: {len(reg)} entries")
 
+# ══════ soccer  ══════════════════════════════════════════════════════
+
+def scan_and_save_soccer(mode: str = "final"):
+    """Delegate WC capture to the soccer-specific boxscore saver."""
+    import subprocess
+    soccer_script = WORKSPACE / "Projects" / "soccer_boxscore_capture.py"
+    cmd = [sys.executable, str(soccer_script)]
+    if mode != "all":
+        cmd.extend(["--mode", mode])
+    result = subprocess.run(cmd, capture_output=True, text=True, timeout=180)
+    print(result.stdout)
+    if result.stderr:
+        print(result.stderr, file=sys.stderr)
+
 # ══════ main scanner  ══════════════════════════════════════════════════
 
 def scan_and_save(sport: str | None = None, mode: str = "all"):
@@ -294,6 +308,10 @@ def scan_and_save(sport: str | None = None, mode: str = "all"):
     saved_ht = saved_final = 0
 
     for sp in sports:
+        if sp == "WORLD CUP":
+            scan_and_save_soccer(mode=mode)
+            continue
+        
         spath = LEAGUE[sp]
         sb = _sb(spath, today)
         events = sb.get("events", [])

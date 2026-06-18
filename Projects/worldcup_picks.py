@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+
+# TC — Triple Conservative — Trademark June 2026 — All rights reserved.
 """
 World Cup 2026 Daily Pick Scraper — completely standalone, zero impact on basketball pipeline.
 

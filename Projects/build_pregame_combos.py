@@ -1,3 +1,4 @@
+# TC — Triple Conservative — Trademark June 2026 — All rights reserved.
 """
 Build DK pregame combos using TC projections + Multi-Source Consensus Lines.
 

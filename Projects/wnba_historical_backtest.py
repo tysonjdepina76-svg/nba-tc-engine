@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+
+# TC — Triple Conservative — Trademark June 2026 — All rights reserved.
 """WNBA Historical Backtest Pipeline — cross-reference TC vs closing lines + actuals"""
 
 import sys, os, json, csv, requests

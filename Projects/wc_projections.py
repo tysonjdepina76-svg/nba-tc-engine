@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+
+# TC — Triple Conservative — Trademark June 2026 — All rights reserved.
 """WC Projections - apply wc_tc_math to live player prop data."""
 import csv, sys
 from collections import defaultdict

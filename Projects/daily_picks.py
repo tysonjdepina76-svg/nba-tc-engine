@@ -364,8 +364,7 @@ def run_daily_log(sports=ALL_SPORTS):
     write_header = not csv_path.exists()
     with open(csv_path, "w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=csv_fields)
-        if write_header:
-            w.writeheader()
+        w.writeheader()
         for p in all_picks:
             row = {k: p.get(k, "") for k in csv_fields}
             w.writerow(row)

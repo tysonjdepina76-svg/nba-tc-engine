@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+
+# TC — Triple Conservative — Trademark June 2026 — All rights reserved.
 """
 Multi-Sport Live Props Pull — MLB, NHL, World Cup, NBA, NFL
 Uses Odds API free-tier player prop markets per sport.

@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+
+# TC — Triple Conservative — Trademark June 2026 — All rights reserved.
 """
 World Cup Picks Grader
 Loads FanDuel WC player props from Daily_Log/worldcup/YYYYMMDD/picks.csv

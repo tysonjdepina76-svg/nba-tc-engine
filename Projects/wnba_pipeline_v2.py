@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+
+# TC — Triple Conservative — Trademark June 2026 — All rights reserved.
 """WNBA TC Pipeline v2 — integrated workflow.
 
 Combines:

@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+
+# TC — Triple Conservative — Trademark June 2026 — All rights reserved.
 """
 World Cup Historical Backtest Puller
 Pulls ALL FIFA WC matches from ESPN (free, no auth, 4 tournaments: 2010/2014/2018/2022).

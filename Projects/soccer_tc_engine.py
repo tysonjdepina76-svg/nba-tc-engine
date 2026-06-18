@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+
+# TC — Triple Conservative — Trademark June 2026 — All rights reserved.
 """
 Soccer TC Engine — Triple Conservative projections for soccer (World Cup + beyond).
 
