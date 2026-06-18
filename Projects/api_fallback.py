@@ -20,15 +20,20 @@ Usage:
 
 import json
 import os
+import sys
 import time
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
+
+# Add SGO cache module path
+sys.path.insert(0, str(Path("/home/workspace")))
+from Cache.sgo.cache import sgo_get
 
 CACHE_DIR = Path("/home/workspace/Daily_Log/cache/odds")
 CACHE_DIR.mkdir(parents=True, exist_ok=True)
 QUOTA_FILE = Path("/home/workspace/Daily_Log/cache/quota_exhausted.json")
 
-ODDS_BASE = "https://api.the-odds-api.com/v4"
+ODDS_BASE = "https://api.theoddsapi.com"
 
 # ── Private: load all Odds API keys from env ─────────────
 def _load_keys():
@@ -143,7 +148,9 @@ class FallbackManager:
                     return None, True
                 return None, False
             r.raise_for_status()
-            return r.json(), False
+            payload = r.json()
+            # v5 root en
+            return payload, False
         except requests.exceptions.RequestException:
             return None, False
 
@@ -196,13 +203,13 @@ class FallbackManager:
 
         def params_fn(key):
             return {
-                "apiKey": key, "regions": "us",
+                "x-api-key": key, "sport_key": sk, "regions": "us",
                 "markets": "h2h,spreads,totals", "oddsFormat": "decimal",
                 "commenceTimeFrom": (datetime.now(timezone.utc) - timedelta(hours=12)).strftime("%Y-%m-%dT%H:%M:%SZ"),
                 "commenceTimeTo": (datetime.now(timezone.utc) + timedelta(days=2)).strftime("%Y-%m-%dT%H:%M:%SZ"),
             }
 
-        data, key_used = self._try_odds_keys(f"sports/{sk}/odds", params_fn)
+        data, key_used = self._try_odds_keys("odds", params_fn)
         if not data:
             return None, None
 
@@ -244,14 +251,13 @@ class FallbackManager:
 
         def params_fn(key):
             return {
-                "apiKey": key, "regions": "us",
+                "x-api-key": key, "sport_key": sk, "eventIds": game_id,
+                "regions": "us",
                 "markets": "player_points,player_rebounds,player_assists,player_threes,player_steals,player_blocks",
                 "oddsFormat": "decimal",
             }
 
-        data, _ = self._try_odds_keys(
-            f"sports/{sk}/events/{game_id}/odds", params_fn
-        )
+        data, _ = self._try_odds_keys("odds", params_fn)
         if not data:
             return None
 
@@ -271,21 +277,19 @@ class FallbackManager:
 
     # ── Tier 1: SGO (MLB only) ─────────────────────────
     def _sgo_mlb_enrich(self, away, home):
-        """Fetch MLB lines from SGO — zero Odds API cost."""
+        """Fetch MLB lines from SGO — zero Odds API cost. Uses 6hr cache."""
         if not self._sgo_key:
             return {"error": "No SGO key", "player_lines": {}, "source": "sgo_error"}
         try:
-            import requests
-            r = requests.get(
-                "https://api.sportsgameodds.com/v2/events",
-                params={"leagueID": "MLB"},
-                headers={"x-api-key": self._sgo_key},
-                timeout=15,
-            )
-            if r.status_code == 429:
+            # ── Cached SGO events list ──
+            events_resp = sgo_get("/v2/events", params={"leagueID": "MLB"})
+            if events_resp.get("error"):
+                return {"error": f"SGO: {events_resp['error']}", "player_lines": {}, "source": "sgo_error"}
+            if events_resp.get("status_code") == 429:
                 return {"error": "SGO rate limited", "player_lines": {}, "source": "sgo_rate_limit"}
-            r.raise_for_status()
-            events = r.json()
+
+            events = events_resp["data"]
+            cache_tag = " [cache]" if events_resp.get("from_cache") else ""
             if not isinstance(events, list):
                 return {"error": "SGO bad format", "player_lines": {}, "source": "sgo_bad_format"}
 
@@ -305,15 +309,14 @@ class FallbackManager:
             if not eid:
                 return {"error": "SGO no event ID", "player_lines": {}, "source": "sgo_no_id"}
 
-            r2 = requests.get(
-                f"https://api.sportsgameodds.com/v2/events/{eid}/odds",
-                headers={"x-api-key": self._sgo_key},
-                timeout=15,
-            )
-            if r2.status_code == 429:
+            # ── Cached SGO event odds ──
+            odds_resp = sgo_get(f"/v2/events/{eid}/odds")
+            if odds_resp.get("error"):
+                return {"error": f"SGO odds: {odds_resp['error']}", "player_lines": {}, "source": "sgo_error"}
+            if odds_resp.get("status_code") == 429:
                 return {"error": "SGO rate limited", "player_lines": {}, "source": "sgo_rate_limit"}
-            r2.raise_for_status()
-            odds_data = r2.json()
+
+            odds_data = odds_resp["data"]
 
             total = odds_data.get("total", odds_data.get("totals", {}))
             spread = odds_data.get("spread", odds_data.get("spreads", {}))
@@ -325,6 +328,7 @@ class FallbackManager:
                 "player_count": 0,
                 "source": "sgo",
                 "sgo_event_id": eid,
+                "_from_cache": events_resp.get("from_cache") and odds_resp.get("from_cache"),
             }
         except Exception as e:
             return {"error": str(e), "player_lines": {}, "source": "sgo_error"}

@@ -60,7 +60,7 @@ def load_secrets():
 
 load_secrets()
 ODDS_API_KEY = os.environ.get("ODDS_API_KEY", "")
-ODDS_BASE = "https://api.the-odds-api.com/v4"
+ODDS_BASE = "https://api.theoddsapi.com"
 
 # Leagues available for soccer via Odds API
 SOCCER_SPORTS = [
@@ -136,7 +136,7 @@ def fetch_world_cup_events() -> List[dict]:
         try:
             r = requests.get(
                 f"{ODDS_BASE}/sports/{sport_key}/events",
-                params={"apiKey": ODDS_API_KEY, "dateFormat": "iso"},
+                params={"x-api-key": ODDS_API_KEY, "dateFormat": "iso"},
                 timeout=15,
             )
             r.raise_for_status()
@@ -158,7 +158,7 @@ def fetch_soccer_odds(event_id: str, sport_key: str = "soccer_fifa_world_cup") -
         r = requests.get(
             f"{ODDS_BASE}/sports/{sport_key}/events/{event_id}/odds",
             params={
-                "apiKey": ODDS_API_KEY,
+                "x-api-key": ODDS_API_KEY,
                 "regions": "us",
                 "oddsFormat": "american",
                 "markets": "h2h,totals,btts",

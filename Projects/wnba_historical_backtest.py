@@ -21,13 +21,13 @@ if _sec.exists():
             os.environ.setdefault(_k.strip(), _v.strip())
 
 ODDS_KEY = os.environ.get("ODDS_API_KEY", "")
-API_BASE = "https://api.the-odds-api.com/v4"
+API_BASE = "https://api.theoddsapi.com"
 
 
 def fetch_hist_game_odds(date_str: str) -> list:
     """Fetch historical WNBA game odds for a specific date."""
     url = f"{API_BASE}/historical/sports/basketball_wnba/odds"
-    params = {"apiKey": ODDS_KEY, "regions": "us", "markets": "h2h,spreads,totals",
+    params = {"x-api-key": ODDS_KEY, "regions": "us", "markets": "h2h,spreads,totals",
               "oddsFormat": "american", "date": f"{date_str}T12:00:00Z"}
     r = requests.get(url, params=params, timeout=30)
     if r.status_code == 200:
@@ -39,7 +39,7 @@ def fetch_hist_game_odds(date_str: str) -> list:
 def fetch_hist_event_props(sport: str, event_id: str, date_str: str) -> dict:
     """Fetch historical player props for a specific event."""
     url = f"{API_BASE}/historical/sports/{sport}/events/{event_id}/odds"
-    params = {"apiKey": ODDS_KEY, "regions": "us",
+    params = {"x-api-key": ODDS_KEY, "regions": "us",
               "markets": "player_points,player_rebounds,player_assists",
               "oddsFormat": "american", "date": f"{date_str}T12:00:00Z"}
     r = requests.get(url, params=params, timeout=30)

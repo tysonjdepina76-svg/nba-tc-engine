@@ -2,7 +2,7 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 import json, urllib.request, os, sys
 from urllib.parse import urlparse, parse_qs
 
-SDIO_KEY = os.environ.get("SPORTS_DATA_API_KEY", "2888700f9bce4c41ad074e26b505f9b3")
+SDIO_KEY = os.environ.get("SPORTS_DATA_API_KEY") or os.environ.get("SPORTSDATAIO_API_KEY", "")
 SDIO_BASE = "https://api.sportsdata.io/v3"
 
 SPORT_MAP = {

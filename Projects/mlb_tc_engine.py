@@ -483,10 +483,10 @@ def fetch_mlb_player_lines(game_id: str) -> Dict[str, Dict[str, float]]:
     all_markets = list(BATTER_MARKETS.values()) + list(PITCHER_MARKETS.values())
     market_str = ",".join(all_markets)
 
-    url = f"https://api.the-odds-api.com/v4/sports/baseball_mlb/events/{game_id}/odds"
+    url = f"https://api.theoddsapi.com/events/baseball_mlb/odds?sport_key=baseball_mlb{game_id}
     try:
         r = requests.get(url, params={
-            "apiKey": key,
+            "x-api-key": key,
             "regions": "us",
             "markets": market_str,
             "bookmakers": "draftkings",
@@ -539,9 +539,9 @@ def fetch_mlb_game_lines() -> List[Dict]:
 
     try:
         r = requests.get(
-            "https://api.the-odds-api.com/v4/sports/baseball_mlb/odds",
+            "https://api.theoddsapi.com/odds/baseball_mlb/odds",
             params={
-                "apiKey": key,
+                "x-api-key": key,
                 "regions": "us",
                 "markets": "h2h,spreads,totals",
                 "bookmakers": "draftkings",

@@ -94,7 +94,7 @@ if SGO_KEY:
         ep = probe(
             name=f"SGO events {sport}",
             url="https://api.sportsgameodds.com/v2/events",
-            params={"sportID": sport, "apiKey": SGO_KEY},
+            params={"sportID": sport, "x-api-key": SGO_KEY},
             key_label="SPORTSGAMEODDS_API_KEY",
             free_tier=False,
         )
@@ -108,19 +108,20 @@ for label, key in [("ODDS_API_KEY", ODDS_KEY),
         continue
     is_free = "FREE" in label or "BACKUP" in label
     # Check remaining credits (Odds API has /v4/sports endpoint that's cheap)
+    # Sports list — v5 root namespace
     ep = probe(
         name=f"Odds API sports list ({label})",
-        url="https://api.the-odds-api.com/v4/sports",
-        params={"apiKey": key},
+        url="https://api.theoddsapi.com/sports/",
+        params={"x-api-key": key},
         key_label=label,
         free_tier=is_free,
     )
     results["endpoints"].append(ep)
-    # WNBA events
+    # WNBA events — v5 root namespace
     ep2 = probe(
         name=f"Odds API WNBA events ({label})",
-        url="https://api.the-odds-api.com/v4/sports/basketball_wnba/events",
-        params={"apiKey": key, "dateFormat": "iso"},
+        url="https://api.theoddsapi.com/events/",
+        params={"x-api-key": key, "sport_key": "basketball_wnba"},
         key_label=label,
         free_tier=is_free,
     )

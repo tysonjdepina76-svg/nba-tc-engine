@@ -179,11 +179,16 @@ def fetch_sport_batch(sport: str, markets: Optional[List[str]] = None, force: bo
     # Step 1: Get all events (one cheap API call)
     try:
         r = requests.get(
-            f"https://api.the-odds-api.com/v4/sports/{sport_key}/events",
-            params={"apiKey": ODDS_KEY, "dateFormat": "iso"}, timeout=15
+            f"https://api.theoddsapi.com/events?sport_key={sport_key}",
+            params={"x-api-key": ODDS_KEY, "dateFormat": "iso"}, timeout=15
         )
         r.raise_for_status()
-        events = r.json()
+        ev_data = r.json()
+        # v5 envelope: {success, source, data: [...]}
+        if isinstance(ev_data, dict) and 'data' in ev_data and isinstance(ev_data['data'], list):
+            events = ev_data['data']
+        else:
+            events = ev_data if isinstance(ev_data, list) else []
     except Exception as e:
         return {"events": {}, "error": f"events fetch: {e}"}
 
@@ -235,8 +240,8 @@ def fetch_consensus_for_matchup(sport: str, away: str, home: str, markets=None) 
         return {"players": {}, "available_books": [], "source": "none", "error": "ODDS_API_KEY not set"}
 
     r = requests.get(
-        f"https://api.the-odds-api.com/v4/sports/{sport_key}/events",
-        params={"apiKey": ODDS_KEY, "dateFormat": "iso"}, timeout=15
+        f"https://api.theoddsapi.com/events?sport_key={sport_key}",
+        params={"x-api-key": ODDS_KEY, "dateFormat": "iso"}, timeout=15
     )
     r.raise_for_status()
     events = r.json()
@@ -318,9 +323,9 @@ def get_consensus_lines(
 
     try:
         r = requests.get(
-            f"https://api.the-odds-api.com/v4/sports/{sport_key}/events/{event_id}/odds",
+            f"https://api.theoddsapi.com/odds",
             params={
-                "apiKey": ODDS_KEY, "regions": "us",
+                "x-api-key": ODDS_KEY, "regions": "us",
                 "markets": market_str, "oddsFormat": "decimal",
             },
             timeout=25,
@@ -508,8 +513,8 @@ if __name__ == "__main__":
 
         # Find event
         r = requests.get(
-            f"https://api.the-odds-api.com/v4/sports/{sport_key}/events",
-            params={"apiKey": ODDS_KEY, "dateFormat": "iso"}, timeout=15
+            f"https://api.theoddsapi.com/events?sport_key={sport_key}",
+            params={"x-api-key": ODDS_KEY, "dateFormat": "iso"}, timeout=15
         )
         events = r.json()
         ev = None
@@ -546,17 +551,27 @@ def list_sport_games(sport: str) -> dict:
         return {"games": [], "error": "ODDS_API_KEY not set"}
     try:
         r = requests.get(
-            f"https://api.the-odds-api.com/v4/sports/{sport_key}/events",
-            params={"apiKey": ODDS_KEY, "dateFormat": "iso"}, timeout=15
+            f"https://api.theoddsapi.com/events?sport_key={sport_key}",
+            params={"x-api-key": ODDS_KEY, "dateFormat": "iso"}, timeout=15
         )
         r.raise_for_status()
-        events = r.json()
+        _d = r.json()
+        events = _d["data"] if isinstance(_d, dict) and "data" in _d else _d
+
+        ev = None
+        for e in events:
+            if away.upper() in e.get("away_team", "").upper() and home.upper() in e.get("home_team", "").upper():
+                ev = e; break
+        if not ev:
+            print(json.dumps({"error": f"No event for {args.matchup}"}))
+            sys.exit(1)
+        result = get_consensus_lines(args.sport, ev["event_id"])
     except Exception as e:
         return {"games": [], "error": str(e)}
     games = []
     for ev in events:
         games.append({
-            "id": ev.get("id"),
+            "id": ev.get("event_id"),
             "away": ev.get("away_team", "??"),
             "home": ev.get("home_team", "??"),
             "commence": ev.get("commence_time", ""),

@@ -140,7 +140,7 @@ def fetch_espn_wnba_slate(target_date=None):
 # ODDS API EVENT BRIDGE — maps Odds API event_id → (away_canon, home_canon)
 # =====================================================================
 
-ODDS_API_BASE = "https://api.the-odds-api.com/v4"
+ODDS_API_BASE = "https://api.theoddsapi.com"
 ODDS_API_KEY = os.environ.get("ODDS_API_KEY", "")
 
 def fetch_odds_api_wnba_events():
@@ -153,7 +153,7 @@ def fetch_odds_api_wnba_events():
     try:
         r = requests.get(
             f"{ODDS_API_BASE}/sports/basketball_wnba/events",
-            params={"apiKey": ODDS_API_KEY, "dateFormat": "iso"},
+            params={"x-api-key": ODDS_API_KEY, "dateFormat": "iso"},
             timeout=12,
         )
         if not r.ok:

@@ -118,8 +118,8 @@ def check_external_apis(secrets: dict, quick: bool = False) -> dict:
     odds_key = secrets.get("ODDS_API_KEY", "")
     if odds_key:
         try:
-            r = requests.get(f"https://api.the-odds-api.com/v4/sports/basketball_wnba/odds/",
-                           params={"apiKey": odds_key, "regions": "us", "markets": "h2h"}, timeout=10)
+            r = requests.get(f"https://api.theoddsapi.com/odds/basketball_wnba/odds/",
+                           params={"x-api-key": odds_key, "regions": "us", "markets": "h2h"}, timeout=10)
             ok = r.ok or r.status_code == 422
             status["odds_api"] = ok
             detail = f"HTTP {r.status_code}"

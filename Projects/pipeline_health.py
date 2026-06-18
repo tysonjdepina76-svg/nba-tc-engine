@@ -115,8 +115,8 @@ def main():
         if odds_key:
             try:
                 r = requests.get(
-                    f"https://api.the-odds-api.com/v4/sports/basketball_wnba/odds/",
-                    params={"apiKey": odds_key, "regions": "us", "markets": "h2h"},
+                    f"https://api.theoddsapi.com/odds/",
+                    params={"x-api-key": odds_key, "regions": "us", "markets": "h2h"},
                     timeout=10,
                 )
                 ok = r.ok or r.status_code == 422
@@ -272,7 +272,7 @@ def main():
     if not json_out:
         print("\n── NFL Engine ──")
 
-    nfl_script = WORKSPACE / "archive" / "nfl-backtest-data" / "sportsdata_nfl_engine_v3.py"
+    nfl_script = WORKSPACE / "Projects" / "sportsdata_nfl_engine.py"
     check("Engine script", nfl_script.exists(), "OK" if nfl_script.exists() else "MISSING")
 
     today = datetime.now().strftime("%Y-%m-%d")

@@ -146,8 +146,8 @@ def odds_api_events(sport: str):
     if not ODDS_KEY:
         raise RuntimeError("ODDS_API_KEY not set")
     sport_path = ODDS_SPORT_MAP.get(sport.upper(), "basketball_wnba")
-    r = requests.get(f"https://api.the-odds-api.com/v4/sports/{sport_path}/events",
-        params={"apiKey": ODDS_KEY, "dateFormat": "iso"}, timeout=15)
+    r = requests.get(f"https://api.theoddsapi.com/events?sport_key={sport_path}",
+        params={"x-api-key": ODDS_KEY, "dateFormat": "iso"}, timeout=15)
     r.raise_for_status()
     return r.json()
 
@@ -156,8 +156,8 @@ def odds_api_player_lines(event_id: str, sport: str):
         raise RuntimeError("ODDS_API_KEY not set")
     sport_path = ODDS_SPORT_MAP.get(sport.upper(), "basketball_wnba")
     r = requests.get(
-        f"https://api.the-odds-api.com/v4/sports/{sport_path}/events/{event_id}/odds",
-        params={"apiKey": ODDS_KEY, "regions": "us", "markets": ODDS_MARKETS,
+        f"https://api.theoddsapi.com/odds?sport_key={sport_path}",
+        params={"x-api-key": ODDS_KEY, "regions": "us", "markets": ODDS_MARKETS,
                 "oddsFormat": "american"},
         timeout=20)
     r.raise_for_status()

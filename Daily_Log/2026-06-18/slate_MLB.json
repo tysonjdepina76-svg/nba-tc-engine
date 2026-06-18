@@ -1,27 +1,27 @@
 {
   "mode": "live_stats",
   "sport": "MLB",
-  "timestamp": "2026-06-18T18:58:10.268Z",
+  "timestamp": "2026-06-18T20:20:07.415Z",
   "games": [
     {
       "id": "401815806",
       "matchup": "TOR@BOS",
       "name": "Toronto Blue Jays at Boston Red Sox",
       "date": "2026-06-18T17:35Z",
-      "status": "In Progress",
-      "detail": "Bottom 6th",
-      "period": 6,
+      "status": "Final",
+      "detail": "Final",
+      "period": 9,
       "clock": "0:00",
-      "completed": false,
+      "completed": true,
       "away": {
         "team": "TOR",
         "name": "Toronto Blue Jays",
-        "score": 2
+        "score": 4
       },
       "home": {
         "team": "BOS",
         "name": "Boston Red Sox",
-        "score": 0
+        "score": 3
       },
       "leaders": [],
       "players": []
@@ -32,19 +32,19 @@
       "name": "Cleveland Guardians at Milwaukee Brewers",
       "date": "2026-06-18T18:10Z",
       "status": "In Progress",
-      "detail": "Top 3rd",
-      "period": 3,
+      "detail": "Bottom 7th",
+      "period": 7,
       "clock": "0:00",
       "completed": false,
       "away": {
         "team": "CLE",
         "name": "Cleveland Guardians",
-        "score": 1
+        "score": 4
       },
       "home": {
         "team": "MIL",
         "name": "Milwaukee Brewers",
-        "score": 1
+        "score": 2
       },
       "leaders": [],
       "players": []
@@ -55,14 +55,14 @@
       "name": "Minnesota Twins at Texas Rangers",
       "date": "2026-06-18T18:35Z",
       "status": "In Progress",
-      "detail": "Bottom 1st",
-      "period": 1,
+      "detail": "Top 6th",
+      "period": 6,
       "clock": "0:00",
       "completed": false,
       "away": {
         "team": "MIN",
         "name": "Minnesota Twins",
-        "score": 4
+        "score": 6
       },
       "home": {
         "team": "TEX",
@@ -77,8 +77,8 @@
       "matchup": "BAL@SEA",
       "name": "Baltimore Orioles at Seattle Mariners",
       "date": "2026-06-18T20:10Z",
-      "status": "Scheduled",
-      "detail": "Scheduled",
+      "status": "In Progress",
+      "detail": "Bottom 1st",
       "period": 1,
       "clock": "0:00",
       "completed": false,

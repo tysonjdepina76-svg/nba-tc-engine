@@ -73,7 +73,7 @@ if SECRETS_FILE.exists():
 if not ODDS_API_KEY:
     ODDS_API_KEY = os.environ.get("ODDS_API_KEY", "")
 
-ODDS_BASE = "https://api.the-odds-api.com/v4"
+ODDS_BASE = "https://api.theoddsapi.com"
 
 SPORT_MAP = {
     "WNBA": "basketball_wnba",
@@ -200,7 +200,7 @@ def fetch_historical_combo_props(sport_key: str, date_str: str) -> list:
     """
     url = f"{ODDS_BASE}/historical/sports/{sport_key}/odds"
     params = {
-        "apiKey": ODDS_API_KEY,
+        "x-api-key": ODDS_API_KEY,
         "date": f"{date_str}T12:00:00Z",
         "regions": "us",
         "markets": HISTORICAL_MARKETS,
@@ -227,7 +227,7 @@ def fetch_historical_scores(sport_key: str, days_from: int = 3) -> list:
     """
     url = f"{ODDS_BASE}/sports/{sport_key}/scores/"
     params = {
-        "apiKey": ODDS_API_KEY,
+        "x-api-key": ODDS_API_KEY,
         "daysFrom": days_from,
         "dateFormat": "iso",
     }

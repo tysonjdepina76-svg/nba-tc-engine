@@ -37,7 +37,7 @@ for line in Path('/root/.zo/secrets.env').read_text().splitlines():
         os.environ.setdefault(k, v)
 
 ODDS_API_KEY = os.environ['ODDS_API_KEY']
-BASE = "https://api.the-odds-api.com/v4"
+BASE = "https://api.theoddsapi.com"
 
 GAME_MARKETS = ["h2h", "spreads", "totals"]  # game-line markets
 PLAYER_PROP_MARKETS = [
@@ -53,7 +53,7 @@ PLAYER_PROP_MARKETS = [
 def pull_event_props(event_id, markets=",".join(PLAYER_PROP_MARKETS), regions="us"):
     url = f"{BASE}/sports/basketball_wnba/events/{event_id}/odds"
     r = requests.get(url, params={
-        "apiKey": ODDS_API_KEY,
+        "x-api-key": ODDS_API_KEY,
         "regions": regions,
         "markets": markets,
         "oddsFormat": "american",

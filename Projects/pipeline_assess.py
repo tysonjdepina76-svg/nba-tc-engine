@@ -183,8 +183,8 @@ def check_odds_credits():
     if not ODDS_KEY:
         return {"summary": "ODDS_API_KEY not found"}
     try:
-        r = requests.get("https://api.the-odds-api.com/v4/sports",
-                        params={"apiKey": ODDS_KEY}, timeout=10)
+        r = requests.get("https://api.theoddsapi.com/odds",
+                        params={"x-api-key": ODDS_KEY}, timeout=10)
         remaining = r.headers.get("x-requests-remaining", "?")
         used = r.headers.get("x-requests-used", "?")
     except Exception:

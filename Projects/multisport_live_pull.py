@@ -30,7 +30,7 @@ if _sec.exists():
             os.environ.setdefault(_k.strip(), _v.strip())
 
 API_KEY = os.environ.get("ODDS_API_KEY", "")
-BASE = "https://api.the-odds-api.com/v4"
+BASE = "https://api.theoddsapi.com"
 
 # Sport config: (odds_api_key, prop_markets_or_None_if_unsupported)
 SPORT_CONFIG = {
@@ -59,7 +59,7 @@ CACHE_TTL_MIN = int(os.environ.get("MULTISPORT_CACHE_TTL_MIN", "60"))
 
 
 def get_events(sport_key):
-    r = requests.get(f"{BASE}/sports/{sport_key}/events", params={"apiKey": API_KEY, "dateFormat": "iso"}, timeout=15)
+    r = requests.get(f"{BASE}/sports/{sport_key}/events", params={"x-api-key": API_KEY, "dateFormat": "iso"}, timeout=15)
     if not r.ok:
         return [], r.status_code
     return r.json(), 200
@@ -68,7 +68,7 @@ def get_events(sport_key):
 def get_event_props(sport_key, event_id, markets, regions="us"):
     r = requests.get(
         f"{BASE}/sports/{sport_key}/events/{event_id}/odds",
-        params={"apiKey": API_KEY, "regions": regions, "markets": ",".join(markets), "oddsFormat": "american", "dateFormat": "iso"},
+        params={"x-api-key": API_KEY, "regions": regions, "markets": ",".join(markets), "oddsFormat": "american", "dateFormat": "iso"},
         timeout=20,
     )
     return r

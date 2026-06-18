@@ -37,7 +37,7 @@ except Exception:
     pass
 
 ODDS_API_KEY = os.environ.get("ODDS_API_KEY", "")
-ODDS_BASE = "https://api.the-odds-api.com/v4"
+ODDS_BASE = "https://api.theoddsapi.com"
 SPORT_KEY = "soccer_fifa_world_cup"
 ESPN_SCOREBOARD = "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard"
 
@@ -117,7 +117,7 @@ def fetch_odds_games():
     try:
         url = f"{ODDS_BASE}/sports/{SPORT_KEY}/odds"
         params = {
-            "apiKey": ODDS_API_KEY,
+            "x-api-key": ODDS_API_KEY,
             "regions": "us",
             "markets": "h2h,spreads,totals",
             "oddsFormat": "american",
@@ -139,7 +139,7 @@ def fetch_player_props(game_id):
     try:
         url = f"{ODDS_BASE}/sports/{SPORT_KEY}/events/{game_id}/odds"
         params = {
-            "apiKey": ODDS_API_KEY,
+            "x-api-key": ODDS_API_KEY,
             "regions": "us",
             "markets": ",".join(PROP_MARKETS),
             "oddsFormat": "american",
