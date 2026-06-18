@@ -122,7 +122,7 @@ def main():
                 ok = r.ok or r.status_code == 422
                 detail = f"HTTP {r.status_code}"
                 if r.status_code == 401:
-                    detail += " (bad key)"
+                    detail += " — KEY EXPIRED/INVALID — all DK lines dead"
                 elif r.status_code == 422:
                     detail += " (no games — OK)"
                 check("The Odds API", ok, detail)

@@ -35,6 +35,7 @@ LINE_FACTOR = 0.88
 Q_FACTOR = 0.55
 OUT_FACTOR = 0.0
 EDGE_THRESH = 2.0
+EDGE_THRESH_SELF = 1.0
 
 BATTER_WEIGHT = 0.85
 PITCHER_WEIGHT = 0.80
@@ -639,29 +640,59 @@ def project_mlb_game(home_abbr: str, away_abbr: str, game_id: str = None,
                 edge = round(tc_val - line_val, 2)
                 p.edges[stat_name] = edge
 
-    # Generate valid props (edge-qualified)
+    # Generate valid props (edge-qualified) — DK lines or self-edge fallback
     valid_props = []
-    for p in away_players + home_players:
-        for stat_name, line_val in p.lines.items():
-            tc_val = getattr(p, f"tc_{stat_name}", 0.0)
-            edge = p.edges.get(stat_name, 0.0)
-            direction = "OVER" if edge > 0 else "UNDER"
-            signal = "PASS"
-            if abs(edge) >= EDGE_THRESH:
-                signal = direction
+    dk_available = any(p.lines for p in away_players + home_players)
 
-            valid_props.append({
-                "player": p.name,
-                "team": p.team,
-                "pos": p.pos,
-                "stat": stat_name,
-                "market_line": line_val,
-                "tc_projection": tc_val,
-                "edge": edge,
-                "direction": direction,
-                "signal": signal,
-                "status": p.status,
-            })
+    if dk_available:
+        # ── DK lines available: use market edge ──
+        for p in away_players + home_players:
+            for stat_name, line_val in p.lines.items():
+                tc_val = getattr(p, f"tc_{stat_name}", 0.0)
+                edge = p.edges.get(stat_name, 0.0)
+                direction = "OVER" if edge > 0 else "UNDER"
+                signal = "PASS"
+                if abs(edge) >= EDGE_THRESH:
+                    signal = direction
+                valid_props.append({
+                    "player": p.name, "team": p.team, "pos": p.pos,
+                    "stat": stat_name, "market_line": line_val,
+                    "tc_projection": tc_val, "edge": edge,
+                    "direction": direction, "signal": signal,
+                    "status": p.status, "source": "dk_lines",
+                })
+    else:
+        # ── Self-edge fallback: compute internal line from TC ──
+        batting_stats = ["hits", "rbi", "runs", "hr", "total_bases", "sb", "singles", "doubles", "walks"]
+        pitching_stats = ["strikeouts", "hits_allowed", "walks_allowed", "earned_runs", "outs"]
+        for p in away_players + home_players:
+            if p.status.upper() in ("OUT", "DNP", "INJURED"):
+                continue
+            sf = p.sf()
+            if sf <= 0:
+                continue
+            stat_list = pitching_stats if p.pos and "P" in p.pos.upper() else batting_stats
+            for stat_name in stat_list:
+                tc_val = getattr(p, f"tc_{stat_name}", 0.0)
+                if tc_val <= 0:
+                    continue
+                self_line = math.floor(tc_val * LINE_FACTOR)
+                if self_line <= 0:
+                    continue
+                edge = round(tc_val - self_line, 2)
+                direction = "OVER" if edge > 0 else "UNDER"
+                signal = "PASS"
+                # Use lower threshold for self-edge mode (internal line is naturally close to TC)
+                self_edge_thresh = 1.0
+                if abs(edge) >= self_edge_thresh:
+                    signal = direction
+                valid_props.append({
+                    "player": p.name, "team": p.team, "pos": p.pos,
+                    "stat": stat_name, "market_line": self_line,
+                    "tc_projection": tc_val, "edge": edge,
+                    "direction": direction, "signal": signal,
+                    "status": p.status, "source": "tc-internal-fallback",
+                })
 
     result["away_players"] = [p.dict() for p in away_players]
     result["home_players"] = [p.dict() for p in home_players]
@@ -670,6 +701,8 @@ def project_mlb_game(home_abbr: str, away_abbr: str, game_id: str = None,
         "away_total": len(away_players),
         "home_total": len(home_players),
     }
+    result["dk_available"] = dk_available
+    result["prop_source"] = "dk_lines" if dk_available else "tc-internal-fallback"
 
     return result
 

@@ -1,22 +1,22 @@
 {
   "mode": "live_stats",
   "sport": "MLB",
-  "timestamp": "2026-06-18T17:32:46.068Z",
+  "timestamp": "2026-06-18T18:58:10.268Z",
   "games": [
     {
       "id": "401815806",
       "matchup": "TOR@BOS",
       "name": "Toronto Blue Jays at Boston Red Sox",
       "date": "2026-06-18T17:35Z",
-      "status": "Scheduled",
-      "detail": "Scheduled",
-      "period": 1,
+      "status": "In Progress",
+      "detail": "Bottom 6th",
+      "period": 6,
       "clock": "0:00",
       "completed": false,
       "away": {
         "team": "TOR",
         "name": "Toronto Blue Jays",
-        "score": 0
+        "score": 2
       },
       "home": {
         "team": "BOS",
@@ -31,20 +31,20 @@
       "matchup": "CLE@MIL",
       "name": "Cleveland Guardians at Milwaukee Brewers",
       "date": "2026-06-18T18:10Z",
-      "status": "Scheduled",
-      "detail": "Scheduled",
-      "period": 1,
+      "status": "In Progress",
+      "detail": "Top 3rd",
+      "period": 3,
       "clock": "0:00",
       "completed": false,
       "away": {
         "team": "CLE",
         "name": "Cleveland Guardians",
-        "score": 0
+        "score": 1
       },
       "home": {
         "team": "MIL",
         "name": "Milwaukee Brewers",
-        "score": 0
+        "score": 1
       },
       "leaders": [],
       "players": []
@@ -54,15 +54,15 @@
       "matchup": "MIN@TEX",
       "name": "Minnesota Twins at Texas Rangers",
       "date": "2026-06-18T18:35Z",
-      "status": "Scheduled",
-      "detail": "Scheduled",
+      "status": "In Progress",
+      "detail": "Bottom 1st",
       "period": 1,
       "clock": "0:00",
       "completed": false,
       "away": {
         "team": "MIN",
         "name": "Minnesota Twins",
-        "score": 0
+        "score": 4
       },
       "home": {
         "team": "TEX",
@@ -146,8 +146,8 @@
       "matchup": "SF@ATL",
       "name": "San Francisco Giants at Atlanta Braves",
       "date": "2026-06-18T23:15Z",
-      "status": "Scheduled",
-      "detail": "Scheduled",
+      "status": "Postponed",
+      "detail": "Postponed",
       "period": 1,
       "clock": "0:00",
       "completed": false,
