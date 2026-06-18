@@ -1,6 +1,13 @@
 # Workspace Index
 
-> **2026-06-16 — NBA/NHL off-season:** NBA Finals and Stanley Cup Final are both done. SGO endpoints for NBA and NHL are blocked (HTTP 503). The pipeline no longer calls NBA or NHL — `daily_picks.py`, `pipeline_master.py`, and all 1PM/1:30PM/5PM/6:30PM/2AM automations now run WNBA + MLB + World Cup only. To reactivate when next season starts: ungate `/api/tc` + `/api/dk-lines` for NBA/NHL, restore `["NBA","NHL","WNBA","MLB","WORLD_CUP"]` in `daily_picks.py ALL_SPORTS`, and add NBA/NHL back to all automation sport lists.
+> **2026-06-18 — Automation Consolidation + Cache Gate + SGO Gate + Quota Guard:**
+> - **Automation consolidation:** 10 automations → 10 (same count, deactivated 2 duplicates, reduced WC from 5×→2× daily). Deactivated 1PM Slate Capture (duplicate of 1:30PM) and 5PM WNBA Pre-Tip (90min before 6:30PM, minimal data change). 1:30PM now includes pipeline_assess + worldcup_picks. 6:30PM now includes worldcup_picks. World Cup picks reduced from 5× daily (1/3/5/7/9 PM) to 2× daily (1:30 PM + 6:30 PM, synced with TC pipeline). **Total pre-tip API calls: 4 daily_picks runs → 2 (50% reduction). Total WC API calls: 5→2 (60% reduction).**
+> - **Cache gate in daily_picks.py:** `_quota_guard()` checks quota_exhausted.json at runtime — if all Odds API keys are exhausted AND cache is warm (<2hr), skips live API calls entirely, serving from disk cache. Prevents wasted 401/429 calls.
+> - **SGO gate in daily_picks.py:** `_sgo_rate_limited()` checks api_registry.json — if all SGO endpoints are 429, enrichment skips SGO and goes direct to consensus/self-edge fallback. Stops 3 wasted 429 calls per game.
+> - **World Cup ESPN fix:** api_scan.py changed from `soccer/World%20Cup/scoreboard` (HTTP 400) → `soccer/fifa.world/scoreboard` (HTTP 200). Registry now 8/12 OK.
+> - **Purge:** Removed empty cache dir, archived duplicate .py files from `Archives/source_cleanup_2026-06-17/`, purged all __pycache__ dirs.
+
+> **2026-06-16 — NBA/NHL off-season:** NBA Finals and Stanley Cup Final are both done. SGO endpoints for NBA and NHL are blocked (HTTP 503). The pipeline no longer calls NBA or NHL — `daily_picks.py`, `pipeline_master.py`, and all automations now run WNBA + MLB + World Cup only.
 
 > **2026-06-17 — API Registry + Unified Cache System:** `Projects/api_scan.py` probes 12 endpoints (Odds API, SGO, ESPN, SportsDataIO) and writes `Daily_Log/api_registry.json` with scan timestamp, status, latency, free_tier flag, and `last_used_at`. `Projects/api_cache.py` provides `cached_get(name, url, ttl)` — primary read path; disk cache `Daily_Log/cache/api/{name}.json`, default 2-hour TTL, registry auto-bumped on hit. `python3 Projects/api_cache.py warm` pre-populates from registry. Cache hits: ~1ms (vs 50-200ms network). Run scan whenever a new API is added or rate limit issues surface.
 

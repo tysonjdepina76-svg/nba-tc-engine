@@ -60,6 +60,54 @@ LOG_DIR.mkdir(exist_ok=True)
 
 ED_THRESHOLD = 2.0  # TC edge threshold to call OVER/UNDER signal
 
+# ── SGO + Quota Gate: skip API calls when rate-limited or exhausted ──
+def _sgo_rate_limited():
+    """Check api_registry.json — return True if all SGO endpoints are 429."""
+    reg_path = LOG_DIR / "api_registry.json"
+    if not reg_path.exists():
+        return False
+    try:
+        reg = json.loads(reg_path.read_text())
+        sgo_eps = [e for e in reg.get("endpoints", []) if e.get("name", "").startswith("SGO ")]
+        if not sgo_eps:
+            return False
+        return all(e.get("status_code") == 429 for e in sgo_eps)
+    except Exception:
+        return False
+
+def _all_odds_keys_exhausted():
+    """Return True if every known Odds API key is marked exhausted for today."""
+    try:
+        qs = quota_status()
+        keys = qs.get("keys", [])
+        if not keys:
+            return False
+        return all(k.get("exhausted") for k in keys)
+    except Exception:
+        return False
+
+def _quota_cache_only():
+    """Return True when we should skip live API calls entirely — all keys exhausted and cache is warm."""
+    if not _all_odds_keys_exhausted():
+        return False
+    cache_dir = LOG_DIR / "cache" / "api"
+    if not cache_dir.exists():
+        return False
+    cache_files = list(cache_dir.glob("*.json"))
+    if not cache_files:
+        return False
+    now_epoch = __import__("time").time()
+    for cf in cache_files:
+        try:
+            entry = json.loads(cf.read_text())
+            age = now_epoch - entry.get("fetched_at_epoch", 0)
+            if age < 7200:
+                return True  # at least one cache entry is fresh (<2h)
+        except Exception:
+            continue
+    return False
+
+
 def fetch_live_slate(sport):
     """Fetch live slate for a sport. Returns games (future + recent)."""
     try:
@@ -253,6 +301,14 @@ def run_daily_log(sports=ALL_SPORTS):
     if exhausted_keys:
         print(f"⚠️  Exhausted API keys: {', '.join(exhausted_keys)}")
     print(f"   Cache hits today: {quota.get('cache_hits_today', 0)}")
+
+    # ── Quota gate: if all keys exhausted + cache warm, skip live API calls ──
+    skip_live = _quota_cache_only()
+    if skip_live:
+        print("🛑 QUOTA GATE: All Odds API keys exhausted + warm cache — skipping live API calls")
+    sgo_blocked = _sgo_rate_limited()
+    if sgo_blocked:
+        print("⚠️  SGO GATE: All SGO endpoints 429 rate-limited — skipping SGO calls")
 
     for sport in sports:
         print(f"[{now.strftime('%H:%M:%S')}] Fetching {sport} slate...")

@@ -132,7 +132,7 @@ espn_endpoints = [
     ("ESPN WNBA teams", "https://site.api.espn.com/apis/site/v2/sports/basketball/wnba/teams"),
     ("ESPN MLB scoreboard", "https://site.api.espn.com/apis/site/v2/sports/baseball/mlb/scoreboard"),
     ("ESPN MLB teams", "https://site.api.espn.com/apis/site/v2/sports/baseball/mlb/teams"),
-    ("ESPN soccer scoreboard", "https://site.api.espn.com/apis/site/v2/sports/soccer/World%20Cup/scoreboard"),
+    ("ESPN soccer scoreboard", "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard"),
     ("ESPN NBA teams", "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/teams"),
 ]
 for name, url in espn_endpoints:
