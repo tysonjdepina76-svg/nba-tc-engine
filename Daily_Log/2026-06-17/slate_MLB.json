@@ -1,7 +1,7 @@
 {
   "mode": "live_stats",
   "sport": "MLB",
-  "timestamp": "2026-06-18T02:43:08.098Z",
+  "timestamp": "2026-06-18T03:26:20.072Z",
   "games": [
     {
       "id": "401815778",
@@ -284,11 +284,11 @@
       "matchup": "COL@CHC",
       "name": "Colorado Rockies at Chicago Cubs",
       "date": "2026-06-18T00:05Z",
-      "status": "In Progress",
-      "detail": "Top 9th",
+      "status": "Final",
+      "detail": "Final",
       "period": 9,
       "clock": "0:00",
-      "completed": false,
+      "completed": true,
       "away": {
         "team": "COL",
         "name": "Colorado Rockies",
@@ -308,14 +308,14 @@
       "name": "Baltimore Orioles at Seattle Mariners",
       "date": "2026-06-18T01:40Z",
       "status": "In Progress",
-      "detail": "Bottom 4th",
-      "period": 4,
+      "detail": "Middle 7th",
+      "period": 7,
       "clock": "0:00",
       "completed": false,
       "away": {
         "team": "BAL",
         "name": "Baltimore Orioles",
-        "score": 2
+        "score": 4
       },
       "home": {
         "team": "SEA",
@@ -331,14 +331,14 @@
       "name": "Pittsburgh Pirates at Athletics Athletics",
       "date": "2026-06-18T01:40Z",
       "status": "In Progress",
-      "detail": "Top 4th",
-      "period": 4,
+      "detail": "Bottom 6th",
+      "period": 6,
       "clock": "0:00",
       "completed": false,
       "away": {
         "team": "PIT",
         "name": "Pittsburgh Pirates",
-        "score": 5
+        "score": 7
       },
       "home": {
         "team": "ATH",
