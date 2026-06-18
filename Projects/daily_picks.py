@@ -52,6 +52,7 @@ sys.path.insert(0, str(WORKSPACE / "Projects"))
 
 from consensus_engine import fetch_consensus_for_matchup, CONSENSUS_SPORT_MAP, get_best_line
 from odds_enricher import enrich_player_lines
+from api_fallback import FallbackManager, quota_status
 
 API_BASE = "https://true.zo.space"
 LOG_DIR = WORKSPACE / "Daily_Log"
@@ -245,6 +246,14 @@ def run_daily_log(sports=ALL_SPORTS):
     errors = []
     skipped_completed = 0
 
+    # ── Initialize fallback manager + dump quota status ──
+    fm = FallbackManager()
+    quota = quota_status()
+    exhausted_keys = [k["key"] for k in quota.get("keys", []) if k["exhausted"]]
+    if exhausted_keys:
+        print(f"⚠️  Exhausted API keys: {', '.join(exhausted_keys)}")
+    print(f"   Cache hits today: {quota.get('cache_hits_today', 0)}")
+
     for sport in sports:
         print(f"[{now.strftime('%H:%M:%S')}] Fetching {sport} slate...")
         slate = fetch_live_slate(sport)
@@ -279,17 +288,23 @@ def run_daily_log(sports=ALL_SPORTS):
                 errors.append(f"{sport} {matchup}: {proj['error']}")
                 continue
 
-            # Only enrich with player props for basketball sports
+            # ── Multi-tier enrichment via FallbackManager ──
             if sport in BASKETBALL:
-                # Enrich with live Odds API player prop lines
-                odds_enrichment = None
+                enriched = None
                 try:
-                    odds_enrichment = enrich_player_lines(sport, away, home)
-                    if odds_enrichment and odds_enrichment.get("player_lines"):
-                        proj["odds_api_lines"] = odds_enrichment
-                        print(f"    → Odds API: {odds_enrichment.get('player_count', 0)} players enriched via {odds_enrichment.get('book', '?')}")
-                        player_lines = odds_enrichment.get("player_lines", {})
-                        stat_map = {"PTS": "points", "REB": "rebounds", "AST": "assists", "3PM": "threePointersMade", "STL": "steals", "BLK": "blocks"}
+                    enriched = fm.enrich(sport, away, home)
+                    tier = enriched.get("tier_used", "?")
+                    src = enriched.get("source", "?")
+                    pl_count = enriched.get("player_count", 0)
+                    from_cache = enriched.get("_from_cache", enriched.get("from_cache", False))
+                    cache_tag = " [cache]" if from_cache else ""
+                    print(f"    → Enrichment: tier={tier}, source={src}, {pl_count} players{cache_tag}")
+
+                    if enriched.get("player_lines"):
+                        player_lines = enriched["player_lines"]
+                        stat_map = {"PTS": "points", "REB": "rebounds", "AST": "assists",
+                                    "3PM": "threes", "STL": "steals", "BLK": "blocks"}
+                        matched = 0
                         for vp in proj.get("valid_props", []):
                             pl_name = vp.get("player", "")
                             stat_key = vp.get("stat", "")
@@ -300,34 +315,36 @@ def run_daily_log(sports=ALL_SPORTS):
                                 if pl_name == dk_name or pl_name in dk_name or dk_name in pl_name:
                                     if dk_stat in player_lines[dk_name]:
                                         vp["market_line"] = player_lines[dk_name][dk_stat]
+                                        matched += 1
                                     break
-                except Exception as oe:
-                    print(f"    ⚠️ Odds enrichment skipped: {oe}")
+                        print(f"    → Merged: {matched} props received DK lines")
+                        proj["enrichment"] = enriched
 
-                # Enrich with consensus engine (multi-book fallback)
-                try:
-                    matchup_key = f"{away}@{home}"
-                    cons = fetch_consensus_for_matchup(sport, away, home)
-                    if cons and not cons.get("error") and cons.get("players"):
-                        cons_count = cons.get("player_count", 0)
-                        cons_books = cons.get("available_books", [])
-                        proj["consensus"] = cons
-                        print(f"    → Consensus: {cons_count} players, {len(cons_books)} books ({', '.join(cons_books[:3])}...)")
-                        matched = 0
-                        for vp in proj.get("valid_props", []):
-                            if vp.get("market_line"):
-                                continue
-                            line = get_best_line(cons, vp.get("player", ""), vp.get("stat", ""))
-                            if line is not None:
-                                vp["market_line"] = line
-                                vp["consensus_source"] = cons.get("source", "unknown")
-                                matched += 1
-                        if matched:
-                            print(f"    → Merged: {matched} props enriched with consensus lines")
-                    else:
-                        print(f"    ⚠️ Consensus: no data ({cons.get('error', 'no players') if cons else 'null'})")
-                except Exception as ce:
-                    print(f"    ⚠️ Consensus enrichment skipped: {ce}")
+                    # Fallback to consensus engine if Odds API gave partial/no lines
+                    if not enriched.get("player_lines") or enriched.get("source") == "self_edge":
+                        try:
+                            cons = fetch_consensus_for_matchup(sport, away, home)
+                            if cons and not cons.get("error") and cons.get("players"):
+                                cons_count = cons.get("player_count", 0)
+                                cons_books = cons.get("available_books", [])
+                                proj["consensus"] = cons
+                                print(f"    → Consensus fallback: {cons_count} players, {len(cons_books)} books")
+                                matched = 0
+                                for vp in proj.get("valid_props", []):
+                                    if vp.get("market_line"):
+                                        continue
+                                    line = get_best_line(cons, vp.get("player", ""), vp.get("stat", ""))
+                                    if line is not None:
+                                        vp["market_line"] = line
+                                        vp["consensus_source"] = cons.get("source", "unknown")
+                                        matched += 1
+                                if matched:
+                                    print(f"    → Consensus merged: {matched} props enriched")
+                        except Exception as ce:
+                            print(f"    ⚠️ Consensus fallback skipped: {ce}")
+
+                except Exception as oe:
+                    print(f"    ⚠️ Enrichment error: {oe}")
             else:
                 # Non-basketball: log DK lines
                 odds = proj.get("odds", {})

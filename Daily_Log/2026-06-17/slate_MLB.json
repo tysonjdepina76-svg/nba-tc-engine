@@ -1,7 +1,7 @@
 {
   "mode": "live_stats",
   "sport": "MLB",
-  "timestamp": "2026-06-18T00:03:18.321Z",
+  "timestamp": "2026-06-18T02:43:08.098Z",
   "games": [
     {
       "id": "401815778",
@@ -192,15 +192,15 @@
       "matchup": "TOR@BOS",
       "name": "Toronto Blue Jays at Boston Red Sox",
       "date": "2026-06-17T22:45Z",
-      "status": "In Progress",
-      "detail": "Bottom 4th",
-      "period": 4,
+      "status": "Final",
+      "detail": "Final",
+      "period": 9,
       "clock": "0:00",
-      "completed": false,
+      "completed": true,
       "away": {
         "team": "TOR",
         "name": "Toronto Blue Jays",
-        "score": 2
+        "score": 3
       },
       "home": {
         "team": "BOS",
@@ -215,20 +215,20 @@
       "matchup": "CHW@NYY",
       "name": "Chicago White Sox at New York Yankees",
       "date": "2026-06-17T23:05Z",
-      "status": "In Progress",
-      "detail": "Top 3rd",
-      "period": 3,
+      "status": "Final",
+      "detail": "Final",
+      "period": 9,
       "clock": "0:00",
-      "completed": false,
+      "completed": true,
       "away": {
         "team": "CHW",
         "name": "Chicago White Sox",
-        "score": 0
+        "score": 5
       },
       "home": {
         "team": "NYY",
         "name": "New York Yankees",
-        "score": 4
+        "score": 10
       },
       "leaders": [],
       "players": []
@@ -238,20 +238,20 @@
       "matchup": "SF@ATL",
       "name": "San Francisco Giants at Atlanta Braves",
       "date": "2026-06-17T23:15Z",
-      "status": "In Progress",
-      "detail": "End 2nd",
-      "period": 2,
+      "status": "Final",
+      "detail": "Final",
+      "period": 9,
       "clock": "0:00",
-      "completed": false,
+      "completed": true,
       "away": {
         "team": "SF",
         "name": "San Francisco Giants",
-        "score": 5
+        "score": 7
       },
       "home": {
         "team": "ATL",
         "name": "Atlanta Braves",
-        "score": 0
+        "score": 5
       },
       "leaders": [],
       "players": []
@@ -261,20 +261,20 @@
       "matchup": "CLE@MIL",
       "name": "Cleveland Guardians at Milwaukee Brewers",
       "date": "2026-06-17T23:40Z",
-      "status": "In Progress",
-      "detail": "Top 2nd",
-      "period": 2,
+      "status": "Final",
+      "detail": "Final",
+      "period": 9,
       "clock": "0:00",
-      "completed": false,
+      "completed": true,
       "away": {
         "team": "CLE",
         "name": "Cleveland Guardians",
-        "score": 0
+        "score": 4
       },
       "home": {
         "team": "MIL",
         "name": "Milwaukee Brewers",
-        "score": 3
+        "score": 9
       },
       "leaders": [],
       "players": []
@@ -284,20 +284,20 @@
       "matchup": "COL@CHC",
       "name": "Colorado Rockies at Chicago Cubs",
       "date": "2026-06-18T00:05Z",
-      "status": "Scheduled",
-      "detail": "Scheduled",
-      "period": 1,
+      "status": "In Progress",
+      "detail": "Top 9th",
+      "period": 9,
       "clock": "0:00",
       "completed": false,
       "away": {
         "team": "COL",
         "name": "Colorado Rockies",
-        "score": 0
+        "score": 6
       },
       "home": {
         "team": "CHC",
         "name": "Chicago Cubs",
-        "score": 0
+        "score": 8
       },
       "leaders": [],
       "players": []
@@ -307,20 +307,20 @@
       "matchup": "BAL@SEA",
       "name": "Baltimore Orioles at Seattle Mariners",
       "date": "2026-06-18T01:40Z",
-      "status": "Scheduled",
-      "detail": "Scheduled",
-      "period": 1,
+      "status": "In Progress",
+      "detail": "Bottom 4th",
+      "period": 4,
       "clock": "0:00",
       "completed": false,
       "away": {
         "team": "BAL",
         "name": "Baltimore Orioles",
-        "score": 0
+        "score": 2
       },
       "home": {
         "team": "SEA",
         "name": "Seattle Mariners",
-        "score": 0
+        "score": 1
       },
       "leaders": [],
       "players": []
@@ -330,15 +330,15 @@
       "matchup": "PIT@ATH",
       "name": "Pittsburgh Pirates at Athletics Athletics",
       "date": "2026-06-18T01:40Z",
-      "status": "Scheduled",
-      "detail": "Scheduled",
-      "period": 1,
+      "status": "In Progress",
+      "detail": "Top 4th",
+      "period": 4,
       "clock": "0:00",
       "completed": false,
       "away": {
         "team": "PIT",
         "name": "Pittsburgh Pirates",
-        "score": 0
+        "score": 5
       },
       "home": {
         "team": "ATH",
