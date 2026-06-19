@@ -1,6 +1,14 @@
 ## Workspace Index
 > **2026-06-18 — Full System Hardwire + Purge:**
 > - **37/37 .py files compile clean** — fixed 4 broken files (api_scan.py, team_game_mapper.py, wnba_props_live_pull.py, backtest_pipeline.py)
+> **2026-06-18 22:18 ET — Pipeline Master Full Run:**
+> - **7 checks passed, 0 failures** — pipeline_master self-check+self-repair+execute cycle clean
+> - **2 services auto-repaired** — DK Combos (8515) + Soccer Combos (8516) restarted
+> - **Odds API: 180 requests remaining** — free tier healthy, no exhaustion risk
+> - **SGO API: 401** — key expired, but MLB now uses Odds API directly (no SGO dependency)
+> - **NBA slate: MISSING** — expected, NBA off-season, pipeline gated correctly
+> - **Git: pushed** to origin/master
+
 > - **World Cup cache wired** — worldcup_picks.py now uses disk cache (WC_CACHE_DIR), cuts Odds API calls from 8→~3 per run
 > - **Pipeline health self-monitoring** — `/api/pipeline-health` checks all services, routes, API keys, cache freshness, automations. Health button wired on `/nba-tc` dashboard.
 > - **Automations: 10→7** — deleted 3 duplicates, paused 1. World Cup picks merged into 1:30PM/6:30PM.
