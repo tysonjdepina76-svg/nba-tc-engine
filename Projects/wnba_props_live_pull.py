@@ -23,7 +23,6 @@ from team_game_mapper import (
     canon_abbr,
     canon_pair,
     fetch_espn_wnba_slate,
-    fetch_odds_api_wnba_events,
     fetch_sgo_events,
     build_canonical_game_map,
     find_espn_event_for_teams,
@@ -36,9 +35,6 @@ for line in Path('/root/.zo/secrets.env').read_text().splitlines():
         k, v = line.split('=', 1)
         os.environ.setdefault(k, v)
 
-ODDS_API_KEY = os.environ['ODDS_API_KEY']
-BASE = "https://api.theoddsapi.com"
-
 GAME_MARKETS = ["h2h", "spreads", "totals"]  # game-line markets
 PLAYER_PROP_MARKETS = [
     "player_points", "player_rebounds", "player_assists",
@@ -49,11 +45,9 @@ PLAYER_PROP_MARKETS = [
     "player_turnovers",
 ]
 
-
 def pull_event_props(event_id, markets=",".join(PLAYER_PROP_MARKETS), regions="us"):
     url = f"{BASE}/sports/basketball_wnba/events/{event_id}/odds"
     r = requests.get(url, params={
-        "x-api-key": ODDS_API_KEY,
         "regions": regions,
         "markets": markets,
         "oddsFormat": "american",
@@ -62,7 +56,6 @@ def pull_event_props(event_id, markets=",".join(PLAYER_PROP_MARKETS), regions="u
     if r.status_code != 200:
         return None, r.status_code, r.headers.get("x-requests-remaining")
     return r.json(), r.status_code, r.headers.get("x-requests-remaining")
-
 
 def to_dk_rows(event, props_payload):
     """Convert Odds API per-book payload to a flat list of DK player-prop rows."""
@@ -95,9 +88,7 @@ def to_dk_rows(event, props_payload):
                 })
     return rows
 
-
 normalize_team = canon_abbr  # legacy alias used in pull script
-
 
 def main():
     out_dir = Path("/home/workspace/Daily_Log")
@@ -114,18 +105,15 @@ def main():
         print(f"  {s['espn_event_id']}  {s['away']}@{s['home']}  {s['start_utc']}")
 
     # 2) Odds API events dict (from mapper)
-    odds_map = fetch_odds_api_wnba_events()  # {event_id: {away_canon, home_canon, commence_utc}}
     print(f"\nOdds API events: {len(odds_map)}")
     for oid, meta in odds_map.items():
         print(f"  odds={oid[:12]}  {meta['away_canon']}@{meta['home_canon']}  commence={meta['commence_utc']}")
 
     # 3) Build canonical map (ESPN <-> Odds API) using the mapper helper
     canonical = build_canonical_game_map(target_date=now.date())
-    n_with_odds = sum(1 for g in canonical.values() if g.get("odds_api_event_id"))
     print(f"\nCanonical games resolved: {n_with_odds} of {len(canonical)}")
     for espn_id, g in canonical.items():
-        if g.get("odds_api_event_id"):
-            print(f"  ESPN {espn_id} <-> Odds {g['odds_api_event_id'][:12]}  {g['away']}@{g['home']}")
+        pass  # roster resolution happens below in odds_map iteration
 
     # 4) Pull props for each Odds API event
     all_rows = []
@@ -136,7 +124,6 @@ def main():
              "away_team": meta["away_canon"], "home_team": meta["home_canon"]}
         # Attach espn_event_id from canonical if matched
         for g in canonical.values():
-            if g.get("odds_api_event_id") == oid:
                 e["_espn_event_id"] = g["espn_event_id"]
                 break
         payload, status, remaining = pull_event_props(oid)
@@ -172,7 +159,6 @@ def main():
 
     print(f"\nOdds API credits remaining: {credits_remaining}")
     return all_rows
-
 
 if __name__ == "__main__":
     main()

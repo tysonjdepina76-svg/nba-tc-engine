@@ -71,7 +71,6 @@ SUPPORTED_SOCCER_LEAGUES = {
     "soccer_sweden_superettan": "Sweden Superettan",
 }
 
-
 @dataclass
 class SoccerComboLeg:
     player: str
@@ -83,7 +82,6 @@ class SoccerComboLeg:
     book: str              # "fanduel" | "draftkings" | "betmgm" | ...
     match: str             # "Cape Verde @ Spain"
     commence: str          # ISO
-
 
 @dataclass
 class SoccerCombo:
@@ -102,7 +100,6 @@ class SoccerCombo:
             "sportsbook_count": self.sportsbook_count,
         }
 
-
 def _latest_dir(parent: Path) -> Optional[Path]:
     """Return most recent date subdir of `parent`, or None."""
     if not parent.exists():
@@ -111,7 +108,6 @@ def _latest_dir(parent: Path) -> Optional[Path]:
     if not candidates:
         return None
     return sorted(candidates, key=lambda d: d.name, reverse=True)[0]
-
 
 def _read_worldcup_picks() -> Tuple[List[dict], Optional[str]]:
     """Read the most recent FanDuel WC player-prop picks CSV.
@@ -132,7 +128,6 @@ def _read_worldcup_picks() -> Tuple[List[dict], Optional[str]]:
             rows.append(row)
     return rows, d.name
 
-
 def _read_soccer_lines() -> Tuple[dict, Optional[str]]:
     """Read the most recent soccer game-lines JSON (49 books)."""
     d = _latest_dir(SOCCER_DIR)
@@ -146,7 +141,6 @@ def _read_soccer_lines() -> Tuple[dict, Optional[str]]:
     except Exception:
         return {}, d.name
 
-
 def _american_to_decimal(odds: int) -> float:
     if odds is None:
         return 1.0
@@ -156,14 +150,12 @@ def _american_to_decimal(odds: int) -> float:
         return 1.0 + 100.0 / abs(odds)
     return 1.0
 
-
 def _decimal_to_american(dec: float) -> int:
     if dec <= 1.0:
         return 0
     if dec >= 2.0:
         return int(round((dec - 1.0) * 100))
     return int(round(-100.0 / (dec - 1.0)))
-
 
 def build_combo_legs_from_worldcup(picks_rows: List[dict]) -> List[SoccerComboLeg]:
     """Convert WC picks.csv rows into typed SoccerComboLegs."""
@@ -189,7 +181,6 @@ def build_combo_legs_from_worldcup(picks_rows: List[dict]) -> List[SoccerComboLe
         except Exception:
             continue
     return out
-
 
 def _find_best_game_line(lines_payload: dict, match: str) -> Tuple[Optional[float], Optional[float], int]:
     """Return (best_home_spread, best_total, sportsbook_count) for a match.
@@ -221,7 +212,6 @@ def _find_best_game_line(lines_payload: dict, match: str) -> Tuple[Optional[floa
                     best_total = p
     return best_spread, best_total, sb_count
 
-
 def build_combos(legs: List[SoccerComboLeg], max_legs: int = 4) -> List[SoccerCombo]:
     """Build same-match parlays grouped by match."""
     by_match: Dict[str, List[SoccerComboLeg]] = {}
@@ -250,7 +240,6 @@ def build_combos(legs: List[SoccerComboLeg], max_legs: int = 4) -> List[SoccerCo
         ))
     return combos
 
-
 def render_summary(combos: List[SoccerCombo], leagues: List[str], source: str, date: str) -> dict:
     return {
         "sport": "soccer",          # clean — not "WORLD CUP"
@@ -260,7 +249,6 @@ def render_summary(combos: List[SoccerCombo], leagues: List[str], source: str, d
         "source": source,
         "combos": [c.to_dict() for c in combos],
     }
-
 
 # === HTTP server (port 8516 — does NOT collide with 8515 basketball engine) ===
 
@@ -316,7 +304,6 @@ def serve_combos(port: int = 8516):
     print(f"Soccer Combos server on http://0.0.0.0:{port}/combos")
     server.serve_forever()
 
-
 def main():
     p = argparse.ArgumentParser(description="Soccer Combo Lines (World Cup + 10 other leagues)")
     p.add_argument("--league", help="Filter by league name substring")
@@ -340,7 +327,6 @@ def main():
 
     if args.serve:
         serve_combos(args.port)
-
 
 if __name__ == "__main__":
     main()

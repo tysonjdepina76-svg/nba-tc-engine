@@ -5,53 +5,82 @@
   "away_team": "ATL",
   "home_team": "IND",
   "source": "live ESPN WNBA roster/stat APIs",
-  "timestamp": "2026-06-18T20:20:05.130Z",
-  "injury_source": "ESPN WNBA injuries \u00b7 15 teams \u00b7 40 players",
+  "timestamp": "2026-06-19T01:03:42.728Z",
+  "injury_source": "ESPN WNBA injuries \u00b7 15 teams \u00b7 33 players",
   "injury_counts": {
-    "away": 2,
-    "away_out": 2,
-    "home": 1,
-    "home_out": 0
+    "away": 3,
+    "away_out": 3,
+    "home": 2,
+    "home_out": 2
   },
-  "tc_combined": 153.6,
-  "tc_line": 167,
-  "market_total": null,
-  "edge": 0,
-  "signal": "NO MARKET",
-  "dk_total": null,
+  "tc_combined": 143.9,
+  "tc_line": 157,
+  "market_total": 202.5,
+  "edge": -45.5,
+  "signal": "UNDER",
+  "dk_total": 202.5,
   "odds": {
-    "total": null,
-    "spread": null,
-    "away_spread": null,
-    "home_spread": null,
-    "spread_pick": null,
-    "away_ml": null,
-    "home_ml": null,
-    "ml_source": "No odds data available (SGO + Odds API both empty)",
-    "bookmaker_breakdown": null,
-    "best_books": null
+    "total": 202.5,
+    "spread": -8.5,
+    "away_spread": -8.5,
+    "home_spread": 10.5,
+    "spread_pick": "ATL",
+    "away_ml": -750,
+    "home_ml": 560,
+    "ml_source": "Best across DK/FD/BetMGM",
+    "bookmaker_breakdown": {
+      "DK": {
+        "total": 201.5,
+        "away_ml": -750,
+        "home_ml": 470,
+        "away_spread": -8.5,
+        "home_spread": 8.5,
+        "book": "draftkings"
+      },
+      "FD": {
+        "total": 202.5,
+        "away_ml": -1000,
+        "home_ml": 560,
+        "away_spread": -10.5,
+        "home_spread": 10.5,
+        "book": "fanduel"
+      },
+      "BetMGM": {
+        "total": 202.5,
+        "away_ml": -800,
+        "home_ml": 475,
+        "away_spread": -10.5,
+        "home_spread": 10.5,
+        "book": "betmgm"
+      }
+    },
+    "best_books": {
+      "total": "FD",
+      "ml": "FD",
+      "spread": "FD"
+    }
   },
   "assessment": {
-    "tc_total": 153.6,
-    "tc_line": 167,
-    "edge": 0,
-    "signal": "NO MARKET",
-    "total_lean": "NO MARKET",
+    "tc_total": 143.9,
+    "tc_line": 157,
+    "edge": -45.5,
+    "signal": "UNDER",
+    "total_lean": "UNDER",
     "spread_pick": "IND",
-    "summary": "No market line available.",
+    "summary": "TC combined 143.9 vs DK 202.5 (edge -45.5) \u2192 lean UNDER. Spread: IND.",
     "roster_rule": "live mode uses current roster/stat/injury APIs only"
   },
   "game_assessment": {
-    "total_lean": "NO MARKET",
+    "total_lean": "UNDER",
     "spread_pick": "IND",
     "roster_rule": "live mode uses current roster/stat/injury APIs only",
-    "summary": "No market line available."
+    "summary": "TC combined 143.9 vs DK 202.5 (edge -45.5) \u2192 lean UNDER."
   },
   "roster_counts": {
     "away": 13,
     "home": 14,
-    "away_active": 11,
-    "home_active": 14
+    "away_active": 10,
+    "home_active": 12
   },
   "away": {
     "starter_source": "live ESPN roster/stat/injury APIs; starters inferred by live minutes + production",
@@ -264,43 +293,6 @@
     },
     "bench": {
       "players": [
-        {
-          "id": "3142242",
-          "name": "Amy Okonkwo",
-          "pos": "F",
-          "ht": "6' 2\"",
-          "jersey": "1",
-          "minutes": 19.6,
-          "pts": 11,
-          "reb": 3.1,
-          "ast": 0.8,
-          "tpm": 1.3,
-          "stl": 1.4,
-          "blk": 0.1,
-          "status": "ACTIVE",
-          "source": "live_roster_api",
-          "tc_pts": 7.6,
-          "line_pts": 6,
-          "edge_pts": 1.6,
-          "tc_reb": 2.5,
-          "line_reb": 2,
-          "edge_reb": 0.5,
-          "tc_ast": 1.1,
-          "line_ast": 0,
-          "edge_ast": 1.1,
-          "tc_3pm": 0.9,
-          "line_3pm": 0,
-          "edge_3pm": 0.9,
-          "tc_stl": 0.8,
-          "line_stl": 0,
-          "edge_stl": 0.8,
-          "tc_blk": 0.2,
-          "line_blk": 0,
-          "edge_blk": 0.2,
-          "symbols": [],
-          "leader_notes": [],
-          "role": "BENCH"
-        },
         {
           "id": "4433431",
           "name": "Te-Hina Paopao",
@@ -692,43 +684,6 @@
           "symbols": [],
           "leader_notes": [],
           "role": "START"
-        },
-        {
-          "id": "3142242",
-          "name": "Amy Okonkwo",
-          "pos": "F",
-          "ht": "6' 2\"",
-          "jersey": "1",
-          "minutes": 19.6,
-          "pts": 11,
-          "reb": 3.1,
-          "ast": 0.8,
-          "tpm": 1.3,
-          "stl": 1.4,
-          "blk": 0.1,
-          "status": "ACTIVE",
-          "source": "live_roster_api",
-          "tc_pts": 7.6,
-          "line_pts": 6,
-          "edge_pts": 1.6,
-          "tc_reb": 2.5,
-          "line_reb": 2,
-          "edge_reb": 0.5,
-          "tc_ast": 1.1,
-          "line_ast": 0,
-          "edge_ast": 1.1,
-          "tc_3pm": 0.9,
-          "line_3pm": 0,
-          "edge_3pm": 0.9,
-          "tc_stl": 0.8,
-          "line_stl": 0,
-          "edge_stl": 0.8,
-          "tc_blk": 0.2,
-          "line_blk": 0,
-          "edge_blk": 0.2,
-          "symbols": [],
-          "leader_notes": [],
-          "role": "BENCH"
         },
         {
           "id": "4433431",
@@ -992,18 +947,64 @@
           "symbols": [],
           "leader_notes": [],
           "role": "DNP/OUT"
+        },
+        {
+          "id": "3142242",
+          "name": "Amy Okonkwo",
+          "pos": "F",
+          "ht": "6' 2\"",
+          "jersey": "1",
+          "minutes": 19.6,
+          "pts": 11,
+          "reb": 3.1,
+          "ast": 0.8,
+          "tpm": 1.3,
+          "stl": 1.4,
+          "blk": 0.1,
+          "status": "OUT",
+          "source": "live_roster_api",
+          "tc_pts": 0,
+          "line_pts": 0,
+          "edge_pts": 0,
+          "tc_reb": 0,
+          "line_reb": 0,
+          "edge_reb": 0,
+          "tc_ast": 0,
+          "line_ast": 0,
+          "edge_ast": 0,
+          "tc_3pm": 0,
+          "line_3pm": 0,
+          "edge_3pm": 0,
+          "tc_stl": 0,
+          "line_stl": 0,
+          "edge_stl": 0,
+          "tc_blk": 0,
+          "line_blk": 0,
+          "edge_blk": 0,
+          "injury_comment": "Okonkwo has yet to make an appearance during the 2026 campaign. She is signed to a developmental contract, capping her regular-season eligibility at 12 games.",
+          "injury_updated": "2026-06-18T22:53Z",
+          "symbols": [],
+          "leader_notes": [],
+          "role": "DNP/OUT"
         }
       ]
     },
     "totals": {
-      "tc_pts": 71.8,
-      "tc_reb": 30.4,
-      "tc_ast": 16.2,
-      "tc_3pm": 6.9,
-      "tc_stl": 6.3,
-      "tc_blk": 2.7
+      "tc_pts": 64.2,
+      "tc_reb": 27.9,
+      "tc_ast": 15.1,
+      "tc_3pm": 6,
+      "tc_stl": 5.5,
+      "tc_blk": 2.5
     },
     "injuries": [
+      {
+        "name": "Amy Okonkwo",
+        "status": "OUT",
+        "comment": "Okonkwo has yet to make an appearance during the 2026 campaign. She is signed to a developmental contract, capping her regular-season eligibility at 12 games.",
+        "date": "2026-06-18T22:53Z",
+        "source": "espn_injury_feed"
+      },
       {
         "name": "Aaliyah Nye",
         "status": "OUT",
@@ -1020,8 +1021,8 @@
       }
     ],
     "injury_summary": {
-      "total": 2,
-      "out": 2,
+      "total": 3,
+      "out": 3,
       "questionable": 0,
       "source": "espn_injury_feed"
     }
@@ -1043,28 +1044,26 @@
           "tpm": 2.8,
           "stl": 1.3,
           "blk": 0.7,
-          "status": "Q",
+          "status": "ACTIVE",
           "source": "live_roster_api",
-          "tc_pts": 5.9,
-          "line_pts": 5,
-          "edge_pts": 0.9,
-          "tc_reb": 1.9,
-          "line_reb": 1,
-          "edge_reb": 0.9,
-          "tc_ast": 2.3,
-          "line_ast": 2,
-          "edge_ast": 0.3,
-          "tc_3pm": 0.9,
-          "line_3pm": 0,
-          "edge_3pm": 0.9,
-          "tc_stl": 0.4,
+          "tc_pts": 10.7,
+          "line_pts": 9,
+          "edge_pts": 1.7,
+          "tc_reb": 3.4,
+          "line_reb": 2,
+          "edge_reb": 1.4,
+          "tc_ast": 4.2,
+          "line_ast": 3,
+          "edge_ast": 1.2,
+          "tc_3pm": 1.6,
+          "line_3pm": 1,
+          "edge_3pm": 0.6,
+          "tc_stl": 0.8,
           "line_stl": 0,
-          "edge_stl": 0.4,
-          "tc_blk": 0.2,
+          "edge_stl": 0.8,
+          "tc_blk": 0.4,
           "line_blk": 0,
-          "edge_blk": 0.2,
-          "injury_comment": "Clark has been dealing with this minor back issue for nearly a month, but she hasn't missed a game since May 20. It looks like she'll continue to play through it Thursday, and managers can expect to get official confirmation on her status closer to tipoff.",
-          "injury_updated": "2026-06-17T21:07Z",
+          "edge_blk": 0.4,
           "symbols": [
             "\u2605PTS",
             "\u25b2AST",
@@ -1495,80 +1494,6 @@
           "symbols": [],
           "leader_notes": [],
           "role": "BENCH"
-        },
-        {
-          "id": "4898383",
-          "name": "Bree Hall",
-          "pos": "G",
-          "ht": "6' 1\"",
-          "jersey": "23",
-          "minutes": 4.3,
-          "pts": 0.8,
-          "reb": 0.8,
-          "ast": 0,
-          "tpm": 0,
-          "stl": 0,
-          "blk": 0,
-          "status": "ACTIVE",
-          "source": "live_roster_api",
-          "tc_pts": 3.6,
-          "line_pts": 3,
-          "edge_pts": 0.6,
-          "tc_reb": 1.5,
-          "line_reb": 1,
-          "edge_reb": 0.5,
-          "tc_ast": 0.7,
-          "line_ast": 0,
-          "edge_ast": 0.7,
-          "tc_3pm": 0.3,
-          "line_3pm": 0,
-          "edge_3pm": 0.3,
-          "tc_stl": 0.2,
-          "line_stl": 0,
-          "edge_stl": 0.2,
-          "tc_blk": 0.1,
-          "line_blk": 0,
-          "edge_blk": 0.1,
-          "symbols": [],
-          "leader_notes": [],
-          "role": "BENCH"
-        },
-        {
-          "id": "4682855",
-          "name": "Justine Pissott",
-          "pos": "G",
-          "ht": "6' 4\"",
-          "jersey": "13",
-          "minutes": 0,
-          "pts": 0,
-          "reb": 0,
-          "ast": 0,
-          "tpm": 0,
-          "stl": 0,
-          "blk": 0,
-          "status": "ACTIVE",
-          "source": "live_roster_api",
-          "tc_pts": 3.3,
-          "line_pts": 2,
-          "edge_pts": 1.3,
-          "tc_reb": 1.2,
-          "line_reb": 1,
-          "edge_reb": 0.2,
-          "tc_ast": 0.7,
-          "line_ast": 0,
-          "edge_ast": 0.7,
-          "tc_3pm": 0.3,
-          "line_3pm": 0,
-          "edge_3pm": 0.3,
-          "tc_stl": 0.2,
-          "line_stl": 0,
-          "edge_stl": 0.2,
-          "tc_blk": 0.1,
-          "line_blk": 0,
-          "edge_blk": 0.1,
-          "symbols": [],
-          "leader_notes": [],
-          "role": "BENCH"
         }
       ]
     },
@@ -1587,28 +1512,26 @@
           "tpm": 2.8,
           "stl": 1.3,
           "blk": 0.7,
-          "status": "Q",
+          "status": "ACTIVE",
           "source": "live_roster_api",
-          "tc_pts": 5.9,
-          "line_pts": 5,
-          "edge_pts": 0.9,
-          "tc_reb": 1.9,
-          "line_reb": 1,
-          "edge_reb": 0.9,
-          "tc_ast": 2.3,
-          "line_ast": 2,
-          "edge_ast": 0.3,
-          "tc_3pm": 0.9,
-          "line_3pm": 0,
-          "edge_3pm": 0.9,
-          "tc_stl": 0.4,
+          "tc_pts": 10.7,
+          "line_pts": 9,
+          "edge_pts": 1.7,
+          "tc_reb": 3.4,
+          "line_reb": 2,
+          "edge_reb": 1.4,
+          "tc_ast": 4.2,
+          "line_ast": 3,
+          "edge_ast": 1.2,
+          "tc_3pm": 1.6,
+          "line_3pm": 1,
+          "edge_3pm": 0.6,
+          "tc_stl": 0.8,
           "line_stl": 0,
-          "edge_stl": 0.4,
-          "tc_blk": 0.2,
+          "edge_stl": 0.8,
+          "tc_blk": 0.4,
           "line_blk": 0,
-          "edge_blk": 0.2,
-          "injury_comment": "Clark has been dealing with this minor back issue for nearly a month, but she hasn't missed a game since May 20. It looks like she'll continue to play through it Thursday, and managers can expect to get official confirmation on her status closer to tipoff.",
-          "injury_updated": "2026-06-17T21:07Z",
+          "edge_blk": 0.4,
           "symbols": [
             "\u2605PTS",
             "\u25b2AST",
@@ -2049,29 +1972,31 @@
           "tpm": 0,
           "stl": 0,
           "blk": 0,
-          "status": "ACTIVE",
+          "status": "OUT",
           "source": "live_roster_api",
-          "tc_pts": 3.6,
-          "line_pts": 3,
-          "edge_pts": 0.6,
-          "tc_reb": 1.5,
-          "line_reb": 1,
-          "edge_reb": 0.5,
-          "tc_ast": 0.7,
+          "tc_pts": 0,
+          "line_pts": 0,
+          "edge_pts": 0,
+          "tc_reb": 0,
+          "line_reb": 0,
+          "edge_reb": 0,
+          "tc_ast": 0,
           "line_ast": 0,
-          "edge_ast": 0.7,
-          "tc_3pm": 0.3,
+          "edge_ast": 0,
+          "tc_3pm": 0,
           "line_3pm": 0,
-          "edge_3pm": 0.3,
-          "tc_stl": 0.2,
+          "edge_3pm": 0,
+          "tc_stl": 0,
           "line_stl": 0,
-          "edge_stl": 0.2,
-          "tc_blk": 0.1,
+          "edge_stl": 0,
+          "tc_blk": 0,
           "line_blk": 0,
-          "edge_blk": 0.1,
+          "edge_blk": 0,
+          "injury_comment": "Hall hasn't logged any minutes throughout the 2026 campaign, with that trend continuing Thursday against the Dream. The 22-year-old is signed to a developmental contract and is eligible to suit up for up to 12 regular-season contests.",
+          "injury_updated": "2026-06-18T22:50Z",
           "symbols": [],
           "leader_notes": [],
-          "role": "BENCH"
+          "role": "DNP/OUT"
         },
         {
           "id": "4682855",
@@ -2086,53 +2011,62 @@
           "tpm": 0,
           "stl": 0,
           "blk": 0,
-          "status": "ACTIVE",
+          "status": "OUT",
           "source": "live_roster_api",
-          "tc_pts": 3.3,
-          "line_pts": 2,
-          "edge_pts": 1.3,
-          "tc_reb": 1.2,
-          "line_reb": 1,
-          "edge_reb": 0.2,
-          "tc_ast": 0.7,
+          "tc_pts": 0,
+          "line_pts": 0,
+          "edge_pts": 0,
+          "tc_reb": 0,
+          "line_reb": 0,
+          "edge_reb": 0,
+          "tc_ast": 0,
           "line_ast": 0,
-          "edge_ast": 0.7,
-          "tc_3pm": 0.3,
+          "edge_ast": 0,
+          "tc_3pm": 0,
           "line_3pm": 0,
-          "edge_3pm": 0.3,
-          "tc_stl": 0.2,
+          "edge_3pm": 0,
+          "tc_stl": 0,
           "line_stl": 0,
-          "edge_stl": 0.2,
-          "tc_blk": 0.1,
+          "edge_stl": 0,
+          "tc_blk": 0,
           "line_blk": 0,
-          "edge_blk": 0.1,
+          "edge_blk": 0,
+          "injury_comment": "Pissott, who is on a developmental contract, will take a seat Thursday to preserve her eligibility. She's yet to appear in a game this season for the Fever.",
+          "injury_updated": "2026-06-18T22:49Z",
           "symbols": [],
           "leader_notes": [],
-          "role": "BENCH"
+          "role": "DNP/OUT"
         }
       ]
     },
     "totals": {
-      "tc_pts": 81.8,
-      "tc_reb": 33.1,
-      "tc_ast": 18.9,
-      "tc_3pm": 8.5,
+      "tc_pts": 79.7,
+      "tc_reb": 31.9,
+      "tc_ast": 19.4,
+      "tc_3pm": 8.6,
       "tc_stl": 6.5,
       "tc_blk": 3.5
     },
     "injuries": [
       {
-        "name": "Caitlin Clark",
-        "status": "Q",
-        "comment": "Clark has been dealing with this minor back issue for nearly a month, but she hasn't missed a game since May 20. It looks like she'll continue to play through it Thursday, and managers can expect to get official confirmation on her status closer to tipoff.",
-        "date": "2026-06-17T21:07Z",
+        "name": "Bree Hall",
+        "status": "OUT",
+        "comment": "Hall hasn't logged any minutes throughout the 2026 campaign, with that trend continuing Thursday against the Dream. The 22-year-old is signed to a developmental contract and is eligible to suit up for up to 12 regular-season contests.",
+        "date": "2026-06-18T22:50Z",
+        "source": "espn_injury_feed"
+      },
+      {
+        "name": "Justine Pissott",
+        "status": "OUT",
+        "comment": "Pissott, who is on a developmental contract, will take a seat Thursday to preserve her eligibility. She's yet to appear in a game this season for the Fever.",
+        "date": "2026-06-18T22:49Z",
         "source": "espn_injury_feed"
       }
     ],
     "injury_summary": {
-      "total": 1,
-      "out": 0,
-      "questionable": 1,
+      "total": 2,
+      "out": 2,
+      "questionable": 0,
       "source": "espn_injury_feed"
     }
   },
@@ -2164,7 +2098,7 @@
     },
     "rows": [
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -2186,7 +2120,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -2208,7 +2142,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -2230,7 +2164,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -2252,7 +2186,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -2274,7 +2208,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -2296,7 +2230,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -2318,7 +2252,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -2340,7 +2274,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -2362,7 +2296,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -2384,7 +2318,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -2406,7 +2340,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -2428,7 +2362,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -2450,7 +2384,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -2472,7 +2406,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -2494,7 +2428,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -2516,7 +2450,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -2538,7 +2472,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -2560,7 +2494,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -2582,7 +2516,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -2604,7 +2538,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -2626,7 +2560,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -2648,7 +2582,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -2670,7 +2604,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -2692,7 +2626,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -2714,7 +2648,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -2736,7 +2670,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -2758,7 +2692,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -2780,7 +2714,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -2802,7 +2736,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -2824,139 +2758,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
-        "league": "WNBA",
-        "game": "ATL@IND",
-        "team": "ATL",
-        "player": "Amy Okonkwo",
-        "role": "BENCH",
-        "stat": "PTS",
-        "direction": "OVER",
-        "market_line": null,
-        "tc_projection": 7.6,
-        "tc_target": 6,
-        "edge": 1.6,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 11,
-        "status": "ACTIVE",
-        "valid": true,
-        "threshold": 1.5,
-        "dk_source": null
-      },
-      {
-        "date": "2026-06-18",
-        "league": "WNBA",
-        "game": "ATL@IND",
-        "team": "ATL",
-        "player": "Amy Okonkwo",
-        "role": "BENCH",
-        "stat": "REB",
-        "direction": "NO LINE",
-        "market_line": null,
-        "tc_projection": 2.5,
-        "tc_target": 2,
-        "edge": 0.5,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 3.1,
-        "status": "ACTIVE",
-        "valid": false,
-        "threshold": 1,
-        "dk_source": null
-      },
-      {
-        "date": "2026-06-18",
-        "league": "WNBA",
-        "game": "ATL@IND",
-        "team": "ATL",
-        "player": "Amy Okonkwo",
-        "role": "BENCH",
-        "stat": "AST",
-        "direction": "OVER",
-        "market_line": null,
-        "tc_projection": 1.1,
-        "tc_target": 0,
-        "edge": 1.1,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 0.8,
-        "status": "ACTIVE",
-        "valid": true,
-        "threshold": 1,
-        "dk_source": null
-      },
-      {
-        "date": "2026-06-18",
-        "league": "WNBA",
-        "game": "ATL@IND",
-        "team": "ATL",
-        "player": "Amy Okonkwo",
-        "role": "BENCH",
-        "stat": "3PM",
-        "direction": "OVER",
-        "market_line": null,
-        "tc_projection": 0.9,
-        "tc_target": 0,
-        "edge": 0.9,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 1.3,
-        "status": "ACTIVE",
-        "valid": true,
-        "threshold": 0.5,
-        "dk_source": null
-      },
-      {
-        "date": "2026-06-18",
-        "league": "WNBA",
-        "game": "ATL@IND",
-        "team": "ATL",
-        "player": "Amy Okonkwo",
-        "role": "BENCH",
-        "stat": "STL",
-        "direction": "OVER",
-        "market_line": null,
-        "tc_projection": 0.8,
-        "tc_target": 0,
-        "edge": 0.8,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 1.4,
-        "status": "ACTIVE",
-        "valid": true,
-        "threshold": 0.5,
-        "dk_source": null
-      },
-      {
-        "date": "2026-06-18",
-        "league": "WNBA",
-        "game": "ATL@IND",
-        "team": "ATL",
-        "player": "Amy Okonkwo",
-        "role": "BENCH",
-        "stat": "BLK",
-        "direction": "NO LINE",
-        "market_line": null,
-        "tc_projection": 0.2,
-        "tc_target": 0,
-        "edge": 0.2,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 0.1,
-        "status": "ACTIVE",
-        "valid": false,
-        "threshold": 0.5,
-        "dk_source": null
-      },
-      {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -2978,7 +2780,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -3000,7 +2802,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -3022,7 +2824,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -3044,7 +2846,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -3066,7 +2868,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -3088,7 +2890,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -3110,7 +2912,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -3132,7 +2934,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -3154,7 +2956,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -3176,7 +2978,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -3198,7 +3000,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -3220,7 +3022,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -3242,7 +3044,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -3264,7 +3066,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -3286,7 +3088,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -3308,7 +3110,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -3330,7 +3132,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -3352,7 +3154,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -3374,7 +3176,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -3396,7 +3198,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -3418,7 +3220,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -3440,7 +3242,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -3462,7 +3264,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -3484,7 +3286,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -3506,7 +3308,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -3528,7 +3330,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -3550,7 +3352,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -3572,7 +3374,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -3594,7 +3396,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -3616,7 +3418,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -3638,7 +3440,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -3660,7 +3462,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -3682,7 +3484,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -3704,7 +3506,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -3726,7 +3528,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -3748,7 +3550,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -3770,7 +3572,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -3792,7 +3594,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -3814,7 +3616,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -3836,7 +3638,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -3858,7 +3660,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -3880,73 +3682,205 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
+        "league": "WNBA",
+        "game": "ATL@IND",
+        "team": "ATL",
+        "player": "Amy Okonkwo",
+        "role": "DNP/OUT",
+        "stat": "PTS",
+        "direction": "NO LINE",
+        "market_line": null,
+        "tc_projection": 0,
+        "tc_target": 0,
+        "edge": 0,
+        "actual": null,
+        "result": "PENDING",
+        "source": "live_roster_api",
+        "raw_average": 11,
+        "status": "OUT",
+        "valid": false,
+        "threshold": 1.5,
+        "dk_source": null
+      },
+      {
+        "date": "2026-06-19",
+        "league": "WNBA",
+        "game": "ATL@IND",
+        "team": "ATL",
+        "player": "Amy Okonkwo",
+        "role": "DNP/OUT",
+        "stat": "REB",
+        "direction": "NO LINE",
+        "market_line": null,
+        "tc_projection": 0,
+        "tc_target": 0,
+        "edge": 0,
+        "actual": null,
+        "result": "PENDING",
+        "source": "live_roster_api",
+        "raw_average": 3.1,
+        "status": "OUT",
+        "valid": false,
+        "threshold": 1,
+        "dk_source": null
+      },
+      {
+        "date": "2026-06-19",
+        "league": "WNBA",
+        "game": "ATL@IND",
+        "team": "ATL",
+        "player": "Amy Okonkwo",
+        "role": "DNP/OUT",
+        "stat": "AST",
+        "direction": "NO LINE",
+        "market_line": null,
+        "tc_projection": 0,
+        "tc_target": 0,
+        "edge": 0,
+        "actual": null,
+        "result": "PENDING",
+        "source": "live_roster_api",
+        "raw_average": 0.8,
+        "status": "OUT",
+        "valid": false,
+        "threshold": 1,
+        "dk_source": null
+      },
+      {
+        "date": "2026-06-19",
+        "league": "WNBA",
+        "game": "ATL@IND",
+        "team": "ATL",
+        "player": "Amy Okonkwo",
+        "role": "DNP/OUT",
+        "stat": "3PM",
+        "direction": "NO LINE",
+        "market_line": null,
+        "tc_projection": 0,
+        "tc_target": 0,
+        "edge": 0,
+        "actual": null,
+        "result": "PENDING",
+        "source": "live_roster_api",
+        "raw_average": 1.3,
+        "status": "OUT",
+        "valid": false,
+        "threshold": 0.5,
+        "dk_source": null
+      },
+      {
+        "date": "2026-06-19",
+        "league": "WNBA",
+        "game": "ATL@IND",
+        "team": "ATL",
+        "player": "Amy Okonkwo",
+        "role": "DNP/OUT",
+        "stat": "STL",
+        "direction": "NO LINE",
+        "market_line": null,
+        "tc_projection": 0,
+        "tc_target": 0,
+        "edge": 0,
+        "actual": null,
+        "result": "PENDING",
+        "source": "live_roster_api",
+        "raw_average": 1.4,
+        "status": "OUT",
+        "valid": false,
+        "threshold": 0.5,
+        "dk_source": null
+      },
+      {
+        "date": "2026-06-19",
+        "league": "WNBA",
+        "game": "ATL@IND",
+        "team": "ATL",
+        "player": "Amy Okonkwo",
+        "role": "DNP/OUT",
+        "stat": "BLK",
+        "direction": "NO LINE",
+        "market_line": null,
+        "tc_projection": 0,
+        "tc_target": 0,
+        "edge": 0,
+        "actual": null,
+        "result": "PENDING",
+        "source": "live_roster_api",
+        "raw_average": 0.1,
+        "status": "OUT",
+        "valid": false,
+        "threshold": 0.5,
+        "dk_source": null
+      },
+      {
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
         "player": "Caitlin Clark",
         "role": "START",
         "stat": "PTS",
-        "direction": "NO LINE",
+        "direction": "OVER",
         "market_line": null,
-        "tc_projection": 5.9,
-        "tc_target": 5,
-        "edge": 0.9,
+        "tc_projection": 10.7,
+        "tc_target": 9,
+        "edge": 1.7,
         "actual": null,
         "result": "PENDING",
         "source": "live_roster_api",
         "raw_average": 18.9,
-        "status": "Q",
-        "valid": false,
+        "status": "ACTIVE",
+        "valid": true,
         "threshold": 1.5,
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
         "player": "Caitlin Clark",
         "role": "START",
         "stat": "REB",
-        "direction": "NO LINE",
+        "direction": "OVER",
         "market_line": null,
-        "tc_projection": 1.9,
-        "tc_target": 1,
-        "edge": 0.9,
+        "tc_projection": 3.4,
+        "tc_target": 2,
+        "edge": 1.4,
         "actual": null,
         "result": "PENDING",
         "source": "live_roster_api",
         "raw_average": 5.3,
-        "status": "Q",
-        "valid": false,
+        "status": "ACTIVE",
+        "valid": true,
         "threshold": 1,
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
         "player": "Caitlin Clark",
         "role": "START",
         "stat": "AST",
-        "direction": "NO LINE",
+        "direction": "OVER",
         "market_line": null,
-        "tc_projection": 2.3,
-        "tc_target": 2,
-        "edge": 0.3,
+        "tc_projection": 4.2,
+        "tc_target": 3,
+        "edge": 1.2,
         "actual": null,
         "result": "PENDING",
         "source": "live_roster_api",
         "raw_average": 8.5,
-        "status": "Q",
-        "valid": false,
+        "status": "ACTIVE",
+        "valid": true,
         "threshold": 1,
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -3955,42 +3889,42 @@
         "stat": "3PM",
         "direction": "OVER",
         "market_line": null,
-        "tc_projection": 0.9,
-        "tc_target": 0,
-        "edge": 0.9,
+        "tc_projection": 1.6,
+        "tc_target": 1,
+        "edge": 0.6,
         "actual": null,
         "result": "PENDING",
         "source": "live_roster_api",
         "raw_average": 2.8,
-        "status": "Q",
+        "status": "ACTIVE",
         "valid": true,
         "threshold": 0.5,
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
         "player": "Caitlin Clark",
         "role": "START",
         "stat": "STL",
-        "direction": "NO LINE",
+        "direction": "OVER",
         "market_line": null,
-        "tc_projection": 0.4,
+        "tc_projection": 0.8,
         "tc_target": 0,
-        "edge": 0.4,
+        "edge": 0.8,
         "actual": null,
         "result": "PENDING",
         "source": "live_roster_api",
         "raw_average": 1.3,
-        "status": "Q",
-        "valid": false,
+        "status": "ACTIVE",
+        "valid": true,
         "threshold": 0.5,
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -3999,20 +3933,20 @@
         "stat": "BLK",
         "direction": "NO LINE",
         "market_line": null,
-        "tc_projection": 0.2,
+        "tc_projection": 0.4,
         "tc_target": 0,
-        "edge": 0.2,
+        "edge": 0.4,
         "actual": null,
         "result": "PENDING",
         "source": "live_roster_api",
         "raw_average": 0.7,
-        "status": "Q",
+        "status": "ACTIVE",
         "valid": false,
         "threshold": 0.5,
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -4034,7 +3968,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -4056,7 +3990,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -4078,7 +4012,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -4100,7 +4034,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -4122,7 +4056,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -4144,7 +4078,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -4166,7 +4100,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -4188,7 +4122,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -4210,7 +4144,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -4232,7 +4166,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -4254,7 +4188,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -4276,7 +4210,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -4298,7 +4232,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -4320,7 +4254,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -4342,7 +4276,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -4364,7 +4298,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -4386,7 +4320,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -4408,7 +4342,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -4430,7 +4364,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -4452,7 +4386,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -4474,7 +4408,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -4496,7 +4430,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -4518,7 +4452,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -4540,7 +4474,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -4562,7 +4496,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -4584,7 +4518,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -4606,7 +4540,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -4628,7 +4562,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -4650,7 +4584,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -4672,7 +4606,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -4694,7 +4628,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -4716,7 +4650,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -4738,7 +4672,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -4760,7 +4694,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -4782,7 +4716,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -4804,7 +4738,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -4826,7 +4760,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -4848,7 +4782,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -4870,7 +4804,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -4892,7 +4826,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -4914,7 +4848,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -4936,7 +4870,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -4958,7 +4892,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -4980,7 +4914,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -5002,7 +4936,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -5024,7 +4958,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -5046,7 +4980,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -5068,7 +5002,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -5090,7 +5024,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -5112,7 +5046,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -5134,7 +5068,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -5156,7 +5090,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -5178,7 +5112,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -5200,7 +5134,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -5222,7 +5156,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -5244,7 +5178,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -5266,7 +5200,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -5288,7 +5222,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -5310,7 +5244,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -5332,7 +5266,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -5354,7 +5288,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -5376,7 +5310,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -5398,7 +5332,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -5420,7 +5354,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -5442,7 +5376,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -5464,265 +5398,265 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
         "player": "Bree Hall",
-        "role": "BENCH",
+        "role": "DNP/OUT",
         "stat": "PTS",
         "direction": "NO LINE",
         "market_line": null,
-        "tc_projection": 3.6,
-        "tc_target": 3,
-        "edge": 0.6,
+        "tc_projection": 0,
+        "tc_target": 0,
+        "edge": 0,
         "actual": null,
         "result": "PENDING",
         "source": "live_roster_api",
         "raw_average": 0.8,
-        "status": "ACTIVE",
+        "status": "OUT",
         "valid": false,
         "threshold": 1.5,
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
         "player": "Bree Hall",
-        "role": "BENCH",
+        "role": "DNP/OUT",
         "stat": "REB",
         "direction": "NO LINE",
         "market_line": null,
-        "tc_projection": 1.5,
-        "tc_target": 1,
-        "edge": 0.5,
+        "tc_projection": 0,
+        "tc_target": 0,
+        "edge": 0,
         "actual": null,
         "result": "PENDING",
         "source": "live_roster_api",
         "raw_average": 0.8,
-        "status": "ACTIVE",
+        "status": "OUT",
         "valid": false,
         "threshold": 1,
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
         "player": "Bree Hall",
-        "role": "BENCH",
+        "role": "DNP/OUT",
         "stat": "AST",
         "direction": "NO LINE",
         "market_line": null,
-        "tc_projection": 0.7,
+        "tc_projection": 0,
         "tc_target": 0,
-        "edge": 0.7,
+        "edge": 0,
         "actual": null,
         "result": "PENDING",
         "source": "live_roster_api",
         "raw_average": 0,
-        "status": "ACTIVE",
+        "status": "OUT",
         "valid": false,
         "threshold": 1,
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
         "player": "Bree Hall",
-        "role": "BENCH",
+        "role": "DNP/OUT",
         "stat": "3PM",
         "direction": "NO LINE",
         "market_line": null,
-        "tc_projection": 0.3,
+        "tc_projection": 0,
         "tc_target": 0,
-        "edge": 0.3,
+        "edge": 0,
         "actual": null,
         "result": "PENDING",
         "source": "live_roster_api",
         "raw_average": 0,
-        "status": "ACTIVE",
+        "status": "OUT",
         "valid": false,
         "threshold": 0.5,
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
         "player": "Bree Hall",
-        "role": "BENCH",
+        "role": "DNP/OUT",
         "stat": "STL",
         "direction": "NO LINE",
         "market_line": null,
-        "tc_projection": 0.2,
+        "tc_projection": 0,
         "tc_target": 0,
-        "edge": 0.2,
+        "edge": 0,
         "actual": null,
         "result": "PENDING",
         "source": "live_roster_api",
         "raw_average": 0,
-        "status": "ACTIVE",
+        "status": "OUT",
         "valid": false,
         "threshold": 0.5,
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
         "player": "Bree Hall",
-        "role": "BENCH",
+        "role": "DNP/OUT",
         "stat": "BLK",
         "direction": "NO LINE",
         "market_line": null,
-        "tc_projection": 0.1,
+        "tc_projection": 0,
         "tc_target": 0,
-        "edge": 0.1,
+        "edge": 0,
         "actual": null,
         "result": "PENDING",
         "source": "live_roster_api",
         "raw_average": 0,
-        "status": "ACTIVE",
+        "status": "OUT",
         "valid": false,
         "threshold": 0.5,
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
         "player": "Justine Pissott",
-        "role": "BENCH",
+        "role": "DNP/OUT",
         "stat": "PTS",
         "direction": "NO LINE",
         "market_line": null,
-        "tc_projection": 3.3,
-        "tc_target": 2,
-        "edge": 1.3,
+        "tc_projection": 0,
+        "tc_target": 0,
+        "edge": 0,
         "actual": null,
         "result": "PENDING",
         "source": "live_roster_api",
         "raw_average": 0,
-        "status": "ACTIVE",
+        "status": "OUT",
         "valid": false,
         "threshold": 1.5,
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
         "player": "Justine Pissott",
-        "role": "BENCH",
+        "role": "DNP/OUT",
         "stat": "REB",
         "direction": "NO LINE",
         "market_line": null,
-        "tc_projection": 1.2,
-        "tc_target": 1,
-        "edge": 0.2,
+        "tc_projection": 0,
+        "tc_target": 0,
+        "edge": 0,
         "actual": null,
         "result": "PENDING",
         "source": "live_roster_api",
         "raw_average": 0,
-        "status": "ACTIVE",
+        "status": "OUT",
         "valid": false,
         "threshold": 1,
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
         "player": "Justine Pissott",
-        "role": "BENCH",
+        "role": "DNP/OUT",
         "stat": "AST",
         "direction": "NO LINE",
         "market_line": null,
-        "tc_projection": 0.7,
+        "tc_projection": 0,
         "tc_target": 0,
-        "edge": 0.7,
+        "edge": 0,
         "actual": null,
         "result": "PENDING",
         "source": "live_roster_api",
         "raw_average": 0,
-        "status": "ACTIVE",
+        "status": "OUT",
         "valid": false,
         "threshold": 1,
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
         "player": "Justine Pissott",
-        "role": "BENCH",
+        "role": "DNP/OUT",
         "stat": "3PM",
         "direction": "NO LINE",
         "market_line": null,
-        "tc_projection": 0.3,
+        "tc_projection": 0,
         "tc_target": 0,
-        "edge": 0.3,
+        "edge": 0,
         "actual": null,
         "result": "PENDING",
         "source": "live_roster_api",
         "raw_average": 0,
-        "status": "ACTIVE",
+        "status": "OUT",
         "valid": false,
         "threshold": 0.5,
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
         "player": "Justine Pissott",
-        "role": "BENCH",
+        "role": "DNP/OUT",
         "stat": "STL",
         "direction": "NO LINE",
         "market_line": null,
-        "tc_projection": 0.2,
+        "tc_projection": 0,
         "tc_target": 0,
-        "edge": 0.2,
+        "edge": 0,
         "actual": null,
         "result": "PENDING",
         "source": "live_roster_api",
         "raw_average": 0,
-        "status": "ACTIVE",
+        "status": "OUT",
         "valid": false,
         "threshold": 0.5,
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
         "player": "Justine Pissott",
-        "role": "BENCH",
+        "role": "DNP/OUT",
         "stat": "BLK",
         "direction": "NO LINE",
         "market_line": null,
-        "tc_projection": 0.1,
+        "tc_projection": 0,
         "tc_target": 0,
-        "edge": 0.1,
+        "edge": 0,
         "actual": null,
         "result": "PENDING",
         "source": "live_roster_api",
         "raw_average": 0,
-        "status": "ACTIVE",
+        "status": "OUT",
         "valid": false,
         "threshold": 0.5,
         "dk_source": null
@@ -5730,7 +5664,7 @@
     ],
     "valid": [
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -5752,7 +5686,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -5774,7 +5708,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -5796,7 +5730,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -5818,7 +5752,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -5840,7 +5774,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -5862,7 +5796,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -5884,7 +5818,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -5906,7 +5840,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -5928,7 +5862,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -5950,7 +5884,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -5972,7 +5906,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -5994,7 +5928,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -6016,7 +5950,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -6038,7 +5972,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -6060,7 +5994,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -6082,95 +6016,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
-        "league": "WNBA",
-        "game": "ATL@IND",
-        "team": "ATL",
-        "player": "Amy Okonkwo",
-        "role": "BENCH",
-        "stat": "PTS",
-        "direction": "OVER",
-        "market_line": null,
-        "tc_projection": 7.6,
-        "tc_target": 6,
-        "edge": 1.6,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 11,
-        "status": "ACTIVE",
-        "valid": true,
-        "threshold": 1.5,
-        "dk_source": null
-      },
-      {
-        "date": "2026-06-18",
-        "league": "WNBA",
-        "game": "ATL@IND",
-        "team": "ATL",
-        "player": "Amy Okonkwo",
-        "role": "BENCH",
-        "stat": "AST",
-        "direction": "OVER",
-        "market_line": null,
-        "tc_projection": 1.1,
-        "tc_target": 0,
-        "edge": 1.1,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 0.8,
-        "status": "ACTIVE",
-        "valid": true,
-        "threshold": 1,
-        "dk_source": null
-      },
-      {
-        "date": "2026-06-18",
-        "league": "WNBA",
-        "game": "ATL@IND",
-        "team": "ATL",
-        "player": "Amy Okonkwo",
-        "role": "BENCH",
-        "stat": "3PM",
-        "direction": "OVER",
-        "market_line": null,
-        "tc_projection": 0.9,
-        "tc_target": 0,
-        "edge": 0.9,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 1.3,
-        "status": "ACTIVE",
-        "valid": true,
-        "threshold": 0.5,
-        "dk_source": null
-      },
-      {
-        "date": "2026-06-18",
-        "league": "WNBA",
-        "game": "ATL@IND",
-        "team": "ATL",
-        "player": "Amy Okonkwo",
-        "role": "BENCH",
-        "stat": "STL",
-        "direction": "OVER",
-        "market_line": null,
-        "tc_projection": 0.8,
-        "tc_target": 0,
-        "edge": 0.8,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 1.4,
-        "status": "ACTIVE",
-        "valid": true,
-        "threshold": 0.5,
-        "dk_source": null
-      },
-      {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -6192,7 +6038,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -6214,7 +6060,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -6236,7 +6082,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -6258,7 +6104,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "ATL",
@@ -6280,7 +6126,73 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
+        "league": "WNBA",
+        "game": "ATL@IND",
+        "team": "IND",
+        "player": "Caitlin Clark",
+        "role": "START",
+        "stat": "PTS",
+        "direction": "OVER",
+        "market_line": null,
+        "tc_projection": 10.7,
+        "tc_target": 9,
+        "edge": 1.7,
+        "actual": null,
+        "result": "PENDING",
+        "source": "live_roster_api",
+        "raw_average": 18.9,
+        "status": "ACTIVE",
+        "valid": true,
+        "threshold": 1.5,
+        "dk_source": null
+      },
+      {
+        "date": "2026-06-19",
+        "league": "WNBA",
+        "game": "ATL@IND",
+        "team": "IND",
+        "player": "Caitlin Clark",
+        "role": "START",
+        "stat": "REB",
+        "direction": "OVER",
+        "market_line": null,
+        "tc_projection": 3.4,
+        "tc_target": 2,
+        "edge": 1.4,
+        "actual": null,
+        "result": "PENDING",
+        "source": "live_roster_api",
+        "raw_average": 5.3,
+        "status": "ACTIVE",
+        "valid": true,
+        "threshold": 1,
+        "dk_source": null
+      },
+      {
+        "date": "2026-06-19",
+        "league": "WNBA",
+        "game": "ATL@IND",
+        "team": "IND",
+        "player": "Caitlin Clark",
+        "role": "START",
+        "stat": "AST",
+        "direction": "OVER",
+        "market_line": null,
+        "tc_projection": 4.2,
+        "tc_target": 3,
+        "edge": 1.2,
+        "actual": null,
+        "result": "PENDING",
+        "source": "live_roster_api",
+        "raw_average": 8.5,
+        "status": "ACTIVE",
+        "valid": true,
+        "threshold": 1,
+        "dk_source": null
+      },
+      {
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -6289,20 +6201,42 @@
         "stat": "3PM",
         "direction": "OVER",
         "market_line": null,
-        "tc_projection": 0.9,
-        "tc_target": 0,
-        "edge": 0.9,
+        "tc_projection": 1.6,
+        "tc_target": 1,
+        "edge": 0.6,
         "actual": null,
         "result": "PENDING",
         "source": "live_roster_api",
         "raw_average": 2.8,
-        "status": "Q",
+        "status": "ACTIVE",
         "valid": true,
         "threshold": 0.5,
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
+        "league": "WNBA",
+        "game": "ATL@IND",
+        "team": "IND",
+        "player": "Caitlin Clark",
+        "role": "START",
+        "stat": "STL",
+        "direction": "OVER",
+        "market_line": null,
+        "tc_projection": 0.8,
+        "tc_target": 0,
+        "edge": 0.8,
+        "actual": null,
+        "result": "PENDING",
+        "source": "live_roster_api",
+        "raw_average": 1.3,
+        "status": "ACTIVE",
+        "valid": true,
+        "threshold": 0.5,
+        "dk_source": null
+      },
+      {
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -6324,7 +6258,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -6346,7 +6280,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -6368,7 +6302,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -6390,7 +6324,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -6412,7 +6346,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -6434,7 +6368,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -6456,7 +6390,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -6478,7 +6412,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -6500,7 +6434,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -6522,7 +6456,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -6544,7 +6478,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -6566,7 +6500,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -6588,7 +6522,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -6610,7 +6544,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -6632,7 +6566,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -6654,7 +6588,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -6676,7 +6610,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -6698,7 +6632,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -6720,7 +6654,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -6742,7 +6676,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -6764,7 +6698,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -6786,7 +6720,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-18",
+        "date": "2026-06-19",
         "league": "WNBA",
         "game": "ATL@IND",
         "team": "IND",
@@ -6812,7 +6746,7 @@
   },
   "valid_props": [
     {
-      "date": "2026-06-18",
+      "date": "2026-06-19",
       "league": "WNBA",
       "game": "ATL@IND",
       "team": "ATL",
@@ -6820,7 +6754,7 @@
       "role": "START",
       "stat": "PTS",
       "direction": "OVER",
-      "market_line": null,
+      "market_line": 16.5,
       "tc_projection": 10.1,
       "tc_target": 8,
       "edge": 2.1,
@@ -6834,7 +6768,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-18",
+      "date": "2026-06-19",
       "league": "WNBA",
       "game": "ATL@IND",
       "team": "ATL",
@@ -6842,7 +6776,7 @@
       "role": "START",
       "stat": "REB",
       "direction": "OVER",
-      "market_line": null,
+      "market_line": 5.5,
       "tc_projection": 3,
       "tc_target": 2,
       "edge": 1,
@@ -6856,7 +6790,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-18",
+      "date": "2026-06-19",
       "league": "WNBA",
       "game": "ATL@IND",
       "team": "ATL",
@@ -6878,7 +6812,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-18",
+      "date": "2026-06-19",
       "league": "WNBA",
       "game": "ATL@IND",
       "team": "ATL",
@@ -6886,7 +6820,7 @@
       "role": "START",
       "stat": "3PM",
       "direction": "OVER",
-      "market_line": null,
+      "market_line": 1.5,
       "tc_projection": 1.6,
       "tc_target": 1,
       "edge": 0.6,
@@ -6900,7 +6834,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-18",
+      "date": "2026-06-19",
       "league": "WNBA",
       "game": "ATL@IND",
       "team": "ATL",
@@ -6922,7 +6856,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-18",
+      "date": "2026-06-19",
       "league": "WNBA",
       "game": "ATL@IND",
       "team": "ATL",
@@ -6930,7 +6864,7 @@
       "role": "START",
       "stat": "PTS",
       "direction": "OVER",
-      "market_line": null,
+      "market_line": 11.5,
       "tc_projection": 8.9,
       "tc_target": 7,
       "edge": 1.9,
@@ -6944,7 +6878,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-18",
+      "date": "2026-06-19",
       "league": "WNBA",
       "game": "ATL@IND",
       "team": "ATL",
@@ -6952,7 +6886,7 @@
       "role": "START",
       "stat": "REB",
       "direction": "OVER",
-      "market_line": null,
+      "market_line": 9.5,
       "tc_projection": 6.4,
       "tc_target": 5,
       "edge": 1.4,
@@ -6966,7 +6900,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-18",
+      "date": "2026-06-19",
       "league": "WNBA",
       "game": "ATL@IND",
       "team": "ATL",
@@ -6988,7 +6922,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-18",
+      "date": "2026-06-19",
       "league": "WNBA",
       "game": "ATL@IND",
       "team": "ATL",
@@ -6996,7 +6930,7 @@
       "role": "START",
       "stat": "PTS",
       "direction": "OVER",
-      "market_line": null,
+      "market_line": 19.5,
       "tc_projection": 8.9,
       "tc_target": 7,
       "edge": 1.9,
@@ -7010,7 +6944,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-18",
+      "date": "2026-06-19",
       "league": "WNBA",
       "game": "ATL@IND",
       "team": "ATL",
@@ -7032,7 +6966,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-18",
+      "date": "2026-06-19",
       "league": "WNBA",
       "game": "ATL@IND",
       "team": "ATL",
@@ -7040,7 +6974,7 @@
       "role": "START",
       "stat": "3PM",
       "direction": "OVER",
-      "market_line": null,
+      "market_line": 1.5,
       "tc_projection": 0.9,
       "tc_target": 0,
       "edge": 0.9,
@@ -7054,7 +6988,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-18",
+      "date": "2026-06-19",
       "league": "WNBA",
       "game": "ATL@IND",
       "team": "ATL",
@@ -7076,7 +7010,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-18",
+      "date": "2026-06-19",
       "league": "WNBA",
       "game": "ATL@IND",
       "team": "ATL",
@@ -7098,7 +7032,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-18",
+      "date": "2026-06-19",
       "league": "WNBA",
       "game": "ATL@IND",
       "team": "ATL",
@@ -7120,7 +7054,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-18",
+      "date": "2026-06-19",
       "league": "WNBA",
       "game": "ATL@IND",
       "team": "ATL",
@@ -7142,7 +7076,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-18",
+      "date": "2026-06-19",
       "league": "WNBA",
       "game": "ATL@IND",
       "team": "ATL",
@@ -7164,95 +7098,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-18",
-      "league": "WNBA",
-      "game": "ATL@IND",
-      "team": "ATL",
-      "player": "Amy Okonkwo",
-      "role": "BENCH",
-      "stat": "PTS",
-      "direction": "OVER",
-      "market_line": null,
-      "tc_projection": 7.6,
-      "tc_target": 6,
-      "edge": 1.6,
-      "actual": null,
-      "result": "PENDING",
-      "source": "live_roster_api",
-      "raw_average": 11,
-      "status": "ACTIVE",
-      "valid": true,
-      "threshold": 1.5,
-      "dk_source": null
-    },
-    {
-      "date": "2026-06-18",
-      "league": "WNBA",
-      "game": "ATL@IND",
-      "team": "ATL",
-      "player": "Amy Okonkwo",
-      "role": "BENCH",
-      "stat": "AST",
-      "direction": "OVER",
-      "market_line": null,
-      "tc_projection": 1.1,
-      "tc_target": 0,
-      "edge": 1.1,
-      "actual": null,
-      "result": "PENDING",
-      "source": "live_roster_api",
-      "raw_average": 0.8,
-      "status": "ACTIVE",
-      "valid": true,
-      "threshold": 1,
-      "dk_source": null
-    },
-    {
-      "date": "2026-06-18",
-      "league": "WNBA",
-      "game": "ATL@IND",
-      "team": "ATL",
-      "player": "Amy Okonkwo",
-      "role": "BENCH",
-      "stat": "3PM",
-      "direction": "OVER",
-      "market_line": null,
-      "tc_projection": 0.9,
-      "tc_target": 0,
-      "edge": 0.9,
-      "actual": null,
-      "result": "PENDING",
-      "source": "live_roster_api",
-      "raw_average": 1.3,
-      "status": "ACTIVE",
-      "valid": true,
-      "threshold": 0.5,
-      "dk_source": null
-    },
-    {
-      "date": "2026-06-18",
-      "league": "WNBA",
-      "game": "ATL@IND",
-      "team": "ATL",
-      "player": "Amy Okonkwo",
-      "role": "BENCH",
-      "stat": "STL",
-      "direction": "OVER",
-      "market_line": null,
-      "tc_projection": 0.8,
-      "tc_target": 0,
-      "edge": 0.8,
-      "actual": null,
-      "result": "PENDING",
-      "source": "live_roster_api",
-      "raw_average": 1.4,
-      "status": "ACTIVE",
-      "valid": true,
-      "threshold": 0.5,
-      "dk_source": null
-    },
-    {
-      "date": "2026-06-18",
+      "date": "2026-06-19",
       "league": "WNBA",
       "game": "ATL@IND",
       "team": "ATL",
@@ -7274,7 +7120,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-18",
+      "date": "2026-06-19",
       "league": "WNBA",
       "game": "ATL@IND",
       "team": "ATL",
@@ -7296,7 +7142,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-18",
+      "date": "2026-06-19",
       "league": "WNBA",
       "game": "ATL@IND",
       "team": "ATL",
@@ -7318,7 +7164,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-18",
+      "date": "2026-06-19",
       "league": "WNBA",
       "game": "ATL@IND",
       "team": "ATL",
@@ -7340,7 +7186,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-18",
+      "date": "2026-06-19",
       "league": "WNBA",
       "game": "ATL@IND",
       "team": "ATL",
@@ -7362,7 +7208,73 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-18",
+      "date": "2026-06-19",
+      "league": "WNBA",
+      "game": "ATL@IND",
+      "team": "IND",
+      "player": "Caitlin Clark",
+      "role": "START",
+      "stat": "PTS",
+      "direction": "OVER",
+      "market_line": 27.5,
+      "tc_projection": 10.7,
+      "tc_target": 9,
+      "edge": 1.7,
+      "actual": null,
+      "result": "PENDING",
+      "source": "live_roster_api",
+      "raw_average": 18.9,
+      "status": "ACTIVE",
+      "valid": true,
+      "threshold": 1.5,
+      "dk_source": null
+    },
+    {
+      "date": "2026-06-19",
+      "league": "WNBA",
+      "game": "ATL@IND",
+      "team": "IND",
+      "player": "Caitlin Clark",
+      "role": "START",
+      "stat": "REB",
+      "direction": "OVER",
+      "market_line": null,
+      "tc_projection": 3.4,
+      "tc_target": 2,
+      "edge": 1.4,
+      "actual": null,
+      "result": "PENDING",
+      "source": "live_roster_api",
+      "raw_average": 5.3,
+      "status": "ACTIVE",
+      "valid": true,
+      "threshold": 1,
+      "dk_source": null
+    },
+    {
+      "date": "2026-06-19",
+      "league": "WNBA",
+      "game": "ATL@IND",
+      "team": "IND",
+      "player": "Caitlin Clark",
+      "role": "START",
+      "stat": "AST",
+      "direction": "OVER",
+      "market_line": 7.5,
+      "tc_projection": 4.2,
+      "tc_target": 3,
+      "edge": 1.2,
+      "actual": null,
+      "result": "PENDING",
+      "source": "live_roster_api",
+      "raw_average": 8.5,
+      "status": "ACTIVE",
+      "valid": true,
+      "threshold": 1,
+      "dk_source": null
+    },
+    {
+      "date": "2026-06-19",
       "league": "WNBA",
       "game": "ATL@IND",
       "team": "IND",
@@ -7370,21 +7282,43 @@
       "role": "START",
       "stat": "3PM",
       "direction": "OVER",
-      "market_line": null,
-      "tc_projection": 0.9,
-      "tc_target": 0,
-      "edge": 0.9,
+      "market_line": 2.5,
+      "tc_projection": 1.6,
+      "tc_target": 1,
+      "edge": 0.6,
       "actual": null,
       "result": "PENDING",
       "source": "live_roster_api",
       "raw_average": 2.8,
-      "status": "Q",
+      "status": "ACTIVE",
       "valid": true,
       "threshold": 0.5,
       "dk_source": null
     },
     {
-      "date": "2026-06-18",
+      "date": "2026-06-19",
+      "league": "WNBA",
+      "game": "ATL@IND",
+      "team": "IND",
+      "player": "Caitlin Clark",
+      "role": "START",
+      "stat": "STL",
+      "direction": "OVER",
+      "market_line": null,
+      "tc_projection": 0.8,
+      "tc_target": 0,
+      "edge": 0.8,
+      "actual": null,
+      "result": "PENDING",
+      "source": "live_roster_api",
+      "raw_average": 1.3,
+      "status": "ACTIVE",
+      "valid": true,
+      "threshold": 0.5,
+      "dk_source": null
+    },
+    {
+      "date": "2026-06-19",
       "league": "WNBA",
       "game": "ATL@IND",
       "team": "IND",
@@ -7406,7 +7340,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-18",
+      "date": "2026-06-19",
       "league": "WNBA",
       "game": "ATL@IND",
       "team": "IND",
@@ -7428,7 +7362,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-18",
+      "date": "2026-06-19",
       "league": "WNBA",
       "game": "ATL@IND",
       "team": "IND",
@@ -7450,7 +7384,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-18",
+      "date": "2026-06-19",
       "league": "WNBA",
       "game": "ATL@IND",
       "team": "IND",
@@ -7458,7 +7392,7 @@
       "role": "START",
       "stat": "PTS",
       "direction": "OVER",
-      "market_line": null,
+      "market_line": 17.5,
       "tc_projection": 10.2,
       "tc_target": 8,
       "edge": 2.2,
@@ -7472,7 +7406,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-18",
+      "date": "2026-06-19",
       "league": "WNBA",
       "game": "ATL@IND",
       "team": "IND",
@@ -7494,7 +7428,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-18",
+      "date": "2026-06-19",
       "league": "WNBA",
       "game": "ATL@IND",
       "team": "IND",
@@ -7516,7 +7450,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-18",
+      "date": "2026-06-19",
       "league": "WNBA",
       "game": "ATL@IND",
       "team": "IND",
@@ -7524,7 +7458,7 @@
       "role": "START",
       "stat": "PTS",
       "direction": "OVER",
-      "market_line": null,
+      "market_line": 14.5,
       "tc_projection": 6.5,
       "tc_target": 5,
       "edge": 1.5,
@@ -7538,7 +7472,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-18",
+      "date": "2026-06-19",
       "league": "WNBA",
       "game": "ATL@IND",
       "team": "IND",
@@ -7546,7 +7480,7 @@
       "role": "START",
       "stat": "3PM",
       "direction": "OVER",
-      "market_line": null,
+      "market_line": 2.5,
       "tc_projection": 1,
       "tc_target": 0,
       "edge": 1,
@@ -7560,7 +7494,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-18",
+      "date": "2026-06-19",
       "league": "WNBA",
       "game": "ATL@IND",
       "team": "IND",
@@ -7582,7 +7516,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-18",
+      "date": "2026-06-19",
       "league": "WNBA",
       "game": "ATL@IND",
       "team": "IND",
@@ -7604,7 +7538,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-18",
+      "date": "2026-06-19",
       "league": "WNBA",
       "game": "ATL@IND",
       "team": "IND",
@@ -7626,7 +7560,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-18",
+      "date": "2026-06-19",
       "league": "WNBA",
       "game": "ATL@IND",
       "team": "IND",
@@ -7648,7 +7582,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-18",
+      "date": "2026-06-19",
       "league": "WNBA",
       "game": "ATL@IND",
       "team": "IND",
@@ -7670,7 +7604,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-18",
+      "date": "2026-06-19",
       "league": "WNBA",
       "game": "ATL@IND",
       "team": "IND",
@@ -7692,7 +7626,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-18",
+      "date": "2026-06-19",
       "league": "WNBA",
       "game": "ATL@IND",
       "team": "IND",
@@ -7714,7 +7648,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-18",
+      "date": "2026-06-19",
       "league": "WNBA",
       "game": "ATL@IND",
       "team": "IND",
@@ -7736,7 +7670,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-18",
+      "date": "2026-06-19",
       "league": "WNBA",
       "game": "ATL@IND",
       "team": "IND",
@@ -7758,7 +7692,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-18",
+      "date": "2026-06-19",
       "league": "WNBA",
       "game": "ATL@IND",
       "team": "IND",
@@ -7780,7 +7714,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-18",
+      "date": "2026-06-19",
       "league": "WNBA",
       "game": "ATL@IND",
       "team": "IND",
@@ -7802,7 +7736,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-18",
+      "date": "2026-06-19",
       "league": "WNBA",
       "game": "ATL@IND",
       "team": "IND",
@@ -7824,7 +7758,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-18",
+      "date": "2026-06-19",
       "league": "WNBA",
       "game": "ATL@IND",
       "team": "IND",
@@ -7846,7 +7780,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-18",
+      "date": "2026-06-19",
       "league": "WNBA",
       "game": "ATL@IND",
       "team": "IND",
@@ -7868,7 +7802,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-18",
+      "date": "2026-06-19",
       "league": "WNBA",
       "game": "ATL@IND",
       "team": "IND",
@@ -7932,5 +7866,57 @@
   "keys_status": {
     "SPORTSGAMEODDS_API_KEY": true,
     "ODDS_API_KEY": true
+  },
+  "enrichment": {
+    "sport": "WNBA",
+    "away": "ATL",
+    "home": "IND",
+    "event_id": "1310346578f7ec30d528d264ea1c6dd9",
+    "source": "odds-api (ODDS_API_KEY)",
+    "player_lines": {
+      "Caitlin Clark": {
+        "assists": 7.5,
+        "points": 27.5,
+        "threes": 2.5
+      },
+      "Jordin Canada": {
+        "assists": 6.5,
+        "points": 15.5,
+        "rebounds": 3.5
+      },
+      "Allisha Gray": {
+        "points": 19.5,
+        "threes": 1.5
+      },
+      "Kelsey Mitchell": {
+        "points": 17.5,
+        "threes": 1.5
+      },
+      "Aliyah Boston": {
+        "points": 16.5,
+        "rebounds": 8.5
+      },
+      "Rhyne Howard": {
+        "points": 16.5,
+        "rebounds": 5.5,
+        "threes": 1.5
+      },
+      "Sophie Cunningham": {
+        "points": 14.5,
+        "threes": 2.5
+      },
+      "Naz Hillmon": {
+        "points": 14.5
+      },
+      "Angel Reese": {
+        "points": 11.5,
+        "rebounds": 9.5
+      }
+    },
+    "player_count": 9,
+    "tier_used": "ODDS_API_KEY",
+    "available_books": [
+      "draftkings"
+    ]
   }
 }

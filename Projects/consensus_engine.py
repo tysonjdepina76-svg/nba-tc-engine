@@ -47,17 +47,15 @@ WNBA_TEAM_MAP = {
 }
 
 # ── API Keys ──────────────────────────────────────────────
-ODDS_KEY = os.environ.get("ODDS_API_KEY", "")
-SGO_KEY = os.environ.get("SGO_API_KEY", os.environ.get("SPORTSGAMEODDS_API_KEY", ""))
 
+ODDS_KEY = os.environ.get("ODDS_API_KEY", "") 
+SGO_KEY = os.environ.get("SGO_API_KEY", "") or os.environ.get("SPORTSGAMEODDS_API_KEY", "")
 SECRETS_FILE = Path("/root/.zo/secrets.env")
 if (not ODDS_KEY or not SGO_KEY) and SECRETS_FILE.exists():
     for line in SECRETS_FILE.read_text().split("\n"):
         if "=" not in line: continue
         k, _, v = line.partition("=")
         k, v = k.strip(), v.strip().strip('"').strip("'")
-        if k == "ODDS_API_KEY" and not ODDS_KEY: ODDS_KEY = v
-        elif k == "SPORTSGAMEODDS_API_KEY" and not SGO_KEY: SGO_KEY = v
 
 # ── Odds API Sport Mapping ────────────────────────────────
 ODDS_SPORT_MAP = {
@@ -85,7 +83,6 @@ BOOK_PRIORITY = [
 PLAYER_MARKETS = [
     "player_points", "player_rebounds", "player_assists",
     "player_threes", "player_steals", "player_blocks",
-    "player_goals", "player_assists", "player_shots_on_target",
 ]
 
 ODDS_STAT_REVERSE = {
@@ -110,7 +107,6 @@ UD_AVAILABLE = False  # Set True when Underdog API access is obtained
 # ── Convenience sport map for external use ─────────────────
 CONSENSUS_SPORT_MAP = ODDS_SPORT_MAP  # re-export
 
-
 # ── Daily Cache (avoid double-counting API tokens) ────────
 CACHE_DIR = Path("/home/workspace/Daily_Log")
 
@@ -122,7 +118,6 @@ def _cache_path(sport: str, event_id: str = None) -> Path:
         return d / f"consensus_{sport}_{event_id}.json"
     return d / f"consensus_slate_{sport}.json"
 
-
 def _load_cache(sport: str, event_id: str) -> Optional[dict]:
     p = _cache_path(sport, event_id)
     if p.exists():
@@ -132,11 +127,9 @@ def _load_cache(sport: str, event_id: str) -> Optional[dict]:
             return None
     return None
 
-
 def _save_cache(sport: str, event_id: str, data: dict):
     p = _cache_path(sport, event_id)
     p.write_text(json.dumps(data, indent=2, default=str))
-
 
 def get_consensus_lines_cached(
     sport: str,
@@ -156,7 +149,6 @@ def get_consensus_lines_cached(
         _save_cache(sport, event_id, result)
     result["_from_cache"] = False
     return result
-
 
 def fetch_sport_batch(sport: str, markets: Optional[List[str]] = None, force: bool = False) -> dict:
     """Fetch consensus for ALL upcoming games in a sport. One events-list call, cached per-event odds."""
@@ -179,8 +171,7 @@ def fetch_sport_batch(sport: str, markets: Optional[List[str]] = None, force: bo
     # Step 1: Get all events (one cheap API call)
     try:
         r = requests.get(
-            f"https://api.theoddsapi.com/events?sport_key={sport_key}",
-            params={"x-api-key": ODDS_KEY, "dateFormat": "iso"}, timeout=15
+            params={"apiKey": ODDS_KEY, "dateFormat": "iso"}, timeout=15
         )
         r.raise_for_status()
         ev_data = r.json()
@@ -230,7 +221,6 @@ def fetch_sport_batch(sport: str, markets: Optional[List[str]] = None, force: bo
     batch_cache.write_text(json.dumps(batch, indent=2, default=str))
     return batch
 
-
 def fetch_consensus_for_matchup(sport: str, away: str, home: str, markets=None) -> dict:
     """Find an event by matchup and return consensus lines. One events-list call + one odds call."""
     sport_key = CONSENSUS_SPORT_MAP.get(sport.upper())
@@ -239,9 +229,10 @@ def fetch_consensus_for_matchup(sport: str, away: str, home: str, markets=None) 
     if not ODDS_KEY:
         return {"players": {}, "available_books": [], "source": "none", "error": "ODDS_API_KEY not set"}
 
+    ODDS_BASE = "https://api.the-odds-api.com/v4/sports"
     r = requests.get(
-        f"https://api.theoddsapi.com/events?sport_key={sport_key}",
-        params={"x-api-key": ODDS_KEY, "dateFormat": "iso"}, timeout=15
+        f"{ODDS_BASE}/{sport_key}/odds",
+        params={"apiKey": ODDS_KEY, "regions": "us", "dateFormat": "iso"}, timeout=15
     )
     r.raise_for_status()
     events = r.json()
@@ -277,11 +268,9 @@ def fetch_consensus_for_matchup(sport: str, away: str, home: str, markets=None) 
 
     return get_consensus_lines_cached(sport, ev["id"], markets)
 
-
 def _norm_name(name: str) -> str:
     """Normalize player name for cross-book matching."""
     return name.lower().replace("'", "").replace(",", "").replace(".", "").strip()
-
 
 def _avg_trimmed(values: List[float], trim_pct: float = 0.2) -> Optional[float]:
     """Trimmed mean: drop top/bottom trim_pct%, average the middle."""
@@ -293,7 +282,6 @@ def _avg_trimmed(values: List[float], trim_pct: float = 0.2) -> Optional[float]:
     trim_n = max(1, int(len(sv) * trim_pct))
     middle = sv[trim_n:-trim_n] if len(sv) > 2 * trim_n else sv
     return sum(middle) / len(middle)
-
 
 def get_consensus_lines(
     sport: str,
@@ -307,11 +295,9 @@ def get_consensus_lines(
       { players: { "Name": { "points": { consensus, dk, fd, ..., best_book, all_lines, source_count } } },
         game_total: ...,
         available_books: [...],
-        source: "odds_api" | "sgo" | "none" }
     """
     if not ODDS_KEY:
-        return {"players": {}, "available_books": [], "source": "none",
-                "error": "ODDS_API_KEY not set"}
+        return {"players": {}, "available_books": [], "source": "none", "error": "ODDS_API_KEY not set"}
 
     sport_key = ODDS_SPORT_MAP.get(sport.upper())
     if not sport_key:
@@ -322,10 +308,11 @@ def get_consensus_lines(
     market_str = ",".join(mkts) + ",totals"
 
     try:
+        ODDS_BASE = "https://api.the-odds-api.com/v4/sports"
         r = requests.get(
-            f"https://api.theoddsapi.com/odds",
+            f"{ODDS_BASE}/{sport_key}/events/{event_id}/odds",
             params={
-                "x-api-key": ODDS_KEY, "regions": "us",
+                "apiKey": ODDS_KEY, "regions": "us",
                 "markets": market_str, "oddsFormat": "decimal",
             },
             timeout=25,
@@ -428,10 +415,8 @@ def get_consensus_lines(
         "available_books": available_books,
         "all_books_seen": sorted(all_books),
         "player_count": len(players_with_names),
-        "source": "odds_api",
         "fetched_at": datetime.now(timezone.utc).isoformat(),
     }
-
 
 def get_best_line(
     consensus: dict,
@@ -467,7 +452,6 @@ def get_best_line(
         return entry[prefer_book]
     return entry.get("consensus")
 
-
 def merge_consensus_into_picks(
     picks: list,
     consensus: dict,
@@ -484,9 +468,7 @@ def merge_consensus_into_picks(
             p["consensus_books"] = len(consensus.get("available_books", []))
     return picks
 
-
 # ── Batch Caching (token-efficient) ───
-
 
 # ── CLI ───────────────────────────────────────────────────
 if __name__ == "__main__":
@@ -513,8 +495,7 @@ if __name__ == "__main__":
 
         # Find event
         r = requests.get(
-            f"https://api.theoddsapi.com/events?sport_key={sport_key}",
-            params={"x-api-key": ODDS_KEY, "dateFormat": "iso"}, timeout=15
+            params={"apiKey": ODDS_KEY, "regions": "us", "dateFormat": "iso"}, timeout=15
         )
         events = r.json()
         ev = None
@@ -551,8 +532,7 @@ def list_sport_games(sport: str) -> dict:
         return {"games": [], "error": "ODDS_API_KEY not set"}
     try:
         r = requests.get(
-            f"https://api.theoddsapi.com/events?sport_key={sport_key}",
-            params={"x-api-key": ODDS_KEY, "dateFormat": "iso"}, timeout=15
+            params={"apiKey": ODDS_KEY, "regions": "us", "dateFormat": "iso"}, timeout=15
         )
         r.raise_for_status()
         _d = r.json()

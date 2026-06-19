@@ -20,8 +20,6 @@ import requests
 from datetime import datetime
 from pathlib import Path
 
-SGO_KEY = os.environ.get("SGO_API_KEY", os.environ.get("SPORTSGAMEODDS_API_KEY", ""))
-ODDS_KEY = os.environ.get("ODDS_API_KEY", os.environ.get("THEODDSAPI", ""))
 API_BASE = os.environ.get("API_BASE", "https://true.zo.space")
 
 # ── Multi-source consensus engine ──────────────────────
@@ -30,6 +28,8 @@ from consensus_engine import fetch_consensus_for_matchup, get_best_line
 
 # ── Load secrets from /root/.zo/secrets.env if not in env ──
 SECRETS_FILE = Path("/root/.zo/secrets.env")
+SGO_KEY = os.environ.get("SGO_API_KEY", "")
+ODDS_KEY = os.environ.get("ODDS_API_KEY", "")
 if (not SGO_KEY or not ODDS_KEY) and SECRETS_FILE.exists():
     for line in SECRETS_FILE.read_text().split("\n"):
         line = line.strip()
@@ -38,9 +38,9 @@ if (not SGO_KEY or not ODDS_KEY) and SECRETS_FILE.exists():
             key, _, val = line.partition("=")
             key = key.strip()
             val = val.strip().strip('"').strip("'")
-            if key == "SPORTSGAMEODDS_API_KEY" and not SGO_KEY:
+            if key == "SGO_API_KEY":
                 SGO_KEY = val
-            elif key == "ODDS_API_KEY" and not ODDS_KEY:
+            elif key == "ODDS_API_KEY":
                 ODDS_KEY = val
 
 TODAY = datetime.now().strftime("%Y-%m-%d")
@@ -142,28 +142,7 @@ def extract_dk_lines_sgo(odds: dict) -> dict:
 ODDS_SPORT_MAP = {"WNBA": "basketball_wnba", "NBA": "basketball_nba"}
 ODDS_MARKETS = "player_points,player_rebounds,player_assists,player_threes,player_steals,player_blocks,totals"
 
-def odds_api_events(sport: str):
-    if not ODDS_KEY:
-        raise RuntimeError("ODDS_API_KEY not set")
-    sport_path = ODDS_SPORT_MAP.get(sport.upper(), "basketball_wnba")
-    r = requests.get(f"https://api.theoddsapi.com/events?sport_key={sport_path}",
-        params={"x-api-key": ODDS_KEY, "dateFormat": "iso"}, timeout=15)
-    r.raise_for_status()
-    return r.json()
-
-def odds_api_player_lines(event_id: str, sport: str):
-    if not ODDS_KEY:
-        raise RuntimeError("ODDS_API_KEY not set")
-    sport_path = ODDS_SPORT_MAP.get(sport.upper(), "basketball_wnba")
-    r = requests.get(
-        f"https://api.theoddsapi.com/odds?sport_key={sport_path}",
-        params={"x-api-key": ODDS_KEY, "regions": "us", "markets": ODDS_MARKETS,
-                "oddsFormat": "american"},
-        timeout=20)
-    r.raise_for_status()
-    return r.json()
-
-def extract_dk_lines_oddsapi_multi(odds_data: dict) -> dict:
+def _parse_player_props(odds_data):
     out = {"players": {}, "game_total": None, "ml_home": None, "ml_away": None, "book_used": {}}
     avail = {bm.get("key") for bm in odds_data.get("bookmakers", []) if bm.get("key")}
     books = [b for b in BOOK_PRIORITY if b in avail]
@@ -227,7 +206,6 @@ def fetch_tc_projection(sport: str, away: str, home: str) -> dict:
     r.raise_for_status()
     return r.json()
 
-
 def build_combos(sport: str, away: str, home: str) -> dict:
     t0 = datetime.now()
     print(f"[{t0:%H:%M:%S}] Fetching TC projection {away}@{home} ({sport})...")
@@ -237,7 +215,6 @@ def build_combos(sport: str, away: str, home: str) -> dict:
 
     league = sport.upper()
     lines = {"players": {}, "game_total": None, "ml_home": None, "ml_away": None, "book_used": {}}
-    use_odds_api = False
 
     if league == "NBA":
         print(f"  Fetching SGO events for NBA...")
@@ -250,16 +227,13 @@ def build_combos(sport: str, away: str, home: str) -> dict:
                 ev = e; break
         if not ev:
             print(f"  No SGO event matched {away}@{home} — trying Odds API fallback")
-            use_odds_api = True
         else:
             lines = extract_dk_lines_sgo(ev.get("odds", {}))
             print(f"  -> {len(lines['players'])} players, total={lines['game_total']}")
 
     elif league == "WNBA":
         print(f"  Fetching Odds API events for WNBA...")
-        use_odds_api = True
 
-    if use_odds_api:
         try:
             print(f"  Fetching multi-source consensus for {league}...")
             consensus = fetch_consensus_for_matchup(league, away, home)
@@ -270,7 +244,7 @@ def build_combos(sport: str, away: str, home: str) -> dict:
         except Exception as e:
             print(f"  Odds API failed: {e}")
             return {"sport": sport, "away": away, "home": home,
-                    "legs": [], "qualified": [], "note": f"odds_api_error: {e}"}
+                    "legs": [], "qualified": [], "note": "Odds API failed"}
 
     if not lines or not lines.get("players"):
         return {"sport": sport, "away": away, "home": home,
@@ -376,7 +350,6 @@ def write_report(result: dict, out_md: Path, out_json: Path) -> None:
         for l in result["legs"]:
             md.append(f"| {l['player']} | {l['stat']} | {l['direction']} | {l['dk_line']} | {l['tc_projection']} | {l['edge']} |")
     out_md.write_text("\n".join(md))
-
 
 if __name__ == "__main__":
     # Auto-detect today's slate from the TC API for all sports

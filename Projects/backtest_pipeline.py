@@ -56,24 +56,17 @@ import requests
 WORKSPACE = Path("/home/workspace")
 LOG_DIR = WORKSPACE / "Daily_Log"
 
-
 # ═══════════════════════════════════════════════════════════════
 # CONFIG
 # ═══════════════════════════════════════════════════════════════
 
-ODDS_API_KEY = ""
 SECRETS_FILE = Path("/root/.zo/secrets.env")
 if SECRETS_FILE.exists():
     for line in SECRETS_FILE.read_text().split("\n"):
         line = line.strip()
-        if line.startswith("ODDS_API_KEY="):
-            val = line.split("=", 1)[1].strip().strip('"').strip("'")
-            ODDS_API_KEY = val
+        if 'ODDS' in line.upper() and '=' in line:
+            val = line.split('=', 1)[1].strip().strip('"').strip("'")
             break
-if not ODDS_API_KEY:
-    ODDS_API_KEY = os.environ.get("ODDS_API_KEY", "")
-
-ODDS_BASE = "https://api.theoddsapi.com"
 
 SPORT_MAP = {
     "WNBA": "basketball_wnba",
@@ -125,23 +118,19 @@ SLOW_TEAMS_WNBA = {"MIN", "NY", "SEA"}
 FAST_TEAMS_NBA = {"IND", "SAC", "OKC", "GSW"}
 SLOW_TEAMS_NBA = {"NYK", "MIA", "ORL"}
 
-
 # ═══════════════════════════════════════════════════════════════
 # LOGGING
 # ═══════════════════════════════════════════════════════════════
 
 VERBOSE = False
 
-
 def log(msg: str) -> None:
     ts = datetime.now().strftime("%H:%M:%S")
     print(f"[{ts}] {msg}", flush=True)
 
-
 def vlog(msg: str) -> None:
     if VERBOSE:
         log(f"  DEBUG  {msg}")
-
 
 # ═══════════════════════════════════════════════════════════════
 # PARSING HELPERS
@@ -164,14 +153,12 @@ def num(s):
         except Exception:
             return 0.0
 
-
 def normalize_name(name: str) -> str:
     """Strip apostrophes, periods, commas for fuzzy matching."""
     n = name.lower()
     n = re.sub(r"['.',\-]", "", n)
     n = re.sub(r"\s+", " ", n).strip()
     return n
-
 
 def match_player(espn_name: str, dk_name: str) -> bool:
     """Fuzzy match ESPN shortName to DK description."""
@@ -183,7 +170,6 @@ def match_player(espn_name: str, dk_name: str) -> bool:
     parts_b = set(b.split())
     common = parts_a & parts_b
     return len(common) >= min(len(parts_a), len(parts_b)) - 1 and len(common) >= 1
-
 
 # ═══════════════════════════════════════════════════════════════
 # PHASE 1 — FETCH HISTORICAL DK COMBO PROPS
@@ -200,7 +186,6 @@ def fetch_historical_combo_props(sport_key: str, date_str: str) -> list:
     """
     url = f"{ODDS_BASE}/historical/sports/{sport_key}/odds"
     params = {
-        "x-api-key": ODDS_API_KEY,
         "date": f"{date_str}T12:00:00Z",
         "regions": "us",
         "markets": HISTORICAL_MARKETS,
@@ -219,7 +204,6 @@ def fetch_historical_combo_props(sport_key: str, date_str: str) -> list:
     log(f"  Response: {len(events)} events | credits used={credits_used} remaining={credits_remaining}")
     return events
 
-
 def fetch_historical_scores(sport_key: str, days_from: int = 3) -> list:
     """
     Fetch completed game scores for last N days.
@@ -227,7 +211,6 @@ def fetch_historical_scores(sport_key: str, days_from: int = 3) -> list:
     """
     url = f"{ODDS_BASE}/sports/{sport_key}/scores/"
     params = {
-        "x-api-key": ODDS_API_KEY,
         "daysFrom": days_from,
         "dateFormat": "iso",
     }
@@ -239,7 +222,6 @@ def fetch_historical_scores(sport_key: str, days_from: int = 3) -> list:
     credits_used = r.headers.get("x-requests-used", "?")
     log(f"  Response: {len(data)} scores | credits used={credits_used}")
     return data
-
 
 # ═══════════════════════════════════════════════════════════════
 # PHASE 2 — EXTRACT DK COMBO LINES TO STRUCTURED DATA
@@ -290,7 +272,6 @@ def extract_dk_combos(historical_events: list) -> List[dict]:
     vlog(f"  Extracted {len(combos)} DK combo legs from {len(historical_events)} events")
     return combos
 
-
 def extract_dk_player_stats(historical_events: list) -> Dict[str, List[dict]]:
     """
     Parse individual player stat lines from historical Odds API response.
@@ -325,7 +306,6 @@ def extract_dk_player_stats(historical_events: list) -> Dict[str, List[dict]]:
                     })
     return dict(player_lines)
 
-
 # ═══════════════════════════════════════════════════════════════
 # PHASE 3 — ESPN BOXSCORE FETCH (FREE — no Odds API credits)
 # ═══════════════════════════════════════════════════════════════
@@ -347,7 +327,6 @@ def fetch_espn_scoreboard(date_ymd: str, league: str) -> list:
         vlog(f"  ESPN scoreboard error: {e}")
         return []
 
-
 def fetch_espn_boxscore(event_id: str, league: str) -> dict:
     """Fetch ESPN boxscore for a completed event."""
     sport_path = "wnba" if league.upper() == "WNBA" else "nba"
@@ -363,7 +342,6 @@ def fetch_espn_boxscore(event_id: str, league: str) -> dict:
     except Exception as e:
         vlog(f"  ESPN boxscore error: {e}")
         return {}
-
 
 def extract_espn_actuals(espn_events: list, league: str) -> List[dict]:
     """
@@ -417,7 +395,6 @@ def extract_espn_actuals(espn_events: list, league: str) -> List[dict]:
                     })
     return actuals
 
-
 # ═══════════════════════════════════════════════════════════════
 # PHASE 4 — TC MATH ENGINE (offline — no API calls)
 # ═══════════════════════════════════════════════════════════════
@@ -431,7 +408,6 @@ def bayes_shrink(sample_mean: float, n: int, stat: str) -> float:
     prior = STAT_PRIOR.get(stat, 1.0)
     return (sample_mean * n + prior * alpha) / (n + alpha)
 
-
 def apply_pace(projection: float, team: str, league: str) -> float:
     """Adjust projection for fast/slow teams (±3%)."""
     fast = FAST_TEAMS_WNBA if league.upper() == "WNBA" else FAST_TEAMS_NBA
@@ -441,7 +417,6 @@ def apply_pace(projection: float, team: str, league: str) -> float:
     elif team.upper() in slow:
         return round(projection * 0.97, 1)
     return projection
-
 
 def compute_tc_projections(espn_actuals: List[dict],
                            use_bayes: bool = True,
@@ -540,7 +515,6 @@ def compute_tc_projections(espn_actuals: List[dict],
         f"(dropped {starter_dropped} low-minute players)")
     return projections
 
-
 # ═══════════════════════════════════════════════════════════════
 # PHASE 5 — CROSS-REFERENCE: TC vs DK LINES
 # ═══════════════════════════════════════════════════════════════
@@ -580,7 +554,6 @@ def cross_tc_vs_dk(tc_projections: List[dict],
             unmatched += 1
     log(f"  Cross-ref TC vs DK: {matched} matched, {unmatched} unmatched")
     return edges
-
 
 # ═══════════════════════════════════════════════════════════════
 # PHASE 6 — REPORTING
@@ -787,7 +760,6 @@ def generate_report(projections: List[dict],
 
     return report_text
 
-
 # ═══════════════════════════════════════════════════════════════
 # MAIN
 # ═══════════════════════════════════════════════════════════════
@@ -851,9 +823,7 @@ def main():
     log(f"  Dry run: {args.dry_run}")
     log("")
 
-    if not ODDS_API_KEY:
-        log("ERROR: ODDS_API_KEY not found in /root/.zo/secrets.env")
-        sys.exit(1)
+    sys.exit(1)
 
     # ── Estimate credit cost ──
     est_calls = len(leagues) * days + len(leagues)  # historical (10x) + scores (1x)
@@ -978,7 +948,6 @@ def main():
 
     # Print report to stdout for visibility
     print("\n" + report)
-
 
 if __name__ == "__main__":
     main()

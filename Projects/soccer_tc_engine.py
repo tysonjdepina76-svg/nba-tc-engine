@@ -35,7 +35,6 @@ from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
-
 # ═══════════════════════════════════════════════════════════════════════════════
 # CONFIG
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -59,8 +58,6 @@ def load_secrets():
         pass
 
 load_secrets()
-ODDS_API_KEY = os.environ.get("ODDS_API_KEY", "")
-ODDS_BASE = "https://api.theoddsapi.com"
 
 # Leagues available for soccer via Odds API
 SOCCER_SPORTS = [
@@ -136,7 +133,6 @@ def fetch_world_cup_events() -> List[dict]:
         try:
             r = requests.get(
                 f"{ODDS_BASE}/sports/{sport_key}/events",
-                params={"x-api-key": ODDS_API_KEY, "dateFormat": "iso"},
                 timeout=15,
             )
             r.raise_for_status()
@@ -148,7 +144,6 @@ def fetch_world_cup_events() -> List[dict]:
             print(f"[soccer] {sport_key} events failed: {e}", file=sys.stderr)
     return all_events
 
-
 def fetch_soccer_odds(event_id: str, sport_key: str = "soccer_fifa_world_cup") -> dict:
     """Fetch DK + BetMGM lines for a single soccer event.
 
@@ -158,7 +153,6 @@ def fetch_soccer_odds(event_id: str, sport_key: str = "soccer_fifa_world_cup") -
         r = requests.get(
             f"{ODDS_BASE}/sports/{sport_key}/events/{event_id}/odds",
             params={
-                "x-api-key": ODDS_API_KEY,
                 "regions": "us",
                 "oddsFormat": "american",
                 "markets": "h2h,totals,btts",
@@ -194,7 +188,6 @@ def fetch_soccer_odds(event_id: str, sport_key: str = "soccer_fifa_world_cup") -
         print(f"[soccer] Odds fetch failed for {event_id}: {e}", file=sys.stderr)
         return {"event_id": event_id, "error": str(e)}
 
-
 # ═══════════════════════════════════════════════════════════════════════════════
 # SOCCER TC FORMULA
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -205,7 +198,6 @@ def get_team_strength(team_name: str) -> float:
         if k.lower() in team_name.lower() or team_name.lower() in k.lower():
             return v
     return 1.0  # unknown team = average
-
 
 def tc_soccer_stat(
     stat_key: str,
@@ -322,7 +314,6 @@ def tc_soccer_stat(
         },
     }
 
-
 # ═══════════════════════════════════════════════════════════════════════════════
 # GAME-LEVEL PROJECTIONS (H2H, TOTALS, BTTS)
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -361,7 +352,6 @@ def project_game_total(home_strength: float, away_strength: float) -> dict:
         "signal": signal,
     }
 
-
 def project_btts(home_strength: float, away_strength: float) -> dict:
     """Project Both Teams to Score probability.
 
@@ -386,7 +376,6 @@ def project_btts(home_strength: float, away_strength: float) -> dict:
         "btts_probability": round(btts_prob, 3),
         "signal": signal,
     }
-
 
 def project_h2h(home_strength: float, away_strength: float) -> dict:
     """Project moneyline win/draw probabilities.
@@ -430,7 +419,6 @@ def project_h2h(home_strength: float, away_strength: float) -> dict:
         "signal": signal,
     }
 
-
 # ═══════════════════════════════════════════════════════════════════════════════
 # PLAYER PROJECTIONS
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -455,7 +443,6 @@ def generate_default_squad(team_name: str) -> List[dict]:
                 "minutes_factor": 1.0 if i < {"GK": 1, "DEF": 4, "MID": 4, "FWD": 2}[pos] else 0.3,
             })
     return squad
-
 
 def project_player_stats(
     player: dict,
@@ -505,7 +492,6 @@ def project_player_stats(
         proj["is_starter"] = player.get("is_starter", False)
         projections.append(proj)
     return projections
-
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # MAIN PIPELINE
@@ -736,7 +722,6 @@ def run_soccer_pipeline(target_matchup: Optional[str] = None) -> dict:
 
     return last_run
 
-
 def generate_report(today_dir: Optional[Path] = None) -> str:
     """Generate a markdown report of today's soccer picks."""
     if today_dir is None:
@@ -827,7 +812,6 @@ def generate_report(today_dir: Optional[Path] = None) -> str:
     report_path.write_text(report_md)
     print(f"Report saved: {report_path}")
     return report_md
-
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # CLI

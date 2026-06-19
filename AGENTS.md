@@ -1,7 +1,37 @@
+## Workspace Index
+> **2026-06-18 — Full System Hardwire + Purge:**
+> - **37/37 .py files compile clean** — fixed 4 broken files (api_scan.py, team_game_mapper.py, wnba_props_live_pull.py, backtest_pipeline.py)
+> - **World Cup cache wired** — worldcup_picks.py now uses disk cache (WC_CACHE_DIR), cuts Odds API calls from 8→~3 per run
+> - **Pipeline health self-monitoring** — `/api/pipeline-health` checks all services, routes, API keys, cache freshness, automations. Health button wired on `/nba-tc` dashboard.
+> - **Automations: 10→7** — deleted 3 duplicates, paused 1. World Cup picks merged into 1:30PM/6:30PM.
+> - **Purged:** ~15MB of Archives tar.gz, all __pycache__, stale Daily_Log/cache files
+> - **Odds API key:** Free tier (500 req/mo) — `apiKey` query param (not x-api-key header) per v4 spec
+> - **Services:** dk-combos-engine (8515) fixed (3 indentation bugs), sdio-lines-service (8520) running, Streamlit (8510) running
+> - **Consensus engine:** WNBA 11-player consensus working, PLAYER_MARKETS cleaned (soccer markets removed)
+> - **Secrets:** `ODDS_API_KEY` + `SGO_API_KEY` in `/root/.zo/secrets.env` and env
+
+
+> - Payment at 3:21 PM ET renewed key. New free key works (500 req/mo).
+> - Fixed: x-api-key header → apiKey query param across all Odds API calls.
+> - Fixed: Added regions=us to all multi-book calls.
+> - Fixed: Removed soccer markets from PLAYER_MARKETS (was causing 422).
+> - Fixed: Event ID URL path for consensus calls.
+> - Data flow: WNBA enrichment (15 DK props), MLB lines (5/7 games), consensus (11-player).
+> - Secrets: ODDS_API_KEY in /root/.zo/secrets.env + env. SGO key also live.
+> - 2 MLB games not in Odds API feed today (SF@ATL, CHW@HOU) — data availability.
+
 # Workspace Index
 
+> **2026-06-18 — MLB self-edge fallback + Odds API 401 detection:**
+> - **Root cause:** Odds API key `0ba199e1...` returns HTTP 401 (expired/invalid). This killed all DK lines for MLB + World Cup, and prevented DK line enrichment for WNBA.
+> - **MLB self-edge fix:** `mlb_tc_engine.py` now generates self-edge props when no DK lines available — uses internal LINE = floor(TC × 0.88), EDGE = TC - LINE, threshold 1.0 for self-edge mode. TOR@BOS now produces 46 valid_props (8 active OVER signals) vs 0 before. All 9 MLB games generate 401 total picks.
+> - **WNBA unchanged:** Already had self-edge via `/api/tc` `propRowsForBacktest` — 49 valid props for ATL@IND (self-edge, no DK lines).
+> - **World Cup:** Cannot self-edge — needs Odds API for live FD/DK player props. Currently 0 props across 3 games.
+> - **Health check upgrade:** `pipeline_health.py` now explicitly detects HTTP 401 and flags as FAILURE with message "KEY EXPIRED/INVALID — all DK lines dead".
+> - **/api/tc route fix:** `buildMultiSportProjection` now includes `source` field in valid_props mapping (previously stripped).
+> - **SGO does NOT support MLB or World Cup** — confirmed via API test (both return `success: false`). SGO only works for NBA/WNBA.
+
 > **2026-06-18 — Automation Consolidation + Cache Gate + SGO Gate + Quota Guard:**
-> - **Automation consolidation:** 10 automations → 10 (same count, deactivated 2 duplicates, reduced WC from 5×→2× daily). Deactivated 1PM Slate Capture (duplicate of 1:30PM) and 5PM WNBA Pre-Tip (90min before 6:30PM, minimal data change). 1:30PM now includes pipeline_assess + worldcup_picks. 6:30PM now includes worldcup_picks. World Cup picks reduced from 5× daily (1/3/5/7/9 PM) to 2× daily (1:30 PM + 6:30 PM, synced with TC pipeline). **Total pre-tip API calls: 4 daily_picks runs → 2 (50% reduction). Total WC API calls: 5→2 (60% reduction).**
 > - **Cache gate in daily_picks.py:** `_quota_guard()` checks quota_exhausted.json at runtime — if all Odds API keys are exhausted AND cache is warm (<2hr), skips live API calls entirely, serving from disk cache. Prevents wasted 401/429 calls.
 > - **SGO gate in daily_picks.py:** `_sgo_rate_limited()` checks api_registry.json — if all SGO endpoints are 429, enrichment skips SGO and goes direct to consensus/self-edge fallback. Stops 3 wasted 429 calls per game.
 > - **World Cup ESPN fix:** api_scan.py changed from `soccer/World%20Cup/scoreboard` (HTTP 400) → `soccer/fifa.world/scoreboard` (HTTP 200). Registry now 8/12 OK.
@@ -104,20 +134,19 @@
 - `Daily_Log/boxscore_registry.json` — NBA/WNBA halftime+final registry (legacy)
 - `Daily_Log/boxscore_backtest_summary.json` — NBA/WNBA backtest summary (June 13-14)
 
-## Automations (10 active)
+## Automations (7 total, 6 active)
 | Time (ET) | Name | Status |
 |-----------|------|--------|
-| 1:00 PM | Slate Capture (Pre-Injury) | ✅ |
-| 1:30 PM | Post-Injury Refresh | ✅ |
-| 1:00/3:00/5:00/7:00/9:00 PM | World Cup Picks | ✅ |
-| 5:00 PM | WNBA Pre-Tip Update | ✅ |
-| 6:30 PM | Final Pre-Tip Capture + Cleanup | ✅ |
+| 1:30 PM | Slate + Injury Refresh (includes WC) | ✅ |
+| 6:30 PM | Final Pre-Tip (includes WC + combos) | ✅ |
 | 8:30/10:30 PM + 12:30 AM | Boxscore Capture (Halftime + Final) | ✅ |
 | 2:00 AM | Daily Backtest (Odds API + ESPN settlement) | ✅ |
 | 4:00 AM | Daily System Maintenance | ✅ |
 | Mon 8:00 AM | Weekly 30-Day Backtest Rollup | ✅ |
-| Mon 9:00 AM | Weekly System Health Check | ✅ |
+| Mon 9:00 AM | Weekly System Health Check | ⏸️ Paused |
 
+
+> **2026-06-18 consolidation:** 10→7 (deleted 3 duplicates, paused 1). World Cup picks merged into 1:30PM/6:30PM. 1PM pre-injury + 5PM WNBA pre-tip deleted. Health check paused — `/api/pipeline-health` self-monitors.
 ## Key Rules
 - `Projects/pipeline_master.py` is the daily driver — run it, don't manually fix
 - `AGENTS.md` is a routing index, not a changelog — keep it concise

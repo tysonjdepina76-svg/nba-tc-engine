@@ -25,7 +25,6 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Dict, List, Optional, Sequence
 
-
 # ── Sport calibration ─────────────────────────────────────
 # These constants are derived from 14 days of WNBA backtest data
 # (Archives/WNBA_Backtests/wnba_pipeline_v2_14day_20260608.md) and NBA live
@@ -62,7 +61,6 @@ STAT_CONS: Dict[str, float] = {
     "blk": 0.80,
 }
 
-
 # ── Bayesian shrinkage (per-stat alpha) ───────────────────────────────────
 # From WNBA_TUNING_FINDINGS.md: shrinks inflated sample means back toward a
 # league prior using per-stat alphas. Tuned on 14 days / 878 player-games
@@ -91,7 +89,6 @@ LEAGUE_PRIOR: Dict[str, Dict[str, float]] = {
     "WNBA": {"pts": 10.5, "reb": 3.8, "ast": 2.3, "3pm": 1.0, "stl": 0.9, "blk": 0.5},
 }
 
-
 def bayesShrink(stat: str, sample_mean: float, sport: str, n_games: float = 5.0) -> float:
     """Shrink a player's sample mean back toward a league prior.
 
@@ -110,7 +107,6 @@ def bayesShrink(stat: str, sample_mean: float, sport: str, n_games: float = 5.0)
     shrunk = (float(sample_mean or 0) * n_games + prior * alpha) / (n_games + alpha)
     return float(shrunk)
 
-
 # ── Status factor (ACTIVE / Q / OUT) ─────────────────────────────────────────
 def status_factor(status: str) -> float:
     """Return the multiplier for a player's stat given their roster status."""
@@ -120,7 +116,6 @@ def status_factor(status: str) -> float:
     if "QUESTION" in s or s == "Q" or "DOUBTFUL" in s or "GTD" in s:
         return 0.55
     return 1.0
-
 
 # ── Per-stat projection (sport-aware) ────────────────────────────────────────
 def project_stat(stat: str, raw_avg: float, status: str, sport: str,
@@ -144,7 +139,6 @@ def project_stat(stat: str, raw_avg: float, status: str, sport: str,
     val = shrunk * cons * status_factor(status) * norm
     return round(val, 2)
 
-
 # ── Combo projections (the headline 3) ──────────────────────────────────────
 def project_pra(raw_pts: float, raw_reb: float, raw_ast: float,
                 status: str, sport: str) -> float:
@@ -165,7 +159,6 @@ def project_pra(raw_pts: float, raw_reb: float, raw_ast: float,
     val = (pts + reb + ast) * sf * norm
     return round(val, 2)
 
-
 def project_pr(raw_pts: float, raw_reb: float, status: str, sport: str) -> float:
     """Points + Rebounds TC projection (same structure as PRA)."""
     sf = status_factor(status)
@@ -176,7 +169,6 @@ def project_pr(raw_pts: float, raw_reb: float, status: str, sport: str) -> float
     reb = float(raw_reb or 0) * STAT_CONS["reb"] * (1.0 + lift)
     val = (pts + reb) * sf * norm
     return round(val, 2)
-
 
 def project_pa(raw_pts: float, raw_ast: float, status: str, sport: str) -> float:
     """Points + Assists TC projection (same structure as PRA)."""
@@ -189,31 +181,25 @@ def project_pa(raw_pts: float, raw_ast: float, status: str, sport: str) -> float
     val = (pts + ast) * sf * norm
     return round(val, 2)
 
-
 # ── Line & edge (target line uses LINE_FACTOR) ───────────────────────────────
 LINE_FACTOR = 0.88
-
 
 def _combo_line(tc_proj: float) -> float:
     """Convert a TC projection to a bettable line (DK uses 0.5 increments)."""
     return float(int(tc_proj) + (0.5 if (tc_proj - int(tc_proj)) >= 0.25 else 0))
 
-
 def _clamp_p(p: float, lo: float, hi: float) -> float:
     return max(lo, min(hi, p))
-
 
 def line_from_tc(tc_value: float) -> int:
     """Return the bettable target line (floor of TC × 0.88)."""
     return int(max(0, tc_value) * LINE_FACTOR)
-
 
 def edge(tc_value: float, market_line: Optional[float]) -> float:
     """Return TC − market line. Positive = we project higher than the line."""
     if market_line is None:
         return 0.0
     return round(float(tc_value) - float(market_line), 1)
-
 
 def ceiling_recommend(tc_proj: float, market_line: Optional[float], side: str = "Over", threshold: float = 0.5) -> str:
     """
@@ -238,7 +224,6 @@ def ceiling_recommend(tc_proj: float, market_line: Optional[float], side: str = 
     else:
         return "UNDER" if e <= -2.5 else "PASS"
 
-
 # ── Per-player combo record (the live data structure the API + UI use) ───────
 @dataclass
 class ComboProjection:
@@ -254,7 +239,6 @@ class ComboProjection:
     edge: float
     win_pct: float            # 0.55 - 0.72 (clamped)
     source: str               # "live_roster_api" | "backtest" | etc.
-
 
 def build_player_combos(sport: str,
                         player: str,
@@ -310,7 +294,6 @@ def build_player_combos(sport: str,
         ))
 
     return out
-
 
 # ── Self-test (run `python3 Projects/tc_math.py` to verify) ─────────────────
 if __name__ == "__main__":

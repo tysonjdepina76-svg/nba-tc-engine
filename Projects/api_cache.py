@@ -20,10 +20,8 @@ CACHE_DIR = Path("/home/workspace/Daily_Log/cache/api")
 CACHE_DIR.mkdir(parents=True, exist_ok=True)
 REGISTRY = Path("/home/workspace/Daily_Log/api_registry.json")
 
-
 def _now():
     return datetime.now(timezone.utc).isoformat()
-
 
 def cached_get(name, url, params=None, headers=None, ttl=7200, timeout=15, force=False):
     """Fetch with disk cache. Returns (data, from_cache_bool)."""
@@ -73,7 +71,6 @@ def cached_get(name, url, params=None, headers=None, ttl=7200, timeout=15, force
         _bump_registry(name, "error", error=str(e)[:200])
         return {"error": str(e), "cached": False}, False
 
-
 def _bump_registry(name, event, **kw):
     """Update api_registry.json with last-used timestamp per endpoint name."""
     if not REGISTRY.exists():
@@ -92,7 +89,6 @@ def _bump_registry(name, event, **kw):
     reg["last_updated_at"] = _now()
     REGISTRY.write_text(json.dumps(reg, indent=2, default=str))
 
-
 def cache_age_minutes(name):
     p = CACHE_DIR / f"{name}.json"
     if not p.exists():
@@ -102,7 +98,6 @@ def cache_age_minutes(name):
         return round((time.time() - e["fetched_at_epoch"]) / 60, 1)
     except Exception:
         return None
-
 
 def warm_cache_from_registry(force=False):
     """Walk api_registry.json and warm cache for all OK endpoints. Used after scans."""
@@ -132,7 +127,6 @@ def warm_cache_from_registry(force=False):
         cached_get(ep["name"], url, params=params, force=force)
         warmed += 1
     return {"warmed": warmed, "skipped": skipped}
-
 
 if __name__ == "__main__":
     import sys

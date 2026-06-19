@@ -28,7 +28,6 @@ STAT_KEY_MAP = {
     "shots_on_target": "shotsOnTarget",
 }
 
-
 def norm_name(s):
     if not s:
         return ""
@@ -38,13 +37,11 @@ def norm_name(s):
     s = re.sub(r"\s+", " ", s).strip()
     return s
 
-
 def split_matchup(mu):
     parts = [t.strip() for t in (mu or "").split("@")]
     if len(parts) == 2:
         return parts[0].upper(), parts[1].upper()
     return None, None
-
 
 def build_box_index(box_rows):
     """Return dict: (espn_event_id, normalized_name) -> player row."""
@@ -53,7 +50,6 @@ def build_box_index(box_rows):
         key = (r["espn_event_id"], norm_name(r["player_name"]))
         idx[key] = r
     return idx
-
 
 def grade_pick(pick, box_idx):
     """Return (result, actual, stat_key) or (None, None, None) if not gradeable."""
@@ -79,7 +75,6 @@ def grade_pick(pick, box_idx):
     else:
         result = "HIT" if actual > line else ("PUSH" if actual == line else "MISS")
     return result, actual, stat_key
-
 
 def main():
     ap = argparse.ArgumentParser()
@@ -208,7 +203,6 @@ def main():
         d = v["HIT"] + v["MISS"]
         if d:
             print(f"  {k:18s}  {v['HIT']}/{d}  {v['HIT']/d*100:.1f}%")
-
 
 if __name__ == "__main__":
     main()

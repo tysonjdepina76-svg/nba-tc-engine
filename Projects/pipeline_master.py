@@ -60,13 +60,11 @@ ALL_SPORTS = ["WNBA", "MLB", "WORLD CUP"]
 
 LOG = []  # [(timestamp, level, source, message)]
 
-
 def log(level: str, source: str, msg: str):
     entry = (datetime.now(ET).strftime("%H:%M:%S"), level, source, msg)
     LOG.append(entry)
     emoji = {"OK":"✅","WARN":"⚠️","FAIL":"❌","INFO":"ℹ️","FIX":"🔧"}.get(level, "  ")
     print(f"  {emoji} [{entry[0]}] {source}: {msg}")
-
 
 def load_secrets() -> dict:
     secrets = {}
@@ -81,12 +79,9 @@ def load_secrets() -> dict:
         os.environ[k] = v  # FORCE overwrite so empty/rotated env vars can't shadow secrets.env
     return secrets
 
-
 # ── 1. SELF-CHECK: API Keys ─────────────────────────────────
 def check_api_keys(secrets: dict) -> bool:
     required = {
-        "ODDS_API_KEY": "The Odds API",
-        "SPORTSGAMEODDS_API_KEY": "SportsGameOdds",
     }
     all_ok = True
     for key, name in required.items():
@@ -97,7 +92,6 @@ def check_api_keys(secrets: dict) -> bool:
             log("FAIL", "API_KEY", f"{name}: MISSING")
             all_ok = False
     return all_ok
-
 
 # ── 2. SELF-CHECK: External APIs ────────────────────────────
 def check_external_apis(secrets: dict, quick: bool = False) -> dict:
@@ -115,23 +109,19 @@ def check_external_apis(secrets: dict, quick: bool = False) -> dict:
         log("FAIL", "ESPN", str(e)[:80])
 
     # The Odds API
-    odds_key = secrets.get("ODDS_API_KEY", "")
     if odds_key:
         try:
-            r = requests.get(f"https://api.theoddsapi.com/odds/basketball_wnba/odds/",
-                           params={"x-api-key": odds_key, "regions": "us", "markets": "h2h"}, timeout=10)
+            r = requests.get("https://api.the-odds-api.com/v4/sports/basketball_wnba/odds",\
+                params={"apiKey": odds_key, "regions": "us", "markets": "h2h"}, timeout=10)
             ok = r.ok or r.status_code == 422
-            status["odds_api"] = ok
             detail = f"HTTP {r.status_code}"
             remaining = r.headers.get("x-requests-remaining", "?")
             detail += f" ({remaining} req left)"
             log("OK" if ok else "WARN", "Odds API", detail)
         except Exception as e:
-            status["odds_api"] = False
             log("FAIL", "Odds API", str(e)[:80])
 
     # SportsGameOdds — check with WNBA (NBA/NHL off-season, SGO returns 503 for them)
-    sgo_key = secrets.get("SPORTSGAMEODDS_API_KEY", "")
     if sgo_key:
         try:
             r = requests.get("https://api.sportsgameodds.com/v2/events?leagueID=WNBA",
@@ -143,7 +133,6 @@ def check_external_apis(secrets: dict, quick: bool = False) -> dict:
             log("FAIL", "SGO", str(e)[:80])
 
     return status
-
 
 # ── 3. SELF-CHECK: Zo.Space Routes ──────────────────────────
 def check_zo_routes(quick: bool = False) -> dict:
@@ -167,7 +156,6 @@ def check_zo_routes(quick: bool = False) -> dict:
             log("FAIL", name, str(e)[:60])
     return status
 
-
 # ── 4. SELF-CHECK: Local Services ────────────────────────────
 def check_local_services(quick: bool = False) -> dict:
     services = {
@@ -185,7 +173,6 @@ def check_local_services(quick: bool = False) -> dict:
             status[name] = False
             log("WARN", label, f"port {port} DOWN")
     return status
-
 
 # ── 5. AUTO-REPAIR: Restart Dead Services ────────────────────
 def repair_services(service_status: dict) -> int:
@@ -242,7 +229,6 @@ def repair_services(service_status: dict) -> int:
 
     return fixed
 
-
 # ── 6. CORE: Run Daily Picks ─────────────────────────────────
 def run_daily_picks(sports: List[str]) -> bool:
     log("INFO", "DailyPicks", f"Running for: {', '.join(sports)}")
@@ -263,7 +249,6 @@ def run_daily_picks(sports: List[str]) -> bool:
     except Exception as e:
         log("FAIL", "DailyPicks", str(e)[:120])
         return False
-
 
 # ── 7. CORE: Build Pregame Combos ────────────────────────────
 def run_build_combos() -> bool:
@@ -286,7 +271,6 @@ def run_build_combos() -> bool:
         log("FAIL", "Combos", str(e)[:120])
         return False
 
-
 # ── 8. CORE: Run Soccer/WC Engine ────────────────────────────
 def run_soccer_engine() -> bool:
     log("INFO", "Soccer", "Running soccer TC engine...")
@@ -308,7 +292,6 @@ def run_soccer_engine() -> bool:
         log("FAIL", "Soccer", str(e)[:120])
         return False
 
-
 # ── 9. INTEGRITY: Verify Output Files ────────────────────────
 def verify_outputs() -> dict:
     """Check that today's output files exist and have content."""
@@ -329,7 +312,6 @@ def verify_outputs() -> dict:
             status[name] = False
             log("WARN", name, "MISSING")
     return status
-
 
 # ── 10. PURGE: Clean Old/Duplicate Files ─────────────────────
 def purge_old_files() -> int:
@@ -400,7 +382,6 @@ def purge_old_files() -> int:
         log("OK", "Purge", "Nothing to purge — workspace clean")
     return purged
 
-
 # ── 11. SAVE: Write Summary Report ───────────────────────────
 def write_summary(all_ok: List[str], warnings: List[str], failures: List[str],
                   purged: int, services_fixed: int):
@@ -470,7 +451,6 @@ def write_summary(all_ok: List[str], warnings: List[str], failures: List[str],
     log("OK", "Report", f"Saved to {report_path}")
     return summary
 
-
 # ── 12. PUSH: Git Commit + Push ──────────────────────────────
 def git_push() -> bool:
     """Commit and push changes if git is set up."""
@@ -512,7 +492,6 @@ def git_push() -> bool:
     except Exception as e:
         log("WARN", "Git", f"Error: {str(e)[:100]}")
         return False
-
 
 # ── MAIN ─────────────────────────────────────────────────────
 def main():
@@ -631,7 +610,6 @@ def main():
 
     # Return exit code for automation
     return 1 if failures else 0
-
 
 if __name__ == "__main__":
     sys.exit(main())

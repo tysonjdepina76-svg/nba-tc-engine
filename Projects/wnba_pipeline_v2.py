@@ -63,7 +63,6 @@ MIN_MINUTES = 12  # drop players projected under 12 min (proxy: actual minutes f
 FAST_TEAMS = {"LV", "CHI", "IND", "ATL"}
 SLOW_TEAMS = {"MIN", "NY", "SEA"}
 
-
 def num(s):
     """Robust number parser: handles ESPN v2 hyphenated ranges (e.g. '2-5')."""
     if s in (None, "", "--"):
@@ -84,7 +83,6 @@ def num(s):
         except Exception:
             return 0
 
-
 def fetch_scoreboard(date_str):
     """Fetch WNBA scoreboard for a given date (YYYYMMDD)."""
     import urllib.request
@@ -95,7 +93,6 @@ def fetch_scoreboard(date_str):
             return json.load(r)
     except Exception as e:
         return {"error": str(e)}
-
 
 def fetch_boxscore(event_id):
     """Fetch WNBA boxscore for an event id."""
@@ -108,10 +105,8 @@ def fetch_boxscore(event_id):
     except Exception:
         return {}
 
-
 def pct(n, d):
     return f"{n/d*100:.1f}%" if d else "—"
-
 
 def main():
     parser = argparse.ArgumentParser()
@@ -404,7 +399,6 @@ def main():
     print(f"\n[Phase 3] Report: {out_dir}/report.md + report.docx")
     print(f"\n=== Overall hit rate: {hit_pct(overall)} over {len(proj_records)} picks ===")
     return out_dir
-
 
 if __name__ == "__main__":
     main()

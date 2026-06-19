@@ -1,7 +1,7 @@
 {
   "mode": "live_stats",
   "sport": "MLB",
-  "timestamp": "2026-06-18T20:20:07.415Z",
+  "timestamp": "2026-06-19T03:04:25.460Z",
   "games": [
     {
       "id": "401815806",
@@ -31,11 +31,11 @@
       "matchup": "CLE@MIL",
       "name": "Cleveland Guardians at Milwaukee Brewers",
       "date": "2026-06-18T18:10Z",
-      "status": "In Progress",
-      "detail": "Bottom 7th",
-      "period": 7,
+      "status": "Final",
+      "detail": "Final",
+      "period": 9,
       "clock": "0:00",
-      "completed": false,
+      "completed": true,
       "away": {
         "team": "CLE",
         "name": "Cleveland Guardians",
@@ -54,20 +54,20 @@
       "matchup": "MIN@TEX",
       "name": "Minnesota Twins at Texas Rangers",
       "date": "2026-06-18T18:35Z",
-      "status": "In Progress",
-      "detail": "Top 6th",
-      "period": 6,
+      "status": "Final",
+      "detail": "Final",
+      "period": 9,
       "clock": "0:00",
-      "completed": false,
+      "completed": true,
       "away": {
         "team": "MIN",
         "name": "Minnesota Twins",
-        "score": 6
+        "score": 9
       },
       "home": {
         "team": "TEX",
         "name": "Texas Rangers",
-        "score": 0
+        "score": 3
       },
       "leaders": [],
       "players": []
@@ -77,11 +77,11 @@
       "matchup": "BAL@SEA",
       "name": "Baltimore Orioles at Seattle Mariners",
       "date": "2026-06-18T20:10Z",
-      "status": "In Progress",
-      "detail": "Bottom 1st",
-      "period": 1,
+      "status": "Final",
+      "detail": "Final",
+      "period": 9,
       "clock": "0:00",
-      "completed": false,
+      "completed": true,
       "away": {
         "team": "BAL",
         "name": "Baltimore Orioles",
@@ -90,7 +90,7 @@
       "home": {
         "team": "SEA",
         "name": "Seattle Mariners",
-        "score": 0
+        "score": 3
       },
       "leaders": [],
       "players": []
@@ -100,20 +100,20 @@
       "matchup": "NYM@PHI",
       "name": "New York Mets at Philadelphia Phillies",
       "date": "2026-06-18T22:40Z",
-      "status": "Scheduled",
-      "detail": "Scheduled",
-      "period": 1,
+      "status": "Final",
+      "detail": "Final",
+      "period": 9,
       "clock": "0:00",
-      "completed": false,
+      "completed": true,
       "away": {
         "team": "NYM",
         "name": "New York Mets",
-        "score": 0
+        "score": 6
       },
       "home": {
         "team": "PHI",
         "name": "Philadelphia Phillies",
-        "score": 0
+        "score": 4
       },
       "leaders": [],
       "players": []
@@ -123,20 +123,20 @@
       "matchup": "CHW@NYY",
       "name": "Chicago White Sox at New York Yankees",
       "date": "2026-06-18T23:05Z",
-      "status": "Scheduled",
-      "detail": "Scheduled",
-      "period": 1,
+      "status": "Final",
+      "detail": "Final",
+      "period": 9,
       "clock": "0:00",
-      "completed": false,
+      "completed": true,
       "away": {
         "team": "CHW",
         "name": "Chicago White Sox",
-        "score": 0
+        "score": 5
       },
       "home": {
         "team": "NYY",
         "name": "New York Yankees",
-        "score": 0
+        "score": 1
       },
       "leaders": [],
       "players": []
@@ -169,20 +169,20 @@
       "matchup": "STL@KC",
       "name": "St. Louis Cardinals at Kansas City Royals",
       "date": "2026-06-18T23:40Z",
-      "status": "Scheduled",
-      "detail": "Scheduled",
-      "period": 1,
+      "status": "Final",
+      "detail": "Final",
+      "period": 9,
       "clock": "0:00",
-      "completed": false,
+      "completed": true,
       "away": {
         "team": "STL",
         "name": "St. Louis Cardinals",
-        "score": 0
+        "score": 6
       },
       "home": {
         "team": "KC",
         "name": "Kansas City Royals",
-        "score": 0
+        "score": 14
       },
       "leaders": [],
       "players": []
@@ -192,9 +192,9 @@
       "matchup": "LAA@ATH",
       "name": "Los Angeles Angels at Athletics Athletics",
       "date": "2026-06-19T01:40Z",
-      "status": "Scheduled",
-      "detail": "Scheduled",
-      "period": 1,
+      "status": "In Progress",
+      "detail": "End 5th",
+      "period": 5,
       "clock": "0:00",
       "completed": false,
       "away": {
@@ -205,7 +205,7 @@
       "home": {
         "team": "ATH",
         "name": "Athletics",
-        "score": 0
+        "score": 5
       },
       "leaders": [],
       "players": []

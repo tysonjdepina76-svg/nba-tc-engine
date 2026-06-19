@@ -12,7 +12,6 @@ Usage:
   python3 dk_combos_engine.py --away SAS --home NYK  # specific matchup
   python3 dk_combos_engine.py --serve           # start HTTP server for combos
 
-Auth: reads SPORTSGAMEODDS_API_KEY from /root/.zo/secrets.env
 """
 
 import json
@@ -40,16 +39,10 @@ def load_secret(name: str) -> str:
         pass
     return os.environ.get(name, "")
 
-SGO_API_KEY = load_secret("SPORTSGAMEODDS_API_KEY")
 SGO_BASE = "https://api.sportsgameodds.com/v2"
-
-ODDS_API_KEY = load_secret("ODDS_API_KEY")
-ODDS_BASE = "https://api.theoddsapi.com"
-ODDS_API_SPORT = {"WNBA": "basketball_wnba", "NBA": "basketball_nba", "NCAAB": "basketball_ncaab"}
 
 LEAGUE_MAP = {"NBA": "NBA", "WNBA": "WNBA", "NCAAB": "NCAAB"}
 # Odds API uses basketball_wnba for WNBA combo markets
-ODDS_API_SPORT = {"WNBA": "basketball_wnba"}
 
 @dataclass
 class DKCombo:
@@ -62,7 +55,6 @@ class DKCombo:
     odd_id: str
     bookmaker: str
 
-
 def sgo_player_name(odd_id: str) -> str:
     """Parse player name from oddID. DEAARON_FOX_1_NBA → De'Aaron Fox"""
     parts = odd_id.split("-")
@@ -73,7 +65,6 @@ def sgo_player_name(odd_id: str) -> str:
     cleaned = cleaned.replace("_", " ")
     # Very basic title-case with apostrophe support
     return cleaned.title().replace("'S", "'s").replace("'D", "'d")
-
 
 def fetch_sgo_events(sport_key: str) -> List[dict]:
     """Fetch live events from SGO. Returns [] on 400 (e.g. WNBA tier restriction)."""
@@ -96,20 +87,16 @@ def fetch_sgo_events(sport_key: str) -> List[dict]:
         print(f"[sgo] error: {e}", file=sys.stderr)
         return []
 
-
-def fetch_odds_api_events(sport: str) -> List[dict]:
     """Fetch WNBA/NBA events with DK player combo props from The Odds API.
 
     Two-step: list events, then fetch per-event odds with combo markets.
     Returns list of {"event": {...}, "bookmakers": [...]} dicts.
     """
-    sport_path = ODDS_API_SPORT.get(sport.upper(), "basketball_wnba")
     markets = "player_points_rebounds_assists,player_points_rebounds,player_points_assists"
 
     # Step 1: list events
     r = requests.get(
         f"{ODDS_BASE}/sports/{sport_path}/events",
-        params={"x-api-key": ODDS_API_KEY, "dateFormat": "iso"},
         timeout=15,
     )
     r.raise_for_status()
@@ -124,7 +111,6 @@ def fetch_odds_api_events(sport: str) -> List[dict]:
             r2 = requests.get(
                 f"{ODDS_BASE}/sports/{sport_path}/events/{eid}/odds",
                 params={
-                    "x-api-key": ODDS_API_KEY,
                     "regions": "us",
                     "markets": markets,
                     "oddsFormat": "american",
@@ -140,14 +126,11 @@ def fetch_odds_api_events(sport: str) -> List[dict]:
         out.append({"event": ev, "bookmakers": odds_data.get("bookmakers", [])})
     return out
 
-
-def fetch_odds_api_combo_odds(event_id: str) -> dict:
     """Fetch player combo markets for a single event from The Odds API."""
     odds_sport = "basketball_wnba"
     r = requests.get(
         f"{ODDS_BASE}/sports/{odds_sport}/events/{event_id}/odds",
         params={
-            "x-api-key": ODDS_API_KEY,
             "markets": "player_points_rebounds_assists,player_points_rebounds,player_points_assists,player_points,player_rebounds,player_assists",
             "oddsFormat": "american",
             "bookmakers": "draftkings",
@@ -157,59 +140,13 @@ def fetch_odds_api_combo_odds(event_id: str) -> dict:
     r.raise_for_status()
     return r.json()
 
-
 ODDS_MARKET_MAP = {
     "player_points_rebounds_assists": "PRA",
     "player_points_rebounds": "PR",
     "player_points_assists": "PA",
 }
-
-def extract_odds_api_combos(rows: List[dict]) -> List[DKCombo]:
-    """Extract DK combo lines from Odds API rows ({event, bookmakers} shape)."""
-    combos: List[DKCombo] = []
-    for row in rows:
-        ev = row.get("event", {})
-        home = ev.get("home_team", "")
-        away = ev.get("away_team", "")
-        for bm in row.get("bookmakers", []):
-            if bm.get("key") != "draftkings":
-                continue
-            for market in bm.get("markets", []):
-                key = market.get("key", "")
-                combo_type = ODDS_MARKET_MAP.get(key)
-                if not combo_type:
-                    continue
-                # Outcomes are flat: {name, price, point} for over/under
-                for out in market.get("outcomes", []):
-                    if out.get("name") != "Over":
-                        continue
-                    player = out.get("description") or out.get("name", "Unknown")
-                    line = out.get("point")
-                    price = out.get("price", "—")
-                    if line is None:
-                        continue
-                    try:
-                        line_f = float(line)
-                    except (TypeError, ValueError):
-                        continue
-                    odd_id = f"oddsapi-{key}-{player}-{line}-over"
-                    combos.append(DKCombo(
-                        player=player,
-                        team="—",
-                        combo_type=combo_type,
-                        dk_line=line_f,
-                        dk_odds=str(price),
-                        book_over_under=str(line),
-                        odd_id=odd_id,
-                        bookmaker="draftkings",
-                    ))
-    combos.sort(key=lambda c: c.dk_line, reverse=True)
-    return combos
-
-
 def event_safe(s: str) -> str:
     return re.sub(r"[^A-Za-z0-9]+", "_", s).strip("_")
-
 
 def extract_dk_combos(events: List[dict], target_away: Optional[str] = None, target_home: Optional[str] = None) -> List[DKCombo]:
     """Extract PRA/PR/PA combo lines from SGO events."""
@@ -281,7 +218,6 @@ def extract_dk_combos(events: List[dict], target_away: Optional[str] = None, tar
     combos.sort(key=lambda c: c.dk_line, reverse=True)
     return combos
 
-
 def serve_combos(port: int = 8515):
     """Start minimal HTTP server serving DK combos JSON."""
     class Handler(http.server.BaseHTTPRequestHandler):
@@ -303,13 +239,6 @@ def serve_combos(port: int = 8515):
                 events = fetch_sgo_events(sport_key)
                 combos = extract_dk_combos(events, away, home)
 
-                # WNBA fallback: SGO doesn't support WNBA on current tier
-                if not combos and sport.upper() == "WNBA" and ODDS_API_KEY:
-                    try:
-                        oapi_events = fetch_odds_api_events("WNBA")
-                        combos = extract_odds_api_combos(oapi_events)
-                    except Exception as e:
-                        print(f"[odds-api] WNBA fallback failed: {e}", file=sys.stderr)
 
                 out = {
                     "sport": sport,
@@ -317,7 +246,6 @@ def serve_combos(port: int = 8515):
                     "home": home,
                     "combos": [asdict(c) for c in combos],
                     "count": len(combos),
-                    "source": "sgo" if events else ("odds_api" if combos else "none"),
                 }
                 self.wfile.write(json.dumps(out, indent=2).encode())
                 return
@@ -328,7 +256,6 @@ def serve_combos(port: int = 8515):
     server = http.server.HTTPServer(("0.0.0.0", port), Handler)
     print(f"DK Combos server on http://0.0.0.0:{port}/combos")
     server.serve_forever()
-
 
 def main():
     p = argparse.ArgumentParser(description="DK Combo Lines from SGO")
@@ -348,15 +275,8 @@ def main():
     combos = extract_dk_combos(events, args.away, args.home)
 
     # WNBA fallback: SGO doesn't support WNBA on current tier
-    if not combos and args.sport.upper() == "WNBA" and ODDS_API_KEY:
-        try:
-            oapi_events = fetch_odds_api_events("WNBA")
-            combos = extract_odds_api_combos(oapi_events)
-        except Exception as e:
-            print(f"[odds-api] WNBA fallback failed: {e}", file=sys.stderr)
 
     print(json.dumps({"sport": args.sport, "combos": [asdict(c) for c in combos], "count": len(combos)}, indent=2))
-
 
 if __name__ == "__main__":
     main()

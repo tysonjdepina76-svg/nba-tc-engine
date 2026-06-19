@@ -32,7 +32,6 @@ def now_et():
 def today_et():
     return now_et().strftime("%Y-%m-%d")
 
-# Load secrets so SGO/ODDS_API keys are available
 try:
     _sec = Path("/root/.zo/secrets.env")
     if _sec.exists():
@@ -47,11 +46,9 @@ except Exception as _e:
 # Add workspace root for imports
 WORKSPACE = Path("/home/workspace")
 sys.path.insert(0, str(WORKSPACE))
-sys.path.insert(0, str(WORKSPACE / "Skills" / "nba-odds-api" / "scripts"))
 sys.path.insert(0, str(WORKSPACE / "Projects"))
 
 from consensus_engine import fetch_consensus_for_matchup, CONSENSUS_SPORT_MAP, get_best_line
-from odds_enricher import enrich_player_lines
 from api_fallback import FallbackManager, quota_status
 
 API_BASE = "https://true.zo.space"
@@ -107,7 +104,6 @@ def _quota_cache_only():
             continue
     return False
 
-
 def fetch_live_slate(sport):
     """Fetch live slate for a sport. Returns games (future + recent)."""
     try:
@@ -122,7 +118,6 @@ def fetch_live_slate(sport):
         return {"error": f"HTTP {r.status_code}"}
     except Exception as e:
         return {"error": str(e)}
-
 
 def filter_future_games(games, sport):
     """Return only games that haven't been completed yet.
@@ -141,7 +136,6 @@ def filter_future_games(games, sport):
         out.append(g)
     return out
 
-
 def fetch_game_projection(sport, away, home):
     """Fetch full TC projection for a single game."""
     try:
@@ -156,7 +150,6 @@ def fetch_game_projection(sport, away, home):
         return {"error": f"HTTP {r.status_code}"}
     except Exception as e:
         return {"error": str(e)}
-
 
 def extract_picks(projection, sport, matchup):
     """Extract all valid prop picks from a projection response."""
@@ -236,7 +229,6 @@ def extract_picks(projection, sport, matchup):
             })
     return picks
 
-
 def extract_game_summary(projection, sport, matchup):
     """Extract top-line game summary — handles both basketball and multi-sport."""
     if sport in BASKETBALL:
@@ -281,7 +273,6 @@ def extract_game_summary(projection, sport, matchup):
             "pending_props_no_dk": 0,
             "picks_with_dk": len(vp),
         }
-
 
 def run_daily_log(sports=ALL_SPORTS):
     """Run the full daily log capture. Filters out completed games."""
@@ -490,7 +481,6 @@ def run_daily_log(sports=ALL_SPORTS):
         print(f"Combo builder: {e}")
 
     return last_run
-
 
 if __name__ == "__main__":
     sports_order = ["WNBA", "MLB"]

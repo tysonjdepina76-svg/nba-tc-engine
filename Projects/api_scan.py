@@ -29,10 +29,6 @@ def _key(name):
                     val = line.split("=", 1)[1].strip().strip('"').strip("'")
     return val
 
-ODDS_KEY = _key("ODDS_API_KEY")
-ODDS_FREE_KEY = _key("ODDS_API_KEY_FREE")
-ODDS_BACKUP_KEY = _key("ODDS_API_KEY_BACKUP")
-SGO_KEY = _key("SPORTSGAMEODDS_API_KEY")
 SDI_KEY = _key("SPORTS_DATA_API_KEY")
 BDL_KEY = _key("BALLDONTLIE_API_KEY")
 
@@ -95,37 +91,32 @@ if SGO_KEY:
             name=f"SGO events {sport}",
             url="https://api.sportsgameodds.com/v2/events",
             params={"sportID": sport, "x-api-key": SGO_KEY},
-            key_label="SPORTSGAMEODDS_API_KEY",
             free_tier=False,
         )
         results["endpoints"].append(ep)
 
 # ── Tier 2+3: Odds API (The Odds API — has free tier at 500 req/mo) ──
-for label, key in [("ODDS_API_KEY", ODDS_KEY),
-                   ("ODDS_API_KEY_FREE", ODDS_FREE_KEY),
-                   ("ODDS_API_KEY_BACKUP", ODDS_BACKUP_KEY)]:
-    if not key:
-        continue
-    is_free = "FREE" in label or "BACKUP" in label
-    # Check remaining credits (Odds API has /v4/sports endpoint that's cheap)
-    # Sports list — v5 root namespace
-    ep = probe(
-        name=f"Odds API sports list ({label})",
-        url="https://api.theoddsapi.com/sports/",
-        params={"x-api-key": key},
-        key_label=label,
-        free_tier=is_free,
-    )
-    results["endpoints"].append(ep)
-    # WNBA events — v5 root namespace
-    ep2 = probe(
-        name=f"Odds API WNBA events ({label})",
-        url="https://api.theoddsapi.com/events/",
-        params={"x-api-key": key, "sport_key": "basketball_wnba"},
-        key_label=label,
-        free_tier=is_free,
-    )
-    results["endpoints"].append(ep2)
+    for key, label in [("key", "label")]:
+        if not key:
+            continue
+        is_free = "FREE" in label or "BACKUP" in label
+        # Check remaining credits (Odds API has /v4/sports endpoint that's cheap)
+        # Sports list — v5 root namespace
+        ep = probe(
+            name=f"Odds API sports list ({label})",
+            params={"apiKey": key},
+            key_label=label,
+            free_tier=is_free,
+        )
+        results["endpoints"].append(ep)
+        # WNBA events — v5 root namespace
+        ep2 = probe(
+            name=f"Odds API WNBA events ({label})",
+            params={"apiKey": key, "sport_key": "basketball_wnba"},
+            key_label=label,
+            free_tier=is_free,
+        )
+        results["endpoints"].append(ep2)
 
 # ── Tier 4: ESPN (free, no key needed) ─────────────────────────────────
 espn_endpoints = [
@@ -174,10 +165,6 @@ results["summary"] = {
     "failed_names": failed,
     "free_tier_count": sum(1 for e in results["endpoints"] if e.get("free_tier")),
     "keys_loaded": {
-        "ODDS_API_KEY": bool(ODDS_KEY),
-        "ODDS_API_KEY_FREE": bool(ODDS_FREE_KEY),
-        "ODDS_API_KEY_BACKUP": bool(ODDS_BACKUP_KEY),
-        "SPORTSGAMEODDS_API_KEY": bool(SGO_KEY),
         "SPORTS_DATA_API_KEY": bool(SDI_KEY),
         "BALLDONTLIE_API_KEY": bool(BDL_KEY),
     },

@@ -492,7 +492,6 @@ def scan_and_save(sport: str | None = None, mode: str = "all"):
 
     print(f"\n📊 {saved_ht} new halftime, {saved_final} new final boxscores")
 
-
 def main():
     ap = argparse.ArgumentParser(description="Dedup-aware boxscore saver")
     ap.add_argument("--sport", choices=list(LEAGUE) + ["MLB"], default=None)
@@ -507,7 +506,6 @@ def main():
         return
 
     scan_and_save(sport=args.sport, mode=args.mode)
-
 
 if __name__ == "__main__":
     main()

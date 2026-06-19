@@ -20,14 +20,10 @@ if _sec.exists():
             _k, _v = _line.split("=", 1)
             os.environ.setdefault(_k.strip(), _v.strip())
 
-ODDS_KEY = os.environ.get("ODDS_API_KEY", "")
-API_BASE = "https://api.theoddsapi.com"
-
-
 def fetch_hist_game_odds(date_str: str) -> list:
     """Fetch historical WNBA game odds for a specific date."""
     url = f"{API_BASE}/historical/sports/basketball_wnba/odds"
-    params = {"x-api-key": ODDS_KEY, "regions": "us", "markets": "h2h,spreads,totals",
+    params = {"apiKey": ODDS_KEY, "regions": "us", "markets": "h2h,spreads,totals",
               "oddsFormat": "american", "date": f"{date_str}T12:00:00Z"}
     r = requests.get(url, params=params, timeout=30)
     if r.status_code == 200:
@@ -35,18 +31,16 @@ def fetch_hist_game_odds(date_str: str) -> list:
     print(f"  Error fetching hist odds: {r.status_code}")
     return []
 
-
 def fetch_hist_event_props(sport: str, event_id: str, date_str: str) -> dict:
     """Fetch historical player props for a specific event."""
     url = f"{API_BASE}/historical/sports/{sport}/events/{event_id}/odds"
-    params = {"x-api-key": ODDS_KEY, "regions": "us",
+    params = {"apiKey": ODDS_KEY, "regions": "us",
               "markets": "player_points,player_rebounds,player_assists",
               "oddsFormat": "american", "date": f"{date_str}T12:00:00Z"}
     r = requests.get(url, params=params, timeout=30)
     if r.status_code == 200:
         return r.json()
     return {}
-
 
 def fetch_espn_boxscore(game_id: str) -> dict:
     """Fetch ESPN WNBA boxscore for actual stats."""
@@ -55,7 +49,6 @@ def fetch_espn_boxscore(game_id: str) -> dict:
     if r.status_code == 200:
         return r.json()
     return {}
-
 
 def parse_actuals(boxscore: dict) -> dict:
     """Extract per-player actual stats from ESPN WNBA boxscore."""
@@ -86,7 +79,6 @@ def parse_actuals(boxscore: dict) -> dict:
                 }
     return actuals
 
-
 def parse_dk_lines(odds_data: dict) -> dict:
     """Extract DK player prop lines from historical odds."""
     lines = {}
@@ -110,7 +102,6 @@ def parse_dk_lines(odds_data: dict) -> dict:
                     lines[key] = {"player": name, "stat": stat, "over_under": over_under,
                                   "line": point, "price": price}
     return lines
-
 
 def run_backtest(days_back: int = 7):
     """Run WNBA historical backtest for the past N days."""
@@ -209,7 +200,6 @@ def run_backtest(days_back: int = 7):
 
     return results
 
-
 def main():
     import argparse
     parser = argparse.ArgumentParser(description="WNBA Historical Backtest")
@@ -256,7 +246,6 @@ def main():
             print(f"{stat:<6} {counts['H']:>4} {counts['M']:>4} {counts['P']:>4} {rate:>7}")
     else:
         print("No results.")
-
 
 if __name__ == "__main__":
     main()

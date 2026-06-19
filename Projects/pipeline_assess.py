@@ -50,7 +50,6 @@ def head(msg): return f"\n{BOLD}═══ {msg} ═══{RESET}"
 
 results = {}
 
-
 def check(name, fn):
     try:
         r = fn()
@@ -59,7 +58,6 @@ def check(name, fn):
     except Exception as e:
         results[name] = {"status": "fail", "error": str(e)}
         print(fail(f"{name}: {e}"))
-
 
 # ── 1. API Keys ──────────────────────────────────
 def check_api_keys():
@@ -178,20 +176,61 @@ def check_odds_credits():
     secrets = Path("/root/.zo/secrets.env")
     if secrets.exists():
         for line in secrets.read_text().splitlines():
-            if "ODDS_API_KEY=" in line:
+            if "ODDS_API_KEY" in line and "=" in line:
                 ODDS_KEY = line.split("=", 1)[1].strip().strip('"').strip("'")
+                break
     if not ODDS_KEY:
-        return {"summary": "ODDS_API_KEY not found"}
+        return {"summary": "No ODDS_API_KEY found", "remaining": "N/A", "used": "N/A"}
     try:
-        r = requests.get("https://api.theoddsapi.com/odds",
-                        params={"x-api-key": ODDS_KEY}, timeout=10)
+        r = requests.get(
+            "https://api.the-odds-api.com/v4/sports/basketball_wnba/odds",
+            params={"apiKey": ODDS_KEY, "regions": "us", "markets": "h2h"}, timeout=10)
         remaining = r.headers.get("x-requests-remaining", "?")
         used = r.headers.get("x-requests-used", "?")
     except Exception:
         remaining, used = "?", "?"
     return {"summary": f"{remaining} remaining, {used} used this month", "remaining": remaining, "used": used}
 
+# ── 11. Code Health (Syntax + Import Checks) ─────
+def check_code_health():
+    import py_compile
+    scripts = [
+        "daily_picks.py", "consensus_engine.py", "build_pregame_combos.py",
+        "dk_combos_engine.py", "soccer_combo_engine.py", "soccer_tc_engine.py",
+        "mlb_tc_engine.py", "worldcup_picks.py", "api_fallback.py",
+        "pipeline_master.py", "pipeline_health.py", "boxscore_saver.py",
+    ]
+    good, bad = [], []
+    for s in scripts:
+        p = PROJECTS / s
+        if not p.exists():
+            bad.append(f"{s} MISSING")
+            continue
+        try:
+            py_compile.compile(str(p), doraise=True)
+            good.append(s)
+        except py_compile.PyCompileError as e:
+            bad.append(f"{s}: {str(e)[:60]}")
+    summary = f"{len(good)}/{len(scripts)} scripts OK"
+    if bad:
+        summary += f" — {len(bad)} broken: {'; '.join(bad[:3])}"
+    return {"summary": summary, "ok": good, "broken": bad}
 
+# ── 12. Cache Health (all pipelines) ─────────────
+def check_cache_health():
+    cache_dir = Path("/home/workspace/Daily_Log/cache/odds")
+    today = datetime.now().strftime("%Y-%m-%d")
+    today_dir = cache_dir / today
+    wc_glob = list(cache_dir.glob("wc_*.json"))
+    today_glob = list(today_dir.glob("*.json")) if today_dir.exists() else []
+    summary = f"{len(today_glob)} today ({today}), {len(wc_glob)} WC entries"
+    return {
+        "summary": summary,
+        "today_count": len(today_glob),
+        "wc_count": len(wc_glob),
+        "today_files": [f.name for f in today_glob],
+        "wc_files": [f.name for f in wc_glob],
+    }
 
 def restart_streamlit():
     import subprocess, time
@@ -300,7 +339,6 @@ if __name__ == "__main__":
         if repairs == 0:
             print("  ✓ All services running, no repairs needed")
 
-
     print(f"{BOLD}TC Pipeline Health Assessment{RESET} — {NOW.strftime('%Y-%m-%d %I:%M %p ET')}\n")
 
     if args.table:
@@ -317,6 +355,8 @@ if __name__ == "__main__":
     check("Automations", check_automations)
     check("BallDontLie", check_balldontlie)
     check("Odds API Credits", check_odds_credits)
+    check("Code Health", check_code_health)
+    check("Cache Health", check_cache_health)
 
     if args.table:
         for name, r in results.items():

@@ -22,7 +22,6 @@ KEY = re.search(r"^SPORTS_DATA_API_KEY=(\S+)", SECRETS.read_text(), re.MULTILINE
 OUT = Path("/home/workspace/Daily_Log/2026-06-13")
 OUT.mkdir(parents=True, exist_ok=True)
 
-
 def pull(season: str, week: int) -> dict:
     """Pull GameOdds + PlayerProps for a given week."""
     headers = {"Ocp-Apim-Subscription-Key": KEY}
@@ -35,7 +34,6 @@ def pull(season: str, week: int) -> dict:
     pp.raise_for_status()
     props = pp.json()
     return {"games": games, "props": props, "season": season, "week": week}
-
 
 def summarize(data: dict) -> str:
     games = data["games"]
@@ -68,7 +66,6 @@ def summarize(data: dict) -> str:
             f"{away} @ {home}  {dt}  |  Spread {spr}  Total {tot}  ML {hml}/{aml}  |  {by_game.get(score_id, 0)} props"
         )
     return "\n".join(lines)
-
 
 if __name__ == "__main__":
     season = sys.argv[1] if len(sys.argv) > 1 else "2026REG"

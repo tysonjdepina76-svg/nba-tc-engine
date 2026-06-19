@@ -27,7 +27,6 @@ import argparse, csv, datetime, json, math, os, requests, sys
 from dataclasses import dataclass, field
 from typing import List, Dict, Any, Optional, Tuple
 
-
 # ═══════════════════════════════════════════════════════════════════════════════
 # TC Constants (MLB-specific)
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -104,7 +103,6 @@ ODDS_TO_ESPN_TEAM = {
     "New York Yankees": "NYY", "Toronto Blue Jays": "TOR",
     "San Francisco Giants": "SF", "Seattle Mariners": "SEA",
 }
-
 
 @dataclass
 class MLBPlayer:
@@ -221,7 +219,6 @@ class MLBPlayer:
             "lines": self.lines,
             "edges": self.edges,
         }
-
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # ESPN STATS FETCH
@@ -451,12 +448,18 @@ def fetch_espn_mlb_stats(team_abbr: str, lookback_days: int = 30) -> List[MLBPla
 
     return players
 
-
 # ═══════════════════════════════════════════════════════════════════════════════
 # ODDS API FETCH
 # ═══════════════════════════════════════════════════════════════════════════════
 
 def load_api_key() -> str:
+    """Load and return The Odds API key from env or secrets file."""
+    # Check env first
+    for name in ('ODDS_API_KEY', 'THEODDSAPI', 'THEODDSAPI_KEY'):
+        val = os.environ.get(name, '')
+        if val and len(val) > 10:
+            return val
+    # Fallback: read secrets file
     secrets_file = "/root/.zo/secrets.env"
     if os.path.exists(secrets_file):
         with open(secrets_file) as f:
@@ -464,9 +467,18 @@ def load_api_key() -> str:
                 line = line.strip()
                 if line and not line.startswith("#") and "=" in line:
                     k, v = line.split("=", 1)
-                    os.environ.setdefault(k.strip(), v.strip())
-    return os.environ.get("ODDS_API_KEY", "")
+                    k, v = k.strip(), v.strip().strip('"').strip("'")
+                    if 'ODDS' in k.upper() and len(v) > 10:
+                        os.environ.setdefault(k, v)
+                        return v
+    return ""
 
+ODDS_API_BASE = "https://api.the-odds-api.com/v4/sports"
+
+def _odds_url(sport_key: str, event_id: str = "") -> str:
+    if event_id:
+        return f"{ODDS_API_BASE}/{sport_key}/events/{event_id}/odds"
+    return f"{ODDS_API_BASE}/{sport_key}/odds"
 
 def fetch_mlb_player_lines(game_id: str) -> Dict[str, Dict[str, float]]:
     """
@@ -478,15 +490,13 @@ def fetch_mlb_player_lines(game_id: str) -> Dict[str, Dict[str, float]]:
         return {}
 
     player_lines: Dict[str, Dict[str, float]] = {}
-
-    # Build market list
     all_markets = list(BATTER_MARKETS.values()) + list(PITCHER_MARKETS.values())
     market_str = ",".join(all_markets)
 
-    url = f"https://api.theoddsapi.com/events/baseball_mlb/odds?sport_key=baseball_mlb{game_id}
     try:
+        url = _odds_url("baseball_mlb", game_id)
         r = requests.get(url, params={
-            "x-api-key": key,
+            "apiKey": key,
             "regions": "us",
             "markets": market_str,
             "bookmakers": "draftkings",
@@ -530,7 +540,6 @@ def fetch_mlb_player_lines(game_id: str) -> Dict[str, Dict[str, float]]:
 
     return player_lines
 
-
 def fetch_mlb_game_lines() -> List[Dict]:
     """Fetch MLB game odds with ML/spread/total from The Odds API."""
     key = load_api_key()
@@ -538,10 +547,10 @@ def fetch_mlb_game_lines() -> List[Dict]:
         return []
 
     try:
-        r = requests.get(
-            "https://api.theoddsapi.com/odds/baseball_mlb/odds",
+        url = _odds_url("baseball_mlb")
+        r = requests.get(url,
             params={
-                "x-api-key": key,
+                "apiKey": key,
                 "regions": "us",
                 "markets": "h2h,spreads,totals",
                 "bookmakers": "draftkings",
@@ -599,7 +608,6 @@ def fetch_mlb_game_lines() -> List[Dict]:
     except Exception as e:
         print(f"Error fetching MLB game lines: {e}")
         return []
-
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # PROJECTION ENGINE
@@ -706,7 +714,6 @@ def project_mlb_game(home_abbr: str, away_abbr: str, game_id: str = None,
 
     return result
 
-
 # ═══════════════════════════════════════════════════════════════════════════════
 # MAIN CLI
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -780,7 +787,6 @@ def main():
         print("  --slate                       Full slate with DK totals")
         print("  --backtest 2026-06-14         Historical backtest")
         print("  --output path.json            Save output")
-
 
 if __name__ == "__main__":
     main()

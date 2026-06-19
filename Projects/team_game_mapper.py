@@ -73,7 +73,6 @@ for _canon, _meta in WNBA_TEAMS.items():
     if "nick" in _meta:
         _ALIAS_TO_CANON[_meta["nick"].upper()] = _canon
 
-
 def canon_abbr(s):
     """Resolve ANY known alias (city, nickname, full, or abbr) to canonical ESPN abbr."""
     if not s:
@@ -82,7 +81,6 @@ def canon_abbr(s):
     key = re.sub(r"[^A-Z ]", "", key).strip()
     return _ALIAS_TO_CANON.get(key)
 
-
 def canon_pair(away_any, home_any):
     """Resolve a (away, home) pair to canonical (away, home) abbrs. None if unknown."""
     a = canon_abbr(away_any)
@@ -90,7 +88,6 @@ def canon_pair(away_any, home_any):
     if a and h and a != h:
         return (a, h)
     return None
-
 
 # =====================================================================
 # ESPN CANONICAL SLATE — fetches today's WNBA games, returns
@@ -135,25 +132,17 @@ def fetch_espn_wnba_slate(target_date=None):
     except Exception as e:
         return []
 
-
 # =====================================================================
 # ODDS API EVENT BRIDGE — maps Odds API event_id → (away_canon, home_canon)
 # =====================================================================
 
-ODDS_API_BASE = "https://api.theoddsapi.com"
-ODDS_API_KEY = os.environ.get("ODDS_API_KEY", "")
-
-def fetch_odds_api_wnba_events():
     """
     Fetch Odds API WNBA events list. Returns
     { event_id: { away_canon, home_canon, commence_utc } }.
     """
-    if not ODDS_API_KEY:
-        return {}
+    return {}
     try:
         r = requests.get(
-            f"{ODDS_API_BASE}/sports/basketball_wnba/events",
-            params={"x-api-key": ODDS_API_KEY, "dateFormat": "iso"},
             timeout=12,
         )
         if not r.ok:
@@ -172,7 +161,6 @@ def fetch_odds_api_wnba_events():
     except Exception:
         return {}
 
-
 # =====================================================================
 # SGO EVENT BRIDGE — for NBA we keep the SGO path; for WNBA SGO is N/A
 # so this just returns empty (documented).
@@ -185,7 +173,6 @@ def fetch_sgo_events(sport="WNBA"):
     # NBA path kept simple here; SGO consumer is in sgo_props_enricher.py.
     return {}
 
-
 # =====================================================================
 # HIGH-LEVEL: build a per-day canonical game map
 # =====================================================================
@@ -193,25 +180,18 @@ def fetch_sgo_events(sport="WNBA"):
 def build_canonical_game_map(target_date=None):
     """
     Returns a dict keyed by espn_event_id with:
-      { espn_event_id, away, home, start_utc, odds_api_event_id (or None) }
     The map is what every downstream consumer (enricher, pipeline, dashboard) should
     use to look up a game.
     """
     slate = fetch_espn_wnba_slate(target_date)
-    odds = fetch_odds_api_wnba_events()
-    # Build a (away, home) → odds_api_event_id index for cross-ref
-    odds_idx = {}
     for oid, meta in odds.items():
         key = (meta["away_canon"], meta["home_canon"])
-        odds_idx[key] = oid
 
     out = {}
     for g in slate:
         key = (g["away"], g["home"])
-        g["odds_api_event_id"] = odds_idx.get(key)
         out[g["espn_event_id"]] = g
     return out
-
 
 def find_espn_event_for_teams(away_abbr, home_abbr, game_map):
     """Given (away, home) canonical abbrs, return the ESPN event dict or None."""
@@ -219,7 +199,6 @@ def find_espn_event_for_teams(away_abbr, home_abbr, game_map):
         if ev["away"] == away_abbr and ev["home"] == home_abbr:
             return ev
     return None
-
 
 # =====================================================================
 # CLI smoke test
@@ -240,7 +219,6 @@ if __name__ == "__main__":
         print(f"  espn={g['espn_event_id']}  {g['away']}@{g['home']}  {g['start_utc']}")
 
     print("\n=== Odds API WNBA events ===")
-    odds = fetch_odds_api_wnba_events()
     if not odds:
         print("  (no events or key missing)")
     for oid, meta in list(odds.items())[:10]:
@@ -249,4 +227,4 @@ if __name__ == "__main__":
     print("\n=== Canonical game map ===")
     gmap = build_canonical_game_map()
     for ev in gmap.values():
-        print(f"  espn={ev['espn_event_id']}  {ev['away']}@{ev['home']}  odds={ev.get('odds_api_event_id')}")
+        print(f"  {ev}")

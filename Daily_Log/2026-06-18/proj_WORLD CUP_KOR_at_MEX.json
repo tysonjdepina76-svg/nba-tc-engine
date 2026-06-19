@@ -8,28 +8,28 @@
   "home_name": "Mexico",
   "commence_time": "2026-06-19T01:00Z",
   "event_id": "760441",
-  "source": "ESPN WORLD CUP scoreboard + Odds API 401",
-  "timestamp": "2026-06-18T20:20:19.768Z",
+  "source": "ESPN WORLD CUP scoreboard + Best across DK/FD/BetMGM/CZR",
+  "timestamp": "2026-06-19T01:03:51.543Z",
   "tc_combined": null,
   "tc_line": null,
-  "dk_total": "o2.5",
+  "dk_total": 2.5,
   "edge": null,
-  "signal": "NO DK LINES",
+  "signal": "DK LINES LIVE",
   "odds": {
-    "total": null,
+    "total": 2.5,
     "away_spread": null,
     "home_spread": null,
     "spread_pick": null,
-    "away_ml": null,
-    "home_ml": null,
-    "ml_source": "Odds API 401",
+    "away_ml": 300,
+    "home_ml": 110,
+    "ml_source": "DraftKings via The Odds API",
     "espn_total": "o2.5",
-    "bookmaker_breakdown": null,
+    "bookmaker_breakdown": {},
     "best_books": null
   },
   "assessment": {
-    "summary": "WORLD CUP KOR@MEX \u2014 DK live \u00b7 no DK lines pulled yet.",
-    "dk_status": "Odds API 401",
+    "summary": "WORLD CUP KOR@MEX \u2014 DK live \u00b7 total 2.5 \u00b7 spread null \u00b7 ML 300/110.",
+    "dk_status": "Best across DK/FD/BetMGM/CZR",
     "roster_rule": "WORLD CUP uses ESPN scoreboard for live games + Odds API for DraftKings h2h/spreads/totals"
   },
   "away": {
@@ -70,5 +70,5 @@
     "WORLD CUP"
   ],
   "prop_rows": [],
-  "note": "WORLD CUP none player props via worldcup_picks.py \u00b7 0 players \u00b7 DK game lines via Odds API."
+  "note": "WORLD CUP DK lines (h2h/spreads/totals) via The Odds API. Player props coming for WORLD CUP."
 }

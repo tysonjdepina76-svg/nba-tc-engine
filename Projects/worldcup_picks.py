@@ -36,13 +36,37 @@ try:
 except Exception:
     pass
 
-ODDS_API_KEY = os.environ.get("ODDS_API_KEY", "")
-ODDS_BASE = "https://api.theoddsapi.com"
 SPORT_KEY = "soccer_fifa_world_cup"
 ESPN_SCOREBOARD = "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard"
 
+ODDS_API_KEY = os.environ.get("ODDS_API_KEY", "")
+ODDS_BASE = "https://api.the-odds-api.com/v4"
+
 LOG_DIR = WORKSPACE / "Daily_Log" / "worldcup"
 LOG_DIR.mkdir(parents=True, exist_ok=True)
+
+# ── Odds API Disk Cache ────────────────────────────────
+import time as _time
+CACHE_DIR = WORKSPACE / "Daily_Log" / "cache" / "odds"
+CACHE_DIR.mkdir(parents=True, exist_ok=True)
+
+def _wc_cache_get(matchup_key, game_id):
+    p = CACHE_DIR / f"wc_{matchup_key}.json"
+    if p.exists():
+        try:
+            data = json.loads(p.read_text())
+            age = _time.time() - p.stat().st_mtime
+            if age < 7200:
+                data["_from_cache"] = True
+                return data
+        except Exception:
+            pass
+    return None
+
+def _wc_cache_set(matchup_key, game_id, data):
+    p = CACHE_DIR / f"wc_{matchup_key}.json"
+    clean = {k: v for k, v in data.items() if not k.startswith("_")}
+    p.write_text(json.dumps(clean, indent=2, default=str))
 
 # DK player prop markets available for World Cup on the free tier
 PROP_MARKETS = [
@@ -55,7 +79,6 @@ PROP_MARKETS = [
 ]
 # Books to try in priority order
 BOOK_PRIORITY = ["fanduel", "draftkings", "betmgm", "caesars", "fanatics"]
-
 
 def fetch_espn_matches(date_str=None):
     """Fetch World Cup matches from ESPN for a given date (YYYYMMDD)."""
@@ -97,9 +120,9 @@ def fetch_espn_matches(date_str=None):
         print(f"ESPN error: {exc}")
         return []
 
-
 def norm_team_name(name):
     """Normalize team names for cross-matching ESPN ↔ Odds API."""
+
     if not name:
         return ""
     n = name.lower().strip()
@@ -108,49 +131,65 @@ def norm_team_name(name):
         n = n.replace(k, v)
     return n
 
-
 def fetch_odds_games():
+    # Tier 0: disk cache
+    cached = _wc_cache_get("all", "slate")
+    if cached:
+        return cached.get("events", cached)
     """Get all active World Cup games from Odds API with their IDs."""
     if not ODDS_API_KEY:
-        print("No ODDS_API_KEY — skipping odds fetch")
         return []
     try:
         url = f"{ODDS_BASE}/sports/{SPORT_KEY}/odds"
         params = {
-            "x-api-key": ODDS_API_KEY,
-            "regions": "us",
+            "apiKey": ODDS_API_KEY, "regions": "us",
             "markets": "h2h,spreads,totals",
             "oddsFormat": "american",
             "commenceTimeFrom": (datetime.now(timezone.utc) - timedelta(hours=12)).strftime("%Y-%m-%dT%H:%M:%SZ"),
             "commenceTimeTo": (datetime.now(timezone.utc) + timedelta(days=2)).strftime("%Y-%m-%dT%H:%M:%SZ"),
         }
         r = requests.get(url, params=params, timeout=15)
+        data = r.json()
         r.raise_for_status()
-        return r.json()
+        events = data if isinstance(data, list) else data.get("events", [])
+        _wc_cache_set("all", "slate", {"events": events})
+        return events
     except Exception as exc:
         print(f"Odds API error: {exc}")
         return []
 
-
-def fetch_player_props(game_id):
-    """Fetch player props for a specific game from Odds API."""
+def fetch_player_props(game_id, away_team="", home_team=""):
+    """Fetch player props for a specific game from Odds API. Cached per matchup."""
+    # Tier 0: disk cache
+    if away_team and home_team:
+        mk = f"{away_team}_{home_team}".replace(" ", "_")
+        cached = _wc_cache_get(mk, game_id)
+        if cached:
+            return cached
+    # Tier 1: live Odds API
     if not ODDS_API_KEY:
-        return {"bookmakers": []}
+        return {"bookmakers": [], "source": "no-key"}
     try:
         url = f"{ODDS_BASE}/sports/{SPORT_KEY}/events/{game_id}/odds"
         params = {
-            "x-api-key": ODDS_API_KEY,
-            "regions": "us",
+            "apiKey": ODDS_API_KEY, "regions": "us",
             "markets": ",".join(PROP_MARKETS),
             "oddsFormat": "american",
         }
         r = requests.get(url, params=params, timeout=15)
         r.raise_for_status()
-        return r.json()
+        data = r.json()
+        if isinstance(data, dict):
+            data = data.get("events", data)
+        # cache the result
+        if away_team and home_team:
+            mk = f"{away_team}_{home_team}".replace(" ", "_")
+            _wc_cache_set(mk, game_id, data)
+        data["source"] = "odds-api"
+        return data
     except Exception as exc:
         print(f"Props fetch error for {game_id}: {exc}")
-        return {"bookmakers": []}
-
+        return {"bookmakers": [], "source": "error"}
 
 def match_espn_to_odds(espn_match, odds_games):
     """Cross-reference ESPN match to Odds API game by team names."""
@@ -172,7 +211,6 @@ def match_espn_to_odds(espn_match, odds_games):
         if n_home == o_away and n_away == o_home:
             return g
     return None
-
 
 def extract_props(prop_data, preferred_book="draftkings"):
     """Extract player props from Odds API response for a specific book.
@@ -202,7 +240,6 @@ def extract_props(prop_data, preferred_book="draftkings"):
                         "over_price": o.get("price"),
                     }
     return props
-
 
 def build_csv_rows(matches_with_props):
     """Flatten matches + props into rows for CSV."""
@@ -243,7 +280,6 @@ def build_csv_rows(matches_with_props):
                     "fetched_at": m.get("fetched_at", ""),
                 })
     return rows
-
 
 def run(date_str=None):
     """Main entry point."""
@@ -295,7 +331,10 @@ def run(date_str=None):
         game_id = og["id"]
         props = {}
         book_used = "none"
-        prop_data = fetch_player_props(game_id)
+        teams_ = em.get("teams", [])
+        away_ = teams_[0]["name"] if len(teams_) > 0 else ""
+        home_ = teams_[1]["name"] if len(teams_) > 1 else ""
+        prop_data = fetch_player_props(game_id, away_, home_)
 
         for bk in BOOK_PRIORITY:
             props = extract_props(prop_data, bk)
@@ -359,7 +398,6 @@ def run(date_str=None):
     print(f"  {LOG_DIR}/last_run.json")
 
     return results
-
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="World Cup 2026 Daily Pick Scraper")

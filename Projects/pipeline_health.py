@@ -33,7 +33,6 @@ ALL_GOOD = []
 WARNINGS = []
 FAILURES = []
 
-
 def load_secrets():
     secrets = {}
     try:
@@ -48,7 +47,6 @@ def load_secrets():
         pass
     return secrets
 
-
 def check(label, ok, detail="", warn=False):
     status = "✅" if ok else "⚠️" if warn else "❌"
     msg = f"  {status} {label}"
@@ -61,7 +59,6 @@ def check(label, ok, detail="", warn=False):
         WARNINGS.append(f"{label}: {detail}")
     else:
         FAILURES.append(f"{label}: {detail}")
-
 
 def main():
     json_out = "--json" in sys.argv
@@ -79,8 +76,6 @@ def main():
     if not json_out:
         print("\n── API Keys ──")
     key_checks = {
-        "ODDS_API_KEY": "The Odds API ($25/mo)",
-        "SPORTSGAMEODDS_API_KEY": "SportsGameOdds (primary feed)",
         "SPORTS_DATA_API_KEY": "SportsData.io ($99/mo NFL)",
     }
     for name, desc in key_checks.items():
@@ -94,9 +89,6 @@ def main():
     # ── 2. EXTERNAL CONNECTIVITY ──
     if not quick and not json_out:
         print("\n── External APIs ──")
-
-    odds_key = secrets.get("ODDS_API_KEY", "")
-    sgo_key = secrets.get("SPORTSGAMEODDS_API_KEY", "")
 
     if not quick:
         import requests
@@ -115,8 +107,7 @@ def main():
         if odds_key:
             try:
                 r = requests.get(
-                    f"https://api.theoddsapi.com/odds/",
-                    params={"x-api-key": odds_key, "regions": "us", "markets": "h2h"},
+                    params={"apiKey": odds_key, "regions": "us", "markets": "h2h"},
                     timeout=10,
                 )
                 ok = r.ok or r.status_code == 422
@@ -346,7 +337,6 @@ def main():
         elif WARNINGS:
             result["status"] = "DEGRADED"
         print(json.dumps(result, indent=2))
-
 
 if __name__ == "__main__":
     main()

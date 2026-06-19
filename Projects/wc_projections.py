@@ -86,7 +86,6 @@ def main():
     for e in enriched[:50]:
         print(f"{e["player"]:25s} {e["stat"]:10s} {e["line"]:5.1f} {e["direction"]:5s} {e["tc_proj"]:5.2f} {e["edge"]:6.2f} {e["exp_hr"]:5.1%} {e["n_hist"]:3d} {str(e["odds"]):6s}")
 
-
     # Persist to CSV
     from datetime import datetime
     out_csv = Path("/home/workspace/Reports") / f"wc_tc_projections_{datetime.now().strftime('%Y%m%d')}.csv"

@@ -34,7 +34,6 @@ BASE = "https://api.balldontlie.io/v1"
 HEADERS = {"Authorization": API_KEY} if API_KEY else {}
 HEADERS.setdefault("User-Agent", "TC-Pipeline/2.0")
 
-
 def fetch_games(sport: str, date_str: str) -> list:
     league = sport.upper()
     
@@ -84,7 +83,6 @@ def fetch_games(sport: str, date_str: str) -> list:
     else:
         print(f"❌ Unknown sport: {sport}", file=sys.stderr)
         return []
-
 
 def format_game(g: dict, sport: str, date_str: str) -> dict:
     """Normalize BDL game dict into a flat schedule entry."""
@@ -146,7 +144,6 @@ def format_game(g: dict, sport: str, date_str: str) -> dict:
         "bdl_id": g.get("id"),
     }
 
-
 def render_table(games: list) -> str:
     lines = []
     lines.append("| Away | Home | Tip (ET) | Status | Score | Venue |")
@@ -156,7 +153,6 @@ def render_table(games: list) -> str:
             f"| {g['away']} | {g['home']} | {g['tip_et']} | {g['status']} | {g['score'] or '—'} | {g['venue']} |"
         )
     return "\n".join(lines)
-
 
 def render_markdown(sport: str, date_str: str, games: list) -> str:
     md = []
@@ -191,7 +187,6 @@ def render_markdown(sport: str, date_str: str, games: list) -> str:
             md.append(f"- **{g['away']} @ {g['home']}**: {g['score']}")
 
     return "\n".join(md)
-
 
 def main():
     parser = argparse.ArgumentParser(
@@ -259,7 +254,6 @@ def main():
             with open(out_path, "w") as f:
                 json.dump(all_games, f, indent=2, default=str)
             print(f"\n✅ Exported to {out_path}")
-
 
 if __name__ == "__main__":
     main()

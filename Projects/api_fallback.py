@@ -5,8 +5,6 @@ TC API Fallback Manager — Multi-tier fail-safe for daily_picks.py
 Tier architecture:
   Tier 0: Disk cache (per-game, daily) — ZERO API calls
   Tier 1: SGO (MLB only) — zero Odds API cost
-  Tier 2: ODDS_API_KEY (primary, $25/mo)
-  Tier 3: ODDS_API_KEY_FREE (free tier, 500 req/mo)
   Tier 4: Self-edge (internal TC projections, no market verification)
 
 Quota detection: when Odds API returns OUT_OF_USAGE_CREDITS, the key is
@@ -22,6 +20,7 @@ import json
 import os
 import sys
 import time
+import requests
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
@@ -33,15 +32,15 @@ CACHE_DIR = Path("/home/workspace/Daily_Log/cache/odds")
 CACHE_DIR.mkdir(parents=True, exist_ok=True)
 QUOTA_FILE = Path("/home/workspace/Daily_Log/cache/quota_exhausted.json")
 
-ODDS_BASE = "https://api.theoddsapi.com"
-
 # ── Private: load all Odds API keys from env ─────────────
 def _load_keys():
     keys = []
-    for env_name in ["ODDS_API_KEY", "ODDS_API_KEY_FREE", "ODDS_API_KEY_BACKUP"]:
-        val = os.environ.get(env_name, "").strip()
-        if val and len(val) > 10:
-            keys.append({"key": val, "label": env_name, "exhausted": False})
+    # Scan ODDS_API_KEY and any env var with ODDS in the name
+    for env_name, val in os.environ.items():
+        if 'ODDS' in env_name.upper():
+            val = val.strip()
+            if val and len(val) > 10:
+                keys.append({"key": val, "label": env_name, "exhausted": False})
     # Also scan secrets file
     sf = Path("/root/.zo/secrets.env")
     if sf.exists():
@@ -51,12 +50,11 @@ def _load_keys():
                 continue
             k, _, v = line.partition("=")
             k, v = k.strip(), v.strip().strip('"').strip("'")
-            if k.startswith("ODDS_API_KEY") and v and len(v) > 10:
+            if 'ODDS' in k.upper() and v and len(v) > 10:
                 already = any(x["key"] == v for x in keys)
                 if not already:
                     keys.append({"key": v, "label": k, "exhausted": False})
     return keys
-
 
 def _load_quota():
     if QUOTA_FILE.exists():
@@ -66,11 +64,9 @@ def _load_quota():
             pass
     return {}
 
-
 def _save_quota(q):
     QUOTA_FILE.parent.mkdir(parents=True, exist_ok=True)
     QUOTA_FILE.write_text(json.dumps(q, indent=2))
-
 
 def _is_quota_exhausted(key_label):
     q = _load_quota()
@@ -87,18 +83,15 @@ def _is_quota_exhausted(key_label):
         pass
     return False
 
-
 def _mark_quota_exhausted(key_label):
     q = _load_quota()
     q[key_label] = {"exhausted": True, "marked_at": datetime.now(timezone.utc).isoformat()}
     _save_quota(q)
 
-
 def _clear_quota(key_label):
     q = _load_quota()
     q.pop(key_label, None)
     _save_quota(q)
-
 
 class FallbackManager:
     """Manages multi-tier API fallback with caching and quota awareness."""
@@ -106,8 +99,7 @@ class FallbackManager:
     def __init__(self):
         self.keys = _load_keys()
         self._today = datetime.now().strftime("%Y-%m-%d")
-        self._sgo_key = os.environ.get("SPORTSGAMEODDS_API_KEY",
-                                        os.environ.get("SGO_API_KEY", ""))
+        self.sgo_key = os.environ.get("SGO_API_KEY", "")
 
     # ── Cache ─────────────────────────────────────────
     def _cache_path(self, sport, away, home):
@@ -135,260 +127,129 @@ class FallbackManager:
         p.write_text(json.dumps(clean, indent=2, default=str))
 
     # ── Tier 2+3: Odds API ────────────────────────────
-    def _call_odds_api(self, endpoint, params, key_label):
-        """Return (data, exhausted_bool)."""
-        import requests
-        full_url = f"{ODDS_BASE}/{endpoint}"
-        try:
-            r = requests.get(full_url, params=params, timeout=20)
-            if r.status_code == 401:
-                body = r.text
-                if "OUT_OF_USAGE_CREDITS" in body or "QUOTA" in body.upper():
-                    _mark_quota_exhausted(key_label)
-                    return None, True
-                return None, False
-            r.raise_for_status()
-            payload = r.json()
-            # v5 root en
-            return payload, False
-        except requests.exceptions.RequestException:
-            return None, False
 
-    def _try_odds_keys(self, endpoint, params_fn):
-        """Try all non-exhausted Odds API keys. Returns (data, key_used)."""
-        import requests
+    def enrich(self, sport: str, away: str, home: str):
+        """Multi-tier: cache → Odds API → self-edge fallback."""
+        # Tier 0: try cache
+        data = self._cache_get(sport, away, home)
+        if data is not None:
+            return data
+
+        # Map sport to Odds API sport key
+        ODDS_SPORT = {
+            "WNBA": "basketball_wnba",
+            "NBA": "basketball_nba",
+            "MLB": "baseball_mlb",
+            "NHL": "icehockey_nhl",
+        }
+        sport_key = ODDS_SPORT.get(sport, "")
+        if not sport_key:
+            return {"sport": sport, "away": away, "home": home, "source": "unsupported-sport"}
+
+        # Try each available key
+        ODDS_BASE = "https://api.the-odds-api.com/v4/sports"
         for entry in self.keys:
-            label = entry["label"]
-            if _is_quota_exhausted(label):
+            if entry["exhausted"]:
                 continue
             key = entry["key"]
-            p = params_fn(key)
-            data, exhausted = self._call_odds_api(endpoint, p, label)
-            if exhausted:
-                continue  # try next key
-            if data is not None:
-                return data, label
-        return None, None
-
-    def _find_game_odds(self, sport, away, home):
-        """Tier 2+3: Find game via Odds API sports endpoint."""
-        sport_key_map = {
-            "NBA": "basketball_nba", "WNBA": "basketball_wnba",
-            "MLB": "baseball_mlb", "NHL": "icehockey_nhl",
-        }
-        sk = sport_key_map.get(sport.upper())
-        if not sk:
-            return None, None
-
-        team_map = {
-            "WNBA": {
-                "ATL": "atlanta dream", "CHI": "chicago sky", "CON": "connecticut sun",
-                "DAL": "dallas wings", "GS": "golden state valkyries", "IND": "indiana fever",
-                "LV": "las vegas aces", "LA": "los angeles sparks", "MIN": "minnesota lynx",
-                "NY": "new york liberty", "PHX": "phoenix mercury", "POR": "portland fire",
-                "SEA": "seattle storm", "TOR": "toronto tempo", "WSH": "washington mystics",
-            }
-        }
-        tmap = team_map.get(sport.upper(), {})
-
-        def norm(n):
-            if not n:
-                return ""
-            nx = n.lower().strip()
-            for sfx in [" sky", " liberty", " fever", " dream", " mercury", " wings",
-                         " aces", " storm", " tempo", " mystics", " valkyries", " fire",
-                         " lynx", " sun", " sparks"]:
-                nx = nx.replace(sfx, "")
-            return nx.strip()
-
-        def params_fn(key):
-            return {
-                "x-api-key": key, "sport_key": sk, "regions": "us",
-                "markets": "h2h,spreads,totals", "oddsFormat": "decimal",
-                "commenceTimeFrom": (datetime.now(timezone.utc) - timedelta(hours=12)).strftime("%Y-%m-%dT%H:%M:%SZ"),
-                "commenceTimeTo": (datetime.now(timezone.utc) + timedelta(days=2)).strftime("%Y-%m-%dT%H:%M:%SZ"),
-            }
-
-        data, key_used = self._try_odds_keys("odds", params_fn)
-        if not data:
-            return None, None
-
-        a, h = norm(away), norm(home)
-        games = data if isinstance(data, list) else []
-        for g in games:
-            gh, ga = norm(g.get("home_team")), norm(g.get("away_team"))
-            if gh == h and ga == a:
-                return g, key_used
-
-        away_full = tmap.get(away.upper(), "").lower()
-        home_full = tmap.get(home.upper(), "").lower()
-        for g in games:
-            gf = (g.get("away_team") or "").lower()
-            ghf = (g.get("home_team") or "").lower()
-            if away_full and away_full in gf and home_full and home_full in ghf:
-                return g, key_used
-            if a.lower() in gf and h.lower() in ghf:
-                return g, key_used
-            if away_full and away_full in gf and h.lower() in ghf:
-                return g, key_used
-
-        return None, None
-
-    def _fetch_player_props(self, sport, game_id, key_used):
-        """Fetch player props for a specific game."""
-        sport_key_map = {
-            "NBA": "basketball_nba", "WNBA": "basketball_wnba",
-        }
-        sk = sport_key_map.get(sport.upper())
-        if not sk:
-            return None
-
-        stat_map_rev = {
-            "player_points": "points", "player_rebounds": "rebounds",
-            "player_assists": "assists", "player_threes": "threes",
-            "player_steals": "steals", "player_blocks": "blocks",
-        }
-
-        def params_fn(key):
-            return {
-                "x-api-key": key, "sport_key": sk, "eventIds": game_id,
-                "regions": "us",
-                "markets": "player_points,player_rebounds,player_assists,player_threes,player_steals,player_blocks",
-                "oddsFormat": "decimal",
-            }
-
-        data, _ = self._try_odds_keys("odds", params_fn)
-        if not data:
-            return None
-
-        lines = {}
-        for bk in data.get("bookmakers", []):
-            if bk.get("key") != "draftkings":
-                continue
-            for m in bk.get("markets", []):
-                stat = stat_map_rev.get(m.get("key", ""))
-                if not stat:
+            try:
+                # Step 1: Find the event ID for this matchup
+                r = requests.get(
+                    f"{ODDS_BASE}/{sport_key}/odds",
+                    params={
+                        "apiKey": key,
+                        "regions": "us",
+                        "dateFormat": "iso",
+                    },
+                    timeout=15,
+                )
+                if r.status_code == 401:
+                    entry["exhausted"] = True
+                    _mark_quota_exhausted(entry["label"])
                     continue
-                for o in m.get("outcomes", []):
-                    name = o.get("description", o.get("name", ""))
-                    if o.get("name") == "Over":
-                        lines.setdefault(name, {})[stat] = o.get("point")
-        return lines
+                if r.status_code not in (200, 422):
+                    continue
 
-    # ── Tier 1: SGO (MLB only) ─────────────────────────
-    def _sgo_mlb_enrich(self, away, home):
-        """Fetch MLB lines from SGO — zero Odds API cost. Uses 6hr cache."""
-        if not self._sgo_key:
-            return {"error": "No SGO key", "player_lines": {}, "source": "sgo_error"}
-        try:
-            # ── Cached SGO events list ──
-            events_resp = sgo_get("/v2/events", params={"leagueID": "MLB"})
-            if events_resp.get("error"):
-                return {"error": f"SGO: {events_resp['error']}", "player_lines": {}, "source": "sgo_error"}
-            if events_resp.get("status_code") == 429:
-                return {"error": "SGO rate limited", "player_lines": {}, "source": "sgo_rate_limit"}
+                games = r.json() if isinstance(r.json, type) else r.json()
+                if isinstance(games, dict) and "data" in games:
+                    games = games["data"]
+                if not isinstance(games, list):
+                    continue
 
-            events = events_resp["data"]
-            cache_tag = " [cache]" if events_resp.get("from_cache") else ""
-            if not isinstance(events, list):
-                return {"error": "SGO bad format", "player_lines": {}, "source": "sgo_bad_format"}
+                event_id = None
+                for g in games:
+                    ga = (g.get("away_team") or "").upper()
+                    gh = (g.get("home_team") or "").upper()
+                    if away.upper() in ga and home.upper() in gh:
+                        event_id = g.get("id")
+                        break
 
-            a, h = away.upper(), home.upper()
-            ev = None
-            for e in events:
-                ea = (e.get("awayTeam") or "").upper()
-                eh = (e.get("homeTeam") or "").upper()
-                if a in ea and h in eh:
-                    ev = e
-                    break
+                if not event_id:
+                    continue
 
-            if not ev:
-                return {"error": f"MLB {away}@{home} not in SGO", "player_lines": {}, "source": "sgo_not_found"}
+                # Step 2: Fetch player props for this event
+                markets = "player_points,player_rebounds,player_assists,player_threes,player_steals,player_blocks"
+                r2 = requests.get(
+                    f"{ODDS_BASE}/{sport_key}/events/{event_id}/odds",
+                    params={
+                        "apiKey": key,
+                        "regions": "us",
+                        "markets": markets,
+                        "bookmakers": "draftkings",
+                        "oddsFormat": "american",
+                    },
+                    timeout=15,
+                )
+                if r2.status_code != 200:
+                    continue
 
-            eid = ev.get("eventID", ev.get("id", ""))
-            if not eid:
-                return {"error": "SGO no event ID", "player_lines": {}, "source": "sgo_no_id"}
-
-            # ── Cached SGO event odds ──
-            odds_resp = sgo_get(f"/v2/events/{eid}/odds")
-            if odds_resp.get("error"):
-                return {"error": f"SGO odds: {odds_resp['error']}", "player_lines": {}, "source": "sgo_error"}
-            if odds_resp.get("status_code") == 429:
-                return {"error": "SGO rate limited", "player_lines": {}, "source": "sgo_rate_limit"}
-
-            odds_data = odds_resp["data"]
-
-            total = odds_data.get("total", odds_data.get("totals", {}))
-            spread = odds_data.get("spread", odds_data.get("spreads", {}))
-            ml = odds_data.get("moneyline", odds_data.get("h2h", {}))
-
-            return {
-                "game_odds": {"total": total, "spread": spread, "ml": ml},
-                "player_lines": {},
-                "player_count": 0,
-                "source": "sgo",
-                "sgo_event_id": eid,
-                "_from_cache": events_resp.get("from_cache") and odds_resp.get("from_cache"),
-            }
-        except Exception as e:
-            return {"error": str(e), "player_lines": {}, "source": "sgo_error"}
-
-    # ── Main entry point ───────────────────────────────
-    def enrich(self, sport, away, home):
-        """
-        Multi-tier enrichment for a single game.
-        Returns dict with: game_odds, player_lines, source, tier_used, from_cache
-        """
-        # Tier 0: Cache
-        cached = self._cache_get(sport, away, home)
-        if cached:
-            cached["tier_used"] = "cache"
-            return cached
-
-        result = {"player_lines": {}, "source": "none", "tier_used": "none", "from_cache": False}
-
-        # MLB → Tier 1: SGO
-        if sport.upper() == "MLB":
-            sgo = self._sgo_mlb_enrich(away, home)
-            if sgo and not sgo.get("error"):
-                result.update(sgo)
-                result["tier_used"] = "sgo"
-                self._cache_set(sport, away, home, result)
-                return result
-            result["sgo_error"] = sgo.get("error", "unknown")
-
-        # Tier 2+3: Odds API (basketball player props)
-        if sport.upper() in ("WNBA", "NBA"):
-            game, key_used = self._find_game_odds(sport, away, home)
-            if game and key_used:
-                result["game_odds"] = {
-                    "home": game.get("home_team"),
-                    "away": game.get("away_team"),
+                odds_data = r2.json()
+                player_lines = {}
+                stat_map = {
+                    "player_points": "points", "player_rebounds": "rebounds",
+                    "player_assists": "assists", "player_threes": "threes",
+                    "player_steals": "steals", "player_blocks": "blocks",
                 }
-                game_id = game.get("id")
-                if game_id:
-                    lines = self._fetch_player_props(sport, game_id, key_used)
-                    if lines:
-                        result["player_lines"] = lines
-                        result["player_count"] = len(lines)
-                        result["source"] = "odds_api"
-                        result["tier_used"] = key_used
-                        result["book"] = "draftkings"
-                        self._cache_set(sport, away, home, result)
-                        return result
 
-                # Game found but props failed → still cache partial
-                result["source"] = "odds_api_partial"
-                result["tier_used"] = key_used
+                for bm in odds_data.get("bookmakers", []):
+                    if bm.get("key") != "draftkings":
+                        continue
+                    for market in bm.get("markets", []):
+                        mkey = market.get("key", "")
+                        stat = stat_map.get(mkey)
+                        if not stat:
+                            continue
+                        for outcome in market.get("outcomes", []):
+                            name = outcome.get("description") or outcome.get("name", "")
+                            line = outcome.get("point")
+                            if name and line is not None:
+                                try:
+                                    line = float(line)
+                                except (TypeError, ValueError):
+                                    continue
+                                if name not in player_lines:
+                                    player_lines[name] = {}
+                                player_lines[name][stat] = line
+
+                result = {
+                    "sport": sport,
+                    "away": away,
+                    "home": home,
+                    "event_id": event_id,
+                    "source": f"odds-api ({entry['label']})",
+                    "player_lines": player_lines,
+                    "player_count": len(player_lines),
+                    "tier_used": entry["label"],
+                    "available_books": ["draftkings"],
+                }
                 self._cache_set(sport, away, home, result)
                 return result
 
-        # Tier 4: Self-edge (everything failed)
-        result["source"] = "self_edge"
-        result["tier_used"] = "self_edge"
-        result["fallback"] = True
-        return result
+            except Exception:
+                continue
 
+        # Tier 4: self-edge fallback
+        return {"sport": sport, "away": away, "home": home, "source": "self-edge"}
 
 # ── Quota status CLI ───────────────────────────────────
 def quota_status():
@@ -404,14 +265,12 @@ def quota_status():
                      "key_prefix": entry["key"][:12] + "..."})
     return {"keys": out, "cache_hits_today": _count_cache_files()}
 
-
 def _count_cache_files():
     today = datetime.now().strftime("%Y-%m-%d")
     d = CACHE_DIR / today
     if d.exists():
         return len(list(d.glob("*.json")))
     return 0
-
 
 if __name__ == "__main__":
     import sys
