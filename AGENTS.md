@@ -1,9 +1,25 @@
+# World Cup dashboard FIXED — props.json overwrite + API fallback
+
 ## Workspace Index
+> **2026-06-19 18:45 ET — World Cup dashboard FIXED (props.json overwrite + API fallback):**
+> - **Root cause:** `Daily_Log/worldcup/20260619/props.json` was overwritten by a pipeline step (likely `daily_picks.py`) with a flat 331-entry picks list (`player/stat/tc_projection/edge` format) instead of match objects with nested `player_props` dict.
+> - The `/api/worldcup-props` route iterated each flat entry as if it were a match → 331 fake matches all with `player_count: 0` → dashboard showed "nothing."
+> - **Fix #1:** Restored `props.json` from `matches.json` (worldcup_picks.py's canonical output, 4 real matches).
+> - **Fix #2:** `/api/worldcup-props` now validates format (checks for `teams` array vs flat `player` string), auto-falls back to `matches.json` when `props.json` is corrupted, and unwraps the `{matches: [...]}` wrapper format.
+> - **Result:** 4 matches, 44 players, 132 props, 116 picks (MOR@SCO 26p/78 props LIVE, HAI@BRA 18p/54 props SCHEDULED).
+> - **Lingering:** Odds API key still 401 INVALID_KEY — AUS@USA and PAR@TUR show 0 props (no cache). World Cup needs new Odds API key or ESPN-scraped player props for full coverage.
+>
+> **2026-06-19 18:35 ET — WNBA DK lines FIXED via ESPN embedded odds:**
+> - Both Odds API key and SGO key return HTTP 401. WNBA games showed `dk_total: null`, `signal: "NO MARKET"`.
+> - `fetchDraftKingsFromESPN()` was added to `/api/tc` `getBestOdds()` 4-tier cascade (SGO → Odds API → ESPN DK → self-edge). ESPN scoreboard returns free DK totals/ML/spreads — no key needed.
+> - Result: TOR@CON (DK total 168.5, UNDER, -105/-115), WSH@NY (DK total 168.5, +550/-800).
+> - `ml_source: "ESPN DraftKings embedded"` — confirms real DK lines flowing.
+
 > **2026-06-19 03:15 ET — MLB dashboard route fix + Odds API status:**
 > - **Odds API key: `INVALID_KEY` 401** — key `304fe645...` was quota-exhausted earlier
 > - **MLB self-edge: WORKING** — 555 picks today across 14 games, `tc-internal-fallback` (LINE = TC × 0.88).
 > - **Dashboard fix:** Routed MLB through `/api/tc` (was hitting dead Odds API). Now shows 27 props/game from self-edge.
->
+
 > **2026-06-19 03:15 ET — SportsDataIO MLB Player Props INTEGRATED:**
 > - **Endpoint:** `https://api.sportsdata.io/v3/mlb/odds/json/PlayerPropsByDate/YYYY-MM-DD` — PAID unlimited key
 > - **1,587 live props** across 14 games, 10 stat types (Hits, Total Bases, Runs, RBIs, HR, Strikeouts, Pitching Hits, Pitching Runs, Pitching Strikeouts, Fantasy Points)

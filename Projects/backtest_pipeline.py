@@ -61,12 +61,15 @@ LOG_DIR = WORKSPACE / "Daily_Log"
 # ═══════════════════════════════════════════════════════════════
 
 SECRETS_FILE = Path("/root/.zo/secrets.env")
+ODDS_API_KEY = ""
 if SECRETS_FILE.exists():
     for line in SECRETS_FILE.read_text().split("\n"):
         line = line.strip()
-        if 'ODDS' in line.upper() and '=' in line:
-            val = line.split('=', 1)[1].strip().strip('"').strip("'")
+        if 'ODDS' in line.upper() and '=' in line and 'KEY' in line.upper():
+            ODDS_API_KEY = line.split('=', 1)[1].strip().strip('"').strip("'")
             break
+
+ODDS_BASE = "https://api.the-odds-api.com/v4/sports"
 
 SPORT_MAP = {
     "WNBA": "basketball_wnba",
@@ -417,6 +420,104 @@ def apply_pace(projection: float, team: str, league: str) -> float:
     elif team.upper() in slow:
         return round(projection * 0.97, 1)
     return projection
+
+def grade_daily_pipeline_projections(espn_actuals: List[dict], league: str) -> List[dict]:
+    """
+    Fallback: Load the daily pipeline's TC projections from Daily_Log/YYYY-MM-DD/
+    and grade them against ESPN box-score actuals.
+    
+    Matches players by normalizing names (ESPN uses "R. Howard" format, 
+    pipeline uses "Rhyne Howard" full names).
+    """
+    # Build lookup from ESPN actuals: key = (team, stat, normalized_name)
+    espn_lookup: Dict[Tuple[str, str, str], dict] = {}
+    for a in espn_actuals:
+        norm_name = _normalize_espn_name(a["name"])
+        team = a["team"]
+        for stat in ("PTS", "REB", "AST", "STL", "BLK", "3PM"):
+            key = (team, stat, norm_name)
+            espn_lookup[key] = a
+
+    # Find and load daily projection files
+    date_str = espn_actuals[0]["date"] if espn_actuals else ""
+    proj_pattern = f"proj_{league}_*.json"
+    log_dir = LOG_DIR / date_str if date_str else LOG_DIR
+    
+    graded = []
+    proj_count = 0
+    
+    if not log_dir.exists():
+        return graded
+    
+    proj_files = sorted(log_dir.glob(proj_pattern))
+    for pf in proj_files:
+        try:
+            data = json.loads(pf.read_text())
+        except Exception:
+            continue
+        
+        props = data.get("valid_props", [])
+        proj_count += len(props)
+        
+        for prop in props:
+            player = prop.get("player", "")
+            team = prop.get("team", "")
+            stat = prop.get("stat", "")
+            tc_proj = prop.get("tc_projection", 0)
+            
+            # Normalize player name for matching
+            norm_name = _normalize_pipeline_name(player)
+            
+            key = (team, stat, norm_name)
+            if key not in espn_lookup:
+                continue
+            
+            actual_row = espn_lookup[key]
+            actual_val = actual_row.get(stat, 0)
+            
+            diff = round(actual_val - tc_proj, 2)
+            if abs(diff) < 0.1:
+                result = "PUSH"
+            elif actual_val > tc_proj:
+                result = "HIT"
+            else:
+                result = "MISS"
+            
+            graded.append({
+                "date": actual_row["date"],
+                "matchup": actual_row["matchup"],
+                "team": team,
+                "name": player,
+                "stat": stat,
+                "raw_avg": prop.get("raw_average", 0),
+                "tc_proj": tc_proj,
+                "actual": actual_val,
+                "diff": diff,
+                "result": result,
+                "minutes": actual_row.get("MIN", 0),
+                "source": "daily_pipeline_fallback",
+            })
+    
+    if proj_count:
+        log(f"  Loaded {proj_count} props from {len(proj_files)} files, matched {len(graded)}")
+    
+    return graded
+
+
+def _normalize_espn_name(name: str) -> str:
+    """Normalize ESPN name format 'R. Howard' → 'rhoward' for fuzzy matching."""
+    parts = name.split()
+    if len(parts) >= 2 and len(parts[0]) == 2 and parts[0].endswith('.'):
+        return (parts[0][0] + parts[-1]).lower()
+    return name.lower().replace(" ", "").replace(".", "").replace("-", "").replace("'", "")
+
+
+def _normalize_pipeline_name(name: str) -> str:
+    """Normalize pipeline name format 'Rhyne Howard' → matching key."""
+    parts = name.split()
+    if len(parts) >= 2:
+        return (parts[0][0] + parts[-1]).lower()
+    return name.lower().replace(" ", "").replace(".", "").replace("-", "").replace("'", "")
 
 def compute_tc_projections(espn_actuals: List[dict],
                            use_bayes: bool = True,
@@ -823,7 +924,6 @@ def main():
     log(f"  Dry run: {args.dry_run}")
     log("")
 
-    sys.exit(1)
 
     # ── Estimate credit cost ──
     est_calls = len(leagues) * days + len(leagues)  # historical (10x) + scores (1x)
@@ -918,6 +1018,13 @@ def main():
             use_b2b=features["b2b"],
         )
         all_projections.extend(projections)
+
+        # ── Phase 5b: Fallback to daily pipeline projections ──
+        if len(projections) == 0 and len(all_espn_actuals) > 0:
+            log(f"PHASE 5b: No TC math projections — loading daily pipeline projections as fallback...")
+            daily_projs = grade_daily_pipeline_projections(all_espn_actuals, league)
+            log(f"  Daily pipeline fallback: {len(daily_projs)} picks graded")
+            all_projections.extend(daily_projs)
 
         # ── Phase 6: Cross-ref TC vs DK lines ──
         log(f"PHASE 6: Cross-referencing TC vs DK lines ({league})...")

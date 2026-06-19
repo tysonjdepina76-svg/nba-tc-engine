@@ -9,7 +9,7 @@
   "commence_time": "2026-06-19T23:15Z",
   "event_id": "401815814",
   "source": "ESPN MLB scoreboard + Odds API 401",
-  "timestamp": "2026-06-19T22:24:11.597Z",
+  "timestamp": "2026-06-19T22:50:41.070Z",
   "tc_combined": null,
   "tc_line": null,
   "dk_total": "o7.5",
@@ -2240,6 +2240,18 @@
       "source": "sdio_lines"
     },
     {
+      "player": "Eli White",
+      "team": "ATL",
+      "stat": "total_bases",
+      "direction": "OVER",
+      "signal": "PASS",
+      "market_line": 0.2,
+      "tc_projection": 0.4,
+      "edge": 0.2,
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
       "player": "Joey Ortiz",
       "team": "MIL",
       "stat": "total_bases",
@@ -2260,18 +2272,6 @@
       "market_line": 0.5,
       "tc_projection": 0.6,
       "edge": 0.1,
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Eli White",
-      "team": "ATL",
-      "stat": "total_bases",
-      "direction": "UNDER",
-      "signal": "PASS",
-      "market_line": 0.5,
-      "tc_projection": 0.4,
-      "edge": -0.1,
       "status": "ACTIVE",
       "source": "sdio_lines"
     },
@@ -3092,6 +3092,18 @@
       "source": "sdio_lines"
     },
     {
+      "player": "Eli White",
+      "team": "ATL",
+      "stat": "total_bases",
+      "direction": "OVER",
+      "signal": "PASS",
+      "market_line": 0.2,
+      "tc_projection": 0.4,
+      "edge": 0.2,
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
       "player": "Joey Ortiz",
       "team": "MIL",
       "stat": "total_bases",
@@ -3112,18 +3124,6 @@
       "market_line": 0.5,
       "tc_projection": 0.6,
       "edge": 0.1,
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Eli White",
-      "team": "ATL",
-      "stat": "total_bases",
-      "direction": "UNDER",
-      "signal": "PASS",
-      "market_line": 0.5,
-      "tc_projection": 0.4,
-      "edge": -0.1,
       "status": "ACTIVE",
       "source": "sdio_lines"
     },
