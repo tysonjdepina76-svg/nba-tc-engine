@@ -96,6 +96,8 @@ def check_api_keys(secrets: dict) -> bool:
 # ── 2. SELF-CHECK: External APIs ────────────────────────────
 def check_external_apis(secrets: dict, quick: bool = False) -> dict:
     status = {}
+    odds_key = secrets.get("ODDS_API_KEY", "") or os.environ.get("ODDS_API_KEY", "")
+    sgo_key = secrets.get("SGO_API_KEY", "") or os.environ.get("SGO_API_KEY", "") or secrets.get("SPORTSGAMEODDS_API_KEY", "")
     if quick:
         return status
 
