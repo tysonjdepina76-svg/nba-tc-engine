@@ -35,6 +35,7 @@ Q_FACTOR = 0.55
 OUT_FACTOR = 0.0
 EDGE_THRESH = 2.0
 EDGE_THRESH_SELF = 1.0
+EDGE_THRESH_MLB_SDIO = 0.5
 
 BATTER_WEIGHT = 0.85
 PITCHER_WEIGHT = 0.80
@@ -616,12 +617,14 @@ def fetch_mlb_game_lines() -> List[Dict]:
 def project_mlb_game(home_abbr: str, away_abbr: str, game_id: str = None,
                      dk_total: float = None) -> Dict:
     """Generate full TC projection for an MLB matchup."""
+    matchup_key = f"{away_abbr}@{home_abbr}"
     result = {
         "sport": "MLB",
+        "matchup": matchup_key,
         "home_team": home_abbr,
         "away_team": away_abbr,
         "dk_total": dk_total,
-        "source": "ESPN + The Odds API",
+        "source": "ESPN + The Odds API + SportsDataIO",
     }
 
     # Fetch rosters with stats
@@ -630,47 +633,76 @@ def project_mlb_game(home_abbr: str, away_abbr: str, game_id: str = None,
     print(f"  Fetching stats for {home_abbr}...")
     home_players = fetch_espn_mlb_stats(home_abbr)
 
-    # Fetch DK player prop lines
+    # ── Layer 1: Try Odds API DK player prop lines ──
     player_lines = {}
+    dk_api_available = False
     if game_id:
         print(f"  Fetching DK player lines for {away_abbr} @ {home_abbr}...")
         player_lines = fetch_mlb_player_lines(game_id)
+        dk_api_available = bool(player_lines)
 
-    # Apply DK lines to players
+    # ── Layer 2: SportsDataIO fallback ──
+    sdio_lines = {}
+    if not dk_api_available:
+        try:
+            from mlb_sdio_props import fetch_mlb_props
+            all_sdio = fetch_mlb_props()
+            # Try both key directions — SDIO and ESPN may order home/away differently
+            for try_key in [matchup_key, f"{home_abbr}@{away_abbr}"]:
+                if try_key in all_sdio:
+                    sdio_lines = all_sdio[try_key]
+                    break
+            if sdio_lines:
+                print(f"    ✓ SDIO: {len(sdio_lines)} players with props")
+        except Exception as e:
+            print(f"    ⚠ SDIO unavailable: {e}")
+
+    # Apply all available lines to players
     for p in away_players + home_players:
+        pname_lower = (p.name or "").strip().lower()
+
+        # Odds API DK lines
         dk_lines = player_lines.get(p.name, {})
         for stat_name, line_val in dk_lines.items():
             p.lines[stat_name] = line_val
-            # Map to TC stat
-            tc_attr = f"tc_{stat_name}"
-            tc_val = getattr(p, tc_attr, 0.0)
+            tc_val = getattr(p, f"tc_{stat_name}", 0.0)
             if tc_val > 0:
-                edge = round(tc_val - line_val, 2)
-                p.edges[stat_name] = edge
+                p.edges[stat_name] = round(tc_val - line_val, 2)
 
-    # Generate valid props (edge-qualified) — DK lines or self-edge fallback
+        # SDIO lines
+        sdio_player = sdio_lines.get(pname_lower, {})
+        for stat_name, line_val in sdio_player.items():
+            if stat_name not in p.lines and line_val is not None:
+                p.lines[stat_name] = line_val
+                tc_val = getattr(p, f"tc_{stat_name}", 0.0)
+                if tc_val > 0:
+                    p.edges[stat_name] = round(tc_val - line_val, 2)
+
+    # Generate valid props — Odds API, SDIO, or self-edge fallback
     valid_props = []
     dk_available = any(p.lines for p in away_players + home_players)
+    line_source = "dk_lines" if dk_api_available else ("sdio_lines" if sdio_lines else "tc-internal-fallback")
 
     if dk_available:
-        # ── DK lines available: use market edge ──
+        # ── Odds API or SDIO lines available ──
+        use_thresh = EDGE_THRESH_MLB_SDIO if sdio_lines and not dk_api_available else EDGE_THRESH
         for p in away_players + home_players:
             for stat_name, line_val in p.lines.items():
                 tc_val = getattr(p, f"tc_{stat_name}", 0.0)
                 edge = p.edges.get(stat_name, 0.0)
                 direction = "OVER" if edge > 0 else "UNDER"
                 signal = "PASS"
-                if abs(edge) >= EDGE_THRESH:
+                if abs(edge) >= use_thresh:
                     signal = direction
+                src = "dk_lines" if stat_name in player_lines.get(p.name, {}) else "sdio_lines"
                 valid_props.append({
                     "player": p.name, "team": p.team, "pos": p.pos,
                     "stat": stat_name, "market_line": line_val,
                     "tc_projection": tc_val, "edge": edge,
                     "direction": direction, "signal": signal,
-                    "status": p.status, "source": "dk_lines",
+                    "status": p.status, "source": src,
                 })
     else:
-        # ── Self-edge fallback: compute internal line from TC ──
         batting_stats = ["hits", "rbi", "runs", "hr", "total_bases", "sb", "singles", "doubles", "walks"]
         pitching_stats = ["strikeouts", "hits_allowed", "walks_allowed", "earned_runs", "outs"]
         for p in away_players + home_players:
@@ -690,7 +722,6 @@ def project_mlb_game(home_abbr: str, away_abbr: str, game_id: str = None,
                 edge = round(tc_val - self_line, 2)
                 direction = "OVER" if edge > 0 else "UNDER"
                 signal = "PASS"
-                # Use lower threshold for self-edge mode (internal line is naturally close to TC)
                 self_edge_thresh = 1.0
                 if abs(edge) >= self_edge_thresh:
                     signal = direction
@@ -710,7 +741,8 @@ def project_mlb_game(home_abbr: str, away_abbr: str, game_id: str = None,
         "home_total": len(home_players),
     }
     result["dk_available"] = dk_available
-    result["prop_source"] = "dk_lines" if dk_available else "tc-internal-fallback"
+    result["prop_source"] = line_source
+    result["sdio_props_count"] = len(sdio_lines)
 
     return result
 

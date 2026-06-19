@@ -22,7 +22,7 @@ from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
 # ── All active sports in the pipeline ─────────────────────
-ALL_SPORTS = ("NBA", "WNBA", "MLB", "NHL", "WORLD_CUP")
+ALL_SPORTS = ("NBA", "WNBA", "MLB", "NHL", "WORLD_CUP", "NFL")
 BASKETBALL = {"NBA", "WNBA"}  # sports with full player props + rosters
 MLB_SPORTS = {"MLB"}  # sports with
 

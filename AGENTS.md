@@ -1,4 +1,32 @@
 ## Workspace Index
+> **2026-06-19 03:15 ET — MLB dashboard route fix + Odds API status:**
+> - **Odds API key: `INVALID_KEY` 401** — key `304fe645...` was quota-exhausted earlier
+> - **MLB self-edge: WORKING** — 555 picks today across 14 games, `tc-internal-fallback` (LINE = TC × 0.88).
+> - **Dashboard fix:** Routed MLB through `/api/tc` (was hitting dead Odds API). Now shows 27 props/game from self-edge.
+>
+> **2026-06-19 03:15 ET — SportsDataIO MLB Player Props INTEGRATED:**
+> - **Endpoint:** `https://api.sportsdata.io/v3/mlb/odds/json/PlayerPropsByDate/YYYY-MM-DD` — PAID unlimited key
+> - **1,587 live props** across 14 games, 10 stat types (Hits, Total Bases, Runs, RBIs, HR, Strikeouts, Pitching Hits, Pitching Runs, Pitching Strikeouts, Fantasy Points)
+> - **New module:** `Projects/mlb_sdio_props.py` — fetches SDIO props, maps to ESPN team codes + player names, returns `{matchup: {player_name: {stat: line}}}`
+> - **Wired into `mlb_tc_engine.py` as Layer 2** (Layer 1: Odds API → Layer 2: SDIO → Layer 3: self-edge)
+> - **899 MLB props today, 311 OVER/UNDER signals at EDGE_THRESH_MLB_SDIO=0.5**
+> - **Stat mapping:** Hits→hits, Total Bases→total_bases, Runs→runs, Home Runs→hr, Runs Batted In→rbi, Strikeouts→strikeouts, Pitching Hits→hits_allowed, Pitching Runs→earned_runs
+> - **`/api/tc` shells out to `mlb_tc_engine.py`** — SDIO props flow through dashboard automatically
+> - **AGENTS.md →** added SportsDataIO as primary MLB prop source (replaces dead Odds API)
+>
+> - **WNBA: 164 picks** via `live_roster_api` self-edge fallback. Already routed through `/api/tc`.
+> - **World Cup: 0 picks** — fully dependent on Odds API. No self-edge fallback for soccer yet.
+> - **Self-sufficient architecture:** ESPN gamelogs → `mlb_tc_engine.py` / TC math → self-edge LINE → `/api/tc` → dashboard. Zero external API calls for MLB/WNBA projections.
+
+> **2026-06-19 03:15 ET — M**
+
+> **2026-06-19 — Backtest pipeline fix:**
+> - Removed stray `sys.exit(1)` at line 826 that was killing backtest_pipeline.py after init
+> - Added `ODDS_BASE = "https://api.the-odds-api.com/v4/sports"` constant (was missing)
+> - Fixed `ODDS_API_KEY` loading from secrets (was reading `val` but never assigning)
+> - Added `grade_daily_pipeline_projections()` fallback — when `--days 1` has insufficient history for leave-one-out TC math, loads daily pipeline's `valid_props` and grades against ESPN boxscores
+> - First successful run: 49 picks graded, 57.1% hit rate for June 18 ATL@IND
+
 > **2026-06-18 — Full System Hardwire + Purge:**
 > - **37/37 .py files compile clean** — fixed 4 broken files (api_scan.py, team_game_mapper.py, wnba_props_live_pull.py, backtest_pipeline.py)
 > **2026-06-18 22:18 ET — Pipeline Master Full Run:**
