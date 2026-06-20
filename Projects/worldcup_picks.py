@@ -81,44 +81,49 @@ PROP_MARKETS = [
 BOOK_PRIORITY = ["fanduel", "draftkings", "betmgm", "caesars", "fanatics"]
 
 def fetch_espn_matches(date_str=None):
-    """Fetch World Cup matches from ESPN for a given date (YYYYMMDD)."""
-    url = ESPN_SCOREBOARD
+    """Fetch World Cup matches from ESPN — uses unfiltered scoreboard (live + upcoming) to catch in-progress games."""
+    """Fetch World Cup matches from ESPN — queries BOTH unfiltered scoreboard (catches in-progress/live games) AND date-filtered schedule."""
+    matches = []
+    seen = set()
+    urls = [ESPN_SCOREBOARD]  # unfiltered: catches live + in-progress + recent
     if date_str:
-        url += f"?dates={date_str}"
-    try:
-        r = requests.get(url, timeout=15, headers={"Accept": "application/json"})
-        r.raise_for_status()
-        data = r.json()
-        events = data.get("events", [])
-        matches = []
-        for e in events:
-            status = e.get("status", {}).get("type", {})
-            comps = e.get("competitions", [])
-            teams = []
-            for c in comps:
-                for co in c.get("competitors", []):
-                    team = co.get("team", {})
-                    teams.append({
-                        "name": team.get("displayName", ""),
-                        "abbrev": team.get("abbreviation", ""),
-                        "score": co.get("score", "0"),
-                        "homeAway": co.get("homeAway", ""),
-                    })
-            matches.append({
-                "espn_id": e.get("id", ""),
-                "name": e.get("name", ""),
-                "short_name": e.get("shortName", ""),
-                "date": e.get("date", ""),
-                "status": status.get("description", ""),
-                "status_detail": status.get("shortDetail", ""),
-                "completed": status.get("completed", False),
-                "period": status.get("period", 0),
-                "teams": teams,
-            })
-        return matches
-    except Exception as exc:
-        print(f"ESPN error: {exc}")
-        return []
+        urls.append(f"{ESPN_SCOREBOARD}?dates={date_str}")
+    for u in urls:
+        try:
+            r = requests.get(u, timeout=15, headers={"Accept": "application/json"})
+            r.raise_for_status()
+            data = r.json()
+            for e in data.get("events", []):
+                eid = e.get("id", "")
+                if eid in seen:
+                    continue
+                seen.add(eid)
+                status = e.get("status", {}).get("type", {})
+                comps = e.get("competitions", [])
+                teams = []
+                for c in comps:
+                    for co in c.get("competitors", []):
+                        team = co.get("team", {})
+                        teams.append({
+                            "name": team.get("displayName", ""),
+                            "abbrev": team.get("abbreviation", ""),
+                            "score": co.get("score", "0"),
+                            "homeAway": co.get("homeAway", ""),
+                        })
+                matches.append({
+                    "espn_id": eid,
+                    "name": e.get("name", ""),
+                    "short_name": e.get("shortName", ""),
+                    "date": e.get("date", ""),
+                    "status": status.get("description", ""),
+                    "status_detail": status.get("shortDetail", ""),
+                    "completed": status.get("completed", False),
+                    "period": status.get("period", 0),
+                    "teams": teams,
+                })
+        except Exception as exc:
+            print(f"ESPN {u} error: {exc}")
+    return matches
 
 def norm_team_name(name):
     """Normalize team names for cross-matching ESPN ↔ Odds API."""
