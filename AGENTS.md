@@ -1,7 +1,7 @@
 # World Cup dashboard FIXED — props.json overwrite + API fallback
 
 ## Workspace Index
-> **2026-06-19 19:20 ET — SGO new key saved +**
+> **2026-06-20 00:30 ET — Full integration pass complete:**
 > - SGO new key saved (validated, rate-limited), Odds API flaky
 
 > **2026-06-19 18:45 ET — World Cup dashboard FIXED (props.json overwrite + API fallback):**
