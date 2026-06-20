@@ -1,3 +1,4 @@
+# 2026-06-20 22:10 ET — Quota Gate Hardwired — WC self-edge now auto-activates when Odds API exhausted
 # World Cup dashboard FIXED — props.json overwrite + API fallback
 
 ## Workspace Index
