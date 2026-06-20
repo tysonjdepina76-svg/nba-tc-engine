@@ -318,15 +318,26 @@ def run(date_str=None):
         og = match_espn_to_odds(em, odds_games)
         if not og:
             print(f"  No Odds API match for: {em['name']}")
+            # Self-edge fallback
+            if not em.get("completed"):
+                self_edge = _generate_self_edge_props(em)
+                if self_edge:
+                    book_label = "self-edge"
+                    print(f"  SELF-EDGE: {len(self_edge)} players, {sum(len(v) for v in self_edge.values())} props for {em['name']}")
+                else:
+                    self_edge = {}
+                    book_label = "none"
+            else:
+                self_edge = {}
+                book_label = "none"
             result = {
                 **em,
-                "player_props": {},
-                "book": "none",
+                "player_props": self_edge,
+                "book": book_label,
                 "fetched_at": now.isoformat(),
             }
             results.append(result)
             continue
-
         # Try books in priority order
         game_id = og["id"]
         props = {}
@@ -344,6 +355,14 @@ def run(date_str=None):
 
         if not props:
             print(f"  No {', '.join(BOOK_PRIORITY)} props for: {em['name']}")
+
+        # Self-edge fallback: generate props from cached player averages + TC math when Odds API is unavailable
+        if not props and not em.get("completed"):
+            self_edge = _generate_self_edge_props(em)
+            if self_edge:
+                props = self_edge
+                book_used = "self-edge"
+                print(f"  SELF-EDGE: {len(props)} players, {sum(len(v) for v in props.values())} props for {em["name"]}")
 
         print(f"  {em['name']}: {len(props)} players, {sum(len(v) for v in props.values())} props [{book_used}]")
 
@@ -399,6 +418,87 @@ def run(date_str=None):
 
     return results
 
+# ═══════════════════════════════════════════════════════════════════
+# SELF-EDGE FALLBACK — when Odds API is exhausted, generate props from cached player averages + TC math
+# ═══════════════════════════════════════════════════════════════════
+
+AVG_CACHE = WORKSPACE / "Daily_Log" / "wc_player_avgs.json"
+WC_TEAM_STRENGTH = {
+    "Brazil": 1.28, "France": 1.25, "Argentina": 1.24, "England": 1.22,
+    "Spain": 1.20, "Germany": 1.18, "Portugal": 1.17, "Netherlands": 1.16,
+    "Italy": 1.15, "Belgium": 1.13, "Croatia": 1.12, "Uruguay": 1.11,
+    "Morocco": 1.10, "Colombia": 1.08, "Mexico": 1.06, "United States": 1.05,
+    "USA": 1.05, "Senegal": 1.04, "Japan": 1.03, "South Korea": 1.02, "Switzerland": 1.02,
+    "Denmark": 1.01, "Austria": 1.00, "Nigeria": 0.98, "Ecuador": 0.97,
+    "Serbia": 0.96, "Iran": 0.95, "Australia": 0.94, "Wales": 0.93,
+    "Poland": 0.92, "Sweden": 0.91, "Egypt": 0.90, "Ivory Coast": 0.89,
+    "Tunisia": 0.87, "Chile": 0.86, "Peru": 0.85, "Ukraine": 0.84,
+    "Türkiye": 0.83, "Turkey": 0.83, "Norway": 0.82, "Scotland": 0.80,
+    "Czech Republic": 0.79, "Cameroon": 0.78, "Ghana": 0.77, "Mali": 0.75,
+    "Burkina Faso": 0.74, "South Africa": 0.73, "DR Congo": 0.72, "Algeria": 0.71,
+    "Paraguay": 0.70, "Canada": 0.69, "Costa Rica": 0.67, "Panama": 0.65,
+    "Jamaica": 0.63, "Venezuela": 0.62, "Bolivia": 0.60, "Honduras": 0.58,
+    "El Salvador": 0.55, "Saudi Arabia": 0.54, "Qatar": 0.53, "UAE": 0.52,
+    "Iraq": 0.50, "Uzbekistan": 0.49, "China": 0.47, "Thailand": 0.45,
+    "New Zealand": 0.44, "Haiti": 0.40, "Curaçao": 0.38, "Trinidad & Tobago": 0.36,
+}
+
+STAT_KEYS = ["goals", "assists", "shots_on_target", "shots", "fouls", "tackles", "cards", "passes"]
+STAT_MAP = {"G": "goals", "A": "assists", "SOT": "shots_on_target", "S": "shots", "FC": "fouls"}
+
+def _load_player_avgs():
+    if not AVG_CACHE.exists():
+        return {}
+    return json.loads(AVG_CACHE.read_text())
+
+def _team_strength(team_name):
+    for k, v in WC_TEAM_STRENGTH.items():
+        if k.lower() in team_name.lower() or team_name.lower() in k.lower():
+            return v
+    return 1.0
+
+def _generate_self_edge_props(match):
+    teams = match.get("teams", [])
+    if len(teams) < 2:
+        return {}
+    away_name = teams[0].get("name", "")
+    home_name = teams[1].get("name", "")
+    away_str = _team_strength(away_name)
+    home_str = _team_strength(home_name)
+    avgs = _load_player_avgs()
+    if not avgs:
+        return {}
+    props = {}
+    for player_name, pdata in avgs.items():
+        if not isinstance(pdata, dict):
+            continue
+#        gp = pdata.get("gp", 1)
+#        if gp < 1:
+            continue
+        is_home_player = False  # neutral — avgs file has no team affiliation
+        opp_strength = 1.0
+        own_strength = 1.0
+        home_adj = 1.0
+        stat_props = {}
+        for skey in STAT_KEYS:
+            raw_key = None
+            for rk, mk in STAT_MAP.items():
+                if mk == skey:
+                    raw_key = rk
+                    break
+            if not raw_key:
+                continue
+            raw_val = pdata.get(raw_key, 0)
+            if raw_val <= 0:
+                continue
+            tc_proj = raw_val * max(0.8, min(1.3, own_strength)) * max(0.7, min(1.3, (1.0 / max(opp_strength, 0.4)) * 0.85)) * home_adj
+            tc_line = round(tc_proj * 2) / 2 if skey in ("goals", "assists", "cards") else max(0.0, round(tc_proj * 0.88 * 10) / 10)
+            stat_props[skey] = {"line": tc_line, "over_price": -110, "edge_pct": round((tc_proj - tc_line) / max(tc_line, 0.01) * 100, 1), "source": "self-edge"}
+        if stat_props:
+            props[player_name] = stat_props
+    return props
+
+_HOME_PLAYER_SET = set()
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="World Cup 2026 Daily Pick Scraper")
     parser.add_argument("--date", default=None, help="Date in YYYYMMDD format (default: today UTC)")
