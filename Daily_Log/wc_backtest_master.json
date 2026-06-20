@@ -1,1390 +1,338 @@
 {
-  "generated_at": "2026-06-16T21:52:18.874162",
+  "generated_at": "2026-06-20T20:44:00-04:00",
   "tournament": "FIFA World Cup 2026",
-  "dates_covered": "2026-06-11 to 2026-06-16",
-  "total_games": 17,
+  "total_games": 33,
+  "dates_covered": "June 11-20, 2026",
   "games": [
     {
-      "espn_id": "760415",
-      "matchup": "South Africa vs Mexico",
-      "date": "2026-06-11T19:00Z",
-      "score": "MEX 2-0 RSA",
-      "home": {
-        "name": "Mexico",
-        "abbreviation": "MEX",
-        "score": "2",
-        "winner": true,
-        "stats": {
-          "appearances": "0",
-          "foulsCommitted": "12",
-          "wonCorners": "3",
-          "goalAssists": "2",
-          "possessionPct": "60.5",
-          "shotAssists": "13",
-          "shotsOnTarget": "4",
-          "totalGoals": "2",
-          "totalShots": "16"
-        },
-        "record": "1-0-0"
-      },
-      "away": {
-        "name": "South Africa",
-        "abbreviation": "RSA",
-        "score": "0",
-        "winner": false,
-        "stats": {
-          "appearances": "0",
-          "foulsCommitted": "11",
-          "wonCorners": "1",
-          "goalAssists": "0",
-          "possessionPct": "39.5",
-          "shotAssists": "2",
-          "shotsOnTarget": "2",
-          "totalGoals": "0",
-          "totalShots": "3"
-        },
-        "record": "0-0-1"
-      },
-      "goals": [
-        {
-          "minute": "9'",
-          "player": "Julián Quiñones",
-          "type": "Goal",
-          "team_id": "203"
-        },
-        {
-          "minute": "67'",
-          "player": "Raúl Jiménez",
-          "type": "Goal - Header",
-          "team_id": "203"
-        }
-      ],
-      "cards": [
-        {
-          "minute": "17'",
-          "player": "Teboho Mokoena",
-          "type": "Yellow Card",
-          "team_id": "467"
-        },
-        {
-          "minute": "23'",
-          "player": "Brian Gutiérrez",
-          "type": "Yellow Card",
-          "team_id": "203"
-        },
-        {
-          "minute": "49'",
-          "player": "Sphephelo Sithole",
-          "type": "Red Card",
-          "team_id": "467"
-        },
-        {
-          "minute": "74'",
-          "player": "Nkosinathi Sibisi",
-          "type": "Yellow Card",
-          "team_id": "467"
-        },
-        {
-          "minute": "84'",
-          "player": "Themba Zwane",
-          "type": "Red Card",
-          "team_id": "467"
-        },
-        {
-          "minute": "90'+2'",
-          "player": "César Montes",
-          "type": "Red Card",
-          "team_id": "203"
-        }
-      ],
-      "headline": [
-        "Mexico kick off WC with win over SA ft. 3 red cards"
-      ]
+      "event_id": "",
+      "away": "",
+      "home": "",
+      "away_score": "1",
+      "home_score": "2",
+      "score": "1-2",
+      "players": 0,
+      "file": "760414_Czechia_South_Korea"
     },
     {
-      "espn_id": "760414",
-      "matchup": "Czechia vs South Korea",
-      "date": "2026-06-12T02:00Z",
-      "score": "KOR 2-1 CZE",
-      "home": {
-        "name": "South Korea",
-        "abbreviation": "KOR",
-        "score": "2",
-        "winner": true,
-        "stats": {
-          "appearances": "0",
-          "foulsCommitted": "9",
-          "wonCorners": "4",
-          "goalAssists": "2",
-          "possessionPct": "61.5",
-          "shotAssists": "14",
-          "shotsOnTarget": "6",
-          "totalGoals": "2",
-          "totalShots": "15"
-        },
-        "record": "1-0-0"
-      },
-      "away": {
-        "name": "Czechia",
-        "abbreviation": "CZE",
-        "score": "1",
-        "winner": false,
-        "stats": {
-          "appearances": "0",
-          "foulsCommitted": "16",
-          "wonCorners": "5",
-          "goalAssists": "1",
-          "possessionPct": "38.5",
-          "shotAssists": "3",
-          "shotsOnTarget": "4",
-          "totalGoals": "1",
-          "totalShots": "7"
-        },
-        "record": "0-0-1"
-      },
-      "goals": [
-        {
-          "minute": "59'",
-          "player": "Ladislav Krejcí",
-          "type": "Goal - Header",
-          "team_id": "450"
-        },
-        {
-          "minute": "67'",
-          "player": "Hwang In-Beom",
-          "type": "Goal",
-          "team_id": "451"
-        },
-        {
-          "minute": "80'",
-          "player": "Oh Hyeon-Gyu",
-          "type": "Goal",
-          "team_id": "451"
-        }
-      ],
-      "cards": [
-        {
-          "minute": "90'+6'",
-          "player": "Lee Gi-Hyuk",
-          "type": "Yellow Card",
-          "team_id": "451"
-        }
-      ],
-      "headline": [
-        "Oh, Hwang goals see South Korea edge Czechia in thriller"
-      ]
+      "event_id": "",
+      "away": "",
+      "home": "",
+      "away_score": "0",
+      "home_score": "2",
+      "score": "0-2",
+      "players": 0,
+      "file": "760415_South_Africa_Mexico"
     },
     {
-      "espn_id": "760416",
-      "matchup": "Bosnia-Herzegovina vs Canada",
-      "date": "2026-06-12T19:00Z",
-      "score": "CAN 1-1 BIH",
-      "home": {
-        "name": "Canada",
-        "abbreviation": "CAN",
-        "score": "1",
-        "winner": false,
-        "stats": {
-          "appearances": "0",
-          "foulsCommitted": "10",
-          "wonCorners": "9",
-          "goalAssists": "1",
-          "possessionPct": "61.1",
-          "shotAssists": "12",
-          "shotsOnTarget": "4",
-          "totalGoals": "1",
-          "totalShots": "13"
-        },
-        "record": "0-1-0"
-      },
-      "away": {
-        "name": "Bosnia-Herzegovina",
-        "abbreviation": "BIH",
-        "score": "1",
-        "winner": false,
-        "stats": {
-          "appearances": "0",
-          "foulsCommitted": "20",
-          "wonCorners": "4",
-          "goalAssists": "1",
-          "possessionPct": "38.9",
-          "shotAssists": "5",
-          "shotsOnTarget": "3",
-          "totalGoals": "1",
-          "totalShots": "8"
-        },
-        "record": "0-1-0"
-      },
-      "goals": [
-        {
-          "minute": "21'",
-          "player": "Jovo Lukic",
-          "type": "Goal - Header",
-          "team_id": "452"
-        },
-        {
-          "minute": "78'",
-          "player": "Cyle Larin",
-          "type": "Goal",
-          "team_id": "206"
-        }
-      ],
-      "cards": [
-        {
-          "minute": "11'",
-          "player": "Alistair Johnston",
-          "type": "Yellow Card",
-          "team_id": "206"
-        },
-        {
-          "minute": "45'",
-          "player": "Ermedin Demirovic",
-          "type": "Yellow Card",
-          "team_id": "452"
-        },
-        {
-          "minute": "45'+1'",
-          "player": "Jovo Lukic",
-          "type": "Yellow Card",
-          "team_id": "452"
-        },
-        {
-          "minute": "53'",
-          "player": "Luc de Fougerolles",
-          "type": "Yellow Card",
-          "team_id": "206"
-        },
-        {
-          "minute": "90'+3'",
-          "player": "Nikola Katic",
-          "type": "Yellow Card",
-          "team_id": "452"
-        }
-      ],
-      "headline": [
-        "Larin goal helps Canada earn first WC point ever"
-      ]
+      "event_id": "",
+      "away": "",
+      "home": "",
+      "away_score": "1",
+      "home_score": "1",
+      "score": "1-1",
+      "players": 0,
+      "file": "760416_Bosnia-Herzegovina_Canada"
     },
     {
-      "espn_id": "760417",
-      "matchup": "Paraguay vs United States",
-      "date": "2026-06-13T01:00Z",
-      "score": "USA 4-1 PAR",
-      "home": {
-        "name": "United States",
-        "abbreviation": "USA",
-        "score": "4",
-        "winner": true,
-        "stats": {
-          "appearances": "0",
-          "foulsCommitted": "13",
-          "wonCorners": "3",
-          "goalAssists": "3",
-          "possessionPct": "65.3",
-          "shotAssists": "12",
-          "shotsOnTarget": "6",
-          "totalGoals": "4",
-          "totalShots": "16"
-        },
-        "record": "1-0-0"
-      },
-      "away": {
-        "name": "Paraguay",
-        "abbreviation": "PAR",
-        "score": "1",
-        "winner": false,
-        "stats": {
-          "appearances": "0",
-          "foulsCommitted": "17",
-          "wonCorners": "1",
-          "goalAssists": "1",
-          "possessionPct": "34.7",
-          "shotAssists": "7",
-          "shotsOnTarget": "1",
-          "totalGoals": "1",
-          "totalShots": "9"
-        },
-        "record": "0-0-1"
-      },
-      "goals": [
-        {
-          "minute": "7'",
-          "player": "Damián Bobadilla",
-          "type": "Own Goal",
-          "team_id": "660"
-        },
-        {
-          "minute": "31'",
-          "player": "Folarin Balogun",
-          "type": "Goal",
-          "team_id": "660"
-        },
-        {
-          "minute": "45'+5'",
-          "player": "Folarin Balogun",
-          "type": "Goal",
-          "team_id": "660"
-        },
-        {
-          "minute": "73'",
-          "player": "Maurício",
-          "type": "Goal",
-          "team_id": "210"
-        },
-        {
-          "minute": "90'+8'",
-          "player": "Giovanni Reyna",
-          "type": "Goal",
-          "team_id": "660"
-        }
-      ],
-      "cards": [
-        {
-          "minute": "10'",
-          "player": "Juan Jose Cáceres",
-          "type": "Yellow Card",
-          "team_id": "210"
-        },
-        {
-          "minute": "53'",
-          "player": "Miguel Almirón",
-          "type": "Yellow Card",
-          "team_id": "210"
-        },
-        {
-          "minute": "59'",
-          "player": "Tyler Adams",
-          "type": "Yellow Card",
-          "team_id": "660"
-        },
-        {
-          "minute": "79'",
-          "player": "Diego Gómez",
-          "type": "Yellow Card",
-          "team_id": "210"
-        },
-        {
-          "minute": "88'",
-          "player": "Alex Arce",
-          "type": "Yellow Card",
-          "team_id": "210"
-        },
-        {
-          "minute": "90'+3'",
-          "player": "Júnior Alonso",
-          "type": "Yellow Card",
-          "team_id": "210"
-        }
-      ],
-      "headline": [
-        "U.S. beats Paraguay in opener on Balogun double"
-      ]
+      "event_id": "",
+      "away": "",
+      "home": "",
+      "away_score": "1",
+      "home_score": "4",
+      "score": "1-4",
+      "players": 0,
+      "file": "760417_Paraguay_United_States"
     },
     {
-      "espn_id": "760420",
-      "matchup": "Switzerland vs Qatar",
-      "date": "2026-06-13T19:00Z",
-      "score": "QAT 1-1 SUI",
-      "home": {
-        "name": "Qatar",
-        "abbreviation": "QAT",
-        "score": "1",
-        "winner": false,
-        "stats": {
-          "appearances": "0",
-          "foulsCommitted": "12",
-          "wonCorners": "3",
-          "goalAssists": "1",
-          "possessionPct": "32",
-          "shotAssists": "4",
-          "shotsOnTarget": "3",
-          "totalGoals": "1",
-          "totalShots": "6"
-        },
-        "record": "0-1-0"
-      },
-      "away": {
-        "name": "Switzerland",
-        "abbreviation": "SUI",
-        "score": "1",
-        "winner": false,
-        "stats": {
-          "appearances": "0",
-          "foulsCommitted": "11",
-          "wonCorners": "10",
-          "goalAssists": "0",
-          "possessionPct": "68",
-          "shotAssists": "24",
-          "shotsOnTarget": "7",
-          "totalGoals": "1",
-          "totalShots": "26"
-        },
-        "record": "0-1-0"
-      },
-      "goals": [
-        {
-          "minute": "90'+4'",
-          "player": "Miro Muheim",
-          "type": "Own Goal",
-          "team_id": "4398"
-        }
-      ],
-      "cards": [
-        {
-          "minute": "16'",
-          "player": "Mahmoud Abunada",
-          "type": "Yellow Card",
-          "team_id": "4398"
-        },
-        {
-          "minute": "23'",
-          "player": "Jassem Gaber",
-          "type": "Yellow Card",
-          "team_id": "4398"
-        },
-        {
-          "minute": "42'",
-          "player": "Denis Zakaria",
-          "type": "Yellow Card",
-          "team_id": "475"
-        }
-      ],
-      "headline": [
-        "Qatar stun Switzerland to tie, snatch 1st WC point"
-      ]
+      "event_id": "",
+      "away": "",
+      "home": "",
+      "away_score": "1",
+      "home_score": "0",
+      "score": "1-0",
+      "players": 0,
+      "file": "760418_Scotland_Haiti"
     },
     {
-      "espn_id": "760419",
-      "matchup": "Morocco vs Brazil",
-      "date": "2026-06-13T22:00Z",
-      "score": "BRA 1-1 MAR",
-      "home": {
-        "name": "Brazil",
-        "abbreviation": "BRA",
-        "score": "1",
-        "winner": false,
-        "stats": {
-          "appearances": "0",
-          "foulsCommitted": "16",
-          "wonCorners": "6",
-          "goalAssists": "1",
-          "possessionPct": "51.4",
-          "shotAssists": "10",
-          "shotsOnTarget": "5",
-          "totalGoals": "1",
-          "totalShots": "12"
-        },
-        "record": "0-1-0"
-      },
-      "away": {
-        "name": "Morocco",
-        "abbreviation": "MAR",
-        "score": "1",
-        "winner": false,
-        "stats": {
-          "appearances": "0",
-          "foulsCommitted": "14",
-          "wonCorners": "2",
-          "goalAssists": "1",
-          "possessionPct": "48.6",
-          "shotAssists": "10",
-          "shotsOnTarget": "3",
-          "totalGoals": "1",
-          "totalShots": "14"
-        },
-        "record": "0-1-0"
-      },
-      "goals": [
-        {
-          "minute": "21'",
-          "player": "Ismael Saibari",
-          "type": "Goal",
-          "team_id": "2869"
-        },
-        {
-          "minute": "32'",
-          "player": "Vinícius Júnior",
-          "type": "Goal",
-          "team_id": "205"
-        }
-      ],
-      "cards": [
-        {
-          "minute": "37'",
-          "player": "Casemiro",
-          "type": "Yellow Card",
-          "team_id": "205"
-        },
-        {
-          "minute": "43'",
-          "player": "Roger Ibañez",
-          "type": "Yellow Card",
-          "team_id": "205"
-        }
-      ],
-      "headline": [
-        "Vini Jr scores but Brazil held by impressive Morocco"
-      ]
+      "event_id": "",
+      "away": "",
+      "home": "",
+      "away_score": "1",
+      "home_score": "1",
+      "score": "1-1",
+      "players": 0,
+      "file": "760419_Morocco_Brazil"
     },
     {
-      "espn_id": "760418",
-      "matchup": "Scotland vs Haiti",
-      "date": "2026-06-14T01:00Z",
-      "score": "HAI 0-1 SCO",
-      "home": {
-        "name": "Haiti",
-        "abbreviation": "HAI",
-        "score": "0",
-        "winner": false,
-        "stats": {
-          "appearances": "0",
-          "foulsCommitted": "23",
-          "wonCorners": "4",
-          "goalAssists": "0",
-          "possessionPct": "53.7",
-          "shotAssists": "11",
-          "shotsOnTarget": "2",
-          "totalGoals": "0",
-          "totalShots": "15"
-        },
-        "record": "0-0-1"
-      },
-      "away": {
-        "name": "Scotland",
-        "abbreviation": "SCO",
-        "score": "1",
-        "winner": true,
-        "stats": {
-          "appearances": "0",
-          "foulsCommitted": "21",
-          "wonCorners": "3",
-          "goalAssists": "0",
-          "possessionPct": "46.3",
-          "shotAssists": "7",
-          "shotsOnTarget": "2",
-          "totalGoals": "1",
-          "totalShots": "9"
-        },
-        "record": "1-0-0"
-      },
-      "goals": [
-        {
-          "minute": "28'",
-          "player": "John McGinn",
-          "type": "Goal",
-          "team_id": "580"
-        }
-      ],
-      "cards": [
-        {
-          "minute": "39'",
-          "player": "Jean-Ricner Bellegarde",
-          "type": "Yellow Card",
-          "team_id": "2654"
-        },
-        {
-          "minute": "46'",
-          "player": "Aaron Hickey",
-          "type": "Yellow Card",
-          "team_id": "580"
-        },
-        {
-          "minute": "90'+1'",
-          "player": "Findlay Curtis",
-          "type": "Yellow Card",
-          "team_id": "580"
-        },
-        {
-          "minute": "90'+5'",
-          "player": "Kenny McLean",
-          "type": "Yellow Card",
-          "team_id": "580"
-        }
-      ],
-      "headline": [
-        "Scotland beat Haiti for 1st WC win in 36 years"
-      ]
+      "event_id": "",
+      "away": "",
+      "home": "",
+      "away_score": "1",
+      "home_score": "1",
+      "score": "1-1",
+      "players": 0,
+      "file": "760420_Switzerland_Qatar"
     },
     {
-      "espn_id": "760421",
-      "matchup": "Türkiye vs Australia",
-      "date": "2026-06-14T04:00Z",
-      "score": "AUS 2-0 TUR",
-      "home": {
-        "name": "Australia",
-        "abbreviation": "AUS",
-        "score": "2",
-        "winner": true,
-        "stats": {
-          "appearances": "0",
-          "foulsCommitted": "12",
-          "wonCorners": "5",
-          "goalAssists": "1",
-          "possessionPct": "28.4",
-          "shotAssists": "8",
-          "shotsOnTarget": "4",
-          "totalGoals": "2",
-          "totalShots": "9"
-        },
-        "record": "1-0-0"
-      },
-      "away": {
-        "name": "Türkiye",
-        "abbreviation": "TUR",
-        "score": "0",
-        "winner": false,
-        "stats": {
-          "appearances": "0",
-          "foulsCommitted": "4",
-          "wonCorners": "8",
-          "goalAssists": "0",
-          "possessionPct": "71.6",
-          "shotAssists": "20",
-          "shotsOnTarget": "8",
-          "totalGoals": "0",
-          "totalShots": "30"
-        },
-        "record": "0-0-1"
-      },
-      "goals": [
-        {
-          "minute": "27'",
-          "player": "Nestory Irankunda",
-          "type": "Goal",
-          "team_id": "628"
-        },
-        {
-          "minute": "75'",
-          "player": "Connor Metcalfe",
-          "type": "Goal",
-          "team_id": "628"
-        }
-      ],
-      "cards": [
-        {
-          "minute": "86'",
-          "player": "Yunus Akgün",
-          "type": "Yellow Card",
-          "team_id": "465"
-        }
-      ],
-      "headline": [
-        "Australia shock Türkiye to go level with USMNT"
-      ]
+      "event_id": "",
+      "away": "",
+      "home": "",
+      "away_score": "0",
+      "home_score": "2",
+      "score": "0-2",
+      "players": 0,
+      "file": "760421_T\u00fcrkiye_Australia"
     },
     {
-      "espn_id": "760422",
-      "matchup": "Curaçao vs Germany",
-      "date": "2026-06-14T17:00Z",
-      "score": "GER 7-1 CUW",
-      "home": {
-        "name": "Germany",
-        "abbreviation": "GER",
-        "score": "7",
-        "winner": true,
-        "stats": {
-          "appearances": "0",
-          "foulsCommitted": "18",
-          "wonCorners": "8",
-          "goalAssists": "6",
-          "possessionPct": "64.6",
-          "shotAssists": "21",
-          "shotsOnTarget": "12",
-          "totalGoals": "7",
-          "totalShots": "26"
-        },
-        "record": "1-0-0"
-      },
-      "away": {
-        "name": "Curaçao",
-        "abbreviation": "CUW",
-        "score": "1",
-        "winner": false,
-        "stats": {
-          "appearances": "0",
-          "foulsCommitted": "11",
-          "wonCorners": "1",
-          "goalAssists": "0",
-          "possessionPct": "35.4",
-          "shotAssists": "6",
-          "shotsOnTarget": "2",
-          "totalGoals": "1",
-          "totalShots": "8"
-        },
-        "record": "0-0-1"
-      },
-      "goals": [
-        {
-          "minute": "6'",
-          "player": "Felix Nmecha",
-          "type": "Goal",
-          "team_id": "481"
-        },
-        {
-          "minute": "21'",
-          "player": "Livano Comenencia",
-          "type": "Goal",
-          "team_id": "11678"
-        },
-        {
-          "minute": "38'",
-          "player": "Nico Schlotterbeck",
-          "type": "Goal - Header",
-          "team_id": "481"
-        },
-        {
-          "minute": "47'",
-          "player": "Jamal Musiala",
-          "type": "Goal",
-          "team_id": "481"
-        },
-        {
-          "minute": "68'",
-          "player": "Nathaniel Brown",
-          "type": "Goal - Volley",
-          "team_id": "481"
-        },
-        {
-          "minute": "78'",
-          "player": "Deniz Undav",
-          "type": "Goal",
-          "team_id": "481"
-        },
-        {
-          "minute": "88'",
-          "player": "Kai Havertz",
-          "type": "Goal",
-          "team_id": "481"
-        }
-      ],
-      "cards": [],
-      "headline": [
-        "Havertz double leads Germany in WC opening rout"
-      ]
+      "event_id": "",
+      "away": "",
+      "home": "",
+      "away_score": "1",
+      "home_score": "7",
+      "score": "1-7",
+      "players": 0,
+      "file": "760422_Cura\u00e7ao_Germany"
     },
     {
-      "espn_id": "760425",
-      "matchup": "Japan vs Netherlands",
-      "date": "2026-06-14T20:00Z",
-      "score": "NED 2-2 JPN",
-      "home": {
-        "name": "Netherlands",
-        "abbreviation": "NED",
-        "score": "2",
-        "winner": false,
-        "stats": {
-          "appearances": "0",
-          "foulsCommitted": "7",
-          "wonCorners": "5",
-          "goalAssists": "2",
-          "possessionPct": "59.8",
-          "shotAssists": "10",
-          "shotsOnTarget": "6",
-          "totalGoals": "2",
-          "totalShots": "10"
-        },
-        "record": "0-1-0"
-      },
-      "away": {
-        "name": "Japan",
-        "abbreviation": "JPN",
-        "score": "2",
-        "winner": false,
-        "stats": {
-          "appearances": "0",
-          "foulsCommitted": "7",
-          "wonCorners": "4",
-          "goalAssists": "2",
-          "possessionPct": "40.2",
-          "shotAssists": "10",
-          "shotsOnTarget": "3",
-          "totalGoals": "2",
-          "totalShots": "10"
-        },
-        "record": "0-1-0"
-      },
-      "goals": [
-        {
-          "minute": "51'",
-          "player": "Virgil van Dijk",
-          "type": "Goal - Header",
-          "team_id": "449"
-        },
-        {
-          "minute": "57'",
-          "player": "Keito Nakamura",
-          "type": "Goal",
-          "team_id": "627"
-        },
-        {
-          "minute": "64'",
-          "player": "Crysencio Summerville",
-          "type": "Goal",
-          "team_id": "449"
-        },
-        {
-          "minute": "89'",
-          "player": "Daichi Kamada",
-          "type": "Goal - Header",
-          "team_id": "627"
-        }
-      ],
-      "cards": [
-        {
-          "minute": "61'",
-          "player": "Crysencio Summerville",
-          "type": "Yellow Card",
-          "team_id": "449"
-        },
-        {
-          "minute": "83'",
-          "player": "Memphis Depay",
-          "type": "Yellow Card",
-          "team_id": "449"
-        },
-        {
-          "minute": "90'+1'",
-          "player": "Micky van de Ven",
-          "type": "Yellow Card",
-          "team_id": "449"
-        }
-      ],
-      "headline": [
-        "Kamada scores late equaliser as Japan hold Netherlands to draw"
-      ]
+      "event_id": "",
+      "away": "",
+      "home": "",
+      "away_score": "0",
+      "home_score": "1",
+      "score": "0-1",
+      "players": 0,
+      "file": "760423_Ecuador_Ivory_Coast"
     },
     {
-      "espn_id": "760423",
-      "matchup": "Ecuador vs Ivory Coast",
-      "date": "2026-06-14T23:00Z",
-      "score": "CIV 1-0 ECU",
-      "home": {
-        "name": "Ivory Coast",
-        "abbreviation": "CIV",
-        "score": "1",
-        "winner": true,
-        "stats": {
-          "appearances": "0",
-          "foulsCommitted": "10",
-          "wonCorners": "3",
-          "goalAssists": "1",
-          "possessionPct": "48.4",
-          "shotAssists": "12",
-          "shotsOnTarget": "4",
-          "totalGoals": "1",
-          "totalShots": "15"
-        },
-        "record": "1-0-0"
-      },
-      "away": {
-        "name": "Ecuador",
-        "abbreviation": "ECU",
-        "score": "0",
-        "winner": false,
-        "stats": {
-          "appearances": "0",
-          "foulsCommitted": "13",
-          "wonCorners": "6",
-          "goalAssists": "0",
-          "possessionPct": "51.6",
-          "shotAssists": "9",
-          "shotsOnTarget": "1",
-          "totalGoals": "0",
-          "totalShots": "12"
-        },
-        "record": "0-0-1"
-      },
-      "goals": [
-        {
-          "minute": "90'",
-          "player": "Amad Diallo",
-          "type": "Goal",
-          "team_id": "4789"
-        }
-      ],
-      "cards": [
-        {
-          "minute": "28'",
-          "player": "Seko Fofana",
-          "type": "Yellow Card",
-          "team_id": "4789"
-        },
-        {
-          "minute": "38'",
-          "player": "Franck Kessié",
-          "type": "Yellow Card",
-          "team_id": "4789"
-        },
-        {
-          "minute": "40'",
-          "player": "Guela Doué",
-          "type": "Yellow Card",
-          "team_id": "4789"
-        },
-        {
-          "minute": "73'",
-          "player": "Jackson Porozo",
-          "type": "Yellow Card",
-          "team_id": "209"
-        }
-      ],
-      "headline": [
-        "Utd's Amad scores late as Ivory Coast top Ecuador"
-      ]
+      "event_id": "",
+      "away": "",
+      "home": "",
+      "away_score": "1",
+      "home_score": "5",
+      "score": "1-5",
+      "players": 0,
+      "file": "760424_Tunisia_Sweden"
     },
     {
-      "espn_id": "760424",
-      "matchup": "Tunisia vs Sweden",
-      "date": "2026-06-15T02:00Z",
-      "score": "SWE 5-1 TUN",
-      "home": {
-        "name": "Sweden",
-        "abbreviation": "SWE",
-        "score": "5",
-        "winner": true,
-        "stats": {
-          "appearances": "0",
-          "foulsCommitted": "10",
-          "wonCorners": "4",
-          "goalAssists": "4",
-          "possessionPct": "48.7",
-          "shotAssists": "11",
-          "shotsOnTarget": "7",
-          "totalGoals": "5",
-          "totalShots": "13"
-        },
-        "record": "1-0-0"
-      },
-      "away": {
-        "name": "Tunisia",
-        "abbreviation": "TUN",
-        "score": "1",
-        "winner": false,
-        "stats": {
-          "appearances": "0",
-          "foulsCommitted": "8",
-          "wonCorners": "2",
-          "goalAssists": "1",
-          "possessionPct": "51.3",
-          "shotAssists": "4",
-          "shotsOnTarget": "2",
-          "totalGoals": "1",
-          "totalShots": "6"
-        },
-        "record": "0-0-1"
-      },
-      "goals": [
-        {
-          "minute": "7'",
-          "player": "Yasin Ayari",
-          "type": "Goal",
-          "team_id": "466"
-        },
-        {
-          "minute": "30'",
-          "player": "Alexander Isak",
-          "type": "Goal",
-          "team_id": "466"
-        },
-        {
-          "minute": "43'",
-          "player": "Omar Rekik",
-          "type": "Goal - Header",
-          "team_id": "659"
-        },
-        {
-          "minute": "59'",
-          "player": "Viktor Gyökeres",
-          "type": "Goal",
-          "team_id": "466"
-        },
-        {
-          "minute": "84'",
-          "player": "Mattias Svanberg",
-          "type": "Goal",
-          "team_id": "466"
-        },
-        {
-          "minute": "90'+6'",
-          "player": "Yasin Ayari",
-          "type": "Goal",
-          "team_id": "466"
-        }
-      ],
-      "cards": [
-        {
-          "minute": "54'",
-          "player": "Rani Khedira",
-          "type": "Yellow Card",
-          "team_id": "659"
-        }
-      ],
-      "headline": [
-        "Ayari scores twice as Sweden routs Tunisia 5-1"
-      ]
+      "event_id": "",
+      "away": "",
+      "home": "",
+      "away_score": "2",
+      "home_score": "2",
+      "score": "2-2",
+      "players": 0,
+      "file": "760425_Japan_Netherlands"
     },
     {
-      "espn_id": "760428",
-      "matchup": "Cape Verde vs Spain",
-      "date": "2026-06-15T16:00Z",
-      "score": "ESP 0-0 CPV",
-      "home": {
-        "name": "Spain",
-        "abbreviation": "ESP",
-        "score": "0",
-        "winner": false,
-        "stats": {
-          "appearances": "0",
-          "foulsCommitted": "10",
-          "wonCorners": "11",
-          "goalAssists": "0",
-          "possessionPct": "74.3",
-          "shotAssists": "19",
-          "shotsOnTarget": "7",
-          "totalGoals": "0",
-          "totalShots": "27"
-        },
-        "record": "0-1-0"
-      },
-      "away": {
-        "name": "Cape Verde",
-        "abbreviation": "CPV",
-        "score": "0",
-        "winner": false,
-        "stats": {
-          "appearances": "0",
-          "foulsCommitted": "1",
-          "wonCorners": "1",
-          "goalAssists": "0",
-          "possessionPct": "25.7",
-          "shotAssists": "4",
-          "shotsOnTarget": "1",
-          "totalGoals": "0",
-          "totalShots": "6"
-        },
-        "record": "0-1-0"
-      },
-      "goals": [],
-      "cards": [
-        {
-          "minute": "16'",
-          "player": "Sidny Lopes Cabral",
-          "type": "Yellow Card",
-          "team_id": "2597"
-        },
-        {
-          "minute": "90'+3'",
-          "player": "Pedri",
-          "type": "Yellow Card",
-          "team_id": "164"
-        }
-      ],
-      "headline": [
-        "Spain shocked by Cape Verde in World Cup opener"
-      ]
+      "event_id": "",
+      "away": "",
+      "home": "",
+      "away_score": "1",
+      "home_score": "1",
+      "score": "1-1",
+      "players": 0,
+      "file": "760426_Egypt_Belgium"
     },
     {
-      "espn_id": "760426",
-      "matchup": "Egypt vs Belgium",
-      "date": "2026-06-15T19:00Z",
-      "score": "BEL 1-1 EGY",
-      "home": {
-        "name": "Belgium",
-        "abbreviation": "BEL",
-        "score": "1",
-        "winner": false,
-        "stats": {
-          "appearances": "0",
-          "foulsCommitted": "15",
-          "wonCorners": "2",
-          "goalAssists": "0",
-          "possessionPct": "53.6",
-          "shotAssists": "13",
-          "shotsOnTarget": "3",
-          "totalGoals": "1",
-          "totalShots": "15"
-        },
-        "record": "0-1-0"
-      },
-      "away": {
-        "name": "Egypt",
-        "abbreviation": "EGY",
-        "score": "1",
-        "winner": false,
-        "stats": {
-          "appearances": "0",
-          "foulsCommitted": "15",
-          "wonCorners": "7",
-          "goalAssists": "1",
-          "possessionPct": "46.4",
-          "shotAssists": "10",
-          "shotsOnTarget": "3",
-          "totalGoals": "1",
-          "totalShots": "14"
-        },
-        "record": "0-1-0"
-      },
-      "goals": [
-        {
-          "minute": "20'",
-          "player": "Emam Ashour",
-          "type": "Goal",
-          "team_id": "2620"
-        },
-        {
-          "minute": "66'",
-          "player": "Mohamed Hany",
-          "type": "Own Goal",
-          "team_id": "459"
-        }
-      ],
-      "cards": [
-        {
-          "minute": "13'",
-          "player": "Marawan Attia",
-          "type": "Yellow Card",
-          "team_id": "2620"
-        },
-        {
-          "minute": "14'",
-          "player": "Timothy Castagne",
-          "type": "Yellow Card",
-          "team_id": "459"
-        },
-        {
-          "minute": "34'",
-          "player": "Ahmed Fatouh",
-          "type": "Yellow Card",
-          "team_id": "2620"
-        },
-        {
-          "minute": "75'",
-          "player": "Maxim De Cuyper",
-          "type": "Yellow Card",
-          "team_id": "459"
-        }
-      ],
-      "headline": [
-        "Egypt, Belgium tie as Lukaku makes instant impact"
-      ]
+      "event_id": "",
+      "away": "",
+      "home": "",
+      "away_score": "2",
+      "home_score": "2",
+      "score": "2-2",
+      "players": 0,
+      "file": "760427_New_Zealand_Iran"
     },
     {
-      "espn_id": "760429",
-      "matchup": "Uruguay vs Saudi Arabia",
-      "date": "2026-06-15T22:00Z",
-      "score": "KSA 1-1 URU",
-      "home": {
-        "name": "Saudi Arabia",
-        "abbreviation": "KSA",
-        "score": "1",
-        "winner": false,
-        "stats": {
-          "appearances": "0",
-          "foulsCommitted": "11",
-          "wonCorners": "4",
-          "goalAssists": "0",
-          "possessionPct": "33.2",
-          "shotAssists": "1",
-          "shotsOnTarget": "3",
-          "totalGoals": "1",
-          "totalShots": "7"
-        },
-        "record": "0-1-0"
-      },
-      "away": {
-        "name": "Uruguay",
-        "abbreviation": "URU",
-        "score": "1",
-        "winner": false,
-        "stats": {
-          "appearances": "0",
-          "foulsCommitted": "6",
-          "wonCorners": "14",
-          "goalAssists": "0",
-          "possessionPct": "66.8",
-          "shotAssists": "19",
-          "shotsOnTarget": "10",
-          "totalGoals": "1",
-          "totalShots": "27"
-        },
-        "record": "0-1-0"
-      },
-      "goals": [
-        {
-          "minute": "41'",
-          "player": "Abdulelah Al-Amri",
-          "type": "Goal",
-          "team_id": "655"
-        },
-        {
-          "minute": "80'",
-          "player": "Maxi Araújo",
-          "type": "Goal - Volley",
-          "team_id": "212"
-        }
-      ],
-      "cards": [
-        {
-          "minute": "44'",
-          "player": "Abdulelah Al-Amri",
-          "type": "Yellow Card",
-          "team_id": "655"
-        }
-      ],
-      "headline": [
-        "Bielsa's Uruguay rescue point against dogged Saudi"
-      ]
+      "event_id": "",
+      "away": "",
+      "home": "",
+      "away_score": "0",
+      "home_score": "0",
+      "score": "0-0",
+      "players": 0,
+      "file": "760428_Cape_Verde_Spain"
     },
     {
-      "espn_id": "760427",
-      "matchup": "New Zealand vs Iran",
-      "date": "2026-06-16T01:00Z",
-      "score": "IRN 2-2 NZL",
-      "home": {
-        "name": "Iran",
-        "abbreviation": "IRN",
-        "score": "2",
-        "winner": false,
-        "stats": {
-          "appearances": "0",
-          "foulsCommitted": "10",
-          "wonCorners": "4",
-          "goalAssists": "1",
-          "possessionPct": "48.5",
-          "shotAssists": "11",
-          "shotsOnTarget": "4",
-          "totalGoals": "2",
-          "totalShots": "17"
-        },
-        "record": "0-1-0"
-      },
-      "away": {
-        "name": "New Zealand",
-        "abbreviation": "NZL",
-        "score": "2",
-        "winner": false,
-        "stats": {
-          "appearances": "0",
-          "foulsCommitted": "8",
-          "wonCorners": "1",
-          "goalAssists": "2",
-          "possessionPct": "51.5",
-          "shotAssists": "9",
-          "shotsOnTarget": "8",
-          "totalGoals": "2",
-          "totalShots": "14"
-        },
-        "record": "0-1-0"
-      },
-      "goals": [
-        {
-          "minute": "7'",
-          "player": "Elijah Just",
-          "type": "Goal - Volley",
-          "team_id": "2666"
-        },
-        {
-          "minute": "32'",
-          "player": "Ramin Rezaeian",
-          "type": "Goal",
-          "team_id": "469"
-        },
-        {
-          "minute": "54'",
-          "player": "Elijah Just",
-          "type": "Goal",
-          "team_id": "2666"
-        },
-        {
-          "minute": "64'",
-          "player": "Mohammad Mohebbi",
-          "type": "Goal - Header",
-          "team_id": "469"
-        }
-      ],
-      "cards": [
-        {
-          "minute": "89'",
-          "player": "Ehsan Hajsafi",
-          "type": "Yellow Card",
-          "team_id": "469"
-        }
-      ],
-      "headline": [
-        "Iran and New Zealand play out thrilling 2-2 draw"
-      ]
+      "event_id": "",
+      "away": "",
+      "home": "",
+      "away_score": "1",
+      "home_score": "1",
+      "score": "1-1",
+      "players": 0,
+      "file": "760429_Uruguay_Saudi_Arabia"
     },
     {
-      "espn_id": "760432",
-      "matchup": "Senegal vs France",
-      "date": "2026-06-16T19:00Z",
-      "score": "FRA 3-1 SEN",
-      "home": {
-        "name": "France",
-        "abbreviation": "FRA",
-        "score": "3",
-        "winner": true,
-        "stats": {
-          "appearances": "0",
-          "foulsCommitted": "5",
-          "wonCorners": "6",
-          "goalAssists": "2",
-          "possessionPct": "53.7",
-          "shotAssists": "9",
-          "shotsOnTarget": "8",
-          "totalGoals": "3",
-          "totalShots": "11"
-        },
-        "record": "1-0-0"
-      },
-      "away": {
-        "name": "Senegal",
-        "abbreviation": "SEN",
-        "score": "1",
-        "winner": false,
-        "stats": {
-          "appearances": "0",
-          "foulsCommitted": "9",
-          "wonCorners": "4",
-          "goalAssists": "1",
-          "possessionPct": "46.3",
-          "shotAssists": "5",
-          "shotsOnTarget": "2",
-          "totalGoals": "1",
-          "totalShots": "6"
-        },
-        "record": "0-0-1"
-      },
-      "goals": [
-        {
-          "minute": "66'",
-          "player": "Kylian Mbappé",
-          "type": "Goal",
-          "team_id": "478"
-        },
-        {
-          "minute": "82'",
-          "player": "Bradley Barcola",
-          "type": "Goal",
-          "team_id": "478"
-        },
-        {
-          "minute": "90'+5'",
-          "player": "Ibrahim Mbaye",
-          "type": "Goal",
-          "team_id": "654"
-        },
-        {
-          "minute": "90'+6'",
-          "player": "Kylian Mbappé",
-          "type": "Goal",
-          "team_id": "478"
-        }
-      ],
-      "cards": [],
-      "headline": [
-        "Mbappe scores brace as France make statement in 3-1 win over Senegal"
-      ]
+      "event_id": "",
+      "away": "",
+      "home": "",
+      "away_score": "1",
+      "home_score": "3",
+      "score": "1-3",
+      "players": 0,
+      "file": "760432_Senegal_France"
+    },
+    {
+      "event_id": "760433",
+      "away": "ALG",
+      "home": "ARG",
+      "away_score": 0,
+      "home_score": 3,
+      "score": "0-3",
+      "players": 44,
+      "file": "wc_ALG_at_ARG_760433_20260620_204408"
+    },
+    {
+      "event_id": "760442",
+      "away": "AUS",
+      "home": "USA",
+      "away_score": 0,
+      "home_score": 2,
+      "score": "0-2",
+      "players": 41,
+      "file": "wc_AUS_at_USA_760442_20260620_204322"
+    },
+    {
+      "event_id": "760439",
+      "away": "BIH",
+      "home": "SUI",
+      "away_score": 1,
+      "home_score": 4,
+      "score": "1-4",
+      "players": 43,
+      "file": "wc_BIH_at_SUI_760439_20260620_204339"
+    },
+    {
+      "event_id": "760448",
+      "away": "CIV",
+      "home": "GER",
+      "away_score": 1,
+      "home_score": 0,
+      "score": "1-0",
+      "players": 26,
+      "file": "wc_CIV_at_GER_760448_20260620_204344"
+    },
+    {
+      "event_id": "760435",
+      "away": "COD",
+      "home": "POR",
+      "away_score": 1,
+      "home_score": 1,
+      "score": "1-1",
+      "players": 42,
+      "file": "wc_COD_at_POR_760435_20260620_204410"
+    },
+    {
+      "event_id": "760436",
+      "away": "COL",
+      "home": "UZB",
+      "away_score": 3,
+      "home_score": 1,
+      "score": "3-1",
+      "players": 45,
+      "file": "wc_COL_at_UZB_760436_20260620_204410"
+    },
+    {
+      "event_id": "760437",
+      "away": "CRO",
+      "home": "ENG",
+      "away_score": 2,
+      "home_score": 4,
+      "score": "2-4",
+      "players": 45,
+      "file": "wc_CRO_at_ENG_760437_20260620_204411"
+    },
+    {
+      "event_id": "760444",
+      "away": "HAI",
+      "home": "BRA",
+      "away_score": 0,
+      "home_score": 3,
+      "score": "0-3",
+      "players": 46,
+      "file": "wc_HAI_at_BRA_760444_20260620_204342"
+    },
+    {
+      "event_id": "760431",
+      "away": "JOR",
+      "home": "AUT",
+      "away_score": 1,
+      "home_score": 3,
+      "score": "1-3",
+      "players": 43,
+      "file": "wc_JOR_at_AUT_760431_20260620_204407"
+    },
+    {
+      "event_id": "760441",
+      "away": "KOR",
+      "home": "MEX",
+      "away_score": 0,
+      "home_score": 1,
+      "score": "0-1",
+      "players": 40,
+      "file": "wc_KOR_at_MEX_760441_20260620_204340"
+    },
+    {
+      "event_id": "760445",
+      "away": "MAR",
+      "home": "SCO",
+      "away_score": 1,
+      "home_score": 0,
+      "score": "1-0",
+      "players": 39,
+      "file": "wc_MAR_at_SCO_760445_20260620_204343"
+    },
+    {
+      "event_id": "760430",
+      "away": "NOR",
+      "home": "IRQ",
+      "away_score": 4,
+      "home_score": 1,
+      "score": "4-1",
+      "players": 45,
+      "file": "wc_NOR_at_IRQ_760430_20260620_204406"
+    },
+    {
+      "event_id": "760434",
+      "away": "PAN",
+      "home": "GHA",
+      "away_score": 0,
+      "home_score": 1,
+      "score": "0-1",
+      "players": 40,
+      "file": "wc_PAN_at_GHA_760434_20260620_204409"
+    },
+    {
+      "event_id": "760443",
+      "away": "PAR",
+      "home": "TUR",
+      "away_score": 1,
+      "home_score": 0,
+      "score": "1-0",
+      "players": 45,
+      "file": "wc_PAR_at_TUR_760443_20260620_204341"
+    },
+    {
+      "event_id": "760440",
+      "away": "QAT",
+      "home": "CAN",
+      "away_score": 0,
+      "home_score": 6,
+      "score": "0-6",
+      "players": 44,
+      "file": "wc_QAT_at_CAN_760440_20260620_204339"
+    },
+    {
+      "event_id": "760447",
+      "away": "SWE",
+      "home": "NED",
+      "away_score": 1,
+      "home_score": 5,
+      "score": "1-5",
+      "players": 45,
+      "file": "wc_SWE_at_NED_760447_20260620_204344"
     }
   ]
 }
