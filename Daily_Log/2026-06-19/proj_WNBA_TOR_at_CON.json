@@ -5,53 +5,53 @@
   "away_team": "TOR",
   "home_team": "CON",
   "source": "live ESPN WNBA roster/stat APIs",
-  "timestamp": "2026-06-19T22:50:35.231Z",
-  "injury_source": "ESPN WNBA injuries \u00b7 15 teams \u00b7 33 players",
+  "timestamp": "2026-06-20T00:18:42.343Z",
+  "injury_source": "ESPN WNBA injuries \u00b7 15 teams \u00b7 34 players",
   "injury_counts": {
     "away": 3,
     "away_out": 3,
-    "home": 1,
-    "home_out": 1
+    "home": 2,
+    "home_out": 2
   },
-  "tc_combined": 131.6,
-  "tc_line": 145,
-  "market_total": 168.5,
-  "edge": -23.5,
-  "signal": "UNDER",
-  "dk_total": 168.5,
+  "tc_combined": 127.5,
+  "tc_line": 141,
+  "market_total": null,
+  "edge": 0,
+  "signal": "NO MARKET",
+  "dk_total": null,
   "odds": {
-    "total": 168.5,
-    "spread": 1.5,
-    "away_spread": 1.5,
-    "home_spread": -1.5,
-    "spread_pick": "CON",
-    "away_ml": -105,
-    "home_ml": -115,
-    "ml_source": "ESPN DraftKings embedded",
+    "total": null,
+    "spread": null,
+    "away_spread": null,
+    "home_spread": null,
+    "spread_pick": null,
+    "away_ml": null,
+    "home_ml": null,
+    "ml_source": "No odds data available (SGO + Odds API + ESPN DK + fallback all empty)",
     "bookmaker_breakdown": null,
     "best_books": null
   },
   "assessment": {
-    "tc_total": 131.6,
-    "tc_line": 145,
-    "edge": -23.5,
-    "signal": "UNDER",
-    "total_lean": "UNDER",
+    "tc_total": 127.5,
+    "tc_line": 141,
+    "edge": 0,
+    "signal": "NO MARKET",
+    "total_lean": "NO MARKET",
     "spread_pick": "CON",
-    "summary": "TC combined 131.6 vs DK 168.5 (edge -23.5) \u2192 lean UNDER. Spread: CON.",
+    "summary": "No market line available.",
     "roster_rule": "live mode uses current roster/stat/injury APIs only"
   },
   "game_assessment": {
-    "total_lean": "UNDER",
+    "total_lean": "NO MARKET",
     "spread_pick": "CON",
     "roster_rule": "live mode uses current roster/stat/injury APIs only",
-    "summary": "TC combined 131.6 vs DK 168.5 (edge -23.5) \u2192 lean UNDER."
+    "summary": "No market line available."
   },
   "roster_counts": {
     "away": 12,
     "home": 14,
     "away_active": 9,
-    "home_active": 13
+    "home_active": 12
   },
   "away": {
     "starter_source": "live ESPN roster/stat/injury APIs; starters inferred by live minutes + production",
@@ -1368,43 +1368,6 @@
           "role": "BENCH"
         },
         {
-          "id": "5106232",
-          "name": "Ashlon Jackson",
-          "pos": "G",
-          "ht": "6' 0\"",
-          "jersey": "3",
-          "minutes": 11.4,
-          "pts": 2,
-          "reb": 1.2,
-          "ast": 1,
-          "tpm": 0.4,
-          "stl": 1.2,
-          "blk": 0,
-          "status": "ACTIVE",
-          "source": "live_roster_api",
-          "tc_pts": 4.1,
-          "line_pts": 3,
-          "edge_pts": 1.1,
-          "tc_reb": 1.7,
-          "line_reb": 1,
-          "edge_reb": 0.7,
-          "tc_ast": 1.1,
-          "line_ast": 0,
-          "edge_ast": 1.1,
-          "tc_3pm": 0.5,
-          "line_3pm": 0,
-          "edge_3pm": 0.5,
-          "tc_stl": 0.7,
-          "line_stl": 0,
-          "edge_stl": 0.7,
-          "tc_blk": 0.1,
-          "line_blk": 0,
-          "edge_blk": 0.1,
-          "symbols": [],
-          "leader_notes": [],
-          "role": "BENCH"
-        },
-        {
           "id": "4898898",
           "name": "Gianna Kneepkens",
           "pos": "G",
@@ -1873,43 +1836,6 @@
           "role": "BENCH"
         },
         {
-          "id": "5106232",
-          "name": "Ashlon Jackson",
-          "pos": "G",
-          "ht": "6' 0\"",
-          "jersey": "3",
-          "minutes": 11.4,
-          "pts": 2,
-          "reb": 1.2,
-          "ast": 1,
-          "tpm": 0.4,
-          "stl": 1.2,
-          "blk": 0,
-          "status": "ACTIVE",
-          "source": "live_roster_api",
-          "tc_pts": 4.1,
-          "line_pts": 3,
-          "edge_pts": 1.1,
-          "tc_reb": 1.7,
-          "line_reb": 1,
-          "edge_reb": 0.7,
-          "tc_ast": 1.1,
-          "line_ast": 0,
-          "edge_ast": 1.1,
-          "tc_3pm": 0.5,
-          "line_3pm": 0,
-          "edge_3pm": 0.5,
-          "tc_stl": 0.7,
-          "line_stl": 0,
-          "edge_stl": 0.7,
-          "tc_blk": 0.1,
-          "line_blk": 0,
-          "edge_blk": 0.1,
-          "symbols": [],
-          "leader_notes": [],
-          "role": "BENCH"
-        },
-        {
           "id": "4898898",
           "name": "Gianna Kneepkens",
           "pos": "G",
@@ -1945,6 +1871,45 @@
           "symbols": [],
           "leader_notes": [],
           "role": "BENCH"
+        },
+        {
+          "id": "5106232",
+          "name": "Ashlon Jackson",
+          "pos": "G",
+          "ht": "6' 0\"",
+          "jersey": "3",
+          "minutes": 11.4,
+          "pts": 2,
+          "reb": 1.2,
+          "ast": 1,
+          "tpm": 0.4,
+          "stl": 1.2,
+          "blk": 0,
+          "status": "OUT",
+          "source": "live_roster_api",
+          "tc_pts": 0,
+          "line_pts": 0,
+          "edge_pts": 0,
+          "tc_reb": 0,
+          "line_reb": 0,
+          "edge_reb": 0,
+          "tc_ast": 0,
+          "line_ast": 0,
+          "edge_ast": 0,
+          "tc_3pm": 0,
+          "line_3pm": 0,
+          "edge_3pm": 0,
+          "tc_stl": 0,
+          "line_stl": 0,
+          "edge_stl": 0,
+          "tc_blk": 0,
+          "line_blk": 0,
+          "edge_blk": 0,
+          "injury_comment": "Jackson will be held out of Friday's contest in an effort to preserve her eligibility while signed to a developmental contract. Her next chance to play will come Monday against the Sky.",
+          "injury_updated": "2026-06-19T22:56Z",
+          "symbols": [],
+          "leader_notes": [],
+          "role": "DNP/OUT"
         },
         {
           "id": "4433412",
@@ -1988,14 +1953,21 @@
       ]
     },
     "totals": {
-      "tc_pts": 78,
-      "tc_reb": 32.4,
-      "tc_ast": 17.3,
-      "tc_3pm": 6.1,
-      "tc_stl": 7.3,
-      "tc_blk": 4.2
+      "tc_pts": 73.9,
+      "tc_reb": 30.7,
+      "tc_ast": 16.2,
+      "tc_3pm": 5.6,
+      "tc_stl": 6.6,
+      "tc_blk": 4.1
     },
     "injuries": [
+      {
+        "name": "Ashlon Jackson",
+        "status": "OUT",
+        "comment": "Jackson will be held out of Friday's contest in an effort to preserve her eligibility while signed to a developmental contract. Her next chance to play will come Monday against the Sky.",
+        "date": "2026-06-19T22:56Z",
+        "source": "espn_injury_feed"
+      },
       {
         "name": "Hailey Van Lith",
         "status": "OUT",
@@ -2005,8 +1977,8 @@
       }
     ],
     "injury_summary": {
-      "total": 1,
-      "out": 1,
+      "total": 2,
+      "out": 2,
       "questionable": 0,
       "source": "espn_injury_feed"
     }
@@ -2039,7 +2011,7 @@
     },
     "rows": [
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -2061,7 +2033,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -2083,7 +2055,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -2105,7 +2077,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -2127,7 +2099,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -2149,7 +2121,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -2171,7 +2143,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -2193,7 +2165,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -2215,7 +2187,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -2237,7 +2209,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -2259,7 +2231,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -2281,7 +2253,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -2303,7 +2275,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -2325,7 +2297,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -2347,7 +2319,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -2369,7 +2341,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -2391,7 +2363,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -2413,7 +2385,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -2435,7 +2407,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -2457,7 +2429,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -2479,7 +2451,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -2501,7 +2473,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -2523,7 +2495,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -2545,7 +2517,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -2567,7 +2539,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -2589,7 +2561,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -2611,7 +2583,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -2633,7 +2605,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -2655,7 +2627,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -2677,7 +2649,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -2699,7 +2671,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -2721,7 +2693,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -2743,7 +2715,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -2765,7 +2737,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -2787,7 +2759,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -2809,7 +2781,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -2831,7 +2803,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -2853,7 +2825,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -2875,7 +2847,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -2897,7 +2869,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -2919,7 +2891,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -2941,7 +2913,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -2963,7 +2935,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -2985,7 +2957,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -3007,7 +2979,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -3029,7 +3001,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -3051,7 +3023,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -3073,7 +3045,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -3095,7 +3067,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -3117,7 +3089,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -3139,7 +3111,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -3161,7 +3133,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -3183,7 +3155,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -3205,7 +3177,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -3227,7 +3199,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -3249,7 +3221,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -3271,7 +3243,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -3293,7 +3265,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -3315,7 +3287,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -3337,7 +3309,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -3359,7 +3331,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -3381,7 +3353,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -3403,7 +3375,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -3425,7 +3397,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -3447,7 +3419,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -3469,7 +3441,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -3491,7 +3463,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -3513,7 +3485,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -3535,7 +3507,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -3557,7 +3529,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -3579,7 +3551,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -3601,7 +3573,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -3623,7 +3595,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -3645,7 +3617,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -3667,7 +3639,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -3689,7 +3661,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -3711,7 +3683,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -3733,7 +3705,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -3755,7 +3727,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -3777,7 +3749,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -3799,7 +3771,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -3821,7 +3793,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -3843,7 +3815,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -3865,7 +3837,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -3887,7 +3859,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -3909,7 +3881,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -3931,7 +3903,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -3953,7 +3925,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -3975,7 +3947,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -3997,7 +3969,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -4019,7 +3991,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -4041,7 +4013,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -4063,7 +4035,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -4085,7 +4057,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -4107,7 +4079,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -4129,7 +4101,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -4151,7 +4123,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -4173,7 +4145,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -4195,7 +4167,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -4217,7 +4189,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -4239,7 +4211,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -4261,7 +4233,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -4283,7 +4255,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -4305,7 +4277,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -4327,7 +4299,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -4349,7 +4321,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -4371,7 +4343,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -4393,7 +4365,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -4415,7 +4387,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -4437,7 +4409,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -4459,7 +4431,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -4481,7 +4453,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -4503,7 +4475,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -4525,7 +4497,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -4547,7 +4519,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -4569,7 +4541,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -4591,7 +4563,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -4613,7 +4585,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -4635,7 +4607,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -4657,7 +4629,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -4679,7 +4651,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -4701,7 +4673,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -4723,7 +4695,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -4745,7 +4717,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -4767,7 +4739,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -4789,7 +4761,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -4811,7 +4783,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -4833,7 +4805,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -4855,7 +4827,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -4877,7 +4849,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -4899,7 +4871,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -4921,7 +4893,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -4943,7 +4915,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -4965,7 +4937,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -4987,7 +4959,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -5009,7 +4981,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -5031,7 +5003,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -5053,7 +5025,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -5075,139 +5047,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
-        "league": "WNBA",
-        "game": "TOR@CON",
-        "team": "CON",
-        "player": "Ashlon Jackson",
-        "role": "BENCH",
-        "stat": "PTS",
-        "direction": "NO LINE",
-        "market_line": null,
-        "tc_projection": 4.1,
-        "tc_target": 3,
-        "edge": 1.1,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 2,
-        "status": "ACTIVE",
-        "valid": false,
-        "threshold": 1.5,
-        "dk_source": null
-      },
-      {
-        "date": "2026-06-19",
-        "league": "WNBA",
-        "game": "TOR@CON",
-        "team": "CON",
-        "player": "Ashlon Jackson",
-        "role": "BENCH",
-        "stat": "REB",
-        "direction": "NO LINE",
-        "market_line": null,
-        "tc_projection": 1.7,
-        "tc_target": 1,
-        "edge": 0.7,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 1.2,
-        "status": "ACTIVE",
-        "valid": false,
-        "threshold": 1,
-        "dk_source": null
-      },
-      {
-        "date": "2026-06-19",
-        "league": "WNBA",
-        "game": "TOR@CON",
-        "team": "CON",
-        "player": "Ashlon Jackson",
-        "role": "BENCH",
-        "stat": "AST",
-        "direction": "OVER",
-        "market_line": null,
-        "tc_projection": 1.1,
-        "tc_target": 0,
-        "edge": 1.1,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 1,
-        "status": "ACTIVE",
-        "valid": true,
-        "threshold": 1,
-        "dk_source": null
-      },
-      {
-        "date": "2026-06-19",
-        "league": "WNBA",
-        "game": "TOR@CON",
-        "team": "CON",
-        "player": "Ashlon Jackson",
-        "role": "BENCH",
-        "stat": "3PM",
-        "direction": "OVER",
-        "market_line": null,
-        "tc_projection": 0.5,
-        "tc_target": 0,
-        "edge": 0.5,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 0.4,
-        "status": "ACTIVE",
-        "valid": true,
-        "threshold": 0.5,
-        "dk_source": null
-      },
-      {
-        "date": "2026-06-19",
-        "league": "WNBA",
-        "game": "TOR@CON",
-        "team": "CON",
-        "player": "Ashlon Jackson",
-        "role": "BENCH",
-        "stat": "STL",
-        "direction": "OVER",
-        "market_line": null,
-        "tc_projection": 0.7,
-        "tc_target": 0,
-        "edge": 0.7,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 1.2,
-        "status": "ACTIVE",
-        "valid": true,
-        "threshold": 0.5,
-        "dk_source": null
-      },
-      {
-        "date": "2026-06-19",
-        "league": "WNBA",
-        "game": "TOR@CON",
-        "team": "CON",
-        "player": "Ashlon Jackson",
-        "role": "BENCH",
-        "stat": "BLK",
-        "direction": "NO LINE",
-        "market_line": null,
-        "tc_projection": 0.1,
-        "tc_target": 0,
-        "edge": 0.1,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 0,
-        "status": "ACTIVE",
-        "valid": false,
-        "threshold": 0.5,
-        "dk_source": null
-      },
-      {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -5229,7 +5069,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -5251,7 +5091,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -5273,7 +5113,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -5295,7 +5135,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -5317,7 +5157,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -5339,7 +5179,139 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
+        "league": "WNBA",
+        "game": "TOR@CON",
+        "team": "CON",
+        "player": "Ashlon Jackson",
+        "role": "DNP/OUT",
+        "stat": "PTS",
+        "direction": "NO LINE",
+        "market_line": null,
+        "tc_projection": 0,
+        "tc_target": 0,
+        "edge": 0,
+        "actual": null,
+        "result": "PENDING",
+        "source": "live_roster_api",
+        "raw_average": 2,
+        "status": "OUT",
+        "valid": false,
+        "threshold": 1.5,
+        "dk_source": null
+      },
+      {
+        "date": "2026-06-20",
+        "league": "WNBA",
+        "game": "TOR@CON",
+        "team": "CON",
+        "player": "Ashlon Jackson",
+        "role": "DNP/OUT",
+        "stat": "REB",
+        "direction": "NO LINE",
+        "market_line": null,
+        "tc_projection": 0,
+        "tc_target": 0,
+        "edge": 0,
+        "actual": null,
+        "result": "PENDING",
+        "source": "live_roster_api",
+        "raw_average": 1.2,
+        "status": "OUT",
+        "valid": false,
+        "threshold": 1,
+        "dk_source": null
+      },
+      {
+        "date": "2026-06-20",
+        "league": "WNBA",
+        "game": "TOR@CON",
+        "team": "CON",
+        "player": "Ashlon Jackson",
+        "role": "DNP/OUT",
+        "stat": "AST",
+        "direction": "NO LINE",
+        "market_line": null,
+        "tc_projection": 0,
+        "tc_target": 0,
+        "edge": 0,
+        "actual": null,
+        "result": "PENDING",
+        "source": "live_roster_api",
+        "raw_average": 1,
+        "status": "OUT",
+        "valid": false,
+        "threshold": 1,
+        "dk_source": null
+      },
+      {
+        "date": "2026-06-20",
+        "league": "WNBA",
+        "game": "TOR@CON",
+        "team": "CON",
+        "player": "Ashlon Jackson",
+        "role": "DNP/OUT",
+        "stat": "3PM",
+        "direction": "NO LINE",
+        "market_line": null,
+        "tc_projection": 0,
+        "tc_target": 0,
+        "edge": 0,
+        "actual": null,
+        "result": "PENDING",
+        "source": "live_roster_api",
+        "raw_average": 0.4,
+        "status": "OUT",
+        "valid": false,
+        "threshold": 0.5,
+        "dk_source": null
+      },
+      {
+        "date": "2026-06-20",
+        "league": "WNBA",
+        "game": "TOR@CON",
+        "team": "CON",
+        "player": "Ashlon Jackson",
+        "role": "DNP/OUT",
+        "stat": "STL",
+        "direction": "NO LINE",
+        "market_line": null,
+        "tc_projection": 0,
+        "tc_target": 0,
+        "edge": 0,
+        "actual": null,
+        "result": "PENDING",
+        "source": "live_roster_api",
+        "raw_average": 1.2,
+        "status": "OUT",
+        "valid": false,
+        "threshold": 0.5,
+        "dk_source": null
+      },
+      {
+        "date": "2026-06-20",
+        "league": "WNBA",
+        "game": "TOR@CON",
+        "team": "CON",
+        "player": "Ashlon Jackson",
+        "role": "DNP/OUT",
+        "stat": "BLK",
+        "direction": "NO LINE",
+        "market_line": null,
+        "tc_projection": 0,
+        "tc_target": 0,
+        "edge": 0,
+        "actual": null,
+        "result": "PENDING",
+        "source": "live_roster_api",
+        "raw_average": 0,
+        "status": "OUT",
+        "valid": false,
+        "threshold": 0.5,
+        "dk_source": null
+      },
+      {
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -5361,7 +5333,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -5383,7 +5355,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -5405,7 +5377,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -5427,7 +5399,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -5449,7 +5421,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -5473,7 +5445,7 @@
     ],
     "valid": [
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -5495,7 +5467,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -5517,7 +5489,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -5539,7 +5511,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -5561,7 +5533,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -5583,7 +5555,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -5605,7 +5577,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -5627,7 +5599,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -5649,7 +5621,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -5671,7 +5643,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -5693,7 +5665,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -5715,7 +5687,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -5737,7 +5709,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -5759,7 +5731,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -5781,7 +5753,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -5803,7 +5775,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "TOR",
@@ -5825,7 +5797,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -5847,7 +5819,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -5869,7 +5841,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -5891,7 +5863,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -5913,7 +5885,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -5935,7 +5907,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -5957,7 +5929,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -5979,7 +5951,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -6001,7 +5973,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -6023,7 +5995,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -6045,7 +6017,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -6067,7 +6039,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -6089,7 +6061,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -6111,7 +6083,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -6133,7 +6105,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -6155,7 +6127,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -6177,7 +6149,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -6199,7 +6171,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -6221,7 +6193,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -6243,7 +6215,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -6265,7 +6237,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -6287,7 +6259,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -6309,7 +6281,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -6331,7 +6303,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -6353,7 +6325,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -6375,7 +6347,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -6397,7 +6369,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -6419,7 +6391,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -6441,7 +6413,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -6463,7 +6435,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -6485,7 +6457,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -6507,73 +6479,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
-        "league": "WNBA",
-        "game": "TOR@CON",
-        "team": "CON",
-        "player": "Ashlon Jackson",
-        "role": "BENCH",
-        "stat": "AST",
-        "direction": "OVER",
-        "market_line": null,
-        "tc_projection": 1.1,
-        "tc_target": 0,
-        "edge": 1.1,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 1,
-        "status": "ACTIVE",
-        "valid": true,
-        "threshold": 1,
-        "dk_source": null
-      },
-      {
-        "date": "2026-06-19",
-        "league": "WNBA",
-        "game": "TOR@CON",
-        "team": "CON",
-        "player": "Ashlon Jackson",
-        "role": "BENCH",
-        "stat": "3PM",
-        "direction": "OVER",
-        "market_line": null,
-        "tc_projection": 0.5,
-        "tc_target": 0,
-        "edge": 0.5,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 0.4,
-        "status": "ACTIVE",
-        "valid": true,
-        "threshold": 0.5,
-        "dk_source": null
-      },
-      {
-        "date": "2026-06-19",
-        "league": "WNBA",
-        "game": "TOR@CON",
-        "team": "CON",
-        "player": "Ashlon Jackson",
-        "role": "BENCH",
-        "stat": "STL",
-        "direction": "OVER",
-        "market_line": null,
-        "tc_projection": 0.7,
-        "tc_target": 0,
-        "edge": 0.7,
-        "actual": null,
-        "result": "PENDING",
-        "source": "live_roster_api",
-        "raw_average": 1.2,
-        "status": "ACTIVE",
-        "valid": true,
-        "threshold": 0.5,
-        "dk_source": null
-      },
-      {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -6595,7 +6501,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "TOR@CON",
         "team": "CON",
@@ -6621,7 +6527,7 @@
   },
   "valid_props": [
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "TOR@CON",
       "team": "TOR",
@@ -6643,7 +6549,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "TOR@CON",
       "team": "TOR",
@@ -6665,7 +6571,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "TOR@CON",
       "team": "TOR",
@@ -6687,7 +6593,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "TOR@CON",
       "team": "TOR",
@@ -6709,7 +6615,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "TOR@CON",
       "team": "TOR",
@@ -6731,7 +6637,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "TOR@CON",
       "team": "TOR",
@@ -6753,7 +6659,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "TOR@CON",
       "team": "TOR",
@@ -6775,7 +6681,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "TOR@CON",
       "team": "TOR",
@@ -6797,7 +6703,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "TOR@CON",
       "team": "TOR",
@@ -6819,7 +6725,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "TOR@CON",
       "team": "TOR",
@@ -6841,7 +6747,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "TOR@CON",
       "team": "TOR",
@@ -6863,7 +6769,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "TOR@CON",
       "team": "TOR",
@@ -6885,7 +6791,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "TOR@CON",
       "team": "TOR",
@@ -6907,7 +6813,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "TOR@CON",
       "team": "TOR",
@@ -6929,7 +6835,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "TOR@CON",
       "team": "TOR",
@@ -6951,7 +6857,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "TOR@CON",
       "team": "TOR",
@@ -6973,7 +6879,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "TOR@CON",
       "team": "CON",
@@ -6995,7 +6901,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "TOR@CON",
       "team": "CON",
@@ -7017,7 +6923,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "TOR@CON",
       "team": "CON",
@@ -7039,7 +6945,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "TOR@CON",
       "team": "CON",
@@ -7061,7 +6967,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "TOR@CON",
       "team": "CON",
@@ -7083,7 +6989,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "TOR@CON",
       "team": "CON",
@@ -7105,7 +7011,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "TOR@CON",
       "team": "CON",
@@ -7127,7 +7033,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "TOR@CON",
       "team": "CON",
@@ -7149,7 +7055,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "TOR@CON",
       "team": "CON",
@@ -7171,7 +7077,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "TOR@CON",
       "team": "CON",
@@ -7193,7 +7099,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "TOR@CON",
       "team": "CON",
@@ -7215,7 +7121,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "TOR@CON",
       "team": "CON",
@@ -7237,7 +7143,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "TOR@CON",
       "team": "CON",
@@ -7259,7 +7165,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "TOR@CON",
       "team": "CON",
@@ -7281,7 +7187,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "TOR@CON",
       "team": "CON",
@@ -7303,7 +7209,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "TOR@CON",
       "team": "CON",
@@ -7325,7 +7231,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "TOR@CON",
       "team": "CON",
@@ -7347,7 +7253,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "TOR@CON",
       "team": "CON",
@@ -7369,7 +7275,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "TOR@CON",
       "team": "CON",
@@ -7391,7 +7297,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "TOR@CON",
       "team": "CON",
@@ -7413,7 +7319,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "TOR@CON",
       "team": "CON",
@@ -7435,7 +7341,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "TOR@CON",
       "team": "CON",
@@ -7457,7 +7363,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "TOR@CON",
       "team": "CON",
@@ -7479,7 +7385,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "TOR@CON",
       "team": "CON",
@@ -7501,7 +7407,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "TOR@CON",
       "team": "CON",
@@ -7523,7 +7429,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "TOR@CON",
       "team": "CON",
@@ -7545,7 +7451,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "TOR@CON",
       "team": "CON",
@@ -7567,7 +7473,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "TOR@CON",
       "team": "CON",
@@ -7589,7 +7495,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "TOR@CON",
       "team": "CON",
@@ -7611,7 +7517,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "TOR@CON",
       "team": "CON",
@@ -7633,7 +7539,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "TOR@CON",
       "team": "CON",
@@ -7655,73 +7561,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
-      "league": "WNBA",
-      "game": "TOR@CON",
-      "team": "CON",
-      "player": "Ashlon Jackson",
-      "role": "BENCH",
-      "stat": "AST",
-      "direction": "OVER",
-      "market_line": null,
-      "tc_projection": 1.1,
-      "tc_target": 0,
-      "edge": 1.1,
-      "actual": null,
-      "result": "PENDING",
-      "source": "live_roster_api",
-      "raw_average": 1,
-      "status": "ACTIVE",
-      "valid": true,
-      "threshold": 1,
-      "dk_source": null
-    },
-    {
-      "date": "2026-06-19",
-      "league": "WNBA",
-      "game": "TOR@CON",
-      "team": "CON",
-      "player": "Ashlon Jackson",
-      "role": "BENCH",
-      "stat": "3PM",
-      "direction": "OVER",
-      "market_line": null,
-      "tc_projection": 0.5,
-      "tc_target": 0,
-      "edge": 0.5,
-      "actual": null,
-      "result": "PENDING",
-      "source": "live_roster_api",
-      "raw_average": 0.4,
-      "status": "ACTIVE",
-      "valid": true,
-      "threshold": 0.5,
-      "dk_source": null
-    },
-    {
-      "date": "2026-06-19",
-      "league": "WNBA",
-      "game": "TOR@CON",
-      "team": "CON",
-      "player": "Ashlon Jackson",
-      "role": "BENCH",
-      "stat": "STL",
-      "direction": "OVER",
-      "market_line": null,
-      "tc_projection": 0.7,
-      "tc_target": 0,
-      "edge": 0.7,
-      "actual": null,
-      "result": "PENDING",
-      "source": "live_roster_api",
-      "raw_average": 1.2,
-      "status": "ACTIVE",
-      "valid": true,
-      "threshold": 0.5,
-      "dk_source": null
-    },
-    {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "TOR@CON",
       "team": "CON",
@@ -7743,7 +7583,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "TOR@CON",
       "team": "CON",

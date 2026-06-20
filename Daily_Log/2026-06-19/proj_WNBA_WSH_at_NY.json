@@ -5,52 +5,52 @@
   "away_team": "WSH",
   "home_team": "NY",
   "source": "live ESPN WNBA roster/stat APIs",
-  "timestamp": "2026-06-19T22:50:35.823Z",
-  "injury_source": "ESPN WNBA injuries \u00b7 15 teams \u00b7 33 players",
+  "timestamp": "2026-06-20T00:18:43.425Z",
+  "injury_source": "ESPN WNBA injuries \u00b7 15 teams \u00b7 34 players",
   "injury_counts": {
     "away": 1,
-    "away_out": 0,
+    "away_out": 1,
     "home": 3,
     "home_out": 3
   },
-  "tc_combined": 153.3,
+  "tc_combined": 153.5,
   "tc_line": 167,
-  "market_total": 168.5,
-  "edge": -1.5,
-  "signal": "PASS",
-  "dk_total": 168.5,
+  "market_total": null,
+  "edge": 0,
+  "signal": "NO MARKET",
+  "dk_total": null,
   "odds": {
-    "total": 168.5,
-    "spread": 12.5,
-    "away_spread": 12.5,
-    "home_spread": -12.5,
-    "spread_pick": "NYK",
-    "away_ml": 550,
-    "home_ml": -800,
-    "ml_source": "ESPN DraftKings embedded",
+    "total": null,
+    "spread": null,
+    "away_spread": null,
+    "home_spread": null,
+    "spread_pick": null,
+    "away_ml": null,
+    "home_ml": null,
+    "ml_source": "No odds data available (SGO + Odds API + ESPN DK + fallback all empty)",
     "bookmaker_breakdown": null,
     "best_books": null
   },
   "assessment": {
-    "tc_total": 153.3,
+    "tc_total": 153.5,
     "tc_line": 167,
-    "edge": -1.5,
-    "signal": "PASS",
-    "total_lean": "PASS",
+    "edge": 0,
+    "signal": "NO MARKET",
+    "total_lean": "NO MARKET",
     "spread_pick": "NY",
-    "summary": "TC combined 153.3 vs DK 168.5 (edge -1.5) \u2192 lean PASS. Spread: NY.",
+    "summary": "No market line available.",
     "roster_rule": "live mode uses current roster/stat/injury APIs only"
   },
   "game_assessment": {
-    "total_lean": "PASS",
+    "total_lean": "NO MARKET",
     "spread_pick": "NY",
     "roster_rule": "live mode uses current roster/stat/injury APIs only",
-    "summary": "TC combined 153.3 vs DK 168.5 (edge -1.5) \u2192 lean PASS."
+    "summary": "No market line available."
   },
   "roster_counts": {
     "away": 13,
     "home": 14,
-    "away_active": 13,
+    "away_active": 12,
     "home_active": 11
   },
   "away": {
@@ -156,28 +156,26 @@
           "tpm": 0.1,
           "stl": 0.9,
           "blk": 1,
-          "status": "Q",
+          "status": "ACTIVE",
           "source": "live_roster_api",
-          "tc_pts": 4.2,
-          "line_pts": 3,
-          "edge_pts": 1.2,
-          "tc_reb": 2.2,
-          "line_reb": 1,
-          "edge_reb": 1.2,
-          "tc_ast": 0.7,
-          "line_ast": 0,
-          "edge_ast": 0.7,
-          "tc_3pm": 0.2,
+          "tc_pts": 7.7,
+          "line_pts": 6,
+          "edge_pts": 1.7,
+          "tc_reb": 3.9,
+          "line_reb": 3,
+          "edge_reb": 0.9,
+          "tc_ast": 1.3,
+          "line_ast": 1,
+          "edge_ast": 0.3,
+          "tc_3pm": 0.3,
           "line_3pm": 0,
-          "edge_3pm": 0.2,
-          "tc_stl": 0.3,
+          "edge_3pm": 0.3,
+          "tc_stl": 0.6,
           "line_stl": 0,
-          "edge_stl": 0.3,
-          "tc_blk": 0.3,
+          "edge_stl": 0.6,
+          "tc_blk": 0.5,
           "line_blk": 0,
-          "edge_blk": 0.3,
-          "injury_comment": "Austin, who missed her first game of the season Wednesday against the Sun, remains day-to-day for Washington. Look for Lauren Betts to get an extended look if Austin is unable to give it a go.",
-          "injury_updated": "2026-06-18T21:08Z",
+          "edge_blk": 0.5,
           "symbols": [
             "\u25a0BLK"
           ],
@@ -526,43 +524,6 @@
           "symbols": [],
           "leader_notes": [],
           "role": "BENCH"
-        },
-        {
-          "id": "5106145",
-          "name": "Darianna Littlepage-Buggs",
-          "pos": "G",
-          "ht": "6' 1\"",
-          "jersey": "5",
-          "minutes": 0,
-          "pts": 0,
-          "reb": 0,
-          "ast": 0,
-          "tpm": 0,
-          "stl": 0,
-          "blk": 0,
-          "status": "ACTIVE",
-          "source": "live_roster_api",
-          "tc_pts": 3.3,
-          "line_pts": 2,
-          "edge_pts": 1.3,
-          "tc_reb": 1.2,
-          "line_reb": 1,
-          "edge_reb": 0.2,
-          "tc_ast": 0.7,
-          "line_ast": 0,
-          "edge_ast": 0.7,
-          "tc_3pm": 0.3,
-          "line_3pm": 0,
-          "edge_3pm": 0.3,
-          "tc_stl": 0.2,
-          "line_stl": 0,
-          "edge_stl": 0.2,
-          "tc_blk": 0.1,
-          "line_blk": 0,
-          "edge_blk": 0.1,
-          "symbols": [],
-          "leader_notes": [],
-          "role": "BENCH"
         }
       ]
     },
@@ -667,28 +628,26 @@
           "tpm": 0.1,
           "stl": 0.9,
           "blk": 1,
-          "status": "Q",
+          "status": "ACTIVE",
           "source": "live_roster_api",
-          "tc_pts": 4.2,
-          "line_pts": 3,
-          "edge_pts": 1.2,
-          "tc_reb": 2.2,
-          "line_reb": 1,
-          "edge_reb": 1.2,
-          "tc_ast": 0.7,
-          "line_ast": 0,
-          "edge_ast": 0.7,
-          "tc_3pm": 0.2,
+          "tc_pts": 7.7,
+          "line_pts": 6,
+          "edge_pts": 1.7,
+          "tc_reb": 3.9,
+          "line_reb": 3,
+          "edge_reb": 0.9,
+          "tc_ast": 1.3,
+          "line_ast": 1,
+          "edge_ast": 0.3,
+          "tc_3pm": 0.3,
           "line_3pm": 0,
-          "edge_3pm": 0.2,
-          "tc_stl": 0.3,
+          "edge_3pm": 0.3,
+          "tc_stl": 0.6,
           "line_stl": 0,
-          "edge_stl": 0.3,
-          "tc_blk": 0.3,
+          "edge_stl": 0.6,
+          "tc_blk": 0.5,
           "line_blk": 0,
-          "edge_blk": 0.3,
-          "injury_comment": "Austin, who missed her first game of the season Wednesday against the Sun, remains day-to-day for Washington. Look for Lauren Betts to get an extended look if Austin is unable to give it a go.",
-          "injury_updated": "2026-06-18T21:08Z",
+          "edge_blk": 0.5,
           "symbols": [
             "\u25a0BLK"
           ],
@@ -1047,53 +1006,55 @@
           "tpm": 0,
           "stl": 0,
           "blk": 0,
-          "status": "ACTIVE",
+          "status": "OUT",
           "source": "live_roster_api",
-          "tc_pts": 3.3,
-          "line_pts": 2,
-          "edge_pts": 1.3,
-          "tc_reb": 1.2,
-          "line_reb": 1,
-          "edge_reb": 0.2,
-          "tc_ast": 0.7,
+          "tc_pts": 0,
+          "line_pts": 0,
+          "edge_pts": 0,
+          "tc_reb": 0,
+          "line_reb": 0,
+          "edge_reb": 0,
+          "tc_ast": 0,
           "line_ast": 0,
-          "edge_ast": 0.7,
-          "tc_3pm": 0.3,
+          "edge_ast": 0,
+          "tc_3pm": 0,
           "line_3pm": 0,
-          "edge_3pm": 0.3,
-          "tc_stl": 0.2,
+          "edge_3pm": 0,
+          "tc_stl": 0,
           "line_stl": 0,
-          "edge_stl": 0.2,
-          "tc_blk": 0.1,
+          "edge_stl": 0,
+          "tc_blk": 0,
           "line_blk": 0,
-          "edge_blk": 0.1,
+          "edge_blk": 0,
+          "injury_comment": "Littlepage-Buggs is signed to a developmental deal, limiting her to 12 regular-season appearances. She has yet to appear in a game during the 2026 campaign, and her next opportunity to play will come Sunday in Minnesota.",
+          "injury_updated": "2026-06-19T22:50Z",
           "symbols": [],
           "leader_notes": [],
-          "role": "BENCH"
+          "role": "DNP/OUT"
         }
       ]
     },
     "totals": {
-      "tc_pts": 72.5,
-      "tc_reb": 29.8,
-      "tc_ast": 17.1,
-      "tc_3pm": 6.3,
-      "tc_stl": 5.9,
-      "tc_blk": 2.9
+      "tc_pts": 72.7,
+      "tc_reb": 30.3,
+      "tc_ast": 17,
+      "tc_3pm": 6.1,
+      "tc_stl": 6,
+      "tc_blk": 3
     },
     "injuries": [
       {
-        "name": "Shakira Austin",
-        "status": "Q",
-        "comment": "Austin, who missed her first game of the season Wednesday against the Sun, remains day-to-day for Washington. Look for Lauren Betts to get an extended look if Austin is unable to give it a go.",
-        "date": "2026-06-18T21:08Z",
+        "name": "Darianna Littlepage-Buggs",
+        "status": "OUT",
+        "comment": "Littlepage-Buggs is signed to a developmental deal, limiting her to 12 regular-season appearances. She has yet to appear in a game during the 2026 campaign, and her next opportunity to play will come Sunday in Minnesota.",
+        "date": "2026-06-19T22:50Z",
         "source": "espn_injury_feed"
       }
     ],
     "injury_summary": {
       "total": 1,
-      "out": 0,
-      "questionable": 1,
+      "out": 1,
+      "questionable": 0,
       "source": "espn_injury_feed"
     }
   },
@@ -2140,7 +2101,7 @@
     },
     "rows": [
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -2162,7 +2123,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -2184,7 +2145,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -2206,7 +2167,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -2228,7 +2189,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -2250,7 +2211,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -2272,7 +2233,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -2294,7 +2255,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -2316,7 +2277,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -2338,7 +2299,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -2360,7 +2321,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -2382,7 +2343,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -2404,51 +2365,51 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
         "player": "Shakira Austin",
         "role": "START",
         "stat": "PTS",
-        "direction": "NO LINE",
+        "direction": "OVER",
         "market_line": null,
-        "tc_projection": 4.2,
-        "tc_target": 3,
-        "edge": 1.2,
+        "tc_projection": 7.7,
+        "tc_target": 6,
+        "edge": 1.7,
         "actual": null,
         "result": "PENDING",
         "source": "live_roster_api",
         "raw_average": 11.1,
-        "status": "Q",
-        "valid": false,
+        "status": "ACTIVE",
+        "valid": true,
         "threshold": 1.5,
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
         "player": "Shakira Austin",
         "role": "START",
         "stat": "REB",
-        "direction": "OVER",
+        "direction": "NO LINE",
         "market_line": null,
-        "tc_projection": 2.2,
-        "tc_target": 1,
-        "edge": 1.2,
+        "tc_projection": 3.9,
+        "tc_target": 3,
+        "edge": 0.9,
         "actual": null,
         "result": "PENDING",
         "source": "live_roster_api",
         "raw_average": 6.7,
-        "status": "Q",
-        "valid": true,
+        "status": "ACTIVE",
+        "valid": false,
         "threshold": 1,
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -2457,20 +2418,20 @@
         "stat": "AST",
         "direction": "NO LINE",
         "market_line": null,
-        "tc_projection": 0.7,
-        "tc_target": 0,
-        "edge": 0.7,
+        "tc_projection": 1.3,
+        "tc_target": 1,
+        "edge": 0.3,
         "actual": null,
         "result": "PENDING",
         "source": "live_roster_api",
         "raw_average": 1.4,
-        "status": "Q",
+        "status": "ACTIVE",
         "valid": false,
         "threshold": 1,
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -2479,64 +2440,64 @@
         "stat": "3PM",
         "direction": "NO LINE",
         "market_line": null,
-        "tc_projection": 0.2,
+        "tc_projection": 0.3,
         "tc_target": 0,
-        "edge": 0.2,
+        "edge": 0.3,
         "actual": null,
         "result": "PENDING",
         "source": "live_roster_api",
         "raw_average": 0.1,
-        "status": "Q",
+        "status": "ACTIVE",
         "valid": false,
         "threshold": 0.5,
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
         "player": "Shakira Austin",
         "role": "START",
         "stat": "STL",
-        "direction": "NO LINE",
+        "direction": "OVER",
         "market_line": null,
-        "tc_projection": 0.3,
+        "tc_projection": 0.6,
         "tc_target": 0,
-        "edge": 0.3,
+        "edge": 0.6,
         "actual": null,
         "result": "PENDING",
         "source": "live_roster_api",
         "raw_average": 0.9,
-        "status": "Q",
-        "valid": false,
+        "status": "ACTIVE",
+        "valid": true,
         "threshold": 0.5,
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
         "player": "Shakira Austin",
         "role": "START",
         "stat": "BLK",
-        "direction": "NO LINE",
+        "direction": "OVER",
         "market_line": null,
-        "tc_projection": 0.3,
+        "tc_projection": 0.5,
         "tc_target": 0,
-        "edge": 0.3,
+        "edge": 0.5,
         "actual": null,
         "result": "PENDING",
         "source": "live_roster_api",
         "raw_average": 1,
-        "status": "Q",
-        "valid": false,
+        "status": "ACTIVE",
+        "valid": true,
         "threshold": 0.5,
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -2558,7 +2519,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -2580,7 +2541,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -2602,7 +2563,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -2624,7 +2585,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -2646,7 +2607,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -2668,7 +2629,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -2690,7 +2651,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -2712,7 +2673,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -2734,7 +2695,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -2756,7 +2717,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -2778,7 +2739,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -2800,7 +2761,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -2822,7 +2783,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -2844,7 +2805,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -2866,7 +2827,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -2888,7 +2849,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -2910,7 +2871,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -2932,7 +2893,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -2954,7 +2915,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -2976,7 +2937,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -2998,7 +2959,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -3020,7 +2981,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -3042,7 +3003,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -3064,7 +3025,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -3086,7 +3047,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -3108,7 +3069,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -3130,7 +3091,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -3152,7 +3113,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -3174,7 +3135,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -3196,7 +3157,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -3218,7 +3179,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -3240,7 +3201,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -3262,7 +3223,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -3284,7 +3245,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -3306,7 +3267,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -3328,7 +3289,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -3350,7 +3311,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -3372,7 +3333,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -3394,7 +3355,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -3416,7 +3377,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -3438,7 +3399,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -3460,7 +3421,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -3482,7 +3443,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -3504,7 +3465,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -3526,7 +3487,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -3548,7 +3509,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -3570,7 +3531,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -3592,7 +3553,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -3614,7 +3575,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -3636,7 +3597,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -3658,7 +3619,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -3680,7 +3641,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -3702,7 +3663,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -3724,139 +3685,139 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
         "player": "Darianna Littlepage-Buggs",
-        "role": "BENCH",
+        "role": "DNP/OUT",
         "stat": "PTS",
         "direction": "NO LINE",
         "market_line": null,
-        "tc_projection": 3.3,
-        "tc_target": 2,
-        "edge": 1.3,
+        "tc_projection": 0,
+        "tc_target": 0,
+        "edge": 0,
         "actual": null,
         "result": "PENDING",
         "source": "live_roster_api",
         "raw_average": 0,
-        "status": "ACTIVE",
+        "status": "OUT",
         "valid": false,
         "threshold": 1.5,
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
         "player": "Darianna Littlepage-Buggs",
-        "role": "BENCH",
+        "role": "DNP/OUT",
         "stat": "REB",
         "direction": "NO LINE",
         "market_line": null,
-        "tc_projection": 1.2,
-        "tc_target": 1,
-        "edge": 0.2,
+        "tc_projection": 0,
+        "tc_target": 0,
+        "edge": 0,
         "actual": null,
         "result": "PENDING",
         "source": "live_roster_api",
         "raw_average": 0,
-        "status": "ACTIVE",
+        "status": "OUT",
         "valid": false,
         "threshold": 1,
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
         "player": "Darianna Littlepage-Buggs",
-        "role": "BENCH",
+        "role": "DNP/OUT",
         "stat": "AST",
         "direction": "NO LINE",
         "market_line": null,
-        "tc_projection": 0.7,
+        "tc_projection": 0,
         "tc_target": 0,
-        "edge": 0.7,
+        "edge": 0,
         "actual": null,
         "result": "PENDING",
         "source": "live_roster_api",
         "raw_average": 0,
-        "status": "ACTIVE",
+        "status": "OUT",
         "valid": false,
         "threshold": 1,
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
         "player": "Darianna Littlepage-Buggs",
-        "role": "BENCH",
+        "role": "DNP/OUT",
         "stat": "3PM",
         "direction": "NO LINE",
         "market_line": null,
-        "tc_projection": 0.3,
+        "tc_projection": 0,
         "tc_target": 0,
-        "edge": 0.3,
+        "edge": 0,
         "actual": null,
         "result": "PENDING",
         "source": "live_roster_api",
         "raw_average": 0,
-        "status": "ACTIVE",
+        "status": "OUT",
         "valid": false,
         "threshold": 0.5,
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
         "player": "Darianna Littlepage-Buggs",
-        "role": "BENCH",
+        "role": "DNP/OUT",
         "stat": "STL",
         "direction": "NO LINE",
         "market_line": null,
-        "tc_projection": 0.2,
+        "tc_projection": 0,
         "tc_target": 0,
-        "edge": 0.2,
+        "edge": 0,
         "actual": null,
         "result": "PENDING",
         "source": "live_roster_api",
         "raw_average": 0,
-        "status": "ACTIVE",
+        "status": "OUT",
         "valid": false,
         "threshold": 0.5,
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
         "player": "Darianna Littlepage-Buggs",
-        "role": "BENCH",
+        "role": "DNP/OUT",
         "stat": "BLK",
         "direction": "NO LINE",
         "market_line": null,
-        "tc_projection": 0.1,
+        "tc_projection": 0,
         "tc_target": 0,
-        "edge": 0.1,
+        "edge": 0,
         "actual": null,
         "result": "PENDING",
         "source": "live_roster_api",
         "raw_average": 0,
-        "status": "ACTIVE",
+        "status": "OUT",
         "valid": false,
         "threshold": 0.5,
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -3878,7 +3839,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -3900,7 +3861,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -3922,7 +3883,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -3944,7 +3905,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -3966,7 +3927,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -3988,7 +3949,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -4010,7 +3971,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -4032,7 +3993,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -4054,7 +4015,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -4076,7 +4037,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -4098,7 +4059,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -4120,7 +4081,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -4142,7 +4103,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -4164,7 +4125,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -4186,7 +4147,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -4208,7 +4169,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -4230,7 +4191,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -4252,7 +4213,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -4274,7 +4235,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -4296,7 +4257,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -4318,7 +4279,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -4340,7 +4301,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -4362,7 +4323,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -4384,7 +4345,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -4406,7 +4367,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -4428,7 +4389,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -4450,7 +4411,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -4472,7 +4433,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -4494,7 +4455,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -4516,7 +4477,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -4538,7 +4499,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -4560,7 +4521,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -4582,7 +4543,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -4604,7 +4565,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -4626,7 +4587,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -4648,7 +4609,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -4670,7 +4631,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -4692,7 +4653,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -4714,7 +4675,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -4736,7 +4697,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -4758,7 +4719,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -4780,7 +4741,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -4802,7 +4763,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -4824,7 +4785,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -4846,7 +4807,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -4868,7 +4829,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -4890,7 +4851,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -4912,7 +4873,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -4934,7 +4895,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -4956,7 +4917,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -4978,7 +4939,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -5000,7 +4961,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -5022,7 +4983,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -5044,7 +5005,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -5066,7 +5027,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -5088,7 +5049,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -5110,7 +5071,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -5132,7 +5093,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -5154,7 +5115,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -5176,7 +5137,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -5198,7 +5159,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -5220,7 +5181,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -5242,7 +5203,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -5264,7 +5225,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -5286,7 +5247,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -5308,7 +5269,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -5330,7 +5291,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -5352,7 +5313,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -5374,7 +5335,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -5396,7 +5357,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -5418,7 +5379,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -5440,7 +5401,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -5462,7 +5423,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -5484,7 +5445,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -5506,7 +5467,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -5528,7 +5489,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -5550,7 +5511,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -5572,7 +5533,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -5594,7 +5555,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -5616,7 +5577,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -5638,7 +5599,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -5660,7 +5621,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -5682,7 +5643,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -5706,7 +5667,7 @@
     ],
     "valid": [
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -5728,7 +5689,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -5750,7 +5711,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -5772,7 +5733,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -5794,29 +5755,73 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
         "player": "Shakira Austin",
         "role": "START",
-        "stat": "REB",
+        "stat": "PTS",
         "direction": "OVER",
         "market_line": null,
-        "tc_projection": 2.2,
-        "tc_target": 1,
-        "edge": 1.2,
+        "tc_projection": 7.7,
+        "tc_target": 6,
+        "edge": 1.7,
         "actual": null,
         "result": "PENDING",
         "source": "live_roster_api",
-        "raw_average": 6.7,
-        "status": "Q",
+        "raw_average": 11.1,
+        "status": "ACTIVE",
         "valid": true,
-        "threshold": 1,
+        "threshold": 1.5,
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
+        "league": "WNBA",
+        "game": "WSH@NY",
+        "team": "WSH",
+        "player": "Shakira Austin",
+        "role": "START",
+        "stat": "STL",
+        "direction": "OVER",
+        "market_line": null,
+        "tc_projection": 0.6,
+        "tc_target": 0,
+        "edge": 0.6,
+        "actual": null,
+        "result": "PENDING",
+        "source": "live_roster_api",
+        "raw_average": 0.9,
+        "status": "ACTIVE",
+        "valid": true,
+        "threshold": 0.5,
+        "dk_source": null
+      },
+      {
+        "date": "2026-06-20",
+        "league": "WNBA",
+        "game": "WSH@NY",
+        "team": "WSH",
+        "player": "Shakira Austin",
+        "role": "START",
+        "stat": "BLK",
+        "direction": "OVER",
+        "market_line": null,
+        "tc_projection": 0.5,
+        "tc_target": 0,
+        "edge": 0.5,
+        "actual": null,
+        "result": "PENDING",
+        "source": "live_roster_api",
+        "raw_average": 1,
+        "status": "ACTIVE",
+        "valid": true,
+        "threshold": 0.5,
+        "dk_source": null
+      },
+      {
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -5838,7 +5843,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -5860,7 +5865,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -5882,7 +5887,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -5904,7 +5909,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -5926,7 +5931,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -5948,7 +5953,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -5970,7 +5975,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -5992,7 +5997,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -6014,7 +6019,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -6036,7 +6041,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -6058,7 +6063,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -6080,7 +6085,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -6102,7 +6107,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -6124,7 +6129,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -6146,7 +6151,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -6168,7 +6173,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -6190,7 +6195,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "WSH",
@@ -6212,7 +6217,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -6234,7 +6239,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -6256,7 +6261,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -6278,7 +6283,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -6300,7 +6305,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -6322,7 +6327,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -6344,7 +6349,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -6366,7 +6371,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -6388,7 +6393,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -6410,7 +6415,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -6432,7 +6437,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -6454,7 +6459,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -6476,7 +6481,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -6498,7 +6503,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -6520,7 +6525,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -6542,7 +6547,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -6564,7 +6569,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -6586,7 +6591,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -6608,7 +6613,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -6630,7 +6635,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -6652,7 +6657,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -6674,7 +6679,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -6696,7 +6701,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -6718,7 +6723,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -6740,7 +6745,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -6762,7 +6767,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -6784,7 +6789,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -6806,7 +6811,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -6828,7 +6833,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -6850,7 +6855,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -6872,7 +6877,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -6894,7 +6899,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -6916,7 +6921,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -6938,7 +6943,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -6960,7 +6965,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -6982,7 +6987,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-19",
+        "date": "2026-06-20",
         "league": "WNBA",
         "game": "WSH@NY",
         "team": "NY",
@@ -7008,7 +7013,7 @@
   },
   "valid_props": [
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "WSH@NY",
       "team": "WSH",
@@ -7030,7 +7035,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "WSH@NY",
       "team": "WSH",
@@ -7052,7 +7057,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "WSH@NY",
       "team": "WSH",
@@ -7074,7 +7079,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "WSH@NY",
       "team": "WSH",
@@ -7096,29 +7101,73 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "WSH@NY",
       "team": "WSH",
       "player": "Shakira Austin",
       "role": "START",
-      "stat": "REB",
+      "stat": "PTS",
       "direction": "OVER",
       "market_line": null,
-      "tc_projection": 2.2,
-      "tc_target": 1,
-      "edge": 1.2,
+      "tc_projection": 7.7,
+      "tc_target": 6,
+      "edge": 1.7,
       "actual": null,
       "result": "PENDING",
       "source": "live_roster_api",
-      "raw_average": 6.7,
-      "status": "Q",
+      "raw_average": 11.1,
+      "status": "ACTIVE",
       "valid": true,
-      "threshold": 1,
+      "threshold": 1.5,
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
+      "league": "WNBA",
+      "game": "WSH@NY",
+      "team": "WSH",
+      "player": "Shakira Austin",
+      "role": "START",
+      "stat": "STL",
+      "direction": "OVER",
+      "market_line": null,
+      "tc_projection": 0.6,
+      "tc_target": 0,
+      "edge": 0.6,
+      "actual": null,
+      "result": "PENDING",
+      "source": "live_roster_api",
+      "raw_average": 0.9,
+      "status": "ACTIVE",
+      "valid": true,
+      "threshold": 0.5,
+      "dk_source": null
+    },
+    {
+      "date": "2026-06-20",
+      "league": "WNBA",
+      "game": "WSH@NY",
+      "team": "WSH",
+      "player": "Shakira Austin",
+      "role": "START",
+      "stat": "BLK",
+      "direction": "OVER",
+      "market_line": null,
+      "tc_projection": 0.5,
+      "tc_target": 0,
+      "edge": 0.5,
+      "actual": null,
+      "result": "PENDING",
+      "source": "live_roster_api",
+      "raw_average": 1,
+      "status": "ACTIVE",
+      "valid": true,
+      "threshold": 0.5,
+      "dk_source": null
+    },
+    {
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "WSH@NY",
       "team": "WSH",
@@ -7140,7 +7189,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "WSH@NY",
       "team": "WSH",
@@ -7162,7 +7211,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "WSH@NY",
       "team": "WSH",
@@ -7184,7 +7233,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "WSH@NY",
       "team": "WSH",
@@ -7206,7 +7255,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "WSH@NY",
       "team": "WSH",
@@ -7228,7 +7277,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "WSH@NY",
       "team": "WSH",
@@ -7250,7 +7299,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "WSH@NY",
       "team": "WSH",
@@ -7272,7 +7321,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "WSH@NY",
       "team": "WSH",
@@ -7294,7 +7343,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "WSH@NY",
       "team": "WSH",
@@ -7316,7 +7365,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "WSH@NY",
       "team": "WSH",
@@ -7338,7 +7387,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "WSH@NY",
       "team": "WSH",
@@ -7360,7 +7409,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "WSH@NY",
       "team": "WSH",
@@ -7382,7 +7431,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "WSH@NY",
       "team": "WSH",
@@ -7404,7 +7453,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "WSH@NY",
       "team": "WSH",
@@ -7426,7 +7475,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "WSH@NY",
       "team": "WSH",
@@ -7448,7 +7497,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "WSH@NY",
       "team": "WSH",
@@ -7470,7 +7519,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "WSH@NY",
       "team": "WSH",
@@ -7492,7 +7541,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "WSH@NY",
       "team": "WSH",
@@ -7514,7 +7563,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "WSH@NY",
       "team": "NY",
@@ -7536,7 +7585,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "WSH@NY",
       "team": "NY",
@@ -7558,7 +7607,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "WSH@NY",
       "team": "NY",
@@ -7580,7 +7629,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "WSH@NY",
       "team": "NY",
@@ -7602,7 +7651,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "WSH@NY",
       "team": "NY",
@@ -7624,7 +7673,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "WSH@NY",
       "team": "NY",
@@ -7646,7 +7695,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "WSH@NY",
       "team": "NY",
@@ -7668,7 +7717,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "WSH@NY",
       "team": "NY",
@@ -7690,7 +7739,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "WSH@NY",
       "team": "NY",
@@ -7712,7 +7761,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "WSH@NY",
       "team": "NY",
@@ -7734,7 +7783,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "WSH@NY",
       "team": "NY",
@@ -7756,7 +7805,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "WSH@NY",
       "team": "NY",
@@ -7778,7 +7827,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "WSH@NY",
       "team": "NY",
@@ -7800,7 +7849,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "WSH@NY",
       "team": "NY",
@@ -7822,7 +7871,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "WSH@NY",
       "team": "NY",
@@ -7844,7 +7893,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "WSH@NY",
       "team": "NY",
@@ -7866,7 +7915,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "WSH@NY",
       "team": "NY",
@@ -7888,7 +7937,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "WSH@NY",
       "team": "NY",
@@ -7910,7 +7959,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "WSH@NY",
       "team": "NY",
@@ -7932,7 +7981,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "WSH@NY",
       "team": "NY",
@@ -7954,7 +8003,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "WSH@NY",
       "team": "NY",
@@ -7976,7 +8025,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "WSH@NY",
       "team": "NY",
@@ -7998,7 +8047,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "WSH@NY",
       "team": "NY",
@@ -8020,7 +8069,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "WSH@NY",
       "team": "NY",
@@ -8042,7 +8091,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "WSH@NY",
       "team": "NY",
@@ -8064,7 +8113,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "WSH@NY",
       "team": "NY",
@@ -8086,7 +8135,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "WSH@NY",
       "team": "NY",
@@ -8108,7 +8157,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "WSH@NY",
       "team": "NY",
@@ -8130,7 +8179,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "WSH@NY",
       "team": "NY",
@@ -8152,7 +8201,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "WSH@NY",
       "team": "NY",
@@ -8174,7 +8223,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "WSH@NY",
       "team": "NY",
@@ -8196,7 +8245,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "WSH@NY",
       "team": "NY",
@@ -8218,7 +8267,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "WSH@NY",
       "team": "NY",
@@ -8240,7 +8289,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "WSH@NY",
       "team": "NY",
@@ -8262,7 +8311,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "WSH@NY",
       "team": "NY",
@@ -8284,7 +8333,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-19",
+      "date": "2026-06-20",
       "league": "WNBA",
       "game": "WSH@NY",
       "team": "NY",

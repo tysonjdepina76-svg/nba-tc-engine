@@ -1,6 +1,9 @@
 # World Cup dashboard FIXED — props.json overwrite + API fallback
 
 ## Workspace Index
+> **2026-06-19 19:20 ET — SGO new key saved +**
+> - SGO new key saved (validated, rate-limited), Odds API flaky
+
 > **2026-06-19 18:45 ET — World Cup dashboard FIXED (props.json overwrite + API fallback):**
 > - **Root cause:** `Daily_Log/worldcup/20260619/props.json` was overwritten by a pipeline step (likely `daily_picks.py`) with a flat 331-entry picks list (`player/stat/tc_projection/edge` format) instead of match objects with nested `player_props` dict.
 > - The `/api/worldcup-props` route iterated each flat entry as if it were a match → 331 fake matches all with `player_count: 0` → dashboard showed "nothing."
