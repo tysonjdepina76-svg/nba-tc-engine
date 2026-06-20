@@ -44,6 +44,10 @@ SGO_BASE = "https://api.sportsgameodds.com/v2"
 LEAGUE_MAP = {"NBA": "NBA", "WNBA": "WNBA", "NCAAB": "NCAAB"}
 # Odds API uses basketball_wnba for WNBA combo markets
 
+SGO_API_KEY = load_secret("SPORTSGAMEODDS_API_KEY")
+ODDS_API_KEY = load_secret("ODDS_API_KEY")
+ODDS_BASE = "https://api.the-odds-api.com/v4"
+
 @dataclass
 class DKCombo:
     player: str
@@ -145,6 +149,72 @@ ODDS_MARKET_MAP = {
     "player_points_rebounds": "PR",
     "player_points_assists": "PA",
 }
+
+def _fetch_odds_combos(sport: str, target_away: Optional[str] = None, target_home: Optional[str] = None) -> List[DKCombo]:
+    """WNBA combo fallback via Odds API when SGO tier doesn't cover WNBA."""
+    combos: List[DKCombo] = []
+    odds_sport = "basketball_wnba"
+    if not ODDS_API_KEY:
+        return combos
+    try:
+        # Step 1: list events
+        r = requests.get(
+            f"{ODDS_BASE}/sports/{odds_sport}/events",
+            params={"apiKey": ODDS_API_KEY},
+            timeout=15
+        )
+        r.raise_for_status()
+        events = r.json()
+        for ev in events:
+            eid = ev.get("id")
+            if not eid:
+                continue
+            # Step 2: per-event odds with combo markets
+            r2 = requests.get(
+                f"{ODDS_BASE}/sports/{odds_sport}/events/{eid}/odds",
+                params={
+                    "apiKey": ODDS_API_KEY,
+                    "regions": "us",
+                    "markets": "player_points_rebounds_assists,player_points_rebounds,player_points_assists",
+                    "bookmakers": "draftkings",
+                    "oddsFormat": "american",
+                },
+                timeout=15
+            )
+            r2.raise_for_status()
+            odds_data = r2.json()
+            for bk in odds_data.get("bookmakers", []):
+                if bk.get("key") != "draftkings":
+                    continue
+                for m in bk.get("markets", []):
+                    combo_type = ODDS_MARKET_MAP.get(m.get("key", ""))
+                    if not combo_type:
+                        continue
+                    for o in m.get("outcomes", []):
+                        if o.get("name") != "Over":
+                            continue
+                        player = o.get("description", "")
+                        line = o.get("point")
+                        price = o.get("price")
+                        if not player or line is None:
+                            continue
+                        combos.append(DKCombo(
+                            player=player,
+                            team="—",
+                            combo_type=combo_type,
+                            dk_line=float(line),
+                            dk_odds=str(price),
+                            book_over_under=str(line),
+                            odd_id=eid,
+                            bookmaker="draftkings",
+                        ))
+    except requests.exceptions.HTTPError as e:
+        print(f"[odds-api combos] {odds_sport} unavailable: {e}", file=sys.stderr)
+    except Exception as e:
+        print(f"[odds-api combos] error: {e}", file=sys.stderr)
+    combos.sort(key=lambda c: c.dk_line, reverse=True)
+    return combos
+
 def event_safe(s: str) -> str:
     return re.sub(r"[^A-Za-z0-9]+", "_", s).strip("_")
 
@@ -239,6 +309,9 @@ def serve_combos(port: int = 8515):
                 events = fetch_sgo_events(sport_key)
                 combos = extract_dk_combos(events, away, home)
 
+                # WNBA fallback: SGO doesn't support WNBA on current tier — use Odds API
+                if (not combos) and sport.upper() == "WNBA" and ODDS_API_KEY:
+                    combos = _fetch_odds_combos(sport.upper(), away, home)
 
                 out = {
                     "sport": sport,

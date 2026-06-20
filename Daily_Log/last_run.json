@@ -1,33 +1,15 @@
 {
-  "timestamp": "2026-06-20T15:15:27.651957-05:00",
+  "timestamp": "2026-06-20T16:15:50.182911-05:00",
   "sports": [
     "WNBA",
     "MLB",
     "WORLD CUP"
   ],
-  "games_logged": 17,
-  "picks_logged": 495,
-  "completed_games_skipped": 3,
+  "games_logged": 15,
+  "picks_logged": 406,
+  "completed_games_skipped": 5,
   "errors": [],
   "summaries": [
-    {
-      "date": "2026-06-20",
-      "sport": "WNBA",
-      "matchup": "SEA@PHX",
-      "away_team": "SEA",
-      "home_team": "PHX",
-      "tc_combined": 113.4,
-      "tc_line": 127,
-      "market_total": 167.5,
-      "dk_total": 167.5,
-      "edge": -40.5,
-      "signal": "UNDER",
-      "source": "live ESPN WNBA roster/stat APIs",
-      "valid_prop_count": 48,
-      "roster_size": 45,
-      "pending_props_no_dk": 48,
-      "picks_with_dk": 0
-    },
     {
       "date": "2026-06-20",
       "sport": "WNBA",
@@ -45,24 +27,6 @@
       "roster_size": 52,
       "pending_props_no_dk": 52,
       "picks_with_dk": 0
-    },
-    {
-      "date": "2026-06-20",
-      "sport": "MLB",
-      "matchup": "CIN@NYY",
-      "away_team": "CIN",
-      "home_team": "NYY",
-      "tc_combined": null,
-      "tc_line": null,
-      "market_total": null,
-      "dk_total": null,
-      "edge": null,
-      "signal": "NO DK LINES",
-      "source": "Odds API 401",
-      "valid_prop_count": 26,
-      "roster_size": 28,
-      "pending_props_no_dk": 0,
-      "picks_with_dk": 26
     },
     {
       "date": "2026-06-20",
@@ -167,10 +131,10 @@
       "edge": null,
       "signal": "NO DK LINES",
       "source": "Odds API 401",
-      "valid_prop_count": 35,
+      "valid_prop_count": 25,
       "roster_size": 28,
       "pending_props_no_dk": 0,
-      "picks_with_dk": 35
+      "picks_with_dk": 25
     },
     {
       "date": "2026-06-20",
@@ -203,10 +167,10 @@
       "edge": null,
       "signal": "NO DK LINES",
       "source": "Odds API 401",
-      "valid_prop_count": 66,
+      "valid_prop_count": 61,
       "roster_size": 54,
       "pending_props_no_dk": 0,
-      "picks_with_dk": 66
+      "picks_with_dk": 61
     },
     {
       "date": "2026-06-20",
