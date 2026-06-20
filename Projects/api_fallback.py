@@ -141,14 +141,13 @@ class FallbackManager:
             "WNBA": "basketball_wnba",
             "NBA": "basketball_nba",
             "MLB": "baseball_mlb",
-            "NHL": "icehockey_nhl",
-        }
+            "NHL": "icehockey_nhl"}
         sport_key = ODDS_SPORT.get(sport, "")
         if not sport_key:
             return {"sport": sport, "away": away, "home": home, "source": "unsupported-sport"}
 
         # Try each available key
-        ODDS_BASE = "https://api.the-odds-api.com/v4/sports"
+        ODDS_BASE = "https://api.theoddsapi.com"
         for entry in self.keys:
             if entry["exhausted"]:
                 continue
@@ -158,10 +157,8 @@ class FallbackManager:
                 r = requests.get(
                     f"{ODDS_BASE}/{sport_key}/odds",
                     params={
-                        "apiKey": key,
                         "regions": "us",
-                        "dateFormat": "iso",
-                    },
+                        "dateFormat": "iso"},
                     timeout=15,
                 )
                 if r.status_code == 401:
@@ -193,12 +190,10 @@ class FallbackManager:
                 r2 = requests.get(
                     f"{ODDS_BASE}/{sport_key}/events/{event_id}/odds",
                     params={
-                        "apiKey": key,
                         "regions": "us",
                         "markets": markets,
                         "bookmakers": "draftkings",
-                        "oddsFormat": "american",
-                    },
+                        "oddsFormat": "american"},
                     timeout=15,
                 )
                 if r2.status_code != 200:
@@ -209,8 +204,7 @@ class FallbackManager:
                 stat_map = {
                     "player_points": "points", "player_rebounds": "rebounds",
                     "player_assists": "assists", "player_threes": "threes",
-                    "player_steals": "steals", "player_blocks": "blocks",
-                }
+                    "player_steals": "steals", "player_blocks": "blocks"}
 
                 for bm in odds_data.get("bookmakers", []):
                     if bm.get("key") != "draftkings":
@@ -241,8 +235,7 @@ class FallbackManager:
                     "player_lines": player_lines,
                     "player_count": len(player_lines),
                     "tier_used": entry["label"],
-                    "available_books": ["draftkings"],
-                }
+                    "available_books": ["draftkings"]}
                 self._cache_set(sport, away, home, result)
                 return result
 

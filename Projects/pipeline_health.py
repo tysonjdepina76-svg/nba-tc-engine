@@ -76,8 +76,7 @@ def main():
     if not json_out:
         print("\n── API Keys ──")
     key_checks = {
-        "SPORTS_DATA_API_KEY": "SportsData.io ($99/mo NFL)",
-    }
+        "SPORTS_DATA_API_KEY": "SportsData.io ($99/mo NFL)"}
     for name, desc in key_checks.items():
         val = secrets.get(name, "")
         if val and len(val) > 5:
@@ -107,7 +106,7 @@ def main():
         if odds_key:
             try:
                 r = requests.get(
-                    params={"apiKey": odds_key, "regions": "us", "markets": "h2h"},
+                    params={ "regions": "us", "markets": "h2h"},
                     timeout=10,
                 )
                 ok = r.ok or r.status_code == 422
@@ -167,7 +166,7 @@ def main():
         ]
         for name, url in route_checks:
             try:
-                r = requests.get(url, timeout=20, headers={"Accept": "application/json"})
+                r = requests.get(url, headers={"Accept": "application/json"}, timeout=20)
                 data = r.json()
                 ok = not data.get("error") and r.ok
                 check(name, ok, f"HTTP {r.status_code}" if ok else str(data.get("error", f"HTTP {r.status_code}"))[:60])
@@ -183,7 +182,7 @@ def main():
         streamlit_ok = False
         for port in [8507, 8510, 8501]:
             try:
-                r = requests.get(f"http://localhost:{port}", timeout=5)
+                r = requests.get(f"http://localhost:{port}", headers={"x-api-key": ODDS_API_KEY}, timeout=5)
                 check(f"Streamlit :{port}", True, f"HTTP {r.status_code}")
                 streamlit_ok = True
                 break
@@ -330,8 +329,7 @@ def main():
             "warnings": len(WARNINGS),
             "failures": len(FAILURES),
             "warning_details": WARNINGS,
-            "failure_details": FAILURES,
-        }
+            "failure_details": FAILURES}
         if FAILURES:
             result["status"] = "UNHEALTHY"
         elif WARNINGS:

@@ -474,7 +474,7 @@ def load_api_key() -> str:
                         return v
     return ""
 
-ODDS_API_BASE = "https://api.the-odds-api.com/v4/sports"
+ODDS_API_BASE = "https://api.theoddsapi.com"
 
 def _odds_url(sport_key: str, event_id: str = "") -> str:
     if event_id:
@@ -497,7 +497,6 @@ def fetch_mlb_player_lines(game_id: str) -> Dict[str, Dict[str, float]]:
     try:
         url = _odds_url("baseball_mlb", game_id)
         r = requests.get(url, params={
-            "apiKey": key,
             "regions": "us",
             "markets": market_str,
             "bookmakers": "draftkings",
@@ -551,7 +550,6 @@ def fetch_mlb_game_lines() -> List[Dict]:
         url = _odds_url("baseball_mlb")
         r = requests.get(url,
             params={
-                "apiKey": key,
                 "regions": "us",
                 "markets": "h2h,spreads,totals",
                 "bookmakers": "draftkings",

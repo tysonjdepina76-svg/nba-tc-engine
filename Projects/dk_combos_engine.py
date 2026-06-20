@@ -46,7 +46,7 @@ LEAGUE_MAP = {"NBA": "NBA", "WNBA": "WNBA", "NCAAB": "NCAAB"}
 
 SGO_API_KEY = load_secret("SPORTSGAMEODDS_API_KEY")
 ODDS_API_KEY = load_secret("ODDS_API_KEY")
-ODDS_BASE = "https://api.the-odds-api.com/v4"
+ODDS_BASE = "https://api.theoddsapi.com"
 
 @dataclass
 class DKCombo:
@@ -77,7 +77,8 @@ def fetch_sgo_events(sport_key: str) -> List[dict]:
         r = requests.get(
             url,
             params={"leagueID": sport_key, "oddsAvailable": "true"},
-            headers={"X-Api-Key": SGO_API_KEY, "Accept": "application/json"},
+            headers={"X-Api-Key": SGO_API_KEY, "Accept": "application/json",
+            "x-api-key": ODDS_API_KEY},
             timeout=15,
         )
         r.raise_for_status()
@@ -160,7 +161,7 @@ def _fetch_odds_combos(sport: str, target_away: Optional[str] = None, target_hom
         # Step 1: list events
         r = requests.get(
             f"{ODDS_BASE}/sports/{odds_sport}/events",
-            params={"apiKey": ODDS_API_KEY},
+            params={},
             timeout=15
         )
         r.raise_for_status()
@@ -173,7 +174,6 @@ def _fetch_odds_combos(sport: str, target_away: Optional[str] = None, target_hom
             r2 = requests.get(
                 f"{ODDS_BASE}/sports/{odds_sport}/events/{eid}/odds",
                 params={
-                    "apiKey": ODDS_API_KEY,
                     "regions": "us",
                     "markets": "player_points_rebounds_assists,player_points_rebounds,player_points_assists",
                     "bookmakers": "draftkings",

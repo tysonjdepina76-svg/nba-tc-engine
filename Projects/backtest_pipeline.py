@@ -69,7 +69,7 @@ if SECRETS_FILE.exists():
             ODDS_API_KEY = line.split('=', 1)[1].strip().strip('"').strip("'")
             break
 
-ODDS_BASE = "https://api.the-odds-api.com/v4/sports"
+ODDS_BASE = "https://api.theoddsapi.com"
 
 SPORT_MAP = {
     "WNBA": "basketball_wnba",

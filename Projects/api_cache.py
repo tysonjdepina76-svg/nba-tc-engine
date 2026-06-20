@@ -55,8 +55,7 @@ def cached_get(name, url, params=None, headers=None, ttl=7200, timeout=15, force
             "ttl_seconds": ttl,
             "status_code": r.status_code,
             "latency_ms": latency,
-            "data": data,
-        }, indent=2, default=str))
+            "data": data}, indent=2, default=str))
         _bump_registry(name, "live_fetch", status=r.status_code, latency=latency)
         return data, False
     except Exception as e:
@@ -111,7 +110,7 @@ def warm_cache_from_registry(force=False):
             skipped += 1
             continue
         url = ep["url"]
-        params = {}
+        params={}
         if ep.get("key_label"):
             # Re-derive apiKey from env
             import os
@@ -123,8 +122,7 @@ def warm_cache_from_registry(force=False):
                         if line.startswith(ep["key_label"] + "="):
                             key = line.split("=", 1)[1].strip().strip('"').strip("'")
             if key:
-                params["apiKey"] = key
-        cached_get(ep["name"], url, params=params, force=force)
+                        cached_get(ep["name"], url, params=params, headers={"x-api-key": key}, force=force)
         warmed += 1
     return {"warmed": warmed, "skipped": skipped}
 

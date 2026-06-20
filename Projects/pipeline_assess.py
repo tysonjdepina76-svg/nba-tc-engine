@@ -77,7 +77,7 @@ def check_zo_routes():
     statuses = {}
     for r in routes:
         try:
-            resp = requests.get(f"http://localhost:3099{r}", timeout=10, headers={"Accept": "application/json"})
+            resp = requests.get(f"http://localhost:3099{r}", headers={"Accept": "application/json"}, timeout=10)
             statuses[r] = resp.status_code
         except Exception:
             statuses[r] = "unreachable"
@@ -87,7 +87,7 @@ def check_zo_routes():
 # ── 3. DK Combos Engine ─────────────────────────
 def check_combos_service():
     try:
-        r = requests.get("http://localhost:8515/combos?sport=WNBA", timeout=10)
+        r = requests.get("http://localhost:8515/combos?sport=WNBA", headers={"x-api-key": ODDS_API_KEY}, timeout=10)
         combo_count = len(r.json()) if r.ok else 0
         return {"summary": f"port 8515 OK, {combo_count} combos", "status": r.status_code, "combos": combo_count}
     except Exception:
@@ -96,7 +96,7 @@ def check_combos_service():
 # ── 4. Streamlit Dashboard ──────────────────────
 def check_streamlit():
     try:
-        r = requests.get("http://localhost:8510", timeout=5)
+        r = requests.get("http://localhost:8510", headers={"x-api-key": ODDS_API_KEY}, timeout=5)
         return {"summary": f"port 8510 OK ({r.status_code})", "status": r.status_code}
     except Exception:
         return {"summary": "not running", "status": "down"}
@@ -150,9 +150,7 @@ def check_gamelogs():
 def check_automations():
     # Automations are
     try:
-        r = requests.get("http://localhost:3099/api/automations", timeout=10,
-                        headers={"Accept": "application/json"})
-        autos = r.json() if r.ok else []
+        r = requests.get("http://localhost:3099/api/automations", headers={"Accept": "application/json"}, timeout=10)
     except Exception:
         autos = []
     active = [a for a in autos if a.get("active")]
@@ -163,8 +161,7 @@ def check_automations():
 def check_balldontlie():
     BDL_KEY = os.environ.get("BALLDONTLIE_API_KEY", "")
     try:
-        r = requests.get("https://api.balldontlie.io/v1/status", timeout=10,
-                        headers={"Authorization": BDL_KEY} if BDL_KEY else {})
+        r = requests.get("https://api.balldontlie.io/v1/status", headers={"Authorization": BDL_KEY} if BDL_KEY else {}, timeout=10)
         status = r.status_code
     except Exception:
         status = "unreachable"
@@ -183,8 +180,8 @@ def check_odds_credits():
         return {"summary": "No ODDS_API_KEY found", "remaining": "N/A", "used": "N/A"}
     try:
         r = requests.get(
-            "https://api.the-odds-api.com/v4/sports/basketball_wnba/odds",
-            params={"apiKey": ODDS_KEY, "regions": "us", "markets": "h2h"}, timeout=10)
+            "https://api.theoddsapi.com/odds/?sport_key=basketball_wnba",
+            params={ "regions": "us", "markets": "h2h"}, timeout=10)
         remaining = r.headers.get("x-requests-remaining", "?")
         used = r.headers.get("x-requests-used", "?")
     except Exception:
@@ -229,8 +226,7 @@ def check_cache_health():
         "today_count": len(today_glob),
         "wc_count": len(wc_glob),
         "today_files": [f.name for f in today_glob],
-        "wc_files": [f.name for f in wc_glob],
-    }
+        "wc_files": [f.name for f in wc_glob]}
 
 def restart_streamlit():
     import subprocess, time
@@ -275,7 +271,7 @@ if __name__ == "__main__":
             d.mkdir(parents=True, exist_ok=True)
         # 1. Restart Streamlit dashboard if down
         try:
-            r = requests.get("http://localhost:8510/_stcore/health", timeout=3)
+            r = requests.get("http://localhost:8510/_stcore/health", headers={"x-api-key": ODDS_API_KEY}, timeout=3)
             if r.status_code != 200:
                 raise Exception("down")
         except Exception:
@@ -291,7 +287,7 @@ if __name__ == "__main__":
             repairs += 1
         # 2. Restart DK combos engine if down
         try:
-            r = requests.get("http://localhost:8515/combos", timeout=3)
+            r = requests.get("http://localhost:8515/combos", headers={"x-api-key": ODDS_API_KEY}, timeout=3)
             if r.status_code != 200:
                 raise Exception("down")
         except Exception:
@@ -305,7 +301,7 @@ if __name__ == "__main__":
             repairs += 1
         # 3. Restart soccer combo engine if down
         try:
-            r = requests.get("http://localhost:8516/combos", timeout=3)
+            r = requests.get("http://localhost:8516/combos", headers={"x-api-key": ODDS_API_KEY}, timeout=3)
             if r.status_code != 200:
                 raise Exception("down")
         except Exception:

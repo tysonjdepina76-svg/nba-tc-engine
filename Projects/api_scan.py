@@ -45,8 +45,7 @@ def probe(name, url, params=None, headers=None, timeout=15, key_label=None, free
         "url": url,
         "key_label": key_label,
         "free_tier": free_tier,
-        "scanned_at": NOW,
-    }
+        "scanned_at": NOW}
     try:
         r = requests.get(url, params=params or {}, headers=headers or {}, timeout=timeout)
         latency = round((time.time() - t0) * 1000, 1)
@@ -104,7 +103,7 @@ if SGO_KEY:
         # Sports list — v5 root namespace
         ep = probe(
             name=f"Odds API sports list ({label})",
-            params={"apiKey": key},
+            params={},
             key_label=label,
             free_tier=is_free,
         )
@@ -112,7 +111,7 @@ if SGO_KEY:
         # WNBA events — v5 root namespace
         ep2 = probe(
             name=f"Odds API WNBA events ({label})",
-            params={"apiKey": key, "sport_key": "basketball_wnba"},
+            params={ "sport_key": "basketball_wnba"},
             key_label=label,
             free_tier=is_free,
         )
@@ -166,9 +165,7 @@ results["summary"] = {
     "free_tier_count": sum(1 for e in results["endpoints"] if e.get("free_tier")),
     "keys_loaded": {
         "SPORTS_DATA_API_KEY": bool(SDI_KEY),
-        "BALLDONTLIE_API_KEY": bool(BDL_KEY),
-    },
-}
+        "BALLDONTLIE_API_KEY": bool(BDL_KEY)}}
 
 # Write
 REG_PATH.write_text(json.dumps(results, indent=2, default=str))

@@ -36,8 +36,7 @@ SPORT_CONFIG = {
     "NFL":   ("americanfootball_nfl", ["player_pass_yards", "player_pass_tds", "player_pass_completions", "player_pass_attempts", "player_rush_yards", "player_receptions", "player_reception_yards", "player_reception_tds", "player_anytime_td"]),
     "MLB":   ("baseball_mlb",     None),  # Free tier has no MLB player props
     "WORLD CUP": ("soccer_fifa_world_cup", ["player_goals_scored", "player_shots", "player_shots_on_target", "player_assists"]),
-    "MLS":   ("soccer_usa_mls",   ["player_goals_scored", "player_shots", "player_shots_on_target", "player_assists"]),
-}
+    "MLS":   ("soccer_usa_mls",   ["player_goals_scored", "player_shots", "player_shots_on_target", "player_assists"])}
 
 SPORT_BOOKS = {
     "NBA":   ("draftkings",),                    # DK primary
@@ -46,15 +45,14 @@ SPORT_BOOKS = {
     "NFL":   ("draftkings", "fanduel", "betmgm"),  # FD is primary for NFL
     "MLB":   ("draftkings",),                    # no props on free tier anyway
     "WORLD CUP": ("fanduel",),                   # DK doesn't carry WC props on free tier
-    "MLS":   ("fanduel", "draftkings"),
-}
+    "MLS":   ("fanduel", "draftkings")}
 
 CACHE_ROOT = Path("/home/workspace/Daily_Log/live_props/_cache")
 CACHE_ROOT.mkdir(parents=True, exist_ok=True)
 CACHE_TTL_MIN = int(os.environ.get("MULTISPORT_CACHE_TTL_MIN", "60"))
 
 def get_events(sport_key):
-    r = requests.get(f"{BASE}/sports/{sport_key}/events", params={"apiKey": API_KEY, "dateFormat": "iso"}, timeout=15)
+    r = requests.get(f"{BASE}/sports/{sport_key}/events", params={ "dateFormat": "iso"}, headers={"x-api-key": ODDS_API_KEY}, timeout=15)
     if not r.ok:
         return [], r.status_code
     return r.json(), 200
@@ -62,7 +60,7 @@ def get_events(sport_key):
 def get_event_props(sport_key, event_id, markets, regions="us"):
     r = requests.get(
         f"{BASE}/sports/{sport_key}/events/{event_id}/odds",
-        params={"apiKey": API_KEY, "regions": regions, "markets": ",".join(markets), "oddsFormat": "american", "dateFormat": "iso"},
+        params={ "regions": regions, "markets": ",".join(markets), "oddsFormat": "american", "dateFormat": "iso"},
         timeout=20,
     )
     return r
@@ -86,8 +84,7 @@ def to_rows(event, payload, book_filter="draftkings"):
                     "player": oc.get("description", ""),
                     "direction": oc.get("name", ""),
                     "line": oc.get("point"),
-                    "odds": oc.get("price"),
-                })
+                    "odds": oc.get("price")})
     return rows
 
 def pull_sport(sport, out_dir, target_books=("draftkings",)):

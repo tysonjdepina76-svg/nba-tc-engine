@@ -171,7 +171,7 @@ def fetch_sport_batch(sport: str, markets: Optional[List[str]] = None, force: bo
     # Step 1: Get all events (one cheap API call)
     try:
         r = requests.get(
-            params={"apiKey": ODDS_KEY, "dateFormat": "iso"}, timeout=15
+            params={"dateFormat": "iso"}, timeout=15
         )
         r.raise_for_status()
         ev_data = r.json()
@@ -229,10 +229,10 @@ def fetch_consensus_for_matchup(sport: str, away: str, home: str, markets=None) 
     if not ODDS_KEY:
         return {"players": {}, "available_books": [], "source": "none", "error": "ODDS_API_KEY not set"}
 
-    ODDS_BASE = "https://api.the-odds-api.com/v4/sports"
+    ODDS_BASE = "https://api.theoddsapi.com"
     r = requests.get(
         f"{ODDS_BASE}/{sport_key}/odds",
-        params={"apiKey": ODDS_KEY, "regions": "us", "dateFormat": "iso"}, timeout=15
+        params={"regions": "us", "dateFormat": "iso"}, timeout=15
     )
     r.raise_for_status()
     events = r.json()
@@ -308,11 +308,10 @@ def get_consensus_lines(
     market_str = ",".join(mkts) + ",totals"
 
     try:
-        ODDS_BASE = "https://api.the-odds-api.com/v4/sports"
+        ODDS_BASE = "https://api.theoddsapi.com"
         r = requests.get(
             f"{ODDS_BASE}/{sport_key}/events/{event_id}/odds",
             params={
-                "apiKey": ODDS_KEY, "regions": "us",
                 "markets": market_str, "oddsFormat": "decimal",
             },
             timeout=25,
@@ -495,7 +494,7 @@ if __name__ == "__main__":
 
         # Find event
         r = requests.get(
-            params={"apiKey": ODDS_KEY, "regions": "us", "dateFormat": "iso"}, timeout=15
+            params={"regions": "us", "dateFormat": "iso"}, timeout=15
         )
         events = r.json()
         ev = None
@@ -532,7 +531,7 @@ def list_sport_games(sport: str) -> dict:
         return {"games": [], "error": "ODDS_API_KEY not set"}
     try:
         r = requests.get(
-            params={"apiKey": ODDS_KEY, "regions": "us", "dateFormat": "iso"}, timeout=15
+            params={"regions": "us", "dateFormat": "iso"}, timeout=15
         )
         r.raise_for_status()
         _d = r.json()

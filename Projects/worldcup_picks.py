@@ -40,7 +40,7 @@ SPORT_KEY = "soccer_fifa_world_cup"
 ESPN_SCOREBOARD = "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard"
 
 ODDS_API_KEY = os.environ.get("ODDS_API_KEY", "")
-ODDS_BASE = "https://api.the-odds-api.com/v4"
+ODDS_BASE = "https://api.theoddsapi.com"
 
 LOG_DIR = WORKSPACE / "Daily_Log" / "worldcup"
 LOG_DIR.mkdir(parents=True, exist_ok=True)
@@ -90,7 +90,8 @@ def fetch_espn_matches(date_str=None):
         urls.append(f"{ESPN_SCOREBOARD}?dates={date_str}")
     for u in urls:
         try:
-            r = requests.get(u, timeout=15, headers={"Accept": "application/json"})
+            r = requests.get(u, timeout=15, headers={"Accept": "application/json",
+            "x-api-key": ODDS_API_KEY})
             r.raise_for_status()
             data = r.json()
             for e in data.get("events", []):
@@ -145,9 +146,9 @@ def fetch_odds_games():
     if not ODDS_API_KEY:
         return []
     try:
-        url = f"{ODDS_BASE}/sports/{SPORT_KEY}/odds"
+        url = f"{ODDS_BASE}/odds/?sport_key={SPORT_KEY}"
         params = {
-            "apiKey": ODDS_API_KEY, "regions": "us",
+            "regions": "us",
             "markets": "h2h,spreads,totals",
             "oddsFormat": "american",
             "commenceTimeFrom": (datetime.now(timezone.utc) - timedelta(hours=12)).strftime("%Y-%m-%dT%H:%M:%SZ"),
@@ -175,9 +176,9 @@ def fetch_player_props(game_id, away_team="", home_team=""):
     if not ODDS_API_KEY:
         return {"bookmakers": [], "source": "no-key"}
     try:
-        url = f"{ODDS_BASE}/sports/{SPORT_KEY}/events/{game_id}/odds"
+        url = f"{ODDS_BASE}/odds/?sport_key={SPORT_KEY}&eventId={game_id}"
         params = {
-            "apiKey": ODDS_API_KEY, "regions": "us",
+            "regions": "us",
             "markets": ",".join(PROP_MARKETS),
             "oddsFormat": "american",
         }

@@ -151,7 +151,7 @@ def fetch_soccer_odds(event_id: str, sport_key: str = "soccer_fifa_world_cup") -
     """
     try:
         r = requests.get(
-            f"{ODDS_BASE}/sports/{sport_key}/events/{event_id}/odds",
+            f"{ODDS_BASE}/odds/?sport_key={sport_key}&eventId={event_id}",
             params={
                 "regions": "us",
                 "oddsFormat": "american",

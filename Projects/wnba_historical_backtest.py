@@ -23,9 +23,9 @@ if _sec.exists():
 def fetch_hist_game_odds(date_str: str) -> list:
     """Fetch historical WNBA game odds for a specific date."""
     url = f"{API_BASE}/historical/sports/basketball_wnba/odds"
-    params = {"apiKey": ODDS_KEY, "regions": "us", "markets": "h2h,spreads,totals",
+    params={ "regions": "us", "markets": "h2h,spreads,totals",
               "oddsFormat": "american", "date": f"{date_str}T12:00:00Z"}
-    r = requests.get(url, params=params, timeout=30)
+    r = requests.get(url, params=params, headers={"x-api-key": ODDS_API_KEY}, timeout=30)
     if r.status_code == 200:
         return r.json().get("data", [])
     print(f"  Error fetching hist odds: {r.status_code}")
@@ -34,10 +34,10 @@ def fetch_hist_game_odds(date_str: str) -> list:
 def fetch_hist_event_props(sport: str, event_id: str, date_str: str) -> dict:
     """Fetch historical player props for a specific event."""
     url = f"{API_BASE}/historical/sports/{sport}/events/{event_id}/odds"
-    params = {"apiKey": ODDS_KEY, "regions": "us",
+    params={ "regions": "us",
               "markets": "player_points,player_rebounds,player_assists",
               "oddsFormat": "american", "date": f"{date_str}T12:00:00Z"}
-    r = requests.get(url, params=params, timeout=30)
+    r = requests.get(url, params=params, headers={"x-api-key": ODDS_API_KEY}, timeout=30)
     if r.status_code == 200:
         return r.json()
     return {}
@@ -45,7 +45,7 @@ def fetch_hist_event_props(sport: str, event_id: str, date_str: str) -> dict:
 def fetch_espn_boxscore(game_id: str) -> dict:
     """Fetch ESPN WNBA boxscore for actual stats."""
     url = f"https://site.api.espn.com/apis/site/v2/sports/basketball/wnba/summary?event={game_id}"
-    r = requests.get(url, timeout=15)
+    r = requests.get(url, headers={"x-api-key": ODDS_API_KEY}, timeout=15)
     if r.status_code == 200:
         return r.json()
     return {}
@@ -75,8 +75,7 @@ def parse_actuals(boxscore: dict) -> dict:
                     "AST": float(stats[2]) if len(stats) > 2 and stats[2] else 0.0,
                     "3PM": float(stats[3]) if len(stats) > 3 and stats[3] else 0.0,
                     "STL": float(stats[4]) if len(stats) > 4 and stats[4] else 0.0,
-                    "BLK": float(stats[5]) if len(stats) > 5 and stats[5] else 0.0,
-                }
+                    "BLK": float(stats[5]) if len(stats) > 5 and stats[5] else 0.0}
     return actuals
 
 def parse_dk_lines(odds_data: dict) -> dict:
@@ -191,8 +190,7 @@ def run_backtest(days_back: int = 7):
                     "line": line_val,
                     "price": price,
                     "actual": actual_val,
-                    "result": result,
-                })
+                    "result": result})
 
             total = hits + misses + pushes
             pct = f"{(hits / total * 100):.1f}%" if total > 0 else "N/A"
