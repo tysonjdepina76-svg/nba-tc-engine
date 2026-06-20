@@ -24,9 +24,10 @@ import requests
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
-# Add SGO cache module path
-sys.path.insert(0, str(Path("/home/workspace")))
-from Cache.sgo.cache import sgo_get
+try:
+    from Cache.sgo.cache import sgo_get
+except ImportError:
+    pass
 
 CACHE_DIR = Path("/home/workspace/Daily_Log/cache/odds")
 CACHE_DIR.mkdir(parents=True, exist_ok=True)
