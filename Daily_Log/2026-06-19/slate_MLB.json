@@ -1,7 +1,7 @@
 {
   "mode": "live_stats",
   "sport": "MLB",
-  "timestamp": "2026-06-20T00:28:58.873Z",
+  "timestamp": "2026-06-20T02:46:11.440Z",
   "games": [
     {
       "id": "401815820",
@@ -31,11 +31,11 @@
       "matchup": "CHW@DET",
       "name": "Chicago White Sox at Detroit Tigers",
       "date": "2026-06-19T22:40Z",
-      "status": "In Progress",
-      "detail": "Bottom 6th",
-      "period": 6,
+      "status": "Final",
+      "detail": "Final",
+      "period": 9,
       "clock": "0:00",
-      "completed": false,
+      "completed": true,
       "away": {
         "team": "CHW",
         "name": "Chicago White Sox",
@@ -54,11 +54,11 @@
       "matchup": "CIN@NYY",
       "name": "Cincinnati Reds at New York Yankees",
       "date": "2026-06-19T23:05Z",
-      "status": "In Progress",
-      "detail": "Middle 5th",
-      "period": 5,
+      "status": "Final",
+      "detail": "Final",
+      "period": 9,
       "clock": "0:00",
-      "completed": false,
+      "completed": true,
       "away": {
         "team": "CIN",
         "name": "Cincinnati Reds",
@@ -67,7 +67,7 @@
       "home": {
         "team": "NYY",
         "name": "New York Yankees",
-        "score": 4
+        "score": 5
       },
       "leaders": [],
       "players": []
@@ -77,20 +77,20 @@
       "matchup": "SF@MIA",
       "name": "San Francisco Giants at Miami Marlins",
       "date": "2026-06-19T23:10Z",
-      "status": "In Progress",
-      "detail": "Top 5th",
-      "period": 5,
+      "status": "Final",
+      "detail": "Final",
+      "period": 9,
       "clock": "0:00",
-      "completed": false,
+      "completed": true,
       "away": {
         "team": "SF",
         "name": "San Francisco Giants",
-        "score": 1
+        "score": 3
       },
       "home": {
         "team": "MIA",
         "name": "Miami Marlins",
-        "score": 1
+        "score": 4
       },
       "leaders": [],
       "players": []
@@ -100,11 +100,11 @@
       "matchup": "WSH@TB",
       "name": "Washington Nationals at Tampa Bay Rays",
       "date": "2026-06-19T23:10Z",
-      "status": "In Progress",
-      "detail": "Top 6th",
-      "period": 6,
+      "status": "Final",
+      "detail": "Final",
+      "period": 9,
       "clock": "0:00",
-      "completed": false,
+      "completed": true,
       "away": {
         "team": "WSH",
         "name": "Washington Nationals",
@@ -113,7 +113,7 @@
       "home": {
         "team": "TB",
         "name": "Tampa Bay Rays",
-        "score": 4
+        "score": 5
       },
       "leaders": [],
       "players": []
@@ -123,20 +123,20 @@
       "matchup": "MIL@ATL",
       "name": "Milwaukee Brewers at Atlanta Braves",
       "date": "2026-06-19T23:15Z",
-      "status": "In Progress",
-      "detail": "End 5th",
-      "period": 5,
+      "status": "Final",
+      "detail": "Final",
+      "period": 9,
       "clock": "0:00",
-      "completed": false,
+      "completed": true,
       "away": {
         "team": "MIL",
         "name": "Milwaukee Brewers",
-        "score": 1
+        "score": 2
       },
       "home": {
         "team": "ATL",
         "name": "Atlanta Braves",
-        "score": 0
+        "score": 3
       },
       "leaders": [],
       "players": []
@@ -147,19 +147,19 @@
       "name": "San Diego Padres at Texas Rangers",
       "date": "2026-06-20T00:05Z",
       "status": "In Progress",
-      "detail": "Bottom 1st",
-      "period": 1,
+      "detail": "Middle 8th",
+      "period": 8,
       "clock": "0:00",
       "completed": false,
       "away": {
         "team": "SD",
         "name": "San Diego Padres",
-        "score": 5
+        "score": 7
       },
       "home": {
         "team": "TEX",
         "name": "Texas Rangers",
-        "score": 0
+        "score": 8
       },
       "leaders": [],
       "players": []
@@ -170,19 +170,19 @@
       "name": "Cleveland Guardians at Houston Astros",
       "date": "2026-06-20T00:10Z",
       "status": "In Progress",
-      "detail": "Bottom 1st",
-      "period": 1,
+      "detail": "End 8th",
+      "period": 8,
       "clock": "0:00",
       "completed": false,
       "away": {
         "team": "CLE",
         "name": "Cleveland Guardians",
-        "score": 0
+        "score": 3
       },
       "home": {
         "team": "HOU",
         "name": "Houston Astros",
-        "score": 0
+        "score": 9
       },
       "leaders": [],
       "players": []
@@ -193,19 +193,19 @@
       "name": "St. Louis Cardinals at Kansas City Royals",
       "date": "2026-06-20T00:15Z",
       "status": "In Progress",
-      "detail": "End 1st",
-      "period": 1,
+      "detail": "Top 9th",
+      "period": 9,
       "clock": "0:00",
       "completed": false,
       "away": {
         "team": "STL",
         "name": "St. Louis Cardinals",
-        "score": 1
+        "score": 3
       },
       "home": {
         "team": "KC",
         "name": "Kansas City Royals",
-        "score": 0
+        "score": 6
       },
       "leaders": [],
       "players": []
@@ -215,20 +215,20 @@
       "matchup": "PIT@COL",
       "name": "Pittsburgh Pirates at Colorado Rockies",
       "date": "2026-06-20T00:40Z",
-      "status": "Scheduled",
-      "detail": "Scheduled",
-      "period": 1,
+      "status": "In Progress",
+      "detail": "End 8th",
+      "period": 8,
       "clock": "0:00",
       "completed": false,
       "away": {
         "team": "PIT",
         "name": "Pittsburgh Pirates",
-        "score": 0
+        "score": 3
       },
       "home": {
         "team": "COL",
         "name": "Colorado Rockies",
-        "score": 0
+        "score": 4
       },
       "leaders": [],
       "players": []
@@ -238,9 +238,9 @@
       "matchup": "LAA@ATH",
       "name": "Los Angeles Angels at Athletics Athletics",
       "date": "2026-06-20T01:40Z",
-      "status": "Scheduled",
-      "detail": "Scheduled",
-      "period": 1,
+      "status": "In Progress",
+      "detail": "Top 4th",
+      "period": 4,
       "clock": "0:00",
       "completed": false,
       "away": {
@@ -251,7 +251,7 @@
       "home": {
         "team": "ATH",
         "name": "Athletics",
-        "score": 0
+        "score": 4
       },
       "leaders": [],
       "players": []
@@ -261,20 +261,20 @@
       "matchup": "MIN@ARI",
       "name": "Minnesota Twins at Arizona Diamondbacks",
       "date": "2026-06-20T01:45Z",
-      "status": "Scheduled",
-      "detail": "Scheduled",
-      "period": 1,
+      "status": "In Progress",
+      "detail": "Top 4th",
+      "period": 4,
       "clock": "0:00",
       "completed": false,
       "away": {
         "team": "MIN",
         "name": "Minnesota Twins",
-        "score": 0
+        "score": 2
       },
       "home": {
         "team": "ARI",
         "name": "Arizona Diamondbacks",
-        "score": 0
+        "score": 1
       },
       "leaders": [],
       "players": []
@@ -284,9 +284,9 @@
       "matchup": "BAL@LAD",
       "name": "Baltimore Orioles at Los Angeles Dodgers",
       "date": "2026-06-20T02:10Z",
-      "status": "Scheduled",
-      "detail": "Scheduled",
-      "period": 1,
+      "status": "In Progress",
+      "detail": "Bottom 2nd",
+      "period": 2,
       "clock": "0:00",
       "completed": false,
       "away": {
@@ -297,7 +297,7 @@
       "home": {
         "team": "LAD",
         "name": "Los Angeles Dodgers",
-        "score": 0
+        "score": 3
       },
       "leaders": [],
       "players": []
@@ -307,15 +307,15 @@
       "matchup": "BOS@SEA",
       "name": "Boston Red Sox at Seattle Mariners",
       "date": "2026-06-20T02:10Z",
-      "status": "Scheduled",
-      "detail": "Scheduled",
-      "period": 1,
+      "status": "In Progress",
+      "detail": "Top 3rd",
+      "period": 3,
       "clock": "0:00",
       "completed": false,
       "away": {
         "team": "BOS",
         "name": "Boston Red Sox",
-        "score": 0
+        "score": 1
       },
       "home": {
         "team": "SEA",

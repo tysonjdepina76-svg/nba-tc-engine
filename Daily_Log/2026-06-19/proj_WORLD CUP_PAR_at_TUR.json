@@ -9,7 +9,7 @@
   "commence_time": "2026-06-20T03:00Z",
   "event_id": "760443",
   "source": "ESPN WORLD CUP scoreboard + Odds API 401",
-  "timestamp": "2026-06-20T00:29:09.168Z",
+  "timestamp": "2026-06-20T02:46:18.574Z",
   "tc_combined": null,
   "tc_line": null,
   "dk_total": "o2.5",
@@ -34,26 +34,1446 @@
   },
   "away": {
     "all": {
-      "players": []
+      "players": [
+        {
+          "id": "301648",
+          "name": "Orlando Gil",
+          "pos": "G",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "PAR",
+          "props": {}
+        },
+        {
+          "id": "215401",
+          "name": "Omar Alderete",
+          "pos": "D",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "PAR",
+          "props": {
+            "fouls": {
+              "line": 0.7,
+              "over_price": -110,
+              "edge_pct": 21.4,
+              "source": "self-edge"
+            }
+          }
+        },
+        {
+          "id": "118395",
+          "name": "Gustavo G\u00f3mez",
+          "pos": "D",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "PAR",
+          "props": {
+            "fouls": {
+              "line": 1.5,
+              "over_price": -110,
+              "edge_pct": 13.3,
+              "source": "self-edge"
+            }
+          }
+        },
+        {
+          "id": "181657",
+          "name": "J\u00fanior Alonso",
+          "pos": "D",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "PAR",
+          "props": {
+            "fouls": {
+              "line": 0.7,
+              "over_price": -110,
+              "edge_pct": 21.4,
+              "source": "self-edge"
+            }
+          }
+        },
+        {
+          "id": "84295",
+          "name": "Juan Jose C\u00e1ceres",
+          "pos": "D",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "PAR",
+          "props": {
+            "fouls": {
+              "line": 2.2,
+              "over_price": -110,
+              "edge_pct": 15.9,
+              "source": "self-edge"
+            }
+          }
+        },
+        {
+          "id": "297328",
+          "name": "Mat\u00edas Galarza",
+          "pos": "M",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "PAR",
+          "props": {}
+        },
+        {
+          "id": "202501",
+          "name": "Andr\u00e9s Cubas",
+          "pos": "M",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "PAR",
+          "props": {
+            "fouls": {
+              "line": 3.7,
+              "over_price": -110,
+              "edge_pct": 14.9,
+              "source": "self-edge"
+            }
+          }
+        },
+        {
+          "id": "48128",
+          "name": "Miguel Almir\u00f3n",
+          "pos": "F",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "PAR",
+          "props": {
+            "shots": {
+              "line": 1.5,
+              "over_price": -110,
+              "edge_pct": 13.3,
+              "source": "self-edge"
+            },
+            "fouls": {
+              "line": 0.7,
+              "over_price": -110,
+              "edge_pct": 21.4,
+              "source": "self-edge"
+            }
+          }
+        },
+        {
+          "id": "192278",
+          "name": "Diego G\u00f3mez",
+          "pos": "M",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "PAR",
+          "props": {
+            "shots": {
+              "line": 3,
+              "over_price": -110,
+              "edge_pct": 13.3,
+              "source": "self-edge"
+            },
+            "fouls": {
+              "line": 0.7,
+              "over_price": -110,
+              "edge_pct": 21.4,
+              "source": "self-edge"
+            }
+          }
+        },
+        {
+          "id": "20975",
+          "name": "Julio Enciso",
+          "pos": "M",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "PAR",
+          "props": {
+            "assists": {
+              "line": 1,
+              "over_price": -110,
+              "edge_pct": -15,
+              "source": "self-edge"
+            },
+            "shots": {
+              "line": 1.5,
+              "over_price": -110,
+              "edge_pct": 13.3,
+              "source": "self-edge"
+            }
+          }
+        },
+        {
+          "id": "287035",
+          "name": "Isidro Pitta",
+          "pos": "F",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "PAR",
+          "props": {}
+        },
+        {
+          "id": "188160",
+          "name": "Alejandro Romero Gamarra",
+          "pos": "M",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "PAR",
+          "props": {
+            "fouls": {
+              "line": 0.7,
+              "over_price": -110,
+              "edge_pct": 21.4,
+              "source": "self-edge"
+            }
+          }
+        },
+        {
+          "id": "301516",
+          "name": "Dami\u00e1n Bobadilla",
+          "pos": "M",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "PAR",
+          "props": {}
+        },
+        {
+          "id": "399687",
+          "name": "Alexandro Maidana",
+          "pos": "D",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "PAR",
+          "props": {}
+        },
+        {
+          "id": "265977",
+          "name": "Braian Ojeda",
+          "pos": "M",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "PAR",
+          "props": {}
+        },
+        {
+          "id": "164262",
+          "name": "Gatito Fern\u00e1ndez",
+          "pos": "G",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "PAR",
+          "props": {}
+        },
+        {
+          "id": "301653",
+          "name": "Ram\u00f3n Sosa",
+          "pos": "F",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "PAR",
+          "props": {}
+        },
+        {
+          "id": "227682",
+          "name": "Jos\u00e9 Canale",
+          "pos": "D",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "PAR",
+          "props": {}
+        },
+        {
+          "id": "154853",
+          "name": "Gustavo Caballero",
+          "pos": "F",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "PAR",
+          "props": {}
+        },
+        {
+          "id": "199101",
+          "name": "Fabi\u00e1n Balbuena",
+          "pos": "D",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "PAR",
+          "props": {}
+        },
+        {
+          "id": "257754",
+          "name": "Alex Arce",
+          "pos": "F",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "PAR",
+          "props": {
+            "fouls": {
+              "line": 0.7,
+              "over_price": -110,
+              "edge_pct": 21.4,
+              "source": "self-edge"
+            }
+          }
+        },
+        {
+          "id": "192162",
+          "name": "Antonio Sanabria",
+          "pos": "F",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "PAR",
+          "props": {
+            "fouls": {
+              "line": 0.7,
+              "over_price": -110,
+              "edge_pct": 21.4,
+              "source": "self-edge"
+            }
+          }
+        },
+        {
+          "id": "289046",
+          "name": "Maur\u00edcio",
+          "pos": "M",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "PAR",
+          "props": {
+            "goals": {
+              "line": 1,
+              "over_price": -110,
+              "edge_pct": -15,
+              "source": "self-edge"
+            },
+            "shots_on_target": {
+              "line": 0.7,
+              "over_price": -110,
+              "edge_pct": 21.4,
+              "source": "self-edge"
+            },
+            "shots": {
+              "line": 0.7,
+              "over_price": -110,
+              "edge_pct": 21.4,
+              "source": "self-edge"
+            }
+          }
+        },
+        {
+          "id": "190375",
+          "name": "Gast\u00f3n Olveira",
+          "pos": "G",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "PAR",
+          "props": {}
+        },
+        {
+          "id": "208421",
+          "name": "Gabriel \u00c1valos",
+          "pos": "F",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "PAR",
+          "props": {}
+        },
+        {
+          "id": "119413",
+          "name": "Gustavo Vel\u00e1zquez",
+          "pos": "D",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "PAR",
+          "props": {}
+        }
+      ]
     },
     "starters": {
-      "players": []
+      "players": [
+        {
+          "id": "301648",
+          "name": "Orlando Gil",
+          "pos": "G",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "PAR",
+          "props": {}
+        },
+        {
+          "id": "215401",
+          "name": "Omar Alderete",
+          "pos": "D",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "PAR",
+          "props": {
+            "fouls": {
+              "line": 0.7,
+              "over_price": -110,
+              "edge_pct": 21.4,
+              "source": "self-edge"
+            }
+          }
+        },
+        {
+          "id": "118395",
+          "name": "Gustavo G\u00f3mez",
+          "pos": "D",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "PAR",
+          "props": {
+            "fouls": {
+              "line": 1.5,
+              "over_price": -110,
+              "edge_pct": 13.3,
+              "source": "self-edge"
+            }
+          }
+        },
+        {
+          "id": "181657",
+          "name": "J\u00fanior Alonso",
+          "pos": "D",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "PAR",
+          "props": {
+            "fouls": {
+              "line": 0.7,
+              "over_price": -110,
+              "edge_pct": 21.4,
+              "source": "self-edge"
+            }
+          }
+        },
+        {
+          "id": "84295",
+          "name": "Juan Jose C\u00e1ceres",
+          "pos": "D",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "PAR",
+          "props": {
+            "fouls": {
+              "line": 2.2,
+              "over_price": -110,
+              "edge_pct": 15.9,
+              "source": "self-edge"
+            }
+          }
+        },
+        {
+          "id": "297328",
+          "name": "Mat\u00edas Galarza",
+          "pos": "M",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "PAR",
+          "props": {}
+        },
+        {
+          "id": "202501",
+          "name": "Andr\u00e9s Cubas",
+          "pos": "M",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "PAR",
+          "props": {
+            "fouls": {
+              "line": 3.7,
+              "over_price": -110,
+              "edge_pct": 14.9,
+              "source": "self-edge"
+            }
+          }
+        },
+        {
+          "id": "48128",
+          "name": "Miguel Almir\u00f3n",
+          "pos": "F",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "PAR",
+          "props": {
+            "shots": {
+              "line": 1.5,
+              "over_price": -110,
+              "edge_pct": 13.3,
+              "source": "self-edge"
+            },
+            "fouls": {
+              "line": 0.7,
+              "over_price": -110,
+              "edge_pct": 21.4,
+              "source": "self-edge"
+            }
+          }
+        },
+        {
+          "id": "192278",
+          "name": "Diego G\u00f3mez",
+          "pos": "M",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "PAR",
+          "props": {
+            "shots": {
+              "line": 3,
+              "over_price": -110,
+              "edge_pct": 13.3,
+              "source": "self-edge"
+            },
+            "fouls": {
+              "line": 0.7,
+              "over_price": -110,
+              "edge_pct": 21.4,
+              "source": "self-edge"
+            }
+          }
+        },
+        {
+          "id": "20975",
+          "name": "Julio Enciso",
+          "pos": "M",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "PAR",
+          "props": {
+            "assists": {
+              "line": 1,
+              "over_price": -110,
+              "edge_pct": -15,
+              "source": "self-edge"
+            },
+            "shots": {
+              "line": 1.5,
+              "over_price": -110,
+              "edge_pct": 13.3,
+              "source": "self-edge"
+            }
+          }
+        },
+        {
+          "id": "287035",
+          "name": "Isidro Pitta",
+          "pos": "F",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "PAR",
+          "props": {}
+        }
+      ]
     },
     "bench": {
-      "players": []
+      "players": [
+        {
+          "id": "188160",
+          "name": "Alejandro Romero Gamarra",
+          "pos": "M",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "PAR",
+          "props": {
+            "fouls": {
+              "line": 0.7,
+              "over_price": -110,
+              "edge_pct": 21.4,
+              "source": "self-edge"
+            }
+          }
+        },
+        {
+          "id": "301516",
+          "name": "Dami\u00e1n Bobadilla",
+          "pos": "M",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "PAR",
+          "props": {}
+        },
+        {
+          "id": "399687",
+          "name": "Alexandro Maidana",
+          "pos": "D",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "PAR",
+          "props": {}
+        },
+        {
+          "id": "265977",
+          "name": "Braian Ojeda",
+          "pos": "M",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "PAR",
+          "props": {}
+        },
+        {
+          "id": "164262",
+          "name": "Gatito Fern\u00e1ndez",
+          "pos": "G",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "PAR",
+          "props": {}
+        },
+        {
+          "id": "301653",
+          "name": "Ram\u00f3n Sosa",
+          "pos": "F",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "PAR",
+          "props": {}
+        },
+        {
+          "id": "227682",
+          "name": "Jos\u00e9 Canale",
+          "pos": "D",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "PAR",
+          "props": {}
+        },
+        {
+          "id": "154853",
+          "name": "Gustavo Caballero",
+          "pos": "F",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "PAR",
+          "props": {}
+        },
+        {
+          "id": "199101",
+          "name": "Fabi\u00e1n Balbuena",
+          "pos": "D",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "PAR",
+          "props": {}
+        },
+        {
+          "id": "257754",
+          "name": "Alex Arce",
+          "pos": "F",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "PAR",
+          "props": {
+            "fouls": {
+              "line": 0.7,
+              "over_price": -110,
+              "edge_pct": 21.4,
+              "source": "self-edge"
+            }
+          }
+        },
+        {
+          "id": "192162",
+          "name": "Antonio Sanabria",
+          "pos": "F",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "PAR",
+          "props": {
+            "fouls": {
+              "line": 0.7,
+              "over_price": -110,
+              "edge_pct": 21.4,
+              "source": "self-edge"
+            }
+          }
+        },
+        {
+          "id": "289046",
+          "name": "Maur\u00edcio",
+          "pos": "M",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "PAR",
+          "props": {
+            "goals": {
+              "line": 1,
+              "over_price": -110,
+              "edge_pct": -15,
+              "source": "self-edge"
+            },
+            "shots_on_target": {
+              "line": 0.7,
+              "over_price": -110,
+              "edge_pct": 21.4,
+              "source": "self-edge"
+            },
+            "shots": {
+              "line": 0.7,
+              "over_price": -110,
+              "edge_pct": 21.4,
+              "source": "self-edge"
+            }
+          }
+        },
+        {
+          "id": "190375",
+          "name": "Gast\u00f3n Olveira",
+          "pos": "G",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "PAR",
+          "props": {}
+        },
+        {
+          "id": "208421",
+          "name": "Gabriel \u00c1valos",
+          "pos": "F",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "PAR",
+          "props": {}
+        },
+        {
+          "id": "119413",
+          "name": "Gustavo Vel\u00e1zquez",
+          "pos": "D",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "PAR",
+          "props": {}
+        }
+      ]
     },
     "totals": {},
     "injuries": []
   },
   "home": {
     "all": {
-      "players": []
+      "players": [
+        {
+          "id": "222922",
+          "name": "Ugurcan \u00c7akir",
+          "pos": "G",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "TUR",
+          "props": {}
+        },
+        {
+          "id": "193149",
+          "name": "Abd\u00fclkerim Bardak\u00e7i",
+          "pos": "D",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "TUR",
+          "props": {
+            "shots_on_target": {
+              "line": 0.7,
+              "over_price": -110,
+              "edge_pct": 21.4,
+              "source": "self-edge"
+            },
+            "shots": {
+              "line": 0.7,
+              "over_price": -110,
+              "edge_pct": 21.4,
+              "source": "self-edge"
+            }
+          }
+        },
+        {
+          "id": "267178",
+          "name": "Merih Demiral",
+          "pos": "D",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "TUR",
+          "props": {
+            "shots": {
+              "line": 0.7,
+              "over_price": -110,
+              "edge_pct": 21.4,
+              "source": "self-edge"
+            }
+          }
+        },
+        {
+          "id": "238318",
+          "name": "Ferdi Kadioglu",
+          "pos": "D",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "TUR",
+          "props": {
+            "shots": {
+              "line": 0.7,
+              "over_price": -110,
+              "edge_pct": 21.4,
+              "source": "self-edge"
+            }
+          }
+        },
+        {
+          "id": "266002",
+          "name": "Mert M\u00fcld\u00fcr",
+          "pos": "D",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "TUR",
+          "props": {}
+        },
+        {
+          "id": "310452",
+          "name": "Arda G\u00fcler",
+          "pos": "M",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "TUR",
+          "props": {
+            "shots_on_target": {
+              "line": 2.2,
+              "over_price": -110,
+              "edge_pct": 15.9,
+              "source": "self-edge"
+            },
+            "shots": {
+              "line": 6,
+              "over_price": -110,
+              "edge_pct": 13.3,
+              "source": "self-edge"
+            }
+          }
+        },
+        {
+          "id": "170785",
+          "name": "Hakan \u00c7alhanoglu",
+          "pos": "M",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "TUR",
+          "props": {
+            "shots_on_target": {
+              "line": 1.5,
+              "over_price": -110,
+              "edge_pct": 13.3,
+              "source": "self-edge"
+            },
+            "shots": {
+              "line": 3.7,
+              "over_price": -110,
+              "edge_pct": 14.9,
+              "source": "self-edge"
+            },
+            "fouls": {
+              "line": 0.7,
+              "over_price": -110,
+              "edge_pct": 21.4,
+              "source": "self-edge"
+            }
+          }
+        },
+        {
+          "id": "305629",
+          "name": "Ismail Y\u00fcksek",
+          "pos": "M",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "TUR",
+          "props": {
+            "shots": {
+              "line": 2.2,
+              "over_price": -110,
+              "edge_pct": 15.9,
+              "source": "self-edge"
+            },
+            "fouls": {
+              "line": 0.7,
+              "over_price": -110,
+              "edge_pct": 21.4,
+              "source": "self-edge"
+            }
+          }
+        },
+        {
+          "id": "306789",
+          "name": "Kerem Akt\u00fcrkoglu",
+          "pos": "F",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "TUR",
+          "props": {
+            "shots_on_target": {
+              "line": 0.7,
+              "over_price": -110,
+              "edge_pct": 21.4,
+              "source": "self-edge"
+            },
+            "shots": {
+              "line": 2.2,
+              "over_price": -110,
+              "edge_pct": 15.9,
+              "source": "self-edge"
+            }
+          }
+        },
+        {
+          "id": "366509",
+          "name": "Kenan Yildiz",
+          "pos": "F",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "TUR",
+          "props": {
+            "shots": {
+              "line": 4.5,
+              "over_price": -110,
+              "edge_pct": 13.3,
+              "source": "self-edge"
+            }
+          }
+        },
+        {
+          "id": "266575",
+          "name": "Yunus Akg\u00fcn",
+          "pos": "F",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "TUR",
+          "props": {
+            "fouls": {
+              "line": 0.7,
+              "over_price": -110,
+              "edge_pct": 21.4,
+              "source": "self-edge"
+            }
+          }
+        },
+        {
+          "id": "271873",
+          "name": "Zeki \u00c7elik",
+          "pos": "D",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "TUR",
+          "props": {
+            "shots_on_target": {
+              "line": 0.7,
+              "over_price": -110,
+              "edge_pct": 21.4,
+              "source": "self-edge"
+            },
+            "shots": {
+              "line": 0.7,
+              "over_price": -110,
+              "edge_pct": 21.4,
+              "source": "self-edge"
+            },
+            "fouls": {
+              "line": 0.7,
+              "over_price": -110,
+              "edge_pct": 21.4,
+              "source": "self-edge"
+            }
+          }
+        },
+        {
+          "id": "355369",
+          "name": "Can Uzun",
+          "pos": "M",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "TUR",
+          "props": {}
+        },
+        {
+          "id": "211923",
+          "name": "Irfan Can Kahveci",
+          "pos": "M",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "TUR",
+          "props": {}
+        },
+        {
+          "id": "350513",
+          "name": "Deniz G\u00fcl",
+          "pos": "F",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "TUR",
+          "props": {}
+        },
+        {
+          "id": "287678",
+          "name": "Eren Elmali",
+          "pos": "D",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "TUR",
+          "props": {}
+        },
+        {
+          "id": "322538",
+          "name": "Baris Alper Yilmaz",
+          "pos": "F",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "TUR",
+          "props": {}
+        },
+        {
+          "id": "225563",
+          "name": "Salih \u00d6zcan",
+          "pos": "M",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "TUR",
+          "props": {}
+        },
+        {
+          "id": "159146",
+          "name": "Kaan Ayhan",
+          "pos": "D",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "TUR",
+          "props": {}
+        },
+        {
+          "id": "322813",
+          "name": "Oguz Aydin",
+          "pos": "F",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "TUR",
+          "props": {}
+        },
+        {
+          "id": "274272",
+          "name": "Altay Bayindir",
+          "pos": "G",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "TUR",
+          "props": {}
+        },
+        {
+          "id": "266565",
+          "name": "Ozan Kabak",
+          "pos": "D",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "TUR",
+          "props": {}
+        },
+        {
+          "id": "230757",
+          "name": "\u00c7aglar S\u00f6y\u00fcnc\u00fc",
+          "pos": "D",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "TUR",
+          "props": {}
+        },
+        {
+          "id": "124880",
+          "name": "Mert G\u00fcnok",
+          "pos": "G",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "TUR",
+          "props": {}
+        },
+        {
+          "id": "322807",
+          "name": "Samet Akaydin",
+          "pos": "D",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "TUR",
+          "props": {}
+        },
+        {
+          "id": "272700",
+          "name": "Orkun K\u00f6k\u00e7\u00fc",
+          "pos": "M",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "TUR",
+          "props": {
+            "shots": {
+              "line": 0.7,
+              "over_price": -110,
+              "edge_pct": 21.4,
+              "source": "self-edge"
+            }
+          }
+        }
+      ]
     },
     "starters": {
-      "players": []
+      "players": [
+        {
+          "id": "222922",
+          "name": "Ugurcan \u00c7akir",
+          "pos": "G",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "TUR",
+          "props": {}
+        },
+        {
+          "id": "193149",
+          "name": "Abd\u00fclkerim Bardak\u00e7i",
+          "pos": "D",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "TUR",
+          "props": {
+            "shots_on_target": {
+              "line": 0.7,
+              "over_price": -110,
+              "edge_pct": 21.4,
+              "source": "self-edge"
+            },
+            "shots": {
+              "line": 0.7,
+              "over_price": -110,
+              "edge_pct": 21.4,
+              "source": "self-edge"
+            }
+          }
+        },
+        {
+          "id": "267178",
+          "name": "Merih Demiral",
+          "pos": "D",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "TUR",
+          "props": {
+            "shots": {
+              "line": 0.7,
+              "over_price": -110,
+              "edge_pct": 21.4,
+              "source": "self-edge"
+            }
+          }
+        },
+        {
+          "id": "238318",
+          "name": "Ferdi Kadioglu",
+          "pos": "D",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "TUR",
+          "props": {
+            "shots": {
+              "line": 0.7,
+              "over_price": -110,
+              "edge_pct": 21.4,
+              "source": "self-edge"
+            }
+          }
+        },
+        {
+          "id": "266002",
+          "name": "Mert M\u00fcld\u00fcr",
+          "pos": "D",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "TUR",
+          "props": {}
+        },
+        {
+          "id": "310452",
+          "name": "Arda G\u00fcler",
+          "pos": "M",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "TUR",
+          "props": {
+            "shots_on_target": {
+              "line": 2.2,
+              "over_price": -110,
+              "edge_pct": 15.9,
+              "source": "self-edge"
+            },
+            "shots": {
+              "line": 6,
+              "over_price": -110,
+              "edge_pct": 13.3,
+              "source": "self-edge"
+            }
+          }
+        },
+        {
+          "id": "170785",
+          "name": "Hakan \u00c7alhanoglu",
+          "pos": "M",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "TUR",
+          "props": {
+            "shots_on_target": {
+              "line": 1.5,
+              "over_price": -110,
+              "edge_pct": 13.3,
+              "source": "self-edge"
+            },
+            "shots": {
+              "line": 3.7,
+              "over_price": -110,
+              "edge_pct": 14.9,
+              "source": "self-edge"
+            },
+            "fouls": {
+              "line": 0.7,
+              "over_price": -110,
+              "edge_pct": 21.4,
+              "source": "self-edge"
+            }
+          }
+        },
+        {
+          "id": "305629",
+          "name": "Ismail Y\u00fcksek",
+          "pos": "M",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "TUR",
+          "props": {
+            "shots": {
+              "line": 2.2,
+              "over_price": -110,
+              "edge_pct": 15.9,
+              "source": "self-edge"
+            },
+            "fouls": {
+              "line": 0.7,
+              "over_price": -110,
+              "edge_pct": 21.4,
+              "source": "self-edge"
+            }
+          }
+        },
+        {
+          "id": "306789",
+          "name": "Kerem Akt\u00fcrkoglu",
+          "pos": "F",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "TUR",
+          "props": {
+            "shots_on_target": {
+              "line": 0.7,
+              "over_price": -110,
+              "edge_pct": 21.4,
+              "source": "self-edge"
+            },
+            "shots": {
+              "line": 2.2,
+              "over_price": -110,
+              "edge_pct": 15.9,
+              "source": "self-edge"
+            }
+          }
+        },
+        {
+          "id": "366509",
+          "name": "Kenan Yildiz",
+          "pos": "F",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "TUR",
+          "props": {
+            "shots": {
+              "line": 4.5,
+              "over_price": -110,
+              "edge_pct": 13.3,
+              "source": "self-edge"
+            }
+          }
+        },
+        {
+          "id": "266575",
+          "name": "Yunus Akg\u00fcn",
+          "pos": "F",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "TUR",
+          "props": {
+            "fouls": {
+              "line": 0.7,
+              "over_price": -110,
+              "edge_pct": 21.4,
+              "source": "self-edge"
+            }
+          }
+        }
+      ]
     },
     "bench": {
-      "players": []
+      "players": [
+        {
+          "id": "271873",
+          "name": "Zeki \u00c7elik",
+          "pos": "D",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "TUR",
+          "props": {
+            "shots_on_target": {
+              "line": 0.7,
+              "over_price": -110,
+              "edge_pct": 21.4,
+              "source": "self-edge"
+            },
+            "shots": {
+              "line": 0.7,
+              "over_price": -110,
+              "edge_pct": 21.4,
+              "source": "self-edge"
+            },
+            "fouls": {
+              "line": 0.7,
+              "over_price": -110,
+              "edge_pct": 21.4,
+              "source": "self-edge"
+            }
+          }
+        },
+        {
+          "id": "355369",
+          "name": "Can Uzun",
+          "pos": "M",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "TUR",
+          "props": {}
+        },
+        {
+          "id": "211923",
+          "name": "Irfan Can Kahveci",
+          "pos": "M",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "TUR",
+          "props": {}
+        },
+        {
+          "id": "350513",
+          "name": "Deniz G\u00fcl",
+          "pos": "F",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "TUR",
+          "props": {}
+        },
+        {
+          "id": "287678",
+          "name": "Eren Elmali",
+          "pos": "D",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "TUR",
+          "props": {}
+        },
+        {
+          "id": "322538",
+          "name": "Baris Alper Yilmaz",
+          "pos": "F",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "TUR",
+          "props": {}
+        },
+        {
+          "id": "225563",
+          "name": "Salih \u00d6zcan",
+          "pos": "M",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "TUR",
+          "props": {}
+        },
+        {
+          "id": "159146",
+          "name": "Kaan Ayhan",
+          "pos": "D",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "TUR",
+          "props": {}
+        },
+        {
+          "id": "322813",
+          "name": "Oguz Aydin",
+          "pos": "F",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "TUR",
+          "props": {}
+        },
+        {
+          "id": "274272",
+          "name": "Altay Bayindir",
+          "pos": "G",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "TUR",
+          "props": {}
+        },
+        {
+          "id": "266565",
+          "name": "Ozan Kabak",
+          "pos": "D",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "TUR",
+          "props": {}
+        },
+        {
+          "id": "230757",
+          "name": "\u00c7aglar S\u00f6y\u00fcnc\u00fc",
+          "pos": "D",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "TUR",
+          "props": {}
+        },
+        {
+          "id": "124880",
+          "name": "Mert G\u00fcnok",
+          "pos": "G",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "TUR",
+          "props": {}
+        },
+        {
+          "id": "322807",
+          "name": "Samet Akaydin",
+          "pos": "D",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "TUR",
+          "props": {}
+        },
+        {
+          "id": "272700",
+          "name": "Orkun K\u00f6k\u00e7\u00fc",
+          "pos": "M",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "TUR",
+          "props": {
+            "shots": {
+              "line": 0.7,
+              "over_price": -110,
+              "edge_pct": 21.4,
+              "source": "self-edge"
+            }
+          }
+        }
+      ]
     },
     "totals": {},
     "injuries": []
@@ -61,14 +1481,14 @@
   "valid_props": [],
   "missing_keys": [],
   "roster_counts": {
-    "away": 0,
-    "home": 0,
-    "away_active": 0,
-    "home_active": 0
+    "away": 26,
+    "home": 26,
+    "away_active": 26,
+    "home_active": 26
   },
   "supported_sports": [
     "WORLD CUP"
   ],
   "prop_rows": [],
-  "note": "WORLD CUP DK lines (h2h/spreads/totals) via The Odds API. Player props coming for WORLD CUP."
+  "note": "WORLD CUP self-edge player props via worldcup_picks.py \u00b7 25 players \u00b7 DK game lines via Odds API."
 }

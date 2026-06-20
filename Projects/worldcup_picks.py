@@ -462,6 +462,43 @@ def _team_strength(team_name):
             return v
     return 1.0
 
+
+def _team_name_match(roster_name, match_name):
+    """Fuzzy match roster team name to match team name."""
+    r = roster_name.lower().strip()
+    m = match_name.lower().strip()
+    if r == m:
+        return True
+    if r in m or m in r:
+        return True
+    # Handle aliases
+    aliases = {"united states": "usa", "korea republic": "south korea", "korea dpr": "north korea",
+               "côte d'ivoire": "ivory coast", "cote d'ivoire": "ivory coast",
+               "trinidad and tobago": "trinidad & tobago", "curaçao": "curacao"}
+    for a, b in aliases.items():
+        if (a in r and b in m) or (b in r and a in m):
+            return True
+    return False
+
+def _player_in_roster(player_name, roster_set):
+    """Check if player name appears in roster set, using fuzzy matching."""
+    if not player_name or not roster_set:
+        return False
+    # Direct match
+    if player_name in roster_set:
+        return True
+    # Normalize: last name only
+    parts = player_name.strip().split()
+    last = parts[-1] if parts else player_name
+    for r in roster_set:
+        r_parts = r.strip().split()
+        r_last = r_parts[-1] if r_parts else r
+        if last.lower() == r_last.lower():
+            return True
+        if player_name.lower() == r.lower():
+            return True
+    return False
+
 def _generate_self_edge_props(match):
     teams = match.get("teams", [])
     if len(teams) < 2:
@@ -470,6 +507,26 @@ def _generate_self_edge_props(match):
     home_name = teams[1].get("name", "")
     away_str = _team_strength(away_name)
     home_str = _team_strength(home_name)
+    
+    # Load team rosters to filter players by team
+    ROSTER_CACHE = WORKSPACE / "Daily_Log" / "wc_team_rosters.json"
+    allowed_players = set()
+    if ROSTER_CACHE.exists():
+        rosters = json.loads(ROSTER_CACHE.read_text())
+        for team_roster_name in rosters:
+            if _team_name_match(team_roster_name, away_name):
+                for p in rosters[team_roster_name]:
+                    if isinstance(p, dict):
+                        allowed_players.add(p.get("name", ""))
+                    else:
+                        allowed_players.add(str(p))
+            if _team_name_match(team_roster_name, home_name):
+                for p in rosters[team_roster_name]:
+                    if isinstance(p, dict):
+                        allowed_players.add(p.get("name", ""))
+                    else:
+                        allowed_players.add(str(p))
+    
     avgs = _load_player_avgs()
     if not avgs:
         return {}
@@ -477,10 +534,10 @@ def _generate_self_edge_props(match):
     for player_name, pdata in avgs.items():
         if not isinstance(pdata, dict):
             continue
-#        gp = pdata.get("gp", 1)
-#        if gp < 1:
+        # Only generate props for players on the two teams in this matchup
+        if allowed_players and not _player_in_roster(player_name, allowed_players):
             continue
-        is_home_player = False  # neutral — avgs file has no team affiliation
+        is_home_player = False
         opp_strength = 1.0
         own_strength = 1.0
         home_adj = 1.0
@@ -502,8 +559,6 @@ def _generate_self_edge_props(match):
         if stat_props:
             props[player_name] = stat_props
     return props
-
-_HOME_PLAYER_SET = set()
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="World Cup 2026 Daily Pick Scraper")
     parser.add_argument("--date", default=None, help="Date in YYYYMMDD format (default: today UTC)")
