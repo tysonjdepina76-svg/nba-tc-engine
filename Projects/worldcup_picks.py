@@ -56,7 +56,7 @@ def _wc_cache_get(matchup_key, game_id):
         try:
             data = json.loads(p.read_text())
             age = _time.time() - p.stat().st_mtime
-            if age < 7200:
+            if age < 86400:
                 data["_from_cache"] = True
                 return data
         except Exception:
@@ -286,6 +286,20 @@ def build_csv_rows(matches_with_props):
                 })
     return rows
 
+def _quota_skip():
+    try:
+        qpath = Path("/home/workspace/Daily_Log/quota_exhausted.json")
+        if not qpath.exists():
+            return False
+        qdata = json.loads(qpath.read_text())
+        for k in qdata.get("keys", []):
+            if k.get("key","")[:8] == ODDS_API_KEY[:8]:
+                if k.get("exhausted"):
+                    return True
+    except Exception:
+        pass
+    return False
+
 def run(date_str=None):
     """Main entry point."""
     now = datetime.now(timezone.utc)
@@ -302,8 +316,15 @@ def run(date_str=None):
     for m in espn_matches:
         print(f"  {m['name']}: {m['status']}")
 
+
+    # ── Quota Gate: skip Odds API calls when key is exhausted ──
+    skip_odds = _quota_skip()
+    if skip_odds:
+        print("⏭️  QUOTA GATE: Odds API key exhausted — skipping all live API calls, using self-edge only")
+        odds_games = []
+    else:
     # Step 2: Get game IDs from Odds API
-    odds_games = fetch_odds_games()
+        odds_games = fetch_odds_games()
     print(f"Odds API games: {len(odds_games)}")
 
     # Step 3: For each upcoming match, fetch player props

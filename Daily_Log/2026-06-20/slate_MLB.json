@@ -1,7 +1,7 @@
 {
   "mode": "live_stats",
   "sport": "MLB",
-  "timestamp": "2026-06-20T21:15:51.371Z",
+  "timestamp": "2026-06-20T22:09:31.090Z",
   "games": [
     {
       "id": "401815825",
@@ -54,11 +54,11 @@
       "matchup": "TOR@CHC",
       "name": "Toronto Blue Jays at Chicago Cubs",
       "date": "2026-06-20T18:20Z",
-      "status": "In Progress",
-      "detail": "Bottom 8th",
-      "period": 8,
+      "status": "Final",
+      "detail": "Final",
+      "period": 9,
       "clock": "0:00",
-      "completed": false,
+      "completed": true,
       "away": {
         "team": "TOR",
         "name": "Toronto Blue Jays",
@@ -78,8 +78,8 @@
       "name": "San Diego Padres at Texas Rangers",
       "date": "2026-06-20T20:05Z",
       "status": "In Progress",
-      "detail": "Bottom 4th",
-      "period": 4,
+      "detail": "Bottom 7th",
+      "period": 7,
       "clock": "0:00",
       "completed": false,
       "away": {
@@ -90,7 +90,7 @@
       "home": {
         "team": "TEX",
         "name": "Texas Rangers",
-        "score": 0
+        "score": 3
       },
       "leaders": [],
       "players": []
@@ -101,19 +101,19 @@
       "name": "Milwaukee Brewers at Atlanta Braves",
       "date": "2026-06-20T20:10Z",
       "status": "In Progress",
-      "detail": "Bottom 5th",
-      "period": 5,
+      "detail": "Top 8th",
+      "period": 8,
       "clock": "0:00",
       "completed": false,
       "away": {
         "team": "MIL",
         "name": "Milwaukee Brewers",
-        "score": 0
+        "score": 3
       },
       "home": {
         "team": "ATL",
         "name": "Atlanta Braves",
-        "score": 1
+        "score": 2
       },
       "leaders": [],
       "players": []
@@ -124,19 +124,19 @@
       "name": "San Francisco Giants at Miami Marlins",
       "date": "2026-06-20T20:10Z",
       "status": "In Progress",
-      "detail": "Bottom 3rd",
-      "period": 3,
+      "detail": "Middle 5th",
+      "period": 5,
       "clock": "0:00",
       "completed": false,
       "away": {
         "team": "SF",
         "name": "San Francisco Giants",
-        "score": 1
+        "score": 2
       },
       "home": {
         "team": "MIA",
         "name": "Miami Marlins",
-        "score": 2
+        "score": 6
       },
       "leaders": [],
       "players": []
@@ -147,14 +147,14 @@
       "name": "Washington Nationals at Tampa Bay Rays",
       "date": "2026-06-20T20:10Z",
       "status": "In Progress",
-      "detail": "Bottom 3rd",
-      "period": 3,
+      "detail": "End 6th",
+      "period": 6,
       "clock": "0:00",
       "completed": false,
       "away": {
         "team": "WSH",
         "name": "Washington Nationals",
-        "score": 2
+        "score": 3
       },
       "home": {
         "team": "TB",
