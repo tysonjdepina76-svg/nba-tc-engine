@@ -439,7 +439,7 @@ WC_TEAM_STRENGTH = {
     "Poland": 0.92, "Sweden": 0.91, "Egypt": 0.90, "Ivory Coast": 0.89,
     "Tunisia": 0.87, "Chile": 0.86, "Peru": 0.85, "Ukraine": 0.84,
     "Türkiye": 0.83, "Turkey": 0.83, "Norway": 0.82, "Scotland": 0.80,
-    "Czech Republic": 0.79, "Cameroon": 0.78, "Ghana": 0.77, "Mali": 0.75,
+    "Czech Republic": 0.79, "Cameroon": 0.78, "Ghana": 0.77, "Mali": 0.75, "Cape Verde": 0.76,
     "Burkina Faso": 0.74, "South Africa": 0.73, "DR Congo": 0.72, "Algeria": 0.71,
     "Paraguay": 0.70, "Canada": 0.69, "Costa Rica": 0.67, "Panama": 0.65,
     "Jamaica": 0.63, "Venezuela": 0.62, "Bolivia": 0.60, "Honduras": 0.58,
