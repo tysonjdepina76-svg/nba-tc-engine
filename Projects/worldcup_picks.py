@@ -310,11 +310,13 @@ def run(date_str=None):
     results = []
     for em in espn_matches:
         if em.get("completed"):
-            print(f"  Skipping completed: {em['name']}")
+            print(f"  Skipping completed: {em['name']}  (Odds API)")
+            # Still generate self-edge for completed matches
+            self_edge = _generate_self_edge_props(em)
             result = {
                 **em,
-                "player_props": {},
-                "book": "none",
+                "player_props": self_edge,
+                "book": "self-edge" if self_edge else "none",
                 "fetched_at": now.isoformat(),
             }
             results.append(result)
