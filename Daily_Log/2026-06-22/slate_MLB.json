@@ -1,7 +1,7 @@
 {
   "mode": "live_stats",
   "sport": "MLB",
-  "timestamp": "2026-06-22T23:03:13.067Z",
+  "timestamp": "2026-06-22T23:14:04.690Z",
   "games": [
     {
       "id": "401815858",
@@ -9,7 +9,7 @@
       "name": "New York Yankees at Detroit Tigers",
       "date": "2026-06-22T22:10Z",
       "status": "In Progress",
-      "detail": "Middle 3rd",
+      "detail": "Bottom 3rd",
       "period": 3,
       "clock": "0:00",
       "completed": false,
@@ -21,7 +21,7 @@
       "home": {
         "team": "DET",
         "name": "Detroit Tigers",
-        "score": 0
+        "score": 3
       },
       "leaders": [],
       "players": []
@@ -32,7 +32,7 @@
       "name": "Kansas City Royals at Tampa Bay Rays",
       "date": "2026-06-22T22:40Z",
       "status": "In Progress",
-      "detail": "Top 2nd",
+      "detail": "Bottom 2nd",
       "period": 2,
       "clock": "0:00",
       "completed": false,
@@ -55,8 +55,8 @@
       "name": "Texas Rangers at Miami Marlins",
       "date": "2026-06-22T22:40Z",
       "status": "In Progress",
-      "detail": "Bottom 2nd",
-      "period": 2,
+      "detail": "Top 3rd",
+      "period": 3,
       "clock": "0:00",
       "completed": false,
       "away": {
@@ -100,8 +100,8 @@
       "matchup": "HOU@TOR",
       "name": "Houston Astros at Toronto Blue Jays",
       "date": "2026-06-22T23:07Z",
-      "status": "Scheduled",
-      "detail": "Scheduled",
+      "status": "In Progress",
+      "detail": "Top 1st",
       "period": 1,
       "clock": "0:00",
       "completed": false,
@@ -146,8 +146,8 @@
       "matchup": "MIL@CIN",
       "name": "Milwaukee Brewers at Cincinnati Reds",
       "date": "2026-06-22T23:10Z",
-      "status": "Scheduled",
-      "detail": "Scheduled",
+      "status": "In Progress",
+      "detail": "Top 1st",
       "period": 1,
       "clock": "0:00",
       "completed": false,

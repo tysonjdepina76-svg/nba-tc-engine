@@ -1,3 +1,20 @@
+# 2026-06-22 17:10 ET — WORLD CUP ESPN DK LINES WIRED — self-contained fix
+# World Cup/soccer now pulls DK totals/ML/spreads from ESPN embedded D
+# 2026-06-22 16:15 ET — DK LINES RESTORED — Odds API URLs fixed, 12/20 games now live
+# Root cause: api.theoddsapi.com changed URL format from /{sport}/odds to /odds/?sport_key={sport}
+# All consensus_engine.py + /api/tc URLs updated. API key valid. Free tier = game lines only (no player props).
+# MLB: 11/16 games DK LIVES LIVE (totals 7.0-11.5). WNBA: ESPN-embedded DK totals (169.5-178.5). WC: not supported by this API.
+
+## Workspace Index
+> **2026-06-22 16:15 ET — DK LINES RESTORED after 48hr outage:**
+> - **Root cause:** `api.theoddsapi.com` changed URL format. Code was using `/{sport_key}/odds` (404) but correct is `/odds/?sport_key=...`. Also: `ODDS_BASE` was `api.the-odds-api.com/v4` (dead key) vs `api.theoddsapi.com` (live).
+> - **Fixes applied:**
+>   - `consensus_engine.py`: All 4 URL constructions fixed, added `apiKey` param, secrets loading fixed, MLB_TEAM_MAP added (30 teams), response normalizer for new `books` format
+>   - `/api/tc` zo.space route: `ODDS_BASE` updated, `fetchMultiSportDKLines` rewritten for new `/odds/` URL + new `books` response format
+> - **Result:** 12/20 games DK LINES LIVE (vs 0 before). MLB totals flowing (7.0-11.5), WNBA via ESPN embedded (169.5-178.5). World Cup still 403 (no soccer_fifa_world_cup key).
+> - **Player props:** Not available on free tier — requires Business+ plan for `/props/` endpoint. Self-edge fallback active for WNBA/MLB prop-level picks.
+> - **Pipeline:** `daily_picks.py` ran successfully — 866 picks across 20 games for June 22
+
 # 2026-06-20 22:10 ET — Quota Gate Hardwired — WC self-edge now auto-activates when Odds API exhausted
 # World Cup dashboard FIXED — props.json overwrite + API fallback
 
