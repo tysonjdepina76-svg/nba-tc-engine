@@ -46,16 +46,57 @@ WNBA_TEAM_MAP = {
     "SEA": "seattle storm", "TOR": "toronto tempo", "WSH": "washington mystics",
 }
 
+MLB_TEAM_MAP = {
+    "ARI": "arizona diamondbacks",
+    "ATL": "atlanta braves",
+    "BAL": "baltimore orioles",
+    "BOS": "boston red sox",
+    "CHC": "chicago cubs",
+    "CWS": "chicago white sox",
+    "CLE": "cleveland guardians",
+    "COL": "colorado rockies",
+    "CIN": "cincinnati reds",
+    "DET": "detroit tigers",
+    "KC": "kansas city royals",
+    "LAA": "los angeles angels",
+    "LAD": "los angeles dodgers",
+    "MIA": "miami marlins",
+    "MIL": "milwaukee brewers",
+    "MIN": "minnesota twins",
+    "NYM": "new york mets",
+    "NYY": "new york yankees",
+    "OAK": "oakland athletics",
+    "PHI": "philadelphia phillies",
+    "PIT": "pittsburgh pirates",
+    "SD": "san diego padres",
+    "SF": "san francisco giants",
+    "SEA": "seattle mariners",
+    "STL": "st. louis cardinals",
+    "TEX": "dallas rangers",
+    "TOR": "toronto blue jays",
+    "TBD": "tampa bay rays",
+    "TB": "tampa bay rays",
+    "WSH": "washington nationals",
+}
+
 # ── API Keys ──────────────────────────────────────────────
 
 ODDS_KEY = os.environ.get("ODDS_API_KEY", "") 
 SGO_KEY = os.environ.get("SGO_API_KEY", "") or os.environ.get("SPORTSGAMEODDS_API_KEY", "")
 SECRETS_FILE = Path("/root/.zo/secrets.env")
-if (not ODDS_KEY or not SGO_KEY) and SECRETS_FILE.exists():
+if SECRETS_FILE.exists():
     for line in SECRETS_FILE.read_text().split("\n"):
-        if "=" not in line: continue
+        line = line.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
         k, _, v = line.partition("=")
         k, v = k.strip(), v.strip().strip('"').strip("'")
+        if k == "ODDS_API_KEY" and not ODDS_KEY:
+            ODDS_KEY = v
+            os.environ["ODDS_API_KEY"] = v
+        elif k in ("SGO_API_KEY", "SPORTSGAMEODDS_API_KEY") and not SGO_KEY:
+            SGO_KEY = v
+            os.environ[k] = v
 
 # ── Odds API Sport Mapping ────────────────────────────────
 ODDS_SPORT_MAP = {
@@ -69,6 +110,11 @@ ODDS_SPORT_MAP = {
     "SERIEA": "soccer_italy_serie_a",
     "LIGUE1": "soccer_france_ligue_one",
     "BUNDESLIGA": "soccer_germany_bundesliga",
+    "UCL": "soccer_uefa_champs_league",
+    "UEL": "soccer_uefa_europa_league",
+    "NFL": "americanfootball_nfl",
+    "NCAAF": "americanfootball_ncaaf",
+    "NCAAB": "basketball_ncaab",
 }
 
 # ── Book Priority ─────────────────────────────────────────
@@ -106,6 +152,56 @@ UD_AVAILABLE = False  # Set True when Underdog API access is obtained
 
 # ── Convenience sport map for external use ─────────────────
 CONSENSUS_SPORT_MAP = ODDS_SPORT_MAP  # re-export
+
+ODDS_BASE = "https://api.theoddsapi.com"
+
+# ── Response normalization: new api.theoddsapi.com format → old bookmakers format ──
+def _normalize_odds_response(raw_data: dict) -> dict:
+    """Convert new API response format into old bookmakers-style format.
+    New: {data: [{event_id, books: [{book, market, outcomes}]}]}
+    Old: {bookmakers: [{key, markets: [{key, outcomes}]}]}
+    """
+    # If already in old format (bookmakers key), return as-is
+    if "bookmakers" in raw_data:
+        return raw_data
+    
+    data = raw_data.get("data", [])
+    if not data:
+        return {"bookmakers": []}
+    
+    # If data is a list of games, we need a specific event_id to extract
+    # For single-game lookups (event_id provided), filter to that game
+    game = data[0] if len(data) == 1 else data
+    
+    # If game is a list, return empty — caller should filter by event_id
+    if isinstance(game, list):
+        return {"bookmakers": [], "_all_games": data}
+    
+    # Transform books array → bookmakers format
+    bookmakers = []
+    books_by_key = {}
+    
+    for b in game.get("books", []):
+        bk = b.get("book", "")
+        mkt = b.get("market", "")
+        if bk not in books_by_key:
+            books_by_key[bk] = {"key": bk, "markets": []}
+        
+        # Build market entry in old format
+        market_entry = {
+            "key": mkt,
+            "outcomes": b.get("outcomes", [])
+        }
+        books_by_key[bk]["markets"].append(market_entry)
+    
+    result = {
+        "bookmakers": list(books_by_key.values()),
+        "_event_id": game.get("event_id"),
+        "_away_team": game.get("away_team"),
+        "_home_team": game.get("home_team"),
+        "_start_time": game.get("start_time"),
+    }
+    return result
 
 # ── Daily Cache (avoid double-counting API tokens) ────────
 CACHE_DIR = Path("/home/workspace/Daily_Log")
@@ -168,14 +264,20 @@ def fetch_sport_batch(sport: str, markets: Optional[List[str]] = None, force: bo
         except Exception:
             pass
 
-    # Step 1: Get all events (one cheap API call)
+    # Step 1: Get all events with odds (one API call)
     try:
         r = requests.get(
-            params={"dateFormat": "iso"}, timeout=15
+            f"{ODDS_BASE}/odds/",
+            params={
+                "sport_key": sport_key,
+                "regions": "us",
+                "apiKey": ODDS_KEY,
+            },
+            timeout=15
         )
         r.raise_for_status()
         ev_data = r.json()
-        # v5 envelope: {success, source, data: [...]}
+        # New envelope: {success, source, data: [{event_id, books: [...]}]}
         if isinstance(ev_data, dict) and 'data' in ev_data and isinstance(ev_data['data'], list):
             events = ev_data['data']
         else:
@@ -183,21 +285,22 @@ def fetch_sport_batch(sport: str, markets: Optional[List[str]] = None, force: bo
     except Exception as e:
         return {"events": {}, "error": f"events fetch: {e}"}
 
-    # Step 2: For each upcoming event, get consensus (cached individually)
+    # Step 2: For each event, normalize odds (no extra API calls needed — all odds in one response)
     results = {}
     total_api_calls = 1
 
     for ev in events:
-        eid = ev.get("id")
+        eid = ev.get("event_id")
         if not eid:
             continue
         away = ev.get("away_team", "???")
         home = ev.get("home_team", "???")
-        commence = ev.get("commence_time", "")
+        commence = ev.get("start_time", "")
 
-        consensus = get_consensus_lines_cached(sport, eid, markets)
-        if not consensus.get("_from_cache"):
-            total_api_calls += 1
+        # Normalize this single game into old format and run consensus
+        normalized = _normalize_odds_response({"data": [ev]})
+        consensus = _build_consensus_from_bookmakers(normalized.get("bookmakers", []))
+        total_api_calls += 0  # No extra calls — all data from one request
 
         results[eid] = {
             "away": away, "home": home, "matchup": f"{away} @ {home}",
@@ -206,8 +309,8 @@ def fetch_sport_batch(sport: str, markets: Optional[List[str]] = None, force: bo
             "available_books": consensus.get("available_books", []),
             "players": consensus.get("players", {}),
             "game_total": consensus.get("game_total"),
-            "source": consensus.get("source"),
-            "from_cache": consensus.get("_from_cache", False),
+            "source": "api.theoddsapi.com",
+            "from_cache": False,
         }
 
     batch = {
@@ -222,24 +325,29 @@ def fetch_sport_batch(sport: str, markets: Optional[List[str]] = None, force: bo
     return batch
 
 def fetch_consensus_for_matchup(sport: str, away: str, home: str, markets=None) -> dict:
-    """Find an event by matchup and return consensus lines. One events-list call + one odds call."""
+    """Find an event by matchup and return consensus lines. One odds call for all games."""
     sport_key = CONSENSUS_SPORT_MAP.get(sport.upper())
     if not sport_key:
         return {"players": {}, "available_books": [], "source": "none", "error": f"No sport key for {sport}"}
     if not ODDS_KEY:
         return {"players": {}, "available_books": [], "source": "none", "error": "ODDS_API_KEY not set"}
 
-    ODDS_BASE = "https://api.theoddsapi.com"
     r = requests.get(
-        f"{ODDS_BASE}/{sport_key}/odds",
-        params={"regions": "us", "dateFormat": "iso"}, timeout=15
+        f"{ODDS_BASE}/odds/",
+        params={
+            "sport_key": sport_key,
+            "regions": "us",
+            "apiKey": ODDS_KEY,
+        },
+        timeout=15
     )
     r.raise_for_status()
-    events = r.json()
+    raw = r.json()
+    events = raw.get("data", [])
 
     ev = None
     a, h = away.upper(), home.upper()
-    team_map = WNBA_TEAM_MAP if sport.upper() == "WNBA" else {}
+    team_map = WNBA_TEAM_MAP if sport.upper() == "WNBA" else MLB_TEAM_MAP if sport.upper() == "MLB" else {}
     away_full = team_map.get(a, "").lower()
     home_full = team_map.get(h, "").lower()
 
@@ -252,7 +360,7 @@ def fetch_consensus_for_matchup(sport: str, away: str, home: str, markets=None) 
         # Full team name match via WNBA map
         if away_full and away_full in ea and home_full and home_full in eh:
             ev = e; break
-        # Partial match (one team has map, other uses abbreviation)
+        # Partial match
         if away_full and away_full in ea and h.lower() in eh:
             ev = e; break
         if home_full and home_full in eh and a.lower() in ea:
@@ -266,7 +374,12 @@ def fetch_consensus_for_matchup(sport: str, away: str, home: str, markets=None) 
     if not ev:
         return {"players": {}, "available_books": [], "source": "none", "error": f"No event for {away}@{home}"}
 
-    return get_consensus_lines_cached(sport, ev["id"], markets)
+    # Normalize and build consensus
+    normalized = _normalize_odds_response({"data": [ev]})
+    result = _build_consensus_from_bookmakers(normalized.get("bookmakers", []))
+    result["_from_cache"] = False
+    _save_cache(sport, ev.get("event_id", ""), result)
+    return result
 
 def _norm_name(name: str) -> str:
     """Normalize player name for cross-book matching."""
@@ -304,31 +417,36 @@ def get_consensus_lines(
         return {"players": {}, "available_books": [], "source": "none",
                 "error": f"No sport key for {sport}"}
 
-    mkts = markets or PLAYER_MARKETS
-    market_str = ",".join(mkts) + ",totals"
-
     try:
-        ODDS_BASE = "https://api.theoddsapi.com"
         r = requests.get(
-            f"{ODDS_BASE}/{sport_key}/events/{event_id}/odds",
+            f"{ODDS_BASE}/odds/",
             params={
-                "markets": market_str, "oddsFormat": "decimal",
+                "sport_key": sport_key,
+                "regions": "us",
+                "eventId": event_id,
+                "apiKey": ODDS_KEY,
             },
             timeout=25,
         )
         r.raise_for_status()
-        data = r.json()
+        raw = r.json()
+        # Normalize response format
+        data = _normalize_odds_response(raw)
     except Exception as e:
         return {"players": {}, "available_books": [], "source": "error",
                 "error": str(e)}
 
+    return _build_consensus_from_bookmakers(data.get("bookmakers", []))
+
+def _build_consensus_from_bookmakers(bookmakers: list) -> dict:
+    """Build consensus from bookmakers list (old format). Extracted for reuse."""
     # ── Collect per-book, per-player, per-stat lines ──────
     all_books = set()
     # player_lines[book][norm_name][stat] = line_value
     player_lines: Dict[str, Dict[str, Dict[str, float]]] = {}
     game_total = None
 
-    for bm in data.get("bookmakers", []):
+    for bm in bookmakers:
         bk_key = bm.get("key", "")
         all_books.add(bk_key)
         if bk_key not in player_lines:
@@ -393,7 +511,7 @@ def get_consensus_lines(
 
     # Best-effort display names (from any book's raw data)
     display_names = {}
-    for bm in data.get("bookmakers", []):
+    for bm in bookmakers:
         for market in bm.get("markets", []):
             stat = ODDS_STAT_REVERSE.get(market.get("key", ""))
             if not stat: continue
@@ -492,11 +610,18 @@ if __name__ == "__main__":
             sys.exit(1)
         away, home = parts
 
-        # Find event
+        # Find event via odds endpoint
         r = requests.get(
-            params={"regions": "us", "dateFormat": "iso"}, timeout=15
+            f"{ODDS_BASE}/odds/",
+            params={
+                "sport_key": sport_key,
+                "regions": "us",
+                "apiKey": ODDS_KEY,
+            },
+            timeout=15
         )
-        events = r.json()
+        events_data = r.json()
+        events = events_data.get("data", [])
         ev = None
         for e in events:
             if away.upper() in e.get("away_team", "").upper() and home.upper() in e.get("home_team", "").upper():
@@ -504,7 +629,7 @@ if __name__ == "__main__":
         if not ev:
             print(json.dumps({"error": f"No event for {args.matchup}"}))
             sys.exit(1)
-        result = get_consensus_lines(args.sport, ev["id"])
+        result = get_consensus_lines(args.sport, ev["event_id"])
     else:
         print(json.dumps({"error": "Need --event-id or --matchup"}))
         sys.exit(1)

@@ -76,6 +76,7 @@ def main():
     if not json_out:
         print("\n── API Keys ──")
     key_checks = {
+        "ODDS_API_KEY": "The Odds API (ga",
         "SPORTS_DATA_API_KEY": "SportsData.io ($99/mo NFL)"}
     for name, desc in key_checks.items():
         val = secrets.get(name, "")
@@ -102,7 +103,7 @@ def main():
         except Exception as e:
             check("ESPN API", False, str(e)[:80])
 
-        # The Odds API
+        # The Odds API — use correct /odds/ endpoint
         if odds_key:
             try:
                 r = requests.get(

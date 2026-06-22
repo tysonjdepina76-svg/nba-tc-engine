@@ -1,0 +1,83 @@
+{
+  "scanned_at": "2026-06-22T22:54:18.029742+00:00",
+  "endpoints": [
+    {
+      "name": "Odds sports",
+      "url": "https://api.theoddsapi.com/sports/",
+      "key_label": "ODDS_API_KEY",
+      "free_tier": true,
+      "scanned_at": "2026-06-22T22:54:18.029742+00:00",
+      "latency_ms": 413.3,
+      "status_code": 200,
+      "ok": true
+    },
+    {
+      "name": "Odds WNBA odds",
+      "url": "https://api.theoddsapi.com/odds/",
+      "key_label": "ODDS_API_KEY",
+      "free_tier": true,
+      "scanned_at": "2026-06-22T22:54:18.029742+00:00",
+      "latency_ms": 211.4,
+      "status_code": 200,
+      "ok": true
+    },
+    {
+      "name": "Odds MLB odds",
+      "url": "https://api.theoddsapi.com/odds/",
+      "key_label": "ODDS_API_KEY",
+      "free_tier": true,
+      "scanned_at": "2026-06-22T22:54:18.029742+00:00",
+      "latency_ms": 318.9,
+      "status_code": 200,
+      "ok": true
+    },
+    {
+      "name": "SGO basketball_wnba",
+      "url": "https://api.sportsgameodds.com/v2/events",
+      "key_label": null,
+      "free_tier": false,
+      "scanned_at": "2026-06-22T22:54:18.029742+00:00",
+      "latency_ms": 162.9,
+      "status_code": 400,
+      "ok": false
+    },
+    {
+      "name": "ESPN WNBA sb",
+      "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/wnba/scoreboard",
+      "key_label": null,
+      "free_tier": true,
+      "scanned_at": "2026-06-22T22:54:18.029742+00:00",
+      "latency_ms": 50.7,
+      "status_code": 200,
+      "ok": true
+    },
+    {
+      "name": "ESPN MLB sb",
+      "url": "https://site.api.espn.com/apis/site/v2/sports/baseball/mlb/scoreboard",
+      "key_label": null,
+      "free_tier": true,
+      "scanned_at": "2026-06-22T22:54:18.029742+00:00",
+      "latency_ms": 59.1,
+      "status_code": 200,
+      "ok": true
+    },
+    {
+      "name": "ESPN WC sb",
+      "url": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard",
+      "key_label": null,
+      "free_tier": true,
+      "scanned_at": "2026-06-22T22:54:18.029742+00:00",
+      "latency_ms": 43.9,
+      "status_code": 200,
+      "ok": true
+    }
+  ],
+  "summary": {
+    "total": 7,
+    "ok": 6,
+    "failed": 1,
+    "failed_names": [
+      "SGO basketball_wnba"
+    ]
+  }
+}
