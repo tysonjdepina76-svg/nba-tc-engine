@@ -57,6 +57,22 @@ LOG_DIR.mkdir(exist_ok=True)
 
 ED_THRESHOLD = 2.0  # TC edge threshold to call OVER/UNDER signal
 
+# ── API Call Budget Gate ──
+try:
+    from Projects.api_call_budget import budget_ok, budget_status, track_api_call, BUDGET_FILE
+    _budget = budget_status()
+    _daily_ok = budget_ok()
+    print(f'   Budget: {_budget["calls_today"]}/{_budget["daily_limit"]} calls today, {_budget["calls_month"]}/{_budget["monthly_limit"]} calls this month')
+    if not _daily_ok:
+        print('🛑 BUDGET GATE: Daily API call limit reached — using cache only')
+        _budget_exceeded = True
+    else:
+        _budget_exceeded = False
+except Exception as e:
+    print(f'   Budget tracker not available: {e}')
+    _budget_exceeded = False
+    def track_api_call(provider, endpoint, status): pass
+
 # ── SGO + Quota Gate: skip API calls when rate-limited or exhausted ──
 def _sgo_rate_limited():
     """Check api_registry.json — return True if all SGO endpoints are 429."""
