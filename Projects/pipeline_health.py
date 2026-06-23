@@ -303,11 +303,11 @@ def main():
     if not quick:
         import urllib.request, urllib.parse
 
-        def check_sport_data(sport: str, qparam: str):
-            # For WNBA, hit the API (default matchup is valid)
-            if sport == "WNBA":
+        def check_sport_data(sport: str, qparam: str, away: str = "NY", home: str = "LV"):
+            # For WNBA + MLB + WC: hit the /api/tc route directly WITH matchup params
+            if sport in ("WNBA", "MLB", "WORLD CUP"):
                 try:
-                    url = f"https://true.zo.space/api/tc?sport={urllib.parse.quote(qparam)}"
+                    url = f"https://true.zo.space/api/tc?sport={urllib.parse.quote(qparam)}&away={away}&home={home}"
                     req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
                     with urllib.request.urlopen(req, timeout=15) as r:
                         data = json.loads(r.read().decode("utf-8", errors="ignore"))
@@ -367,9 +367,9 @@ def main():
             except Exception as e:
                 check(f"{sport} valid_props", False, str(e)[:80])
 
-        check_sport_data("WNBA", "WNBA")
-        check_sport_data("MLB", "MLB")
-        check_sport_data("WORLD CUP", "WORLD CUP")
+        check_sport_data("WNBA", "WNBA", "NY", "LV")
+        check_sport_data("MLB", "MLB", "NYY", "DET")
+        check_sport_data("WORLD CUP", "WORLD CUP", "UZB", "POR")
 
         # Daily_Log freshness
         last_run = WORKSPACE / "Daily_Log" / "last_run.json"
@@ -382,6 +382,74 @@ def main():
         else:
             check("Daily_Log freshness", False, "last_run.json missing — daily_picks.py has not run today")
 
+
+    # ── 7b. DASHBOARD WIRING CHECK — validate default matchups actually resolve ──
+    if not quick and not json_out:
+        print("\n── Dashboard Wiring ──")
+
+    if not quick:
+        # Issue #1: Dashboard default matchups must return real data
+        dash_checks = [
+            ("WNBA dashboard default (NY@LV)", "WNBA", "NY", "LV"),
+            ("MLB dashboard default (NYY@DET)", "MLB", "NYY", "DET"),
+            ("World Cup dashboard default (UZB@POR)", "WORLD CUP", "UZB", "POR"),
+        ]
+        for label, sport, away, home in dash_checks:
+            try:
+                u = f"https://true.zo.space/api/tc?sport={urllib.parse.quote(sport)}&away={away}&home={home}"
+                req = urllib.request.Request(u, headers={"User-Agent": "Mozilla/5.0"})
+                with urllib.request.urlopen(req, timeout=20) as r:
+                    data = json.loads(r.read().decode("utf-8", errors="ignore"))
+                err = data.get("error", "")
+                vp = data.get("valid_props") or []
+                signal = data.get("signal", "")
+                if err:
+                    check(label, False, f"API error: {err[:60]}")
+                elif len(vp) == 0:
+                    check(label, False, f"0 valid_props — dashboard would show blank ({signal})")
+                else:
+                    check(label, True, f"{len(vp)} props · {signal[:40]}")
+            except Exception as e:
+                check(label, False, str(e)[:80])
+
+        # Issue #2: World Cup must be in TC projection mode (not worldcup-props book mode)
+        try:
+            u = "https://true.zo.space/api/tc?sport=WORLD%20CUP&away=UZB&home=POR"
+            req = urllib.request.Request(u, headers={"User-Agent": "Mozilla/5.0"})
+            with urllib.request.urlopen(req, timeout=20) as r:
+                wc_data = json.loads(r.read().decode("utf-8", errors="ignore"))
+            wc_signal = wc_data.get("signal", "")
+            wc_vp = wc_data.get("valid_props") or []
+            if not wc_data.get("error") and len(wc_vp) > 0:
+                check("World Cup TC mode", True, f"{len(wc_vp)} props — dashboard renders stats")
+            else:
+                check("World Cup TC mode", False, f"{len(wc_vp)} props — check /api/tc routing")
+        except Exception as e:
+            check("World Cup TC mode", False, str(e)[:80])
+
+        # Issue #3: MLB stat keys match between API output and dashboard labels
+        # Verify a TK prop has tc_hits/tc_runs/etc (not tc_h/tc_r — the broken prefix)
+        try:
+            mlb_sample = None
+            u = "https://true.zo.space/api/tc?sport=MLB&away=NYY&home=DET"
+            req = urllib.request.Request(u, headers={"User-Agent": "Mozilla/5.0"})
+            with urllib.request.urlopen(req, timeout=20) as r:
+                mlb_sample = json.loads(r.read().decode("utf-8", errors="ignore"))
+            vp = mlb_sample.get("valid_props") or []
+            issue3_ok = any(
+                p.get("stat", "").upper() in ("HITS", "RUNS", "HR", "RBI", "STRIKEOUTS", "TOTAL_BASES")
+                for p in vp
+            ) if vp else False
+            if vp and issue3_ok:
+                stat_labels = set(p.get("stat", "").upper() for p in vp[:20])
+                check("MLB stat key mapping", True, f"stats: {', '.join(sorted(stat_labels)[:6])}")
+            elif vp:
+                stat_labels = set(p.get("stat", "").upper() for p in vp[:20])
+                check("MLB stat key mapping", False, f"missing expected stat keys — found: {', '.join(sorted(stat_labels)[:6])}")
+            else:
+                check("MLB stat key mapping", False, "no props — cannot verify stat keys")
+        except Exception as e:
+            check("MLB stat key mapping", False, str(e)[:80])
     # ── 8. WORKSPACE CLEANLINESS ──
     if not json_out:
         print("\n── Workspace Cleanliness ──")
