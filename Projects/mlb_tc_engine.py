@@ -478,8 +478,8 @@ ODDS_API_BASE = "https://api.theoddsapi.com"
 
 def _odds_url(sport_key: str, event_id: str = "") -> str:
     if event_id:
-        return f"{ODDS_API_BASE}/{sport_key}/events/{event_id}/odds"
-    return f"{ODDS_API_BASE}/{sport_key}/odds"
+        return f"{ODDS_API_BASE}/odds/?sport_key={sport_key}&eventI"
+    return f"{ODDS_API_BASE}/odds/?sport_key={sport_key}"
 
 def fetch_mlb_player_lines(game_id: str) -> Dict[str, Dict[str, float]]:
     """
@@ -497,6 +497,7 @@ def fetch_mlb_player_lines(game_id: str) -> Dict[str, Dict[str, float]]:
     try:
         url = _odds_url("baseball_mlb", game_id)
         r = requests.get(url, params={
+            "apiKey": key,
             "regions": "us",
             "markets": market_str,
             "bookmakers": "draftkings",
@@ -508,6 +509,9 @@ def fetch_mlb_player_lines(game_id: str) -> Dict[str, Dict[str, float]]:
             return {}
 
         data = r.json()
+        # Handle data-wrapped response (new API format)
+        if isinstance(data, dict) and "bookmakers" not in data and "data" in data:
+            data = data["data"]
         for bm in data.get("bookmakers", []):
             if bm.get("key") != "draftkings":
                 continue
@@ -550,6 +554,7 @@ def fetch_mlb_game_lines() -> List[Dict]:
         url = _odds_url("baseball_mlb")
         r = requests.get(url,
             params={
+                "apiKey": key,
                 "regions": "us",
                 "markets": "h2h,spreads,totals",
                 "bookmakers": "draftkings",
@@ -560,7 +565,8 @@ def fetch_mlb_game_lines() -> List[Dict]:
         if r.status_code != 200:
             return []
 
-        games = r.json()
+        raw = r.json()
+        games = raw if isinstance(raw, list) else raw.get("data", [])
         parsed = []
         for g in games:
             home_team = g.get("home_team", "")
