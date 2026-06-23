@@ -73,15 +73,16 @@ def main():
     secrets = load_secrets()
     odds_key = secrets.get("ODDS_API_KEY", "")
     sgo_key = secrets.get("SPORTSGAMEODDS_API_KEY", "")
-    sports_data_key = secrets.get("SPORTS_DATA_API_KEY", "")
+    sdio_key = secrets.get("SPORTSDATAIO_API_KEY", "")
+    sports_data_key = secrets.get("SPORTS_DATA_API_KEY", secrets.get("SPORTSDATAIO_API_KEY", ""))
 
     # ── 1. API KEYS ──
     if not json_out:
         print("\n── API Keys ──")
     key_checks = {
-        "ODDS_API_KEY": "The Odds API (game lines)",
-        "SPORTSGAMEODDS_API_KEY": "SportsGameOdds (NBA/WNBA player props)",
-        "SPORTS_DATA_API_KEY": "SportsData.io ($99/mo NFL)"
+        "ODDS_API_KEY": "The Odds API (game lines — free tier, no player props)",
+        "SPORTSGAMEODDS_API_KEY": "SportsGameOdds (NBA/WNBA player props — DEAD as of June 2026)",
+        "SPORTSDATAIO_API_KEY": "SportsDataIO (MLB player props — Premium tier)"
     }
     for name, desc in key_checks.items():
         val = secrets.get(name, "")
@@ -128,36 +129,40 @@ def main():
         else:
             check("The Odds API", False, "No API key")
 
-        # SportsGameOdds (NBA)
+        # SportsGameOdds (NBA) — DEAD as of June 2026
         if sgo_key:
+            check("SportsGameOdds (NBA)", False, "DEAD — key expired or API changed", warn=True)
+        # SportsDataIO — MLB player props (PAID tier)
+        sportsdata_key = secrets.get("SPORTSDATAIO_API_KEY", "")
+        if sportsdata_key:
             try:
                 r = requests.get(
-                    "https://api.sportsgameodds.com/v2/events?leagueID=NBA",
-                    headers={"x-api-key": sgo_key},
+                    f"https://api.sportsdata.io/v3/mlb/odds/json/PlayerPropsByDate/{datetime.now().strftime('%Y-%m-%d')}",
+                    headers={"Ocp-Apim-Subscription-Key": sportsdata_key},
                     timeout=10,
                 )
-                check("SportsGameOdds (NBA)", r.ok, f"HTTP {r.status_code}")
+                ok = r.ok
+                props_count = len(r.json()) if ok else 0
+                check("SportsDataIO (MLB props)", ok, f"{props_count} props" if ok else f"HTTP {r.status_code}")
             except Exception as e:
-                check("SportsGameOdds (NBA)", False, str(e)[:80])
-
-            # WNBA tier check
-            try:
-                r2 = requests.get(
-                    "https://api.sportsgameodds.com/v2/events?leagueID=WNBA",
-                    headers={"x-api-key": sgo_key},
-                    timeout=10,
-                )
-                data = r2.json()
-                if data.get("success") is False and data.get("error"):
-                    check("SportsGameOdds (WNBA)", False, data["error"], warn=True)
-                elif r2.ok:
-                    check("SportsGameOdds (WNBA)", True, f"HTTP {r2.status_code}")
-                else:
-                    check("SportsGameOdds (WNBA)", False, f"HTTP {r2.status_code}")
-            except Exception as e:
-                check("SportsGameOdds (WNBA)", False, str(e)[:80], warn=True)
+                check("SportsDataIO (MLB props)", False, str(e)[:80], warn=True)
         else:
-            check("SportsGameOdds (NBA)", False, "No API key")
+            check("SportsDataIO (MLB props)", False, "No key in secrets", warn=True)
+
+        # World Cup roster freshness
+        roster_path = WORKSPACE / "Daily_Log" / "wc_team_rosters.json"
+        if roster_path.exists():
+            try:
+                rosters = json.loads(roster_path.read_text())
+                teams = len(rosters)
+                age_h = (datetime.now() - datetime.fromtimestamp(roster_path.stat().st_mtime)).total_seconds() / 3600
+                fresh = age_h < 168
+                check("World Cup Rosters", fresh, f"{teams} teams ({age_h:.0f}h old)", warn=not fresh)
+            except Exception as e:
+                check("World Cup Rosters", False, str(e)[:80])
+        else:
+            check("World Cup Rosters", False, "No roster cache", warn=True)
+
 
     # ── 3. ZO.SPACE ROUTES ──
     if not quick and not json_out:
@@ -175,10 +180,15 @@ def main():
             try:
                 r = requests.get(url, headers={"Accept": "application/json"}, timeout=20)
                 data = r.json()
-                ok = not data.get("error") and r.ok
-                check(name, ok, f"HTTP {r.status_code}" if ok else str(data.get("error", f"HTTP {r.status_code}"))[:60])
+                err_msg = data.get("error", "")
+                ok = not err_msg and r.ok
+                is_disabled = "disabled" in str(err_msg).lower() or "off-season" in str(err_msg).lower()
+                detail = f"HTTP {r.status_code}" if ok else str(err_msg or f"HTTP {r.status_code}")[:60]
+                check(name, ok, detail, warn=(not ok and is_disabled))
             except Exception as e:
-                check(name, False, str(e)[:80])
+                detail = str(e)[:80]
+                is_nba_offseason = "NBA" in name and ("disabled" in detail.lower() or "off-season" in detail.lower())
+                check(name, False, detail, warn=is_nba_offseason)
 
     # ── 4. LOCAL SERVICES ──
     if not quick and not json_out:
@@ -189,7 +199,7 @@ def main():
         streamlit_ok = False
         for port in [8507, 8510, 8501]:
             try:
-                r = requests.get(f"http://localhost:{port}", headers={"x-api-key": ODDS_API_KEY}, timeout=5)
+                r = requests.get(f"http://localhost:{port}", timeout=5)
                 check(f"Streamlit :{port}", True, f"HTTP {r.status_code}")
                 streamlit_ok = True
                 break
