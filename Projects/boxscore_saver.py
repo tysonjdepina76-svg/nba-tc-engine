@@ -356,7 +356,7 @@ def build_mlb_final(s: dict, eid: str, dstr: str) -> dict | None:
     }
 
 def scan_and_save_mlb(mode: str = "all"):
-    today = datetime.now(timezone.utc).strftime("%Y%m%d")
+    today = (datetime.now(timezone.utc)-timedelta(hours=4)).strftime("%Y%m%d")
     for sp, spath in MLB_LEAGUE.items():
         sb = _sb(spath, today)
         events = sb.get("events", [])
@@ -407,7 +407,7 @@ def scan_and_save(sport: str | None = None, mode: str = "all"):
         scan_and_save_mlb(mode=mode)
         return
     sports = [sport] if sport else list(LEAGUE)
-    today = datetime.now(timezone.utc).strftime("%Y%m%d")
+    today = (datetime.now(timezone.utc)-timedelta(hours=4)).strftime("%Y%m%d")
 
     saved_ht = saved_final = 0
 
@@ -442,7 +442,7 @@ def scan_and_save(sport: str | None = None, mode: str = "all"):
             pref = f"    [{state}] {away}@{home} (id={eid})"
 
             # ── Halftime capture ──
-            if mode in ("all", "halftime") and state == "in" and period >= 3:
+            if mode in ("all", "halftime") and state == "in" and (period >= 3 or "halftime" in detail.lower() or "half" in detail.lower()):
                 if not already_saved(eid, "halftime"):
                     summary = _sum(spath, eid)
                     if summary:
