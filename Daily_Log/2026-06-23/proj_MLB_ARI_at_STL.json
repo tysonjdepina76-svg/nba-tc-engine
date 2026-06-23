@@ -1469,8 +1469,18 @@
         "earned_runs": 0.5,
         "outs": 0
       },
-      "lines": {},
-      "edges": {}
+      "lines": {
+        "strikeouts": 0.2,
+        "hits": 0.6,
+        "rbi": 0.2,
+        "total_bases": 0.6,
+        "runs": 0.2
+      },
+      "edges": {
+        "hits": -0.1,
+        "rbi": 0,
+        "total_bases": 0.9
+      }
     },
     {
       "name": "Andre Pallante",
@@ -2697,17 +2707,8 @@
         "earned_runs": 0.5,
         "outs": 0
       },
-      "lines": {
-        "strikeouts": 0.2,
-        "hits": 0.2,
-        "rbi": 0.2,
-        "total_bases": 0.6,
-        "runs": 0.2
-      },
-      "edges": {
-        "hits": 0.3,
-        "total_bases": 0.3
-      }
+      "lines": {},
+      "edges": {}
     }
   ],
   "valid_props": [
@@ -2848,6 +2849,19 @@
       "stat": "hits",
       "market_line": 0.2,
       "tc_projection": 1.1,
+      "edge": 0.9,
+      "direction": "OVER",
+      "signal": "OVER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Alec Burleson",
+      "team": "STL",
+      "pos": "1B",
+      "stat": "total_bases",
+      "market_line": 0.6,
+      "tc_projection": 1.5,
       "edge": 0.9,
       "direction": "OVER",
       "signal": "OVER",
@@ -3076,32 +3090,6 @@
       "source": "sdio_lines"
     },
     {
-      "player": "Masyn Winn",
-      "team": "STL",
-      "pos": "SS",
-      "stat": "hits",
-      "market_line": 0.2,
-      "tc_projection": 0.5,
-      "edge": 0.3,
-      "direction": "OVER",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Masyn Winn",
-      "team": "STL",
-      "pos": "SS",
-      "stat": "total_bases",
-      "market_line": 0.6,
-      "tc_projection": 0.9,
-      "edge": 0.3,
-      "direction": "OVER",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
       "player": "Corbin Carroll",
       "team": "ARI",
       "pos": "RF",
@@ -3123,6 +3111,19 @@
       "tc_projection": 0.3,
       "edge": 0.1,
       "direction": "OVER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Alec Burleson",
+      "team": "STL",
+      "pos": "1B",
+      "stat": "hits",
+      "market_line": 0.6,
+      "tc_projection": 0.5,
+      "edge": -0.1,
+      "direction": "UNDER",
       "signal": "PASS",
       "status": "ACTIVE",
       "source": "sdio_lines"
@@ -3271,6 +3272,45 @@
       "source": "sdio_lines"
     },
     {
+      "player": "Alec Burleson",
+      "team": "STL",
+      "pos": "1B",
+      "stat": "strikeouts",
+      "market_line": 0.2,
+      "tc_projection": 0,
+      "edge": 0,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Alec Burleson",
+      "team": "STL",
+      "pos": "1B",
+      "stat": "rbi",
+      "market_line": 0.2,
+      "tc_projection": 0.2,
+      "edge": 0,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Alec Burleson",
+      "team": "STL",
+      "pos": "1B",
+      "stat": "runs",
+      "market_line": 0.2,
+      "tc_projection": 0,
+      "edge": 0,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
       "player": "Jordan Walker",
       "team": "STL",
       "pos": "RF",
@@ -3329,45 +3369,6 @@
       "stat": "runs",
       "market_line": 0.2,
       "tc_projection": 0.2,
-      "edge": 0,
-      "direction": "UNDER",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Masyn Winn",
-      "team": "STL",
-      "pos": "SS",
-      "stat": "strikeouts",
-      "market_line": 0.2,
-      "tc_projection": 0,
-      "edge": 0,
-      "direction": "UNDER",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Masyn Winn",
-      "team": "STL",
-      "pos": "SS",
-      "stat": "rbi",
-      "market_line": 0.2,
-      "tc_projection": 0,
-      "edge": 0,
-      "direction": "UNDER",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Masyn Winn",
-      "team": "STL",
-      "pos": "SS",
-      "stat": "runs",
-      "market_line": 0.2,
-      "tc_projection": 0,
       "edge": 0,
       "direction": "UNDER",
       "signal": "PASS",

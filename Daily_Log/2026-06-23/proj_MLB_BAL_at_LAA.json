@@ -2066,19 +2066,8 @@
         "earned_runs": 0.5,
         "outs": 0
       },
-      "lines": {
-        "strikeouts": 0.2,
-        "hits": 0.2,
-        "rbi": 0.2,
-        "total_bases": 0.6,
-        "runs": 0.2
-      },
-      "edges": {
-        "hits": 0.4,
-        "rbi": 0.4,
-        "total_bases": 1,
-        "runs": 0
-      }
+      "lines": {},
+      "edges": {}
     },
     {
       "name": "Jose Siri",
@@ -2886,19 +2875,6 @@
       "source": "sdio_lines"
     },
     {
-      "player": "Wade Meckler",
-      "team": "LAA",
-      "pos": "LF",
-      "stat": "total_bases",
-      "market_line": 0.6,
-      "tc_projection": 1.6,
-      "edge": 1,
-      "direction": "OVER",
-      "signal": "OVER",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
       "player": "Blaze Alexander",
       "team": "BAL",
       "pos": "3B",
@@ -3280,32 +3256,6 @@
       "team": "LAA",
       "pos": "C",
       "stat": "runs",
-      "market_line": 0.2,
-      "tc_projection": 0.6,
-      "edge": 0.4,
-      "direction": "OVER",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Wade Meckler",
-      "team": "LAA",
-      "pos": "LF",
-      "stat": "hits",
-      "market_line": 0.2,
-      "tc_projection": 0.6,
-      "edge": 0.4,
-      "direction": "OVER",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Wade Meckler",
-      "team": "LAA",
-      "pos": "LF",
-      "stat": "rbi",
       "market_line": 0.2,
       "tc_projection": 0.6,
       "edge": 0.4,
@@ -3919,32 +3869,6 @@
       "stat": "strikeouts",
       "market_line": 0.2,
       "tc_projection": 0,
-      "edge": 0,
-      "direction": "UNDER",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Wade Meckler",
-      "team": "LAA",
-      "pos": "LF",
-      "stat": "strikeouts",
-      "market_line": 0.2,
-      "tc_projection": 0,
-      "edge": 0,
-      "direction": "UNDER",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Wade Meckler",
-      "team": "LAA",
-      "pos": "LF",
-      "stat": "runs",
-      "market_line": 0.2,
-      "tc_projection": 0.2,
       "edge": 0,
       "direction": "UNDER",
       "signal": "PASS",
