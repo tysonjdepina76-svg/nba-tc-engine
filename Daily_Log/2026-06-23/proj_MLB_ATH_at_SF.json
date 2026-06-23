@@ -99,18 +99,8 @@
         "earned_runs": 0.5,
         "outs": 0
       },
-      "lines": {
-        "strikeouts": 0.2,
-        "hits": 0.2,
-        "rbi": 0.2,
-        "total_bases": 0.6,
-        "runs": 0.2
-      },
-      "edges": {
-        "hits": 0.6,
-        "total_bases": 0.1,
-        "runs": 0.6
-      }
+      "lines": {},
+      "edges": {}
     },
     {
       "name": "Alika Williams",
@@ -3044,32 +3034,6 @@
       "source": "sdio_lines"
     },
     {
-      "player": "Jonah Heim",
-      "team": "ATH",
-      "pos": "C",
-      "stat": "hits",
-      "market_line": 0.2,
-      "tc_projection": 0.8,
-      "edge": 0.6,
-      "direction": "OVER",
-      "signal": "OVER",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Jonah Heim",
-      "team": "ATH",
-      "pos": "C",
-      "stat": "runs",
-      "market_line": 0.2,
-      "tc_projection": 0.8,
-      "edge": 0.6,
-      "direction": "OVER",
-      "signal": "OVER",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
       "player": "Tyler Soderstrom",
       "team": "ATH",
       "pos": "LF",
@@ -3408,19 +3372,6 @@
       "source": "sdio_lines"
     },
     {
-      "player": "Jonah Heim",
-      "team": "ATH",
-      "pos": "C",
-      "stat": "total_bases",
-      "market_line": 0.6,
-      "tc_projection": 0.7,
-      "edge": 0.1,
-      "direction": "OVER",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
       "player": "Zack Gelof",
       "team": "ATH",
       "pos": "3B",
@@ -3624,32 +3575,6 @@
       "tc_projection": 1.9,
       "edge": 0.1,
       "direction": "OVER",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Jonah Heim",
-      "team": "ATH",
-      "pos": "C",
-      "stat": "strikeouts",
-      "market_line": 0.2,
-      "tc_projection": 0,
-      "edge": 0,
-      "direction": "UNDER",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Jonah Heim",
-      "team": "ATH",
-      "pos": "C",
-      "stat": "rbi",
-      "market_line": 0.2,
-      "tc_projection": 0,
-      "edge": 0,
-      "direction": "UNDER",
       "signal": "PASS",
       "status": "ACTIVE",
       "source": "sdio_lines"

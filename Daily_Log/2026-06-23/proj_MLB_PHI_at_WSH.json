@@ -3,7 +3,7 @@
   "matchup": "PHI@WSH",
   "home_team": "WSH",
   "away_team": "PHI",
-  "dk_total": 8.5,
+  "dk_total": 7.5,
   "source": "ESPN + The Odds API + SportsDataIO",
   "away_players": [
     {
@@ -2563,19 +2563,8 @@
         "earned_runs": 0.5,
         "outs": 0
       },
-      "lines": {
-        "strikeouts": 0.2,
-        "hits": 0.2,
-        "rbi": 0.2,
-        "total_bases": 0.6,
-        "runs": 0.2
-      },
-      "edges": {
-        "hits": 0.6,
-        "rbi": 0,
-        "total_bases": 0.9,
-        "runs": 0.2
-      }
+      "lines": {},
+      "edges": {}
     },
     {
       "name": "Gus Varland",
@@ -2719,19 +2708,6 @@
       "source": "sdio_lines"
     },
     {
-      "player": "CJ Abrams",
-      "team": "WSH",
-      "pos": "SS",
-      "stat": "total_bases",
-      "market_line": 0.6,
-      "tc_projection": 1.5,
-      "edge": 0.9,
-      "direction": "OVER",
-      "signal": "OVER",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
       "player": "James Wood",
       "team": "WSH",
       "pos": "RF",
@@ -2813,19 +2789,6 @@
       "player": "Curtis Mead",
       "team": "WSH",
       "pos": "1B",
-      "stat": "hits",
-      "market_line": 0.2,
-      "tc_projection": 0.8,
-      "edge": 0.6,
-      "direction": "OVER",
-      "signal": "OVER",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "CJ Abrams",
-      "team": "WSH",
-      "pos": "SS",
       "stat": "hits",
       "market_line": 0.2,
       "tc_projection": 0.8,
@@ -3165,19 +3128,6 @@
       "team": "WSH",
       "pos": "3B",
       "stat": "hits",
-      "market_line": 0.2,
-      "tc_projection": 0.4,
-      "edge": 0.2,
-      "direction": "OVER",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "CJ Abrams",
-      "team": "WSH",
-      "pos": "SS",
-      "stat": "runs",
       "market_line": 0.2,
       "tc_projection": 0.4,
       "edge": 0.2,
@@ -3609,32 +3559,6 @@
       "stat": "strikeouts",
       "market_line": 0.2,
       "tc_projection": 0,
-      "edge": 0,
-      "direction": "UNDER",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "CJ Abrams",
-      "team": "WSH",
-      "pos": "SS",
-      "stat": "strikeouts",
-      "market_line": 0.2,
-      "tc_projection": 0,
-      "edge": 0,
-      "direction": "UNDER",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "CJ Abrams",
-      "team": "WSH",
-      "pos": "SS",
-      "stat": "rbi",
-      "market_line": 0.2,
-      "tc_projection": 0.2,
       "edge": 0,
       "direction": "UNDER",
       "signal": "PASS",
