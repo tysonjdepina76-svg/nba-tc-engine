@@ -1,0 +1,54 @@
+{
+  "generated_at": "2026-06-23T06:03:38.803425",
+  "league": "WNBA",
+  "date_range": "2026-06-22",
+  "total_picks": 203,
+  "overall_hit_rate": 0.5346534653465347,
+  "overall_hit_fraction": "108/202",
+  "pushes": 1,
+  "dk_combos_fetched": 0,
+  "tc_vs_dk_matches": 0,
+  "by_stat": {
+    "PTS": {
+      "hit": 17,
+      "miss": 18,
+      "push": 0,
+      "rate": 0.4857142857142857
+    },
+    "3PM": {
+      "hit": 29,
+      "miss": 19,
+      "push": 0,
+      "rate": 0.6041666666666666
+    },
+    "STL": {
+      "hit": 28,
+      "miss": 22,
+      "push": 0,
+      "rate": 0.56
+    },
+    "BLK": {
+      "hit": 5,
+      "miss": 4,
+      "push": 0,
+      "rate": 0.5555555555555556
+    },
+    "REB": {
+      "hit": 17,
+      "miss": 17,
+      "push": 0,
+      "rate": 0.5
+    },
+    "AST": {
+      "hit": 12,
+      "miss": 14,
+      "push": 1,
+      "rate": 0.46153846153846156
+    }
+  },
+  "features": {
+    "bayes": true,
+    "pace": true,
+    "b2b": true
+  }
+}
