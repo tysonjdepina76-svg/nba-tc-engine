@@ -1,13 +1,13 @@
 {
-  "timestamp": "2026-06-23T13:45:13.694572-05:00",
+  "timestamp": "2026-06-23T14:10:42.424228-05:00",
   "sports": [
     "WNBA",
     "MLB",
     "WORLD CUP"
   ],
-  "games_logged": 20,
-  "picks_logged": 975,
-  "completed_games_skipped": 0,
+  "games_logged": 19,
+  "picks_logged": 970,
+  "completed_games_skipped": 1,
   "errors": [],
   "summaries": [
     {
@@ -95,10 +95,10 @@
       "edge": null,
       "signal": "DK LINES LIVE",
       "source": "DraftKings via The Odds API",
-      "valid_prop_count": 63,
+      "valid_prop_count": 68,
       "roster_size": 54,
       "pending_props_no_dk": 0,
-      "picks_with_dk": 63
+      "picks_with_dk": 68
     },
     {
       "date": "2026-06-23",
@@ -113,10 +113,10 @@
       "edge": null,
       "signal": "DK LINES LIVE",
       "source": "DraftKings via The Odds API",
-      "valid_prop_count": 70,
+      "valid_prop_count": 60,
       "roster_size": 64,
       "pending_props_no_dk": 0,
-      "picks_with_dk": 70
+      "picks_with_dk": 60
     },
     {
       "date": "2026-06-23",
@@ -162,8 +162,8 @@
       "home_team": "CIN",
       "tc_combined": null,
       "tc_line": null,
-      "market_total": 10,
-      "dk_total": 10,
+      "market_total": 9.5,
+      "dk_total": 9.5,
       "edge": null,
       "signal": "DK LINES LIVE",
       "source": "DraftKings via The Odds API",
@@ -297,24 +297,6 @@
       "roster_size": 64,
       "pending_props_no_dk": 0,
       "picks_with_dk": 62
-    },
-    {
-      "date": "2026-06-23",
-      "sport": "WORLD CUP",
-      "matchup": "UZB@POR",
-      "away_team": "UZB",
-      "home_team": "POR",
-      "tc_combined": null,
-      "tc_line": null,
-      "market_total": null,
-      "dk_total": null,
-      "edge": null,
-      "signal": "DK LINES LIVE",
-      "source": "self-edge (no FD/DK player props on Odds API free tier)",
-      "valid_prop_count": 0,
-      "roster_size": 104,
-      "pending_props_no_dk": 0,
-      "picks_with_dk": 0
     },
     {
       "date": "2026-06-23",
