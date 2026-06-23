@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-06-23T20:40:10.315054+00:00",
-  "local_time": "2026-06-23 15:39:38 ET",
+  "timestamp": "2026-06-23T21:06:58.794944+00:00",
+  "local_time": "2026-06-23 16:06:32 ET",
   "status": "HEALTHY",
   "checks_passed": 7,
   "warnings": 1,
@@ -22,163 +22,163 @@
   "failures_list": [],
   "log": [
     {
-      "time": "15:39:38",
+      "time": "16:06:32",
       "level": "OK",
       "source": "Secrets",
       "msg": "3 keys loaded"
     },
     {
-      "time": "15:39:38",
+      "time": "16:06:32",
       "level": "OK",
       "source": "ESPN",
       "msg": "HTTP 200"
     },
     {
-      "time": "15:39:38",
+      "time": "16:06:32",
       "level": "WARN",
       "source": "Odds API",
       "msg": "HTTP 401 (? req left)"
     },
     {
-      "time": "15:39:38",
+      "time": "16:06:32",
       "level": "FAIL",
       "source": "SGO",
       "msg": "HTTP 400"
     },
     {
-      "time": "15:39:38",
-      "level": "FAIL",
+      "time": "16:06:32",
+      "level": "OK",
       "source": "TC Projections API",
-      "msg": "HTTP 503"
+      "msg": "HTTP 200"
     },
     {
-      "time": "15:39:38",
+      "time": "16:06:33",
       "level": "OK",
       "source": "NBA TC Dashboard",
       "msg": "HTTP 200"
     },
     {
-      "time": "15:39:39",
+      "time": "16:06:33",
       "level": "OK",
       "source": "Combos API",
       "msg": "HTTP 200"
     },
     {
-      "time": "15:39:39",
+      "time": "16:06:33",
       "level": "OK",
       "source": "World Cup Dashboard",
       "msg": "HTTP 200"
     },
     {
-      "time": "15:39:39",
+      "time": "16:06:33",
       "level": "OK",
       "source": "Streamlit Dashboard",
       "msg": "port 8510 HTTP 200"
     },
     {
-      "time": "15:39:39",
+      "time": "16:06:33",
       "level": "WARN",
       "source": "DK Combos Engine",
       "msg": "port 8515 HTTP 404"
     },
     {
-      "time": "15:39:39",
+      "time": "16:06:33",
       "level": "WARN",
       "source": "Soccer Combo Engine",
       "msg": "port 8516 HTTP 404"
     },
     {
-      "time": "15:39:39",
+      "time": "16:06:33",
       "level": "FIX",
       "source": "DK Combos",
       "msg": "Restarting on port 8515..."
     },
     {
-      "time": "15:39:43",
+      "time": "16:06:37",
       "level": "OK",
       "source": "DK Combos",
       "msg": "Restarted"
     },
     {
-      "time": "15:39:43",
+      "time": "16:06:37",
       "level": "FIX",
       "source": "Soccer Combos",
       "msg": "Restarting on port 8516..."
     },
     {
-      "time": "15:39:47",
+      "time": "16:06:41",
       "level": "OK",
       "source": "Soccer Combos",
       "msg": "Restarted"
     },
     {
-      "time": "15:39:47",
+      "time": "16:06:41",
       "level": "INFO",
       "source": "DailyPicks",
       "msg": "Running for: WNBA, MLB, WORLD CUP"
     },
     {
-      "time": "15:40:09",
+      "time": "16:06:58",
       "level": "OK",
       "source": "DailyPicks",
       "msg": "Completed (75 lines)"
     },
     {
-      "time": "15:40:09",
+      "time": "16:06:58",
       "level": "INFO",
       "source": "Combos",
       "msg": "Building pregame combos..."
     },
     {
-      "time": "15:40:10",
+      "time": "16:06:58",
       "level": "OK",
       "source": "Combos",
       "msg": "Completed"
     },
     {
-      "time": "15:40:10",
+      "time": "16:06:58",
       "level": "INFO",
       "source": "Soccer",
       "msg": "Running soccer TC engine..."
     },
     {
-      "time": "15:40:10",
+      "time": "16:06:58",
       "level": "OK",
       "source": "Soccer",
       "msg": "Completed"
     },
     {
-      "time": "15:40:10",
+      "time": "16:06:58",
       "level": "OK",
       "source": "picks_csv",
-      "msg": "554155 bytes"
+      "msg": "292330 bytes"
     },
     {
-      "time": "15:40:10",
+      "time": "16:06:58",
       "level": "OK",
       "source": "picks_json",
-      "msg": "2182863 bytes"
+      "msg": "1284306 bytes"
     },
     {
-      "time": "15:40:10",
+      "time": "16:06:58",
       "level": "OK",
       "source": "last_run",
-      "msg": "8972 bytes"
+      "msg": "8998 bytes"
     },
     {
-      "time": "15:40:10",
+      "time": "16:06:58",
       "level": "WARN",
       "source": "slate_nba",
       "msg": "MISSING"
     },
     {
-      "time": "15:40:10",
+      "time": "16:06:58",
       "level": "OK",
       "source": "slate_wnba",
-      "msg": "645 bytes"
+      "msg": "422 bytes"
     },
     {
-      "time": "15:40:10",
+      "time": "16:06:58",
       "level": "OK",
       "source": "Purge",
       "msg": "Nothing to purge \u2014 workspace clean"
