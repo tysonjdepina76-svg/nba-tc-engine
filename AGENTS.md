@@ -1,11 +1,12 @@
-# 2026-06-22 17:10 ET — WORLD CUP ESPN DK LINES WIRED — self-contained fix
+# 2026-06-23 14:25 ET — MLB FULLY RESTORED — 904 picks, 23 games, SDIO/S
+# Root Cause: api.theoddsapi.com changed URL format from /{sport}/odds to /odds/?sport_key={sport}
 # World Cup/soccer now pulls DK totals/ML/spreads from ESPN embedded D
 # 2026-06-22 16:15 ET — DK LINES RESTORED — Odds API URLs fixed, 12/20 games now live
-# Root cause: api.theoddsapi.com changed URL format from /{sport}/odds to /odds/?sport_key={sport}
 # All consensus_engine.py + /api/tc URLs updated. API key valid. Free tier = game lines only (no player props).
 # MLB: 11/16 games DK LIVES LIVE (totals 7.0-11.5). WNBA: ESPN-embedded DK totals (169.5-178.5). WC: not supported by this API.
 
 ## Workspace Index
+> **📋 PIPELINE_MAP.md** — Complete function map, API key directory, endpoint status (live-scanned 2026-06-23). Read this FIRST for any pipeline question.
 > **2026-06-22 16:15 ET — DK LINES RESTORED after 48hr outage:**
 > - **Root cause:** `api.theoddsapi.com` changed URL format. Code was using `/{sport_key}/odds` (404) but correct is `/odds/?sport_key=...`. Also: `ODDS_BASE` was `api.the-odds-api.com/v4` (dead key) vs `api.theoddsapi.com` (live).
 > - **Fixes applied:**
