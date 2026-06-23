@@ -5,7 +5,7 @@
   "away_team": "TOR",
   "home_team": "ATL",
   "source": "live ESPN WNBA roster/stat APIs",
-  "timestamp": "2026-06-22T23:32:04.951Z",
+  "timestamp": "2026-06-23T01:04:48.605Z",
   "injury_source": "ESPN WNBA injuries \u00b7 14 teams \u00b7 39 players",
   "injury_counts": {
     "away": 2,
@@ -15,37 +15,37 @@
   },
   "tc_combined": 130.9,
   "tc_line": 144,
-  "market_total": 178.5,
-  "edge": -34.5,
-  "signal": "UNDER",
-  "dk_total": 178.5,
+  "market_total": null,
+  "edge": 0,
+  "signal": "NO MARKET",
+  "dk_total": null,
   "odds": {
-    "total": 178.5,
-    "spread": 14.5,
-    "away_spread": 14.5,
-    "home_spread": -14.5,
-    "spread_pick": "ATL",
-    "away_ml": 750,
-    "home_ml": -1200,
-    "ml_source": "ESPN DraftKings embedded",
+    "total": null,
+    "spread": null,
+    "away_spread": null,
+    "home_spread": null,
+    "spread_pick": null,
+    "away_ml": null,
+    "home_ml": null,
+    "ml_source": "No odds data available (SGO + Odds API + ESPN DK + fallback all empty)",
     "bookmaker_breakdown": null,
     "best_books": null
   },
   "assessment": {
     "tc_total": 130.9,
     "tc_line": 144,
-    "edge": -34.5,
-    "signal": "UNDER",
-    "total_lean": "UNDER",
+    "edge": 0,
+    "signal": "NO MARKET",
+    "total_lean": "NO MARKET",
     "spread_pick": "ATL",
-    "summary": "TC combined 130.9 vs DK 178.5 (edge -34.5) \u2192 lean UNDER. Spread: ATL.",
+    "summary": "No market line available.",
     "roster_rule": "live mode uses current roster/stat/injury APIs only"
   },
   "game_assessment": {
-    "total_lean": "UNDER",
+    "total_lean": "NO MARKET",
     "spread_pick": "ATL",
     "roster_rule": "live mode uses current roster/stat/injury APIs only",
-    "summary": "TC combined 130.9 vs DK 178.5 (edge -34.5) \u2192 lean UNDER."
+    "summary": "No market line available."
   },
   "roster_counts": {
     "away": 12,
@@ -1961,7 +1961,7 @@
     },
     "rows": [
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -1983,7 +1983,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -2005,7 +2005,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -2027,7 +2027,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -2049,7 +2049,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -2071,7 +2071,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -2093,7 +2093,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -2115,7 +2115,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -2137,7 +2137,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -2159,7 +2159,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -2181,7 +2181,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -2203,7 +2203,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -2225,7 +2225,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -2247,7 +2247,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -2269,7 +2269,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -2291,7 +2291,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -2313,7 +2313,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -2335,7 +2335,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -2357,7 +2357,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -2379,7 +2379,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -2401,7 +2401,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -2423,7 +2423,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -2445,7 +2445,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -2467,7 +2467,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -2489,7 +2489,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -2511,7 +2511,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -2533,7 +2533,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -2555,7 +2555,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -2577,7 +2577,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -2599,7 +2599,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -2621,7 +2621,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -2643,7 +2643,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -2665,7 +2665,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -2687,7 +2687,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -2709,7 +2709,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -2731,7 +2731,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -2753,7 +2753,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -2775,7 +2775,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -2797,7 +2797,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -2819,7 +2819,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -2841,7 +2841,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -2863,7 +2863,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -2885,7 +2885,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -2907,7 +2907,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -2929,7 +2929,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -2951,7 +2951,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -2973,7 +2973,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -2995,7 +2995,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -3017,7 +3017,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -3039,7 +3039,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -3061,7 +3061,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -3083,7 +3083,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -3105,7 +3105,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -3127,7 +3127,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -3149,7 +3149,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -3171,7 +3171,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -3193,7 +3193,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -3215,7 +3215,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -3237,7 +3237,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -3259,7 +3259,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -3281,7 +3281,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -3303,7 +3303,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -3325,7 +3325,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -3347,7 +3347,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -3369,7 +3369,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -3391,7 +3391,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -3413,7 +3413,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -3435,7 +3435,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -3457,7 +3457,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -3479,7 +3479,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -3501,7 +3501,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -3523,7 +3523,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -3545,7 +3545,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -3567,7 +3567,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -3589,7 +3589,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -3611,7 +3611,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -3633,7 +3633,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -3655,7 +3655,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -3677,7 +3677,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -3699,7 +3699,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -3721,7 +3721,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -3743,7 +3743,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -3765,7 +3765,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -3787,7 +3787,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -3809,7 +3809,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -3831,7 +3831,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -3853,7 +3853,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -3875,7 +3875,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -3897,7 +3897,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -3919,7 +3919,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -3941,7 +3941,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -3963,7 +3963,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -3985,7 +3985,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -4007,7 +4007,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -4029,7 +4029,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -4051,7 +4051,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -4073,7 +4073,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -4095,7 +4095,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -4117,7 +4117,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -4139,7 +4139,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -4161,7 +4161,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -4183,7 +4183,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -4205,7 +4205,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -4227,7 +4227,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -4249,7 +4249,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -4271,7 +4271,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -4293,7 +4293,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -4315,7 +4315,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -4337,7 +4337,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -4359,7 +4359,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -4381,7 +4381,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -4403,7 +4403,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -4425,7 +4425,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -4447,7 +4447,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -4469,7 +4469,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -4491,7 +4491,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -4513,7 +4513,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -4535,7 +4535,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -4557,7 +4557,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -4579,7 +4579,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -4601,7 +4601,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -4623,7 +4623,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -4645,7 +4645,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -4667,7 +4667,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -4689,7 +4689,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -4711,7 +4711,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -4733,7 +4733,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -4755,7 +4755,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -4777,7 +4777,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -4799,7 +4799,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -4821,7 +4821,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -4843,7 +4843,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -4865,7 +4865,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -4887,7 +4887,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -4909,7 +4909,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -4931,7 +4931,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -4953,7 +4953,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -4975,7 +4975,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -4997,7 +4997,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -5019,7 +5019,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -5041,7 +5041,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -5063,7 +5063,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -5085,7 +5085,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -5107,7 +5107,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -5129,7 +5129,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -5151,7 +5151,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -5173,7 +5173,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -5195,7 +5195,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -5217,7 +5217,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -5239,7 +5239,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -5263,7 +5263,7 @@
     ],
     "valid": [
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -5285,7 +5285,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -5307,7 +5307,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -5329,7 +5329,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -5351,7 +5351,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -5373,7 +5373,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -5395,7 +5395,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -5417,7 +5417,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -5439,7 +5439,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -5461,7 +5461,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -5483,7 +5483,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -5505,7 +5505,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -5527,7 +5527,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -5549,7 +5549,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -5571,7 +5571,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -5593,7 +5593,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -5615,7 +5615,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -5637,7 +5637,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -5659,7 +5659,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -5681,7 +5681,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -5703,7 +5703,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -5725,7 +5725,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "TOR",
@@ -5747,7 +5747,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -5769,7 +5769,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -5791,7 +5791,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -5813,7 +5813,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -5835,7 +5835,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -5857,7 +5857,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -5879,7 +5879,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -5901,7 +5901,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -5923,7 +5923,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -5945,7 +5945,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -5967,7 +5967,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -5989,7 +5989,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -6011,7 +6011,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -6033,7 +6033,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -6055,7 +6055,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -6077,7 +6077,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -6099,7 +6099,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -6121,7 +6121,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -6143,7 +6143,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -6165,7 +6165,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -6187,7 +6187,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -6209,7 +6209,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -6231,7 +6231,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -6253,7 +6253,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -6275,7 +6275,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "TOR@ATL",
         "team": "ATL",
@@ -6301,7 +6301,7 @@
   },
   "valid_props": [
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "TOR@ATL",
       "team": "TOR",
@@ -6323,7 +6323,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "TOR@ATL",
       "team": "TOR",
@@ -6345,7 +6345,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "TOR@ATL",
       "team": "TOR",
@@ -6367,7 +6367,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "TOR@ATL",
       "team": "TOR",
@@ -6389,7 +6389,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "TOR@ATL",
       "team": "TOR",
@@ -6411,7 +6411,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "TOR@ATL",
       "team": "TOR",
@@ -6433,7 +6433,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "TOR@ATL",
       "team": "TOR",
@@ -6455,7 +6455,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "TOR@ATL",
       "team": "TOR",
@@ -6477,7 +6477,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "TOR@ATL",
       "team": "TOR",
@@ -6499,7 +6499,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "TOR@ATL",
       "team": "TOR",
@@ -6521,7 +6521,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "TOR@ATL",
       "team": "TOR",
@@ -6543,7 +6543,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "TOR@ATL",
       "team": "TOR",
@@ -6565,7 +6565,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "TOR@ATL",
       "team": "TOR",
@@ -6587,7 +6587,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "TOR@ATL",
       "team": "TOR",
@@ -6609,7 +6609,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "TOR@ATL",
       "team": "TOR",
@@ -6631,7 +6631,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "TOR@ATL",
       "team": "TOR",
@@ -6653,7 +6653,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "TOR@ATL",
       "team": "TOR",
@@ -6675,7 +6675,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "TOR@ATL",
       "team": "TOR",
@@ -6697,7 +6697,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "TOR@ATL",
       "team": "TOR",
@@ -6719,7 +6719,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "TOR@ATL",
       "team": "TOR",
@@ -6741,7 +6741,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "TOR@ATL",
       "team": "TOR",
@@ -6763,7 +6763,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "TOR@ATL",
       "team": "TOR",
@@ -6785,7 +6785,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "TOR@ATL",
       "team": "ATL",
@@ -6807,7 +6807,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "TOR@ATL",
       "team": "ATL",
@@ -6829,7 +6829,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "TOR@ATL",
       "team": "ATL",
@@ -6851,7 +6851,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "TOR@ATL",
       "team": "ATL",
@@ -6873,7 +6873,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "TOR@ATL",
       "team": "ATL",
@@ -6895,7 +6895,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "TOR@ATL",
       "team": "ATL",
@@ -6917,7 +6917,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "TOR@ATL",
       "team": "ATL",
@@ -6939,7 +6939,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "TOR@ATL",
       "team": "ATL",
@@ -6961,7 +6961,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "TOR@ATL",
       "team": "ATL",
@@ -6983,7 +6983,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "TOR@ATL",
       "team": "ATL",
@@ -7005,7 +7005,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "TOR@ATL",
       "team": "ATL",
@@ -7027,7 +7027,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "TOR@ATL",
       "team": "ATL",
@@ -7049,7 +7049,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "TOR@ATL",
       "team": "ATL",
@@ -7071,7 +7071,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "TOR@ATL",
       "team": "ATL",
@@ -7093,7 +7093,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "TOR@ATL",
       "team": "ATL",
@@ -7115,7 +7115,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "TOR@ATL",
       "team": "ATL",
@@ -7137,7 +7137,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "TOR@ATL",
       "team": "ATL",
@@ -7159,7 +7159,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "TOR@ATL",
       "team": "ATL",
@@ -7181,7 +7181,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "TOR@ATL",
       "team": "ATL",
@@ -7203,7 +7203,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "TOR@ATL",
       "team": "ATL",
@@ -7225,7 +7225,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "TOR@ATL",
       "team": "ATL",
@@ -7247,7 +7247,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "TOR@ATL",
       "team": "ATL",
@@ -7269,7 +7269,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "TOR@ATL",
       "team": "ATL",
@@ -7291,7 +7291,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "TOR@ATL",
       "team": "ATL",
@@ -7313,7 +7313,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "TOR@ATL",
       "team": "ATL",

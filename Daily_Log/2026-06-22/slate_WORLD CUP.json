@@ -1,7 +1,7 @@
 {
   "mode": "live_stats",
   "sport": "WORLD CUP",
-  "timestamp": "2026-06-22T23:32:37.399Z",
+  "timestamp": "2026-06-23T01:05:20.871Z",
   "games": [
     {
       "id": "760456",
@@ -31,11 +31,11 @@
       "matchup": "IRQ@FRA",
       "name": "Iraq at France",
       "date": "2026-06-22T21:00Z",
-      "status": "Delayed",
-      "detail": "45'+3'",
-      "period": 1,
-      "clock": "45'+3'",
-      "completed": false,
+      "status": "Full Time",
+      "detail": "FT",
+      "period": 2,
+      "clock": "90'+2'",
+      "completed": true,
       "away": {
         "team": "IRQ",
         "name": "Iraq",
@@ -44,7 +44,7 @@
       "home": {
         "team": "FRA",
         "name": "France",
-        "score": 1
+        "score": 3
       },
       "leaders": [],
       "players": []
@@ -54,10 +54,10 @@
       "matchup": "SEN@NOR",
       "name": "Senegal at Norway",
       "date": "2026-06-23T00:00Z",
-      "status": "Scheduled",
-      "detail": "Mon, June 22nd at 8:00 PM EDT",
-      "period": 0,
-      "clock": "0'",
+      "status": "Second Half",
+      "detail": "46'",
+      "period": 2,
+      "clock": "46'",
       "completed": false,
       "away": {
         "team": "SEN",
@@ -67,7 +67,7 @@
       "home": {
         "team": "NOR",
         "name": "Norway",
-        "score": 0
+        "score": 1
       },
       "leaders": [],
       "players": []

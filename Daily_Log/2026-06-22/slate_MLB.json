@@ -1,27 +1,27 @@
 {
   "mode": "live_stats",
   "sport": "MLB",
-  "timestamp": "2026-06-22T23:32:10.200Z",
+  "timestamp": "2026-06-23T01:04:54.166Z",
   "games": [
     {
       "id": "401815858",
       "matchup": "NYY@DET",
       "name": "New York Yankees at Detroit Tigers",
       "date": "2026-06-22T22:10Z",
-      "status": "In Progress",
-      "detail": "Bottom 4th",
-      "period": 4,
+      "status": "Final",
+      "detail": "Final",
+      "period": 9,
       "clock": "0:00",
-      "completed": false,
+      "completed": true,
       "away": {
         "team": "NYY",
         "name": "New York Yankees",
-        "score": 1
+        "score": 3
       },
       "home": {
         "team": "DET",
         "name": "Detroit Tigers",
-        "score": 3
+        "score": 5
       },
       "leaders": [],
       "players": []
@@ -31,20 +31,20 @@
       "matchup": "KC@TB",
       "name": "Kansas City Royals at Tampa Bay Rays",
       "date": "2026-06-22T22:40Z",
-      "status": "In Progress",
-      "detail": "Middle 4th",
-      "period": 4,
+      "status": "Final",
+      "detail": "Final",
+      "period": 9,
       "clock": "0:00",
-      "completed": false,
+      "completed": true,
       "away": {
         "team": "KC",
         "name": "Kansas City Royals",
-        "score": 1
+        "score": 2
       },
       "home": {
         "team": "TB",
         "name": "Tampa Bay Rays",
-        "score": 0
+        "score": 1
       },
       "leaders": [],
       "players": []
@@ -55,19 +55,19 @@
       "name": "Texas Rangers at Miami Marlins",
       "date": "2026-06-22T22:40Z",
       "status": "In Progress",
-      "detail": "Top 4th",
-      "period": 4,
+      "detail": "Bottom 8th",
+      "period": 8,
       "clock": "0:00",
       "completed": false,
       "away": {
         "team": "TEX",
         "name": "Texas Rangers",
-        "score": 2
+        "score": 4
       },
       "home": {
         "team": "MIA",
         "name": "Miami Marlins",
-        "score": 0
+        "score": 2
       },
       "leaders": [],
       "players": []
@@ -77,9 +77,9 @@
       "matchup": "PHI@WSH",
       "name": "Philadelphia Phillies at Washington Nationals",
       "date": "2026-06-22T22:45Z",
-      "status": "Rain Delay",
-      "detail": "Rain Delay, Top 1st",
-      "period": 1,
+      "status": "In Progress",
+      "detail": "Bottom 3rd",
+      "period": 3,
       "clock": "0:00",
       "completed": false,
       "away": {
@@ -90,7 +90,7 @@
       "home": {
         "team": "WSH",
         "name": "Washington Nationals",
-        "score": 0
+        "score": 2
       },
       "leaders": [],
       "players": []
@@ -101,8 +101,8 @@
       "name": "Houston Astros at Toronto Blue Jays",
       "date": "2026-06-22T23:07Z",
       "status": "In Progress",
-      "detail": "Bottom 1st",
-      "period": 1,
+      "detail": "Top 6th",
+      "period": 6,
       "clock": "0:00",
       "completed": false,
       "away": {
@@ -113,7 +113,7 @@
       "home": {
         "team": "TOR",
         "name": "Toronto Blue Jays",
-        "score": 0
+        "score": 2
       },
       "leaders": [],
       "players": []
@@ -147,8 +147,8 @@
       "name": "Milwaukee Brewers at Cincinnati Reds",
       "date": "2026-06-22T23:10Z",
       "status": "In Progress",
-      "detail": "Middle 2nd",
-      "period": 2,
+      "detail": "End 8th",
+      "period": 8,
       "clock": "0:00",
       "completed": false,
       "away": {
@@ -169,9 +169,9 @@
       "matchup": "CLE@CHW",
       "name": "Cleveland Guardians at Chicago White Sox",
       "date": "2026-06-22T23:40Z",
-      "status": "Scheduled",
-      "detail": "Scheduled",
-      "period": 1,
+      "status": "In Progress",
+      "detail": "Top 5th",
+      "period": 5,
       "clock": "0:00",
       "completed": false,
       "away": {
@@ -182,7 +182,7 @@
       "home": {
         "team": "CHW",
         "name": "Chicago White Sox",
-        "score": 0
+        "score": 2
       },
       "leaders": [],
       "players": []
@@ -192,20 +192,20 @@
       "matchup": "LAD@MIN",
       "name": "Los Angeles Dodgers at Minnesota Twins",
       "date": "2026-06-22T23:40Z",
-      "status": "Scheduled",
-      "detail": "Scheduled",
-      "period": 1,
+      "status": "In Progress",
+      "detail": "Bottom 5th",
+      "period": 5,
       "clock": "0:00",
       "completed": false,
       "away": {
         "team": "LAD",
         "name": "Los Angeles Dodgers",
-        "score": 0
+        "score": 1
       },
       "home": {
         "team": "MIN",
         "name": "Minnesota Twins",
-        "score": 0
+        "score": 1
       },
       "leaders": [],
       "players": []
@@ -215,9 +215,9 @@
       "matchup": "ARI@STL",
       "name": "Arizona Diamondbacks at St. Louis Cardinals",
       "date": "2026-06-22T23:45Z",
-      "status": "Scheduled",
-      "detail": "Scheduled",
-      "period": 1,
+      "status": "In Progress",
+      "detail": "Top 5th",
+      "period": 5,
       "clock": "0:00",
       "completed": false,
       "away": {
@@ -228,7 +228,7 @@
       "home": {
         "team": "STL",
         "name": "St. Louis Cardinals",
-        "score": 0
+        "score": 3
       },
       "leaders": [],
       "players": []
@@ -238,9 +238,9 @@
       "matchup": "BOS@COL",
       "name": "Boston Red Sox at Colorado Rockies",
       "date": "2026-06-23T00:40Z",
-      "status": "Scheduled",
-      "detail": "Scheduled",
-      "period": 1,
+      "status": "In Progress",
+      "detail": "Bottom 2nd",
+      "period": 2,
       "clock": "0:00",
       "completed": false,
       "away": {

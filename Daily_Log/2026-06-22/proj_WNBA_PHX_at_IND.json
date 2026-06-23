@@ -5,7 +5,7 @@
   "away_team": "PHX",
   "home_team": "IND",
   "source": "live ESPN WNBA roster/stat APIs",
-  "timestamp": "2026-06-22T23:32:07.311Z",
+  "timestamp": "2026-06-23T01:04:50.431Z",
   "injury_source": "ESPN WNBA injuries \u00b7 14 teams \u00b7 39 players",
   "injury_counts": {
     "away": 4,
@@ -15,37 +15,37 @@
   },
   "tc_combined": 137.8,
   "tc_line": 151,
-  "market_total": 177.5,
-  "edge": -26.5,
-  "signal": "UNDER",
-  "dk_total": 177.5,
+  "market_total": null,
+  "edge": 0,
+  "signal": "NO MARKET",
+  "dk_total": null,
   "odds": {
-    "total": 177.5,
-    "spread": 7.5,
-    "away_spread": 7.5,
-    "home_spread": -7.5,
-    "spread_pick": "IND",
-    "away_ml": 245,
-    "home_ml": -305,
-    "ml_source": "ESPN DraftKings embedded",
+    "total": null,
+    "spread": null,
+    "away_spread": null,
+    "home_spread": null,
+    "spread_pick": null,
+    "away_ml": null,
+    "home_ml": null,
+    "ml_source": "No odds data available (SGO + Odds API + ESPN DK + fallback all empty)",
     "bookmaker_breakdown": null,
     "best_books": null
   },
   "assessment": {
     "tc_total": 137.8,
     "tc_line": 151,
-    "edge": -26.5,
-    "signal": "UNDER",
-    "total_lean": "UNDER",
+    "edge": 0,
+    "signal": "NO MARKET",
+    "total_lean": "NO MARKET",
     "spread_pick": "IND",
-    "summary": "TC combined 137.8 vs DK 177.5 (edge -26.5) \u2192 lean UNDER. Spread: IND.",
+    "summary": "No market line available.",
     "roster_rule": "live mode uses current roster/stat/injury APIs only"
   },
   "game_assessment": {
-    "total_lean": "UNDER",
+    "total_lean": "NO MARKET",
     "spread_pick": "IND",
     "roster_rule": "live mode uses current roster/stat/injury APIs only",
-    "summary": "TC combined 137.8 vs DK 177.5 (edge -26.5) \u2192 lean UNDER."
+    "summary": "No market line available."
   },
   "roster_counts": {
     "away": 14,
@@ -2048,8 +2048,8 @@
           "tc_blk": 0,
           "line_blk": 0,
           "edge_blk": 0,
-          "injury_comment": "out",
-          "injury_updated": "2026-06-22T23:20Z",
+          "injury_comment": "Pissott hasn't played this season, so her absence Monday isn't surprising by any means. Her next opportunity to suit up will come Wednesday when these clubs meet again for the rematch.",
+          "injury_updated": "2026-06-22T23:23Z",
           "symbols": [],
           "leader_notes": [],
           "role": "DNP/OUT"
@@ -2066,17 +2066,17 @@
     },
     "injuries": [
       {
+        "name": "Justine Pissott",
+        "status": "OUT",
+        "comment": "Pissott hasn't played this season, so her absence Monday isn't surprising by any means. Her next opportunity to suit up will come Wednesday when these clubs meet again for the rematch.",
+        "date": "2026-06-22T23:23Z",
+        "source": "espn_injury_feed"
+      },
+      {
         "name": "Bree Hall",
         "status": "OUT",
         "comment": "Hall will sit out Monday's contest in order to preserve her eligibility while signed to a developmental contract. Her next chance to make her season debut will come in Wednesday's rematch against the Mercury.",
         "date": "2026-06-22T23:21Z",
-        "source": "espn_injury_feed"
-      },
-      {
-        "name": "Justine Pissott",
-        "status": "OUT",
-        "comment": "out",
-        "date": "2026-06-22T23:20Z",
         "source": "espn_injury_feed"
       }
     ],
@@ -2115,7 +2115,7 @@
     },
     "rows": [
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -2137,7 +2137,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -2159,7 +2159,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -2181,7 +2181,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -2203,7 +2203,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -2225,7 +2225,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -2247,7 +2247,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -2269,7 +2269,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -2291,7 +2291,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -2313,7 +2313,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -2335,7 +2335,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -2357,7 +2357,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -2379,7 +2379,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -2401,7 +2401,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -2423,7 +2423,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -2445,7 +2445,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -2467,7 +2467,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -2489,7 +2489,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -2511,7 +2511,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -2533,7 +2533,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -2555,7 +2555,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -2577,7 +2577,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -2599,7 +2599,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -2621,7 +2621,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -2643,7 +2643,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -2665,7 +2665,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -2687,7 +2687,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -2709,7 +2709,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -2731,7 +2731,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -2753,7 +2753,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -2775,7 +2775,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -2797,7 +2797,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -2819,7 +2819,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -2841,7 +2841,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -2863,7 +2863,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -2885,7 +2885,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -2907,7 +2907,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -2929,7 +2929,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -2951,7 +2951,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -2973,7 +2973,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -2995,7 +2995,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -3017,7 +3017,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -3039,7 +3039,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -3061,7 +3061,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -3083,7 +3083,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -3105,7 +3105,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -3127,7 +3127,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -3149,7 +3149,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -3171,7 +3171,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -3193,7 +3193,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -3215,7 +3215,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -3237,7 +3237,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -3259,7 +3259,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -3281,7 +3281,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -3303,7 +3303,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -3325,7 +3325,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -3347,7 +3347,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -3369,7 +3369,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -3391,7 +3391,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -3413,7 +3413,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -3435,7 +3435,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -3457,7 +3457,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -3479,7 +3479,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -3501,7 +3501,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -3523,7 +3523,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -3545,7 +3545,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -3567,7 +3567,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -3589,7 +3589,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -3611,7 +3611,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -3633,7 +3633,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -3655,7 +3655,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -3677,7 +3677,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -3699,7 +3699,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -3721,7 +3721,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -3743,7 +3743,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -3765,7 +3765,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -3787,7 +3787,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -3809,7 +3809,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -3831,7 +3831,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -3853,7 +3853,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -3875,7 +3875,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -3897,7 +3897,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -3919,7 +3919,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -3941,7 +3941,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -3963,7 +3963,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -3985,7 +3985,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -4007,7 +4007,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -4029,7 +4029,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -4051,7 +4051,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -4073,7 +4073,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -4095,7 +4095,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -4117,7 +4117,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -4139,7 +4139,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -4161,7 +4161,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -4183,7 +4183,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -4205,7 +4205,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -4227,7 +4227,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -4249,7 +4249,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -4271,7 +4271,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -4293,7 +4293,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -4315,7 +4315,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -4337,7 +4337,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -4359,7 +4359,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -4381,7 +4381,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -4403,7 +4403,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -4425,7 +4425,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -4447,7 +4447,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -4469,7 +4469,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -4491,7 +4491,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -4513,7 +4513,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -4535,7 +4535,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -4557,7 +4557,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -4579,7 +4579,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -4601,7 +4601,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -4623,7 +4623,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -4645,7 +4645,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -4667,7 +4667,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -4689,7 +4689,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -4711,7 +4711,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -4733,7 +4733,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -4755,7 +4755,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -4777,7 +4777,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -4799,7 +4799,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -4821,7 +4821,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -4843,7 +4843,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -4865,7 +4865,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -4887,7 +4887,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -4909,7 +4909,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -4931,7 +4931,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -4953,7 +4953,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -4975,7 +4975,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -4997,7 +4997,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -5019,7 +5019,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -5041,7 +5041,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -5063,7 +5063,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -5085,7 +5085,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -5107,7 +5107,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -5129,7 +5129,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -5151,7 +5151,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -5173,7 +5173,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -5195,7 +5195,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -5217,7 +5217,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -5239,7 +5239,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -5261,7 +5261,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -5283,7 +5283,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -5305,7 +5305,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -5327,7 +5327,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -5349,7 +5349,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -5371,7 +5371,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -5393,7 +5393,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -5415,7 +5415,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -5437,7 +5437,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -5459,7 +5459,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -5481,7 +5481,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -5503,7 +5503,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -5525,7 +5525,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -5547,7 +5547,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -5569,7 +5569,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -5591,7 +5591,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -5613,7 +5613,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -5635,7 +5635,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -5657,7 +5657,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -5679,7 +5679,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -5701,7 +5701,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -5723,7 +5723,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -5745,7 +5745,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -5767,7 +5767,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -5789,7 +5789,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -5813,7 +5813,7 @@
     ],
     "valid": [
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -5835,7 +5835,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -5857,7 +5857,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -5879,7 +5879,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -5901,7 +5901,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -5923,7 +5923,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -5945,7 +5945,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -5967,7 +5967,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -5989,7 +5989,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -6011,7 +6011,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -6033,7 +6033,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -6055,7 +6055,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -6077,7 +6077,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -6099,7 +6099,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -6121,7 +6121,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -6143,7 +6143,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -6165,7 +6165,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -6187,7 +6187,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -6209,7 +6209,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -6231,7 +6231,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "PHX",
@@ -6253,7 +6253,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -6275,7 +6275,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -6297,7 +6297,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -6319,7 +6319,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -6341,7 +6341,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -6363,7 +6363,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -6385,7 +6385,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -6407,7 +6407,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -6429,7 +6429,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -6451,7 +6451,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -6473,7 +6473,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -6495,7 +6495,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -6517,7 +6517,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -6539,7 +6539,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -6561,7 +6561,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -6583,7 +6583,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -6605,7 +6605,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -6627,7 +6627,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -6649,7 +6649,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -6671,7 +6671,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -6693,7 +6693,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -6715,7 +6715,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -6737,7 +6737,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -6759,7 +6759,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -6781,7 +6781,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -6803,7 +6803,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -6825,7 +6825,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -6847,7 +6847,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -6869,7 +6869,7 @@
         "dk_source": null
       },
       {
-        "date": "2026-06-22",
+        "date": "2026-06-23",
         "league": "WNBA",
         "game": "PHX@IND",
         "team": "IND",
@@ -6895,7 +6895,7 @@
   },
   "valid_props": [
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "PHX@IND",
       "team": "PHX",
@@ -6917,7 +6917,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "PHX@IND",
       "team": "PHX",
@@ -6939,7 +6939,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "PHX@IND",
       "team": "PHX",
@@ -6961,7 +6961,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "PHX@IND",
       "team": "PHX",
@@ -6983,7 +6983,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "PHX@IND",
       "team": "PHX",
@@ -7005,7 +7005,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "PHX@IND",
       "team": "PHX",
@@ -7027,7 +7027,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "PHX@IND",
       "team": "PHX",
@@ -7049,7 +7049,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "PHX@IND",
       "team": "PHX",
@@ -7071,7 +7071,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "PHX@IND",
       "team": "PHX",
@@ -7093,7 +7093,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "PHX@IND",
       "team": "PHX",
@@ -7115,7 +7115,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "PHX@IND",
       "team": "PHX",
@@ -7137,7 +7137,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "PHX@IND",
       "team": "PHX",
@@ -7159,7 +7159,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "PHX@IND",
       "team": "PHX",
@@ -7181,7 +7181,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "PHX@IND",
       "team": "PHX",
@@ -7203,7 +7203,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "PHX@IND",
       "team": "PHX",
@@ -7225,7 +7225,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "PHX@IND",
       "team": "PHX",
@@ -7247,7 +7247,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "PHX@IND",
       "team": "PHX",
@@ -7269,7 +7269,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "PHX@IND",
       "team": "PHX",
@@ -7291,7 +7291,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "PHX@IND",
       "team": "PHX",
@@ -7313,7 +7313,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "PHX@IND",
       "team": "PHX",
@@ -7335,7 +7335,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "PHX@IND",
       "team": "IND",
@@ -7357,7 +7357,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "PHX@IND",
       "team": "IND",
@@ -7379,7 +7379,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "PHX@IND",
       "team": "IND",
@@ -7401,7 +7401,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "PHX@IND",
       "team": "IND",
@@ -7423,7 +7423,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "PHX@IND",
       "team": "IND",
@@ -7445,7 +7445,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "PHX@IND",
       "team": "IND",
@@ -7467,7 +7467,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "PHX@IND",
       "team": "IND",
@@ -7489,7 +7489,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "PHX@IND",
       "team": "IND",
@@ -7511,7 +7511,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "PHX@IND",
       "team": "IND",
@@ -7533,7 +7533,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "PHX@IND",
       "team": "IND",
@@ -7555,7 +7555,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "PHX@IND",
       "team": "IND",
@@ -7577,7 +7577,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "PHX@IND",
       "team": "IND",
@@ -7599,7 +7599,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "PHX@IND",
       "team": "IND",
@@ -7621,7 +7621,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "PHX@IND",
       "team": "IND",
@@ -7643,7 +7643,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "PHX@IND",
       "team": "IND",
@@ -7665,7 +7665,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "PHX@IND",
       "team": "IND",
@@ -7687,7 +7687,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "PHX@IND",
       "team": "IND",
@@ -7709,7 +7709,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "PHX@IND",
       "team": "IND",
@@ -7731,7 +7731,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "PHX@IND",
       "team": "IND",
@@ -7753,7 +7753,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "PHX@IND",
       "team": "IND",
@@ -7775,7 +7775,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "PHX@IND",
       "team": "IND",
@@ -7797,7 +7797,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "PHX@IND",
       "team": "IND",
@@ -7819,7 +7819,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "PHX@IND",
       "team": "IND",
@@ -7841,7 +7841,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "PHX@IND",
       "team": "IND",
@@ -7863,7 +7863,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "PHX@IND",
       "team": "IND",
@@ -7885,7 +7885,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "PHX@IND",
       "team": "IND",
@@ -7907,7 +7907,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "PHX@IND",
       "team": "IND",
@@ -7929,7 +7929,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "PHX@IND",
       "team": "IND",
@@ -7951,7 +7951,7 @@
       "dk_source": null
     },
     {
-      "date": "2026-06-22",
+      "date": "2026-06-23",
       "league": "WNBA",
       "game": "PHX@IND",
       "team": "IND",
