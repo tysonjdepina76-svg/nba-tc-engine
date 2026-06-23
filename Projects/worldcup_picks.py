@@ -498,7 +498,7 @@ def _team_name_match(roster_name, match_name):
     # Handle aliases
     aliases = {"united states": "usa", "korea republic": "south korea", "korea dpr": "north korea",
                "côte d'ivoire": "ivory coast", "cote d'ivoire": "ivory coast",
-               "trinidad and tobago": "trinidad & tobago", "curaçao": "curacao", "dr congo": "congo dr", "congo dr": "dr congo"}
+               "trinidad and tobago": "trinidad & tobago", "curaçao": "curacao", "dr congo": "congo dr", "congo dr": "dr congo", "dr congo": "congo dr", "congo dr": "dr congo"}
     for a, b in aliases.items():
         if (a in r and b in m) or (b in r and a in m):
             return True
@@ -569,18 +569,18 @@ def _generate_self_edge_props(match):
                         allowed_players.add(str(p))
     
     avgs = _load_player_avgs()
+    if not avgs:
+        return {}
     props = {}
-    covered_players = set()
     for player_name, pdata in avgs.items():
         if not isinstance(pdata, dict):
             continue
-        # Only generate props for players on the two teams in this matchup
         if allowed_players and not _player_in_roster(player_name, allowed_players):
             continue
-        is_home_player = player_name.lower() in {n.lower() for n in _get_team_player_names(home_name)}
-        opp_strength = home_str if is_home_player else away_str
-        own_strength = away_str if is_home_player else home_str
-        home_adj = 1.1 if is_home_player else 0.95
+        is_home_player = False
+        opp_strength = 1.0
+        own_strength = 1.0
+        home_adj = 1.0
         stat_props = {}
         for skey in STAT_KEYS:
             raw_key = None
@@ -598,32 +598,7 @@ def _generate_self_edge_props(match):
             stat_props[skey] = {"line": tc_line, "over_price": -110, "edge_pct": round((tc_proj - tc_line) / max(tc_line, 0.01) * 100, 1), "source": "self-edge"}
         if stat_props:
             props[player_name] = stat_props
-    
-
-    # FALLBACK: default stats for players without historical data
-    if allowed_players:
-        DEFAULT_AVGS = {"G": 0.15, "A": 0.10, "SOT": 0.5, "S": 1.0, "FC": 0.8, "TKL": 1.2, "CRD": 0.2, "PAS": 25.0}
-        for player_name in sorted(allowed_players):
-            if player_name.lower() in covered_players:
-                continue
-            home_names = _get_team_player_names(home_name)
-            is_home = player_name.lower() in {n.lower() for n in home_names}
-            opp_str = away_str if is_home else home_str
-            own_str = home_str if is_home else away_str
-            h_adj = 1.1 if is_home else 0.95
-            stat_props = {}
-            for raw_key, default_val in DEFAULT_AVGS.items():
-                skey = STAT_MAP.get(raw_key)
-                if not skey:
-                    continue
-                scaled = default_val * max(0.8, min(1.3, own_str)) * max(0.7, min(1.3, (1.0 / max(opp_str, 0.4)) * 0.85)) * h_adj
-                tc_line = round(scaled * 2) / 2 if skey in ("goals", "assists", "cards") else max(0.0, round(scaled * 0.88 * 10) / 10)
-                if tc_line > 0:
-                    stat_props[skey] = {"line": tc_line, "over_price": -110, "edge_pct": round((scaled - tc_line) / max(tc_line, 0.01) * 100, 1), "source": "self-edge-default"}
-            if stat_props:
-                props[player_name] = stat_props
-
-return props
+    return props
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="World Cup 2026 Daily Pick Scraper")
     parser.add_argument("--date", default=None, help="Date in YYYYMMDD format (default: today UTC)")
