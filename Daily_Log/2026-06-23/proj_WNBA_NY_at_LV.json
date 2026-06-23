@@ -5,7 +5,7 @@
   "away_team": "NY",
   "home_team": "LV",
   "source": "live ESPN WNBA roster/stat APIs",
-  "timestamp": "2026-06-23T19:10:43.283Z",
+  "timestamp": "2026-06-23T20:39:48.122Z",
   "injury_source": "ESPN WNBA injuries \u00b7 14 teams \u00b7 40 players",
   "injury_counts": {
     "away": 0,
@@ -19,13 +19,6 @@
   "edge": -2.5,
   "signal": "PASS",
   "dk_total": 177.5,
-  "dk_sport": "WNBA",
-  "team_to_win": "LV",
-  "team_to_win_reason": "DK ML: NY 114 / LV -135",
-  "ml_pick": "LV",
-  "ml_pick_reason": "DK ML: NY 114 / LV -135",
-  "spread_pick": "LV",
-  "total_lean": "PASS",
   "odds": {
     "total": 177.5,
     "spread": 2.5,
@@ -35,7 +28,6 @@
     "away_ml": 114,
     "home_ml": -135,
     "ml_source": "ESPN DraftKings embedded",
-    "book_source_honest": "DK (real line)",
     "bookmaker_breakdown": null,
     "best_books": null
   },
@@ -45,17 +37,15 @@
     "edge": -2.5,
     "signal": "PASS",
     "total_lean": "PASS",
-    "spread_pick": "LV",
-    "team_to_win": "LV",
-    "summary": "TC combined 161.5 vs DK 177.5 (edge -2.5) \u2192 lean PASS. ML pick: LV. Spread: LV.",
+    "spread_pick": "NY",
+    "summary": "TC combined 161.5 vs DK 177.5 (edge -2.5) \u2192 lean PASS. Spread: NY.",
     "roster_rule": "live mode uses current roster/stat/injury APIs only"
   },
   "game_assessment": {
     "total_lean": "PASS",
-    "spread_pick": "LV",
-    "team_to_win": "LV",
+    "spread_pick": "NY",
     "roster_rule": "live mode uses current roster/stat/injury APIs only",
-    "summary": "TC combined 161.5 vs DK 177.5 \u2192 PASS. ML pick: LV."
+    "summary": "TC combined 161.5 vs DK 177.5 (edge -2.5) \u2192 lean PASS."
   },
   "roster_counts": {
     "away": 14,
