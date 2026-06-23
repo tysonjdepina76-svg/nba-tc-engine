@@ -71,13 +71,18 @@ def main():
         print("=" * 60)
 
     secrets = load_secrets()
+    odds_key = secrets.get("ODDS_API_KEY", "")
+    sgo_key = secrets.get("SPORTSGAMEODDS_API_KEY", "")
+    sports_data_key = secrets.get("SPORTS_DATA_API_KEY", "")
 
     # ── 1. API KEYS ──
     if not json_out:
         print("\n── API Keys ──")
     key_checks = {
-        "ODDS_API_KEY": "The Odds API (ga",
-        "SPORTS_DATA_API_KEY": "SportsData.io ($99/mo NFL)"}
+        "ODDS_API_KEY": "The Odds API (game lines)",
+        "SPORTSGAMEODDS_API_KEY": "SportsGameOdds (NBA/WNBA player props)",
+        "SPORTS_DATA_API_KEY": "SportsData.io ($99/mo NFL)"
+    }
     for name, desc in key_checks.items():
         val = secrets.get(name, "")
         if val and len(val) > 5:
@@ -103,11 +108,12 @@ def main():
         except Exception as e:
             check("ESPN API", False, str(e)[:80])
 
-        # The Odds API — use correct /odds/ endpoint
+        # The Odds API — use correct /odds/?sport_key=... endpoint
         if odds_key:
             try:
                 r = requests.get(
-                    params={ "regions": "us", "markets": "h2h"},
+                    "https://api.theoddsapi.com/odds/?sport_key=basketball_wnba",
+                    params={"apiKey": odds_key, "regions": "us", "markets": "h2h"},
                     timeout=10,
                 )
                 ok = r.ok or r.status_code == 422
@@ -279,6 +285,92 @@ def main():
             check("W1 data pull", False, str(e)[:80])
     else:
         check("W1 data pull", False, "No NFL data file today", warn=True)
+
+    # ── 7a. DATA FRESHNESS — REAL CHECK (not just HTTP 200) ──
+    if not json_out:
+        print("\n── Data Freshness (real check) ──")
+
+    if not quick:
+        import urllib.request, urllib.parse
+
+        def check_sport_data(sport: str, qparam: str):
+            # For WNBA, hit the API (default matchup is valid)
+            if sport == "WNBA":
+                try:
+                    url = f"https://true.zo.space/api/tc?sport={urllib.parse.quote(qparam)}"
+                    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+                    with urllib.request.urlopen(req, timeout=15) as r:
+                        data = json.loads(r.read().decode("utf-8", errors="ignore"))
+                    vp = data.get("valid_props") or []
+                    dk_total = data.get("dk_total") or data.get("odds", {}).get("total")
+                    odds_src = data.get("odds", {}).get("ml_source", "none")
+                    if len(vp) == 0:
+                        check(f"{sport} valid_props", False, f"0 props — pipeline not generating data ({odds_src})")
+                    else:
+                        check(f"{sport} valid_props", True, f"{len(vp)} props, dk_total={dk_total}, source={odds_src[:50]}")
+                except Exception as e:
+                    check(f"{sport} valid_props", False, str(e)[:80])
+                return
+            # For WC/MLB: count valid props across all of today's games in the daily log
+            try:
+                from pathlib import Path
+                import os
+                if sport == "WORLD CUP":
+                    date_compact = datetime.now(timezone.utc).strftime("%Y%m%d")
+                    log_dir = Path(f"/home/workspace/Daily_Log/worldcup/{date_compact}")
+                    if not log_dir.exists():
+                        check(f"{sport} valid_props", False, "no daily log for today — run worldcup_picks.py")
+                        return
+                    matches_file = log_dir / "matches.json"
+                    if not matches_file.exists():
+                        check(f"{sport} valid_props", False, "matches.json missing for today")
+                        return
+                    md = json.loads(matches_file.read_text())
+                    match_list = md.get("matches", []) if isinstance(md, dict) else md
+                    total_props = 0
+                    player_count = 0
+                    for m in match_list:
+                        pp = m.get("player_props", {}) or {}
+                        player_count += len(pp)
+                        for stats in pp.values():
+                            total_props += len(stats)
+                    if total_props == 0:
+                        check(f"{sport} valid_props", False, f"0 props across {len(match_list)} matches — pipeline not generating data")
+                    else:
+                        check(f"{sport} valid_props", True, f"{total_props} props across {len(match_list)} matches · {player_count} players")
+                elif sport == "MLB":
+                    # Read today's picks.csv (multi-game aggregation)
+                    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+                    picks_csv = Path(f"/home/workspace/Daily_Log/{today}/picks.csv")
+                    if not picks_csv.exists():
+                        check(f"{sport} valid_props", False, "no picks.csv for today — run daily_picks.py")
+                        return
+                    lines = picks_csv.read_text().strip().splitlines()
+                    mlb_rows = [l for l in lines[1:] if ",MLB," in l]
+                    mlb_valid = [l for l in mlb_rows if ",OVER," in l or ",UNDER," in l]
+                    if len(mlb_valid) == 0:
+                        check(f"{sport} valid_props", False, f"0 valid MLB props today")
+                    else:
+                        check(f"{sport} valid_props", True, f"{len(mlb_valid)} valid MLB props today")
+                else:
+                    check(f"{sport} valid_props", False, f"unknown sport {sport}")
+            except Exception as e:
+                check(f"{sport} valid_props", False, str(e)[:80])
+
+        check_sport_data("WNBA", "WNBA")
+        check_sport_data("MLB", "MLB")
+        check_sport_data("WORLD CUP", "WORLD CUP")
+
+        # Daily_Log freshness
+        last_run = WORKSPACE / "Daily_Log" / "last_run.json"
+        if last_run.exists():
+            age_hr = (time.time() - last_run.stat().st_mtime) / 3600
+            if age_hr > 6:
+                check("Daily_Log freshness", False, f"last_run.json is {age_hr:.1f}hr old (>6hr threshold)")
+            else:
+                check("Daily_Log freshness", True, f"last_run.json is {age_hr:.1f}hr old")
+        else:
+            check("Daily_Log freshness", False, "last_run.json missing — daily_picks.py has not run today")
 
     # ── 8. WORKSPACE CLEANLINESS ──
     if not json_out:
