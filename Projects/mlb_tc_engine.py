@@ -225,6 +225,34 @@ class MLBPlayer:
 # ESPN STATS FETCH
 # ═══════════════════════════════════════════════════════════════════════════════
 
+def _parse_espn_team_stats(data: dict, team_abbr: str) -> List[MLBPlayer]:
+    """Parse ESPN team season stats endpoint fallback."""
+    players = []
+    cats = data.get("splits", {}).get("categories", [])
+    for cat in cats:
+        stype = cat.get("name", "")
+        is_batting = stype == "batting"
+        for stat in cat.get("stats", []):
+            name = stat.get("displayName", "")
+            if not name:
+                continue
+            vals = stat.get("stats", [])
+            if not vals or len(vals) < 6:
+                continue
+            p = MLBPlayer(name=name, pos="", team=team_abbr)
+            if is_batting:
+                p.hits_avg = float(vals[0]) if len(vals) > 0 else 0.0
+                p.runs_avg = float(vals[2]) if len(vals) > 2 else 0.0
+                p.hr_avg = float(vals[3]) if len(vals) > 3 else 0.0
+                p.rbi_avg = float(vals[4]) if len(vals) > 4 else 0.0
+                p.avg_batting = float(vals[5]) if len(vals) > 5 else 0.0
+                p.games_played = 1
+            else:
+                p.strikeouts_avg = float(vals[5]) if len(vals) > 5 else 0.0
+                p.era = float(vals[3]) if len(vals) > 3 else 0.0
+            p.compute_all()
+            players.append(p)
+    return players
 def fetch_espn_mlb_stats(team_abbr: str, lookback_days: int = 30) -> List[MLBPlayer]:
     """
     Fetch MLB player stats by aggregating recent ESPN boxscores.
@@ -240,13 +268,13 @@ def fetch_espn_mlb_stats(team_abbr: str, lookback_days: int = 30) -> List[MLBPla
     players = []
 
     try:
-        # Try to get recent completed games for this team
+        # Try to get recent completed games for this team (30-day date range)
         from datetime import datetime, timedelta
         end_date = datetime.now()
         start_date = end_date - timedelta(days=lookback_days)
-        date_str = start_date.strftime("%Y%m%d")
+        date_range = f"{start_date.strftime('%Y%m%d')}-{end_date.strftime('%Y%m%d')}"
 
-        scoreboard_url = f"https://site.api.espn.com/apis/site/v2/sports/baseball/mlb/scoreboard?dates={date_str}&limit=100"
+        scoreboard_url = f"https://site.api.espn.com/apis/site/v2/sports/baseball/mlb/scoreboard?dates={date_range}&limit=100"
         r = requests.get(scoreboard_url, timeout=15)
 
         if r.status_code != 200:
@@ -268,17 +296,14 @@ def fetch_espn_mlb_stats(team_abbr: str, lookback_days: int = 30) -> List[MLBPla
                     team_games.append(evt)
 
         if not team_games:
-            # Fall back to the most recent game even if pending
-            for evt in events:
-                competitions = evt.get("competitions", [])
-                for comp in competitions:
-                    competitors = comp.get("competitors", [])
-                    abbrs = [c.get("team", {}).get("abbreviation", "") for c in competitors]
-                    if team_abbr in abbrs:
-                        team_games.append(evt)
-                        break
+            # Fallback: try ESPN team gamelog for per-player season stats
+            gamelog_url = f"https://site.api.espn.com/apis/site/v2/sports/baseball/mlb/teams/{team_id}/statistics?season=2026"
+            gl = requests.get(gamelog_url, timeout=15)
+            if gl.status_code == 200:
+                return _parse_espn_team_stats(gl.json(), team_abbr)
+            return []
 
-        # Process each game's boxscore
+        # Process each game's boxscore (last 10 games)
         hitter_stats: Dict[str, Dict[str, List[float]]] = {}
         pitcher_stats: Dict[str, Dict[str, List[float]]] = {}
 
@@ -578,11 +603,14 @@ def fetch_mlb_game_lines() -> List[Dict]:
             away_abbr = ODDS_TO_ESPN_TEAM.get(away_team, "")
 
             dk_data = {"total": None, "spread": None, "ml_home": None, "ml_away": None}
-            for bm in g.get("bookmakers", []):
-                if bm.get("key") != "draftkings":
+            books_list = g.get("books", g.get("bookmakers", []))
+            for bm in books_list:
+                bk_key = bm.get("book") or bm.get("key", "")
+                if bk_key != "draftkings":
                     continue
-                for market in bm.get("markets", []):
-                    mk = market.get("key", "")
+                markets = bm.get("markets", [bm]) if "markets" in bm else [bm]
+                for market in markets:
+                    mk = market.get("market") or market.get("key", "")
                     outcomes = market.get("outcomes", [])
                     if mk == "totals" and outcomes:
                         dk_data["total"] = outcomes[0].get("point")
