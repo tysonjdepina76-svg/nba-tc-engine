@@ -340,6 +340,7 @@ def run(date_str=None):
                 "player_props": self_edge,
                 "book": "self-edge" if self_edge else "none",
                 "fetched_at": now.isoformat(),
+                "match_odds": _match_odds_from_teams(em.get("teams", [])),
             }
             results.append(result)
             continue
@@ -364,6 +365,7 @@ def run(date_str=None):
                 "player_props": self_edge,
                 "book": book_label,
                 "fetched_at": now.isoformat(),
+                "match_odds": _match_odds_from_teams(em.get("teams", [])),
             }
             results.append(result)
             continue
@@ -401,6 +403,7 @@ def run(date_str=None):
             "player_props": props,
             "book": book_used,
             "fetched_at": now.isoformat(),
+            "match_odds": _match_odds_from_teams(em.get("teams", [])),
         }
         results.append(result)
 
@@ -639,6 +642,34 @@ def _generate_self_edge_props(match):
                 props[player_name] = stat_props
 
     return props
+
+def _match_odds_from_teams(teams: list) -> dict:
+    """Calculate DK-style moneyline/draw odds from team strength."""
+    if len(teams) < 2:
+        return {}
+    away_name = teams[0].get("name","")
+    home_name = teams[1].get("name","")
+    away_str = _team_strength(away_name)
+    home_str = _team_strength(home_name)
+    hfa = 1.08
+    home_adj = home_str * hfa
+    total = away_str + home_adj + 1.0
+    aw_pct = away_str / total
+    hw_pct = home_adj / total
+    dr_pct = 1.0 / total
+    def pct_to_ml(pct):
+        if pct >= 0.5: return round(-100 * pct / (1 - pct))
+        else: return round(100 * (1 - pct) / pct)
+    return {
+        "away_ml": pct_to_ml(aw_pct),
+        "home_ml": pct_to_ml(hw_pct),
+        "draw_ml": pct_to_ml(dr_pct),
+        "away_pct": round(aw_pct * 100, 1),
+        "home_pct": round(hw_pct * 100, 1),
+        "draw_pct": round(dr_pct * 100, 1),
+        "source": "tc-self-edge (team strength)",
+    }
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="World Cup 2026 Daily Pick Scraper")
     parser.add_argument("--date", default=None, help="Date in YYYYMMDD format (default: today UTC)")
