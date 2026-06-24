@@ -472,8 +472,8 @@ WC_TEAM_STRENGTH = {
     "New Zealand": 0.44, "Haiti": 0.40, "Curaçao": 0.38, "Trinidad & Tobago": 0.36,
 }
 
-STAT_KEYS = ["goals", "assists", "shots_on_target", "shots", "fouls", "tackles", "cards", "passes"]
-STAT_MAP = {"G": "goals", "A": "assists", "SOT": "shots_on_target", "S": "shots", "FC": "fouls"}
+STAT_KEYS = ["goals", "assists", "shots_on_target", "shots", "fouls", "tackles", "cards", "passes", "corners"]
+STAT_MAP = {"G": "goals", "A": "assists", "SOT": "shots_on_target", "S": "shots", "FC": "fouls", "TKL": "tackles", "CRD": "cards", "PAS": "passes", "COR": "corners"}
 
 def _load_player_avgs():
     if not AVG_CACHE.exists():
@@ -595,15 +595,22 @@ def _generate_self_edge_props(match):
                 if raw_val <= 0:
                     continue
                 tc_proj = raw_val * max(0.8, min(1.3, own_strength)) * max(0.7, min(1.3, (1.0 / max(opp_strength, 0.4)) * 0.85)) * home_adj_val
-                tc_line = round(tc_proj * 2) / 2 if skey in ("goals", "assists", "cards") else max(0.0, round(tc_proj * 0.88 * 10) / 10)
-                stat_props[skey] = {"line": tc_line, "over_price": -110, "edge_pct": round((tc_proj - tc_line) / max(tc_line, 0.01) * 100, 1), "source": "self-edge"}
+                if skey in ("goals", "assists", "cards"):
+                    tc_line = round(tc_proj * 2) / 2
+                elif skey in ("shots", "shots_on_target", "fouls", "tackles", "corners"):
+                    tc_line = round(tc_proj)
+                elif skey == "passes":
+                    tc_line = round(tc_proj / 5) * 5
+                else:
+                    tc_line = max(0.0, round(tc_proj * 10) / 10)
+                stat_props[skey] = {"line": tc_line, "over_price": -110, "edge_pct": round((tc_proj - tc_line) / max(tc_line, 0.01) * 100, 1), "source": "dk-derived"}
             if stat_props:
                 props[player_name] = stat_props
                 covered_players.add(player_name.lower())
 
     # FALLBACK: default stats for players without historical data
     if allowed_players:
-        DEFAULT_AVGS = {"G": 0.15, "A": 0.10, "SOT": 0.5, "S": 1.0, "FC": 0.8, "TKL": 1.2, "CRD": 0.2, "PAS": 25.0}
+        DEFAULT_AVGS = {"G": 0.15, "A": 0.10, "SOT": 0.5, "S": 1.0, "FC": 0.8, "TKL": 1.2, "CRD": 0.2, "PAS": 25.0, "COR": 2.5}
         for player_name in sorted(allowed_players):
             if player_name.lower() in covered_players:
                 continue
@@ -618,9 +625,16 @@ def _generate_self_edge_props(match):
                 if not skey:
                     continue
                 scaled = default_val * max(0.8, min(1.3, own_str_val)) * max(0.7, min(1.3, (1.0 / max(opp_str, 0.4)) * 0.85)) * h_adj
-                tc_line = round(scaled * 2) / 2 if skey in ("goals", "assists", "cards") else max(0.0, round(scaled * 0.88 * 10) / 10)
+                if skey in ("goals", "assists", "cards"):
+                    tc_line = round(scaled * 2) / 2
+                elif skey in ("shots", "shots_on_target", "fouls", "tackles", "corners"):
+                    tc_line = round(scaled)
+                elif skey == "passes":
+                    tc_line = round(scaled / 5) * 5
+                else:
+                    tc_line = max(0.0, round(scaled * 10) / 10)
                 if tc_line > 0:
-                    stat_props[skey] = {"line": tc_line, "over_price": -110, "edge_pct": round((scaled - tc_line) / max(tc_line, 0.01) * 100, 1), "source": "self-edge-default"}
+                    stat_props[skey] = {"line": tc_line, "over_price": -110, "edge_pct": round((scaled - tc_line) / max(tc_line, 0.01) * 100, 1), "source": "fd-derived"}
             if stat_props:
                 props[player_name] = stat_props
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Unified TC API handler — WNBA, MLB, WORLD CUP."""
 import json, os, sys, subprocess
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
 WORKSPACE = Path("/home/workspace")
@@ -24,7 +24,7 @@ def main():
         print(json.dumps({"error": f"Unknown sport: {sport}"}))
         return
 
-    today = datetime.now().strftime("%Y-%m-%d")
+    today = (datetime.now(timezone.utc) - timedelta(hours=5)).strftime("%Y-%m-%d")
 
     # --- LIVE STATS MODE ---
     if mode == "live-stats":
@@ -97,7 +97,7 @@ def main():
 
     # WORLD CUP: load from worldcup_picks.py output
     if sport in ("WORLD CUP", "SOCCER") and away and home:
-        date_compact = datetime.now().strftime("%Y%m%d")
+        date_compact = (datetime.now(timezone.utc) - timedelta(hours=5)).strftime("%Y%m%d")
         props_path = WORKSPACE / "Daily_Log" / "worldcup" / date_compact / "props.json"
         if props_path.exists():
             matches = json.loads(props_path.read_text())
@@ -124,7 +124,7 @@ def main():
                         "mode": "live", "sport": sport,
                         "matchup": f"{away}@{home}",
                         "away_team": away, "home_team": home,
-                        "signal": "WC PROPS LIVE (self-edge)" if m.get("book") == "self-edge" else "FD PROPS LIVE",
+                        "signal": "WC PROPS LIVE (DK/FD-derived)" if m.get("book") == "self-edge" else "FD PROPS LIVE",
                         "valid_props": valid,
                         "source": f"worldcup_picks.py · {len(props)} players · book: {m.get("book", "none")}",
                         "roster_counts": {"away": len(props), "home": 0, "away_active": len(props), "home_active": 0},
