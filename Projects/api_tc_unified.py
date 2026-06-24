@@ -1,11 +1,79 @@
 #!/usr/bin/env python3
-"""Unified TC API handler — WNBA, MLB, WORLD CUP."""
-import json, os, sys, subprocess
+"""Unified TC API handler — WNBA, MLB, WORLD CUP.
+All sports return the same fields: team_to_win, ml_pick, spread_pick, total_lean, book_source_honest, valid_props.
+"""
+import json, os, sys, subprocess, glob as globmod
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
 WORKSPACE = Path("/home/workspace")
 SPORTS = {"WNBA", "MLB", "WORLD CUP", "SOCCER"}
+
+
+def compute_team_pick(away_score, home_score, away_abbr, home_abbr, dk_ml_away, dk_ml_home, spread, is_home_court):
+    """Returns (team_to_win, reason, ml_pick, spread_pick)."""
+    team_to_win = None
+    reason = ""
+    ml_pick = None
+    spread_pick = None
+
+    # If live score exists
+    if away_score is not None and home_score is not None:
+        try:
+            as_ = int(away_score) if away_score else 0
+            hs_ = int(home_score) if home_score else 0
+        except (ValueError, TypeError):
+            as_ = 0
+            hs_ = 0
+        if as_ > hs_:
+            team_to_win = away_abbr
+            reason = f"leading {as_}-{hs_}"
+        elif hs_ > as_:
+            team_to_win = home_abbr
+            reason = f"leading {hs_}-{as_}"
+        else:
+            team_to_win = home_abbr if is_home_court else away_abbr
+            reason = "tied — home advantage"
+    else:
+        team_to_win = home_abbr if is_home_court else away_abbr
+        reason = "home court/field advantage"
+
+    # ML pick: use DK ML if available, else lean toward team_to_win
+    if dk_ml_away is not None and dk_ml_home is not None:
+        if dk_ml_away < dk_ml_home:
+            ml_pick = away_abbr
+        else:
+            ml_pick = home_abbr
+    else:
+        ml_pick = team_to_win
+
+    # Spread pick: cover if DK spread is available
+    if spread is not None:
+        try:
+            sp_val = float(spread)
+        except (ValueError, TypeError):
+            sp_val = 0
+        if sp_val <= 0:
+            spread_pick = home_abbr  # home is favorite or pickem
+        else:
+            spread_pick = away_abbr  # away is getting points
+    else:
+        spread_pick = team_to_win
+
+    return team_to_win, reason, ml_pick, spread_pick
+
+
+def compute_total_lean(actual_total, dk_total, valid_props):
+    """Return total_lean string based on score vs DK total."""
+    if actual_total is not None and dk_total is not None and dk_total > 0:
+        return "OVER" if actual_total > dk_total else "UNDER" if actual_total < dk_total else "NEUTRAL"
+    over_count = sum(1 for p in valid_props if p.get("direction") == "OVER")
+    under_count = len(valid_props) - over_count
+    if under_count > over_count:
+        return "UNDER"
+    elif over_count > under_count:
+        return "OVER"
+    return "NO MARKET"
 
 
 def main():
@@ -15,7 +83,6 @@ def main():
     home = sys.argv[4] if len(sys.argv) > 4 else ""
     sport = sport.upper().replace("%20", " ").strip()
 
-    # Gate disabled sports
     if sport in ("NBA", "NHL"):
         print(json.dumps({"error": f"{sport} disabled", "disabled": True}))
         return
@@ -25,36 +92,128 @@ def main():
         return
 
     today = (datetime.now(timezone.utc) - timedelta(hours=5)).strftime("%Y-%m-%d")
+    yesterday = (datetime.now(timezone.utc) - timedelta(hours=5) - timedelta(days=1)).strftime("%Y-%m-%d")
 
     # --- LIVE STATS MODE ---
     if mode == "live-stats":
         espn_paths = {"WNBA": "basketball/wnba", "MLB": "baseball/mlb", "WORLD CUP": "soccer/fifa.world", "SOCCER": "soccer/fifa.world"}
         ep = espn_paths.get(sport, "basketball/wnba")
-        import urllib.request
+        import urllib.request, concurrent.futures
+
+        WNBA_LABELS = ["MIN", "PTS", "FG", "3PT", "FT", "REB", "AST", "TO", "STL", "BLK", "OREB", "DREB", "PF", "+/-"]
+
+        def fetch_boxscore_players(event_id, away_abbr, home_abbr):
+            players_list = []
+            try:
+                r = urllib.request.urlopen(
+                    f"https://site.api.espn.com/apis/site/v2/sports/{ep}/summary?event={event_id}",
+                    timeout=8
+                )
+                summary = json.loads(r.read())
+                bs_players = (summary.get("boxscore") or {}).get("players", [])
+                for team_data in bs_players:
+                    team_abbr = (team_data.get("team") or {}).get("abbreviation", "")
+                    stats_block = (team_data.get("statistics") or [{}])[0]
+                    labels = stats_block.get("labels", WNBA_LABELS)
+                    athletes = stats_block.get("athletes", [])
+                    for athlete_entry in athletes:
+                        if athlete_entry.get("didNotPlay"):
+                            continue
+                        athlete = athlete_entry.get("athlete", {})
+                        name = athlete.get("displayName", athlete.get("fullName", "Unknown"))
+                        raw_stats = athlete_entry.get("stats", [])
+                        stat_map = {}
+                        for i, label in enumerate(labels):
+                            val = raw_stats[i] if i < len(raw_stats) else "0"
+                            try:
+                                stat_map[label.lower()] = float(val) if "." in str(val) or val.replace("-","").isdigit() else 0
+                            except:
+                                stat_map[label.lower()] = 0
+                        players_list.append({
+                            "name": name,
+                            "team": team_abbr,
+                            "role": "START" if athlete_entry.get("starter") else "BENCH",
+                            "minutes": stat_map.get("min", 0),
+                            "actual": {
+                                "pts": stat_map.get("pts", 0),
+                                "reb": stat_map.get("reb", 0),
+                                "ast": stat_map.get("ast", 0),
+                                "tpm": stat_map.get("3pt", 0),
+                                "stl": stat_map.get("stl", 0),
+                                "blk": stat_map.get("blk", 0),
+                            },
+                        })
+            except Exception:
+                pass
+            return players_list
+
         try:
             r = urllib.request.urlopen(f"https://site.api.espn.com/apis/site/v2/sports/{ep}/scoreboard", timeout=10)
             data = json.loads(r.read())
             games = []
+            live_event_ids = []
             for ev in data.get("events", []):
                 comp = (ev.get("competitions") or [{}])[0]
                 teams = comp.get("competitors", [])
                 a = next((t for t in teams if t.get("homeAway") == "away"), {})
                 h = next((t for t in teams if t.get("homeAway") == "home"), {})
-                games.append({
-                    "id": ev.get("id"),
+                ev_id = ev.get("id")
+                status_desc = (ev.get("status") or {}).get("type", {}).get("description", "")
+                completed = (ev.get("status") or {}).get("type", {}).get("completed", False)
+                game = {
+                    "id": ev_id,
                     "name": ev.get("name", ""),
                     "date": ev.get("date"),
-                    "status": (ev.get("status") or {}).get("type", {}).get("description", ""),
-                    "completed": (ev.get("status") or {}).get("type", {}).get("completed", False),
-                    "away": {"team": (a.get("team") or {}).get("abbreviation", ""), "score": a.get("score", "0")},
-                    "home": {"team": (h.get("team") or {}).get("abbreviation", ""), "score": h.get("score", "0")},
-                })
+                    "status": status_desc,
+                    "completed": completed,
+                    "clock": (ev.get("status") or {}).get("displayClock", ""),
+                    "period": (ev.get("status") or {}).get("period", 0),
+                    "detail": ev.get("shortName", ""),
+                    "away": {"team": (a.get("team") or {}).get("abbreviation", ""), "score": str(a.get("score", "0"))},
+                    "home": {"team": (h.get("team") or {}).get("abbreviation", ""), "score": str(h.get("score", "0"))},
+                    "players": [],
+                }
+                games.append(game)
+                if status_desc in ("In Progress", "Final") or completed:
+                    live_event_ids.append((ev_id, game))
+
+            if live_event_ids:
+                with concurrent.futures.ThreadPoolExecutor(max_workers=6) as executor:
+                    futures = {
+                        executor.submit(fetch_boxscore_players, ev_id, g["away"]["team"], g["home"]["team"]): g
+                        for ev_id, g in live_event_ids
+                    }
+                    for future in concurrent.futures.as_completed(futures):
+                        game_ref = futures[future]
+                        try:
+                            game_ref["players"] = future.result(timeout=10)
+                        except Exception:
+                            pass
+
             print(json.dumps({"mode": "live_stats", "sport": sport, "games": games, "timestamp": datetime.now().isoformat()}))
         except Exception as e:
             print(json.dumps({"error": str(e)}))
         return
 
     # --- PROJECTION MODE ---
+
+    # Common helpers for unified fields
+    def attach_unified_fields(result, away_abbr, home_abbr, is_home_court=True,
+                               dk_total=None, dk_ml_away=None, dk_ml_home=None,
+                               spread=None, away_score=None, home_score=None,
+                               book_source="unknown", valid_props=None):
+        tw, reason, ml, sp = compute_team_pick(away_score, home_score, away_abbr, home_abbr, dk_ml_away, dk_ml_home, spread, is_home_court)
+        total_lean = compute_total_lean(
+            (int(away_score or 0) + int(home_score or 0)) if away_score is not None and home_score is not None else None,
+            dk_total, valid_props or []
+        )
+        result["team_to_win"] = tw
+        result["team_to_win_reason"] = reason
+        result["ml_pick"] = ml
+        result["spread_pick"] = sp
+        result["total_lean"] = total_lean
+        result["book_source_honest"] = book_source
+
     # MLB: delegate to mlb_tc_engine.py
     if sport == "MLB" and away and home:
         out = f"/tmp/tc_MLB_{away}_{home}.json"
@@ -65,42 +224,158 @@ def main():
                 capture_output=True, timeout=45, cwd=str(WORKSPACE))
             if Path(out).exists():
                 result = json.loads(Path(out).read_text())
+
+                def reshape_mlb_players(flat_list):
+                    players = []
+                    for p in flat_list:
+                        pos = (p.get("pos") or "").upper()
+                        is_pitcher = pos in ("SP", "RP", "P")
+                        batting = p.get("tc_batting", {})
+                        lines = p.get("lines", {})
+                        edges = p.get("edges", {})
+                        player = {
+                            "name": p.get("name", ""),
+                            "pos": p.get("pos", ""),
+                            "team": p.get("team", ""),
+                            "status": p.get("status", "ACTIVE"),
+                            "role": "PITCHER" if is_pitcher else "BATTER",
+                            "min": p.get("min", 0),
+                            "tc_h": batting.get("hits", 0),
+                            "tc_hr": batting.get("hr", 0),
+                            "tc_rbi": batting.get("rbi", 0),
+                            "tc_r": batting.get("runs", 0),
+                            "tc_sb": batting.get("sb", 0),
+                            "tc_avg": round(batting.get("avg", 0), 3) if batting.get("avg") else 0,
+                            "line_h": lines.get("hits", 0),
+                            "line_hr": lines.get("hr", 0),
+                            "line_rbi": lines.get("rbi", 0),
+                            "line_r": lines.get("runs", 0),
+                            "line_sb": lines.get("sb", 0),
+                            "edge_h": edges.get("hits", 0),
+                            "edge_hr": edges.get("hr", 0),
+                            "edge_rbi": edges.get("rbi", 0),
+                            "edge_r": edges.get("runs", 0),
+                            "edge_sb": edges.get("sb", 0),
+                            "edge_avg": 0,
+                            "batting": batting,
+                            "pitching": p.get("pitching"),
+                            "tc_batting": batting,
+                            "tc_pitching": p.get("tc_pitching"),
+                            "lines_raw": lines,
+                            "edges_raw": edges,
+                        }
+                        players.append(player)
+                    players.sort(key=lambda x: (0 if x["role"] == "BATTER" else 1, x.get("pos", "")))
+                    return players
+
+                away_flat = result.pop("away_players", [])
+                home_flat = result.pop("home_players", [])
+                away_players = reshape_mlb_players(away_flat)
+                home_players = reshape_mlb_players(home_flat)
+
+                away_active = [p for p in away_players if p["status"] == "ACTIVE"]
+                home_active = [p for p in home_players if p["status"] == "ACTIVE"]
+
+                result["away"] = {"all": {"players": away_players}, "starters": {"players": away_active[:9]}, "bench": {"players": away_active[9:]}}
+                result["home"] = {"all": {"players": home_players}, "starters": {"players": home_active[:9]}, "bench": {"players": home_active[9:]}}
+                result["away_team"] = away
+                result["home_team"] = home
                 result["sport"] = "MLB"
                 result["mode"] = "live"
+                result["roster_counts"] = {
+                    "away": len(away_players), "home": len(home_players),
+                    "away_active": len(away_active), "home_active": len(home_active),
+                }
+
+                vp = result.get("valid_props", [])
+                tc_combined = sum(p.get("tc_projection", 0) for p in vp) / max(len(vp), 1) if vp else 0
+                tc_line = sum(p.get("market_line", 0) for p in vp) / max(len(vp), 1) if vp else 0
+                edge = sum(p.get("edge", 0) for p in vp) / max(len(vp), 1) if vp else 0
+                over_count = sum(1 for p in vp if p.get("direction") == "OVER")
+                signal = "OVER" if over_count > len(vp) / 2 else "UNDER" if vp else "NO MARKET"
+                odds = {"total": result.get("dk_total"), "ml_source": "DraftKings via SportsDataIO"}
+
+                result["tc_combined"] = tc_combined
+                result["tc_line"] = tc_line
+                result["edge"] = edge
+                result["signal"] = signal
+                result["odds"] = odds
+                result["assessment"] = {"summary": f"{signal} {result.get('dk_total', 'NO DATA')}"}
+
+                attach_unified_fields(result, away, home, is_home_court=True,
+                                      dk_total=result.get("dk_total"),
+                                      book_source="DraftKings via SportsDataIO",
+                                      valid_props=vp)
                 print(json.dumps(result, default=str))
                 return
         except Exception as e:
             pass
 
-    # WNBA: read from daily pipeline output (proj files already generated)
+    # WNBA: read from daily pipeline output
     if sport == "WNBA" and away and home:
-        proj_path = WORKSPACE / "Daily_Log" / today / f"proj_{sport}_{away}_at_{home}.json"
-        if proj_path.exists():
-            print(proj_path.read_text())
-            return
-        # Fallback: read from picks CSV
-        picks_path = WORKSPACE / "Daily_Log" / today / "picks.json"
-        if picks_path.exists():
-            data = json.loads(picks_path.read_text())
-            wnb_picks = [p for p in data if isinstance(p, dict) and p.get("league") == "WNBA" and p.get("matchup") == f"{away}@{home}"]
-            result = {
-                "mode": "live", "sport": sport,
-                "matchup": f"{away}@{home}",
-                "away_team": away, "home_team": home,
-                "source": "daily_picks.py pipeline",
-                "valid_props": wnb_picks,
-                "signal": "PICKS LOADED" if wnb_picks else "NO PICKS",
-                "roster_counts": {"away": 0, "home": 0, "away_active": 0, "home_active": 0},
-            }
-            print(json.dumps(result))
+        proj_path = None
+        for date_dir in [today, yesterday]:
+            exact = WORKSPACE / "Daily_Log" / date_dir / f"proj_{sport}_{away}_at_{home}.json"
+            if exact.exists():
+                proj_path = exact
+                break
+            candidates = globmod.glob(
+                str(WORKSPACE / "Daily_Log" / date_dir / f"proj_{sport}_*.json"))
+            for cp in candidates:
+                fn = os.path.basename(cp)
+                if away.upper() in fn.upper() and home.upper() in fn.upper():
+                    proj_path = Path(cp)
+                    break
+            if proj_path:
+                break
+
+        if proj_path and proj_path.exists():
+            data = json.loads(proj_path.read_text())
+            vp = data.get("valid_props", [])
+            dk_total = data.get("dk_total")
+            book = "DK/ESPN embedded" if dk_total else "self-edge"
+
+            attach_unified_fields(data, away, home, is_home_court=True,
+                                  dk_total=dk_total, book_source=book, valid_props=vp)
+            print(json.dumps(data, default=str))
             return
 
-    # WORLD CUP: load from worldcup_picks.py output
+        # Fallback: picks.json (check both dates)
+        for date_dir in [today, yesterday]:
+            picks_path = WORKSPACE / "Daily_Log" / date_dir / "picks.json"
+            if picks_path.exists():
+                data = json.loads(picks_path.read_text())
+                wnb_picks = [p for p in data if isinstance(p, dict) and p.get("league") == "WNBA" and p.get("matchup") == f"{away}@{home}"]
+                result = {
+                    "mode": "live", "sport": sport,
+                    "matchup": f"{away}@{home}",
+                    "away_team": away, "home_team": home,
+                    "source": "daily_picks.py pipeline",
+                    "valid_props": wnb_picks,
+                    "signal": "PICKS LOADED" if wnb_picks else "NO PICKS",
+                    "roster_counts": {"away": 0, "home": 0, "away_active": 0, "home_active": 0},
+                    "odds": {"total": None, "ml_source": "none"},
+                }
+                attach_unified_fields(result, away, home, is_home_court=True,
+                                      book_source="none (no DK lines)", valid_props=wnb_picks)
+                print(json.dumps(result))
+                return
+        print(json.dumps({"error": f"No WNBA data for {away}@{home}", "sport": "WNBA"}))
+        return
+
+    # WORLD CUP: load from worldcup_picks.py output (check today + yesterday)
     if sport in ("WORLD CUP", "SOCCER") and away and home:
-        date_compact = (datetime.now(timezone.utc) - timedelta(hours=5)).strftime("%Y%m%d")
-        props_path = WORKSPACE / "Daily_Log" / "worldcup" / date_compact / "props.json"
-        if props_path.exists():
-            matches = json.loads(props_path.read_text())
+        props_path = None
+        for date_dir in [today, yesterday]:
+            date_compact = date_dir.replace("-", "")
+            p = WORKSPACE / "Daily_Log" / "worldcup" / date_compact / "matches.json"
+            if p.exists():
+                props_path = p
+                break
+        if props_path:
+            props_data = json.loads(props_path.read_text())
+            matches = props_data if isinstance(props_data, list) else props_data.get("matches", [])
+
             for m in matches:
                 teams = m.get("teams", [])
                 a_abbr = next((t.get("abbrev", "").upper() for t in teams if t.get("homeAway") == "away"), "")
@@ -120,21 +395,26 @@ def main():
                                     "source": info.get("source", m.get("book", "self-edge")),
                                     "status": "ACTIVE"
                                 })
+                    book = m.get("book", "self-edge")
+                    book_honest = "FanDuel (worldcup_picks.py)" if book != "self-edge" else "self-edge (no FD/DK player props on Odds API free tier)"
                     result = {
                         "mode": "live", "sport": sport,
                         "matchup": f"{away}@{home}",
                         "away_team": away, "home_team": home,
-                        "signal": "WC PROPS LIVE (DK/FD-derived)" if m.get("book") == "self-edge" else "FD PROPS LIVE",
+                        "signal": "WC PROPS LIVE (self-edge)" if book == "self-edge" else "FD PROPS LIVE",
                         "valid_props": valid,
-                        "source": f"worldcup_picks.py · {len(props)} players · book: {m.get("book", "none")}",
+                        "source": f"worldcup_picks.py · {len(props)} players · book: {book}",
                         "roster_counts": {"away": len(props), "home": 0, "away_active": len(props), "home_active": 0},
-                        "odds": {"total": None, "ml_source": m.get("book", "self-edge")},
+                        "odds": {"total": None, "ml_source": book},
                     }
+                    attach_unified_fields(result, away, home, is_home_court=True,
+                                          book_source=book_honest, valid_props=valid)
                     print(json.dumps(result, default=str))
                     return
 
     # Fallback
     print(json.dumps({"error": f"No data for {sport} {away}@{home}", "sport": sport, "mode": mode}))
+
 
 if __name__ == "__main__":
     main()

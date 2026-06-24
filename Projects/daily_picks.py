@@ -340,8 +340,11 @@ def run_daily_log(sports=ALL_SPORTS):
         print(f"  Slate has {len(raw_games)} game(s); {len(games)} upcoming after filtering completed")
 
         for g in games:
-            away = g.get("away", {}).get("team", "")
-            home = g.get("home", {}).get("team", "")
+            # Normalize away/home — can be dict {team: "NY"} or plain string "NY"
+            away_raw = g.get("away", {})
+            home_raw = g.get("home", {})
+            away = away_raw.get("team", "") if isinstance(away_raw, dict) else (away_raw if isinstance(away_raw, str) else "")
+            home = home_raw.get("team", "") if isinstance(home_raw, dict) else (home_raw if isinstance(home_raw, str) else "")
             if not away or not home:
                 continue
             matchup = f"{away}@{home}"

@@ -1,3 +1,10 @@
+# 2026-06-23 23:27 ET — MLB DASHBOARD FIXED — windows now render full rosters
+# Root cause: api_tc_unified.py returned flat away_players/home_players arrays with tc_batting.* nested fields,
+# but /nba-tc frontend TeamTable/playerRows expected nested away.all.players[] structure with flat tc_h/line_h/edge_h fields.
+# Fixes: (1) api_tc_unified.py reshapes MLB output to nested all/starters/bench + flattens tc/line/edge fields + computes summary fields. 
+# (2) /nba-tc TeamLeaders now sport-aware — shows H/HR/RBI/R/SB/AVG for MLB instead of PTS/REB/AST/3PM/STL/BLK.
+# Pipeline ran clean: 2 MLB games, 157 picks. DK totals 13.5 (ATL@SD) and 4.5 (ATH@SF).
+
 # 2026-06-23 14:25 ET — MLB FULLY RESTORED — 904 picks, 23 games, SDIO/S
 # Root Cause: api.theoddsapi.com changed URL format from /{sport}/odds to /odds/?sport_key={sport}
 # World Cup/soccer now pulls DK totals/ML/spreads from ESPN embedded D
@@ -193,6 +200,9 @@
 | `/api/wnba-boxscores` | API | WNBA boxscore history |
 | `/api/worldcup-odds` | API | World Cup odds |
 | `/api/worldcup-props` | API | World Cup player props + stat leaders per team |
+| `/api/slate` | API | **NEW 2026-06-24** — Multi-sport slate (WNBA, MLB, NFL, World Cup) with DK totals |
+| `/api/backtest` | API | **NEW 2026-06-24** — B |
+| `/api/scan` | API | **NEW 2026-06-24** — S |
 
 ## Daily Pipeline Output
 - `Daily_Log/YYYY-MM-DD/` — picks.{csv,json}, slate_*.json, proj_*.json, combos_*.md, pipeline_report.md
