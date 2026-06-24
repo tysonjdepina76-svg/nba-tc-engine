@@ -383,6 +383,33 @@ def main():
             check("Daily_Log freshness", False, "last_run.json missing — daily_picks.py has not run today")
 
 
+    # ── 7a. WORLD CUP ROUTE CHECK — verify /api/worldcup-props returns data ──
+    if not quick and not json_out:
+        print("\n── World Cup Route ──")
+
+    if not quick:
+        try:
+            u = "https://true.zo.space/api/worldcup-props"
+            req = urllib.request.Request(u, headers={"User-Agent": "Mozilla/5.0"})
+            with urllib.request.urlopen(req, timeout=15) as r:
+                wc_data = json.loads(r.read().decode("utf-8", errors="ignore"))
+            wc_error = wc_data.get("error", "")
+            wc_matches = wc_data.get("total_matches", 0)
+            wc_players = wc_data.get("total_players", 0)
+            wc_props = wc_data.get("total_props", 0)
+            wc_status = r.getcode()
+            if wc_error and "404" in str(wc_error):
+                check("/api/worldcup-props", False, "HTTP 404 — date format mismatch (check YYYYMMDD vs locale date)")
+            elif wc_error:
+                check("/api/worldcup-props", False, f"API error: {wc_error[:60]}")
+            elif wc_matches == 0:
+                check("/api/worldcup-props", False, "0 matches — run worldcup_picks.py first")
+            elif wc_status == 404:
+                check("/api/worldcup-props", False, "HTTP 404 — date format mismatch in route")
+            else:
+                check("/api/worldcup-props", True, f"{wc_matches} matches · {wc_players} players · {wc_props} props")
+        except Exception as e:
+            check("/api/worldcup-props", False, str(e)[:80])
     # ── 7b. DASHBOARD WIRING CHECK — validate default matchups actually resolve ──
     if not quick and not json_out:
         print("\n── Dashboard Wiring ──")
