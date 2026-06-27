@@ -101,35 +101,39 @@ def check_external_apis(secrets: dict, quick: bool = False) -> dict:
     if quick:
         return status
 
-    # ESPN
+    # ESPN — WNBA scoreboard (NBA off-season)
     try:
-        r = requests.get("https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard", timeout=10)
+        r = requests.get("https://site.api.espn.com/apis/site/v2/sports/basketball/wnba/scoreboard", timeout=10)
         status["espn"] = r.ok
         log("OK" if r.ok else "FAIL", "ESPN", f"HTTP {r.status_code}")
     except Exception as e:
         status["espn"] = False
         log("FAIL", "ESPN", str(e)[:80])
 
-    # The Odds API
+    # The Odds API — minimal call: just check key validity + rate limit
     if odds_key:
         try:
-            r = requests.get("https://api.theoddsapi.com/odds/?sport_key=basketball_wnba",\
-                params={"regions": "us", "markets": "h2h"}, timeout=10)
-            ok = r.ok or r.status_code == 422
-            detail = f"HTTP {r.status_code}"
+            r = requests.get("https://api.theoddsapi.com/sports/",
+                params={"apiKey": odds_key}, timeout=10)
+            ok = r.ok
             remaining = r.headers.get("x-requests-remaining", "?")
-            detail += f" ({remaining} req left)"
+            used = r.headers.get("x-requests-used", "?")
+            detail = f"HTTP {r.status_code} (remaining={remaining}, used={used})"
             log("OK" if ok else "WARN", "Odds API", detail)
+            status["odds"] = ok
         except Exception as e:
             log("FAIL", "Odds API", str(e)[:80])
 
-    # SportsGameOdds — check with WNBA (NBA/NHL off-season, SGO returns 503 for them)
+    # SportsGameOdds — check WNBA with limit=100 to conserve quota
     if sgo_key:
         try:
-            r = requests.get("https://api.sportsgameodds.com/v2/events?leagueID=WNBA",
-                           headers={"x-api-key": sgo_key}, timeout=10)
+            r = requests.get("https://api.sportsgameodds.com/v2/events",
+                params={"leagueID": "WNBA", "oddsAvailable": "true", "limit": "100"},
+                headers={"x-api-key": sgo_key}, timeout=10)
             status["sgo"] = r.ok
-            log("OK" if r.ok else "FAIL", "SGO", f"HTTP {r.status_code}")
+            remaining = r.headers.get("x-requests-remaining", r.headers.get("X-RateLimit-Remaining", "?"))
+            detail = f"HTTP {r.status_code} (remaining={remaining})"
+            log("OK" if r.ok else "FAIL", "SGO", detail)
         except Exception as e:
             status["sgo"] = False
             log("FAIL", "SGO", str(e)[:80])

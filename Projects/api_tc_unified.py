@@ -63,6 +63,47 @@ def compute_team_pick(away_score, home_score, away_abbr, home_abbr, dk_ml_away, 
     return team_to_win, reason, ml_pick, spread_pick
 
 
+def _fetch_espn_dk_lines(espn_path: str, away_abbr: str, home_abbr: str):
+    """Fetch DraftKings lines (total/spread/ML) from ESPN scoreboard for a specific game."""
+    import urllib.request, urllib.error
+    result = {"total": None, "spread": None, "ml_away": None, "ml_home": None}
+    try:
+        url = f"https://site.api.espn.com/apis/site/v2/sports/{espn_path}/scoreboard"
+        req = urllib.request.Request(url, headers={"Accept": "application/json"})
+        with urllib.request.urlopen(req, timeout=5) as resp:
+            data = json.loads(resp.read().decode())
+        for ev in data.get("events", []):
+            comp = (ev.get("competitions", []) or [{}])[0]
+            comps = comp.get("competitors", [])
+            a_team = next((t.get("team", {}).get("abbreviation", "").upper() for t in comps if t.get("homeAway") == "away"), "")
+            h_team = next((t.get("team", {}).get("abbreviation", "").upper() for t in comps if t.get("homeAway") == "home"), "")
+            if a_team != away_abbr.upper() and h_team != home_abbr.upper():
+                continue
+            odds_list = comp.get("odds", []) or []
+            dk_odds = next((o for o in odds_list if o.get("provider", {}).get("id") == "100" or o.get("provider", {}).get("name") == "DraftKings"), None)
+            if not dk_odds:
+                dk_odds = odds_list[0] if odds_list else None
+            if dk_odds:
+                result["total"] = dk_odds.get("overUnder")
+                result["spread"] = dk_odds.get("spread")
+                ml = dk_odds.get("moneyline", {})
+                result["ml_home"] = _parse_ml(ml.get("home", {}).get("close", {}).get("odds"))
+                result["ml_away"] = _parse_ml(ml.get("away", {}).get("close", {}).get("odds"))
+            break
+    except Exception:
+        pass
+    return result
+
+
+def _parse_ml(v):
+    if v is None:
+        return None
+    try:
+        return int(str(v).replace("+", ""))
+    except (ValueError, TypeError):
+        return None
+
+
 def compute_total_lean(actual_total, dk_total, valid_props):
     """Return total_lean string based on score vs DK total."""
     if actual_total is not None and dk_total is not None and dk_total > 0:
@@ -295,12 +336,11 @@ def main():
                 signal = "OVER" if over_count > len(vp) / 2 else "UNDER" if vp else "NO MARKET"
                 odds = {"total": result.get("dk_total"), "ml_source": "DraftKings via SportsDataIO"}
 
-                result["tc_combined"] = tc_combined
-                result["tc_line"] = tc_line
-                result["edge"] = edge
-                result["signal"] = signal
+                result["tc_combined"] = None
+                result["tc_line"] = None
+                result["edge"] = None
+                result["signal"] = None
                 result["odds"] = odds
-                result["assessment"] = {"summary": f"{signal} {result.get('dk_total', 'NO DATA')}"}
 
                 attach_unified_fields(result, away, home, is_home_court=True,
                                       dk_total=result.get("dk_total"),
@@ -329,38 +369,53 @@ def main():
             if proj_path:
                 break
 
+        # ── Fetch ESPN DK lines for this game (totals/spread/ML) ──
+        dk_lines = _fetch_espn_dk_lines("basketball/wnba", away, home)
+
         if proj_path and proj_path.exists():
             data = json.loads(proj_path.read_text())
             vp = data.get("valid_props", [])
-            dk_total = data.get("dk_total")
-            book = "DK/ESPN embedded" if dk_total else "self-edge"
+            dk_total = dk_lines.get("total") or data.get("dk_total")
 
+            # Merge DK lines into odds field if they exist
+            if dk_lines.get("total"):
+                data.setdefault("odds", {})
+                data["odds"]["total"] = dk_lines["total"]
+                data["odds"]["ml_away"] = dk_lines.get("ml_away")
+                data["odds"]["ml_home"] = dk_lines.get("ml_home")
+                data["odds"]["spread"] = dk_lines.get("spread")
+                data["odds"]["ml_source"] = "ESPN DraftKings embedded"
+                data["dk_total"] = dk_lines["total"]
+
+            book = "DK/ESPN embedded" if dk_total else "self-edge"
             attach_unified_fields(data, away, home, is_home_court=True,
                                   dk_total=dk_total, book_source=book, valid_props=vp)
             print(json.dumps(data, default=str))
             return
 
-        # Fallback: picks.json (check both dates)
-        for date_dir in [today, yesterday]:
-            picks_path = WORKSPACE / "Daily_Log" / date_dir / "picks.json"
-            if picks_path.exists():
-                data = json.loads(picks_path.read_text())
-                wnb_picks = [p for p in data if isinstance(p, dict) and p.get("league") == "WNBA" and p.get("matchup") == f"{away}@{home}"]
-                result = {
-                    "mode": "live", "sport": sport,
-                    "matchup": f"{away}@{home}",
-                    "away_team": away, "home_team": home,
-                    "source": "daily_picks.py pipeline",
-                    "valid_props": wnb_picks,
-                    "signal": "PICKS LOADED" if wnb_picks else "NO PICKS",
-                    "roster_counts": {"away": 0, "home": 0, "away_active": 0, "home_active": 0},
-                    "odds": {"total": None, "ml_source": "none"},
-                }
-                attach_unified_fields(result, away, home, is_home_court=True,
-                                      book_source="none (no DK lines)", valid_props=wnb_picks)
-                print(json.dumps(result))
-                return
-        print(json.dumps({"error": f"No WNBA data for {away}@{home}", "sport": "WNBA"}))
+        # Fallback: build response from ESPN DK lines + empty props
+        result = {
+            "mode": "live", "sport": sport,
+            "matchup": f"{away}@{home}",
+            "away_team": away, "home_team": home,
+            "source": "ESPN DK embedded (no player props available yet)",
+            "valid_props": [],
+            "signal": "NO PROPS — game lines only",
+            "roster_counts": {"away": 0, "home": 0, "away_active": 0, "home_active": 0},
+            "odds": {
+                "total": dk_lines.get("total"),
+                "ml_away": dk_lines.get("ml_away"),
+                "ml_home": dk_lines.get("ml_home"),
+                "spread": dk_lines.get("spread"),
+                "ml_source": "ESPN DraftKings embedded",
+            },
+            "dk_total": dk_lines.get("total"),
+        }
+        attach_unified_fields(result, away, home, is_home_court=True,
+                              dk_total=dk_lines.get("total"),
+                              book_source="ESPN DK embedded",
+                              valid_props=[])
+        print(json.dumps(result))
         return
 
     # WORLD CUP: load from worldcup_picks.py output (check today + yesterday)

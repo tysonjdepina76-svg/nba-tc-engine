@@ -40,8 +40,18 @@ try:
             if _line and not _line.startswith("#") and "=" in _line:
                 _k, _v = _line.split("=", 1)
                 os.environ[_k.strip()] = _v.strip()  # FORCE write, not setdefault
+    # ── Standardize known aliases so all consumers find what they expect ──
+    _aliases = {
+        "THEODDSAPI": "ODDS_API_KEY",
+        "ODDS_API_KEY": "THEODDSAPI",
+        "SPORTSDATAIO_API_KEY": "SPORTS_DATA_API_KEY",
+        "SPORTS_DATA_API_KEY": "SPORTSDATAIO_API_KEY",
+    }
+    for _from, _to in _aliases.items():
+        if os.environ.get(_from) and not os.environ.get(_to):
+            os.environ[_to] = os.environ[_from]
 except Exception as _e:
-    print(f"⚠️ secrets load failed: {_e}")
+    print(f"\u26a0\ufe0f secrets load failed: {_e}")
 
 # Add workspace root for imports
 WORKSPACE = Path("/home/workspace")
@@ -474,14 +484,19 @@ def run_daily_log(sports=ALL_SPORTS):
         for e in errors:
             print(f"  - {e}")
 
-    # ── Build TC-enhanced DK combos (WNBA only) ──
+    # ── Build TC-enhanced DK combos (ALL active sports) ──
     try:
         from Projects.build_pregame_combos import build_combos, write_report
-        combo_games = [(s["sport"], s["away_team"], s["home_team"]) for s in all_summaries if s["sport"] == "WNBA"]
-        if combo_games:
-            print(f"\nBuilding TC combos for {len(combo_games)} basketball games...")
-            combo_summary = []
-            for sport, away, home in combo_games:
+        from Projects.soccer_combo_engine import build_combo_legs_from_worldcup, build_combos as sc_build, _read_worldcup_picks, render_summary as sc_render
+
+        combo_summary = []
+
+        # Basketball games: WNBA, NBA (use DK combo engine)
+        bk_sports = ["WNBA", "NBA"]
+        bk_games = [(s["sport"], s["away_team"], s["home_team"]) for s in all_summaries if s["sport"] in bk_sports]
+        if bk_games:
+            print(f"\nBuilding TC combos for {len(bk_games)} basketball games...")
+            for sport, away, home in bk_games:
                 try:
                     r = build_combos(sport, away, home)
                 except Exception as e:
@@ -493,9 +508,89 @@ def run_daily_log(sports=ALL_SPORTS):
                     "matchup": f"{away}@{home}", "sport": sport,
                     "matched": r.get("matched_legs", 0),
                     "qualified": r.get("qualified_legs", 0),
+                    "engine": "dk_combos",
                 })
+            print(f"Basketball combos: {sum(c['qualified'] for c in combo_summary if c.get('engine')=='dk_combos')} qualified legs across {len(bk_games)} games")
+
+        # Soccer / World Cup games (use soccer_combo_engine)
+        wc_games = [(s["sport"], s["away_team"], s["home_team"]) for s in all_summaries if s["sport"] in ("WORLD CUP", "SOCCER")]
+        if wc_games:
+            print(f"\nBuilding TC combos for {len(wc_games)} soccer/World Cup games...")
+            picks_rows, wc_date = _read_worldcup_picks()
+            all_legs = build_combo_legs_from_worldcup(picks_rows)
+            wc_total = 0
+            for sport, away, home in wc_games:
+                matchup_str = f"{away} @ {home}"
+                matchup_legs = [l for l in all_legs if away.upper() in l.match.upper() or home.upper() in l.match.upper()]
+                try:
+                    combos = sc_build(matchup_legs, max_legs=4) if matchup_legs else []
+                    # Standardize to /api/combo-prob format
+                    qualified = []
+                    for combo in combos:
+                        for leg in combo.legs:
+                            edge = 0.0
+                            try:
+                                odds_i = int(leg.odds)
+                                if odds_i > 0:
+                                    imp = 100.0 / (100.0 + odds_i)
+                                elif odds_i < 0:
+                                    imp = abs(odds_i) / (abs(odds_i) + 100.0)
+                                else:
+                                    imp = 0.5
+                            except:
+                                imp = 0.5
+                            if leg.direction.lower() == "over":
+                                edge = round(0.5 - imp, 4)
+                            else:
+                                edge = round(imp - 0.5, 4)
+                            qualified.append({
+                                "player": leg.player,
+                                "team": leg.team,
+                                "role": "",
+                                "stat": leg.stat,
+                                "direction": leg.direction,
+                                "dk_line": leg.line,
+                                "dk_odds": str(leg.odds),
+                                "tc_projection": leg.line,
+                                "raw_average": leg.line,
+                                "edge": edge,
+                                "threshold": 0,
+                                "qualifies_edge": True,
+                            })
+                    safe = f"{away}_{home}".lower()
+                    out = {
+                        "sport": sport,
+                        "away": away,
+                        "home": home,
+                        "matchup": matchup_str,
+                        "dk_game_total": None,
+                        "dk_ml_home": None,
+                        "dk_ml_away": None,
+                        "qualified": qualified,
+                        "legs": qualified,
+                        "matched_legs": len(matchup_legs),
+                        "qualified_legs": len(qualified),
+                    }
+                    (today_dir / f"combos_{safe}.json").write_text(json.dumps(out, indent=2))
+                    (today_dir / f"combos_{safe}.md").write_text(f"# WC Combos: {matchup_str}\n\n{len(combos)} combos, {len(qualified)} legs\n")
+                    combo_summary.append({
+                        "matchup": f"{away}@{home}", "sport": sport,
+                        "matched": len(matchup_legs),
+                        "qualified": len(qualified),
+                        "engine": "soccer_combos",
+                    })
+                    wc_total += len(qualified)
+                except Exception as e:
+                    combo_summary.append({
+                        "matchup": f"{away}@{home}", "sport": sport,
+                        "matched": 0, "qualified": 0,
+                        "engine": "soccer_combos", "error": str(e),
+                    })
+            print(f"Soccer combos: {wc_total} combos across {len(wc_games)} games")
+
+        if combo_summary:
             (today_dir / "combos_summary.json").write_text(json.dumps(combo_summary, indent=2))
-            print(f"Combos: {sum(c['qualified'] for c in combo_summary)} qualified legs across {len(combo_summary)} games")
+            print(f"Combos: {sum(c['qualified'] for c in combo_summary)} total qualified across {len(combo_summary)} games")
     except Exception as e:
         print(f"Combo builder: {e}")
 

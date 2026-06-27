@@ -74,7 +74,9 @@ if ODDS_KEY:
 # ── Tier 2: SGO (limited) ──
 if SGO_KEY:
     for s in ["basketball_wnba"]:
-        results["endpoints"].append(probe(f"SGO {s}", "https://api.sportsgameodds.com/v2/events", {"sportID": s}, headers={"X-Api-Key": SGO_KEY}, free_tier=False))
+        results["endpoints"].append(probe(f"SGO {s}", "https://api.sportsgameodds.com/v2/events",
+            {"sportID": s, "limit": "100"},
+            headers={"X-Api-Key": SGO_KEY}, free_tier=False))
 
 # ── Tier 3: ESPN (free, rosters + embedded DK) ──
 for name, url in [

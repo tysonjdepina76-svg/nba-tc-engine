@@ -1,8 +1,9 @@
 {
-  "day": "2026-06-22",
-  "calls_today": 0,
-  "calls_month": 0,
-  "total_calls": 0,
-  "cache_hits_today": 0,
-  "total_cache_hits": 0
+  "day": "2026-06-27",
+  "calls_today": 2,
+  "calls_month": 2090,
+  "limit_monthly": 500,
+  "over_daily_limit": false,
+  "last_updated": "2026-06-27T15:00:00Z",
+  "notes": "11 AM ET run — 2 API reads (ESPN/USAToday MLB + WNBA), cache-first, DK odds pending"
 }

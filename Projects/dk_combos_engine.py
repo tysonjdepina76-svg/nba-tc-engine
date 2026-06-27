@@ -76,9 +76,8 @@ def fetch_sgo_events(sport_key: str) -> List[dict]:
     try:
         r = requests.get(
             url,
-            params={"leagueID": sport_key, "oddsAvailable": "true"},
-            headers={"X-Api-Key": SGO_API_KEY, "Accept": "application/json",
-            "x-api-key": ODDS_API_KEY},
+            params={"leagueID": sport_key, "oddsAvailable": "true", "limit": "100"},
+            headers={"X-Api-Key": SGO_API_KEY, "Accept": "application/json"},
             timeout=15,
         )
         r.raise_for_status()

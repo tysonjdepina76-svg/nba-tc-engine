@@ -105,7 +105,7 @@ def sgo_events(league: str):
     if not SGO_KEY:
         raise RuntimeError("SGO_API_KEY not set")
     r = requests.get("https://api.sportsgameodds.com/v2/events",
-        params={"leagueID": league, "oddsAvailable": "true"},
+        params={"leagueID": league, "oddsAvailable": "true", "limit": "100"},
         headers={"x-api-key": SGO_KEY}, timeout=30)
     r.raise_for_status()
     return r.json().get("data", [])
