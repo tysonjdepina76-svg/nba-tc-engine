@@ -1,0 +1,100 @@
+{
+  "base_url": "https://api.theoddsapi.com",
+  "auth": "x-api-key header",
+  "account": {
+    "tier": "business",
+    "daily_limit": 6667,
+    "endpoint": "/me/"
+  },
+  "endpoints": {
+    "/sports/": {
+      "params": [
+        "all"
+      ],
+      "desc": "List all sports"
+    },
+    "/events/": {
+      "params": [
+        "sport_key"
+      ],
+      "desc": "Upcoming events"
+    },
+    "/odds/": {
+      "params": [
+        "sport_key",
+        "markets"
+      ],
+      "desc": "Standard odds (h2h/spreads/totals)"
+    },
+    "/props/": {
+      "params": [
+        "sport_key",
+        "markets"
+      ],
+      "desc": "Player props (Business+)"
+    },
+    "/historical/odds/": {
+      "params": [
+        "sport_key",
+        "date",
+        "markets",
+        "limit",
+        "offset"
+      ],
+      "desc": "Historical odds (7-day rolling window)",
+      "note": "date param ignored, always returns last 7 days"
+    },
+    "/me/": {
+      "desc": "Account status + tier"
+    }
+  },
+  "prop_markets": {
+    "basketball": [
+      "player_points",
+      "player_rebounds",
+      "player_assists",
+      "player_threes",
+      "player_blocks",
+      "player_steals",
+      "player_double_double",
+      "player_points_rebounds_assists"
+    ],
+    "baseball": [
+      "batter_hits",
+      "batter_home_runs",
+      "batter_rbis",
+      "batter_runs_scored",
+      "batter_total_bases",
+      "batter_hits_runs_rbis",
+      "pitcher_strikeouts",
+      "pitcher_outs"
+    ]
+  },
+  "sports": {
+    "wnba": "basketball_wnba",
+    "nba": "basketball_nba",
+    "mlb": "baseball_mlb",
+    "nhl": "icehockey_nhl",
+    "nfl": "americanfootball_nfl",
+    "ncaaf": "americanfootball_ncaaf",
+    "ncaab": "basketball_ncaab",
+    "epl": "soccer_epl",
+    "world_cup": "soccer_fifa_world_cup",
+    "bundesliga": "soccer_germany_bundesliga",
+    "serie_a": "soccer_italy_serie_a",
+    "ligue_one": "soccer_france_ligue_one",
+    "ligamx": "soccer_mexico_ligamx",
+    "efl": "soccer_efl_champ",
+    "afl": "aussierules_afl",
+    "euroleague": "basketball_euroleague",
+    "boxing": "boxing_boxing",
+    "mma": "mma_mixed_martial_arts",
+    "cricket": "cricket",
+    "nrl": "rugbyleague_nrl"
+  },
+  "coverage": {
+    "live": "All sports with h2h/spreads/totals. WNBA/MLB with full player props.",
+    "historical": "7-day rolling window of h2h/spreads/totals only. No historical player props.",
+    "start_date": "2026-04-16"
+  }
+}

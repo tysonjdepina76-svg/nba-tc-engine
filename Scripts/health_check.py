@@ -2,8 +2,8 @@
 
 Reports:
   - API key status (SPORTSGAMEODDS, ODDS_API)
-  - Streamlit service on :8507
-  - TC API endpoint at https://true.zo.space/api/tc?sport=WNBA
+  - Streamlit service on :8510
+  - TC API endpoint at https://true.zo.space/api/tc
   - Box-score scraper last-run
   - Last picks.csv row + hit-rate report existence
   - Daily picks count for the day

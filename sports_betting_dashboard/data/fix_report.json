@@ -1,0 +1,32 @@
+{
+  "timestamp": "2026-06-27T07:45:00Z",
+  "date": "2026-06-27",
+  "fixes_applied": [
+    "Combo expansion: WNBA-only → all active sports (basketball + soccer)",
+    "Combo API stale data: existsSync bypass for incomplete readdir",
+    "Dashboard icon: World Cup now shows ⚽",
+    "MLB line fix: tc_combined/tc_line/edge/signal now proper floats",
+    "NBA-first sort removed from /api/combo-prob",
+    "Error messages updated to active sports (no NBA references)",
+    "Health scan extended: check_combos, check_combo_freshness, check_mlb_fields, check_symlinks, check_empty_dirs",
+    "Purged empty dirs: Daily_Log/_dupes, 7 empty cache/odds dirs, Documents/Ar",
+    "Purged stale backup: apps/sports-tc/api.py.bak_20260529",
+    "Symlink fix: today_picks.csv → 2026-06-27",
+    "Zo.space routes: /api/combo-prob, /api/combos, /api/scan all updated",
+    "Combo coverage check added to /api/scan"
+  ],
+  "results": [
+    {"check": "Combo Expansion", "fix_applied": true, "detail": "WNBA-only → Basketball + Soccer engines"},
+    {"check": "Combo API Stale Data", "fix_applied": true, "detail": "existsSync bypass for Node.js readdir limitation"},
+    {"check": "Dashboard Icons", "fix_applied": true, "detail": "World Cup ⚽ icon in /nba-tc"},
+    {"check": "MLB Numeric Fields", "fix_applied": true, "detail": "tc_line/edge/signal as proper floats"},
+    {"check": "Route NBA References", "fix_applied": true, "detail": "Error messages updated to WNBA MLB WORLD CUP"},
+    {"check": "Health Scan Coverage", "fix_applied": true, "detail": "5 new checks: combos, combo_freshness, mlb_fields, symlinks, empty_dirs"},
+    {"check": "Empty Directory Purge", "fix_applied": true, "detail": "Removed 9 empty dirs (cache, _dupes, Documents/Ar)"},
+    {"check": "Stale Backups", "fix_applied": true, "detail": "Removed api.py.bak_20260529"},
+    {"check": "Symlinks", "fix_applied": true, "detail": "today_picks.csv → 2026-06-27"},
+    {"check": "Zo.Space Routes", "fix_applied": true, "detail": "Updated /api/combo-prob, /api/combos, /api/scan"},
+    {"check": "API Scan Coverage", "fix_applied": true, "detail": "Added combo coverage + api_tc_unified.py check"}
+  ],
+  "total_fixes": 11
+}

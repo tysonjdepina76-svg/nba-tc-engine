@@ -8,14 +8,14 @@ echo "============================================"
 echo " TC PIPELINE SETUP"
 echo "============================================"
 
-WORKSPACE="${HOME}/workspace"
+WORKSPACE="/home/workspace"
 DASHBOARD_DIR="${WORKSPACE}/sports_betting_dashboard"
 
 # 1. Ensure directory structure
 echo "→ Creating directory structure..."
 mkdir -p "${DASHBOARD_DIR}"/{data,logs,models,scripts}
+mkdir -p "${DASHBOARD_DIR}"/data/{account,events,odds,props,picks,sports,historical,business_scan}
 mkdir -p "${WORKSPACE}/Daily_Log/backtests/30day"
-mkdir -p "/tmp/tc_cache"/{odds,api,espn}
 
 # 2. Check Python dependencies
 echo "→ Checking Python..."
@@ -27,6 +27,7 @@ echo "→ Setting permissions..."
 chmod +x "${DASHBOARD_DIR}/scan.sh" 2>/dev/null || true
 chmod +x "${DASHBOARD_DIR}/setup.sh" 2>/dev/null || true
 chmod +x "${DASHBOARD_DIR}/fix_pipeline.py" 2>/dev/null || true
+chmod +x "${DASHBOARD_DIR}/scripts/"*.sh 2>/dev/null || true
 
 # 4. Check environment
 echo "→ Checking environment..."
@@ -57,11 +58,6 @@ if [ ! -f "${DASHBOARD_DIR}/models/algorithm_weights.json" ]; then
 }
 EOF
     echo "  ✓ Created algorithm_weights.json"
-fi
-
-if [ ! -f "${DASHBOARD_DIR}/data/historical.csv" ]; then
-    echo "date,sport,matchup,player,stat,direction,line,projection,edge,hit" > "${DASHBOARD_DIR}/data/historical.csv"
-    echo "  ✓ Created historical.csv"
 fi
 
 # 6. Verify pipeline

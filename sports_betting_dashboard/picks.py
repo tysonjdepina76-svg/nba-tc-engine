@@ -1,0 +1,1 @@
+/home/workspace/Projects/daily_picks.py

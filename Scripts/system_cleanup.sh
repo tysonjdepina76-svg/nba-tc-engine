@@ -56,7 +56,7 @@ echo "  log rotation complete"
 # 6. Pipeline health snapshot
 echo "[7/8] Pipeline health..."
 cd "$WORKSPACE"
-python3 Projects/pipeline_assess.py 2>&1 | tail -8
+python3 Projects/pipeline_master.py --quick --dry-run 2>&1 | tail -10
 
 # 7. Google Drive sync (core pipeline files)
 echo "[8/8] Google Drive sync..."

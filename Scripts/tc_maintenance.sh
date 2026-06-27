@@ -41,13 +41,13 @@ done
 # 5. Assess pipeline health
 echo "[5/6] Pipeline health..."
 cd "$WORKSPACE"
-python3 Projects/pipeline_assess.py 2>&1 | tail -5
+python3 Projects/pipeline_master.py --quick --dry-run 2>&1 | tail -10
 
 # 6. Push to Drive
 echo "[6/6] Push to Drive..."
 python3 -c "
 import os, json
-files = ['Projects/consensus_engine.py','Projects/daily_picks.py','Projects/tc_math.py','Projects/build_pregame_combos.py','Projects/pipeline_assess.py','AGENTS.md','SYSTEM_MAP.md','TC_TRADEMARK.txt']
+files = ['Projects/consensus_engine.py','Projects/daily_picks.py','Projects/build_pregame_combos.py','Projects/dk_combos_engine.py','AGENTS.md','SYSTEM_MAP.md','TC_TRADEMARK.txt']
 print(f'  {len([f for f in files if os.path.exists(os.path.join('/home/workspace',f))])}/{len(files)} core files ready for Drive push')
 "
 
