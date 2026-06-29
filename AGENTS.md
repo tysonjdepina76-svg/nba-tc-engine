@@ -1,18 +1,19 @@
 # Workspace Index — true.zo.computer
 
-## Current Status (2026-06-27 ~12:20 PM ET)
-- **Pipeline**: RUNNING — last run: 24 games, 3799 picks, 24 World Cup combos
-- **SGO V2 Migration**: COMPLETE — all calls use `limit=100` to handle new V2 default (was 10)
-- **Odds API**: Business trial active (through July 26, 2026) — same key, no code changes
-- **Purge**: Obsolete NBA archive + dead engines moved to `Trash/obsolete_purge_20260627/`
-- **Automations**: 7 active daily + 1 active weekly — all use lightweight `pipeline_master.py --quick` health checks (replaced heavy `scan.sh --service`)
+## Current Status (2026-06-29 ~6:20 AM ET) — World Cup refreshed ✅
+- **Pipeline**: WNBA 0 upcoming, MLB 0 upcoming (both done for day), WC 3 upcoming (JPN@BRA, PAR@GER, MAR@NED)
+- **WC refresh**: worldcup_picks.py ran successfully — 158 players, 649 props, self-edge (Odds API 401 — Business trial expired/paused)
+- **WC outputs**: `Daily_Log/worldcup/20260629/{matches,props,picks}.json` + 12 TC combos via soccer_combo_engine
+- **Daily picks**: 3 WC games, 649 picks, 12 combos qualified — all `WC PROPS LIVE (self-edge)`
+- **DK lines gap**: No DK/FD player props available (free tier) — picks use self-edge engine
+- **Health**: All checks pass — dashboard :8510 alive, last_run 6:20 AM ET
 
 ## Key Paths
 
 ### Core Engine
 | Path | Purpose |
 |------|---------|
-| `Projects/daily_picks.py` | Main engine — projections for WNBA, MLB, World Cup |
+| `Projects/daily_picks.py` | Main engine — WNBA uses dedicated TC engine (wnba_tc_engine.py) with ESPN Core API season stats + TC math instead of raw roster only |
 | `Projects/tc_dashboard.py` | Streamlit dashboard on :8510 |
 | `Projects/consensus_engine.py` | Consensus picks — Odds API + SGO |
 | `Projects/api_tc_unified.py` | Zo.space TC API — WNBA/MLB/WC with ESPN DK lines fallback |
