@@ -17,13 +17,51 @@ from dataclasses import dataclass, field
 from typing import Dict, List, Optional, Tuple
 import math
 import statistics
+from pathlib import Path
+
+try:
+    import yaml
+except ImportError:
+    yaml = None  # fallback handled in loader
 
 from .entities import Projection
 from .sport_config import get_config
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# Per-sport combo criteria (default values from spec)
+# YAML threshold loader
+# ─────────────────────────────────────────────────────────────────────────────
+
+def load_thresholds() -> Dict[str, Dict]:
+    """Load per-sport combo thresholds from config/thresholds.yaml.
+
+    Falls back to DEFAULT_COMBO_CRITERIA if PyYAML is missing or file absent.
+    """
+    config_path = Path(__file__).parent.parent.parent / "config" / "thresholds.yaml"
+    if yaml is None or not config_path.exists():
+        return DEFAULT_COMBO_CRITERIA
+    with open(config_path) as f:
+        data = yaml.safe_load(f) or {}
+    return data.get("sports", DEFAULT_COMBO_CRITERIA)
+
+
+def _merged_thresholds() -> Dict[str, Dict]:
+    """YAML overrides hardcoded defaults; missing sports fall back to defaults."""
+    merged: Dict[str, Dict] = {}
+    yaml_data = load_thresholds() or {}
+    for sport, defaults in DEFAULT_COMBO_CRITERIA.items():
+        merged[sport] = {**defaults}
+    for sport, vals in yaml_data.items():
+        sport_key = sport.upper()
+        if sport_key in merged:
+            merged[sport_key].update({k: v for k, v in vals.items() if v is not None})
+        else:
+            merged[sport_key] = dict(vals)
+    return merged
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Per-sport combo criteria (hardcoded fallback only — YAML is source of truth)
 # ─────────────────────────────────────────────────────────────────────────────
 
 DEFAULT_COMBO_CRITERIA: Dict[str, Dict] = {
@@ -122,7 +160,8 @@ class FilterReport:
 class ComboQualifier:
     def __init__(self, sport: str, criteria_override: Optional[Dict] = None):
         self.sport = sport.upper()
-        self.criteria = {**DEFAULT_COMBO_CRITERIA.get(self.sport, DEFAULT_COMBO_CRITERIA["NFL"])}
+        merged = _merged_thresholds()
+        self.criteria = {**merged.get(self.sport, merged["NFL"])}
         if criteria_override:
             self.criteria.update(criteria_override)
 

@@ -780,6 +780,20 @@ def run_daily_log(sports=ALL_SPORTS):
     except Exception as e:
         print(f"Combo builder: {e}")
 
+    # ── Fantasy image cards (PNG output for dashboard) ──
+    try:
+        import subprocess
+        from fantasy_images import make_cards, make_roundup
+        sport_for_images = "WNBA" if "WNBA" in sports else (sports[0] if sports else None)
+        cards, msg = make_cards(sport=sport_for_images, player_filter=None, max_n=10)
+        if cards:
+            print(f"🖼️  Fantasy cards: {len(cards)} generated — {msg}")
+        roundup, rmsg = make_roundup(sport=sport_for_images)
+        if roundup:
+            print(f"🖼️  Roundup: {rmsg}")
+    except Exception as img_err:
+        print(f"⚠️ Fantasy images skipped: {img_err}")
+
     return last_run
 
 if __name__ == "__main__":

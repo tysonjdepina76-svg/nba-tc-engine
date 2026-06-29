@@ -1,5 +1,38 @@
 # Workspace Index — true.zo.computer
 
+## Current Status (2026-06-29 ~7:20 PM ET) — Fantasy Images LIVE ✅
+
+### Sport Images Status
+- WNBA ✅ 3 cards + 1 roundup (verified at 23:07 UTC)
+- SOCCER ⏳ Ready — auto-runs when World Cup matches feed picks
+- NBA ⏳ Ready — auto-runs on/off-season slate
+- NFL ⏳ Ready — auto-runs when preseason/regular season matches feed picks (Aug 6+)
+- MLB ⏳ Ready — auto-runs when matches feed picks
+- NHL ⏳ Ready — auto-runs when matches feed picks
+
+### Fantasy Images Pipeline (wired 2026-06-29)
+- `Projects/fantasy_images.py` — generates per-player cards + sport roundups
+- Wired into `Projects/daily_picks.py` lines 784-794 (tail step after picks + combos)
+- Outputs: `reports/images/{SPORT}_{Player_Name}_{YYYYMMDD_HHMMSS}.png` + `{SPORT}_roundup_*.png`
+- Verified: WNBA roundup + Satou Sabally/A'ja Wilson/etc cards generated this run
+
+### Task Status
+1. OddsAPI auto-enable 📅 July 1, 2026
+2. NFL preseason wiring 📅 Aug 6, 2026
+3. Backtest ⏳ Resumes July 2, 2026 (after OddsAPI activates)
+
+## Current Status (2026-06-29 ~6:30 PM ET) — FINAL LOCK ✅
+- **Picks**: 1,482 across 16 games (3 WNBA, 1,038 MLB, 441 World Cup) — all projections refreshed
+- **WNBA**: LV@NY — 3 picks (PTS OVERS), 0 combos (no DK player props — expected, DK posts WNBA props late)
+- **MLB**: 13 games all upcoming — top edges all UNDER on fringe SP strikeouts/hits_allowed (Tyler Alexander -11.3 K best edge)
+- **World Cup**: PAR@GER finished 1-1 (EOR), JPN@BRA finished 1-2 (FT), MAR@NED 9PM ET upcoming — 12 combos (4 per match, fouls OVER props, all self-edge ~-0.024)
+- **Combos**: 12 total (all WC), 0 WNBA (no DK lines), 0 MLB (no qualified multi-leg) — build_pregame_combos.py errored (too many values to unpack), inline combo builder in daily_picks.py worked
+- **Health**: Secrets ✅, Dashboard :8510 ✅, DK Combos Engine :8515 ⚠️ 404, Soccer Combo Engine :8516 ⚠️ 404
+- **API budget**: Cache file stale (June 27) — shows 2 calls/day, needs refresh
+- **⚠️ picks.csv overwritten by WC-only run at 4PM** — MLB/WNBA fully rebuilt this run, no data loss
+- **Email sent**: Both tysondepina99 + tysonjdepina76
+- **Next**: Boxscore captures (halftime 8:30 PM, final 10:30 PM), backtest at 2AM
+
 ## Current Status (2026-06-29 ~4:00 PM ET) — World Cup Lineup Lock ✅
 - **WC Lineups CONFIRMED**: PAR@GER (4:30 PM), MAR@NED (9:00 PM), JPN@BRA completed (1-0)
 - **WC picks**: 441 (230 PAR@GER + 211 MAR@NED), 8 combos — self-edge engine (no DK props on free tier)

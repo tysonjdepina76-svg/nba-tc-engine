@@ -202,24 +202,33 @@ def project_game(away: str, home: str) -> dict:
         if team == away:
             away_players.append({
                 "name": sinfo.get("name", name_lower.title()),
+                "player": sinfo.get("name", name_lower.title()),
                 "team": team,
                 "role": "BENCH",
                 "status": "ACTIVE",
                 "pos": "",
                 "min": DEFAULT_MINUTES,
+                "avgMinutes": float(sinfo.get("avgMinutes") or 0),
                 "season_stats": sinfo,
             })
         elif team == home:
             home_players.append({
                 "name": sinfo.get("name", name_lower.title()),
+                "player": sinfo.get("name", name_lower.title()),
                 "team": team,
                 "role": "BENCH",
                 "status": "ACTIVE",
                 "pos": "",
                 "min": DEFAULT_MINUTES,
+                "avgMinutes": float(sinfo.get("avgMinutes") or 0),
                 "season_stats": sinfo,
             })
-    
+
+    # Real starter detection: ESPN lineup data first, minutes-based fallback otherwise.
+    from starter_detector import detect_starters
+    detect_starters(away_players, away, event_id=None, sport="basketball/wnba", starter_cap=5)
+    detect_starters(home_players, home, event_id=None, sport="basketball/wnba", starter_cap=5)
+
     # Compute projections
     away_proj, home_proj = [], []
     valid_props = []

@@ -26,6 +26,7 @@ from src.auto_retry import retry_with_backoff
 
 ODDS_API_BASE = "https://api.the-odds-api.com/v4"
 ODDS_API_KEY_ENV = "ODDS_API_KEY"
+ODDS_API_KEY_ALT_ENV = "THEODDSAPI"  # alternate env name (legacy/zo secrets)
 SECRETS_FILE = Path("/root/.zo/secrets.env")
 
 # Sport key mapping (the-odds-api uses its own keys)
@@ -49,14 +50,16 @@ SUPPORTED_BOOKS = [
 
 
 def _load_api_key() -> Optional[str]:
-    k = os.environ.get(ODDS_API_KEY_ENV)
-    if k:
-        return k
+    for env_name in (ODDS_API_KEY_ENV, ODDS_API_KEY_ALT_ENV):
+        k = os.environ.get(env_name)
+        if k:
+            return k
     if SECRETS_FILE.exists():
-        for line in SECRETS_FILE.read_text().splitlines():
-            line = line.strip()
-            if line.startswith(ODDS_API_KEY_ENV + "="):
-                return line.split("=", 1)[1].strip().strip("'\"")
+        for env_name in (ODDS_API_KEY_ENV, ODDS_API_KEY_ALT_ENV):
+            for line in SECRETS_FILE.read_text().splitlines():
+                line = line.strip()
+                if line.startswith(env_name + "="):
+                    return line.split("=", 1)[1].strip().strip("'\"")
     return None
 
 

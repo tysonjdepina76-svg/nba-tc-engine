@@ -56,13 +56,16 @@ SGO_API_KEY_ENV = "SPORTSGAMEODDS_API_KEY"
 
 DEFAULT_LIMIT = 100
 
-# map sport → leagueID (lowercase, per SGO convention)
+# map sport → leagueID (per SGO /v2/leagues endpoint)
+# Note: World Cup and WNBA NOT available at current SGO tier.
+# SOCCER → MLS (closest available soccer league).
 SPORT_TO_LEAGUE = {
-    "NFL": "nfl",
-    "NBA": "nba",
-    "WNBA": "wnba",
-    "MLB": "mlb",
-    "SOCCER": "fifa_world_cup",
+    "NFL": "NFL",
+    "NBA": "NBA",
+    "WNBA": None,  # use SelfEdge fallback
+    "MLB": "MLB",
+    "SOCCER": "MLS",  # closest available at this tier
+    "WORLD_CUP": None,  # use SelfEdge fallback
 }
 
 # stat name ↔ SGO stat key (as it appears in odds keys after "points-<PID>-game-ou-over")

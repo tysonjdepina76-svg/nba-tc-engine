@@ -48,6 +48,9 @@ SGO_API_KEY = load_secret("SPORTSGAMEODDS_API_KEY")
 ODDS_API_KEY = load_secret("ODDS_API_KEY")
 ODDS_BASE = "https://api.theoddsapi.com"
 
+sys.path.insert(0, "/home/workspace/Projects")
+from api_cache import cached_get, log_call
+
 @dataclass
 class DKCombo:
     player: str
@@ -71,22 +74,29 @@ def sgo_player_name(odd_id: str) -> str:
     return cleaned.title().replace("'S", "'s").replace("'D", "'d")
 
 def fetch_sgo_events(sport_key: str) -> List[dict]:
-    """Fetch live events from SGO. Returns [] on 400 (e.g. WNBA tier restriction)."""
+    """Fetch live events from SGO via cache. Returns [] on 400."""
     url = f"{SGO_BASE}/events"
+    params = f"?leagueID={sport_key}&oddsAvailable=true&limit=100"
+    full = url + params
     try:
-        r = requests.get(
-            url,
-            params={"leagueID": sport_key, "oddsAvailable": "true", "limit": "100"},
-            headers={"X-Api-Key": SGO_API_KEY, "Accept": "application/json"},
-            timeout=15,
-        )
-        r.raise_for_status()
-        data = r.json()
-        return data.get("data", [])
-    except requests.exceptions.HTTPError as e:
-        # SGO returns 400 when league is unavailable at current tier
-        print(f"[sgo] {sport_key} unavailable: {e}", file=sys.stderr)
-        return []
+        data = cached_get(full, ttl=21600)
+        log_call("SGO", f"events/{sport_key}")
+        if data is None:
+            # fallback to direct fetch
+            import requests
+            r = requests.get(
+                url,
+                params={"leagueID": sport_key, "oddsAvailable": "true", "limit": 100},
+                headers={"X-Api-Key": SGO_API_KEY, "Accept": "application/json"},
+                timeout=15,
+            )
+            log_call("SGO", f"events/{sport_key}")
+            if r.status_code == 400:
+                print(f"[sgo] {sport_key} unavailable", file=sys.stderr)
+                return []
+            r.raise_for_status()
+            data = r.json()
+        return (data or {}).get("data", [])
     except Exception as e:
         print(f"[sgo] error: {e}", file=sys.stderr)
         return []

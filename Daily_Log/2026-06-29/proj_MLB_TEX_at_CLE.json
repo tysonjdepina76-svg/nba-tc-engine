@@ -59,19 +59,6 @@
       "source": "sdio_lines"
     },
     {
-      "player": "Tyler Alexander",
-      "team": "TEX",
-      "pos": "RP",
-      "stat": "earned_runs",
-      "market_line": 5.3,
-      "tc_projection": 1.7,
-      "edge": -3.6,
-      "direction": "UNDER",
-      "signal": "UNDER",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
       "player": "Parker Messick",
       "team": "CLE",
       "pos": "SP",
@@ -79,6 +66,32 @@
       "market_line": 5.3,
       "tc_projection": 2.1,
       "edge": -3.2,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Chase DeLauter",
+      "team": "CLE",
+      "pos": "RF",
+      "stat": "hits",
+      "market_line": 3.2,
+      "tc_projection": 0.4,
+      "edge": -2.8,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Brayan Rocchio",
+      "team": "CLE",
+      "pos": "SS",
+      "stat": "hits",
+      "market_line": 3.2,
+      "tc_projection": 0.4,
+      "edge": -2.8,
       "direction": "UNDER",
       "signal": "UNDER",
       "status": "ACTIVE",
@@ -128,6 +141,19 @@
       "team": "CLE",
       "pos": "CF",
       "stat": "total_bases",
+      "market_line": 3.2,
+      "tc_projection": 0.8,
+      "edge": -2.4,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Travis Bazzana",
+      "team": "CLE",
+      "pos": "2B",
+      "stat": "hits",
       "market_line": 3.2,
       "tc_projection": 0.8,
       "edge": -2.4,
@@ -189,32 +215,6 @@
       "source": "sdio_lines"
     },
     {
-      "player": "Kyle Manzardo",
-      "team": "CLE",
-      "pos": "1B",
-      "stat": "total_bases",
-      "market_line": 3.2,
-      "tc_projection": 1,
-      "edge": -2.2,
-      "direction": "UNDER",
-      "signal": "UNDER",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Daniel Schneemann",
-      "team": "CLE",
-      "pos": "CF",
-      "stat": "total_bases",
-      "market_line": 3.2,
-      "tc_projection": 1.1,
-      "edge": -2.1,
-      "direction": "UNDER",
-      "signal": "UNDER",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
       "player": "Brayan Rocchio",
       "team": "CLE",
       "pos": "SS",
@@ -222,6 +222,19 @@
       "market_line": 3.2,
       "tc_projection": 1.1,
       "edge": -2.1,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Josh Jung",
+      "team": "TEX",
+      "pos": "3B",
+      "stat": "hits",
+      "market_line": 3.2,
+      "tc_projection": 1.3,
+      "edge": -1.9,
       "direction": "UNDER",
       "signal": "UNDER",
       "status": "ACTIVE",
@@ -241,8 +254,8 @@
       "source": "sdio_lines"
     },
     {
-      "player": "Brandon Nimmo",
-      "team": "TEX",
+      "player": "Chase DeLauter",
+      "team": "CLE",
       "pos": "RF",
       "stat": "total_bases",
       "market_line": 3.2,
@@ -280,6 +293,19 @@
       "source": "sdio_lines"
     },
     {
+      "player": "Tyler Alexander",
+      "team": "TEX",
+      "pos": "RP",
+      "stat": "earned_runs",
+      "market_line": 3.2,
+      "tc_projection": 1.7,
+      "edge": -1.5,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
       "player": "Josh Jung",
       "team": "TEX",
       "pos": "3B",
@@ -306,8 +332,8 @@
       "source": "sdio_lines"
     },
     {
-      "player": "Brandon Nimmo",
-      "team": "TEX",
+      "player": "Chase DeLauter",
+      "team": "CLE",
       "pos": "RF",
       "stat": "rbi",
       "market_line": 1.1,
@@ -410,19 +436,6 @@
       "source": "sdio_lines"
     },
     {
-      "player": "Brandon Nimmo",
-      "team": "TEX",
-      "pos": "RF",
-      "stat": "runs",
-      "market_line": 1.1,
-      "tc_projection": 0.3,
-      "edge": -0.8,
-      "direction": "UNDER",
-      "signal": "UNDER",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
       "player": "Alejandro Osuna",
       "team": "TEX",
       "pos": "LF",
@@ -436,48 +449,9 @@
       "source": "sdio_lines"
     },
     {
-      "player": "Kyle Manzardo",
-      "team": "CLE",
-      "pos": "1B",
-      "stat": "runs",
-      "market_line": 1.1,
-      "tc_projection": 0.3,
-      "edge": -0.8,
-      "direction": "UNDER",
-      "signal": "UNDER",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
       "player": "Travis Bazzana",
       "team": "CLE",
       "pos": "2B",
-      "stat": "runs",
-      "market_line": 1.1,
-      "tc_projection": 0.3,
-      "edge": -0.8,
-      "direction": "UNDER",
-      "signal": "UNDER",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Daniel Schneemann",
-      "team": "CLE",
-      "pos": "CF",
-      "stat": "hits",
-      "market_line": 1.1,
-      "tc_projection": 0.3,
-      "edge": -0.8,
-      "direction": "UNDER",
-      "signal": "UNDER",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Daniel Schneemann",
-      "team": "CLE",
-      "pos": "CF",
       "stat": "runs",
       "market_line": 1.1,
       "tc_projection": 0.3,
@@ -544,45 +518,6 @@
       "team": "TEX",
       "pos": "C",
       "stat": "rbi",
-      "market_line": 1.1,
-      "tc_projection": 0.4,
-      "edge": -0.7,
-      "direction": "UNDER",
-      "signal": "UNDER",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Brandon Nimmo",
-      "team": "TEX",
-      "pos": "RF",
-      "stat": "hits",
-      "market_line": 1.1,
-      "tc_projection": 0.4,
-      "edge": -0.7,
-      "direction": "UNDER",
-      "signal": "UNDER",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Kyle Manzardo",
-      "team": "CLE",
-      "pos": "1B",
-      "stat": "rbi",
-      "market_line": 1.1,
-      "tc_projection": 0.4,
-      "edge": -0.7,
-      "direction": "UNDER",
-      "signal": "UNDER",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Brayan Rocchio",
-      "team": "CLE",
-      "pos": "SS",
-      "stat": "hits",
       "market_line": 1.1,
       "tc_projection": 0.4,
       "edge": -0.7,
@@ -735,19 +670,6 @@
       "source": "sdio_lines"
     },
     {
-      "player": "Kyle Manzardo",
-      "team": "CLE",
-      "pos": "1B",
-      "stat": "hits",
-      "market_line": 1.1,
-      "tc_projection": 0.7,
-      "edge": -0.4,
-      "direction": "UNDER",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
       "player": "Travis Bazzana",
       "team": "CLE",
       "pos": "2B",
@@ -787,19 +709,6 @@
       "source": "sdio_lines"
     },
     {
-      "player": "Travis Bazzana",
-      "team": "CLE",
-      "pos": "2B",
-      "stat": "hits",
-      "market_line": 1.1,
-      "tc_projection": 0.8,
-      "edge": -0.3,
-      "direction": "UNDER",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
       "player": "Austin Hedges",
       "team": "CLE",
       "pos": "C",
@@ -808,19 +717,6 @@
       "tc_projection": 0.8,
       "edge": -0.3,
       "direction": "UNDER",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Josh Jung",
-      "team": "TEX",
-      "pos": "3B",
-      "stat": "hits",
-      "market_line": 1.1,
-      "tc_projection": 1.3,
-      "edge": 0.2,
-      "direction": "OVER",
       "signal": "PASS",
       "status": "ACTIVE",
       "source": "sdio_lines"
@@ -943,19 +839,6 @@
       "source": "sdio_lines"
     },
     {
-      "player": "Brandon Nimmo",
-      "team": "TEX",
-      "pos": "RF",
-      "stat": "strikeouts",
-      "market_line": 1.1,
-      "tc_projection": 0,
-      "edge": 0,
-      "direction": "UNDER",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
       "player": "Alejandro Osuna",
       "team": "TEX",
       "pos": "LF",
@@ -982,50 +865,11 @@
       "source": "sdio_lines"
     },
     {
-      "player": "Kyle Manzardo",
-      "team": "CLE",
-      "pos": "1B",
-      "stat": "strikeouts",
-      "market_line": 1.1,
-      "tc_projection": 0,
-      "edge": 0,
-      "direction": "UNDER",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
       "player": "Travis Bazzana",
       "team": "CLE",
       "pos": "2B",
       "stat": "strikeouts",
       "market_line": 3.2,
-      "tc_projection": 0,
-      "edge": 0,
-      "direction": "UNDER",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Daniel Schneemann",
-      "team": "CLE",
-      "pos": "CF",
-      "stat": "strikeouts",
-      "market_line": 1.1,
-      "tc_projection": 0,
-      "edge": 0,
-      "direction": "UNDER",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Daniel Schneemann",
-      "team": "CLE",
-      "pos": "CF",
-      "stat": "rbi",
-      "market_line": 1.1,
       "tc_projection": 0,
       "edge": 0,
       "direction": "UNDER",
@@ -1065,6 +909,32 @@
       "pos": "1B",
       "stat": "strikeouts",
       "market_line": 3.2,
+      "tc_projection": 0,
+      "edge": 0,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Chase DeLauter",
+      "team": "CLE",
+      "pos": "RF",
+      "stat": "strikeouts",
+      "market_line": 1.1,
+      "tc_projection": 0,
+      "edge": 0,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Chase DeLauter",
+      "team": "CLE",
+      "pos": "RF",
+      "stat": "runs",
+      "market_line": 1.1,
       "tc_projection": 0,
       "edge": 0,
       "direction": "UNDER",
@@ -1353,12 +1223,12 @@
           "tc_r": 0.4,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 1.1,
+          "line_h": 3.2,
           "line_hr": 0,
           "line_rbi": 1.1,
           "line_r": 1.1,
           "line_sb": 0,
-          "edge_h": 0.2,
+          "edge_h": -1.9,
           "edge_hr": 0,
           "edge_rbi": -0.3,
           "edge_r": -0.7,
@@ -1404,13 +1274,13 @@
           },
           "lines_raw": {
             "strikeouts": 1.1,
-            "hits": 1.1,
+            "hits": 3.2,
             "rbi": 1.1,
             "total_bases": 3.2,
             "runs": 1.1
           },
           "edges_raw": {
-            "hits": 0.2,
+            "hits": -1.9,
             "rbi": -0.3,
             "total_bases": -1.5,
             "runs": -0.7
@@ -2046,15 +1916,15 @@
           "tc_r": 0.3,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 1.1,
+          "line_h": 0,
           "line_hr": 0,
-          "line_rbi": 1.1,
-          "line_r": 1.1,
+          "line_rbi": 0,
+          "line_r": 0,
           "line_sb": 0,
-          "edge_h": -0.7,
+          "edge_h": 0,
           "edge_hr": 0,
-          "edge_rbi": -1,
-          "edge_r": -0.8,
+          "edge_rbi": 0,
+          "edge_r": 0,
           "edge_sb": 0,
           "edge_avg": 0,
           "batting": {
@@ -2095,19 +1965,8 @@
             "earned_runs": 0.5,
             "outs": 0
           },
-          "lines_raw": {
-            "strikeouts": 1.1,
-            "hits": 1.1,
-            "rbi": 1.1,
-            "total_bases": 3.2,
-            "runs": 1.1
-          },
-          "edges_raw": {
-            "hits": -0.7,
-            "rbi": -1,
-            "total_bases": -1.9,
-            "runs": -0.8
-          }
+          "lines_raw": {},
+          "edges_raw": {}
         },
         {
           "name": "Ezequiel Duran",
@@ -2444,12 +2303,12 @@
           },
           "lines_raw": {
             "hits_allowed": 11.6,
-            "earned_runs": 5.3,
+            "earned_runs": 3.2,
             "strikeouts": 11.6
           },
           "edges_raw": {
             "hits_allowed": -9.9,
-            "earned_runs": -3.6,
+            "earned_runs": -1.5,
             "strikeouts": -11.3
           }
         },
@@ -3466,12 +3325,12 @@
           "tc_r": 0.4,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 1.1,
+          "line_h": 3.2,
           "line_hr": 0,
           "line_rbi": 1.1,
           "line_r": 1.1,
           "line_sb": 0,
-          "edge_h": 0.2,
+          "edge_h": -1.9,
           "edge_hr": 0,
           "edge_rbi": -0.3,
           "edge_r": -0.7,
@@ -3517,13 +3376,13 @@
           },
           "lines_raw": {
             "strikeouts": 1.1,
-            "hits": 1.1,
+            "hits": 3.2,
             "rbi": 1.1,
             "total_bases": 3.2,
             "runs": 1.1
           },
           "edges_raw": {
-            "hits": 0.2,
+            "hits": -1.9,
             "rbi": -0.3,
             "total_bases": -1.5,
             "runs": -0.7
@@ -4163,15 +4022,15 @@
           "tc_r": 0.3,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 1.1,
+          "line_h": 0,
           "line_hr": 0,
-          "line_rbi": 1.1,
-          "line_r": 1.1,
+          "line_rbi": 0,
+          "line_r": 0,
           "line_sb": 0,
-          "edge_h": -0.7,
+          "edge_h": 0,
           "edge_hr": 0,
-          "edge_rbi": -1,
-          "edge_r": -0.8,
+          "edge_rbi": 0,
+          "edge_r": 0,
           "edge_sb": 0,
           "edge_avg": 0,
           "batting": {
@@ -4212,19 +4071,8 @@
             "earned_runs": 0.5,
             "outs": 0
           },
-          "lines_raw": {
-            "strikeouts": 1.1,
-            "hits": 1.1,
-            "rbi": 1.1,
-            "total_bases": 3.2,
-            "runs": 1.1
-          },
-          "edges_raw": {
-            "hits": -0.7,
-            "rbi": -1,
-            "total_bases": -1.9,
-            "runs": -0.8
-          }
+          "lines_raw": {},
+          "edges_raw": {}
         },
         {
           "name": "Ezequiel Duran",
@@ -4561,12 +4409,12 @@
           },
           "lines_raw": {
             "hits_allowed": 11.6,
-            "earned_runs": 5.3,
+            "earned_runs": 3.2,
             "strikeouts": 11.6
           },
           "edges_raw": {
             "hits_allowed": -9.9,
-            "earned_runs": -3.6,
+            "earned_runs": -1.5,
             "strikeouts": -11.3
           }
         },
@@ -5369,15 +5217,15 @@
           "tc_r": 0.3,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 1.1,
+          "line_h": 0,
           "line_hr": 0,
-          "line_rbi": 1.1,
-          "line_r": 1.1,
+          "line_rbi": 0,
+          "line_r": 0,
           "line_sb": 0,
-          "edge_h": -0.4,
+          "edge_h": 0,
           "edge_hr": 0,
-          "edge_rbi": -0.7,
-          "edge_r": -0.8,
+          "edge_rbi": 0,
+          "edge_r": 0,
           "edge_sb": 0,
           "edge_avg": 0,
           "batting": {
@@ -5418,19 +5266,8 @@
             "earned_runs": 0.5,
             "outs": 0
           },
-          "lines_raw": {
-            "strikeouts": 1.1,
-            "hits": 1.1,
-            "rbi": 1.1,
-            "total_bases": 3.2,
-            "runs": 1.1
-          },
-          "edges_raw": {
-            "hits": -0.4,
-            "rbi": -0.7,
-            "total_bases": -2.2,
-            "runs": -0.8
-          }
+          "lines_raw": {},
+          "edges_raw": {}
         },
         {
           "name": "Rhys Hoskins",
@@ -5521,12 +5358,12 @@
           "tc_r": 0.3,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 1.1,
+          "line_h": 3.2,
           "line_hr": 0,
           "line_rbi": 1.1,
           "line_r": 1.1,
           "line_sb": 0,
-          "edge_h": -0.3,
+          "edge_h": -2.4,
           "edge_hr": 0,
           "edge_rbi": -0.4,
           "edge_r": -0.8,
@@ -5572,13 +5409,13 @@
           },
           "lines_raw": {
             "strikeouts": 3.2,
-            "hits": 1.1,
+            "hits": 3.2,
             "rbi": 1.1,
             "total_bases": 3.2,
             "runs": 1.1
           },
           "edges_raw": {
-            "hits": -0.3,
+            "hits": -2.4,
             "rbi": -0.4,
             "total_bases": -1.6,
             "runs": -0.8
@@ -5941,15 +5778,15 @@
           "tc_r": 0.3,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 1.1,
+          "line_h": 0,
           "line_hr": 0,
-          "line_rbi": 1.1,
-          "line_r": 1.1,
+          "line_rbi": 0,
+          "line_r": 0,
           "line_sb": 0,
-          "edge_h": -0.8,
+          "edge_h": 0,
           "edge_hr": 0,
           "edge_rbi": 0,
-          "edge_r": -0.8,
+          "edge_r": 0,
           "edge_sb": 0,
           "edge_avg": 0,
           "batting": {
@@ -5990,18 +5827,8 @@
             "earned_runs": 0.5,
             "outs": 0
           },
-          "lines_raw": {
-            "strikeouts": 1.1,
-            "hits": 1.1,
-            "rbi": 1.1,
-            "total_bases": 3.2,
-            "runs": 1.1
-          },
-          "edges_raw": {
-            "hits": -0.8,
-            "total_bases": -2.1,
-            "runs": -0.8
-          }
+          "lines_raw": {},
+          "edges_raw": {}
         },
         {
           "name": "Angel Martinez",
@@ -6221,14 +6048,14 @@
           "tc_r": 0,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 0,
+          "line_h": 3.2,
           "line_hr": 0,
-          "line_rbi": 0,
-          "line_r": 0,
+          "line_rbi": 1.1,
+          "line_r": 1.1,
           "line_sb": 0,
-          "edge_h": 0,
+          "edge_h": -2.8,
           "edge_hr": 0,
-          "edge_rbi": 0,
+          "edge_rbi": -1,
           "edge_r": 0,
           "edge_sb": 0,
           "edge_avg": 0,
@@ -6270,8 +6097,18 @@
             "earned_runs": 0.5,
             "outs": 0
           },
-          "lines_raw": {},
-          "edges_raw": {}
+          "lines_raw": {
+            "strikeouts": 1.1,
+            "hits": 3.2,
+            "rbi": 1.1,
+            "total_bases": 3.2,
+            "runs": 1.1
+          },
+          "edges_raw": {
+            "hits": -2.8,
+            "rbi": -1,
+            "total_bases": -1.9
+          }
         },
         {
           "name": "Brayan Rocchio",
@@ -6286,12 +6123,12 @@
           "tc_r": 0.3,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 1.1,
+          "line_h": 3.2,
           "line_hr": 0,
           "line_rbi": 1.1,
           "line_r": 1.1,
           "line_sb": 0,
-          "edge_h": -0.7,
+          "edge_h": -2.8,
           "edge_hr": 0,
           "edge_rbi": -1,
           "edge_r": -0.8,
@@ -6337,13 +6174,13 @@
           },
           "lines_raw": {
             "strikeouts": 1.1,
-            "hits": 1.1,
+            "hits": 3.2,
             "rbi": 1.1,
             "total_bases": 3.2,
             "runs": 1.1
           },
           "edges_raw": {
-            "hits": -0.7,
+            "hits": -2.8,
             "rbi": -1,
             "total_bases": -2.1,
             "runs": -0.8
@@ -7219,15 +7056,15 @@
           "tc_r": 0.3,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 1.1,
+          "line_h": 0,
           "line_hr": 0,
-          "line_rbi": 1.1,
-          "line_r": 1.1,
+          "line_rbi": 0,
+          "line_r": 0,
           "line_sb": 0,
-          "edge_h": -0.4,
+          "edge_h": 0,
           "edge_hr": 0,
-          "edge_rbi": -0.7,
-          "edge_r": -0.8,
+          "edge_rbi": 0,
+          "edge_r": 0,
           "edge_sb": 0,
           "edge_avg": 0,
           "batting": {
@@ -7268,19 +7105,8 @@
             "earned_runs": 0.5,
             "outs": 0
           },
-          "lines_raw": {
-            "strikeouts": 1.1,
-            "hits": 1.1,
-            "rbi": 1.1,
-            "total_bases": 3.2,
-            "runs": 1.1
-          },
-          "edges_raw": {
-            "hits": -0.4,
-            "rbi": -0.7,
-            "total_bases": -2.2,
-            "runs": -0.8
-          }
+          "lines_raw": {},
+          "edges_raw": {}
         },
         {
           "name": "Rhys Hoskins",
@@ -7371,12 +7197,12 @@
           "tc_r": 0.3,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 1.1,
+          "line_h": 3.2,
           "line_hr": 0,
           "line_rbi": 1.1,
           "line_r": 1.1,
           "line_sb": 0,
-          "edge_h": -0.3,
+          "edge_h": -2.4,
           "edge_hr": 0,
           "edge_rbi": -0.4,
           "edge_r": -0.8,
@@ -7422,13 +7248,13 @@
           },
           "lines_raw": {
             "strikeouts": 3.2,
-            "hits": 1.1,
+            "hits": 3.2,
             "rbi": 1.1,
             "total_bases": 3.2,
             "runs": 1.1
           },
           "edges_raw": {
-            "hits": -0.3,
+            "hits": -2.4,
             "rbi": -0.4,
             "total_bases": -1.6,
             "runs": -0.8
@@ -7791,15 +7617,15 @@
           "tc_r": 0.3,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 1.1,
+          "line_h": 0,
           "line_hr": 0,
-          "line_rbi": 1.1,
-          "line_r": 1.1,
+          "line_rbi": 0,
+          "line_r": 0,
           "line_sb": 0,
-          "edge_h": -0.8,
+          "edge_h": 0,
           "edge_hr": 0,
           "edge_rbi": 0,
-          "edge_r": -0.8,
+          "edge_r": 0,
           "edge_sb": 0,
           "edge_avg": 0,
           "batting": {
@@ -7840,18 +7666,8 @@
             "earned_runs": 0.5,
             "outs": 0
           },
-          "lines_raw": {
-            "strikeouts": 1.1,
-            "hits": 1.1,
-            "rbi": 1.1,
-            "total_bases": 3.2,
-            "runs": 1.1
-          },
-          "edges_raw": {
-            "hits": -0.8,
-            "total_bases": -2.1,
-            "runs": -0.8
-          }
+          "lines_raw": {},
+          "edges_raw": {}
         }
       ]
     },
@@ -8075,14 +7891,14 @@
           "tc_r": 0,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 0,
+          "line_h": 3.2,
           "line_hr": 0,
-          "line_rbi": 0,
-          "line_r": 0,
+          "line_rbi": 1.1,
+          "line_r": 1.1,
           "line_sb": 0,
-          "edge_h": 0,
+          "edge_h": -2.8,
           "edge_hr": 0,
-          "edge_rbi": 0,
+          "edge_rbi": -1,
           "edge_r": 0,
           "edge_sb": 0,
           "edge_avg": 0,
@@ -8124,8 +7940,18 @@
             "earned_runs": 0.5,
             "outs": 0
           },
-          "lines_raw": {},
-          "edges_raw": {}
+          "lines_raw": {
+            "strikeouts": 1.1,
+            "hits": 3.2,
+            "rbi": 1.1,
+            "total_bases": 3.2,
+            "runs": 1.1
+          },
+          "edges_raw": {
+            "hits": -2.8,
+            "rbi": -1,
+            "total_bases": -1.9
+          }
         },
         {
           "name": "Brayan Rocchio",
@@ -8140,12 +7966,12 @@
           "tc_r": 0.3,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 1.1,
+          "line_h": 3.2,
           "line_hr": 0,
           "line_rbi": 1.1,
           "line_r": 1.1,
           "line_sb": 0,
-          "edge_h": -0.7,
+          "edge_h": -2.8,
           "edge_hr": 0,
           "edge_rbi": -1,
           "edge_r": -0.8,
@@ -8191,13 +8017,13 @@
           },
           "lines_raw": {
             "strikeouts": 1.1,
-            "hits": 1.1,
+            "hits": 3.2,
             "rbi": 1.1,
             "total_bases": 3.2,
             "runs": 1.1
           },
           "edges_raw": {
-            "hits": -0.7,
+            "hits": -2.8,
             "rbi": -1,
             "total_bases": -2.1,
             "runs": -0.8

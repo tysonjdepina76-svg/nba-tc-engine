@@ -72,19 +72,6 @@
       "source": "sdio_lines"
     },
     {
-      "player": "Tyler Soderstrom",
-      "team": "ATH",
-      "pos": "LF",
-      "stat": "total_bases",
-      "market_line": 5.3,
-      "tc_projection": 1.2,
-      "edge": -4.1,
-      "direction": "UNDER",
-      "signal": "UNDER",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
       "player": "Gage Jump",
       "team": "ATH",
       "pos": "SP",
@@ -163,20 +150,7 @@
       "source": "sdio_lines"
     },
     {
-      "player": "Miguel Rojas",
-      "team": "LAD",
-      "pos": "SS",
-      "stat": "hits",
-      "market_line": 3.2,
-      "tc_projection": 0.2,
-      "edge": -3,
-      "direction": "UNDER",
-      "signal": "UNDER",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Colby Thomas",
+      "player": "Lawrence Butler",
       "team": "ATH",
       "pos": "RF",
       "stat": "hits",
@@ -215,9 +189,35 @@
       "source": "sdio_lines"
     },
     {
+      "player": "Lawrence Butler",
+      "team": "ATH",
+      "pos": "RF",
+      "stat": "total_bases",
+      "market_line": 3.2,
+      "tc_projection": 0.4,
+      "edge": -2.8,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
       "player": "Mookie Betts",
       "team": "LAD",
       "pos": "SS",
+      "stat": "hits",
+      "market_line": 3.2,
+      "tc_projection": 0.6,
+      "edge": -2.6,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Jonah Heim",
+      "team": "ATH",
+      "pos": "C",
       "stat": "hits",
       "market_line": 3.2,
       "tc_projection": 0.6,
@@ -267,19 +267,6 @@
       "source": "sdio_lines"
     },
     {
-      "player": "Alex Call",
-      "team": "LAD",
-      "pos": "LF",
-      "stat": "total_bases",
-      "market_line": 3.2,
-      "tc_projection": 0.7,
-      "edge": -2.5,
-      "direction": "UNDER",
-      "signal": "UNDER",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
       "player": "Shea Langeliers",
       "team": "ATH",
       "pos": "C",
@@ -319,6 +306,19 @@
       "source": "sdio_lines"
     },
     {
+      "player": "Jonah Heim",
+      "team": "ATH",
+      "pos": "C",
+      "stat": "total_bases",
+      "market_line": 3.2,
+      "tc_projection": 1,
+      "edge": -2.2,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
       "player": "Nick Kurtz",
       "team": "ATH",
       "pos": "1B",
@@ -335,19 +335,6 @@
       "player": "Freddie Freeman",
       "team": "LAD",
       "pos": "1B",
-      "stat": "hits",
-      "market_line": 3.2,
-      "tc_projection": 1.1,
-      "edge": -2.1,
-      "direction": "UNDER",
-      "signal": "UNDER",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Tyler Soderstrom",
-      "team": "ATH",
-      "pos": "LF",
       "stat": "hits",
       "market_line": 3.2,
       "tc_projection": 1.1,
@@ -449,19 +436,6 @@
       "source": "sdio_lines"
     },
     {
-      "player": "Alex Call",
-      "team": "LAD",
-      "pos": "LF",
-      "stat": "runs",
-      "market_line": 1.1,
-      "tc_projection": 0.1,
-      "edge": -1,
-      "direction": "UNDER",
-      "signal": "UNDER",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
       "player": "Henry Bolte",
       "team": "ATH",
       "pos": "CF",
@@ -540,6 +514,19 @@
       "source": "sdio_lines"
     },
     {
+      "player": "Miguel Rojas",
+      "team": "LAD",
+      "pos": "SS",
+      "stat": "hits",
+      "market_line": 1.1,
+      "tc_projection": 0.2,
+      "edge": -0.9,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
       "player": "Alika Williams",
       "team": "ATH",
       "pos": "SS",
@@ -557,6 +544,32 @@
       "team": "ATH",
       "pos": "SS",
       "stat": "rbi",
+      "market_line": 1.1,
+      "tc_projection": 0.2,
+      "edge": -0.9,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Lawrence Butler",
+      "team": "ATH",
+      "pos": "RF",
+      "stat": "rbi",
+      "market_line": 1.1,
+      "tc_projection": 0.2,
+      "edge": -0.9,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Colby Thomas",
+      "team": "ATH",
+      "pos": "RF",
+      "stat": "hits",
       "market_line": 1.1,
       "tc_projection": 0.2,
       "edge": -0.9,
@@ -683,35 +696,9 @@
       "source": "sdio_lines"
     },
     {
-      "player": "Alex Call",
-      "team": "LAD",
-      "pos": "LF",
-      "stat": "rbi",
-      "market_line": 1.1,
-      "tc_projection": 0.4,
-      "edge": -0.7,
-      "direction": "UNDER",
-      "signal": "UNDER",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
       "player": "Alika Williams",
       "team": "ATH",
       "pos": "SS",
-      "stat": "runs",
-      "market_line": 1.1,
-      "tc_projection": 0.4,
-      "edge": -0.7,
-      "direction": "UNDER",
-      "signal": "UNDER",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Tyler Soderstrom",
-      "team": "ATH",
-      "pos": "LF",
       "stat": "runs",
       "market_line": 1.1,
       "tc_projection": 0.4,
@@ -726,19 +713,6 @@
       "team": "LAD",
       "pos": "1B",
       "stat": "runs",
-      "market_line": 1.1,
-      "tc_projection": 0.5,
-      "edge": -0.6,
-      "direction": "UNDER",
-      "signal": "UNDER",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Alex Call",
-      "team": "LAD",
-      "pos": "LF",
-      "stat": "hits",
       "market_line": 1.1,
       "tc_projection": 0.5,
       "edge": -0.6,
@@ -778,19 +752,6 @@
       "team": "LAD",
       "pos": "DH",
       "stat": "runs",
-      "market_line": 1.1,
-      "tc_projection": 0.6,
-      "edge": -0.5,
-      "direction": "UNDER",
-      "signal": "UNDER",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Tyler Soderstrom",
-      "team": "ATH",
-      "pos": "LF",
-      "stat": "rbi",
       "market_line": 1.1,
       "tc_projection": 0.6,
       "edge": -0.5,
@@ -843,6 +804,19 @@
       "team": "LAD",
       "pos": "C",
       "stat": "hits",
+      "market_line": 1.1,
+      "tc_projection": 0.8,
+      "edge": -0.3,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Jonah Heim",
+      "team": "ATH",
+      "pos": "C",
+      "stat": "runs",
       "market_line": 1.1,
       "tc_projection": 0.8,
       "edge": -0.3,
@@ -995,9 +969,22 @@
       "source": "sdio_lines"
     },
     {
-      "player": "Alex Call",
+      "player": "Shohei Ohtani",
       "team": "LAD",
-      "pos": "LF",
+      "pos": "DH",
+      "stat": "hr",
+      "market_line": 1.1,
+      "tc_projection": 0,
+      "edge": 0,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Jonah Heim",
+      "team": "ATH",
+      "pos": "C",
       "stat": "strikeouts",
       "market_line": 1.1,
       "tc_projection": 0,
@@ -1008,12 +995,12 @@
       "source": "sdio_lines"
     },
     {
-      "player": "Shohei Ohtani",
-      "team": "LAD",
-      "pos": "DH",
-      "stat": "hr",
+      "player": "Jonah Heim",
+      "team": "ATH",
+      "pos": "C",
+      "stat": "rbi",
       "market_line": 1.1,
-      "tc_projection": 0,
+      "tc_projection": 1.1,
       "edge": 0,
       "direction": "UNDER",
       "signal": "PASS",
@@ -1034,11 +1021,24 @@
       "source": "sdio_lines"
     },
     {
-      "player": "Tyler Soderstrom",
+      "player": "Lawrence Butler",
       "team": "ATH",
-      "pos": "LF",
+      "pos": "RF",
       "stat": "strikeouts",
       "market_line": 3.2,
+      "tc_projection": 0,
+      "edge": 0,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Lawrence Butler",
+      "team": "ATH",
+      "pos": "RF",
+      "stat": "runs",
+      "market_line": 1.1,
       "tc_projection": 0,
       "edge": 0,
       "direction": "UNDER",
@@ -1766,15 +1766,15 @@
           "tc_r": 0.1,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 1.1,
+          "line_h": 0,
           "line_hr": 0,
-          "line_rbi": 1.1,
-          "line_r": 1.1,
+          "line_rbi": 0,
+          "line_r": 0,
           "line_sb": 0,
-          "edge_h": -0.6,
+          "edge_h": 0,
           "edge_hr": 0,
-          "edge_rbi": -0.7,
-          "edge_r": -1,
+          "edge_rbi": 0,
+          "edge_r": 0,
           "edge_sb": 0,
           "edge_avg": 0,
           "batting": {
@@ -1815,19 +1815,8 @@
             "earned_runs": 0.5,
             "outs": 0
           },
-          "lines_raw": {
-            "strikeouts": 1.1,
-            "hits": 1.1,
-            "rbi": 1.1,
-            "total_bases": 3.2,
-            "runs": 1.1
-          },
-          "edges_raw": {
-            "hits": -0.6,
-            "rbi": -0.7,
-            "total_bases": -2.5,
-            "runs": -1
-          }
+          "lines_raw": {},
+          "edges_raw": {}
         },
         {
           "name": "Kyle Tucker",
@@ -1994,12 +1983,12 @@
           "tc_r": 0,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 3.2,
+          "line_h": 1.1,
           "line_hr": 0,
           "line_rbi": 1.1,
           "line_r": 1.1,
           "line_sb": 0,
-          "edge_h": -3,
+          "edge_h": -0.9,
           "edge_hr": 0,
           "edge_rbi": 0,
           "edge_r": 0,
@@ -2045,13 +2034,13 @@
           },
           "lines_raw": {
             "strikeouts": 1.1,
-            "hits": 3.2,
+            "hits": 1.1,
             "rbi": 1.1,
             "total_bases": 3.2,
             "runs": 1.1
           },
           "edges_raw": {
-            "hits": -3,
+            "hits": -0.9,
             "total_bases": -2.8
           }
         },
@@ -3571,15 +3560,15 @@
           "tc_r": 0.1,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 1.1,
+          "line_h": 0,
           "line_hr": 0,
-          "line_rbi": 1.1,
-          "line_r": 1.1,
+          "line_rbi": 0,
+          "line_r": 0,
           "line_sb": 0,
-          "edge_h": -0.6,
+          "edge_h": 0,
           "edge_hr": 0,
-          "edge_rbi": -0.7,
-          "edge_r": -1,
+          "edge_rbi": 0,
+          "edge_r": 0,
           "edge_sb": 0,
           "edge_avg": 0,
           "batting": {
@@ -3620,19 +3609,8 @@
             "earned_runs": 0.5,
             "outs": 0
           },
-          "lines_raw": {
-            "strikeouts": 1.1,
-            "hits": 1.1,
-            "rbi": 1.1,
-            "total_bases": 3.2,
-            "runs": 1.1
-          },
-          "edges_raw": {
-            "hits": -0.6,
-            "rbi": -0.7,
-            "total_bases": -2.5,
-            "runs": -1
-          }
+          "lines_raw": {},
+          "edges_raw": {}
         },
         {
           "name": "Kyle Tucker",
@@ -3799,12 +3777,12 @@
           "tc_r": 0,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 3.2,
+          "line_h": 1.1,
           "line_hr": 0,
           "line_rbi": 1.1,
           "line_r": 1.1,
           "line_sb": 0,
-          "edge_h": -3,
+          "edge_h": -0.9,
           "edge_hr": 0,
           "edge_rbi": 0,
           "edge_r": 0,
@@ -3850,13 +3828,13 @@
           },
           "lines_raw": {
             "strikeouts": 1.1,
-            "hits": 3.2,
+            "hits": 1.1,
             "rbi": 1.1,
             "total_bases": 3.2,
             "runs": 1.1
           },
           "edges_raw": {
-            "hits": -3,
+            "hits": -0.9,
             "total_bases": -2.8
           }
         },
@@ -4940,15 +4918,15 @@
           "tc_r": 0.8,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 0,
+          "line_h": 3.2,
           "line_hr": 0,
-          "line_rbi": 0,
-          "line_r": 0,
+          "line_rbi": 1.1,
+          "line_r": 1.1,
           "line_sb": 0,
-          "edge_h": 0,
+          "edge_h": -2.6,
           "edge_hr": 0,
           "edge_rbi": 0,
-          "edge_r": 0,
+          "edge_r": -0.3,
           "edge_sb": 0,
           "edge_avg": 0,
           "batting": {
@@ -4989,8 +4967,19 @@
             "earned_runs": 0.5,
             "outs": 0
           },
-          "lines_raw": {},
-          "edges_raw": {}
+          "lines_raw": {
+            "strikeouts": 1.1,
+            "hits": 3.2,
+            "rbi": 1.1,
+            "total_bases": 3.2,
+            "runs": 1.1
+          },
+          "edges_raw": {
+            "hits": -2.6,
+            "rbi": 0,
+            "total_bases": -2.2,
+            "runs": -0.3
+          }
         },
         {
           "name": "Shea Langeliers",
@@ -5224,15 +5213,15 @@
           "tc_r": 0.4,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 3.2,
+          "line_h": 0,
           "line_hr": 0,
-          "line_rbi": 1.1,
-          "line_r": 1.1,
+          "line_rbi": 0,
+          "line_r": 0,
           "line_sb": 0,
-          "edge_h": -2.1,
+          "edge_h": 0,
           "edge_hr": 0,
-          "edge_rbi": -0.5,
-          "edge_r": -0.7,
+          "edge_rbi": 0,
+          "edge_r": 0,
           "edge_sb": 0,
           "edge_avg": 0,
           "batting": {
@@ -5273,19 +5262,8 @@
             "earned_runs": 0.5,
             "outs": 0
           },
-          "lines_raw": {
-            "strikeouts": 3.2,
-            "hits": 3.2,
-            "rbi": 1.1,
-            "total_bases": 5.3,
-            "runs": 1.1
-          },
-          "edges_raw": {
-            "hits": -2.1,
-            "rbi": -0.5,
-            "total_bases": -4.1,
-            "runs": -0.7
-          }
+          "lines_raw": {},
+          "edges_raw": {}
         },
         {
           "name": "Lawrence Butler",
@@ -5300,14 +5278,14 @@
           "tc_r": 0,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 0,
+          "line_h": 3.2,
           "line_hr": 0,
-          "line_rbi": 0,
-          "line_r": 0,
+          "line_rbi": 1.1,
+          "line_r": 1.1,
           "line_sb": 0,
-          "edge_h": 0,
+          "edge_h": -3,
           "edge_hr": 0,
-          "edge_rbi": 0,
+          "edge_rbi": -0.9,
           "edge_r": 0,
           "edge_sb": 0,
           "edge_avg": 0,
@@ -5349,8 +5327,18 @@
             "earned_runs": 0.5,
             "outs": 0
           },
-          "lines_raw": {},
-          "edges_raw": {}
+          "lines_raw": {
+            "strikeouts": 3.2,
+            "hits": 3.2,
+            "rbi": 1.1,
+            "total_bases": 3.2,
+            "runs": 1.1
+          },
+          "edges_raw": {
+            "hits": -3,
+            "rbi": -0.9,
+            "total_bases": -2.8
+          }
         },
         {
           "name": "Colby Thomas",
@@ -5365,12 +5353,12 @@
           "tc_r": 0.3,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 3.2,
+          "line_h": 1.1,
           "line_hr": 0,
           "line_rbi": 1.1,
           "line_r": 1.1,
           "line_sb": 0,
-          "edge_h": -3,
+          "edge_h": -0.9,
           "edge_hr": 0,
           "edge_rbi": -0.9,
           "edge_r": -0.8,
@@ -5416,13 +5404,13 @@
           },
           "lines_raw": {
             "strikeouts": 3.2,
-            "hits": 3.2,
+            "hits": 1.1,
             "rbi": 1.1,
             "total_bases": 3.2,
             "runs": 1.1
           },
           "edges_raw": {
-            "hits": -3,
+            "hits": -0.9,
             "rbi": -0.9,
             "total_bases": -2.6,
             "runs": -0.8
@@ -6777,15 +6765,15 @@
           "tc_r": 0.8,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 0,
+          "line_h": 3.2,
           "line_hr": 0,
-          "line_rbi": 0,
-          "line_r": 0,
+          "line_rbi": 1.1,
+          "line_r": 1.1,
           "line_sb": 0,
-          "edge_h": 0,
+          "edge_h": -2.6,
           "edge_hr": 0,
           "edge_rbi": 0,
-          "edge_r": 0,
+          "edge_r": -0.3,
           "edge_sb": 0,
           "edge_avg": 0,
           "batting": {
@@ -6826,8 +6814,19 @@
             "earned_runs": 0.5,
             "outs": 0
           },
-          "lines_raw": {},
-          "edges_raw": {}
+          "lines_raw": {
+            "strikeouts": 1.1,
+            "hits": 3.2,
+            "rbi": 1.1,
+            "total_bases": 3.2,
+            "runs": 1.1
+          },
+          "edges_raw": {
+            "hits": -2.6,
+            "rbi": 0,
+            "total_bases": -2.2,
+            "runs": -0.3
+          }
         },
         {
           "name": "Shea Langeliers",
@@ -7061,15 +7060,15 @@
           "tc_r": 0.4,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 3.2,
+          "line_h": 0,
           "line_hr": 0,
-          "line_rbi": 1.1,
-          "line_r": 1.1,
+          "line_rbi": 0,
+          "line_r": 0,
           "line_sb": 0,
-          "edge_h": -2.1,
+          "edge_h": 0,
           "edge_hr": 0,
-          "edge_rbi": -0.5,
-          "edge_r": -0.7,
+          "edge_rbi": 0,
+          "edge_r": 0,
           "edge_sb": 0,
           "edge_avg": 0,
           "batting": {
@@ -7110,19 +7109,8 @@
             "earned_runs": 0.5,
             "outs": 0
           },
-          "lines_raw": {
-            "strikeouts": 3.2,
-            "hits": 3.2,
-            "rbi": 1.1,
-            "total_bases": 5.3,
-            "runs": 1.1
-          },
-          "edges_raw": {
-            "hits": -2.1,
-            "rbi": -0.5,
-            "total_bases": -4.1,
-            "runs": -0.7
-          }
+          "lines_raw": {},
+          "edges_raw": {}
         },
         {
           "name": "Lawrence Butler",
@@ -7137,14 +7125,14 @@
           "tc_r": 0,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 0,
+          "line_h": 3.2,
           "line_hr": 0,
-          "line_rbi": 0,
-          "line_r": 0,
+          "line_rbi": 1.1,
+          "line_r": 1.1,
           "line_sb": 0,
-          "edge_h": 0,
+          "edge_h": -3,
           "edge_hr": 0,
-          "edge_rbi": 0,
+          "edge_rbi": -0.9,
           "edge_r": 0,
           "edge_sb": 0,
           "edge_avg": 0,
@@ -7186,8 +7174,18 @@
             "earned_runs": 0.5,
             "outs": 0
           },
-          "lines_raw": {},
-          "edges_raw": {}
+          "lines_raw": {
+            "strikeouts": 3.2,
+            "hits": 3.2,
+            "rbi": 1.1,
+            "total_bases": 3.2,
+            "runs": 1.1
+          },
+          "edges_raw": {
+            "hits": -3,
+            "rbi": -0.9,
+            "total_bases": -2.8
+          }
         }
       ]
     },
@@ -7206,12 +7204,12 @@
           "tc_r": 0.3,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 3.2,
+          "line_h": 1.1,
           "line_hr": 0,
           "line_rbi": 1.1,
           "line_r": 1.1,
           "line_sb": 0,
-          "edge_h": -3,
+          "edge_h": -0.9,
           "edge_hr": 0,
           "edge_rbi": -0.9,
           "edge_r": -0.8,
@@ -7257,13 +7255,13 @@
           },
           "lines_raw": {
             "strikeouts": 3.2,
-            "hits": 3.2,
+            "hits": 1.1,
             "rbi": 1.1,
             "total_bases": 3.2,
             "runs": 1.1
           },
           "edges_raw": {
-            "hits": -3,
+            "hits": -0.9,
             "rbi": -0.9,
             "total_bases": -2.6,
             "runs": -0.8

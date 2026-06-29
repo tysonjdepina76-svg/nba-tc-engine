@@ -4,7 +4,6 @@
 import json
 import os
 import sys
-import time
 import urllib.request
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
@@ -24,6 +23,28 @@ from src.domain.sport_config import get_sport_config, stat_keys
 
 LOG_DIR = WORKSPACE / "Daily_Log"
 IMAGES_DIR = WORKSPACE / "reports" / "images"
+
+# ─── Sport source matrix (locked by user directive) ─────
+# NBA, WNBA, NFL → TC Math
+# SOCCER, MLB, NHL → Bookmaker lines
+SPORT_SOURCE = {
+    "NBA": "TC_MATH",
+    "WNBA": "TC_MATH",
+    "NFL": "TC_MATH",
+    "SOCCER": "BOOKMAKER",
+    "MLB": "BOOKMAKER",
+    "NHL": "BOOKMAKER",
+}
+
+# Sport → ESPN path + display label
+SPORT_PATHS = {
+    "NBA":    ("basketball/nba", "NBA"),
+    "WNBA":   ("basketball/wnba", "WNBA"),
+    "NFL":    ("football/nfl", "NFL"),
+    "MLB":    ("baseball/mlb", "MLB"),
+    "SOCCER": ("soccer/World Cup", "WORLD CUP"),
+    "NHL":    ("hockey/nhl", "NHL"),
+}
 
 
 def _find_latest_dir() -> Path:
@@ -52,6 +73,87 @@ def _find_latest_dir() -> Path:
 DATA_DIR = _find_latest_dir()
 
 
+def _sport_token(sport: str) -> str:
+    """Map dashboard sport to file-token used in proj JSON filenames."""
+    return {"SOCCER": "WORLD CUP"}.get(sport, sport)
+
+
+def _proj_path(sport: str, matchup: str) -> Path | None:
+    """Locate proj_SPORT_MATCHUP.json for a given sport+matchup."""
+    if not matchup or "@" not in matchup:
+        return None
+    away, home = matchup.split("@")
+    token = _sport_token(sport)
+    p = DATA_DIR / f"proj_{token}_{away}_at_{home}.json"
+    if p.exists():
+        return p
+    # try today's other dirs as fallback
+    for d in sorted(LOG_DIR.iterdir(), reverse=True):
+        if not d.is_dir():
+            continue
+        cand = d / f"proj_{token}_{away}_at_{home}.json"
+        if cand.exists():
+            return cand
+    return None
+
+
+def _load_proj(sport: str, matchup: str | None) -> dict | None:
+    p = _proj_path(sport, matchup) if matchup else None
+    if not p:
+        return None
+    try:
+        with open(p) as f:
+            return json.load(f)
+    except Exception:
+        return None
+
+
+# ─── Sport-aware time/period formatter ───────────────────
+def format_game_time(sport: str, period: int | None, clock: str | None) -> str:
+    """Format live game time per sport:
+      - MLB:    "Top 7" or "Bottom 7" (innings, not quarters)
+      - SOCCER: "78'" (minutes only, no quarter prefix)
+      - NBA/WNBA/NFL: "Q2 3:45" (standard quarters)
+    Returns "—" if no period info.
+    """
+    sport = (sport or "").upper()
+    if period is None or period == 0:
+        return "—"
+    if sport == "MLB":
+        half = "Top" if int(period) % 2 == 1 else "Bottom"
+        inning_n = (int(period) + 1) // 2
+        return f"{half} {inning_n}"
+    if sport == "SOCCER":
+        # soccer reports period 1 / 2 (halves) and clock is the minute marker
+        m = (clock or "").strip().replace("'", "")
+        try:
+            return f"{int(float(m))}'"
+        except Exception:
+            return f"{clock}'" if clock else f"{period}'"
+    # NBA, WNBA, NFL — standard quarters
+    c = (clock or "").strip()
+    return f"Q{period} {c}".strip()
+
+
+def _espn_event_status(espn_path: str, event_id: str) -> dict:
+    """Fetch live game status (period + clock) from ESPN summary endpoint.
+    Returns {period: int|None, clock: str|None, state: str|None}.
+    """
+    out = {"period": None, "clock": None, "state": None}
+    try:
+        url = f"https://site.api.espn.com/apis/site/v2/sports/{espn_path}/summary?event={event_id}"
+        req = urllib.request.Request(url, headers={"Accept": "application/json"})
+        with urllib.request.urlopen(req, timeout=8) as resp:
+            data = json.loads(resp.read().decode())
+        status_block = data.get("status") or {}
+        out["state"] = status_block.get("type", {}).get("description") or status_block.get("type", {}).get("state")
+        out["period"] = status_block.get("period")
+        out["clock"] = status_block.get("displayClock")
+    except Exception:
+        pass
+    return out
+
+
 def _load_picks() -> pd.DataFrame:
     """Load picks.csv if it has rows, else fall back to WC picks."""
     try:
@@ -73,59 +175,20 @@ def _load_picks() -> pd.DataFrame:
 picks = _load_picks()
 
 
+# ─── ESPN helpers (only used for live slate + DK lines) ───
 def _espn_slate(espn_path: str) -> list:
-    """Fetch ESPN scoreboard for a sport path. Returns list of events."""
     try:
         url = f"https://site.api.espn.com/apis/site/v2/sports/{espn_path}/scoreboard"
         req = urllib.request.Request(url, headers={"Accept": "application/json"})
         with urllib.request.urlopen(req, timeout=8) as resp:
             data = json.loads(resp.read().decode())
         return data.get("events", [])
-    except Exception as e:
+    except Exception:
         return []
 
 
-def _espn_event_roster(espn_path: str, event_id: str) -> dict:
-    """Fetch boxscore roster for a specific ESPN event."""
-    out = {"away_players": [], "home_players": []}
-    try:
-        url = f"https://site.api.espn.com/apis/site/v2/sports/{espn_path}/summary?event={event_id}"
-        with urllib.request.urlopen(url, timeout=8) as resp:
-            summary = json.loads(resp.read().decode())
-        for team_data in (summary.get("boxscore") or {}).get("players", []):
-            team_abbr = (team_data.get("team") or {}).get("abbreviation", "")
-            stats_block = (team_data.get("statistics") or [{}])[0]
-            labels = stats_block.get("labels", [])
-            athletes = stats_block.get("athletes", [])
-            for athlete_entry in athletes:
-                if athlete_entry.get("didNotPlay"):
-                    continue
-                athlete = athlete_entry.get("athlete", {})
-                name = athlete.get("displayName", athlete.get("fullName", "Unknown"))
-                pos = (athlete.get("position") or {}).get("abbreviation", "")
-                raw_stats = athlete_entry.get("stats", [])
-                stat_map = {}
-                for i, label in enumerate(labels):
-                    val = raw_stats[i] if i < len(raw_stats) else "0"
-                    try:
-                        stat_map[str(label).lower()] = float(val) if "." in str(val) or str(val).replace("-", "").isdigit() else 0
-                    except Exception:
-                        stat_map[str(label).lower()] = 0
-                key = "home_players" if (team_data.get("homeAway") == "home") else "away_players"
-                if key == "away_players" and team_abbr and not out["away_players"]:
-                    pass
-                if team_data.get("homeAway") == "home":
-                    out["home_players"].append({"name": name, "team": team_abbr, "position": pos, "stats": stat_map})
-                else:
-                    out["away_players"].append({"name": name, "team": team_abbr, "position": pos, "stats": stat_map})
-    except Exception:
-        pass
-    return out
-
-
 def _espn_dk_lines(espn_path: str, away: str, home: str) -> dict:
-    """Pull DK lines for the next upcoming event matching away@home."""
-    out = {"total": None, "spread": None, "ml_home": None, "ml_away": None}
+    out = {"total": None, "spread": None, "ml_home": None, "ml_away": None, "event_id": None}
     for ev in _espn_slate(espn_path):
         comp = (ev.get("competitions") or [{}])[0]
         comps = comp.get("competitors", [])
@@ -148,80 +211,110 @@ def _espn_dk_lines(espn_path: str, away: str, home: str) -> dict:
     return out
 
 
-# Sport → ESPN path + display label + league filter token
-SPORT_PATHS = {
-    "NBA": ("basketball/nba", "NBA"),
-    "WNBA": ("basketball/wnba", "WNBA"),
-    "NFL": ("football/nfl", "NFL"),
-    "MLB": ("baseball/mlb", "MLB"),
-    "SOCCER": ("soccer/World Cup", "WORLD CUP"),  # ESPN uses "soccer/<league>"
-    "NHL": ("hockey/nhl", "NHL"),
-}
+# ─── Render: Roster (from proj JSON, not ESPN boxscore) ──
+def render_roster(sport: str, matchup: str | None):
+    """Render roster + per-player TC projections from proj_SPORT_MATCHUP.json."""
+    if not matchup:
+        st.caption("Pick a matchup to see roster + projections")
+        return
+    proj = _load_proj(sport, matchup)
+    if not proj:
+        st.caption(f"No proj JSON for {sport} {matchup}. Run daily_picks.py.")
+        return
 
-
-def render_roster(sport: str, data: dict):
-    """Render a sport-specific roster table."""
     config = get_sport_config(sport)
     keys = config.get("stat_keys", [])
-    # Build rows
+
     rows = []
-    for side in ("away_players", "home_players"):
-        for p in data.get(side, []):
-            row = {"Player": p.get("name", "?"), "Position": p.get("position", ""), "Team": p.get("team", "")}
+    starters_count = {"away": 0, "home": 0}
+    for side in ("away", "home"):
+        side_data = proj.get(side, {})
+        all_players = (side_data.get("all", {}) or {}).get("players", []) or []
+        starters_players = (side_data.get("starters", {}) or {}).get("players", []) or []
+        bench_players = (side_data.get("bench", {}) or {}).get("players", []) or []
+        # if starters empty (most common case), fall back to all list and use role/heuristics
+        starters_count[side] = len(starters_players)
+        players_to_show = starters_players if starters_players else all_players
+        for p in players_to_show:
+            role = p.get("role", "BENCH")
+            # if no starters detected, tag by position to give dashboard visual differentiation
+            row = {
+                "Player": p.get("player", "?"),
+                "Team": p.get("team", ""),
+                "Pos": p.get("pos", ""),
+                "Role": role,
+                "Status": p.get("status", "ACTIVE"),
+            }
+            projs = p.get("projections", {}) or {}
             for k in keys:
-                v = (p.get("stats") or {}).get(k.lower(), 0)
-                row[k] = v
+                slot = projs.get(k, {}) or {}
+                row[f"{k}_TC"] = slot.get("tc_projection")
+                row[f"{k}_Line"] = slot.get("line")
+                row[f"{k}_Edge"] = slot.get("edge")
+                row[f"{k}_Dir"] = slot.get("direction")
             rows.append(row)
+
     if not rows:
-        st.caption("No roster data — select a game or run pipeline")
+        st.caption("No players in proj JSON.")
         return
+
     df = pd.DataFrame(rows)
-    cols = ["Player", "Position", "Team"] + keys
-    st.dataframe(df[cols], use_container_width=True, hide_index=True)
+    st.caption(
+        f"Source: proj JSON ({'TC Math' if SPORT_SOURCE.get(sport) == 'TC_MATH' else 'Bookmaker lines'}) • "
+        f"Starters detected: {starters_count['away']} away / {starters_count['home']} home"
+    )
+    # Show only name + key stat columns by default for readability
+    display_cols = ["Player", "Team", "Pos", "Role", "Status"]
+    for k in keys:
+        display_cols += [f"{k}_TC", f"{k}_Line", f"{k}_Edge", f"{k}_Dir"]
+    display_cols = [c for c in display_cols if c in df.columns]
+    st.dataframe(
+        df[display_cols],
+        use_container_width=True,
+        hide_index=True,
+        column_config={
+            **{c: st.column_config.NumberColumn(format="%.1f") for c in df.columns if c.endswith(("_TC", "_Line", "_Edge"))},
+        },
+    )
 
 
 def render_projections(sport: str, matchup: str | None):
-    """Show TC projections for the selected sport."""
+    """Show TC projections / valid_props from proj JSON."""
     if not matchup:
         st.caption("Pick a matchup to see projections")
         return
-    config = get_sport_config(sport)
-    keys = config.get("stat_keys", [])
-    # Pull from /api/tc if available, else from local picks.csv
-    try:
-        espn_path, _ = SPORT_PATHS.get(sport, ("", sport))
-        params = {"sport": sport, "away": matchup.split("@")[0], "home": matchup.split("@")[1], "mode": "project"}
-        r = requests.get(f"https://true.zo.space/api/tc", params=params, timeout=10, headers={"Accept": "application/json"})
-        if r.ok:
-            data = r.json()
-            vp = data.get("valid_props", [])
-            if vp:
-                rows = [{"Player": p.get("player"), "Stat": p.get("stat"), "Line": p.get("market_line"),
-                         "TC": p.get("tc_projection"), "Edge": p.get("edge"),
-                         "Direction": p.get("direction"), "Status": p.get("status")} for p in vp]
-                df = pd.DataFrame(rows)
-                st.dataframe(df, use_container_width=True, hide_index=True,
-                             column_config={"Edge": st.column_config.NumberColumn(format="%.2f"),
-                                            "TC": st.column_config.NumberColumn(format="%.2f")})
-                return
-    except Exception:
-        pass
-    # Fallback to local picks.csv
-    sport_col = "league" if "league" in picks.columns else "sport"
-    if not picks.empty and sport_col in picks.columns:
-        sub = picks[picks[sport_col].str.upper().str.contains(sport.upper(), na=False)]
-        if matchup and "matchup" in sub.columns:
-            sub = sub[sub["matchup"].astype(str).str.contains(matchup.split("@")[0], case=False, na=False)]
-        if not sub.empty:
-            st.dataframe(sub.head(20), use_container_width=True, hide_index=True,
-                         column_config={"edge": st.column_config.NumberColumn(format="%.2f"),
-                                        "tc_projection": st.column_config.NumberColumn(format="%.2f")})
-            return
-    st.caption(f"No projections for {sport} {matchup}")
+    proj = _load_proj(sport, matchup)
+    if not proj:
+        st.caption(f"No proj JSON for {sport} {matchup}.")
+        return
+    vp = proj.get("valid_props", []) or []
+    src = proj.get("source") or proj.get("prop_source") or "—"
+    dk_total = proj.get("dk_total")
+    signal = proj.get("signal")
+
+    c1, c2, c3 = st.columns(3)
+    c1.metric("Valid Props", len(vp))
+    c2.metric("DK Total", dk_total or "—")
+    c3.metric("Signal", signal or "—")
+    st.caption(f"Source: {src}")
+    if not vp:
+        st.caption("No valid props for this matchup")
+        return
+    df = pd.DataFrame(vp)
+    st.dataframe(
+        df,
+        use_container_width=True,
+        hide_index=True,
+        column_config={
+            "edge": st.column_config.NumberColumn(format="%+.2f"),
+            "tc_projection": st.column_config.NumberColumn(format="%.2f"),
+            "market_line": st.column_config.NumberColumn(format="%.2f"),
+        },
+    )
 
 
 def render_lines(sport: str, matchup: str | None):
-    """Show game lines if available for selected sport."""
+    """Show DK game lines (live ESPN)."""
     if not matchup:
         st.caption("Pick a matchup to see lines")
         return
@@ -235,7 +328,7 @@ def render_lines(sport: str, matchup: str | None):
         return
     lines = _espn_dk_lines(espn_path, parts[0], parts[1])
     if not any(lines.values()):
-        st.caption(f"No DK lines available for {sport} {matchup} (off-season or lines not posted)")
+        st.caption(f"No DK lines for {sport} {matchup} (off-season or lines not posted)")
         return
     c1, c2, c3, c4 = st.columns(4)
     c1.metric("Total", lines.get("total") or "—")
@@ -244,15 +337,49 @@ def render_lines(sport: str, matchup: str | None):
     c4.metric("ML Away", lines.get("ml_away") or "—")
 
 
+def render_tc_leaders(sport: str, matchup: str | None):
+    """Show top TC leaders from proj JSON valid_props."""
+    if not matchup:
+        return
+    proj = _load_proj(sport, matchup)
+    if not proj:
+        return
+    vp = proj.get("valid_props", []) or []
+    if not vp:
+        st.caption("No TC leaders today for this matchup")
+        return
+    # group by stat, pick highest-edge
+    by_stat: dict[str, dict] = {}
+    for p in vp:
+        st_name = p.get("stat", "?")
+        if p.get("edge") is None:
+            continue
+        cur = by_stat.get(st_name)
+        if not cur or abs(float(p.get("edge", 0))) > abs(float(cur.get("edge", 0))):
+            by_stat[st_name] = p
+    if not by_stat:
+        return
+    st.subheader("🏆 TC Leaders")
+    cols = st.columns(min(len(by_stat), 6))
+    icons = {"PTS": "★", "REB": "◆", "AST": "▲", "3PM": "●", "STL": "◇", "BLK": "■",
+             "GOALS": "★", "ASSISTS": "▲", "SHOTS": "●", "HITS": "◆",
+             "PASS_YDS": "★", "RUSH_YDS": "◆", "REC_YDS": "▲"}
+    for col, (stat, p) in zip(cols, by_stat.items()):
+        col.metric(
+            f"{icons.get(stat, '★')} {stat}",
+            p.get("player", "?"),
+            delta=f"proj {p.get('tc_projection', 0):.1f} | edge {p.get('edge', 0):+.1f} | {p.get('direction', '')}",
+        )
+
+
 def render_cards(sport: str, matchup: str | None, max_n: int = 5):
-    """Generate sport-specific fantasy cards."""
     badge = BADGE_COLORS.get(sport, "#888")
     st.markdown(
         f'<div style="display:inline-block;background:{badge};color:white;padding:4px 12px;'
         f'border-radius:12px;font-weight:bold;margin-bottom:8px;">{sport}</div>',
         unsafe_allow_html=True,
     )
-    sport_token = {"SOCCER": "WORLD_CUP"}.get(sport, sport)
+    sport_token = _sport_token(sport)
     cmd = [
         "python3", str(WORKSPACE / "Projects" / "fantasy_images.py"),
         "--sport", sport_token, "--max", str(max_n),
@@ -277,68 +404,14 @@ def render_cards(sport: str, matchup: str | None, max_n: int = 5):
         st.caption(f"Card gen failed: {e}")
 
 
-
-
-
-
-
-# ─── Live Combos (self-edge, no market dependency) ───────
+# ─── Live Combos (self-edge, no market dependency) ────────
 def render_live_combos(sport: str, matchup: str | None):
-    """Call FastAPI /live-combos endpoint instead of direct logic."""
-    import requests
-    from datetime import datetime as dt
-    date_str = dt.now().strftime("%Y-%m-%d")
-    API_BASE = os.environ.get("LIVE_COMBOS_API", "http://localhost:8000")
-
-    try:
-        resp = requests.get(
-            f"{API_BASE}/live-combos",
-            params={"sport": sport, "date": date_str,
-                    "min_edge": 1.5, "min_conf": 0.6,
-                    "min_corr": 0.3, "min_hit": 0.5,
-                    "max_legs": 4, "min_legs": 2},
-            timeout=10,
-        )
-        resp.raise_for_status()
-        data = resp.json()
-    except Exception as e:
-        st.caption(f"API unavailable: {e}. Falling back to local logic.")
-        return _render_live_combos_local(sport, matchup)
-
-    st.metric("Combos Found", data.get("combo_count", 0))
-    report = data.get("filter_report", {})
-    if report:
-        st.caption(f"Filter: passed={len(report.get('passed', []))}, "
-                   f"filtered={len(report.get('filtered', []))}")
-
-    combos = data.get("combos", [])
-    if not combos:
-        st.caption("No qualifying combos today")
-        return
-
-    for c in combos[:8]:
-        legs = c.get("legs", [])
-        with st.expander(f"{c.get('total_legs', '?')}-leg | "
-                         f"hit_prob={c.get('hit_probability', 0):.2f} | "
-                         f"edge={c.get('avg_edge', 0):.1f}"):
-            cols = st.columns(len(legs))
-            for col, leg in zip(cols, legs):
-                col.metric(
-                    label=leg.get("player", "?"),
-                    value=f"{leg.get('stat', '?')} {leg.get('direction', '?')} {leg.get('line', 0)}",
-                    delta=f"proj {leg.get('tc_projection', 0):.1f} (edge {leg.get('edge', 0):+.1f})",
-                )
-
-
-def _render_live_combos_local(sport: str, matchup: str | None):
-    """Local fallback when FastAPI unavailable."""
     try:
         from src.domain.combo_qualifier import ComboQualifier
     except Exception as e:
         st.caption(f"combo_qualifier import failed: {e}")
         return
 
-    DATA_DIR = _find_latest_dir()
     picks_csv = DATA_DIR / "picks.csv"
     if not picks_csv.exists():
         st.caption("No picks yet — run daily_picks first")
@@ -400,15 +473,92 @@ def _render_live_combos_local(sport: str, matchup: str | None):
                 )
 
 
+# ─── Parlay Builder (live-combos API → parlay legs) ──────
+PARLAY_API_BASE = "http://localhost:8000/live-combos"
+
+def fetch_live_combos(sport: str, date_str: str) -> list:
+    """Fetch combos from the live-combos API. Returns [] on any failure."""
+    try:
+        r = requests.get(PARLAY_API_BASE, params={"sport": sport, "date": date_str}, timeout=10)
+        r.raise_for_status()
+        data = r.json()
+        return data.get("combos", []) or []
+    except Exception as e:
+        return [{"_error": str(e)}]
+
+
+def render_parlay_builder(sport: str, matchup: str | None):
+    """Display live combos as parlay legs with hit prob / edge / confidence + Build button."""
+    date_str = st.session_state.get("parlay_date") or datetime.now(ET).strftime("%Y-%m-%d")
+    c1, c2 = st.columns([2, 1])
+    with c1:
+        new_date = st.date_input("Date", value=datetime.strptime(date_str, "%Y-%m-%d"), key="parlay_date_input")
+        date_str = new_date.strftime("%Y-%m-%d")
+        st.session_state["parlay_date"] = date_str
+    with c2:
+        st.metric("API", PARLAY_API_BASE)
+        refresh = st.button("🔄 Refresh combos", use_container_width=True)
+
+    combos = fetch_live_combos(sport, date_str)
+    if not combos:
+        st.info("No combos found for this sport/date")
+        return
+    if isinstance(combos[0], dict) and combos[0].get("_error"):
+        st.error(f"live-combos API error: {combos[0]['_error']}")
+        return
+
+    # optional matchup filter (players' team abbreviations — best effort)
+    if matchup and "@" in matchup:
+        away, home = matchup.upper().split("@", 1)
+        before = len(combos)
+        combos = [
+            c for c in combos
+            if any(away in str(p).upper() or home in str(p).upper() for p in c.get("players", []))
+        ]
+        if not combos:
+            st.caption(f"No combos match {matchup} (showing {before} total)")
+            return
+
+    st.caption(f"{len(combos)} combos available • sorted by hit probability")
+
+    for idx, combo in enumerate(combos[:10]):
+        players = combo.get("players", []) or []
+        title = " + ".join(players[:4]) + ("…" if len(players) > 4 else "")
+        hit = float(combo.get("hit_probability", 0))
+        edge = float(combo.get("avg_edge", 0))
+        conf = float(combo.get("avg_confidence", 0))
+        n_legs = int(combo.get("num_legs", len(combo.get("legs", []))))
+
+        with st.expander(f"🎟️ {n_legs}-leg parlay — {title}  •  hit {hit:.1%}"):
+            m1, m2, m3 = st.columns(3)
+            m1.metric("Hit Probability", f"{hit:.1%}")
+            m2.metric("Avg Edge", f"{edge:+.2f}")
+            m3.metric("Confidence", f"{conf:.1%}")
+            st.write("**Legs:**")
+            for leg in combo.get("legs", []):
+                st.write(
+                    f"- {leg.get('player','?')} — {leg.get('stat','')} "
+                    f"{leg.get('direction','OVER')} {leg.get('line','')}  "
+                    f"(proj {float(leg.get('tc_projection', 0)):.1f}, "
+                    f"edge {float(leg.get('edge', 0)):+.1f})"
+                )
+            if st.button(f"✅ Build Parlay", key=f"build_parlay_{idx}_{players[0] if players else idx}"):
+                st.session_state.setdefault("built_parlays", []).append({
+                    "sport": sport, "date": date_str, "combo": combo,
+                })
+                st.success(f"Parlay built ({len(st.session_state['built_parlays'])} in slip)")
+
+
 # ─── Sidebar ─────────────────────────────────────────────
 with st.sidebar:
     st.title("🎯 TC Picks")
     sport_choice = st.selectbox(
         "Select Sport",
         ["NBA", "WNBA", "NFL", "MLB", "SOCCER", "NHL"],
-        index=1,  # default WNBA
+        index=1,
     )
-    st.caption(f"Sport config: {get_sport_config(sport_choice)}")
+    src = SPORT_SOURCE.get(sport_choice, "—")
+    st.caption(f"Source: **{src}** • Pipeline priority")
 
 # ─── Header ──────────────────────────────────────────────
 st.title("🏀 TC Picks Dashboard")
@@ -417,7 +567,7 @@ st.caption(
     f"{len(picks)} picks loaded • Data dir: {DATA_DIR.name}"
 )
 
-espn_path, league_token = SPORT_PATHS.get(sport_choice, ("", sport_choice))
+espn_path, _ = SPORT_PATHS.get(sport_choice, ("", sport_choice))
 events = _espn_slate(espn_path) if espn_path else []
 matchup_options = []
 for ev in events:
@@ -428,22 +578,58 @@ for ev in events:
     if a and h:
         matchup_options.append(f"{a}@{h}")
 
-st.subheader(f"{BADGE_COLORS.get(sport_choice, '')} {sport_choice}")
+# fall back to proj JSON filenames if ESPN slate is empty (off-season)
+if not matchup_options:
+    token = _sport_token(sport_choice)
+    for f in sorted(DATA_DIR.glob(f"proj_{token}_*_at_*.json")):
+        # proj_{TOKEN}_{AWAY}_at_{HOME}.json
+        name = f.stem
+        # remove leading proj_TOKEN_
+        rest = name[len(f"proj_{token}_"):]
+        if "_at_" in rest:
+            away, home = rest.split("_at_", 1)
+            matchup_options.append(f"{away}@{home}")
+
+st.subheader(f"{BADGE_COLORS.get(sport_choice, '')} {sport_choice} — {SPORT_SOURCE.get(sport_choice, '')}")
 matchup_choice = st.selectbox("Matchup", [""] + matchup_options) if matchup_options else ""
 
-tab_roster, tab_lines, tab_proj, tab_cards, tab_combos = st.tabs(["📋 Roster", "📈 Lines", "🎯 Projections", "🎴 Cards", "🔥 Live Combos"])
+# Live status pill — shows sport-aware time format (Top 7 / 78' / Q2 3:45)
+if matchup_choice and "@" in matchup_choice and espn_path:
+    parts = matchup_choice.split("@")
+    ev_id = _espn_dk_lines(espn_path, parts[0], parts[1]).get("event_id")
+    if ev_id:
+        st_info = _espn_event_status(espn_path, ev_id)
+        time_str = format_game_time(sport_choice, st_info.get("period"), st_info.get("clock"))
+        state = st_info.get("state") or "Unknown"
+        # color the pill by state
+        state_color = {
+            "In Progress": "#16a34a",
+            "Halftime": "#eab308",
+            "Final": "#dc2626",
+            "Scheduled": "#6b7280",
+            "Postponed": "#6b7280",
+        }.get(state, "#3b82f6")
+        st.markdown(
+            f'<div style="display:inline-flex;gap:8px;align-items:center;margin:6px 0 12px 0;">'
+            f'<span style="background:{state_color};color:white;padding:4px 10px;border-radius:12px;'
+            f'font-weight:600;font-size:13px;">{state}</span>'
+            f'<span style="background:#1f2937;color:white;padding:4px 10px;border-radius:12px;'
+            f'font-weight:600;font-size:13px;">{time_str}</span>'
+            f'</div>',
+            unsafe_allow_html=True,
+        )
+
+tab_roster, tab_lines, tab_proj, tab_cards, tab_parlay, tab_combos = st.tabs([
+    "📋 Roster + TC", "📈 Lines", "🎯 Projections", "🎴 Cards", "📊 Parlay Builder", "🔥 Live Combos",
+])
 
 with tab_roster:
     if not matchup_choice:
-        st.caption("Select a matchup above to load roster")
+        st.caption("Select a matchup above to load roster + TC projections")
     else:
-        parts = matchup_choice.split("@")
-        ev_id = _espn_dk_lines(espn_path, parts[0], parts[1]).get("event_id")
-        if ev_id:
-            roster = _espn_event_roster(espn_path, ev_id)
-            render_roster(sport_choice, roster)
-        else:
-            st.caption(f"No event ID for {matchup_choice}")
+        render_roster(sport_choice, matchup_choice)
+        st.divider()
+        render_tc_leaders(sport_choice, matchup_choice)
 
 with tab_lines:
     render_lines(sport_choice, matchup_choice or None)
@@ -454,8 +640,26 @@ with tab_proj:
 with tab_cards:
     render_cards(sport_choice, matchup_choice or None, max_n=5)
 
+with tab_parlay:
+    render_parlay_builder(sport_choice, matchup_choice or None)
+    if st.session_state.get("built_parlays"):
+        st.divider()
+        st.subheader("🧾 Bet Slip")
+        for i, p in enumerate(st.session_state["built_parlays"]):
+            with st.container(border=True):
+                combo = p["combo"]
+                st.write(
+                    f"**{i+1}. {combo.get('num_legs', len(combo.get('legs', [])))}-leg parlay** "
+                    f"• hit {float(combo.get('hit_probability', 0)):.1%} "
+                    f"• edge {float(combo.get('avg_edge', 0)):+.2f} "
+                    f"• {p['sport']} {p['date']}"
+                )
+
 with tab_combos:
     render_live_combos(sport_choice, matchup_choice or None)
 
 st.divider()
-st.caption(f"Sources: ESPN live scoreboard + roster API + SGO/Odds API DK lines + TC math engine • Config: tc-sports-app/src/domain/sport_config.py")
+st.caption(
+    f"Sources: Daily_Log/proj_*.json (rosters + projections) + ESPN live scoreboard + DK lines • "
+    f"Config: tc-sports-app/src/domain/sport_config.py"
+)

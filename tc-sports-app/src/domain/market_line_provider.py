@@ -12,10 +12,11 @@ from typing import Any
 from ..adapters.draftkings import DraftKingsAdapter
 from ..adapters.fanduel import FanDuelAdapter
 from ..adapters.odds_api import OddsAPIAdapter
+from ..adapters.self_edge import SelfEdgeLineProvider
 
 
 class MarketLineProvider:
-    """Aggregates player props from DK + FD with self-edge fallback."""
+    """Aggregates player props from OddsAPI (primary) + DK + FD + SelfEdge."""
 
     SUPPORTED_SPORTS = {"NBA", "WNBA", "MLB", "NFL", "NHL", "EPL", "WC"}
 
@@ -24,10 +25,22 @@ class MarketLineProvider:
         dk: DraftKingsAdapter | None = None,
         fd: FanDuelAdapter | None = None,
         odds_api: OddsAPIAdapter | None = None,
+        self_edge: SelfEdgeLineProvider | None = None,
     ):
         self.dk = dk or DraftKingsAdapter()
         self.fd = fd or FanDuelAdapter()
-        self.odds_api = odds_api  # optional tertiary source
+        self.odds_api = self._init_odds_api(odds_api)
+        self.self_edge = self_edge or SelfEdgeLineProvider()
+
+    @staticmethod
+    def _init_odds_api(override: OddsAPIAdapter | None) -> OddsAPIAdapter | None:
+        if override is not None:
+            return override
+        try:
+            return OddsAPIAdapter(sport="WNBA")
+        except Exception as e:
+            print(f"[market_line_provider] OddsAPI init failed: {e}")
+            return None
 
     def get_market_lines(
         self,
@@ -48,6 +61,7 @@ class MarketLineProvider:
 
         stat_filter = [stat] if stat else None
 
+        odds_rows = self._fetch_oddsapi(sport, stat_filter)
         dk_rows = []
         fd_rows = []
         try:
@@ -59,15 +73,69 @@ class MarketLineProvider:
         except Exception as e:
             print(f"[market_line_provider] FD fetch failed: {e}")
 
-        merged = self._merge(dk_rows, fd_rows)
+        merged = self._merge(odds_rows, dk_rows, fd_rows)
         if use_self_edge_fallback:
-            merged = self._inject_self_edge(merged)
+            merged = self._inject_self_edge(merged, sport, stat_filter)
         return merged
 
+    def _fetch_oddsapi(self, sport: str, stat_filter) -> list:
+        if not self.odds_api:
+            return []
+        try:
+            self.odds_api.sport = sport
+            self.odds_api.sport_key = self.odds_api.__class__.__init__.__globals__["SPORT_KEYS"][sport]
+            events = self.odds_api.fetch_events()
+            rows: list = []
+            for ev in events:
+                if not isinstance(ev, dict):
+                    continue
+                eid = ev.get("id")
+                if not eid:
+                    continue
+                props = self.odds_api.fetch_player_props(eid)
+                rows.extend(self._normalize_oddsapi(props, stat_filter))
+            return rows
+        except Exception as e:
+            print(f"[market_line_provider] OddsAPI fetch failed: {e}")
+            return []
+
     @staticmethod
-    def _merge(dk: list[dict[str, Any]], fd: list[dict[str, Any]]) -> list[dict[str, Any]]:
-        """Merge DK + FD by (player, stat, direction). Prefer DK for canonical line."""
+    def _normalize_oddsapi(props, stat_filter) -> list:
+        """Convert OddsAPI raw event payload → canonical rows.
+
+        OddsAPI format: event.bookmakers[].markets[].outcomes[]
+        with name=player, price=odds, point=line, key=stat (over/under).
+        """
+        rows: list = []
+        for ev in props if isinstance(props, list) else []:
+            book = ""
+            for bm in ev.get("bookmakers", []):
+                book = bm.get("key", "oddsapi")
+                for mkt in bm.get("markets", []):
+                    stat_key = mkt.get("key", "")
+                    if stat_filter and stat_key not in stat_filter:
+                        continue
+                    stat = self_edge_stat_name(stat_key) if False else _ODDSAPI_STAT_MAP.get(stat_key, stat_key)
+                    for oc in mkt.get("outcomes", []):
+                        rows.append({
+                            "player": oc.get("name", ""),
+                            "stat": stat,
+                            "direction": oc.get("name", "").upper(),  # "Over"/"Under"
+                            "line": oc.get("point", 0.0),
+                            "odds_american": oc.get("price", -110),
+                            "book": book,
+                        })
+        return rows
+
+    @staticmethod
+    def _merge(odds: list[dict[str, Any]], dk: list[dict[str, Any]], fd: list[dict[str, Any]]) -> list[dict[str, Any]]:
+        """Merge OddsAPI + DK + FD by (player, stat, direction). Prefer OddsAPI line, DK for canonical."""
         keyed: dict[tuple[str, str, str], dict[str, Any]] = {}
+        for row in odds:
+            key = (row["player"], row["stat"], row["direction"])
+            entry = dict(row)
+            entry["sources"] = ["oddsapi"]
+            keyed[key] = entry
         for row in dk:
             key = (row["player"], row["stat"], row["direction"])
             entry = dict(row)
@@ -86,7 +154,7 @@ class MarketLineProvider:
         return list(keyed.values())
 
     @staticmethod
-    def _inject_self_edge(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    def _inject_self_edge(rows: list[dict[str, Any]], sport: str, stat_filter) -> list[dict[str, Any]]:
         """Annotate rows with a `self_edge` marker if only one book or none provided a line.
 
         For now, this is a passive marker — TC engine can use it to decide

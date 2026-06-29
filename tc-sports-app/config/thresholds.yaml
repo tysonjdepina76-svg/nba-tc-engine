@@ -1,0 +1,13 @@
+# TC — Triple Conservative — Trademark June 2026 — All rights reserved.
+# Sports covered: NFL, NBA, WNBA, MLB, Soccer.
+# Per-sport combo thresholds. Lowered 2026-06-29 to widen combo surface.
+
+sports:
+  NFL:    {min_edge: 0.5, min_confidence: 0.40, min_correlation: 0.1, min_hit_prob: 0.30, max_legs: 6, min_legs: 2}
+  NBA:    {min_edge: 0.5, min_confidence: 0.40, min_correlation: 0.1, min_hit_prob: 0.30, max_legs: 6, min_legs: 2}
+  WNBA:   {min_edge: 0.5, min_confidence: 0.40, min_correlation: 0.1, min_hit_prob: 0.30, max_legs: 6, min_legs: 2}
+  MLB:    {min_edge: 0.5, min_confidence: 0.40, min_correlation: 0.1, min_hit_prob: 0.30, max_legs: 6, min_legs: 2}
+  SOCCER: {min_edge: 0.5, min_confidence: 0.40, min_correlation: 0.1, min_hit_prob: 0.30, max_legs: 6, min_legs: 2}
+  NHL:    {min_edge: 0.5, min_confidence: 0.40, min_correlation: 0.1, min_hit_prob: 0.30, max_legs: 6, min_legs: 2}
+  BOXING: {min_edge: 0.5, min_confidence: 0.40, min_correlation: 0.1, min_hit_prob: 0.30, max_legs: 6, min_legs: 2}
+  MMA:    {min_edge: 0.5, min_confidence: 0.40, min_correlation: 0.1, min_hit_prob: 0.30, max_legs: 6, min_legs: 2}

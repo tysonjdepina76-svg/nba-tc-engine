@@ -8,6 +8,41 @@ from pathlib import Path
 
 socket.setdefaulttimeout(8)  # prevent any HTTP/SSL hang from taking down the endpoint
 
+sys.path.insert(0, "/home/workspace/Projects")
+from api_cache import cached_get, log_call
+
+SPORT_TO_ESPN = {
+    "NBA": "basketball/nba", "WNBA": "basketball/wnba",
+    "MLB": "baseball/mlb", "NHL": "hockey/nhl",
+    "NFL": "football/nfl", "SOCCER": "soccer/usa.1",
+    "WORLD CUP": "soccer/fifa.world",
+}
+
+_ESPN_SCOREBOARD_CACHE = {}
+
+def fetch_espn_scoreboard(espn_path: str) -> list:
+    """ONCE per slate — returns all events for the sport."""
+    if espn_path in _ESPN_SCOREBOARD_CACHE:
+        return _ESPN_SCOREBOARD_CACHE[espn_path]
+    url = f"https://site.api.espn.com/apis/site/v2/sports/{espn_path}/scoreboard"
+    data = cached_get(url, ttl_seconds=1800)
+    if not data:
+        log_call("ESPN", f"scoreboard:{espn_path}")
+        _ESPN_SCOREBOARD_CACHE[espn_path] = []
+        return []
+    log_call("ESPN", f"scoreboard:{espn_path}")
+    _ESPN_SCOREBOARD_CACHE[espn_path] = data.get("events", [])
+    return _ESPN_SCOREBOARD_CACHE[espn_path]
+
+def fetch_espn_event(espn_path: str, event_id: str) -> dict:
+    """ONCE per event_id — used for boxscore/summary."""
+    if not event_id:
+        return {}
+    url = f"https://site.api.espn.com/apis/site/v2/sports/{espn_path}/summary"
+    data = cached_get(url, params={"event": event_id}, ttl_seconds=1800)
+    log_call("ESPN", f"event:{event_id}")
+    return data or {}
+
 WORKSPACE = Path("/home/workspace")
 SPORTS = {"WNBA", "MLB", "WORLD CUP", "SOCCER"}
 
