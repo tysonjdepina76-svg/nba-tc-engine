@@ -12,6 +12,8 @@ class Sport(Enum):
     NBA = "NBA"
     WNBA = "WNBA"
     NFL = "NFL"
+    BOXING = "BOXING"
+    MMA = "MMA"
     MLB = "MLB"
     SOCCER = "SOCCER"
     NHL = "NHL"
