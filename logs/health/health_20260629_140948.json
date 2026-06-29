@@ -1,0 +1,45 @@
+{
+  "timestamp": "2026-06-29T14:09:47.936207",
+  "status": "critical",
+  "checks": {
+    "espn": {
+      "status": "critical",
+      "message": "cannot import name 'PlayerRole' from 'src.domain.entities' (/home/workspace/tc-sports-app/src/domain/entities.py)"
+    },
+    "odds_api": {
+      "status": "critical",
+      "message": "401 Unauthorized \u2014 key expired"
+    },
+    "draftkings": {
+      "status": "healthy",
+      "message": "Not yet wired"
+    },
+    "data_freshness": {
+      "status": "healthy",
+      "hours_ago": 2.8
+    },
+    "projections": {
+      "status": "warning",
+      "message": "No projections found"
+    },
+    "disk_space": {
+      "status": "healthy",
+      "percent": "0.0%"
+    },
+    "dashboard": {
+      "status": "healthy",
+      "code": 200
+    },
+    "circuit_breakers": {
+      "status": "healthy",
+      "open": []
+    }
+  },
+  "critical_failures": [
+    "espn: cannot import name 'PlayerRole' from 'src.domain.entities' (/home/workspace/tc-sports-app/src/domain/entities.py)",
+    "odds_api: 401 Unauthorized \u2014 key expired"
+  ],
+  "warnings": [
+    "projections: No projections found"
+  ]
+}

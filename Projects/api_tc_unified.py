@@ -2,9 +2,11 @@
 """Unified TC API handler — WNBA, MLB, WORLD CUP.
 All sports return the same fields: team_to_win, ml_pick, spread_pick, total_lean, book_source_honest, valid_props.
 """
-import json, os, sys, subprocess, glob as globmod
+import json, os, sys, subprocess, glob as globmod, socket
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
+
+socket.setdefaulttimeout(8)  # prevent any HTTP/SSL hang from taking down the endpoint
 
 WORKSPACE = Path("/home/workspace")
 SPORTS = {"WNBA", "MLB", "WORLD CUP", "SOCCER"}
@@ -90,6 +92,172 @@ def _fetch_espn_dk_lines(espn_path: str, away_abbr: str, home_abbr: str):
                 result["ml_home"] = _parse_ml(ml.get("home", {}).get("close", {}).get("odds"))
                 result["ml_away"] = _parse_ml(ml.get("away", {}).get("close", {}).get("odds"))
             break
+    except Exception:
+        pass
+    return result
+
+
+def _fetch_espn_game_roster(espn_path, away_abbr, home_abbr):
+    """Fetch ESPN boxscore roster + DK lines for a specific game. Returns {away_players, home_players, dk_lines, event_id}."""
+    import urllib.request, urllib.error
+    result = {"away_players": [], "home_players": [], "dk_lines": {"total": None, "spread": None, "ml_away": None, "ml_home": None}, "event_id": None}
+    WNBA_LABELS = ["MIN", "PTS", "FG", "3PT", "FT", "REB", "AST", "TO", "STL", "BLK", "OREB", "DREB", "PF", "+/-"]
+    try:
+        url = f"https://site.api.espn.com/apis/site/v2/sports/{espn_path}/scoreboard"
+        req = urllib.request.Request(url, headers={"Accept": "application/json"})
+        with urllib.request.urlopen(req, timeout=8) as resp:
+            data = json.loads(resp.read().decode())
+        for ev in data.get("events", []):
+            comp = (ev.get("competitions", []) or [{}])[0]
+            comps = comp.get("competitors", [])
+            a_team = next((t.get("team", {}).get("abbreviation", "").upper() for t in comps if t.get("homeAway") == "away"), "")
+            h_team = next((t.get("team", {}).get("abbreviation", "").upper() for t in comps if t.get("homeAway") == "home"), "")
+            if a_team != away_abbr.upper() and h_team != home_abbr.upper():
+                continue
+            ev_id = ev.get("id")
+            result["event_id"] = ev_id
+            
+            # Get DK lines from odds
+            odds_list = comp.get("odds", []) or []
+            dk_odds = next((o for o in odds_list if o.get("provider", {}).get("id") == "100" or o.get("provider", {}).get("name") == "DraftKings"), None)
+            if not dk_odds:
+                dk_odds = odds_list[0] if odds_list else None
+            if dk_odds:
+                result["dk_lines"]["total"] = dk_odds.get("overUnder")
+                result["dk_lines"]["spread"] = dk_odds.get("spread")
+                ml = dk_odds.get("moneyline", {})
+                result["dk_lines"]["ml_home"] = _parse_ml(ml.get("home", {}).get("close", {}).get("odds"))
+                result["dk_lines"]["ml_away"] = _parse_ml(ml.get("away", {}).get("close", {}).get("odds"))
+            
+            # Fetch boxscore roster
+            if ev_id:
+                try:
+                    sum_url = f"https://site.api.espn.com/apis/site/v2/sports/{espn_path}/summary?event={ev_id}"
+                    with urllib.request.urlopen(sum_url, timeout=8) as sum_resp:
+                        summary = json.loads(sum_resp.read().decode())
+                    bs_players = (summary.get("boxscore") or {}).get("players", [])
+                    for team_data in bs_players:
+                        team_abbr = (team_data.get("team") or {}).get("abbreviation", "")
+                        stats_block = (team_data.get("statistics") or [{}])[0]
+                        labels = stats_block.get("labels", WNBA_LABELS)
+                        athletes = stats_block.get("athletes", [])
+                        for athlete_entry in athletes:
+                            if athlete_entry.get("didNotPlay"):
+                                continue
+                            athlete = athlete_entry.get("athlete", {})
+                            name = athlete.get("displayName", athlete.get("fullName", "Unknown"))
+                            pos = athlete.get("position", {}).get("abbreviation", "")
+                            raw_stats = athlete_entry.get("stats", [])
+                            stat_map = {}
+                            for i, label in enumerate(labels):
+                                val = raw_stats[i] if i < len(raw_stats) else "0"
+                                try:
+                                    stat_map[label.lower()] = float(val) if "." in str(val) or val.replace("-", "").isdigit() else 0
+                                except:
+                                    stat_map[label.lower()] = 0
+                            player = {
+                                "name": name,
+                                "team": team_abbr,
+                                "role": "START" if athlete_entry.get("starter") else "BENCH",
+                                "status": "ACTIVE",
+                                "pos": pos,
+                                "min": 0,
+                                "tc_pts": 0, "tc_reb": 0, "tc_ast": 0, "tc_3pm": 0, "tc_stl": 0, "tc_blk": 0,
+                                "line_pts": 0, "line_reb": 0, "line_ast": 0, "line_3pm": 0, "line_stl": 0, "line_blk": 0,
+                                "edge_pts": 0, "edge_reb": 0, "edge_ast": 0, "edge_3pm": 0, "edge_stl": 0, "edge_blk": 0,
+                            }
+                            if team_abbr == a_team:
+                                result["away_players"].append(player)
+                            elif team_abbr == h_team:
+                                result["home_players"].append(player)
+                except Exception:
+                    pass
+            break
+    except Exception:
+        pass
+    return result
+
+
+def _fetch_odds_api_game_lines(espn_path, away_abbr, home_abbr):
+    """Fetch game totals/ML/spread from The Odds API as fallback when ESPN DK lines are empty."""
+    import urllib.request, urllib.error
+    result = {"total": None, "spread": None, "ml_away": None, "ml_home": None, "source": "none"}
+    try:
+        key = os.environ.get("ODDS_API_KEY", "") or os.environ.get("THEODDSAPI_KEY", "")
+        if not key:
+            return result
+        sport_key = espn_path.replace("/", "_")  # basketball/wnba -> basketball_wnba
+        print(f"DEBUG: Using key for {espn_path}")
+        url = f"https://api.theoddsapi.com/odds/?sport_key={sport_key}&regions=us&apiKey={key}"
+        req = urllib.request.Request(url, headers={"Accept": "application/json"})
+        with urllib.request.urlopen(req, timeout=6) as resp:
+            data = json.loads(resp.read().decode())
+        
+        if not data.get("success"):
+            return result
+        
+        # WNBA team abbreviations to full names for matching
+        WNBA_NAMES = {
+            "ATL": "atlanta", "CHI": "chicago", "CON": "connecticut", "DAL": "dallas",
+            "GS": "golden state", "IND": "indiana", "LV": "las vegas", "LA": "los angeles",
+            "MIN": "minnesota", "NY": "new york", "PHX": "phoenix", "POR": "portland",
+            "SEA": "seattle", "TOR": "toronto", "WSH": "washington",
+        }
+        aw = WNBA_NAMES.get(away_abbr.upper(), away_abbr.lower())
+        hw = WNBA_NAMES.get(home_abbr.upper(), home_abbr.lower())
+        
+        for ev in data.get("data", []):
+            ht = (ev.get("home_team", "") or "").lower()
+            at = (ev.get("away_team", "") or "").lower()
+            if aw not in at and hw not in ht:
+                continue
+            
+            # Find best book: prefer DraftKings, then BetMGM, then first available
+            books = ev.get("books", [])
+            dk_books = [b for b in books if "draftkings" in (b.get("book", "") or "").lower()]
+            mgm_books = [b for b in books if "betmgm" in (b.get("book", "") or "").lower()]
+            fd_books = [b for b in books if "fanduel" in (b.get("book", "") or "").lower()]
+            preferred = dk_books or mgm_books or fd_books or books
+            
+            # Collect all markets across preferred books
+            all_markets = []
+            for b in preferred[:3]:
+                all_markets.append(b)
+            
+            # Extract totals
+            totals_mkts = [m for m in all_markets if m.get("market") == "totals"]
+            for tm in totals_mkts:
+                outcomes = tm.get("outcomes", [])
+                if outcomes:
+                    result["total"] = outcomes[0].get("point")
+                    result["source"] = "odds_api"
+                    break
+            
+            # Extract spread
+            spread_mkts = [m for m in all_markets if m.get("market") == "spreads"]
+            for sm in spread_mkts:
+                outcomes = sm.get("outcomes", [])
+                for o in outcomes:
+                    name = (o.get("name", "") or "").lower()
+                    if hw in name:
+                        result["spread"] = o.get("point")
+                        result["source"] = "odds_api"
+                        break
+            
+            # Extract ML from h2h market
+            h2h_mkts = [m for m in all_markets if m.get("market") == "h2h"]
+            for hm in h2h_mkts:
+                outcomes = hm.get("outcomes", [])
+                for o in outcomes:
+                    name = (o.get("name", "") or "").lower()
+                    price = o.get("price")
+                    if hw in name:
+                        result["ml_home"] = price
+                    elif aw in name:
+                        result["ml_away"] = price
+            
+            if result["total"]:
+                break
     except Exception:
         pass
     return result
@@ -353,6 +521,8 @@ def main():
 
     # WNBA: read from daily pipeline output
     if sport == "WNBA" and away and home:
+        # ── Load or create projection from WNBA TC engine ──
+        from wnba_tc_engine import project_game, fetch_all_season_stats
         proj_path = None
         for date_dir in [today, yesterday]:
             exact = WORKSPACE / "Daily_Log" / date_dir / f"proj_{sport}_{away}_at_{home}.json"
@@ -369,13 +539,73 @@ def main():
             if proj_path:
                 break
 
-        # ── Fetch ESPN DK lines for this game (totals/spread/ML) ──
+        # ── Fetch ESPN DK lines + roster for this game ──
         dk_lines = _fetch_espn_dk_lines("basketball/wnba", away, home)
+        roster = _fetch_espn_game_roster("basketball/wnba", away, home)
+        
+        # Merge roster DK lines if _fetch_espn_dk_lines missed them
+        if not dk_lines.get("total"):
+            dk_lines = roster.get("dk_lines", dk_lines)
+        
+        # Merge Odds API fallback if still no lines
+        if not dk_lines.get("total"):
+            print(f"DEBUG: No DK lines found for {away}@{home}", file=sys.stderr)
+            odds_lines = _fetch_odds_api_game_lines("basketball/wnba", away, home)
+            if odds_lines.get("total"):
+                dk_lines = odds_lines
+
+        # ── If no saved proj, generate fresh from engine ──
+        if not proj_path:
+            try:
+                data = project_game(away, home)
+                # Merge ESPN DK lines into engine output
+                if dk_lines.get("total"):
+                    data["odds"]["total"] = dk_lines["total"]
+                    data["odds"]["ml_away"] = dk_lines.get("ml_away")
+                    data["odds"]["ml_home"] = dk_lines.get("ml_home")
+                    data["odds"]["spread"] = dk_lines.get("spread")
+                    data["odds"]["ml_source"] = "ESPN DraftKings embedded"
+                    data["dk_total"] = dk_lines["total"]
+                # Merge roster if engine missing players
+                if roster.get("away_players") and (not data.get("away", {}).get("all", {}).get("players")):
+                    away_all = roster["away_players"]
+                    home_all = roster["home_players"]
+                    data["away"] = {"all": {"players": away_all}, "starters": {"players": [p for p in away_all if p.get("role")=="START"]}, "bench": {"players": [p for p in away_all if p.get("role")!="START"]}}
+                    data["home"] = {"all": {"players": home_all}, "starters": {"players": [p for p in home_all if p.get("role")=="START"]}, "bench": {"players": [p for p in home_all if p.get("role")!="START"]}}
+                    data["roster_counts"] = {"away": len(away_all), "home": len(home_all)}
+                    data["source"] = "ESPN Core API + ESPN roster (live)"
+                book = "DK/ESPN embedded" if dk_lines.get("total") else "self-edge"
+                attach_unified_fields(data, away, home, is_home_court=True,
+                                      dk_total=dk_lines.get("total"),
+                                      book_source=book,
+                                      valid_props=data.get("valid_props", []))
+                print(json.dumps(data, default=str))
+                return
+            except Exception as e:
+                print(f"ENGINE FALLBACK FAILED: {e}", file=sys.stderr)
 
         if proj_path and proj_path.exists():
             data = json.loads(proj_path.read_text())
             vp = data.get("valid_props", [])
             dk_total = dk_lines.get("total") or data.get("dk_total")
+            
+            # If proj file has empty roster, fill from ESPN
+            away_players = (data.get("away") or {}).get("all", {}).get("players", [])
+            home_players = (data.get("home") or {}).get("all", {}).get("players", [])
+            if not away_players and not home_players and roster.get("away_players"):
+                away_all = roster["away_players"]
+                home_all = roster["home_players"]
+                away_starters = [p for p in away_all if p.get("role") == "START"]
+                home_starters = [p for p in home_all if p.get("role") == "START"]
+                away_bench = [p for p in away_all if p.get("role") != "START"]
+                home_bench = [p for p in home_all if p.get("role") != "START"]
+                data["away"] = {"all": {"players": away_all}, "starters": {"players": away_starters}, "bench": {"players": away_bench}}
+                data["home"] = {"all": {"players": home_all}, "starters": {"players": home_starters}, "bench": {"players": home_bench}}
+                data["roster_counts"] = {
+                    "away": len(away_all), "home": len(home_all),
+                    "away_active": len(away_all), "home_active": len(home_all),
+                }
+                data["source"] = "ESPN roster (live) + saved proj"
 
             # Merge DK lines into odds field if they exist
             if dk_lines.get("total"):
@@ -393,15 +623,30 @@ def main():
             print(json.dumps(data, default=str))
             return
 
-        # Fallback: build response from ESPN DK lines + empty props
+        # Fallback: build response from ESPN roster + DK lines
+        away_players = roster.get("away_players", [])
+        home_players = roster.get("home_players", [])
+        away_starters = [p for p in away_players if p.get("role") == "START"]
+        home_starters = [p for p in home_players if p.get("role") == "START"]
+        away_bench = [p for p in away_players if p.get("role") != "START"]
+        home_bench = [p for p in home_players if p.get("role") != "START"]
+        
+        has_roster = len(away_players) > 0 or len(home_players) > 0
+        source = "ESPN roster (live)" if has_roster else "ESPN DK embedded (no player props available yet)"
+        
         result = {
             "mode": "live", "sport": sport,
             "matchup": f"{away}@{home}",
             "away_team": away, "home_team": home,
-            "source": "ESPN DK embedded (no player props available yet)",
+            "source": source,
             "valid_props": [],
-            "signal": "NO PROPS — game lines only",
-            "roster_counts": {"away": 0, "home": 0, "away_active": 0, "home_active": 0},
+            "signal": "ROSTER LOADED" if has_roster else "NO PROPS — game lines only",
+            "away": {"all": {"players": away_players}, "starters": {"players": away_starters}, "bench": {"players": away_bench}},
+            "home": {"all": {"players": home_players}, "starters": {"players": home_starters}, "bench": {"players": home_bench}},
+            "roster_counts": {
+                "away": len(away_players), "home": len(home_players),
+                "away_active": len(away_players), "home_active": len(home_players),
+            },
             "odds": {
                 "total": dk_lines.get("total"),
                 "ml_away": dk_lines.get("ml_away"),
@@ -415,7 +660,7 @@ def main():
                               dk_total=dk_lines.get("total"),
                               book_source="ESPN DK embedded",
                               valid_props=[])
-        print(json.dumps(result))
+        print(json.dumps(result, default=str))
         return
 
     # WORLD CUP: load from worldcup_picks.py output (check today + yesterday)

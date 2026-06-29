@@ -1,0 +1,47 @@
+{
+  "timestamp": "2026-06-29T21:15:19.783059",
+  "status": "warning",
+  "checks": {
+    "espn": {
+      "status": "healthy",
+      "games_found": 0
+    },
+    "odds_api": {
+      "status": "warning",
+      "message": "Odds API disabled (quota exhausted). Set ODDS_API_DISABLED=0 (or unset ODDS_API_QUOTA_DEADLINE) after 2026-07-01T00:00:00Z to re-enable.",
+      "quota_dead": true
+    },
+    "draftkings": {
+      "status": "warning",
+      "rows": 0,
+      "message": "MarketLinesProvider active but fetched 0 rows \u2014 SGO unreachable",
+      "errors": []
+    },
+    "data_freshness": {
+      "status": "healthy",
+      "hours_ago": 1.2
+    },
+    "projections": {
+      "status": "warning",
+      "message": "No projections found"
+    },
+    "disk_space": {
+      "status": "healthy",
+      "percent": "0.1%"
+    },
+    "dashboard": {
+      "status": "healthy",
+      "code": 200
+    },
+    "circuit_breakers": {
+      "status": "healthy",
+      "open": []
+    }
+  },
+  "critical_failures": [],
+  "warnings": [
+    "odds_api: Odds API disabled (quota exhausted). Set ODDS_API_DISABLED=0 (or unset ODDS_API_QUOTA_DEADLINE) after 2026-07-01T00:00:00Z to re-enable.",
+    "draftkings: MarketLinesProvider active but fetched 0 rows \u2014 SGO unreachable",
+    "projections: No projections found"
+  ]
+}

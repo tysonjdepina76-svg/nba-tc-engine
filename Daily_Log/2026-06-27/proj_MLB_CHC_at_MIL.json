@@ -72,10 +72,10 @@
       "source": "sdio_lines"
     },
     {
-      "player": "David Hamilton",
+      "player": "Andrew Vaughn",
       "team": "MIL",
-      "pos": "3B",
-      "stat": "total_bases",
+      "pos": "1B",
+      "stat": "hits",
       "market_line": 2,
       "tc_projection": 0.8,
       "edge": -1.2,
@@ -436,35 +436,9 @@
       "source": "sdio_lines"
     },
     {
-      "player": "Christian Yelich",
-      "team": "MIL",
-      "pos": "DH",
-      "stat": "total_bases",
-      "market_line": 2,
-      "tc_projection": 1.5,
-      "edge": -0.5,
-      "direction": "UNDER",
-      "signal": "UNDER",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
       "player": "Blake Perkins",
       "team": "MIL",
       "pos": "CF",
-      "stat": "rbi",
-      "market_line": 0.7,
-      "tc_projection": 0.2,
-      "edge": -0.5,
-      "direction": "UNDER",
-      "signal": "UNDER",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "David Hamilton",
-      "team": "MIL",
-      "pos": "3B",
       "stat": "rbi",
       "market_line": 0.7,
       "tc_projection": 0.2,
@@ -509,32 +483,6 @@
       "tc_projection": 0.3,
       "edge": -0.4,
       "direction": "UNDER",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Christian Yelich",
-      "team": "MIL",
-      "pos": "DH",
-      "stat": "hits",
-      "market_line": 0.7,
-      "tc_projection": 1.1,
-      "edge": 0.4,
-      "direction": "OVER",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Christian Yelich",
-      "team": "MIL",
-      "pos": "DH",
-      "stat": "runs",
-      "market_line": 0.7,
-      "tc_projection": 1.1,
-      "edge": 0.4,
-      "direction": "OVER",
       "signal": "PASS",
       "status": "ACTIVE",
       "source": "sdio_lines"
@@ -696,19 +644,6 @@
       "source": "sdio_lines"
     },
     {
-      "player": "Christian Yelich",
-      "team": "MIL",
-      "pos": "DH",
-      "stat": "rbi",
-      "market_line": 0.7,
-      "tc_projection": 0.5,
-      "edge": -0.2,
-      "direction": "UNDER",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
       "player": "Pete Crow-Armstrong",
       "team": "CHC",
       "pos": "CF",
@@ -821,19 +756,6 @@
       "tc_projection": 0.6,
       "edge": -0.1,
       "direction": "UNDER",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Andrew Vaughn",
-      "team": "MIL",
-      "pos": "1B",
-      "stat": "hits",
-      "market_line": 0.7,
-      "tc_projection": 0.8,
-      "edge": 0.1,
-      "direction": "OVER",
       "signal": "PASS",
       "status": "ACTIVE",
       "source": "sdio_lines"
@@ -975,19 +897,6 @@
       "stat": "hits",
       "market_line": 0.7,
       "tc_projection": 0.7,
-      "edge": 0,
-      "direction": "UNDER",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Christian Yelich",
-      "team": "MIL",
-      "pos": "DH",
-      "stat": "strikeouts",
-      "market_line": 2,
-      "tc_projection": 0,
       "edge": 0,
       "direction": "UNDER",
       "signal": "PASS",
@@ -1105,45 +1014,6 @@
       "stat": "strikeouts",
       "market_line": 0.7,
       "tc_projection": 0,
-      "edge": 0,
-      "direction": "UNDER",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "David Hamilton",
-      "team": "MIL",
-      "pos": "3B",
-      "stat": "strikeouts",
-      "market_line": 2,
-      "tc_projection": 0,
-      "edge": 0,
-      "direction": "UNDER",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "David Hamilton",
-      "team": "MIL",
-      "pos": "3B",
-      "stat": "hits",
-      "market_line": 0.7,
-      "tc_projection": 0.7,
-      "edge": 0,
-      "direction": "UNDER",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "David Hamilton",
-      "team": "MIL",
-      "pos": "3B",
-      "stat": "runs",
-      "market_line": 0.7,
-      "tc_projection": 0.7,
       "edge": 0,
       "direction": "UNDER",
       "signal": "PASS",
@@ -4939,12 +4809,12 @@
           "tc_r": 0.1,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 0.7,
+          "line_h": 2,
           "line_hr": 0,
           "line_rbi": 0.7,
           "line_r": 0.7,
           "line_sb": 0,
-          "edge_h": 0.1,
+          "edge_h": -1.2,
           "edge_hr": 0,
           "edge_rbi": -0.4,
           "edge_r": -0.6,
@@ -4990,13 +4860,13 @@
           },
           "lines_raw": {
             "strikeouts": 0.7,
-            "hits": 0.7,
+            "hits": 2,
             "rbi": 0.7,
             "total_bases": 2,
             "runs": 0.7
           },
           "edges_raw": {
-            "hits": 0.1,
+            "hits": -1.2,
             "rbi": -0.4,
             "total_bases": -0.6,
             "runs": -0.6
@@ -5156,14 +5026,14 @@
           "tc_r": 0.7,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 0.7,
+          "line_h": 0,
           "line_hr": 0,
-          "line_rbi": 0.7,
-          "line_r": 0.7,
+          "line_rbi": 0,
+          "line_r": 0,
           "line_sb": 0,
           "edge_h": 0,
           "edge_hr": 0,
-          "edge_rbi": -0.5,
+          "edge_rbi": 0,
           "edge_r": 0,
           "edge_sb": 0,
           "edge_avg": 0,
@@ -5205,19 +5075,8 @@
             "earned_runs": 0.5,
             "outs": 0
           },
-          "lines_raw": {
-            "strikeouts": 2,
-            "hits": 0.7,
-            "rbi": 0.7,
-            "total_bases": 2,
-            "runs": 0.7
-          },
-          "edges_raw": {
-            "hits": 0,
-            "rbi": -0.5,
-            "total_bases": -1.2,
-            "runs": 0
-          }
+          "lines_raw": {},
+          "edges_raw": {}
         },
         {
           "name": "Gary Sanchez",
@@ -5512,15 +5371,15 @@
           "tc_r": 1.1,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 0.7,
+          "line_h": 0,
           "line_hr": 0,
-          "line_rbi": 0.7,
-          "line_r": 0.7,
+          "line_rbi": 0,
+          "line_r": 0,
           "line_sb": 0,
-          "edge_h": 0.4,
+          "edge_h": 0,
           "edge_hr": 0,
-          "edge_rbi": -0.2,
-          "edge_r": 0.4,
+          "edge_rbi": 0,
+          "edge_r": 0,
           "edge_sb": 0,
           "edge_avg": 0,
           "batting": {
@@ -5561,19 +5420,8 @@
             "earned_runs": 0.5,
             "outs": 0
           },
-          "lines_raw": {
-            "strikeouts": 2,
-            "hits": 0.7,
-            "rbi": 0.7,
-            "total_bases": 2,
-            "runs": 0.7
-          },
-          "edges_raw": {
-            "hits": 0.4,
-            "rbi": -0.2,
-            "total_bases": -0.5,
-            "runs": 0.4
-          }
+          "lines_raw": {},
+          "edges_raw": {}
         },
         {
           "name": "Jackson Chourio",
@@ -6803,12 +6651,12 @@
           "tc_r": 0.1,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 0.7,
+          "line_h": 2,
           "line_hr": 0,
           "line_rbi": 0.7,
           "line_r": 0.7,
           "line_sb": 0,
-          "edge_h": 0.1,
+          "edge_h": -1.2,
           "edge_hr": 0,
           "edge_rbi": -0.4,
           "edge_r": -0.6,
@@ -6854,13 +6702,13 @@
           },
           "lines_raw": {
             "strikeouts": 0.7,
-            "hits": 0.7,
+            "hits": 2,
             "rbi": 0.7,
             "total_bases": 2,
             "runs": 0.7
           },
           "edges_raw": {
-            "hits": 0.1,
+            "hits": -1.2,
             "rbi": -0.4,
             "total_bases": -0.6,
             "runs": -0.6
@@ -7020,14 +6868,14 @@
           "tc_r": 0.7,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 0.7,
+          "line_h": 0,
           "line_hr": 0,
-          "line_rbi": 0.7,
-          "line_r": 0.7,
+          "line_rbi": 0,
+          "line_r": 0,
           "line_sb": 0,
           "edge_h": 0,
           "edge_hr": 0,
-          "edge_rbi": -0.5,
+          "edge_rbi": 0,
           "edge_r": 0,
           "edge_sb": 0,
           "edge_avg": 0,
@@ -7069,19 +6917,8 @@
             "earned_runs": 0.5,
             "outs": 0
           },
-          "lines_raw": {
-            "strikeouts": 2,
-            "hits": 0.7,
-            "rbi": 0.7,
-            "total_bases": 2,
-            "runs": 0.7
-          },
-          "edges_raw": {
-            "hits": 0,
-            "rbi": -0.5,
-            "total_bases": -1.2,
-            "runs": 0
-          }
+          "lines_raw": {},
+          "edges_raw": {}
         },
         {
           "name": "Gary Sanchez",
@@ -7380,15 +7217,15 @@
           "tc_r": 1.1,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 0.7,
+          "line_h": 0,
           "line_hr": 0,
-          "line_rbi": 0.7,
-          "line_r": 0.7,
+          "line_rbi": 0,
+          "line_r": 0,
           "line_sb": 0,
-          "edge_h": 0.4,
+          "edge_h": 0,
           "edge_hr": 0,
-          "edge_rbi": -0.2,
-          "edge_r": 0.4,
+          "edge_rbi": 0,
+          "edge_r": 0,
           "edge_sb": 0,
           "edge_avg": 0,
           "batting": {
@@ -7429,19 +7266,8 @@
             "earned_runs": 0.5,
             "outs": 0
           },
-          "lines_raw": {
-            "strikeouts": 2,
-            "hits": 0.7,
-            "rbi": 0.7,
-            "total_bases": 2,
-            "runs": 0.7
-          },
-          "edges_raw": {
-            "hits": 0.4,
-            "rbi": -0.2,
-            "total_bases": -0.5,
-            "runs": 0.4
-          }
+          "lines_raw": {},
+          "edges_raw": {}
         },
         {
           "name": "Jackson Chourio",

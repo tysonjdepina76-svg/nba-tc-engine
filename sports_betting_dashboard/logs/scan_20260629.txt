@@ -1,0 +1,35 @@
+==============================================
+  TC Pipeline Health Scan — v2.1
+  Date: 2026-06-29 00:36:20 UTC
+  Earliest game: 16.4h from now
+==============================================
+✓ PIPELINE_RUN: last=2026-06-27T21:05:49.798932-05:00
+✗ PICKS_TODAY: no picks.json for 2026-06-28
+✗ PROJ_FILES: none
+✗ COMBOS: no combo files for 2026-06-28
+✓ WNBA_TC_ENGINE: 4 WNBA projections
+✗ COMBO_FRESH: 0 games — stale or no data
+ℹ MLB_FIELDS: no picks.csv for 2026-06-28
+✓ STREAMLIT: :8510 alive
+✗ CONSENSUS: not generated
+✗ ODDS_CACHE: no files from today (earliest game in 16.4h)
+✓ BOXSCORES: last=401859966:halftime
+✓ BACKTEST: combined_backtest.csv (1 lines)
+ℹ LOG_DIRS: 22 daily directories
+ℹ DISK: 1% used
+✓ API_LIMITS: 2088/6667 (31%) — 4579 remaining [business]
+✓ EVENTS baseball_mlb: 29
+✓ EVENTS basketball_wnba: 7
+✓ EVENTS soccer_fifa_world_cup: 15
+⚠ SYMLINKS: today_picks.csv → /home/workspace/Daily_Log/2026-06-27/picks.csv (not today: 2026-06-28)
+⚠ EMPTY_DIRS: 2 empty dirs to purge
+---
+✓ ROUTE /api/tc: 200
+✓ ROUTE /api/slate: 200
+✓ ROUTE /api/scan: 200
+✓ ROUTE /api/backtest: 200
+✓ ROUTE /api/daily-log: 200
+✓ ROUTE /api/combos: 200
+✓ ROUTE /api/dk-lines: 200
+✓ ROUTE /api/combo-prob: 200
+==============================================

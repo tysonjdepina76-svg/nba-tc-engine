@@ -96,6 +96,15 @@ print(' '.join(sorted(sports)) if sports else 'none')
     echo "✓ COMBOS: ${COMBO_COUNT} files, sports=[${COMBO_SPORTS}]"
 }
 
+check_wnba_tc_engine() {
+    # ── FIX: Verify WNBA TC engine produces real projections ──
+    local result
+    result=$(curl -s --max-time 8 "http://localhost:3099/api/tc?sport=WNBA" 2>/dev/null)
+    local total
+    total=$(python3 -c "import json,sys; d=json.loads(sys.stdin.read()); print(d.get('total',0))" <<< "$result" 2>/dev/null || echo "0")
+    [ "$total" -gt 0 ] && echo "✓ WNBA_TC_ENGINE: ${total} WNBA projections" || echo "✗ WNBA_TC_ENGINE: 0 WNBA projections — stale or no data"
+}
+
 check_combo_freshness() {
     # ── FIX: Verify combo-prob API returns TODAY's data (not stale 06-25) ──
     local result
@@ -305,7 +314,7 @@ if [ "$MODE" = "--fix" ]; then
     [ -d "${LOG_DIR}/_dupes" ] && [ -z "$(ls -A "${LOG_DIR}/_dupes" 2>/dev/null)" ] && rmdir "${LOG_DIR}/_dupes" 2>/dev/null || true
 
     # Fix: stale today_picks.csv symlink
-    local picks_link="${DASH_DIR}/data/picks/today_picks.csv"
+    picks_link="${DASH_DIR}/data/picks/today_picks.csv"
     if [ -L "$picks_link" ]; then
         rm -f "$picks_link"
         ln -sf "${LOG_DIR}/${TODAY}/picks.csv" "$picks_link"
@@ -326,6 +335,7 @@ fi
     check_todays_picks
     check_projs
     check_combos
+    check_wnba_tc_engine
     check_combo_freshness
     check_mlb_fields
     check_streamlit

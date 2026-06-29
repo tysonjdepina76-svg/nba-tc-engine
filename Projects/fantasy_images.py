@@ -55,7 +55,9 @@ def _latest_picks_df() -> pd.DataFrame | None:
     today = datetime.now(ET).strftime("%Y-%m-%d")
     frames: list[pd.DataFrame] = []
 
+    # Primary: today's picks.csv
     daily_csv = LOG_DIR / today / "picks.csv"
+    used_today = False
     if daily_csv.exists():
         try:
             df = pd.read_csv(daily_csv)
@@ -63,8 +65,29 @@ def _latest_picks_df() -> pd.DataFrame | None:
                 if "league" not in df.columns:
                     df["league"] = ""
                 frames.append(df)
+                used_today = True
         except Exception:
             pass
+
+    # Fallback: if today's dir is empty, walk backward up to 7 days.
+    # This matters during off-hours (WNBA off-day, MLB day game already
+    # finished, etc.) so the image generator still produces cards.
+    if not used_today:
+        from datetime import timedelta
+        for delta in range(1, 8):
+            past = (datetime.now(ET) - timedelta(days=delta)).strftime("%Y-%m-%d")
+            past_csv = LOG_DIR / past / "picks.csv"
+            if past_csv.exists():
+                try:
+                    df = pd.read_csv(past_csv)
+                    if len(df):
+                        if "league" not in df.columns:
+                            df["league"] = ""
+                        df["_fallback_date"] = past
+                        frames.append(df)
+                        break
+                except Exception:
+                    continue
 
     wc_dir = LOG_DIR / "worldcup" / datetime.now(ET).strftime("%Y%m%d")
     wc_csv = wc_dir / "picks.csv"

@@ -37,19 +37,41 @@ from src.domain.entities import Projection  # noqa: F401  (export shape)
 REPORTS_DIR = PROJECT_ROOT / "reports" / "daily"
 
 
+def detect_phase(sport: str, date_str: str) -> str:
+    """Auto-detect sport season phase by date.
+
+    NFL preseason runs Aug 1 - Aug 31. Regular season starts early September.
+    Other sports currently only have one phase (REGULAR).
+    """
+    dt = datetime.strptime(date_str, "%Y-%m-%d").date()
+    s = sport.upper()
+    if s == "NFL":
+        if dt.month == 8:
+            return "PRESEASON"
+        return "REGULAR"
+    return "REGULAR"
+
+
+
+
 class DailyPicks:
     """One day's worth of TC projections for one sport."""
 
-    def __init__(self, sport: str, date: str, dry_run: bool = False, output_dir=None):
+    def __init__(self, sport: str, date: str, dry_run: bool = False, output_dir=None, phase: Optional[str] = None):
         self.sport = sport.upper()
         supported = {"NFL", "NBA", "WNBA", "MLB", "SOCCER"}
         if self.sport not in supported:
             raise ValueError(f"Unsupported sport: {self.sport}. Supported: {supported}")
         self.date = date
         self.dry_run = dry_run
-        self.config = get_config(self.sport)
+        # Auto-detect NFL preseason by date unless caller overrides.
+        if phase is None:
+            phase = detect_phase(self.sport, self.date)
+        self.phase = phase.upper()
+        self.config = get_config(self.sport, phase=self.phase)
         self.output_dir = Path(output_dir) if output_dir else REPORTS_DIR
-        self.report_path = self.output_dir / f"{self.sport.lower()}_{self.date}.json"
+        suffix = f"_{self.phase.lower()}" if self.phase != "REGULAR" else ""
+        self.report_path = self.output_dir / f"{self.sport.lower()}_{self.date}{suffix}.json"
         self.report: dict = {
             "sport": self.sport,
             "date": self.date,
@@ -61,10 +83,10 @@ class DailyPicks:
 
     def run(self, adapter: object = None) -> List[dict]:
         """Execute the daily pipeline. Returns list of matchup result dicts."""
-        print(f"\n=== DailyPicks :: {self.sport} :: {self.date} {'(DRY RUN)' if self.dry_run else ''} ===\n")
+        print(f"\n=== DailyPicks :: {self.sport}::{self.phase} :: {self.date} {'(DRY RUN)' if self.dry_run else ''} ===\n")
 
         # Step 1: fetch slate
-        adapter = adapter if adapter is not None else ESPNAdapter(sport=self.sport)
+        adapter = adapter if adapter is not None else ESPNAdapter(sport=self.sport, phase=self.phase)
         print(f"[1/4] Fetching slate for {self.sport}...")
         games = adapter.fetch_today_slate()
         if not games:
@@ -151,9 +173,12 @@ def main():
                         help="YYYY-MM-DD (default: today)")
     parser.add_argument("--dry-run", action="store_true",
                         help="Show what would happen, don't write files")
+    parser.add_argument("--phase", default=None,
+                        choices=["PRESEASON", "REGULAR"],
+                        help="NFL phase override (auto-detected from date if omitted)")
     args = parser.parse_args()
 
-    runner = DailyPicks(sport=args.sport, date=args.date, dry_run=args.dry_run)
+    runner = DailyPicks(sport=args.sport, date=args.date, dry_run=args.dry_run, phase=args.phase)
     results = runner.run()
 
     if not results:

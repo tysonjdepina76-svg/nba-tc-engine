@@ -3,6 +3,7 @@
 Critical change: checks the DATA, not just HTTP status.
 Only reports failure AFTER the validator confirms real problem.
 """
+import httpx
 import logging
 import time
 from datetime import datetime
@@ -32,9 +33,15 @@ class HealthCheck:
             "timestamp": datetime.now().isoformat(),
             "circuits": CircuitBreakerRegistry.get_all_status(),
             "fresh_data": {},
+            "services": self._check_external_services(),
             "issues": [],
             "healthy": True,
         }
+        # Probe live combos service (separate from circuit breakers)
+        combos = report["services"].get("live_combos", {})
+        if combos.get("status") != "ok":
+            report["healthy"] = False
+            report["issues"].append({"type": "service_down", "service": "live_combos", "severity": "high", "details": combos})
         breakers = report["circuits"]
         open_breakers = [name for name, s in breakers.items() if s["state"] == "open"]
         if open_breakers:
@@ -68,6 +75,25 @@ class HealthCheck:
         recent = self.history[-10:]
         healthy = sum(1 for h in recent if h["status"] == "healthy")
         return f"{healthy}/{len(recent)} healthy in last {len(recent)} runs. Last: {self.last_status} at {self.last_run.isoformat() if self.last_run else 'never'}"
+
+    def _check_external_services(self) -> Dict[str, Any]:
+        """Probe external services."""
+        services: Dict[str, Any] = {}
+
+        # Live combos API on :8000
+        try:
+            r = httpx.get("http://localhost:8000/live-combos?sport=WNBA", timeout=3.0)
+            r.raise_for_status()
+            data = r.json()
+            services["live_combos"] = {
+                "status": "ok",
+                "combo_count": data.get("combo_count", 0),
+                "seeded": data.get("seeded", False),
+            }
+        except Exception:
+            services["live_combos"] = {"status": "down"}
+
+        return services
 
 
 _health_instance: Optional[HealthCheck] = None

@@ -70,7 +70,7 @@ class ESPNAdapter:
     # Module-level breaker registry, one breaker per endpoint category
     _breakers = CircuitBreakerRegistry()
 
-    def __init__(self, sport: str, season: int = 2026):
+    def __init__(self, sport: str, season: int = 2026, phase: str | None = None):
         load_secrets()
         sport = sport.upper()
         if sport not in SPORT_SLUGS:
@@ -79,9 +79,53 @@ class ESPNAdapter:
         self.season = season
         self.slug = SPORT_SLUGS[sport]
         self.config = SPORT_CONFIG[sport]
+        # NFL preseason is August; DailyPicks passes phase explicitly. Accept silently.
+        self.phase = phase.upper() if phase else "REGULAR"
         # Per-endpoint breakers (separate budgets for slate vs stats)
         self._slate_breaker = self._breakers.get(f"espn_{sport}_slate", failure_threshold=3, recovery_timeout_sec=60)
         self._stats_breaker = self._breakers.get(f"espn_{sport}_stats", failure_threshold=5, recovery_timeout_sec=30)
+
+    # ─────────────────────────────────────────────────────────────────
+    # Date-scoped slate (alias used by health check / backtests)
+    # ─────────────────────────────────────────────────────────────────
+    def fetch_games(self, date: str) -> List[Game]:
+        """Fetch games for a specific date (YYYY-MM-DD). Used by health checks + backtests."""
+        try:
+            data = self._slate_breaker.call(
+                retry_with_backoff,
+                _fetch,
+                f"{ESPN_SITE}/{self.slug}/scoreboard?dates={date}",
+                8,
+            )
+        except CircuitOpenError as e:
+            print(f"[ESPN:{self.sport}] fetch_games blocked: {e}")
+            return []
+        except Exception as e:
+            print(f"[ESPN:{self.sport}] fetch_games failed: {e}")
+            return []
+
+        if not data or data.get("_error"):
+            return []
+
+        games: List[Game] = []
+        for ev in data.get("events", []):
+            comp = (ev.get("competitions", []) or [{}])[0]
+            teams = comp.get("competitors", [])
+            a = next((t for t in teams if t.get("homeAway") == "away"), {})
+            h = next((t for t in teams if t.get("homeAway") == "home"), {})
+            a_abbr = (a.get("team") or {}).get("abbreviation", "")
+            h_abbr = (h.get("team") or {}).get("abbreviation", "")
+            status_obj = ev.get("status") or {}
+            games.append(Game(
+                sport=self.sport,
+                away=a_abbr,
+                home=h_abbr,
+                event_id=str(ev.get("id", "")),
+                status=(status_obj.get("type") or {}).get("description", ""),
+                completed=(status_obj.get("type") or {}).get("completed", False),
+                game_time=ev.get("date", ""),
+            ))
+        return games
 
     # ─────────────────────────────────────────────────────────────────
     # Slate (today's games)
@@ -207,8 +251,8 @@ class ESPNAdapter:
                 name=name,
                 team=team_abbr,
                 sport=self.sport,
-                role=PlayerRole.BENCH,  # starters detected downstream
-                status=PlayerStatus.ACTIVE,
+                role="BENCH",  # starters detected downstream
+                status="ACTIVE",
                 pos=ath.get("position", {}).get("abbreviation", "") if isinstance(ath.get("position"), dict) else "",
                 min=self.config.get("default_minutes", 25.0),
                 season_stats=stat_avgs,

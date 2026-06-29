@@ -1,12 +1,27 @@
 # Workspace Index — true.zo.computer
 
-## Current Status (2026-06-29 ~6:20 AM ET) — World Cup refreshed ✅
-- **Pipeline**: WNBA 0 upcoming, MLB 0 upcoming (both done for day), WC 3 upcoming (JPN@BRA, PAR@GER, MAR@NED)
-- **WC refresh**: worldcup_picks.py ran successfully — 158 players, 649 props, self-edge (Odds API 401 — Business trial expired/paused)
-- **WC outputs**: `Daily_Log/worldcup/20260629/{matches,props,picks}.json` + 12 TC combos via soccer_combo_engine
-- **Daily picks**: 3 WC games, 649 picks, 12 combos qualified — all `WC PROPS LIVE (self-edge)`
-- **DK lines gap**: No DK/FD player props available (free tier) — picks use self-edge engine
-- **Health**: All checks pass — dashboard :8510 alive, last_run 6:20 AM ET
+## Current Status (2026-06-29 ~4:00 PM ET) — World Cup Lineup Lock ✅
+- **WC Lineups CONFIRMED**: PAR@GER (4:30 PM), MAR@NED (9:00 PM), JPN@BRA completed (1-0)
+- **WC picks**: 441 (230 PAR@GER + 211 MAR@NED), 8 combos — self-edge engine (no DK props on free tier)
+- **WC top edge**: GER players PASSES OVER 35 → proj 39.2, edge +4.2 (all 11 German starters above the line)
+- **WNBA**: LV@NY 7PM — no DK props yet (expected closer to tip), cached from 1:30 PM
+- **MLB**: 13 evening games cached (proj files intact from 1:30 PM), first pitch 4:35 PM (CHW@BAL)
+- **API calls**: 1 SGO this run, ~5 total today — well under budget
+- **Cache**: manifest.json updated, WC TTL=2h, MLB TTL=3h
+- **⚠️ picks.csv overwritten by WC-only run** — MLB/WNBA picks lost from 1:30 PM; proj files intact for 6:30 PM run to rebuild
+- **Health**: 5 secrets loaded, dashboard :8510 alive
+- **Emails sent**: Both tysondepina99 + tysonjdepina76
+- **Next**: 6:30 PM Final Pre-Tip + Combo Lock
+
+## Current Status (2026-06-29 ~1:30 PM ET) — PRIMARY Slate Run ✅
+- **Pipeline**: 17 games (1 WNBA, 13 MLB, 3 WC), 1,717 picks — all slates refreshed
+- **WNBA**: 1 game (LV@NY), 3 picks — PTS OVERS (A'ja Wilson +2.5, Chennedy Carter +2.5, Satou Sabally +2.0), no DK props yet (tips tomorrow 7PM)
+- **MLB**: 13 games (CHW@BAL first pitch 6:35 PM), 1,065 picks — pitcher unders dominate top edges (Tyler Alexander -11.3 K)
+- **WC**: 3 games (JPN@BRA in progress 1-0, PAR@GER 4:30 PM, MAR@NED 9:00 PM), 649 picks self-edge, 667 proj entries
+- **Health**: 5 secrets loaded, dashboard :8510 alive, DK Combos Engine :8515 404 (non-critical), api_registry.json created
+- **WNBA injury**: Minimal — ESPN API no injuries, WNBA.com 404. Manual check recommended before lock.
+- **API calls**: 4 this run (3 SGO slates + 1 Odds API), cache_manifest.json updated
+- **Top edge**: Tyler Alexander (TEX@CLE) strikeouts UNDER 11.5 → proj 0.3, edge -11.3
 
 ## Key Paths
 

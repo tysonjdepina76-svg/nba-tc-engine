@@ -91,6 +91,11 @@ class Projection:
     direction: str
     valid: bool
 
+    # Optional market-line metadata (None when no DK/FD line was available)
+    market_line: Optional[float] = None
+    market_source: Optional[str] = None     # e.g. "SGO" (DK via SGO) | "SEED"
+    market_agreement: Optional[float] = None # 0..1: 1.0 = all sources identical
+
     def to_dict(self) -> Dict:
         return {
             "player": self.player,
@@ -103,4 +108,7 @@ class Projection:
             "edge": self.edge,
             "direction": self.direction,
             "valid": self.valid,
+            "market_line": self.market_line,
+            "market_source": self.market_source,
+            "market_agreement": self.market_agreement,
         }

@@ -3,9 +3,35 @@
   "matchup": "PHI@NYM",
   "home_team": "NYM",
   "away_team": "PHI",
-  "dk_total": 9,
+  "dk_total": 6.5,
   "source": "ESPN + The Odds API + SportsDataIO",
   "valid_props": [
+    {
+      "player": "Tim Mayza",
+      "team": "PHI",
+      "pos": "RP",
+      "stat": "strikeouts",
+      "market_line": 7.2,
+      "tc_projection": 0.3,
+      "edge": -6.9,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Tim Mayza",
+      "team": "PHI",
+      "pos": "RP",
+      "stat": "hits_allowed",
+      "market_line": 7.2,
+      "tc_projection": 1.3,
+      "edge": -5.9,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
     {
       "player": "Christian Scott",
       "team": "NYM",
@@ -14,6 +40,19 @@
       "market_line": 3.3,
       "tc_projection": 1.3,
       "edge": -2,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Edmundo Sosa",
+      "team": "PHI",
+      "pos": "2B",
+      "stat": "total_bases",
+      "market_line": 2,
+      "tc_projection": 0.4,
+      "edge": -1.6,
       "direction": "UNDER",
       "signal": "UNDER",
       "status": "ACTIVE",
@@ -33,38 +72,25 @@
       "source": "sdio_lines"
     },
     {
-      "player": "Christian Scott",
+      "player": "Tim Mayza",
+      "team": "PHI",
+      "pos": "RP",
+      "stat": "earned_runs",
+      "market_line": 2,
+      "tc_projection": 0.5,
+      "edge": -1.5,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Juan Soto",
       "team": "NYM",
-      "pos": "SP",
-      "stat": "hits_allowed",
-      "market_line": 5.9,
-      "tc_projection": 4.5,
-      "edge": -1.4,
-      "direction": "UNDER",
-      "signal": "UNDER",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "J.T. Realmuto",
-      "team": "PHI",
-      "pos": "C",
+      "pos": "LF",
       "stat": "total_bases",
-      "market_line": 2,
-      "tc_projection": 0.7,
-      "edge": -1.3,
-      "direction": "UNDER",
-      "signal": "UNDER",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Alec Bohm",
-      "team": "PHI",
-      "pos": "3B",
-      "stat": "hits",
-      "market_line": 2,
-      "tc_projection": 0.7,
+      "market_line": 3.3,
+      "tc_projection": 2,
       "edge": -1.3,
       "direction": "UNDER",
       "signal": "UNDER",
@@ -163,9 +189,9 @@
       "source": "sdio_lines"
     },
     {
-      "player": "Alec Bohm",
-      "team": "PHI",
-      "pos": "3B",
+      "player": "Mark Vientos",
+      "team": "NYM",
+      "pos": "1B",
       "stat": "total_bases",
       "market_line": 2,
       "tc_projection": 1.1,
@@ -306,19 +332,6 @@
       "source": "sdio_lines"
     },
     {
-      "player": "Alec Bohm",
-      "team": "PHI",
-      "pos": "3B",
-      "stat": "runs",
-      "market_line": 0.7,
-      "tc_projection": 0.1,
-      "edge": -0.6,
-      "direction": "UNDER",
-      "signal": "UNDER",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
       "player": "Juan Soto",
       "team": "NYM",
       "pos": "LF",
@@ -326,45 +339,6 @@
       "market_line": 0.7,
       "tc_projection": 0.1,
       "edge": -0.6,
-      "direction": "UNDER",
-      "signal": "UNDER",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "J.T. Realmuto",
-      "team": "PHI",
-      "pos": "C",
-      "stat": "hits",
-      "market_line": 0.7,
-      "tc_projection": 0.2,
-      "edge": -0.5,
-      "direction": "UNDER",
-      "signal": "UNDER",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "J.T. Realmuto",
-      "team": "PHI",
-      "pos": "C",
-      "stat": "rbi",
-      "market_line": 0.7,
-      "tc_projection": 0.2,
-      "edge": -0.5,
-      "direction": "UNDER",
-      "signal": "UNDER",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "J.T. Realmuto",
-      "team": "PHI",
-      "pos": "C",
-      "stat": "runs",
-      "market_line": 0.7,
-      "tc_projection": 0.2,
-      "edge": -0.5,
       "direction": "UNDER",
       "signal": "UNDER",
       "status": "ACTIVE",
@@ -475,19 +449,6 @@
       "source": "sdio_lines"
     },
     {
-      "player": "Alec Bohm",
-      "team": "PHI",
-      "pos": "3B",
-      "stat": "rbi",
-      "market_line": 0.7,
-      "tc_projection": 0.3,
-      "edge": -0.4,
-      "direction": "UNDER",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
       "player": "Brett Baty",
       "team": "NYM",
       "pos": "3B",
@@ -508,6 +469,32 @@
       "market_line": 0.7,
       "tc_projection": 0.3,
       "edge": -0.4,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Edmundo Sosa",
+      "team": "PHI",
+      "pos": "2B",
+      "stat": "hits",
+      "market_line": 0.7,
+      "tc_projection": 0.4,
+      "edge": -0.3,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Edmundo Sosa",
+      "team": "PHI",
+      "pos": "2B",
+      "stat": "runs",
+      "market_line": 0.7,
+      "tc_projection": 0.4,
+      "edge": -0.3,
       "direction": "UNDER",
       "signal": "PASS",
       "status": "ACTIVE",
@@ -566,6 +553,45 @@
       "source": "sdio_lines"
     },
     {
+      "player": "Mark Vientos",
+      "team": "NYM",
+      "pos": "1B",
+      "stat": "hits",
+      "market_line": 0.7,
+      "tc_projection": 0.5,
+      "edge": -0.2,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Mark Vientos",
+      "team": "NYM",
+      "pos": "1B",
+      "stat": "rbi",
+      "market_line": 0.7,
+      "tc_projection": 0.5,
+      "edge": -0.2,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Mark Vientos",
+      "team": "NYM",
+      "pos": "1B",
+      "stat": "runs",
+      "market_line": 0.7,
+      "tc_projection": 0.5,
+      "edge": -0.2,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
       "player": "Brett Baty",
       "team": "NYM",
       "pos": "3B",
@@ -598,6 +624,32 @@
       "stat": "hits",
       "market_line": 0.7,
       "tc_projection": 0.6,
+      "edge": -0.1,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Edmundo Sosa",
+      "team": "PHI",
+      "pos": "2B",
+      "stat": "rbi",
+      "market_line": 0.7,
+      "tc_projection": 0.8,
+      "edge": 0.1,
+      "direction": "OVER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Christian Scott",
+      "team": "NYM",
+      "pos": "SP",
+      "stat": "hits_allowed",
+      "market_line": 4.6,
+      "tc_projection": 4.5,
       "edge": -0.1,
       "direction": "UNDER",
       "signal": "PASS",
@@ -735,9 +787,9 @@
       "source": "sdio_lines"
     },
     {
-      "player": "Trea Turner",
+      "player": "Edmundo Sosa",
       "team": "PHI",
-      "pos": "SS",
+      "pos": "2B",
       "stat": "strikeouts",
       "market_line": 0.7,
       "tc_projection": 0,
@@ -748,9 +800,9 @@
       "source": "sdio_lines"
     },
     {
-      "player": "J.T. Realmuto",
+      "player": "Trea Turner",
       "team": "PHI",
-      "pos": "C",
+      "pos": "SS",
       "stat": "strikeouts",
       "market_line": 0.7,
       "tc_projection": 0,
@@ -793,19 +845,6 @@
       "stat": "runs",
       "market_line": 0.7,
       "tc_projection": 0.7,
-      "edge": 0,
-      "direction": "UNDER",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Alec Bohm",
-      "team": "PHI",
-      "pos": "3B",
-      "stat": "strikeouts",
-      "market_line": 0.7,
-      "tc_projection": 0,
       "edge": 0,
       "direction": "UNDER",
       "signal": "PASS",
@@ -917,12 +956,12 @@
       "source": "sdio_lines"
     },
     {
-      "player": "Juan Soto",
+      "player": "Bo Bichette",
       "team": "NYM",
-      "pos": "LF",
-      "stat": "total_bases",
-      "market_line": 2,
-      "tc_projection": 2,
+      "pos": "SS",
+      "stat": "strikeouts",
+      "market_line": 0.7,
+      "tc_projection": 0,
       "edge": 0,
       "direction": "UNDER",
       "signal": "PASS",
@@ -930,11 +969,11 @@
       "source": "sdio_lines"
     },
     {
-      "player": "Bo Bichette",
+      "player": "Mark Vientos",
       "team": "NYM",
-      "pos": "SS",
+      "pos": "1B",
       "stat": "strikeouts",
-      "market_line": 0.7,
+      "market_line": 2,
       "tc_projection": 0,
       "edge": 0,
       "direction": "UNDER",
@@ -973,7 +1012,7 @@
       "team": "NYM",
       "pos": "CF",
       "stat": "strikeouts",
-      "market_line": 2,
+      "market_line": 0.7,
       "tc_projection": 0,
       "edge": 0,
       "direction": "UNDER",
@@ -1159,15 +1198,15 @@
           "tc_r": 0.4,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 0,
+          "line_h": 0.7,
           "line_hr": 0,
-          "line_rbi": 0,
-          "line_r": 0,
+          "line_rbi": 0.7,
+          "line_r": 0.7,
           "line_sb": 0,
-          "edge_h": 0,
+          "edge_h": -0.3,
           "edge_hr": 0,
-          "edge_rbi": 0,
-          "edge_r": 0,
+          "edge_rbi": 0.1,
+          "edge_r": -0.3,
           "edge_sb": 0,
           "edge_avg": 0,
           "batting": {
@@ -1208,8 +1247,19 @@
             "earned_runs": 0.5,
             "outs": 0
           },
-          "lines_raw": {},
-          "edges_raw": {}
+          "lines_raw": {
+            "strikeouts": 0.7,
+            "hits": 0.7,
+            "rbi": 0.7,
+            "total_bases": 2,
+            "runs": 0.7
+          },
+          "edges_raw": {
+            "hits": -0.3,
+            "rbi": 0.1,
+            "total_bases": -1.6,
+            "runs": -0.3
+          }
         },
         {
           "name": "Alec Bohm",
@@ -1224,15 +1274,15 @@
           "tc_r": 0.1,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 2,
+          "line_h": 0,
           "line_hr": 0,
-          "line_rbi": 0.7,
-          "line_r": 0.7,
+          "line_rbi": 0,
+          "line_r": 0,
           "line_sb": 0,
-          "edge_h": -1.3,
+          "edge_h": 0,
           "edge_hr": 0,
-          "edge_rbi": -0.4,
-          "edge_r": -0.6,
+          "edge_rbi": 0,
+          "edge_r": 0,
           "edge_sb": 0,
           "edge_avg": 0,
           "batting": {
@@ -1273,19 +1323,8 @@
             "earned_runs": 0.5,
             "outs": 0
           },
-          "lines_raw": {
-            "strikeouts": 0.7,
-            "hits": 2,
-            "rbi": 0.7,
-            "total_bases": 2,
-            "runs": 0.7
-          },
-          "edges_raw": {
-            "hits": -1.3,
-            "rbi": -0.4,
-            "total_bases": -0.9,
-            "runs": -0.6
-          }
+          "lines_raw": {},
+          "edges_raw": {}
         },
         {
           "name": "Garrett Stubbs",
@@ -1365,15 +1404,15 @@
           "tc_r": 0.2,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 0.7,
+          "line_h": 0,
           "line_hr": 0,
-          "line_rbi": 0.7,
-          "line_r": 0.7,
+          "line_rbi": 0,
+          "line_r": 0,
           "line_sb": 0,
-          "edge_h": -0.5,
+          "edge_h": 0,
           "edge_hr": 0,
-          "edge_rbi": -0.5,
-          "edge_r": -0.5,
+          "edge_rbi": 0,
+          "edge_r": 0,
           "edge_sb": 0,
           "edge_avg": 0,
           "batting": {
@@ -1414,19 +1453,8 @@
             "earned_runs": 0.5,
             "outs": 0
           },
-          "lines_raw": {
-            "strikeouts": 0.7,
-            "hits": 0.7,
-            "rbi": 0.7,
-            "total_bases": 2,
-            "runs": 0.7
-          },
-          "edges_raw": {
-            "hits": -0.5,
-            "rbi": -0.5,
-            "total_bases": -1.3,
-            "runs": -0.5
-          }
+          "lines_raw": {},
+          "edges_raw": {}
         },
         {
           "name": "Rafael Marchan",
@@ -2120,8 +2148,16 @@
             "earned_runs": 0.5,
             "outs": 4.3
           },
-          "lines_raw": {},
-          "edges_raw": {}
+          "lines_raw": {
+            "hits_allowed": 7.2,
+            "earned_runs": 2,
+            "strikeouts": 7.2
+          },
+          "edges_raw": {
+            "hits_allowed": -5.9,
+            "earned_runs": -1.5,
+            "strikeouts": -6.9
+          }
         },
         {
           "name": "Jose Alvarado",
@@ -2942,15 +2978,15 @@
           "tc_r": 0.4,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 0,
+          "line_h": 0.7,
           "line_hr": 0,
-          "line_rbi": 0,
-          "line_r": 0,
+          "line_rbi": 0.7,
+          "line_r": 0.7,
           "line_sb": 0,
-          "edge_h": 0,
+          "edge_h": -0.3,
           "edge_hr": 0,
-          "edge_rbi": 0,
-          "edge_r": 0,
+          "edge_rbi": 0.1,
+          "edge_r": -0.3,
           "edge_sb": 0,
           "edge_avg": 0,
           "batting": {
@@ -2991,8 +3027,19 @@
             "earned_runs": 0.5,
             "outs": 0
           },
-          "lines_raw": {},
-          "edges_raw": {}
+          "lines_raw": {
+            "strikeouts": 0.7,
+            "hits": 0.7,
+            "rbi": 0.7,
+            "total_bases": 2,
+            "runs": 0.7
+          },
+          "edges_raw": {
+            "hits": -0.3,
+            "rbi": 0.1,
+            "total_bases": -1.6,
+            "runs": -0.3
+          }
         },
         {
           "name": "Alec Bohm",
@@ -3007,15 +3054,15 @@
           "tc_r": 0.1,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 2,
+          "line_h": 0,
           "line_hr": 0,
-          "line_rbi": 0.7,
-          "line_r": 0.7,
+          "line_rbi": 0,
+          "line_r": 0,
           "line_sb": 0,
-          "edge_h": -1.3,
+          "edge_h": 0,
           "edge_hr": 0,
-          "edge_rbi": -0.4,
-          "edge_r": -0.6,
+          "edge_rbi": 0,
+          "edge_r": 0,
           "edge_sb": 0,
           "edge_avg": 0,
           "batting": {
@@ -3056,19 +3103,8 @@
             "earned_runs": 0.5,
             "outs": 0
           },
-          "lines_raw": {
-            "strikeouts": 0.7,
-            "hits": 2,
-            "rbi": 0.7,
-            "total_bases": 2,
-            "runs": 0.7
-          },
-          "edges_raw": {
-            "hits": -1.3,
-            "rbi": -0.4,
-            "total_bases": -0.9,
-            "runs": -0.6
-          }
+          "lines_raw": {},
+          "edges_raw": {}
         },
         {
           "name": "Garrett Stubbs",
@@ -3148,15 +3184,15 @@
           "tc_r": 0.2,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 0.7,
+          "line_h": 0,
           "line_hr": 0,
-          "line_rbi": 0.7,
-          "line_r": 0.7,
+          "line_rbi": 0,
+          "line_r": 0,
           "line_sb": 0,
-          "edge_h": -0.5,
+          "edge_h": 0,
           "edge_hr": 0,
-          "edge_rbi": -0.5,
-          "edge_r": -0.5,
+          "edge_rbi": 0,
+          "edge_r": 0,
           "edge_sb": 0,
           "edge_avg": 0,
           "batting": {
@@ -3197,19 +3233,8 @@
             "earned_runs": 0.5,
             "outs": 0
           },
-          "lines_raw": {
-            "strikeouts": 0.7,
-            "hits": 0.7,
-            "rbi": 0.7,
-            "total_bases": 2,
-            "runs": 0.7
-          },
-          "edges_raw": {
-            "hits": -0.5,
-            "rbi": -0.5,
-            "total_bases": -1.3,
-            "runs": -0.5
-          }
+          "lines_raw": {},
+          "edges_raw": {}
         },
         {
           "name": "Rafael Marchan",
@@ -3907,8 +3932,16 @@
             "earned_runs": 0.5,
             "outs": 4.3
           },
-          "lines_raw": {},
-          "edges_raw": {}
+          "lines_raw": {
+            "hits_allowed": 7.2,
+            "earned_runs": 2,
+            "strikeouts": 7.2
+          },
+          "edges_raw": {
+            "hits_allowed": -5.9,
+            "earned_runs": -1.5,
+            "strikeouts": -6.9
+          }
         },
         {
           "name": "Jose Alvarado",
@@ -4720,15 +4753,15 @@
           "tc_r": 0.5,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 0,
+          "line_h": 0.7,
           "line_hr": 0,
-          "line_rbi": 0,
-          "line_r": 0,
+          "line_rbi": 0.7,
+          "line_r": 0.7,
           "line_sb": 0,
-          "edge_h": 0,
+          "edge_h": -0.2,
           "edge_hr": 0,
-          "edge_rbi": 0,
-          "edge_r": 0,
+          "edge_rbi": -0.2,
+          "edge_r": -0.2,
           "edge_sb": 0,
           "edge_avg": 0,
           "batting": {
@@ -4769,8 +4802,19 @@
             "earned_runs": 0.5,
             "outs": 0
           },
-          "lines_raw": {},
-          "edges_raw": {}
+          "lines_raw": {
+            "strikeouts": 2,
+            "hits": 0.7,
+            "rbi": 0.7,
+            "total_bases": 2,
+            "runs": 0.7
+          },
+          "edges_raw": {
+            "hits": -0.2,
+            "rbi": -0.2,
+            "total_bases": -0.9,
+            "runs": -0.2
+          }
         },
         {
           "name": "Marcus Semien",
@@ -5106,7 +5150,7 @@
             "outs": 0
           },
           "lines_raw": {
-            "strikeouts": 2,
+            "strikeouts": 0.7,
             "hits": 0.7,
             "rbi": 0.7,
             "total_bases": 2,
@@ -5251,14 +5295,14 @@
             "hits": 2,
             "hr": 0.7,
             "rbi": 0.7,
-            "total_bases": 2,
+            "total_bases": 3.3,
             "runs": 0.7
           },
           "edges_raw": {
             "hits": -1.2,
             "hr": -0.6,
             "rbi": 0,
-            "total_bases": 0,
+            "total_bases": -1.3,
             "runs": -0.1
           }
         },
@@ -6257,12 +6301,12 @@
             "outs": 11.5
           },
           "lines_raw": {
-            "hits_allowed": 5.9,
+            "hits_allowed": 4.6,
             "earned_runs": 3.3,
             "strikeouts": 5.9
           },
           "edges_raw": {
-            "hits_allowed": -1.4,
+            "hits_allowed": -0.1,
             "earned_runs": -2,
             "strikeouts": 0
           }
@@ -6620,15 +6664,15 @@
           "tc_r": 0.5,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 0,
+          "line_h": 0.7,
           "line_hr": 0,
-          "line_rbi": 0,
-          "line_r": 0,
+          "line_rbi": 0.7,
+          "line_r": 0.7,
           "line_sb": 0,
-          "edge_h": 0,
+          "edge_h": -0.2,
           "edge_hr": 0,
-          "edge_rbi": 0,
-          "edge_r": 0,
+          "edge_rbi": -0.2,
+          "edge_r": -0.2,
           "edge_sb": 0,
           "edge_avg": 0,
           "batting": {
@@ -6669,8 +6713,19 @@
             "earned_runs": 0.5,
             "outs": 0
           },
-          "lines_raw": {},
-          "edges_raw": {}
+          "lines_raw": {
+            "strikeouts": 2,
+            "hits": 0.7,
+            "rbi": 0.7,
+            "total_bases": 2,
+            "runs": 0.7
+          },
+          "edges_raw": {
+            "hits": -0.2,
+            "rbi": -0.2,
+            "total_bases": -0.9,
+            "runs": -0.2
+          }
         },
         {
           "name": "Marcus Semien",
@@ -7006,7 +7061,7 @@
             "outs": 0
           },
           "lines_raw": {
-            "strikeouts": 2,
+            "strikeouts": 0.7,
             "hits": 0.7,
             "rbi": 0.7,
             "total_bases": 2,
@@ -7155,14 +7210,14 @@
             "hits": 2,
             "hr": 0.7,
             "rbi": 0.7,
-            "total_bases": 2,
+            "total_bases": 3.3,
             "runs": 0.7
           },
           "edges_raw": {
             "hits": -1.2,
             "hr": -0.6,
             "rbi": 0,
-            "total_bases": 0,
+            "total_bases": -1.3,
             "runs": -0.1
           }
         },
@@ -8161,12 +8216,12 @@
             "outs": 11.5
           },
           "lines_raw": {
-            "hits_allowed": 5.9,
+            "hits_allowed": 4.6,
             "earned_runs": 3.3,
             "strikeouts": 5.9
           },
           "edges_raw": {
-            "hits_allowed": -1.4,
+            "hits_allowed": -0.1,
             "earned_runs": -2,
             "strikeouts": 0
           }
@@ -8375,7 +8430,7 @@
   "edge": null,
   "signal": null,
   "odds": {
-    "total": 9,
+    "total": 6.5,
     "ml_source": "DraftKings via SportsDataIO"
   },
   "team_to_win": "NYM",

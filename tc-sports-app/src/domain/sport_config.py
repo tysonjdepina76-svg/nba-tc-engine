@@ -69,6 +69,42 @@ NFL_STAT_MAP: Dict[str, str] = {
 
 NFL_POSITIONS = ["QB", "RB", "WR", "TE", "K", "DEF"]
 
+# NFL_PRESEASON — same stat universe as regular NFL but with stricter thresholds.
+# Preseason games: starters play 1-2 series, backups dominate snaps,
+# many position battles → high variance. Stat keys identical for parity,
+# but thresholds raise line_factor floor and edge_threshold.
+NFL_PRESEASON_STAT_KEYS = [
+    "PASS_YDS", "PASS_TD", "PASS_INT",
+    "RUSH_YDS", "RUSH_TD", "RUSH_ATT",
+    "REC", "REC_YDS", "REC_TD", "REC_TGT",
+    "FUM",
+]
+NFL_PRESEASON_STAT_MAP = {
+    "PASS_YDS":  "passingYards",
+    "PASS_TD":   "passingTouchdowns",
+    "PASS_INT":  "passingInterceptions",
+    "RUSH_YDS":  "rushingYards",
+    "RUSH_TD":   "rushingTouchdowns",
+    "RUSH_ATT":  "rushingAttempts",
+    "REC":       "receptions",
+    "REC_YDS":   "receivingYards",
+    "REC_TD":    "receivingTouchdowns",
+    "REC_TGT":   "receivingTargets",
+    "FUM":       "fumblesLost",
+}
+NFL_PRESEASON_POSITIONS = ["QB", "RB", "WR", "TE"]
+NFL_PRESEASON_THRESHOLDS = {
+    "line_factor":       0.85,    # lower confidence in snap projections
+    "edge_threshold":    4.5,     # higher floor — variance is huge
+    "min_sample_games":  1,       # preseason is short, accept tiny samples
+    "qb_min_minutes":    12.0,    # starters play 1-2 drives only
+    "skill_min_minutes": 8.0,     # backup WRs/TE need fewer snaps to qualify
+    "out_factor":        0.0,
+    "q_factor":          0.45,    # lower quality factor for preseason reps
+    "max_snaps":         35,      # projection cap — preseason doesn't drive real lines
+}
+
+
 # Position → list of stats relevant for that position
 NFL_POSITION_STATS: Dict[str, List[str]] = {
     "QB":   ["PASS_YDS", "PASS_TD", "PASS_INT", "RUSH_YDS", "RUSH_TD"],
@@ -318,11 +354,28 @@ SPORT_CONFIG: Dict[str, Dict] = {
 }
 
 
-def get_config(sport: str) -> Dict:
-    """Return tuning for a sport. Defaults to WNBA if unknown."""
+def get_config(sport: str, phase: str = "REGULAR") -> Dict:
+    """Return tuning for a sport. Defaults to WNBA if unknown.
+
+    phase: "REGULAR" (default) or "PRESEASON" — used by NFL to pick between
+    NFL_THRESHOLDS (full season) and NFL_PRESEASON_THRESHOLDS (preseason).
+    Other sports ignore phase.
+    """
     s = sport.upper()
+    if s == "NFL" and phase.upper() == "PRESEASON":
+        return {
+            "stat_keys":      NFL_PRESEASON_STAT_KEYS,
+            "stat_map":       NFL_PRESEASON_STAT_MAP,
+            "positions":      NFL_PRESEASON_POSITIONS,
+            "thresholds":     NFL_PRESEASON_THRESHOLDS,
+            "line_factor":    NFL_PRESEASON_THRESHOLDS["line_factor"],
+            "edge_threshold": NFL_PRESEASON_THRESHOLDS["edge_threshold"],
+            "phase":          "PRESEASON",
+        }
     if s in SPORT_CONFIG:
-        return SPORT_CONFIG[s]
+        cfg = dict(SPORT_CONFIG[s])
+        cfg["phase"] = phase.upper()
+        return cfg
     return SPORT_CONFIG["WNBA"]
 
 

@@ -1,0 +1,44 @@
+{
+  "timestamp": "2026-06-29T14:10:27.900023",
+  "status": "critical",
+  "checks": {
+    "espn": {
+      "status": "healthy",
+      "games_found": 0
+    },
+    "odds_api": {
+      "status": "critical",
+      "message": "401 Unauthorized \u2014 key expired or invalid"
+    },
+    "draftkings": {
+      "status": "healthy",
+      "message": "Not yet wired"
+    },
+    "data_freshness": {
+      "status": "healthy",
+      "hours_ago": 2.8
+    },
+    "projections": {
+      "status": "warning",
+      "message": "No projections found"
+    },
+    "disk_space": {
+      "status": "healthy",
+      "percent": "0.0%"
+    },
+    "dashboard": {
+      "status": "healthy",
+      "code": 200
+    },
+    "circuit_breakers": {
+      "status": "healthy",
+      "open": []
+    }
+  },
+  "critical_failures": [
+    "odds_api: 401 Unauthorized \u2014 key expired or invalid"
+  ],
+  "warnings": [
+    "projections: No projections found"
+  ]
+}

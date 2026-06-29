@@ -1,0 +1,7247 @@
+{
+  "mode": "live",
+  "sport": "WORLD CUP",
+  "matchup": "AUT@ALG",
+  "away_team": "AUT",
+  "home_team": "ALG",
+  "signal": "WC PROPS LIVE (self-edge)",
+  "valid_props": [
+    {
+      "player": "Kim Min-Jae",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Lee Gi-Hyuk",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Lee Gi-Hyuk",
+      "stat": "CARDS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Lee Han-Beom",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Lee Han-Beom",
+      "stat": "FOULS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Hwang In-Beom",
+      "stat": "GOALS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Hwang In-Beom",
+      "stat": "ASSISTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Hwang In-Beom",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Hwang In-Beom",
+      "stat": "SHOTS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Lee Tae-Seok",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Seol Young-Woo",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Son Heung-Min",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Son Heung-Min",
+      "stat": "SHOTS",
+      "market_line": 7,
+      "tc_projection": 7.8,
+      "edge": 0.8,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Lee Jae-Sung",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Lee Jae-Sung",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Lee Jae-Sung",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Lee Kang-In",
+      "stat": "ASSISTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Lee Kang-In",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Lee Kang-In",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Kim Jin-Gyu",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Oh Hyeon-Gyu",
+      "stat": "GOALS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Oh Hyeon-Gyu",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Oh Hyeon-Gyu",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Robin Hran\u00e1c",
+      "stat": "FOULS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ladislav Krejc\u00ed",
+      "stat": "GOALS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ladislav Krejc\u00ed",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ladislav Krejc\u00ed",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ladislav Krejc\u00ed",
+      "stat": "FOULS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Step\u00e1n Chaloupek",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Tom\u00e1s Soucek",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Tom\u00e1s Soucek",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Vladim\u00edr Coufal",
+      "stat": "ASSISTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Vladim\u00edr Coufal",
+      "stat": "FOULS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Pavel Sulc",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Pavel Sulc",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Luk\u00e1s Provod",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Adam Hlozek",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Adam Hlozek",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Tom\u00e1s Chor\u00fd",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Mojm\u00edr Chytil",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Michal Sad\u00edlek",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Michal Sad\u00edlek",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "C\u00e9sar Montes",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "C\u00e9sar Montes",
+      "stat": "CARDS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "\u00c9rik Lira",
+      "stat": "ASSISTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Jes\u00fas Gallardo",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Jes\u00fas Gallardo",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Israel Reyes",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Brian Guti\u00e9rrez",
+      "stat": "SHOTS",
+      "market_line": 5,
+      "tc_projection": 5.6,
+      "edge": 0.6,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Brian Guti\u00e9rrez",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Brian Guti\u00e9rrez",
+      "stat": "CARDS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Juli\u00e1n Qui\u00f1ones",
+      "stat": "GOALS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Juli\u00e1n Qui\u00f1ones",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Juli\u00e1n Qui\u00f1ones",
+      "stat": "SHOTS",
+      "market_line": 6,
+      "tc_projection": 6.7,
+      "edge": 0.7,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Juli\u00e1n Qui\u00f1ones",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Roberto Alvarado",
+      "stat": "ASSISTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Roberto Alvarado",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ra\u00fal Jim\u00e9nez",
+      "stat": "GOALS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ra\u00fal Jim\u00e9nez",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ra\u00fal Jim\u00e9nez",
+      "stat": "SHOTS",
+      "market_line": 5,
+      "tc_projection": 5.6,
+      "edge": 0.6,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ra\u00fal Jim\u00e9nez",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Luis Ch\u00e1vez",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Armando Gonz\u00e1lez",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Gilberto Mora",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Mbekezeli Mbokazi",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Mbekezeli Mbokazi",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Mbekezeli Mbokazi",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Nkosinathi Sibisi",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Nkosinathi Sibisi",
+      "stat": "CARDS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Aubrey Modiba",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Aubrey Modiba",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Aubrey Modiba",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Khuliso Mudau",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Sphephelo Sithole",
+      "stat": "FOULS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Sphephelo Sithole",
+      "stat": "CARDS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Teboho Mokoena",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Teboho Mokoena",
+      "stat": "CARDS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Lyle Foster",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Themba Zwane",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Themba Zwane",
+      "stat": "CARDS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Derek Cornelius",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Luc de Fougerolles",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Luc de Fougerolles",
+      "stat": "CARDS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Richie Laryea",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Richie Laryea",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Alistair Johnston",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Alistair Johnston",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Alistair Johnston",
+      "stat": "CARDS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Stephen Eust\u00e1quio",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Stephen Eust\u00e1quio",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Isma\u00ebl Kon\u00e9",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Isma\u00ebl Kon\u00e9",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Liam Millar",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Tani Oluwaseyi",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Tani Oluwaseyi",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Jonathan David",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Jonathan David",
+      "stat": "SHOTS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Cyle Larin",
+      "stat": "GOALS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Cyle Larin",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Cyle Larin",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Promise David",
+      "stat": "ASSISTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Promise David",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Promise David",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Tarik Muharemovic",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Tarik Muharemovic",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Nikola Katic",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Nikola Katic",
+      "stat": "CARDS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Sead Kolasinac",
+      "stat": "ASSISTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Sead Kolasinac",
+      "stat": "FOULS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Amar Dedic",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ivan Basic",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Benjamin Tahirovic",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Amar Memic",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Amar Memic",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Esmir Bajraktarevic",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Jovo Lukic",
+      "stat": "GOALS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Jovo Lukic",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Jovo Lukic",
+      "stat": "SHOTS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Jovo Lukic",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Jovo Lukic",
+      "stat": "CARDS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ermedin Demirovic",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ermedin Demirovic",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ermedin Demirovic",
+      "stat": "FOULS",
+      "market_line": 5,
+      "tc_projection": 5.6,
+      "edge": 0.6,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ermedin Demirovic",
+      "stat": "CARDS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Samed Bazdar",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Dzenis Burnic",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Kerim Alajbegovic",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ivan Sunjic",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Chris Richards",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Chris Richards",
+      "stat": "FOULS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Antonee Robinson",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Alex Freeman",
+      "stat": "ASSISTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Alex Freeman",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Malik Tillman",
+      "stat": "ASSISTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Malik Tillman",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Malik Tillman",
+      "stat": "SHOTS",
+      "market_line": 6,
+      "tc_projection": 6.7,
+      "edge": 0.7,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Malik Tillman",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Tyler Adams",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Tyler Adams",
+      "stat": "CARDS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Folarin Balogun",
+      "stat": "GOALS",
+      "market_line": 2.5,
+      "tc_projection": 2.8,
+      "edge": 0.3,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Folarin Balogun",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Folarin Balogun",
+      "stat": "SHOTS",
+      "market_line": 6,
+      "tc_projection": 6.7,
+      "edge": 0.7,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Christian Pulisic",
+      "stat": "ASSISTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Christian Pulisic",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Sebastian Berhalter",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ricardo Pepi",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ricardo Pepi",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Giovanni Reyna",
+      "stat": "GOALS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Giovanni Reyna",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Giovanni Reyna",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Giovanni Reyna",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Timothy Weah",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Timothy Weah",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Omar Alderete",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Gustavo G\u00f3mez",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "J\u00fanior Alonso",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "J\u00fanior Alonso",
+      "stat": "CARDS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Juan Jose C\u00e1ceres",
+      "stat": "FOULS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Juan Jose C\u00e1ceres",
+      "stat": "CARDS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Andr\u00e9s Cubas",
+      "stat": "FOULS",
+      "market_line": 6,
+      "tc_projection": 6.7,
+      "edge": 0.7,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Miguel Almir\u00f3n",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Miguel Almir\u00f3n",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Miguel Almir\u00f3n",
+      "stat": "CARDS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Diego G\u00f3mez",
+      "stat": "SHOTS",
+      "market_line": 5,
+      "tc_projection": 5.6,
+      "edge": 0.6,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Diego G\u00f3mez",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Diego G\u00f3mez",
+      "stat": "CARDS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Julio Enciso",
+      "stat": "ASSISTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Julio Enciso",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Antonio Sanabria",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Alex Arce",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Alex Arce",
+      "stat": "CARDS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Alejandro Romero Gamarra",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Maur\u00edcio",
+      "stat": "GOALS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Maur\u00edcio",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Maur\u00edcio",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ricardo Ad\u00e9",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ricardo Ad\u00e9",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Martin Exp\u00e9rience",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Martin Exp\u00e9rience",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Carlens Arcus",
+      "stat": "FOULS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Jean-Ricner Bellegarde",
+      "stat": "SHOTS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Jean-Ricner Bellegarde",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Jean-Ricner Bellegarde",
+      "stat": "CARDS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Danley Jean Jacques",
+      "stat": "FOULS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ruben Providence",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ruben Providence",
+      "stat": "SHOTS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ruben Providence",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Louicius Deedson",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Louicius Deedson",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Wilson Isidor",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Wilson Isidor",
+      "stat": "FOULS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Frantzdy Pierrot",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Frantzdy Pierrot",
+      "stat": "SHOTS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Frantzdy Pierrot",
+      "stat": "FOULS",
+      "market_line": 5,
+      "tc_projection": 5.6,
+      "edge": 0.6,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Josu\u00e9 Casimir",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Josu\u00e9 Casimir",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Lenny Joseph",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Grant Hanley",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Andy Robertson",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Aaron Hickey",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Aaron Hickey",
+      "stat": "CARDS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Lewis Ferguson",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Scott McTominay",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Scott McTominay",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "John McGinn",
+      "stat": "GOALS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "John McGinn",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "John McGinn",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ben Gannon-Doak",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ch\u00e9 Adams",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ch\u00e9 Adams",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ch\u00e9 Adams",
+      "stat": "FOULS",
+      "market_line": 5,
+      "tc_projection": 5.6,
+      "edge": 0.6,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Lawrence Shankland",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Lawrence Shankland",
+      "stat": "FOULS",
+      "market_line": 5,
+      "tc_projection": 5.6,
+      "edge": 0.6,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Nathan Patterson",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ryan Christie",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Lyndon Dykes",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Kenny McLean",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Kenny McLean",
+      "stat": "CARDS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Findlay Curtis",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Findlay Curtis",
+      "stat": "CARDS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Gabriel Magalh\u00e3es",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Marquinhos",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Douglas Santos",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Roger Iba\u00f1ez",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Roger Iba\u00f1ez",
+      "stat": "CARDS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Raphinha",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Raphinha",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Bruno Guimar\u00e3es",
+      "stat": "ASSISTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Bruno Guimar\u00e3es",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Bruno Guimar\u00e3es",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Casemiro",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Casemiro",
+      "stat": "CARDS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Igor Thiago",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Igor Thiago",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Igor Thiago",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Vin\u00edcius J\u00fanior",
+      "stat": "GOALS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Vin\u00edcius J\u00fanior",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Vin\u00edcius J\u00fanior",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Vin\u00edcius J\u00fanior",
+      "stat": "FOULS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Lucas Paquet\u00e1",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Lucas Paquet\u00e1",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Lucas Paquet\u00e1",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Fabinho",
+      "stat": "FOULS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Danilo Santos",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Danilo Santos",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Noussair Mazraoui",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Achraf Hakimi",
+      "stat": "SHOTS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Achraf Hakimi",
+      "stat": "FOULS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ayyoub Bouaddi",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Neil El Aynaoui",
+      "stat": "SHOTS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Neil El Aynaoui",
+      "stat": "FOULS",
+      "market_line": 5,
+      "tc_projection": 5.6,
+      "edge": 0.6,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ismael Saibari",
+      "stat": "GOALS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ismael Saibari",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ismael Saibari",
+      "stat": "SHOTS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ismael Saibari",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Bilal El Khannouss",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Bilal El Khannouss",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Brahim D\u00edaz",
+      "stat": "ASSISTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Brahim D\u00edaz",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Brahim D\u00edaz",
+      "stat": "SHOTS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ayoube Amaimouni",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ayoube Amaimouni",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Mahmoud Abunada",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Mahmoud Abunada",
+      "stat": "CARDS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Boualem Khoukhi",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Pedro Miguel",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Homam Ahmed",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Homam Ahmed",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ayoub Al-Oui",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Assim Madibo",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Issa Laye",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Jassem Gaber",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Jassem Gaber",
+      "stat": "CARDS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Edm\u00edlson Junior",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Edm\u00edlson Junior",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Edm\u00edlson Junior",
+      "stat": "FOULS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ahmed Alaaeldin",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ahmed Alaaeldin",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Karim Boudiaf",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Manuel Akanji",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Manuel Akanji",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Nico Elvedi",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Nico Elvedi",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ricardo Rodr\u00edguez",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Denis Zakaria",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Denis Zakaria",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Denis Zakaria",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Denis Zakaria",
+      "stat": "CARDS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Granit Xhaka",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Remo Freuler",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Michel Aebischer",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Michel Aebischer",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Breel Embolo",
+      "stat": "GOALS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Breel Embolo",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Breel Embolo",
+      "stat": "SHOTS",
+      "market_line": 5,
+      "tc_projection": 5.6,
+      "edge": 0.6,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Breel Embolo",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Rub\u00e9n Vargas",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Rub\u00e9n Vargas",
+      "stat": "SHOTS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Rub\u00e9n Vargas",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Dan Ndoye",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Dan Ndoye",
+      "stat": "SHOTS",
+      "market_line": 7,
+      "tc_projection": 7.8,
+      "edge": 0.8,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Fabian Rieder",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Zeki Amdouni",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Johan Manzambi",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Johan Manzambi",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ardon Jashari",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Harry Souttar",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Harry Souttar",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Harry Souttar",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Alessandro Circati",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Alessandro Circati",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Jordan Bos",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Jacob Italiano",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Paul Okon-Engstler",
+      "stat": "ASSISTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Paul Okon-Engstler",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Aiden O'Neill",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Nestory Irankunda",
+      "stat": "GOALS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Nestory Irankunda",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Nestory Irankunda",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Nestory Irankunda",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Connor Metcalfe",
+      "stat": "GOALS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Connor Metcalfe",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Connor Metcalfe",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Mohamed Toure",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Mohamed Toure",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Aziz Behich",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Tete Yengi",
+      "stat": "FOULS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Jackson Irvine",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Abd\u00fclkerim Bardak\u00e7i",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Abd\u00fclkerim Bardak\u00e7i",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Merih Demiral",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ferdi Kadioglu",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Zeki \u00c7elik",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Zeki \u00c7elik",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Zeki \u00c7elik",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Orkun K\u00f6k\u00e7\u00fc",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Hakan \u00c7alhanoglu",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Hakan \u00c7alhanoglu",
+      "stat": "SHOTS",
+      "market_line": 6,
+      "tc_projection": 6.7,
+      "edge": 0.7,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Hakan \u00c7alhanoglu",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ismail Y\u00fcksek",
+      "stat": "SHOTS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ismail Y\u00fcksek",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Kerem Akt\u00fcrkoglu",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Kerem Akt\u00fcrkoglu",
+      "stat": "SHOTS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Arda G\u00fcler",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Arda G\u00fcler",
+      "stat": "SHOTS",
+      "market_line": 9,
+      "tc_projection": 10.1,
+      "edge": 1.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Yunus Akg\u00fcn",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Yunus Akg\u00fcn",
+      "stat": "CARDS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Kenan Yildiz",
+      "stat": "SHOTS",
+      "market_line": 7,
+      "tc_projection": 7.8,
+      "edge": 0.8,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Nico Schlotterbeck",
+      "stat": "GOALS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Nico Schlotterbeck",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Nico Schlotterbeck",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Nico Schlotterbeck",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Jonathan Tah",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Nathaniel Brown",
+      "stat": "GOALS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Nathaniel Brown",
+      "stat": "ASSISTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Nathaniel Brown",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Nathaniel Brown",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Nathaniel Brown",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Joshua Kimmich",
+      "stat": "ASSISTS",
+      "market_line": 2.5,
+      "tc_projection": 2.8,
+      "edge": 0.3,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Jamal Musiala",
+      "stat": "GOALS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Jamal Musiala",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Jamal Musiala",
+      "stat": "SHOTS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Jamal Musiala",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Aleksandar Pavlovic",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Aleksandar Pavlovic",
+      "stat": "SHOTS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Aleksandar Pavlovic",
+      "stat": "FOULS",
+      "market_line": 7,
+      "tc_projection": 7.8,
+      "edge": 0.8,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Felix Nmecha",
+      "stat": "GOALS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Felix Nmecha",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Felix Nmecha",
+      "stat": "SHOTS",
+      "market_line": 5,
+      "tc_projection": 5.6,
+      "edge": 0.6,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Felix Nmecha",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Kai Havertz",
+      "stat": "GOALS",
+      "market_line": 2.5,
+      "tc_projection": 2.8,
+      "edge": 0.3,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Kai Havertz",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Kai Havertz",
+      "stat": "SHOTS",
+      "market_line": 5,
+      "tc_projection": 5.6,
+      "edge": 0.6,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Kai Havertz",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Florian Wirtz",
+      "stat": "ASSISTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Florian Wirtz",
+      "stat": "SHOTS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Leroy San\u00e9",
+      "stat": "SHOTS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Leroy San\u00e9",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "David Raum",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "David Raum",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Deniz Undav",
+      "stat": "GOALS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Deniz Undav",
+      "stat": "ASSISTS",
+      "market_line": 2.5,
+      "tc_projection": 2.8,
+      "edge": 0.3,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Deniz Undav",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Deniz Undav",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Deniz Undav",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Gervane Kastaneer",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Jearl Margaritha",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Riechedly Bazoer",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Deveron Fonville",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Sherel Floranus",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Sontje Hansen",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Sontje Hansen",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Leandro Bacuna",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Leandro Bacuna",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Tahith Chong",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Tahith Chong",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Juninho Bacuna",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Juninho Bacuna",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Livano Comenencia",
+      "stat": "GOALS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Livano Comenencia",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Livano Comenencia",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Livano Comenencia",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "J\u00fcrgen Locadia",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Wilfried Singo",
+      "stat": "ASSISTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Wilfried Singo",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Wilfried Singo",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ghislain Konan",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Guela Dou\u00e9",
+      "stat": "FOULS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Guela Dou\u00e9",
+      "stat": "CARDS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Seko Fofana",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Seko Fofana",
+      "stat": "SHOTS",
+      "market_line": 5,
+      "tc_projection": 5.6,
+      "edge": 0.6,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Seko Fofana",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Seko Fofana",
+      "stat": "CARDS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Franck Kessi\u00e9",
+      "stat": "FOULS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Franck Kessi\u00e9",
+      "stat": "CARDS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Yan Diomande",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Elye Wahi",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Elye Wahi",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Nicolas P\u00e9p\u00e9",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Christ Inao Oula\u00ef",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Christ Inao Oula\u00ef",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Amad Diallo",
+      "stat": "GOALS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Amad Diallo",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Amad Diallo",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Willian Pacho",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Joel Ord\u00f3\u00f1ez",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Piero Hincapi\u00e9",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Alan Franco",
+      "stat": "FOULS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Pedro Vite",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Mois\u00e9s Caicedo",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Mois\u00e9s Caicedo",
+      "stat": "FOULS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Alan Minda",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "John Yeboah",
+      "stat": "SHOTS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Enner Valencia",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Enner Valencia",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Gonzalo Plata",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Gonzalo Plata",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Gonzalo Plata",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Nilson Angulo",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Jackson Porozo",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Jackson Porozo",
+      "stat": "CARDS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Mattias Svanberg",
+      "stat": "GOALS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Mattias Svanberg",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Mattias Svanberg",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Lucas Bergvall",
+      "stat": "ASSISTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Lucas Bergvall",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Lucas Bergvall",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Isak Hien",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Victor Lindel\u00f6f",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Victor Lindel\u00f6f",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Jesper Karlstr\u00f6m",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Yasin Ayari",
+      "stat": "GOALS",
+      "market_line": 2.5,
+      "tc_projection": 2.8,
+      "edge": 0.3,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Yasin Ayari",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Yasin Ayari",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Yasin Ayari",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Benjamin Nygren",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Gabriel Gudmundsson",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Alexander Isak",
+      "stat": "GOALS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Alexander Isak",
+      "stat": "ASSISTS",
+      "market_line": 2.5,
+      "tc_projection": 2.8,
+      "edge": 0.3,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Alexander Isak",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Alexander Isak",
+      "stat": "SHOTS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Alexander Isak",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Viktor Gy\u00f6keres",
+      "stat": "GOALS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Viktor Gy\u00f6keres",
+      "stat": "ASSISTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Viktor Gy\u00f6keres",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Viktor Gy\u00f6keres",
+      "stat": "SHOTS",
+      "market_line": 6,
+      "tc_projection": 6.7,
+      "edge": 0.7,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Montassar Talbi",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Omar Rekik",
+      "stat": "GOALS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Omar Rekik",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Omar Rekik",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ali Abdi",
+      "stat": "FOULS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Yan Valery",
+      "stat": "FOULS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Hannibal Mejbri",
+      "stat": "ASSISTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Hannibal Mejbri",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Rani Khedira",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Rani Khedira",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Rani Khedira",
+      "stat": "CARDS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Elias Saad",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Sebastian Tounekti",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Elias Achouri",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Elias Achouri",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Virgil van Dijk",
+      "stat": "GOALS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Virgil van Dijk",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Virgil van Dijk",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Jan Paul van Hecke",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Jan Paul van Hecke",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Micky van de Ven",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Micky van de Ven",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Micky van de Ven",
+      "stat": "CARDS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Frenkie de Jong",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ryan Gravenberch",
+      "stat": "ASSISTS",
+      "market_line": 2.5,
+      "tc_projection": 2.8,
+      "edge": 0.3,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Donyell Malen",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Donyell Malen",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Cody Gakpo",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Cody Gakpo",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Crysencio Summerville",
+      "stat": "GOALS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Crysencio Summerville",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Crysencio Summerville",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Crysencio Summerville",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Crysencio Summerville",
+      "stat": "CARDS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Teun Koopmeiners",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Teun Koopmeiners",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Memphis Depay",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Memphis Depay",
+      "stat": "CARDS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Hiroki Ito",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Hiroki Ito",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Daichi Kamada",
+      "stat": "GOALS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Daichi Kamada",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Daichi Kamada",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Keito Nakamura",
+      "stat": "GOALS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Keito Nakamura",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Keito Nakamura",
+      "stat": "SHOTS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Keito Nakamura",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ritsu Doan",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ayase Ueda",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ayase Ueda",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Takefusa Kubo",
+      "stat": "ASSISTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Takefusa Kubo",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Takefusa Kubo",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Koki Ogawa",
+      "stat": "ASSISTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Koki Ogawa",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Yukinari Sugawara",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Yukinari Sugawara",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Takehiro Tomiyasu",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Brandon Mechele",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Brandon Mechele",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Brandon Mechele",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Nathan Ngoy",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Timothy Castagne",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Timothy Castagne",
+      "stat": "CARDS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Thomas Meunier",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Thomas Meunier",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Thomas Meunier",
+      "stat": "FOULS",
+      "market_line": 6,
+      "tc_projection": 6.7,
+      "edge": 0.7,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Kevin De Bruyne",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Kevin De Bruyne",
+      "stat": "SHOTS",
+      "market_line": 5,
+      "tc_projection": 5.6,
+      "edge": 0.6,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Youri Tielemans",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Youri Tielemans",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Amadou Onana",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "J\u00e9r\u00e9my Doku",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "J\u00e9r\u00e9my Doku",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Leandro Trossard",
+      "stat": "SHOTS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Romelu Lukaku",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Maxim De Cuyper",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Maxim De Cuyper",
+      "stat": "CARDS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Hamdy Fathy",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ahmed Fatouh",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ahmed Fatouh",
+      "stat": "CARDS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Mohamed Hany",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Mohamed Hany",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Mohamed Salah",
+      "stat": "ASSISTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Mohamed Salah",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Mohamed Salah",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Mohamed Salah",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Mohanad Lashin",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Marawan Attia",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Marawan Attia",
+      "stat": "FOULS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Marawan Attia",
+      "stat": "CARDS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Omar Marmoush",
+      "stat": "SHOTS",
+      "market_line": 6,
+      "tc_projection": 6.7,
+      "edge": 0.7,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Omar Marmoush",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Emam Ashour",
+      "stat": "GOALS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Emam Ashour",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Emam Ashour",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Mostafa Zico",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Mostafa Zico",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Zizo",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Zizo",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ali Nemati",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ali Nemati",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Shoja Khalilzadeh",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ramin Rezaeian",
+      "stat": "GOALS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ramin Rezaeian",
+      "stat": "ASSISTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ramin Rezaeian",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ramin Rezaeian",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Saeid Ezatolahi",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Saeid Ezatolahi",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Saeid Ezatolahi",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Saman Ghoddos",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Arya Yousefi",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Arya Yousefi",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Mohammad Mohebbi",
+      "stat": "GOALS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Mohammad Mohebbi",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Mohammad Mohebbi",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Mehdi Taremi",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Shahriyar Moghanloo",
+      "stat": "SHOTS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Shahriyar Moghanloo",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Mehdi Ghayedi",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Mehdi Ghayedi",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ali Alipour",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ali Alipour",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ehsan Hajsafi",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ehsan Hajsafi",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ehsan Hajsafi",
+      "stat": "CARDS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Finn Surman",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Liberato Cacace",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Liberato Cacace",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Tim Payne",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Sarpreet Singh",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Sarpreet Singh",
+      "stat": "SHOTS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Sarpreet Singh",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Marko Stamenic",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Marko Stamenic",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Joe Bell",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Chris Wood",
+      "stat": "ASSISTS",
+      "market_line": 2.5,
+      "tc_projection": 2.8,
+      "edge": 0.3,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Chris Wood",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Chris Wood",
+      "stat": "SHOTS",
+      "market_line": 5,
+      "tc_projection": 5.6,
+      "edge": 0.6,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Elijah Just",
+      "stat": "GOALS",
+      "market_line": 2.5,
+      "tc_projection": 2.8,
+      "edge": 0.3,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Elijah Just",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Elijah Just",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Elijah Just",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Callum McCowatt",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Callum McCowatt",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ryan Thomas",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Aymeric Laporte",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Aymeric Laporte",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Pau Cubars\u00ed",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Marc Cucurella",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Marc Cucurella",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Marc Cucurella",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Marcos Llorente",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Rodri",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Rodri",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Pedri",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Pedri",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Pedri",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Pedri",
+      "stat": "CARDS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Fabi\u00e1n Ruiz",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Fabi\u00e1n Ruiz",
+      "stat": "SHOTS",
+      "market_line": 6,
+      "tc_projection": 6.7,
+      "edge": 0.7,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Mikel Oyarzabal",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Mikel Oyarzabal",
+      "stat": "SHOTS",
+      "market_line": 6,
+      "tc_projection": 6.7,
+      "edge": 0.7,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Gavi",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Gavi",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ferran Torres",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ferran Torres",
+      "stat": "SHOTS",
+      "market_line": 5,
+      "tc_projection": 5.6,
+      "edge": 0.6,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ferran Torres",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Lamine Yamal",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Lamine Yamal",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Mikel Merino",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Mikel Merino",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Mikel Merino",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Diney Borges",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Diney Borges",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Kevin Pina",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Sidny Lopes Cabral",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Sidny Lopes Cabral",
+      "stat": "CARDS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Steven Moreira",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Jovane Cabral",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ryan Mendes",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Dailon Livramento",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Abdulelah Al-Amri",
+      "stat": "GOALS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Abdulelah Al-Amri",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Abdulelah Al-Amri",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Abdulelah Al-Amri",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Abdulelah Al-Amri",
+      "stat": "CARDS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Saud Abdulhamid",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Saud Abdulhamid",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Abdullah Al-Khaibari",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Mohamed Kanno",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Mohamed Kanno",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Salem Al-Dawsari",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Salem Al-Dawsari",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Mohammed Abu Al-Shamat",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Musab Al-Juwayr",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Nasser Al-Dawsari",
+      "stat": "FOULS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Nawaf Boushal",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Math\u00edas Olivera",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Sebasti\u00e1n C\u00e1ceres",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Sebasti\u00e1n C\u00e1ceres",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Guillermo Varela",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Guillermo Varela",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Federico Vi\u00f1as",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Federico Vi\u00f1as",
+      "stat": "SHOTS",
+      "market_line": 6,
+      "tc_projection": 6.7,
+      "edge": 0.7,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Rodrigo Bentancur",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Rodrigo Bentancur",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Manuel Ugarte",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Manuel Ugarte",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Darwin N\u00fa\u00f1ez",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Darwin N\u00fa\u00f1ez",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Maxi Ara\u00fajo",
+      "stat": "GOALS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Maxi Ara\u00fajo",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Maxi Ara\u00fajo",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Maxi Ara\u00fajo",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Federico Valverde",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Federico Valverde",
+      "stat": "SHOTS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Federico Valverde",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Nicol\u00e1s de la Cruz",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Nicol\u00e1s de la Cruz",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Juan Manuel Sanabria",
+      "stat": "SHOTS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Agust\u00edn Canobbio",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Brian Rodr\u00edguez",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Brian Rodr\u00edguez",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Dayot Upamecano",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Theo Hern\u00e1ndez",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Jules Kound\u00e9",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ousmane Demb\u00e9l\u00e9",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Adrien Rabiot",
+      "stat": "ASSISTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Adrien Rabiot",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Kylian Mbapp\u00e9",
+      "stat": "GOALS",
+      "market_line": 2.5,
+      "tc_projection": 2.8,
+      "edge": 0.3,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Kylian Mbapp\u00e9",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 5,
+      "tc_projection": 5.6,
+      "edge": 0.6,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Kylian Mbapp\u00e9",
+      "stat": "SHOTS",
+      "market_line": 5,
+      "tc_projection": 5.6,
+      "edge": 0.6,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Kylian Mbapp\u00e9",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "D\u00e9sir\u00e9 Dou\u00e9",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "D\u00e9sir\u00e9 Dou\u00e9",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Michael Olise",
+      "stat": "ASSISTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Michael Olise",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Michael Olise",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Bradley Barcola",
+      "stat": "GOALS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Bradley Barcola",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Bradley Barcola",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "El Hadji Malick Diouf",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Lamine Camara",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Pape Gueye",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Idrissa Gueye",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Nicolas Jackson",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Nicolas Jackson",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Sadio Man\u00e9",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Sadio Man\u00e9",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Isma\u00efla Sarr",
+      "stat": "SHOTS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Habib Diarra",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ibrahim Mbaye",
+      "stat": "GOALS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ibrahim Mbaye",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ibrahim Mbaye",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Iliman Ndiaye",
+      "stat": "ASSISTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    }
+  ],
+  "source": "worldcup_picks.py \u00b7 368 players \u00b7 book: self-edge",
+  "roster_counts": {
+    "away": 368,
+    "home": 0,
+    "away_active": 368,
+    "home_active": 0
+  },
+  "odds": {
+    "total": null,
+    "ml_source": "self-edge"
+  },
+  "team_to_win": "ALG",
+  "team_to_win_reason": "home court/field advantage",
+  "ml_pick": "ALG",
+  "spread_pick": "ALG",
+  "total_lean": "OVER",
+  "book_source_honest": "self-edge (no FD/DK player props on Odds API free tier)"
+}

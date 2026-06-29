@@ -1,0 +1,46 @@
+{
+  "timestamp": "2026-06-29T14:04:13.040131",
+  "status": "critical",
+  "checks": {
+    "espn": {
+      "status": "critical",
+      "message": "'ESPNAdapter' object has no attribute 'fetch_games'"
+    },
+    "odds_api": {
+      "status": "critical",
+      "message": "401 Unauthorized \u2014 key expired"
+    },
+    "draftkings": {
+      "status": "healthy",
+      "message": "Not yet wired"
+    },
+    "data_freshness": {
+      "status": "warning",
+      "message": "Cannot parse last_run.json: can't subtract offset-naive and offset-aware datetimes"
+    },
+    "projections": {
+      "status": "warning",
+      "message": "No reports/daily directory"
+    },
+    "disk_space": {
+      "status": "healthy",
+      "percent": "0.0%"
+    },
+    "dashboard": {
+      "status": "healthy",
+      "code": 200
+    },
+    "circuit_breakers": {
+      "status": "healthy",
+      "open": []
+    }
+  },
+  "critical_failures": [
+    "espn: 'ESPNAdapter' object has no attribute 'fetch_games'",
+    "odds_api: 401 Unauthorized \u2014 key expired"
+  ],
+  "warnings": [
+    "data_freshness: Cannot parse last_run.json: can't subtract offset-naive and offset-aware datetimes",
+    "projections: No reports/daily directory"
+  ]
+}

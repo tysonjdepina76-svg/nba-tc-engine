@@ -23,18 +23,23 @@ STATS = ["PTS", "REB", "AST", "3PM", "STL", "BLK"]
 # 1. Collect all picks from Daily_Log picks.csv
 # =====================================================
 rows = []
+dates_seen = set()
 for d in sorted(LOG.iterdir()):
-    if not d.is_dir() or d.name.startswith(".") or d.name == "backtests":
+    if not d.is_dir() or d.name.startswith(".") or d.name in ("backtests", "worldcup"):
         continue
     p = d / "picks.csv"
     if not p.exists():
         continue
+    dir_date = d.name
     with open(p) as f:
         r = csv.DictReader(f)
         for row in r:
+            dt = (row.get("date") or dir_date).strip()
+            row["_date"] = dt
+            dates_seen.add(dt)
             rows.append(row)
 
-print(f"Picks loaded: {len(rows)} from {len(set(r['date'] for r in rows))} dates")
+print(f"Picks loaded: {len(rows)} from {len(dates_seen)} dates")
 
 # =====================================================
 # 2. Get ESPN boxscore results from Daily_Log proj files
@@ -48,12 +53,47 @@ def load_actuals(date_str, sport, matchup):
         proj = json.load(f)
     actuals = {}
     for p in proj.get("valid_props", []):
-        if p.get("result") != "PENDING" and p.get("actual") is not None:
-            actuals[(p["player"], p["stat"])] = {
-                "actual": float(p.get("actual", 0)),
-                "result": p.get("result", ""),
+        act = p.get("actual")
+        if act is not None and act != "":
+            actuals[(p["player"].strip().upper(), p["stat"].strip().upper())] = {
+                "actual": float(act),
+                "tc_projection": float(p.get("tc_projection", 0) or 0),
+                "proj_direction": (p.get("direction", "") or "").strip().upper(),
             }
     return actuals
+
+# Settle results where possible by cross-referencing proj files
+settled_count = 0
+for row in rows:
+    if row.get("_won") is not None:
+        continue
+    dt = row.get("_date", "")
+    sp = row.get("league", "WNBA").strip()
+    mx = row.get("matchup", "").strip()
+    ps = (row.get("player", "") or "").strip().upper()
+    st = (row.get("stat", "") or "").strip().upper()
+    actuals = load_actuals(dt, sp, mx)
+    key = (ps, st)
+    if key in actuals:
+        a = actuals[key]
+        mkt = float(row.get("market_line", 0) or 0)
+        if mkt == 0:
+            mkt = a["tc_projection"]
+        direction = (row.get("direction", "") or "").strip().upper()
+        actual_val = a["actual"]
+        if direction == "OVER":
+            won = actual_val > mkt
+        elif direction == "UNDER":
+            won = actual_val < mkt
+        else:
+            won = actual_val >= mkt  # default assume OVER
+        row["actual"] = str(actual_val)
+        row["_won"] = won
+        settled_count += 1
+    else:
+        row["_won"] = None
+
+print(f"Results settled from proj files: {settled_count}")
 
 # =====================================================
 # 3. Compute hit rates
@@ -77,11 +117,14 @@ for row in rows:
     st = row.get("stat", "").strip()
     di = row.get("direction", "").strip().upper()
     tm = row.get("team", "").strip()
-    dt = row.get("date", "").strip()
+    dt = row.get("_date", "").strip()
     mx = row.get("matchup", "").strip()
     sp = row.get("league", "WNBA").strip()
-    res = (row.get("result") or "").strip()
+    won = row.get("_won")
     edge = float(row.get("edge", 0) or 0)
+    # Skip unsettled picks
+    if won is None:
+        continue
 
     if st not in by_stat:
         continue
@@ -105,7 +148,7 @@ for row in rows:
     by_edge_tier[tier].total += 1
     by_edge_tier[tier].total_edge += edge
 
-    if res == "WON":
+    if won:
         by_stat[st].correct += 1
         by_team[tm].correct += 1
         by_direction[di].correct += 1
@@ -114,9 +157,12 @@ for row in rows:
 # =====================================================
 # 4. Write report
 # =====================================================
-md = f"""# TC 30-Day Backtest — WNBA
+settled_picks = [r for r in rows if r.get("_won") is not None]
+total_result_desc = f"{len(settled_picks)} settled (of {len(rows)} total) from {len(dates_seen)} dates"
+
+md = f"""# TC 30-Day Backtest — All Sports
 **Generated:** {datetime.now().strftime("%Y-%m-%d %H:%M")}
-**Picks analyzed:** {len(rows)} from {len(set(r['date'] for r in rows))} dates
+**Picks analyzed:** {total_result_desc}
 
 ## Hit Rates by Stat
 | Stat | Picks | Hit Rate | Avg Edge |

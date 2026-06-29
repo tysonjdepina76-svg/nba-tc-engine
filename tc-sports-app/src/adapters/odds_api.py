@@ -10,10 +10,13 @@ Notes from your existing pipeline:
   - Business trial tier (toa_live_t5d8p3n1), reverts to Pro 2026-07-26
   - Multiple books available in one call (dk, fd, betmgm, caesars, pointsbet, bovada)
   - Cost: ~1 credit per market per sport
+  - Set ODDS_API_DISABLED=1 to short-circuit (zero API calls) when quota is dead
+  - Set ODDS_API_QUOTA_DEADLINE=YYYY-MM-DD to auto-disable until that date
 """
 
 import json
 import os
+from datetime import date
 from pathlib import Path
 from typing import Dict, List, Optional
 from urllib.parse import urlencode
@@ -57,6 +60,38 @@ def _load_api_key() -> Optional[str]:
     return None
 
 
+def _quota_dead() -> bool:
+    """Return True if Odds API is kill-switched via env.
+
+    Three ways to disable:
+      - ODDS_API_DISABLED=1 (manual hard kill)
+      - ODDS_API_QUOTA_DEADLINE=2026-07-01T00:00:00Z (auto-resume at deadline)
+      - /root/.zo/secrets.env has ODDS_API_DEADLINE=... set from a prior 429/401
+    """
+    if os.environ.get("ODDS_API_DISABLED") == "1":
+        return True
+    deadline = os.environ.get("ODDS_API_QUOTA_DEADLINE")
+    if deadline:
+        try:
+            from datetime import datetime, timezone
+            dl = datetime.fromisoformat(deadline.replace("Z", "+00:00"))
+            return datetime.now(timezone.utc) < dl
+        except Exception:
+            pass
+    return False
+
+
+def _disabled_response() -> list:
+    """Empty result returned when quota is dead; logged once."""
+    if not os.environ.get("_ODDS_API_DISABLED_LOGGED"):
+        print(
+            "[OddsAPI] disabled (quota/key dead). "
+            "Unset ODDS_API_DISABLED / ODDS_API_QUOTA_DEADLINE to re-enable."
+        )
+        os.environ["_ODDS_API_DISABLED_LOGGED"] = "1"
+    return []
+
+
 def _fetch(url: str, timeout: int = 10) -> dict:
     import urllib.request
     try:
@@ -89,6 +124,8 @@ class OddsAPIAdapter:
 
     def fetch_events(self) -> List[dict]:
         """List upcoming events for the sport."""
+        if _quota_dead():
+            return _disabled_response()
         params = {"apiKey": self.api_key}
         url = f"{ODDS_API_BASE}/sports/{self.sport_key}/events?{urlencode(params)}"
         return self._safe_get(url)
@@ -98,6 +135,8 @@ class OddsAPIAdapter:
 
         If event_id omitted, returns all events for sport.
         """
+        if _quota_dead():
+            return _disabled_response()
         books = books or SUPPORTED_BOOKS
         params = {
             "apiKey": self.api_key,
@@ -114,6 +153,8 @@ class OddsAPIAdapter:
 
     def fetch_player_props(self, event_id: str, markets: str = "player_points,player_rebounds,player_assists") -> List[dict]:
         """Fetch player props (player_points, player_rebounds, player_assists, etc)."""
+        if _quota_dead():
+            return _disabled_response()
         params = {
             "apiKey": self.api_key,
             "regions": self.regions,

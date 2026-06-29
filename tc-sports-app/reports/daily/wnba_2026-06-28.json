@@ -1,0 +1,104 @@
+{
+  "sport": "WNBA",
+  "date": "2026-06-28",
+  "generated_at": "2026-06-28T19:00:00",
+  "dry_run": false,
+  "matchups": [
+    {
+      "matchup": "LV@NY",
+      "away_team": "LV",
+      "home_team": "NY",
+      "valid_props": [
+        {
+          "player": "Aja Wilson",
+          "team": "LV",
+          "role": "STARTER",
+          "status": "ACTIVE",
+          "stat": "PTS",
+          "tc_projection": 28.5,
+          "line": 24.5,
+          "edge": 4.0,
+          "direction": "OVER",
+          "valid": true
+        },
+        {
+          "player": "Aja Wilson",
+          "team": "LV",
+          "role": "STARTER",
+          "status": "ACTIVE",
+          "stat": "REB",
+          "tc_projection": 11.5,
+          "line": 9.5,
+          "edge": 2.0,
+          "direction": "OVER",
+          "valid": true
+        },
+        {
+          "player": "Kelsey Plum",
+          "team": "LV",
+          "role": "STARTER",
+          "status": "ACTIVE",
+          "stat": "PTS",
+          "tc_projection": 19.5,
+          "line": 17.5,
+          "edge": 2.0,
+          "direction": "OVER",
+          "valid": true
+        },
+        {
+          "player": "Jackie Young",
+          "team": "LV",
+          "role": "STARTER",
+          "status": "ACTIVE",
+          "stat": "AST",
+          "tc_projection": 6.5,
+          "line": 5.5,
+          "edge": 1.0,
+          "direction": "OVER",
+          "valid": true
+        },
+        {
+          "player": "Sabrina Ionescu",
+          "team": "NY",
+          "role": "STARTER",
+          "status": "ACTIVE",
+          "stat": "3PM",
+          "tc_projection": 3.5,
+          "line": 2.5,
+          "edge": 1.0,
+          "direction": "OVER",
+          "valid": true
+        },
+        {
+          "player": "Breanna Stewart",
+          "team": "NY",
+          "role": "STARTER",
+          "status": "ACTIVE",
+          "stat": "PTS",
+          "tc_projection": 22.5,
+          "line": 20.5,
+          "edge": 2.0,
+          "direction": "OVER",
+          "valid": true
+        },
+        {
+          "player": "Jonquel Jones",
+          "team": "NY",
+          "role": "STARTER",
+          "status": "ACTIVE",
+          "stat": "REB",
+          "tc_projection": 8.5,
+          "line": 7.5,
+          "edge": 1.0,
+          "direction": "OVER",
+          "valid": true
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "matchup_count": 1,
+    "total_valid_props": 7,
+    "rejected_by_validator": 0
+  }
+}

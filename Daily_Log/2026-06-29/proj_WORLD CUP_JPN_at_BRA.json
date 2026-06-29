@@ -1,0 +1,2107 @@
+{
+  "mode": "live",
+  "sport": "WORLD CUP",
+  "matchup": "JPN@BRA",
+  "away_team": "JPN",
+  "home_team": "BRA",
+  "signal": "WC PROPS LIVE (self-edge)",
+  "valid_props": [
+    {
+      "player": "Gabriel Magalh\u00e3es",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Marquinhos",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Douglas Santos",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Roger Iba\u00f1ez",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Roger Iba\u00f1ez",
+      "stat": "CARDS",
+      "market_line": 0.5,
+      "tc_projection": 0.6,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Raphinha",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Raphinha",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Bruno Guimar\u00e3es",
+      "stat": "ASSISTS",
+      "market_line": 0.5,
+      "tc_projection": 0.6,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Bruno Guimar\u00e3es",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Bruno Guimar\u00e3es",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Casemiro",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Casemiro",
+      "stat": "CARDS",
+      "market_line": 0.5,
+      "tc_projection": 0.6,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Igor Thiago",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Igor Thiago",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Igor Thiago",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Vin\u00edcius J\u00fanior",
+      "stat": "GOALS",
+      "market_line": 0.5,
+      "tc_projection": 0.6,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Vin\u00edcius J\u00fanior",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Vin\u00edcius J\u00fanior",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Vin\u00edcius J\u00fanior",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Lucas Paquet\u00e1",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Lucas Paquet\u00e1",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Lucas Paquet\u00e1",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Fabinho",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Danilo Santos",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Danilo Santos",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Hiroki Ito",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Hiroki Ito",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Daichi Kamada",
+      "stat": "GOALS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Daichi Kamada",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Daichi Kamada",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Keito Nakamura",
+      "stat": "GOALS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Keito Nakamura",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Keito Nakamura",
+      "stat": "SHOTS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Keito Nakamura",
+      "stat": "FOULS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ritsu Doan",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ayase Ueda",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ayase Ueda",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Takefusa Kubo",
+      "stat": "ASSISTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Takefusa Kubo",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Takefusa Kubo",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Koki Ogawa",
+      "stat": "ASSISTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Koki Ogawa",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Yukinari Sugawara",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Yukinari Sugawara",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Takehiro Tomiyasu",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Alex Sandro",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Alex Sandro",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Alex Sandro",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Alex Sandro",
+      "stat": "TACKLES",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Alex Sandro",
+      "stat": "PASSES",
+      "market_line": 25,
+      "tc_projection": 28,
+      "edge": 3,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Alex Sandro",
+      "stat": "CORNERS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Alisson Becker",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Alisson Becker",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Alisson Becker",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Alisson Becker",
+      "stat": "TACKLES",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Alisson Becker",
+      "stat": "PASSES",
+      "market_line": 25,
+      "tc_projection": 28,
+      "edge": 3,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Alisson Becker",
+      "stat": "CORNERS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ao Tanaka",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ao Tanaka",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ao Tanaka",
+      "stat": "TACKLES",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ao Tanaka",
+      "stat": "PASSES",
+      "market_line": 20,
+      "tc_projection": 22.4,
+      "edge": 2.4,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ao Tanaka",
+      "stat": "CORNERS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ayumu Seko",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ayumu Seko",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ayumu Seko",
+      "stat": "TACKLES",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ayumu Seko",
+      "stat": "PASSES",
+      "market_line": 20,
+      "tc_projection": 22.4,
+      "edge": 2.4,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ayumu Seko",
+      "stat": "CORNERS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Bremer",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Bremer",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Bremer",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Bremer",
+      "stat": "TACKLES",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Bremer",
+      "stat": "PASSES",
+      "market_line": 25,
+      "tc_projection": 28,
+      "edge": 3,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Bremer",
+      "stat": "CORNERS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Daizen Maeda",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Daizen Maeda",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Daizen Maeda",
+      "stat": "TACKLES",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Daizen Maeda",
+      "stat": "PASSES",
+      "market_line": 20,
+      "tc_projection": 22.4,
+      "edge": 2.4,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Daizen Maeda",
+      "stat": "CORNERS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Danilo",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Danilo",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Danilo",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Danilo",
+      "stat": "TACKLES",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Danilo",
+      "stat": "PASSES",
+      "market_line": 25,
+      "tc_projection": 28,
+      "edge": 3,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Danilo",
+      "stat": "CORNERS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ederson",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ederson",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ederson",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ederson",
+      "stat": "TACKLES",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ederson",
+      "stat": "PASSES",
+      "market_line": 25,
+      "tc_projection": 28,
+      "edge": 3,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ederson",
+      "stat": "CORNERS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Endrick",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Endrick",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Endrick",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Endrick",
+      "stat": "TACKLES",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Endrick",
+      "stat": "PASSES",
+      "market_line": 25,
+      "tc_projection": 28,
+      "edge": 3,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Endrick",
+      "stat": "CORNERS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Gabriel Martinelli",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Gabriel Martinelli",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Gabriel Martinelli",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Gabriel Martinelli",
+      "stat": "TACKLES",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Gabriel Martinelli",
+      "stat": "PASSES",
+      "market_line": 25,
+      "tc_projection": 28,
+      "edge": 3,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Gabriel Martinelli",
+      "stat": "CORNERS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Junnosuke Suzuki",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Junnosuke Suzuki",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Junnosuke Suzuki",
+      "stat": "TACKLES",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Junnosuke Suzuki",
+      "stat": "PASSES",
+      "market_line": 20,
+      "tc_projection": 22.4,
+      "edge": 2.4,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Junnosuke Suzuki",
+      "stat": "CORNERS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Junya Ito",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Junya Ito",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Junya Ito",
+      "stat": "TACKLES",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Junya Ito",
+      "stat": "PASSES",
+      "market_line": 20,
+      "tc_projection": 22.4,
+      "edge": 2.4,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Junya Ito",
+      "stat": "CORNERS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Kaishu Sano",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Kaishu Sano",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Kaishu Sano",
+      "stat": "TACKLES",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Kaishu Sano",
+      "stat": "PASSES",
+      "market_line": 20,
+      "tc_projection": 22.4,
+      "edge": 2.4,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Kaishu Sano",
+      "stat": "CORNERS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Keisuke Goto",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Keisuke Goto",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Keisuke Goto",
+      "stat": "TACKLES",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Keisuke Goto",
+      "stat": "PASSES",
+      "market_line": 20,
+      "tc_projection": 22.4,
+      "edge": 2.4,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Keisuke Goto",
+      "stat": "CORNERS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Keisuke Osako",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Keisuke Osako",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Keisuke Osako",
+      "stat": "TACKLES",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Keisuke Osako",
+      "stat": "PASSES",
+      "market_line": 20,
+      "tc_projection": 22.4,
+      "edge": 2.4,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Keisuke Osako",
+      "stat": "CORNERS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Kento Shiogai",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Kento Shiogai",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Kento Shiogai",
+      "stat": "TACKLES",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Kento Shiogai",
+      "stat": "PASSES",
+      "market_line": 20,
+      "tc_projection": 22.4,
+      "edge": 2.4,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Kento Shiogai",
+      "stat": "CORNERS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Kou Itakura",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Kou Itakura",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Kou Itakura",
+      "stat": "TACKLES",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Kou Itakura",
+      "stat": "PASSES",
+      "market_line": 20,
+      "tc_projection": 22.4,
+      "edge": 2.4,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Kou Itakura",
+      "stat": "CORNERS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Luiz Henrique",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Luiz Henrique",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Luiz Henrique",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Luiz Henrique",
+      "stat": "TACKLES",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Luiz Henrique",
+      "stat": "PASSES",
+      "market_line": 25,
+      "tc_projection": 28,
+      "edge": 3,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Luiz Henrique",
+      "stat": "CORNERS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "L\u00e9o Pereira",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "L\u00e9o Pereira",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "L\u00e9o Pereira",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "L\u00e9o Pereira",
+      "stat": "TACKLES",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "L\u00e9o Pereira",
+      "stat": "PASSES",
+      "market_line": 25,
+      "tc_projection": 28,
+      "edge": 3,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "L\u00e9o Pereira",
+      "stat": "CORNERS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Matheus Cunha",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Matheus Cunha",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Matheus Cunha",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Matheus Cunha",
+      "stat": "TACKLES",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Matheus Cunha",
+      "stat": "PASSES",
+      "market_line": 25,
+      "tc_projection": 28,
+      "edge": 3,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Matheus Cunha",
+      "stat": "CORNERS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Rayan",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Rayan",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Rayan",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Rayan",
+      "stat": "TACKLES",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Rayan",
+      "stat": "PASSES",
+      "market_line": 25,
+      "tc_projection": 28,
+      "edge": 3,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Rayan",
+      "stat": "CORNERS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Shogo Taniguchi",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Shogo Taniguchi",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Shogo Taniguchi",
+      "stat": "TACKLES",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Shogo Taniguchi",
+      "stat": "PASSES",
+      "market_line": 20,
+      "tc_projection": 22.4,
+      "edge": 2.4,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Shogo Taniguchi",
+      "stat": "CORNERS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Shuto Machino",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Shuto Machino",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Shuto Machino",
+      "stat": "TACKLES",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Shuto Machino",
+      "stat": "PASSES",
+      "market_line": 20,
+      "tc_projection": 22.4,
+      "edge": 2.4,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Shuto Machino",
+      "stat": "CORNERS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Tomoki Hayakawa",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Tomoki Hayakawa",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Tomoki Hayakawa",
+      "stat": "TACKLES",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Tomoki Hayakawa",
+      "stat": "PASSES",
+      "market_line": 20,
+      "tc_projection": 22.4,
+      "edge": 2.4,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Tomoki Hayakawa",
+      "stat": "CORNERS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Tsuyoshi Watanabe",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Tsuyoshi Watanabe",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Tsuyoshi Watanabe",
+      "stat": "TACKLES",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Tsuyoshi Watanabe",
+      "stat": "PASSES",
+      "market_line": 20,
+      "tc_projection": 22.4,
+      "edge": 2.4,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Tsuyoshi Watanabe",
+      "stat": "CORNERS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Weverton",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Weverton",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Weverton",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Weverton",
+      "stat": "TACKLES",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Weverton",
+      "stat": "PASSES",
+      "market_line": 25,
+      "tc_projection": 28,
+      "edge": 3,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Weverton",
+      "stat": "CORNERS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Yuito Suzuki",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Yuito Suzuki",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Yuito Suzuki",
+      "stat": "TACKLES",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Yuito Suzuki",
+      "stat": "PASSES",
+      "market_line": 20,
+      "tc_projection": 22.4,
+      "edge": 2.4,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Yuito Suzuki",
+      "stat": "CORNERS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Yuto Nagatomo",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Yuto Nagatomo",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Yuto Nagatomo",
+      "stat": "TACKLES",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Yuto Nagatomo",
+      "stat": "PASSES",
+      "market_line": 20,
+      "tc_projection": 22.4,
+      "edge": 2.4,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Yuto Nagatomo",
+      "stat": "CORNERS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Zion Suzuki",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Zion Suzuki",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Zion Suzuki",
+      "stat": "TACKLES",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Zion Suzuki",
+      "stat": "PASSES",
+      "market_line": 20,
+      "tc_projection": 22.4,
+      "edge": 2.4,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Zion Suzuki",
+      "stat": "CORNERS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "\u00c9derson",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "\u00c9derson",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "\u00c9derson",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "\u00c9derson",
+      "stat": "TACKLES",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "\u00c9derson",
+      "stat": "PASSES",
+      "market_line": 25,
+      "tc_projection": 28,
+      "edge": 3,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "\u00c9derson",
+      "stat": "CORNERS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    }
+  ],
+  "source": "worldcup_picks.py \u00b7 51 players \u00b7 book: self-edge",
+  "roster_counts": {
+    "away": 51,
+    "home": 0,
+    "away_active": 51,
+    "home_active": 0
+  },
+  "odds": {
+    "total": null,
+    "ml_source": "self-edge"
+  },
+  "team_to_win": "BRA",
+  "team_to_win_reason": "home court/field advantage",
+  "ml_pick": "BRA",
+  "spread_pick": "BRA",
+  "total_lean": "OVER",
+  "book_source_honest": "self-edge (no FD/DK player props on Odds API free tier)"
+}

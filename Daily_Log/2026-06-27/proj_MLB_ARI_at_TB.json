@@ -3,7 +3,7 @@
   "matchup": "ARI@TB",
   "home_team": "TB",
   "away_team": "ARI",
-  "dk_total": 8.5,
+  "dk_total": 9.5,
   "source": "ESPN + The Odds API + SportsDataIO",
   "valid_props": [
     {
@@ -33,19 +33,6 @@
       "source": "sdio_lines"
     },
     {
-      "player": "Pavin Smith",
-      "team": "ARI",
-      "pos": "DH",
-      "stat": "total_bases",
-      "market_line": 2,
-      "tc_projection": 0.1,
-      "edge": -1.9,
-      "direction": "UNDER",
-      "signal": "UNDER",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
       "player": "Junior Caminero",
       "team": "TB",
       "pos": "3B",
@@ -66,6 +53,32 @@
       "market_line": 2,
       "tc_projection": 0.3,
       "edge": -1.7,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Adrian Del Castillo",
+      "team": "ARI",
+      "pos": "DH",
+      "stat": "total_bases",
+      "market_line": 2,
+      "tc_projection": 0.4,
+      "edge": -1.6,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Chandler Simpson",
+      "team": "TB",
+      "pos": "LF",
+      "stat": "hits",
+      "market_line": 2,
+      "tc_projection": 0.4,
+      "edge": -1.6,
       "direction": "UNDER",
       "signal": "UNDER",
       "status": "ACTIVE",
@@ -267,6 +280,32 @@
       "source": "sdio_lines"
     },
     {
+      "player": "Adrian Del Castillo",
+      "team": "ARI",
+      "pos": "DH",
+      "stat": "hits",
+      "market_line": 0.7,
+      "tc_projection": 0.2,
+      "edge": -0.5,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Adrian Del Castillo",
+      "team": "ARI",
+      "pos": "DH",
+      "stat": "runs",
+      "market_line": 0.7,
+      "tc_projection": 0.2,
+      "edge": -0.5,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
       "player": "Geraldo Perdomo",
       "team": "ARI",
       "pos": "SS",
@@ -286,19 +325,6 @@
       "stat": "total_bases",
       "market_line": 2,
       "tc_projection": 1.5,
-      "edge": -0.5,
-      "direction": "UNDER",
-      "signal": "UNDER",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Pavin Smith",
-      "team": "ARI",
-      "pos": "DH",
-      "stat": "rbi",
-      "market_line": 0.7,
-      "tc_projection": 0.2,
       "edge": -0.5,
       "direction": "UNDER",
       "signal": "UNDER",
@@ -479,19 +505,6 @@
       "team": "ARI",
       "pos": "2B",
       "stat": "runs",
-      "market_line": 0.7,
-      "tc_projection": 0.4,
-      "edge": -0.3,
-      "direction": "UNDER",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Chandler Simpson",
-      "team": "TB",
-      "pos": "LF",
-      "stat": "hits",
       "market_line": 0.7,
       "tc_projection": 0.4,
       "edge": -0.3,
@@ -722,6 +735,32 @@
       "source": "sdio_lines"
     },
     {
+      "player": "Adrian Del Castillo",
+      "team": "ARI",
+      "pos": "DH",
+      "stat": "strikeouts",
+      "market_line": 2,
+      "tc_projection": 0,
+      "edge": 0,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Adrian Del Castillo",
+      "team": "ARI",
+      "pos": "DH",
+      "stat": "rbi",
+      "market_line": 0.7,
+      "tc_projection": 0,
+      "edge": 0,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
       "player": "Nolan Arenado",
       "team": "ARI",
       "pos": "3B",
@@ -767,45 +806,6 @@
       "stat": "rbi",
       "market_line": 0.7,
       "tc_projection": 0.7,
-      "edge": 0,
-      "direction": "UNDER",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Pavin Smith",
-      "team": "ARI",
-      "pos": "DH",
-      "stat": "strikeouts",
-      "market_line": 0.7,
-      "tc_projection": 0,
-      "edge": 0,
-      "direction": "UNDER",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Pavin Smith",
-      "team": "ARI",
-      "pos": "DH",
-      "stat": "hits",
-      "market_line": 0.7,
-      "tc_projection": 0,
-      "edge": 0,
-      "direction": "UNDER",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Pavin Smith",
-      "team": "ARI",
-      "pos": "DH",
-      "stat": "runs",
-      "market_line": 0.7,
-      "tc_projection": 0,
       "edge": 0,
       "direction": "UNDER",
       "signal": "PASS",
@@ -895,7 +895,7 @@
       "team": "TB",
       "pos": "RF",
       "stat": "strikeouts",
-      "market_line": 0.7,
+      "market_line": 2,
       "tc_projection": 0,
       "edge": 0,
       "direction": "UNDER",
@@ -1042,7 +1042,7 @@
   },
   "dk_available": true,
   "prop_source": "sdio_lines",
-  "sdio_props_count": 19,
+  "sdio_props_count": 20,
   "away": {
     "all": {
       "players": [
@@ -1547,15 +1547,15 @@
           "tc_r": 0.2,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 0,
+          "line_h": 0.7,
           "line_hr": 0,
-          "line_rbi": 0,
-          "line_r": 0,
+          "line_rbi": 0.7,
+          "line_r": 0.7,
           "line_sb": 0,
-          "edge_h": 0,
+          "edge_h": -0.5,
           "edge_hr": 0,
           "edge_rbi": 0,
-          "edge_r": 0,
+          "edge_r": -0.5,
           "edge_sb": 0,
           "edge_avg": 0,
           "batting": {
@@ -1596,8 +1596,18 @@
             "earned_runs": 0.5,
             "outs": 0
           },
-          "lines_raw": {},
-          "edges_raw": {}
+          "lines_raw": {
+            "strikeouts": 2,
+            "hits": 0.7,
+            "rbi": 0.7,
+            "total_bases": 2,
+            "runs": 0.7
+          },
+          "edges_raw": {
+            "hits": -0.5,
+            "total_bases": -1.6,
+            "runs": -0.5
+          }
         },
         {
           "name": "Pavin Smith",
@@ -1612,14 +1622,14 @@
           "tc_r": 0,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 0.7,
+          "line_h": 0,
           "line_hr": 0,
-          "line_rbi": 0.7,
-          "line_r": 0.7,
+          "line_rbi": 0,
+          "line_r": 0,
           "line_sb": 0,
           "edge_h": 0,
           "edge_hr": 0,
-          "edge_rbi": -0.5,
+          "edge_rbi": 0,
           "edge_r": 0,
           "edge_sb": 0,
           "edge_avg": 0,
@@ -1661,17 +1671,8 @@
             "earned_runs": 0.5,
             "outs": 0
           },
-          "lines_raw": {
-            "strikeouts": 0.7,
-            "hits": 0.7,
-            "rbi": 0.7,
-            "total_bases": 2,
-            "runs": 0.7
-          },
-          "edges_raw": {
-            "rbi": -0.5,
-            "total_bases": -1.9
-          }
+          "lines_raw": {},
+          "edges_raw": {}
         },
         {
           "name": "Jose Fernandez",
@@ -3381,15 +3382,15 @@
           "tc_r": 0.2,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 0,
+          "line_h": 0.7,
           "line_hr": 0,
-          "line_rbi": 0,
-          "line_r": 0,
+          "line_rbi": 0.7,
+          "line_r": 0.7,
           "line_sb": 0,
-          "edge_h": 0,
+          "edge_h": -0.5,
           "edge_hr": 0,
           "edge_rbi": 0,
-          "edge_r": 0,
+          "edge_r": -0.5,
           "edge_sb": 0,
           "edge_avg": 0,
           "batting": {
@@ -3430,8 +3431,18 @@
             "earned_runs": 0.5,
             "outs": 0
           },
-          "lines_raw": {},
-          "edges_raw": {}
+          "lines_raw": {
+            "strikeouts": 2,
+            "hits": 0.7,
+            "rbi": 0.7,
+            "total_bases": 2,
+            "runs": 0.7
+          },
+          "edges_raw": {
+            "hits": -0.5,
+            "total_bases": -1.6,
+            "runs": -0.5
+          }
         },
         {
           "name": "Pavin Smith",
@@ -3446,14 +3457,14 @@
           "tc_r": 0,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 0.7,
+          "line_h": 0,
           "line_hr": 0,
-          "line_rbi": 0.7,
-          "line_r": 0.7,
+          "line_rbi": 0,
+          "line_r": 0,
           "line_sb": 0,
           "edge_h": 0,
           "edge_hr": 0,
-          "edge_rbi": -0.5,
+          "edge_rbi": 0,
           "edge_r": 0,
           "edge_sb": 0,
           "edge_avg": 0,
@@ -3495,17 +3506,8 @@
             "earned_runs": 0.5,
             "outs": 0
           },
-          "lines_raw": {
-            "strikeouts": 0.7,
-            "hits": 0.7,
-            "rbi": 0.7,
-            "total_bases": 2,
-            "runs": 0.7
-          },
-          "edges_raw": {
-            "rbi": -0.5,
-            "total_bases": -1.9
-          }
+          "lines_raw": {},
+          "edges_raw": {}
         }
       ]
     },
@@ -5372,12 +5374,12 @@
           "tc_r": 0.3,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 0.7,
+          "line_h": 2,
           "line_hr": 0,
           "line_rbi": 0.7,
           "line_r": 0.7,
           "line_sb": 0,
-          "edge_h": -0.3,
+          "edge_h": -1.6,
           "edge_hr": 0,
           "edge_rbi": 0,
           "edge_r": -0.4,
@@ -5423,13 +5425,13 @@
           },
           "lines_raw": {
             "strikeouts": 0.7,
-            "hits": 0.7,
+            "hits": 2,
             "rbi": 0.7,
             "total_bases": 2,
             "runs": 0.7
           },
           "edges_raw": {
-            "hits": -0.3,
+            "hits": -1.6,
             "total_bases": -0.9,
             "runs": -0.4
           }
@@ -5562,7 +5564,7 @@
             "outs": 0
           },
           "lines_raw": {
-            "strikeouts": 0.7,
+            "strikeouts": 2,
             "hits": 0.7,
             "rbi": 0.7,
             "total_bases": 2,
@@ -7357,12 +7359,12 @@
           "tc_r": 0.3,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 0.7,
+          "line_h": 2,
           "line_hr": 0,
           "line_rbi": 0.7,
           "line_r": 0.7,
           "line_sb": 0,
-          "edge_h": -0.3,
+          "edge_h": -1.6,
           "edge_hr": 0,
           "edge_rbi": 0,
           "edge_r": -0.4,
@@ -7408,13 +7410,13 @@
           },
           "lines_raw": {
             "strikeouts": 0.7,
-            "hits": 0.7,
+            "hits": 2,
             "rbi": 0.7,
             "total_bases": 2,
             "runs": 0.7
           },
           "edges_raw": {
-            "hits": -0.3,
+            "hits": -1.6,
             "total_bases": -0.9,
             "runs": -0.4
           }
@@ -7547,7 +7549,7 @@
             "outs": 0
           },
           "lines_raw": {
-            "strikeouts": 0.7,
+            "strikeouts": 2,
             "hits": 0.7,
             "rbi": 0.7,
             "total_bases": 2,
@@ -8691,7 +8693,7 @@
   "edge": null,
   "signal": null,
   "odds": {
-    "total": 8.5,
+    "total": 9.5,
     "ml_source": "DraftKings via SportsDataIO"
   },
   "team_to_win": "TB",

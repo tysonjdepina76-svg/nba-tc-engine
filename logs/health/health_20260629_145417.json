@@ -1,0 +1,44 @@
+{
+  "timestamp": "2026-06-29T14:54:17.370025",
+  "status": "warning",
+  "checks": {
+    "espn": {
+      "status": "healthy",
+      "games_found": 0
+    },
+    "odds_api": {
+      "status": "warning",
+      "message": "Odds API disabled (quota exhausted). Set ODDS_API_DISABLED=0 (or unset ODDS_API_QUOTA_DEADLINE) after 2026-07-01T00:00:00Z to re-enable.",
+      "quota_dead": true
+    },
+    "draftkings": {
+      "status": "healthy",
+      "message": "Not yet wired"
+    },
+    "data_freshness": {
+      "status": "healthy",
+      "hours_ago": 3.5
+    },
+    "projections": {
+      "status": "warning",
+      "message": "No projections found"
+    },
+    "disk_space": {
+      "status": "healthy",
+      "percent": "0.0%"
+    },
+    "dashboard": {
+      "status": "healthy",
+      "code": 200
+    },
+    "circuit_breakers": {
+      "status": "healthy",
+      "open": []
+    }
+  },
+  "critical_failures": [],
+  "warnings": [
+    "odds_api: Odds API disabled (quota exhausted). Set ODDS_API_DISABLED=0 (or unset ODDS_API_QUOTA_DEADLINE) after 2026-07-01T00:00:00Z to re-enable.",
+    "projections: No projections found"
+  ]
+}

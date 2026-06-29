@@ -3,7 +3,7 @@
   "matchup": "KC@CHW",
   "home_team": "CHW",
   "away_team": "KC",
-  "dk_total": 8,
+  "dk_total": 3.5,
   "source": "ESPN + The Odds API + SportsDataIO",
   "valid_props": [
     {
@@ -98,19 +98,6 @@
       "source": "sdio_lines"
     },
     {
-      "player": "Isaac Collins",
-      "team": "KC",
-      "pos": "LF",
-      "stat": "total_bases",
-      "market_line": 2,
-      "tc_projection": 0.9,
-      "edge": -1.1,
-      "direction": "UNDER",
-      "signal": "UNDER",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
       "player": "Tristan Peters",
       "team": "CHW",
       "pos": "CF",
@@ -140,6 +127,19 @@
       "player": "Jac Caglianone",
       "team": "KC",
       "pos": "RF",
+      "stat": "total_bases",
+      "market_line": 2,
+      "tc_projection": 1.2,
+      "edge": -0.8,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Drew Romo",
+      "team": "CHW",
+      "pos": "C",
       "stat": "total_bases",
       "market_line": 2,
       "tc_projection": 1.2,
@@ -345,6 +345,19 @@
       "source": "sdio_lines"
     },
     {
+      "player": "Drew Romo",
+      "team": "CHW",
+      "pos": "C",
+      "stat": "runs",
+      "market_line": 0.7,
+      "tc_projection": 0.2,
+      "edge": -0.5,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
       "player": "Chase Meidroth",
       "team": "CHW",
       "pos": "2B",
@@ -501,6 +514,19 @@
       "source": "sdio_lines"
     },
     {
+      "player": "Drew Romo",
+      "team": "CHW",
+      "pos": "C",
+      "stat": "hits",
+      "market_line": 0.7,
+      "tc_projection": 0.4,
+      "edge": -0.3,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
       "player": "Andrew Benintendi",
       "team": "CHW",
       "pos": "DH",
@@ -560,6 +586,19 @@
       "market_line": 0.7,
       "tc_projection": 1,
       "edge": 0.3,
+      "direction": "OVER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Isaac Collins",
+      "team": "KC",
+      "pos": "LF",
+      "stat": "total_bases",
+      "market_line": 0.7,
+      "tc_projection": 0.9,
+      "edge": 0.2,
       "direction": "OVER",
       "signal": "PASS",
       "status": "ACTIVE",
@@ -956,6 +995,32 @@
       "source": "sdio_lines"
     },
     {
+      "player": "Drew Romo",
+      "team": "CHW",
+      "pos": "C",
+      "stat": "strikeouts",
+      "market_line": 0.7,
+      "tc_projection": 0,
+      "edge": 0,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Drew Romo",
+      "team": "CHW",
+      "pos": "C",
+      "stat": "rbi",
+      "market_line": 0.7,
+      "tc_projection": 0,
+      "edge": 0,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
       "player": "Davis Martin",
       "team": "CHW",
       "pos": "SP",
@@ -1068,7 +1133,7 @@
   },
   "dk_available": true,
   "prop_source": "sdio_lines",
-  "sdio_props_count": 19,
+  "sdio_props_count": 20,
   "away": {
     "all": {
       "players": [
@@ -1843,12 +1908,12 @@
             "strikeouts": 0.7,
             "hits": 0.7,
             "rbi": 0.7,
-            "total_bases": 2,
+            "total_bases": 0.7,
             "runs": 0.7
           },
           "edges_raw": {
             "hits": 0,
-            "total_bases": -1.1,
+            "total_bases": 0.2,
             "runs": 0
           }
         },
@@ -3766,12 +3831,12 @@
             "strikeouts": 0.7,
             "hits": 0.7,
             "rbi": 0.7,
-            "total_bases": 2,
+            "total_bases": 0.7,
             "runs": 0.7
           },
           "edges_raw": {
             "hits": 0,
-            "total_bases": -1.1,
+            "total_bases": 0.2,
             "runs": 0
           }
         },
@@ -5286,15 +5351,15 @@
           "tc_r": 0.2,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 0,
+          "line_h": 0.7,
           "line_hr": 0,
-          "line_rbi": 0,
-          "line_r": 0,
+          "line_rbi": 0.7,
+          "line_r": 0.7,
           "line_sb": 0,
-          "edge_h": 0,
+          "edge_h": -0.3,
           "edge_hr": 0,
           "edge_rbi": 0,
-          "edge_r": 0,
+          "edge_r": -0.5,
           "edge_sb": 0,
           "edge_avg": 0,
           "batting": {
@@ -5335,8 +5400,18 @@
             "earned_runs": 0.5,
             "outs": 0
           },
-          "lines_raw": {},
-          "edges_raw": {}
+          "lines_raw": {
+            "strikeouts": 0.7,
+            "hits": 0.7,
+            "rbi": 0.7,
+            "total_bases": 2,
+            "runs": 0.7
+          },
+          "edges_raw": {
+            "hits": -0.3,
+            "total_bases": -0.8,
+            "runs": -0.5
+          }
         },
         {
           "name": "Tristan Peters",
@@ -7194,15 +7269,15 @@
           "tc_r": 0.2,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 0,
+          "line_h": 0.7,
           "line_hr": 0,
-          "line_rbi": 0,
-          "line_r": 0,
+          "line_rbi": 0.7,
+          "line_r": 0.7,
           "line_sb": 0,
-          "edge_h": 0,
+          "edge_h": -0.3,
           "edge_hr": 0,
           "edge_rbi": 0,
-          "edge_r": 0,
+          "edge_r": -0.5,
           "edge_sb": 0,
           "edge_avg": 0,
           "batting": {
@@ -7243,8 +7318,18 @@
             "earned_runs": 0.5,
             "outs": 0
           },
-          "lines_raw": {},
-          "edges_raw": {}
+          "lines_raw": {
+            "strikeouts": 0.7,
+            "hits": 0.7,
+            "rbi": 0.7,
+            "total_bases": 2,
+            "runs": 0.7
+          },
+          "edges_raw": {
+            "hits": -0.3,
+            "total_bases": -0.8,
+            "runs": -0.5
+          }
         },
         {
           "name": "Tristan Peters",
@@ -8741,7 +8826,7 @@
   "edge": null,
   "signal": null,
   "odds": {
-    "total": 8,
+    "total": 3.5,
     "ml_source": "DraftKings via SportsDataIO"
   },
   "team_to_win": "CHW",

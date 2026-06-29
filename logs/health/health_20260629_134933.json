@@ -1,0 +1,46 @@
+{
+  "timestamp": "2026-06-29T13:49:33.191894",
+  "status": "critical",
+  "checks": {
+    "espn": {
+      "status": "critical",
+      "message": "unterminated string literal (detected at line 9) (__init__.py, line 9)"
+    },
+    "odds_api": {
+      "status": "critical",
+      "message": "ODDS_API_KEY not set"
+    },
+    "draftkings": {
+      "status": "healthy",
+      "message": "Not yet wired"
+    },
+    "data_freshness": {
+      "status": "warning",
+      "message": "Cannot parse last_run.json: can't subtract offset-naive and offset-aware datetimes"
+    },
+    "projections": {
+      "status": "warning",
+      "message": "No reports/daily directory"
+    },
+    "disk_space": {
+      "status": "healthy",
+      "percent": "0.0%"
+    },
+    "dashboard": {
+      "status": "healthy",
+      "code": 200
+    },
+    "circuit_breakers": {
+      "status": "healthy",
+      "open": []
+    }
+  },
+  "critical_failures": [
+    "espn: unterminated string literal (detected at line 9) (__init__.py, line 9)",
+    "odds_api: ODDS_API_KEY not set"
+  ],
+  "warnings": [
+    "data_freshness: Cannot parse last_run.json: can't subtract offset-naive and offset-aware datetimes",
+    "projections: No reports/daily directory"
+  ]
+}
