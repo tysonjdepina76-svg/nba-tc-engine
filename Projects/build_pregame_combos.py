@@ -387,15 +387,19 @@ def _line_range_signal(entry: dict) -> tuple:
     spread = round(hi - lo, 2)
     above = sum(1 for v in all_lines if v > consensus)
     below = sum(1 for v in all_lines if v < consensus)
-    # 2026-06-30 tighten: with hi/lo only, hi >= lo is always true — that
-    # caused OVER lean to fire on every pick (17% hit rate). Require spread
-    # >= 0.5 (books genuinely disagree) AND majority above consensus for OVER,
-    # otherwise default to UNDER (the conservative side).
-    if spread >= 0.5 and above > below:
+    # 2026-06-30 tighten v2: OVER only when edge_pct > 0.05 (5% relative
+    # spread between highest and lowest line). Below 5% the books agree
+    # and the conservative side is UNDER. With hi/lo only, hi >= lo is
+    # always true — must require both spread AND relative edge.
+    if lo and lo > 0:
+        edge_pct = spread / lo
+    else:
+        edge_pct = 0.0
+    if edge_pct > 0.05 and above > below:
         direction = "OVER"
     else:
         direction = "UNDER"
-    return (direction, spread, hi, lo, len(all_lines))
+    return (direction, spread, hi, lo, len(all_lines), round(edge_pct, 4))
 
 def build_combos(sport: str, away: str, home: str) -> dict:
     """Build combo legs from booklines only — no TC projections."""
@@ -430,7 +434,7 @@ def build_combos(sport: str, away: str, home: str) -> dict:
             if not entry: continue
             consensus_line = entry.get("consensus")
             if consensus_line is None: continue
-            direction, spread, hi, lo, book_count = _line_range_signal(entry)
+            direction, spread, hi, lo, book_count, edge_pct = _line_range_signal(entry)
             if direction is None: continue
             # Quality filter: need >=1 book. Spread only matters with 2+ books.
             # 2026-06-29: MLB SGO only returns DK (no multi-book overlap),

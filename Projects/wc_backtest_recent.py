@@ -151,12 +151,17 @@ def main():
             over_price = float(row.get("over_price") or 0.0)
 
             edge = edge_map.get((matchup, player, stat))
+            # 2026-06-30 tighten v2: OVER only when edge_pct > 0.05
+            # (5% threshold). edge from props.json is already a percent.
             if edge is None:
-                direction = "OVER" if over_price >= 0 else "UNDER"
-                edge_src  = "price-fallback"
+                direction = "UNDER"  # default to conservative when unknown
+                edge_src  = "fallback"
+            elif edge > 0.05:
+                direction = "OVER"
+                edge_src  = "edge-over"
             else:
-                direction = "OVER" if edge >= 0 else "UNDER"
-                edge_src  = "edge"
+                direction = "UNDER"
+                edge_src  = "edge-under"
 
             actual_row = find_actual(box, player, matchup)
             if not actual_row:
