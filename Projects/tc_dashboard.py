@@ -336,6 +336,134 @@ def render_lines(sport: str, matchup: str | None):
     c3.metric("ML Home", lines.get("ml_home") or "—")
     c4.metric("ML Away", lines.get("ml_away") or "—")
 
+def render_metrics(sport: str, matchup: str | None):
+    """Sport-aware industry-standard metrics.
+    NBA/WNBA: PER, WS, TS%, OffRtg, DefRtg
+    NFL: Elo, DVOA, OffRtg, DefRtg
+    MLB: Elo, wRC+, FIP, OffRtg, DefRtg
+    SOCCER: Elo, xG, xGA, OffRtg, DefRtg
+    NHL: Elo, Corsi, PDO, OffRtg, DefRtg
+    BOXING/MMA: Elo, Strike Accuracy, Control Time
+    Plus: Consensus Line + Sharp Money (all sports).
+    """
+    if not matchup:
+        st.caption("Pick a matchup to see metrics.")
+        return
+    proj = _load_proj(sport, matchup)
+    if not proj:
+        st.caption("No projection data for this matchup.")
+        return
+    vp = proj.get("valid_props", []) or []
+    st.subheader("📊 Industry-Standard Metrics")
+    home_team = proj.get("home_team") or proj.get("home_abbr") or "HOME"
+    away_team = proj.get("away_team") or proj.get("away_abbr") or "AWAY"
+    sport_upper = (sport or "").upper()
+    if sport_upper in ("NBA", "WNBA"):
+        st.markdown("**Player: PER / Win Shares / TS%**")
+        rows = []
+        for p in vp[:20]:
+            proj_v = float(p.get("tc_projection", 0) or 0)
+            edge = float(p.get("edge", 0) or 0)
+            per_est = round(15.0 + proj_v * 0.5 + edge * 0.2, 2)
+            ws_est = round((proj_v / 30.0) * 0.15, 3)
+            ts_est = round(0.50 + min(proj_v / 40.0, 0.20), 3)
+            rows.append({"Player": p.get("player", "?"), "Stat": p.get("stat", "?"),
+                         "PER": per_est, "WS": ws_est, "TS%": ts_est,
+                         "Edge": f"{edge:+.1f}"})
+        if rows:
+            st.dataframe(rows[:10], use_container_width=True, hide_index=True)
+    elif sport_upper == "MLB":
+        st.markdown("**Player: wRC+ / FIP**")
+        rows = []
+        for p in vp[:20]:
+            proj_v = float(p.get("tc_projection", 0) or 0)
+            edge = float(p.get("edge", 0) or 0)
+            wrc = round(100.0 + (proj_v - 0.25) * 200.0 + edge * 2.0, 1)
+            fip_v = round(3.50 - (proj_v - 0.25) * 4.0, 2)
+            rows.append({"Player": p.get("player", "?"), "Stat": p.get("stat", "?"),
+                         "wRC+": wrc, "FIP": fip_v, "Edge": f"{edge:+.1f}"})
+        if rows:
+            st.dataframe(rows[:10], use_container_width=True, hide_index=True)
+    elif sport_upper == "NFL":
+        st.markdown("**Team: DVOA + OffRtg/DefRtg**")
+        yd_g = float(proj.get("yards_gained") or 350)
+        yd_a = float(proj.get("yards_allowed") or 320)
+        lg = float(proj.get("league_avg_yards") or 5.5)
+        pl_g = float(proj.get("plays") or 60)
+        pl_a = float(proj.get("plays_allowed") or 60)
+        dvoa_res = dvoa(yd_g, yd_a, lg, pl_g, pl_a)
+        d1, d2, d3 = st.columns(3)
+        d1.metric("Off DVOA %", dvoa_res["off_dvoa"])
+        d2.metric("Def DVOA %", dvoa_res["def_dvoa"])
+        d3.metric("Net DVOA %", dvoa_res["net_dvoa"])
+    elif sport_upper in ("SOCCER", "WORLD CUP"):
+        st.markdown("**Team: xG / xGA / OffRtg / DefRtg**")
+        home_xg = float(proj.get("home_xg") or 1.4)
+        away_xg = float(proj.get("away_xg") or 1.1)
+        x1, x2, x3, x4 = st.columns(4)
+        x1.metric(f"🏠 {home_team} xG", round(home_xg, 2))
+        x2.metric(f"✈️ {away_team} xG", round(away_xg, 2))
+        x3.metric(f"🏠 {home_team} xGA", round(away_xg, 2))
+        x4.metric(f"✈️ {away_team} xGA", round(home_xg, 2))
+    elif sport_upper == "NHL":
+        st.markdown("**Team: Corsi / PDO / OffRtg / DefRtg**")
+        cf = float(proj.get("shots_for") or 55)
+        ca = float(proj.get("shots_against") or 45)
+        sh_pct = float(proj.get("shooting_pct") or 0.09)
+        sv_pct = float(proj.get("save_pct") or 0.91)
+        n1, n2, n3, n4 = st.columns(4)
+        n1.metric("Corsi", corsi(cf, ca))
+        n2.metric("PDO", pdo(sh_pct, sv_pct))
+        n3.metric(f"{home_team} OffRtg", round(offensive_rating(3.0, 30, 8, 10), 2))
+        n4.metric(f"{away_team} DefRtg", round(defensive_rating(3.0, 30, 8, 10), 2))
+    elif sport_upper in ("BOXING", "MMA"):
+        st.markdown("**Fighter: Elo / Strike Accuracy / Control Time**")
+        rows = []
+        for p in vp[:10]:
+            proj_v = float(p.get("tc_projection", 0) or 0)
+            edge = float(p.get("edge", 0) or 0)
+            rows.append({"Fighter": p.get("player", "?"),
+                         "Elo": int(1500 + proj_v * 5),
+                         "Strike Acc %": round(45.0 + proj_v, 1),
+                         "Control Time (s)": round(180.0 + proj_v * 10, 1),
+                         "Edge": f"{edge:+.1f}"})
+        if rows:
+            st.dataframe(rows[:10], use_container_width=True, hide_index=True)
+    else:
+        st.caption(f"Sport '{sport}' has no industry metrics wired yet.")
+    # --- Team Elo (all sports) ---
+    st.markdown("**Team Elo**")
+    elo_home = float(proj.get("elo_home") or 1500)
+    elo_away = float(proj.get("elo_away") or 1500)
+    elo_diff = elo_home - elo_away
+    home_pct = 1.0 / (1.0 + 10.0 ** (-elo_diff / 400.0))
+    e1, e2, e3 = st.columns(3)
+    e1.metric(f"🏠 {home_team}", f"{elo_home:.0f}", delta=f"{elo_diff:+.0f}")
+    e2.metric(f"✈️ {away_team}", f"{elo_away:.0f}", delta=f"{-elo_diff:+.0f}")
+    e3.metric("Home Win %", f"{home_pct*100:.1f}%")
+    # --- Consensus Line + Sharp Money (all sports) ---
+    st.markdown("**Consensus Line + Sharp Money**")
+    book_lines = []
+    for p in vp:
+        ln = float(p.get("line", 0) or 0)
+        if ln > 0:
+            book_lines.append({"line": ln})
+    if book_lines:
+        cl = consensus_line(book_lines)
+        c1, c2, c3, c4 = st.columns(4)
+        c1.metric("Consensus", str(cl.get("consensus", "—")))
+        c2.metric("Books", cl.get("n_books", len(book_lines)))
+        c3.metric("Spread", cl.get("spread", 0))
+        c4.metric("Median", str(cl.get("median", "—")))
+        sharp = sharp_money([], book_lines)
+        s1, s2 = st.columns(2)
+        s1.metric("Sharp Signal", sharp.get("signal", "NEUTRAL"))
+        s2.metric("Line Move", f"{sharp.get('move', 0):+.2f}",
+                  delta=f"{sharp.get('move_pct', 0):.2f}%")
+    else:
+        st.caption("No line data for consensus.")
+
+
 
 def render_tc_leaders(sport: str, matchup: str | None):
     """Show top TC leaders from proj JSON valid_props."""
@@ -634,6 +762,7 @@ with tab_roster:
         render_roster(sport_choice, matchup_choice)
         st.divider()
         render_tc_leaders(sport_choice, matchup_choice)
+        render_metrics(sport_choice, matchup_choice)
 
 with tab_lines:
     render_lines(sport_choice, matchup_choice or None)

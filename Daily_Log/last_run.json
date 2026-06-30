@@ -1,13 +1,36 @@
 {
-  "timestamp": "2026-06-29T23:11:40.091223-05:00",
+  "timestamp": "2026-06-30T03:02:48.805072-05:00",
   "sports": [
-    "WC"
+    "WNBA",
+    "MLB",
+    "WORLD CUP"
   ],
-  "games_logged": 0,
-  "picks_logged": 0,
-  "completed_games_skipped": 0,
+  "games_logged": 1,
+  "picks_logged": 3,
+  "completed_games_skipped": 13,
   "errors": [
-    "WC slate: Unknown sport: WC"
+    "WORLD CUP NOR@CIV: No data for WORLD CUP NOR@CIV",
+    "WORLD CUP SWE@FRA: No data for WORLD CUP SWE@FRA",
+    "WORLD CUP ECU@MEX: No data for WORLD CUP ECU@MEX"
   ],
-  "summaries": []
+  "summaries": [
+    {
+      "date": "2026-06-30",
+      "sport": "WNBA",
+      "matchup": "LV@NY",
+      "away_team": "LV",
+      "home_team": "NY",
+      "tc_combined": null,
+      "tc_line": null,
+      "market_total": null,
+      "dk_total": null,
+      "edge": null,
+      "signal": "OVER",
+      "source": "ESPN Core API (self-edge)",
+      "valid_prop_count": 3,
+      "roster_size": 26,
+      "pending_props_no_dk": 0,
+      "picks_with_dk": 3
+    }
+  ]
 }
