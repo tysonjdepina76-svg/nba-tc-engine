@@ -24,6 +24,7 @@ Usage:
 
 import json
 import os
+import re
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -58,6 +59,7 @@ MLB_TEAM_MAP = {
     "CIN": "cincinnati reds",
     "DET": "detroit tigers",
     "KC": "kansas city royals",
+    "KCR": "kansas city royals",
     "LAA": "los angeles angels",
     "LAD": "los angeles dodgers",
     "MIA": "miami marlins",
@@ -76,6 +78,8 @@ MLB_TEAM_MAP = {
     "TOR": "toronto blue jays",
     "TBD": "tampa bay rays",
     "TB": "tampa bay rays",
+    "TBR": "tampa bay rays",
+    "CHW": "chicago white sox",
     "WSH": "washington nationals",
 }
 
@@ -112,6 +116,8 @@ ODDS_SPORT_MAP = {
     "BUNDESLIGA": "soccer_germany_bundesliga",
     "UCL": "soccer_uefa_champs_league",
     "UEL": "soccer_uefa_europa_league",
+    "WORLD CUP": "soccer_fifa_world_cup",
+    "SOCCER": "soccer_fifa_world_cup",
     "NFL": "americanfootball_nfl",
     "NCAAF": "americanfootball_ncaaf",
     "NCAAB": "basketball_ncaab",
@@ -154,6 +160,128 @@ UD_AVAILABLE = False  # Set True when Underdog API access is obtained
 CONSENSUS_SPORT_MAP = ODDS_SPORT_MAP  # re-export
 
 ODDS_BASE = "https://api.theoddsapi.com"
+
+# ── SGO fallback helpers (for MLB, World Cup when Odds API is dead) ──
+def _sgo_fetch_events(league: str) -> list:
+    """Fetch live/upcoming events from SGO."""
+    if not SGO_KEY:
+        return []
+    try:
+        r = requests.get(
+            "https://api.sportsgameodds.com/v2/events",
+            params={"leagueID": league, "oddsAvailable": "true", "limit": "100"},
+            headers={"x-api-key": SGO_KEY}, timeout=30)
+        r.raise_for_status()
+        return r.json().get("data", [])
+    except Exception as e:
+        print(f"  [SGO] {league} events err: {e}")
+        return []
+
+def _sgo_normalize_to_bookmakers(event: dict, league: str) -> list:
+    """Convert SGO event.odds into the bookmakers list shape _build_consensus_from_bookmakers expects.
+    Only DK is taken — multi-book SGO parsing is complex and DK is the primary book.
+    """
+    odds = event.get("odds", {})
+    if not odds:
+        return []
+    # Map SGO stat keys → ODDS_STAT_REVERSE keys
+    sgo_stat_map = {
+        "points": "points",
+        "rebounds": "rebounds",
+        "assists": "assists",
+        "threes": "threes",
+        "steals": "steals",
+        "blocks": "blocks",
+        "goals": "goals",
+        "shots": "shots",
+        "shots_on_target": "shots_on_target",
+        "hits": "hits",
+        "home_runs": "home_runs",
+        "rbis": "rbis",
+        "stolen_bases": "stolen_bases",
+        "runs": "runs",
+    }
+    # Collect: market_key → list of (player_name, over_line)
+    markets_out = {}
+    for k, v in odds.items():
+        dk = v.get("byBookmaker", {}).get("draftkings", {})
+        if not dk or not dk.get("available"):
+            continue
+        # Player prop format: "points-PLAYERID-game-ou-over"
+        m = re.match(r"^([a-z_]+)-([A-Z0-9_]+)-game-ou-over$", k)
+        if not m:
+            continue
+        stat_raw, pid = m.group(1), m.group(2)
+        stat = sgo_stat_map.get(stat_raw)
+        if not stat:
+            continue
+        line = dk.get("overUnder")
+        if line is None:
+            continue
+        try:
+            line = float(line)
+        except (TypeError, ValueError):
+            continue
+        # Convert player id → display name from teams
+        player_name = pid.replace("_", " ").title()
+        # Map back to a common id for matching
+        markets_out.setdefault(stat, []).append({
+            "name": player_name,
+            "line": line,
+            "over_odds": dk.get("odds"),
+        })
+    # Build bookmakers structure
+    if not markets_out:
+        return []
+    bookmakers = [{
+        "key": "draftkings",
+        "markets": [
+            {"key": f"player_{stat}", "outcomes": [
+                {"name": "Over", "description": p["name"], "point": p["line"], "price": p["over_odds"]}
+                for p in outcomes
+            ]}
+            for stat, outcomes in markets_out.items()
+        ]
+    }]
+    return bookmakers
+
+def _sgo_consensus_for_matchup(sport: str, away: str, home: str) -> dict:
+    """Build consensus from SGO only (used when Odds API is dead)."""
+    league_map = {"MLB": "MLB", "WORLD CUP": "soccer_fifa_world_cup"}
+    league = league_map.get(sport.upper())
+    if not league:
+        return {"players": {}, "available_books": [], "source": "none", "error": f"No SGO league for {sport}"}
+
+    events = _sgo_fetch_events(league)
+    if not events:
+        return {"players": {}, "available_books": [], "source": "none", "error": "SGO events empty"}
+
+    # Match by team names
+    team_map = MLB_TEAM_MAP if sport.upper() == "MLB" else {}
+    away_full = team_map.get(away.upper(), "").lower()
+    home_full = team_map.get(home.upper(), "").lower()
+
+    matched_ev = None
+    for ev in events:
+        # SGO has teams array with names.short
+        teams = ev.get("teams", {})
+        home_n = teams.get("home", {}).get("names", {}).get("short", "").lower()
+        away_n = teams.get("away", {}).get("names", {}).get("short", "").lower()
+        if away.upper().lower() in away_n and home.upper().lower() in home_n:
+            matched_ev = ev; break
+        if away_full and home_full and away_full in teams.get("away", {}).get("names", {}).get("long", "").lower() and \
+           home_full in teams.get("home", {}).get("names", {}).get("long", "").lower():
+            matched_ev = ev; break
+
+    if not matched_ev:
+        return {"players": {}, "available_books": [], "source": "none", "error": f"No SGO event for {away}@{home}"}
+
+    bookmakers = _sgo_normalize_to_bookmakers(matched_ev, league)
+    if not bookmakers:
+        return {"players": {}, "available_books": [], "source": "none", "error": "No DK lines in SGO"}
+    result = _build_consensus_from_bookmakers(bookmakers)
+    result["source"] = "sportsgameodds.com (fallback)"
+    return result
 
 # ── Response normalization: new api.theoddsapi.com format → old bookmakers format ──
 def _normalize_odds_response(raw_data: dict) -> dict:
@@ -325,25 +453,47 @@ def fetch_sport_batch(sport: str, markets: Optional[List[str]] = None, force: bo
     return batch
 
 def fetch_consensus_for_matchup(sport: str, away: str, home: str, markets=None) -> dict:
-    """Find an event by matchup and return consensus lines. One odds call for all games."""
+    """Find an event by matchup and return consensus lines. One odds call for all games.
+
+    Falls back to SGO (for MLB, World Cup) when Odds API returns no usable data.
+    """
     sport_key = CONSENSUS_SPORT_MAP.get(sport.upper())
     if not sport_key:
         return {"players": {}, "available_books": [], "source": "none", "error": f"No sport key for {sport}"}
     if not ODDS_KEY:
-        return {"players": {}, "available_books": [], "source": "none", "error": "ODDS_API_KEY not set"}
+        # No Odds API key — go straight to SGO
+        sgo_res = _sgo_consensus_for_matchup(sport, away, home)
+        if sgo_res.get("players"):
+            return sgo_res
+        return sgo_res
 
-    r = requests.get(
-        f"{ODDS_BASE}/odds/",
-        params={
-            "sport_key": sport_key,
-            "regions": "us",
-            "apiKey": ODDS_KEY,
-        },
-        timeout=15
-    )
-    r.raise_for_status()
-    raw = r.json()
-    events = raw.get("data", [])
+    try:
+        r = requests.get(
+            f"{ODDS_BASE}/odds/",
+            params={
+                "sport_key": sport_key,
+                "regions": "us",
+                "apiKey": ODDS_KEY,
+            },
+            timeout=15
+        )
+        if r.status_code != 200:
+            # Odds API dead — fall back to SGO for MLB/WC
+            print(f"  [Odds API {r.status_code}] falling back to SGO for {sport}")
+            sgo_res = _sgo_consensus_for_matchup(sport, away, home)
+            if sgo_res.get("players"):
+                return sgo_res
+            return {"players": {}, "available_books": [], "source": "odds_dead_sgo_empty",
+                    "odds_status": r.status_code, "odds_body": r.text[:200]}
+        raw = r.json()
+        events = raw.get("data", [])
+    except Exception as e:
+        # Network / parse failure — try SGO for MLB/WC
+        print(f"  [Odds API err: {e}] falling back to SGO for {sport}")
+        sgo_res = _sgo_consensus_for_matchup(sport, away, home)
+        if sgo_res.get("players"):
+            return sgo_res
+        return {"players": {}, "available_books": [], "source": "odds_err_sgo_empty", "error": str(e)}
 
     ev = None
     a, h = away.upper(), home.upper()
@@ -377,6 +527,17 @@ def fetch_consensus_for_matchup(sport: str, away: str, home: str, markets=None) 
     # Normalize and build consensus
     normalized = _normalize_odds_response({"data": [ev]})
     result = _build_consensus_from_bookmakers(normalized.get("bookmakers", []))
+
+    # If Odds API has the event but returned 0 player props (common when key
+    # tier doesn't include player markets), fall back to SGO for MLB/WC.
+    if not result.get("players") and sport.upper() in ("MLB", "WORLD CUP"):
+        print(f"  [Odds API 0 players for {sport} {away}@{home}] falling back to SGO")
+        sgo_res = _sgo_consensus_for_matchup(sport, away, home)
+        if sgo_res.get("players"):
+            return sgo_res
+        return {"players": {}, "available_books": [], "source": "odds_zero_players_sgo_empty",
+                "odds_books": result.get("all_books_seen", [])}
+
     result["_from_cache"] = False
     _save_cache(sport, ev.get("event_id", ""), result)
     return result

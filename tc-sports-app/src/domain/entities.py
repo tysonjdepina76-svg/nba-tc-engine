@@ -24,16 +24,18 @@ class Sport(Enum):
 
 
 BADGE_COLORS = {
-    "SOCCER": "#2e7d32",
-    "NFL":    "#1a237e",
-    "NBA":    "#e65100",
-    "WNBA":   "#4a148c",
-    "MLB":    "#0d47a1",
-    "NHL":    "#c62828",
-    "TENNIS": "#2e7d32",
-    "GOLF":   "#00695c",
-    "CFB":    "#1a237e",
-    "CBB":    "#e65100",
+    "BOXING":  "#d50000",
+    "MMA":     "#1a237e",
+    "SOCCER":  "#2e7d32",
+    "NFL":     "#1a237e",
+    "NBA":     "#e65100",
+    "WNBA":    "#4a148c",
+    "MLB":     "#0d47a1",
+    "NHL":     "#c62828",
+    "TENNIS":  "#2e7d32",
+    "GOLF":    "#00695c",
+    "CFB":     "#1a237e",
+    "CBB":     "#e65100",
 }
 
 

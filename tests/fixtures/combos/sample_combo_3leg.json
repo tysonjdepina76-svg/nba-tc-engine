@@ -1,0 +1,14 @@
+{
+  "id": "combo-001",
+  "sport": "NBA",
+  "game_id": "401585657",
+  "legs": [
+    {"player": "LeBron James", "stat": "pts", "line": 25.5, "direction": "OVER", "edge_pct": 7.06},
+    {"player": "Jayson Tatum", "stat": "reb", "line": 7.5, "direction": "UNDER", "edge_pct": 9.33},
+    {"player": "Stephen Curry", "stat": "3pm", "line": 4.5, "direction": "OVER", "edge_pct": 8.5}
+  ],
+  "combined_edge_pct": 8.30,
+  "combined_confidence": 0.72,
+  "max_legs": 3,
+  "correlation_score": 0.38
+}

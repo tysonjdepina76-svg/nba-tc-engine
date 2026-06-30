@@ -561,7 +561,7 @@ with st.sidebar:
     st.caption(f"Source: **{src}** • Pipeline priority")
 
 # ─── Header ──────────────────────────────────────────────
-st.title("🏀 TC Picks Dashboard")
+st.title("🏆 SPORTS TC — Multi-Sport Analytics")
 st.caption(
     f"Last updated: {datetime.now(ET).strftime('%I:%M %p ET')} • "
     f"{len(picks)} picks loaded • Data dir: {DATA_DIR.name}"
@@ -622,6 +622,10 @@ if matchup_choice and "@" in matchup_choice and espn_path:
 tab_roster, tab_lines, tab_proj, tab_cards, tab_parlay, tab_combos = st.tabs([
     "📋 Roster + TC", "📈 Lines", "🎯 Projections", "🎴 Cards", "📊 Parlay Builder", "🔥 Live Combos",
 ])
+if sport_choice == "SOCCER":
+    tab_soccer = st.tabs(["⚽ Soccer Stats"])[0]
+if sport_choice in ("BOXING", "MMA"):
+    tab_fight = st.tabs(["🥊 Fight Card"])[0]
 
 with tab_roster:
     if not matchup_choice:
@@ -658,8 +662,195 @@ with tab_parlay:
 with tab_combos:
     render_live_combos(sport_choice, matchup_choice or None)
 
+if sport_choice == "SOCCER":
+    with tab_soccer:
+        render_soccer_stats(sport_choice, matchup_choice or None)
+
+if sport_choice in ("BOXING", "MMA"):
+    with tab_fight:
+        render_fight_card(sport_choice)
+
 st.divider()
 st.caption(
     f"Sources: Daily_Log/proj_*.json (rosters + projections) + ESPN live scoreboard + DK lines • "
     f"Config: tc-sports-app/src/domain/sport_config.py"
 )
+
+
+def render_soccer_stats(sport: str, matchup: str | None) -> None:
+    """Live player (G/A/SH/SOT/PASS/TKL/Cards) + team (Poss/Corners/SoT) stats for soccer."""
+    if sport != "SOCCER":
+        return
+    try:
+        sys.path.insert(0, str(WORKSPACE / "Projects"))
+        from soccer_tc_engine import fetch_live_stats
+    except Exception as e:
+        st.caption(f"soccer_tc_engine import failed: {e}")
+        return
+
+    event_id = st.text_input("Odds API event_id (optional — leave blank to skip)", value="", key="soccer_event_id")
+    if not event_id:
+        st.caption("Enter an event_id to load live player + team stats.")
+        return
+
+    with st.spinner("Fetching soccer live stats..."):
+        try:
+            data = fetch_live_stats(event_id)
+        except Exception as e:
+            st.error(f"Fetch failed: {e}")
+            return
+
+    if data.get("odds_summary", {}).get("h2h"):
+        st.caption(f"DK/BetMGM h2h loaded • event {event_id}")
+
+    team = data.get("team") or {}
+    cols = st.columns(len(team) or 2)
+    for col, (team_name, ts) in zip(cols, team.items()):
+        col.markdown(f"**{team_name}**")
+        col.metric("Possession", str(ts.get("posession") or ts.get("possession", "—")))
+        col.metric("Corners", ts.get("corners", 0))
+        col.metric("Shots", ts.get("shots", 0))
+        col.metric("Shots on Target", ts.get("shots_on_target", 0))
+
+    players = data.get("players") or []
+    if players:
+        cols = ["name", "team", "G", "A", "SH", "SOT", "PASS", "TKL", "Cards"]
+        df = pd.DataFrame(players, columns=cols).sort_values("G", ascending=False)
+        st.dataframe(df, use_container_width=True, hide_index=True)
+    else:
+        st.caption("No player projections for this event.")
+
+
+def get_sport_stats(sport: str) -> dict:
+    """Return sport-specific display config.
+
+    NBA/WNBA: PTS, REB, AST, 3PM, STL, BLK, TO
+    NFL: PASS YDS, RUSH YDS, REC YDS, TD, INT
+    MLB: AVG, HR, RBI, SB, OPS, ERA
+    SOCCER: G, A, SH, SOT, PASS, TKL, Cards
+    NHL: G, A, PTS, +/-, SH, HIT, PIM
+    """
+    if sport in ("NBA", "WNBA"):
+        return {
+            "type": "tc",
+            "columns": ["PTS", "REB", "AST", "3PM", "STL", "BLK", "TO"],
+            "tc_keys": ["pts", "reb", "ast", "3pm", "stl", "blk", "to"],
+            "label": "TC Math",
+        }
+    if sport == "NFL":
+        return {
+            "type": "lines",
+            "columns": ["PASS YDS", "RUSH YDS", "REC YDS", "TD", "INT"],
+            "stat_map": {
+                "pass_yards": "PASS YDS", "rushing_yards": "RUSH YDS",
+                "receiving_yards": "REC YDS", "touchdowns": "TD",
+                "interceptions": "INT", "receptions": "REC",
+                "rush_attempts": "ATT", "completions": "CMP",
+            },
+            "label": "Bookmaker lines",
+        }
+    if sport == "MLB":
+        return {
+            "type": "lines",
+            "columns": ["AVG", "HR", "RBI", "SB", "OPS", "ERA"],
+            "stat_map": {
+                "hits": "H", "hits_allowed": "H", "at_bats": "AB",
+                "home_runs": "HR", "rbi": "RBI", "runs": "R",
+                "stolen_bases": "SB", "walks": "BB", "strikeouts": "K",
+                "total_bases": "TB", "batting_average": "AVG",
+                "on_base_pct": "OBP", "slugging_pct": "SLG", "ops": "OPS",
+                "outs": "O", "earned_runs": "ER",
+                "earned_run_average": "ERA", "era": "ERA",
+                "whip": "WHIP", "strikeouts_pitcher": "K",
+            },
+            "label": "Bookmaker lines",
+        }
+    if sport == "SOCCER":
+        return {
+            "type": "lines",
+            "columns": ["G", "A", "SH", "SOT", "PASS", "TKL", "Cards"],
+            "stat_map": {
+                "goals": "G", "assists": "A", "shots": "SH",
+                "shots_on_target": "SOT", "passes": "PASS", "tackles": "TKL",
+                "yellow_cards": "Cards", "red_cards": "Cards",
+                "fouls_committed": "FC", "saves": "SV",
+            },
+            "label": "Bookmaker lines",
+        }
+    if sport == "NHL":
+        return {
+            "type": "lines",
+            "columns": ["G", "A", "PTS", "+/-", "SH", "HIT", "PIM"],
+            "stat_map": {
+                "goals": "G", "assists": "A", "points": "PTS",
+                "plus_minus": "+/-", "shots": "SH", "shots_on_goal": "SOG",
+                "hits": "HIT", "blocks": "BLK", "penalty_minutes": "PIM",
+                "power_play_goals": "PPG",
+            },
+            "label": "Bookmaker lines",
+        }
+    if sport in ("BOXING", "MMA"):
+        return {
+            "type": "fight",
+            "columns": ["Method", "Round", "Time", "Decision"],
+            "stat_map": {"method": "Method", "round": "Round", "time": "Time", "decision": "Decision"},
+            "label": "Fight card (OddsAPI)",
+        }
+    return {"type": "tc", "columns": [], "tc_keys": [], "label": ""}
+
+
+def render_fight_card(sport: str):
+    """Render BOXING / MMA fight card — fighter matchup, odds, method/round props.
+
+    Reads from OddsAPI daily pull (when available) or shows a placeholder
+    card so the dashboard tab is wired and reachable end-to-end.
+    """
+    badge = BADGE_COLORS.get(sport, "#d50000")
+    icon = "🥊" if sport == "BOXING" else "🛡️"
+    st.markdown(
+        f"<h3 style='color:{badge};margin-top:0;'>{icon} {sport} — Fight Card</h3>",
+        unsafe_allow_html=True,
+    )
+    # Try OddsAPI-backed CSV first
+    today = datetime.now(ET).strftime("%Y-%m-%d")
+    candidates = [
+        WORKSPACE / "Daily_Log" / today / f"odds_{sport.lower()}.csv",
+        WORKSPACE / "data" / f"{sport.lower()}_odds.csv",
+    ]
+    odds_df = None
+    for p in candidates:
+        if p.exists():
+            try:
+                odds_df = pd.read_csv(p)
+                break
+            except Exception:
+                pass
+    if odds_df is not None and len(odds_df):
+        st.dataframe(odds_df, use_container_width=True, hide_index=True)
+        st.caption(f"Source: {p.name} • {len(odds_df)} fights")
+    else:
+        st.info(
+            f"No {sport} odds on file yet for {today}. "
+            "Pipeline pulls these on fight nights via OddsAPI (auto-enabled July 2). "
+            "When data lands, the card table will render here automatically."
+        )
+    # Always offer a poster-generation hook (uses fantasy_images.FantasyImageGenerator)
+    with st.expander("🎨 Generate fight poster", expanded=False):
+        c1, c2 = st.columns(2)
+        a = c1.text_input("Fighter A", key=f"{sport}_fa")
+        b = c2.text_input("Fighter B", key=f"{sport}_fb")
+        wc = st.text_input("Weight class / title", key=f"{sport}_wc", value="Main Event")
+        if st.button(f"Generate {sport} poster", key=f"gen_{sport}_poster") and a and b:
+            try:
+                sys.path.insert(0, str(WORKSPACE / "tc-sports-app"))
+                from src.domain.fantasy_images import FantasyImageGenerator
+                gen = FantasyImageGenerator(sport=sport)
+                out = gen.generate_fight_card(
+                    fighter_a=a, fighter_b=b,
+                    weight_class=wc, odds_a="-150", odds_b="+130",
+                    tc_callout="TC: Method of victory — KO/TKO",
+                )
+                st.success(f"Poster saved: {out}")
+                st.image(out)
+            except Exception as e:
+                st.error(f"Poster generation failed: {e}")

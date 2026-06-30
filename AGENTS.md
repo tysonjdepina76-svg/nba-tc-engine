@@ -62,7 +62,7 @@
 | Path | Purpose |
 |------|---------|
 | `Projects/daily_picks.py` | Main engine — WNBA uses dedicated TC engine (wnba_tc_engine.py) with ESPN Core API season stats + TC math instead of raw roster only |
-| `Projects/tc_dashboard.py` | Streamlit dashboard on :8510 |
+| `Projects/tc_dashboard.py` | Streamlit dashboard on :8510 — **SPORTS TC — Multi-Sport Analytics** (NBA/MLB/WNBA/SOCCER/NFL/NHL) |
 | `Projects/consensus_engine.py` | Consensus picks — Odds API + SGO |
 | `Projects/api_tc_unified.py` | Zo.space TC API — WNBA/MLB/WC with ESPN DK lines fallback |
 | `Projects/build_pregame_combos.py` | DK combo builder |

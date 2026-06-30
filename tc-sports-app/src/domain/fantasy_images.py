@@ -116,3 +116,71 @@ class FantasyImageGenerator:
         filename = output_dir / f"{self.sport}_roundup_{timestamp}.png"
         card.save(filename)
         return str(filename)
+
+    def generate_fight_card(self, fighter_a: str, fighter_b: str,
+                            weight_class: str = "Main Event",
+                            odds_a: int = -150, odds_b: int = +130,
+                            prop: Optional[str] = None,
+                            width: int = 800, height: int = 500) -> str:
+        """BOXING/MMA fight card — head-to-head poster with odds + prop.
+
+        Saves to reports/images/{SPORT}_FIGHTER_A_vs_FIGHTER_B_{ts}.png
+        Returns the file path.
+        """
+        bg = '#0f0f1a' if self.sport == "BOXING" else '#10101a'
+        ring_color = '#d50000' if self.sport == "BOXING" else '#1a237e'
+        card = Image.new('RGB', (width, height), color=bg)
+        draw = ImageDraw.Draw(card)
+        # gradient
+        for i in range(height):
+            r = 10 + int(15 * (i / height))
+            g = 10 + int(8 * (i / height))
+            b = 20 + int(22 * (i / height))
+            draw.line([(0, i), (width, i)], fill=(r, g, b))
+        # frame
+        draw.rectangle([(2, 2), (width-2, height-2)], outline=ring_color, width=4)
+        # title bar
+        title_font = self._get_font(36, "bold")
+        sub_font = self._get_font(20, "regular")
+        body_font = self._get_font(28, "bold")
+        small_font = self._get_font(16, "regular")
+        draw.rectangle([(0, 0), (width, 70)], fill='#1a1a2e')
+        draw.text((20, 12), f"{self.sport} • {weight_class}", fill='#ffd54f', font=title_font)
+        draw.text((20, 48), datetime.now().strftime('%B %d, %Y'), fill='#888', font=sub_font)
+
+        # fighter A
+        logo_a = self._get_logo(fighter_a).resize((110, 110))
+        card.paste(logo_a, (40, 120), logo_a)
+        draw.text((40, 245), fighter_a, fill='white', font=body_font)
+        odds_a_str = f"{odds_a:+d}" if odds_a else "EVEN"
+        draw.text((40, 285), f"Odds {odds_a_str}", fill='#4fc3f7', font=sub_font)
+
+        # VS
+        draw.text((width // 2 - 30, 175), "VS", fill=ring_color, font=self._get_font(64, "bold"))
+
+        # fighter B
+        logo_b = self._get_logo(fighter_b).resize((110, 110))
+        card.paste(logo_b, (width - 150, 120), logo_b)
+        draw.text((width - 290, 245), fighter_b, fill='white', font=body_font)
+        odds_b_str = f"{odds_b:+d}" if odds_b else "EVEN"
+        draw.text((width - 290, 285), f"Odds {odds_b_str}", fill='#4fc3f7', font=sub_font)
+
+        # prop callout
+        if prop:
+            draw.rectangle([(20, height - 90), (width - 20, height - 30)], fill='#1a1a2e', outline=ring_color, width=2)
+            draw.text((35, height - 80), "TC PROP", fill='#888', font=small_font)
+            draw.text((35, height - 55), prop, fill='#4caf50', font=self._get_font(24, "bold"))
+
+        # footer
+        draw.line([(20, height - 18), (width - 20, height - 18)], fill=ring_color, width=1)
+        draw.text((20, height - 14), f"TC Sports • {datetime.now().strftime('%Y-%m-%d %H:%M')}", fill='#444', font=small_font)
+
+        output_dir = Path("reports/images")
+        output_dir.mkdir(parents=True, exist_ok=True)
+        safe_a = fighter_a.replace(' ', '_').replace("'", '')
+        safe_b = fighter_b.replace(' ', '_').replace("'", '')
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        filename = output_dir / f"{self.sport}_{safe_a}_vs_{safe_b}_{timestamp}.png"
+        card.save(filename)
+        logger.info(f"Generated fight card: {filename}")
+        return str(filename)

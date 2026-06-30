@@ -1,0 +1,34 @@
+{
+  "game_id": "401585657",
+  "sport": "NBA",
+  "projections": [
+    {
+      "player_id": "lebron-james",
+      "player_name": "LeBron James",
+      "team": "LAL",
+      "stat": "pts",
+      "line": 25.5,
+      "projection": 27.3,
+      "floor": 22.1,
+      "ceiling": 32.8,
+      "std_dev": 4.2,
+      "confidence": 0.78,
+      "edge_pct": 7.06,
+      "direction": "OVER"
+    },
+    {
+      "player_id": "jayson-tatum",
+      "player_name": "Jayson Tatum",
+      "team": "BOS",
+      "stat": "reb",
+      "line": 7.5,
+      "projection": 6.8,
+      "floor": 5.1,
+      "ceiling": 9.2,
+      "std_dev": 1.6,
+      "confidence": 0.71,
+      "edge_pct": 9.33,
+      "direction": "UNDER"
+    }
+  ]
+}

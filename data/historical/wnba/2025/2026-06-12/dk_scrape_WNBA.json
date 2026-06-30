@@ -1,0 +1,48 @@
+{
+  "timestamp": "2026-06-12T17:02:42.436281",
+  "sports": [
+    "WNBA"
+  ],
+  "games_logged": 2,
+  "picks_logged": 24,
+  "completed_games_skipped": 0,
+  "errors": [],
+  "summaries": [
+    {
+      "date": "2026-06-12",
+      "sport": "WNBA",
+      "matchup": "TOR@WSH",
+      "away_team": "TOR",
+      "home_team": "WSH",
+      "tc_combined": 124.8,
+      "tc_line": 138,
+      "market_total": 169.5,
+      "dk_total": 169.5,
+      "edge": -31.5,
+      "signal": "UNDER",
+      "source": "live ESPN WNBA roster/stat APIs",
+      "valid_prop_count": 9,
+      "roster_size": 48,
+      "pending_props_no_dk": 9,
+      "picks_with_dk": 0
+    },
+    {
+      "date": "2026-06-12",
+      "sport": "WNBA",
+      "matchup": "GS@SEA",
+      "away_team": "GS",
+      "home_team": "SEA",
+      "tc_combined": 127.9,
+      "tc_line": 141,
+      "market_total": 157.5,
+      "dk_total": 157.5,
+      "edge": -16.5,
+      "signal": "UNDER",
+      "source": "live ESPN WNBA roster/stat APIs",
+      "valid_prop_count": 15,
+      "roster_size": 53,
+      "pending_props_no_dk": 15,
+      "picks_with_dk": 0
+    }
+  ]
+}

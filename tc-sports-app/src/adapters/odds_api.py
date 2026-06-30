@@ -63,13 +63,20 @@ def _load_api_key() -> Optional[str]:
     return None
 
 
-def _quota_dead() -> bool:
-    """Return True if Odds API is kill-switched via env.
+# Hard cutoff: OddsAPI quota resets July 2. Kill-switch until that date.
+_QUOTA_RESET_DATE = date(2026, 7, 2)
 
-    Three ways to disable:
+
+def _quota_dead() -> bool:
+    """Return True if Odds API is kill-switched via env, hard quota cutoff,
+    or the live-enabler status file.
+
+    Five ways to disable:
       - ODDS_API_DISABLED=1 (manual hard kill)
       - ODDS_API_QUOTA_DEADLINE=2026-07-01T00:00:00Z (auto-resume at deadline)
       - /root/.zo/secrets.env has ODDS_API_DEADLINE=... set from a prior 429/401
+      - /home/workspace/Daily_Log/cache/quota_exhausted.json marks quota dead
+      - date < 2026-07-02 (hard cutoff — quota resets July 2)
     """
     if os.environ.get("ODDS_API_DISABLED") == "1":
         return True
@@ -81,28 +88,60 @@ def _quota_dead() -> bool:
             return datetime.now(timezone.utc) < dl
         except Exception:
             pass
+    if date.today() < _QUOTA_RESET_DATE:
+        return True
+    quota_file = Path("/home/workspace/Daily_Log/cache/quota_exhausted.json")
+    if quota_file.exists():
+        try:
+            import json as _json
+            data = _json.loads(quota_file.read_text())
+            if isinstance(data, dict) and any(
+                isinstance(v, dict) and v.get("exhausted") for v in data.values()
+            ):
+                return True
+        except Exception:
+            pass
     return False
 
 
 def _disabled_response() -> list:
-    """Empty result returned when quota is dead; logged once."""
+    """Empty list returned when quota is dead; logged once. (Legacy call sites.)"""
     if not os.environ.get("_ODDS_API_DISABLED_LOGGED"):
         print(
             "[OddsAPI] disabled (quota/key dead). "
+            f"Resets {_QUOTA_RESET_DATE}. "
             "Unset ODDS_API_DISABLED / ODDS_API_QUOTA_DEADLINE to re-enable."
         )
         os.environ["_ODDS_API_DISABLED_LOGGED"] = "1"
     return []
 
 
-def _fetch(url: str, timeout: int = 10) -> dict:
+def _disabled_response_dict() -> dict:
+    """Quota-exhausted dict returned by fetch_player_props when kill-switched."""
+    return {
+        "status": "quota_exhausted",
+        "message": f"Quota resets {_QUOTA_RESET_DATE}",
+    }
+
+
+def _fetch(url: str, timeout: int = 10, max_retries: int = 1) -> dict:
     import urllib.request
-    try:
-        req = urllib.request.Request(url, headers={"Accept": "application/json"})
-        with urllib.request.urlopen(req, timeout=timeout) as r:
-            return json.loads(r.read().decode())
-    except Exception as e:
-        return {"_error": str(e)}
+    import time
+    last_err = None
+    for attempt in range(max_retries + 1):
+        try:
+            req = urllib.request.Request(url, headers={"Accept": "application/json"})
+            with urllib.request.urlopen(req, timeout=timeout) as r:
+                return json.loads(r.read().decode())
+        except urllib.error.HTTPError as e:
+            last_err = f"HTTP {e.code}: {e.reason}"
+            if e.code == 429 and attempt < max_retries:
+                time.sleep(5)
+                continue
+            return {"_error": last_err}
+        except Exception as e:
+            return {"_error": str(e)}
+    return {"_error": last_err or "max retries"}
 
 
 class OddsAPIAdapter:
@@ -154,10 +193,10 @@ class OddsAPIAdapter:
             url = f"{ODDS_API_BASE}/sports/{self.sport_key}/odds?{urlencode(params)}"
         return self._safe_get(url)
 
-    def fetch_player_props(self, event_id: str, markets: str = "player_points,player_rebounds,player_assists") -> List[dict]:
+    def fetch_player_props(self, event_id: str, markets: str = "player_points,player_rebounds,player_assists,player_goals,player_shots") -> List[dict]:
         """Fetch player props (player_points, player_rebounds, player_assists, etc)."""
         if _quota_dead():
-            return _disabled_response()
+            return _disabled_response_dict()
         params = {
             "apiKey": self.api_key,
             "regions": self.regions,

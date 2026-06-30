@@ -1,0 +1,1204 @@
+{
+  "mode": "live",
+  "sport": "WORLD CUP",
+  "matchup": "SEN@NOR",
+  "away_team": "SEN",
+  "home_team": "NOR",
+  "away_name": "Senegal",
+  "home_name": "Norway",
+  "commence_time": "2026-06-23T00:00Z",
+  "event_id": "760454",
+  "source": "ESPN WORLD CUP scoreboard + Odds API 403",
+  "timestamp": "2026-06-23T01:05:21.867Z",
+  "tc_combined": null,
+  "tc_line": null,
+  "dk_total": "o2.5",
+  "edge": null,
+  "signal": "DK LINES LIVE",
+  "odds": {
+    "total": null,
+    "away_spread": null,
+    "home_spread": null,
+    "spread_pick": null,
+    "away_ml": null,
+    "home_ml": null,
+    "ml_source": "Odds API 403",
+    "espn_total": "o2.5",
+    "bookmaker_breakdown": null,
+    "best_books": null
+  },
+  "assessment": {
+    "summary": "WORLD CUP SEN@NOR \u2014 DK live \u00b7 no DK lines pulled yet.",
+    "dk_status": "Odds API 403",
+    "roster_rule": "WORLD CUP uses ESPN scoreboard for live games + Odds API for DraftKings h2h/spreads/totals"
+  },
+  "away": {
+    "all": {
+      "players": [
+        {
+          "id": "238362",
+          "name": "\u00c9douard Mendy",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "SEN",
+          "props": {}
+        },
+        {
+          "id": "213181",
+          "name": "Moussa Niakhat\u00e9",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "SEN",
+          "props": {}
+        },
+        {
+          "id": "150312",
+          "name": "Kalidou Koulibaly",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "SEN",
+          "props": {}
+        },
+        {
+          "id": "359796",
+          "name": "El Hadji Malick Diouf",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "SEN",
+          "props": {
+            "fouls": {
+              "line": 0.7,
+              "over_price": -110,
+              "edge_pct": 21.4,
+              "source": "self-edge"
+            }
+          }
+        },
+        {
+          "id": "253992",
+          "name": "Kr\u00e9pin Diatta",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "SEN",
+          "props": {}
+        },
+        {
+          "id": "38721",
+          "name": "Lamine Camara",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "SEN",
+          "props": {
+            "fouls": {
+              "line": 1.5,
+              "over_price": -110,
+              "edge_pct": 13.3,
+              "source": "self-edge"
+            }
+          }
+        },
+        {
+          "id": "255889",
+          "name": "Pape Gueye",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "SEN",
+          "props": {
+            "fouls": {
+              "line": 0.7,
+              "over_price": -110,
+              "edge_pct": 21.4,
+              "source": "self-edge"
+            }
+          }
+        },
+        {
+          "id": "144517",
+          "name": "Idrissa Gueye",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "SEN",
+          "props": {
+            "fouls": {
+              "line": 0.7,
+              "over_price": -110,
+              "edge_pct": 21.4,
+              "source": "self-edge"
+            }
+          }
+        },
+        {
+          "id": "308524",
+          "name": "Nicolas Jackson",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "SEN",
+          "props": {
+            "shots": {
+              "line": 0.7,
+              "over_price": -110,
+              "edge_pct": 21.4,
+              "source": "self-edge"
+            },
+            "fouls": {
+              "line": 1.5,
+              "over_price": -110,
+              "edge_pct": 13.3,
+              "source": "self-edge"
+            }
+          }
+        },
+        {
+          "id": "169797",
+          "name": "Sadio Man\u00e9",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "SEN",
+          "props": {
+            "shots_on_target": {
+              "line": 0.7,
+              "over_price": -110,
+              "edge_pct": 21.4,
+              "source": "self-edge"
+            },
+            "shots": {
+              "line": 0.7,
+              "over_price": -110,
+              "edge_pct": 21.4,
+              "source": "self-edge"
+            }
+          }
+        },
+        {
+          "id": "241012",
+          "name": "Isma\u00efla Sarr",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "SEN",
+          "props": {
+            "shots": {
+              "line": 2.2,
+              "over_price": -110,
+              "edge_pct": 15.9,
+              "source": "self-edge"
+            }
+          }
+        },
+        {
+          "id": "324991",
+          "name": "Habib Diarra",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "SEN",
+          "props": {
+            "fouls": {
+              "line": 1.5,
+              "over_price": -110,
+              "edge_pct": 13.3,
+              "source": "self-edge"
+            }
+          }
+        },
+        {
+          "id": "319161",
+          "name": "Antoine Mendy",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "SEN",
+          "props": {}
+        },
+        {
+          "id": "313889",
+          "name": "Bamba Dieng",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "SEN",
+          "props": {}
+        },
+        {
+          "id": "297337",
+          "name": "Pape Matar Sarr",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "SEN",
+          "props": {}
+        },
+        {
+          "id": "251614",
+          "name": "Abdoulaye Seck",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "SEN",
+          "props": {}
+        },
+        {
+          "id": "268796",
+          "name": "Ismail Jakobs",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "SEN",
+          "props": {}
+        },
+        {
+          "id": "355433",
+          "name": "Mamadou Sarr",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "SEN",
+          "props": {}
+        },
+        {
+          "id": "294228",
+          "name": "Path\u00e9 Ciss",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "SEN",
+          "props": {}
+        },
+        {
+          "id": "268641",
+          "name": "Iliman Ndiaye",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "SEN",
+          "props": {
+            "assists": {
+              "line": 1,
+              "over_price": -110,
+              "edge_pct": -15,
+              "source": "self-edge"
+            }
+          }
+        },
+        {
+          "id": "241029",
+          "name": "Yehvann Diouf",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "SEN",
+          "props": {}
+        },
+        {
+          "id": "388522",
+          "name": "Ibrahim Mbaye",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "SEN",
+          "props": {
+            "goals": {
+              "line": 1,
+              "over_price": -110,
+              "edge_pct": -15,
+              "source": "self-edge"
+            },
+            "shots_on_target": {
+              "line": 0.7,
+              "over_price": -110,
+              "edge_pct": 21.4,
+              "source": "self-edge"
+            },
+            "shots": {
+              "line": 0.7,
+              "over_price": -110,
+              "edge_pct": 21.4,
+              "source": "self-edge"
+            }
+          }
+        },
+        {
+          "id": "197631",
+          "name": "Mory Diaw",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "SEN",
+          "props": {}
+        },
+        {
+          "id": "409016",
+          "name": "Bara Sapoko Ndiaye",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "SEN",
+          "props": {}
+        },
+        {
+          "id": "364742",
+          "name": "Assane Diao",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "SEN",
+          "props": {}
+        },
+        {
+          "id": "251924",
+          "name": "Cherif Ndiaye",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "SEN",
+          "props": {}
+        }
+      ]
+    },
+    "starters": {
+      "players": [
+        {
+          "id": "238362",
+          "name": "\u00c9douard Mendy",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "SEN",
+          "props": {}
+        },
+        {
+          "id": "213181",
+          "name": "Moussa Niakhat\u00e9",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "SEN",
+          "props": {}
+        },
+        {
+          "id": "150312",
+          "name": "Kalidou Koulibaly",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "SEN",
+          "props": {}
+        },
+        {
+          "id": "359796",
+          "name": "El Hadji Malick Diouf",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "SEN",
+          "props": {
+            "fouls": {
+              "line": 0.7,
+              "over_price": -110,
+              "edge_pct": 21.4,
+              "source": "self-edge"
+            }
+          }
+        },
+        {
+          "id": "253992",
+          "name": "Kr\u00e9pin Diatta",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "SEN",
+          "props": {}
+        },
+        {
+          "id": "38721",
+          "name": "Lamine Camara",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "SEN",
+          "props": {
+            "fouls": {
+              "line": 1.5,
+              "over_price": -110,
+              "edge_pct": 13.3,
+              "source": "self-edge"
+            }
+          }
+        },
+        {
+          "id": "255889",
+          "name": "Pape Gueye",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "SEN",
+          "props": {
+            "fouls": {
+              "line": 0.7,
+              "over_price": -110,
+              "edge_pct": 21.4,
+              "source": "self-edge"
+            }
+          }
+        },
+        {
+          "id": "144517",
+          "name": "Idrissa Gueye",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "SEN",
+          "props": {
+            "fouls": {
+              "line": 0.7,
+              "over_price": -110,
+              "edge_pct": 21.4,
+              "source": "self-edge"
+            }
+          }
+        },
+        {
+          "id": "308524",
+          "name": "Nicolas Jackson",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "SEN",
+          "props": {
+            "shots": {
+              "line": 0.7,
+              "over_price": -110,
+              "edge_pct": 21.4,
+              "source": "self-edge"
+            },
+            "fouls": {
+              "line": 1.5,
+              "over_price": -110,
+              "edge_pct": 13.3,
+              "source": "self-edge"
+            }
+          }
+        },
+        {
+          "id": "169797",
+          "name": "Sadio Man\u00e9",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "SEN",
+          "props": {
+            "shots_on_target": {
+              "line": 0.7,
+              "over_price": -110,
+              "edge_pct": 21.4,
+              "source": "self-edge"
+            },
+            "shots": {
+              "line": 0.7,
+              "over_price": -110,
+              "edge_pct": 21.4,
+              "source": "self-edge"
+            }
+          }
+        },
+        {
+          "id": "241012",
+          "name": "Isma\u00efla Sarr",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "SEN",
+          "props": {
+            "shots": {
+              "line": 2.2,
+              "over_price": -110,
+              "edge_pct": 15.9,
+              "source": "self-edge"
+            }
+          }
+        }
+      ]
+    },
+    "bench": {
+      "players": [
+        {
+          "id": "324991",
+          "name": "Habib Diarra",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "SEN",
+          "props": {
+            "fouls": {
+              "line": 1.5,
+              "over_price": -110,
+              "edge_pct": 13.3,
+              "source": "self-edge"
+            }
+          }
+        },
+        {
+          "id": "319161",
+          "name": "Antoine Mendy",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "SEN",
+          "props": {}
+        },
+        {
+          "id": "313889",
+          "name": "Bamba Dieng",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "SEN",
+          "props": {}
+        },
+        {
+          "id": "297337",
+          "name": "Pape Matar Sarr",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "SEN",
+          "props": {}
+        },
+        {
+          "id": "251614",
+          "name": "Abdoulaye Seck",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "SEN",
+          "props": {}
+        },
+        {
+          "id": "268796",
+          "name": "Ismail Jakobs",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "SEN",
+          "props": {}
+        },
+        {
+          "id": "355433",
+          "name": "Mamadou Sarr",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "SEN",
+          "props": {}
+        },
+        {
+          "id": "294228",
+          "name": "Path\u00e9 Ciss",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "SEN",
+          "props": {}
+        },
+        {
+          "id": "268641",
+          "name": "Iliman Ndiaye",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "SEN",
+          "props": {
+            "assists": {
+              "line": 1,
+              "over_price": -110,
+              "edge_pct": -15,
+              "source": "self-edge"
+            }
+          }
+        },
+        {
+          "id": "241029",
+          "name": "Yehvann Diouf",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "SEN",
+          "props": {}
+        },
+        {
+          "id": "388522",
+          "name": "Ibrahim Mbaye",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "SEN",
+          "props": {
+            "goals": {
+              "line": 1,
+              "over_price": -110,
+              "edge_pct": -15,
+              "source": "self-edge"
+            },
+            "shots_on_target": {
+              "line": 0.7,
+              "over_price": -110,
+              "edge_pct": 21.4,
+              "source": "self-edge"
+            },
+            "shots": {
+              "line": 0.7,
+              "over_price": -110,
+              "edge_pct": 21.4,
+              "source": "self-edge"
+            }
+          }
+        },
+        {
+          "id": "197631",
+          "name": "Mory Diaw",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "SEN",
+          "props": {}
+        },
+        {
+          "id": "409016",
+          "name": "Bara Sapoko Ndiaye",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "SEN",
+          "props": {}
+        },
+        {
+          "id": "364742",
+          "name": "Assane Diao",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "SEN",
+          "props": {}
+        },
+        {
+          "id": "251924",
+          "name": "Cherif Ndiaye",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "SEN",
+          "props": {}
+        }
+      ]
+    },
+    "totals": {},
+    "injuries": []
+  },
+  "home": {
+    "all": {
+      "players": [
+        {
+          "id": "193610",
+          "name": "\u00d8rjan Nyland",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "NOR",
+          "props": {}
+        },
+        {
+          "id": "272867",
+          "name": "Torbj\u00f8rn Heggem",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "NOR",
+          "props": {}
+        },
+        {
+          "id": "206173",
+          "name": "Kristoffer Ajer",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "NOR",
+          "props": {}
+        },
+        {
+          "id": "313361",
+          "name": "David M\u00f8ller Wolfe",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "NOR",
+          "props": {}
+        },
+        {
+          "id": "222991",
+          "name": "Julian Ryerson",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "NOR",
+          "props": {}
+        },
+        {
+          "id": "218998",
+          "name": "Sander Berge",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "NOR",
+          "props": {}
+        },
+        {
+          "id": "212900",
+          "name": "Fredrik Aursnes",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "NOR",
+          "props": {}
+        },
+        {
+          "id": "203669",
+          "name": "Martin \u00d8degaard",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "NOR",
+          "props": {}
+        },
+        {
+          "id": "253989",
+          "name": "Erling Haaland",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "NOR",
+          "props": {}
+        },
+        {
+          "id": "319368",
+          "name": "Antonio Nusa",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "NOR",
+          "props": {}
+        },
+        {
+          "id": "188230",
+          "name": "Alexander S\u00f8rloth",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "NOR",
+          "props": {}
+        },
+        {
+          "id": "252747",
+          "name": "J\u00f8rgen Strand Larsen",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "NOR",
+          "props": {}
+        },
+        {
+          "id": "238088",
+          "name": "Fredrik Andr\u00e9 Bj\u00f8rkan",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "NOR",
+          "props": {}
+        },
+        {
+          "id": "205924",
+          "name": "Patrick Berg",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "NOR",
+          "props": {}
+        },
+        {
+          "id": "303281",
+          "name": "Henrik Falchener",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "NOR",
+          "props": {}
+        },
+        {
+          "id": "366455",
+          "name": "Sondre Langas",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "NOR",
+          "props": {}
+        },
+        {
+          "id": "313415",
+          "name": "Andreas Schjelderup",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "NOR",
+          "props": {}
+        },
+        {
+          "id": "235789",
+          "name": "Jens Petter Hauge",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "NOR",
+          "props": {}
+        },
+        {
+          "id": "202686",
+          "name": "Morten Thorsby",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "NOR",
+          "props": {}
+        },
+        {
+          "id": "286433",
+          "name": "Egil Selvik",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "NOR",
+          "props": {}
+        },
+        {
+          "id": "129285",
+          "name": "Marcus Holmgren Pedersen",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "NOR",
+          "props": {}
+        },
+        {
+          "id": "304258",
+          "name": "Sander Tangvik",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "NOR",
+          "props": {}
+        },
+        {
+          "id": "284212",
+          "name": "Kristian Thorstvedt",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "NOR",
+          "props": {}
+        },
+        {
+          "id": "281736",
+          "name": "Leo \u00d8stigard",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "NOR",
+          "props": {}
+        },
+        {
+          "id": "307477",
+          "name": "Thelo Aasgaard",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "NOR",
+          "props": {}
+        },
+        {
+          "id": "307111",
+          "name": "Oscar Bobb",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "NOR",
+          "props": {}
+        }
+      ]
+    },
+    "starters": {
+      "players": [
+        {
+          "id": "193610",
+          "name": "\u00d8rjan Nyland",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "NOR",
+          "props": {}
+        },
+        {
+          "id": "272867",
+          "name": "Torbj\u00f8rn Heggem",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "NOR",
+          "props": {}
+        },
+        {
+          "id": "206173",
+          "name": "Kristoffer Ajer",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "NOR",
+          "props": {}
+        },
+        {
+          "id": "313361",
+          "name": "David M\u00f8ller Wolfe",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "NOR",
+          "props": {}
+        },
+        {
+          "id": "222991",
+          "name": "Julian Ryerson",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "NOR",
+          "props": {}
+        },
+        {
+          "id": "218998",
+          "name": "Sander Berge",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "NOR",
+          "props": {}
+        },
+        {
+          "id": "212900",
+          "name": "Fredrik Aursnes",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "NOR",
+          "props": {}
+        },
+        {
+          "id": "203669",
+          "name": "Martin \u00d8degaard",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "NOR",
+          "props": {}
+        },
+        {
+          "id": "253989",
+          "name": "Erling Haaland",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "NOR",
+          "props": {}
+        },
+        {
+          "id": "319368",
+          "name": "Antonio Nusa",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "NOR",
+          "props": {}
+        },
+        {
+          "id": "188230",
+          "name": "Alexander S\u00f8rloth",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "START",
+          "team": "NOR",
+          "props": {}
+        }
+      ]
+    },
+    "bench": {
+      "players": [
+        {
+          "id": "252747",
+          "name": "J\u00f8rgen Strand Larsen",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "NOR",
+          "props": {}
+        },
+        {
+          "id": "238088",
+          "name": "Fredrik Andr\u00e9 Bj\u00f8rkan",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "NOR",
+          "props": {}
+        },
+        {
+          "id": "205924",
+          "name": "Patrick Berg",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "NOR",
+          "props": {}
+        },
+        {
+          "id": "303281",
+          "name": "Henrik Falchener",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "NOR",
+          "props": {}
+        },
+        {
+          "id": "366455",
+          "name": "Sondre Langas",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "NOR",
+          "props": {}
+        },
+        {
+          "id": "313415",
+          "name": "Andreas Schjelderup",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "NOR",
+          "props": {}
+        },
+        {
+          "id": "235789",
+          "name": "Jens Petter Hauge",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "NOR",
+          "props": {}
+        },
+        {
+          "id": "202686",
+          "name": "Morten Thorsby",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "NOR",
+          "props": {}
+        },
+        {
+          "id": "286433",
+          "name": "Egil Selvik",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "NOR",
+          "props": {}
+        },
+        {
+          "id": "129285",
+          "name": "Marcus Holmgren Pedersen",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "NOR",
+          "props": {}
+        },
+        {
+          "id": "304258",
+          "name": "Sander Tangvik",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "NOR",
+          "props": {}
+        },
+        {
+          "id": "284212",
+          "name": "Kristian Thorstvedt",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "NOR",
+          "props": {}
+        },
+        {
+          "id": "281736",
+          "name": "Leo \u00d8stigard",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "NOR",
+          "props": {}
+        },
+        {
+          "id": "307477",
+          "name": "Thelo Aasgaard",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "NOR",
+          "props": {}
+        },
+        {
+          "id": "307111",
+          "name": "Oscar Bobb",
+          "pos": "[object Object]",
+          "status": "ACTIVE",
+          "role": "BENCH",
+          "team": "NOR",
+          "props": {}
+        }
+      ]
+    },
+    "totals": {},
+    "injuries": []
+  },
+  "valid_props": [],
+  "missing_keys": [],
+  "roster_counts": {
+    "away": 26,
+    "home": 26,
+    "away_active": 26,
+    "home_active": 26
+  },
+  "supported_sports": [
+    "WORLD CUP"
+  ],
+  "prop_rows": [],
+  "note": "WORLD CUP self-edge player props via worldcup_picks.py \u00b7 10 players \u00b7 DK game lines via Odds API."
+}

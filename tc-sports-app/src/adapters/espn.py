@@ -86,6 +86,80 @@ class ESPNAdapter:
         self._stats_breaker = self._breakers.get(f"espn_{sport}_stats", failure_threshold=5, recovery_timeout_sec=30)
 
     # ─────────────────────────────────────────────────────────────────
+    # Live stats (soccer-focused, but works for any sport with boxscore)
+    # ─────────────────────────────────────────────────────────────────
+    def fetch_live_stats(self, event_id: str) -> dict:
+        """Fetch live match stats: team stats (possession/SOT/corners/fouls/cards)
+        + player stats (goals/assists/shots/SOT/passes/tackles/cards/fouls).
+
+        Args:
+            event_id: ESPN event id (e.g. "401" or numeric string).
+                      For SOCCER can also be "PAR_GER" style — auto-mapped via slug.
+        Returns:
+            {
+              "team": {"home": {stat: val}, "away": {stat: val}},
+              "player": {"home": [{name, stats}], "away": [...]},
+              "status": "in_progress"|"final"|"scheduled",
+              "clock": "...",
+            } or {"_error": "..."} on failure.
+        """
+        if not event_id:
+            return {"_error": "no event_id"}
+        try:
+            data = self._slate_breaker.call(
+                retry_with_backoff,
+                _fetch,
+                f"{ESPN_SITE}/{self.slug}/summary?event={event_id}",
+                10,
+            )
+        except CircuitOpenError as e:
+            return {"_error": f"breaker open: {e}"}
+        except Exception as e:
+            return {"_error": str(e)}
+        if not data or data.get("_error"):
+            return data or {"_error": "empty response"}
+
+        # Header
+        header = (data.get("header") or {})
+        comps = header.get("competitions") or []
+        status_obj = (header.get("status") or {})
+        status_type = (status_obj.get("type") or {})
+        status_desc = status_type.get("description", "")
+        clock = status_obj.get("displayClock", "")
+        result = {
+            "status": "in_progress" if status_type.get("state") == "in" else
+                      "final" if status_type.get("completed") else "scheduled",
+            "clock": clock,
+            "team": {"home": {}, "away": {}},
+            "player": {"home": [], "away": []},
+        }
+
+        # Team-level stats from boxscore
+        bx = data.get("boxscore") or {}
+        for tm in bx.get("teams", []):
+            side = tm.get("homeAway", "home")
+            for s in tm.get("statistics", []):
+                result["team"][side][s.get("name") or s.get("label") or s.get("abbreviation")] = s.get("displayValue")
+
+        # Player-level stats from boxscore
+        for tm in bx.get("teams", []):
+            side = tm.get("homeAway", "home")
+            for grp in tm.get("groups", []):
+                for cat in grp.get("categories", []):
+                    cat_name = cat.get("name", "")
+                    for stat in cat.get("stats", []):
+                        ath = stat.get("athlete") or {}
+                        pname = ath.get("displayName") or ath.get("shortName") or "?"
+                        result["player"][side].append({
+                            "name": pname,
+                            "category": cat_name,
+                            "stat": stat.get("name"),
+                            "value": stat.get("displayValue") or stat.get("value"),
+                        })
+
+        return result
+
+    # ─────────────────────────────────────────────────────────────────
     # Date-scoped slate (alias used by health check / backtests)
     # ─────────────────────────────────────────────────────────────────
     def fetch_games(self, date: str) -> List[Game]:

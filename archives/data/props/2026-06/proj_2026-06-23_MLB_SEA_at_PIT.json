@@ -1,0 +1,3958 @@
+{
+  "sport": "MLB",
+  "matchup": "SEA@PIT",
+  "home_team": "PIT",
+  "away_team": "SEA",
+  "dk_total": 5.5,
+  "source": "ESPN + The Odds API + SportsDataIO",
+  "away_players": [
+    {
+      "name": "Logan Gilbert",
+      "pos": "SP",
+      "team": "SEA",
+      "status": "ACTIVE",
+      "batting": {
+        "hits_avg": 0,
+        "rbi_avg": 0,
+        "runs_avg": 0,
+        "hr_avg": 0,
+        "total_bases_avg": 0,
+        "sb_avg": 0,
+        "singles_avg": 0,
+        "doubles_avg": 0,
+        "walks_avg": 0,
+        "avg": 0,
+        "games": 0
+      },
+      "pitching": {
+        "strikeouts_avg": 6,
+        "hits_allowed_avg": 5,
+        "walks_allowed_avg": 2,
+        "earned_runs_avg": 0,
+        "outs_avg": 18,
+        "era": 3.69,
+        "appearances": 1
+      },
+      "tc_batting": {
+        "hits": 0,
+        "rbi": 0,
+        "runs": 0,
+        "hr": 0,
+        "total_bases": 0,
+        "sb": 0,
+        "singles": 0,
+        "doubles": 0,
+        "walks": 0
+      },
+      "tc_pitching": {
+        "strikeouts": 4.3,
+        "hits_allowed": 4.5,
+        "walks_allowed": 2.1,
+        "earned_runs": 0.5,
+        "outs": 13.9
+      },
+      "lines": {},
+      "edges": {}
+    },
+    {
+      "name": "Mitch Garver",
+      "pos": "C",
+      "team": "SEA",
+      "status": "ACTIVE",
+      "batting": {
+        "hits_avg": 0.67,
+        "rbi_avg": 0.33,
+        "runs_avg": 0.33,
+        "hr_avg": 0,
+        "total_bases_avg": 0.73,
+        "sb_avg": 0,
+        "singles_avg": 0.67,
+        "doubles_avg": 0,
+        "walks_avg": 0,
+        "avg": 0.2,
+        "games": 3
+      },
+      "pitching": {
+        "strikeouts_avg": 0,
+        "hits_allowed_avg": 0,
+        "walks_allowed_avg": 0,
+        "earned_runs_avg": 0,
+        "outs_avg": 0,
+        "era": 0,
+        "appearances": 0
+      },
+      "tc_batting": {
+        "hits": 0.6,
+        "rbi": 0.3,
+        "runs": 0.3,
+        "hr": 0,
+        "total_bases": 0.6,
+        "sb": 0,
+        "singles": 0.6,
+        "doubles": 0,
+        "walks": 0
+      },
+      "tc_pitching": {
+        "strikeouts": 0,
+        "hits_allowed": 0.5,
+        "walks_allowed": 0.5,
+        "earned_runs": 0.5,
+        "outs": 0
+      },
+      "lines": {},
+      "edges": {}
+    },
+    {
+      "name": "Gabe Speier",
+      "pos": "RP",
+      "team": "SEA",
+      "status": "ACTIVE",
+      "batting": {
+        "hits_avg": 0,
+        "rbi_avg": 0,
+        "runs_avg": 0,
+        "hr_avg": 0,
+        "total_bases_avg": 0,
+        "sb_avg": 0,
+        "singles_avg": 0,
+        "doubles_avg": 0,
+        "walks_avg": 0,
+        "avg": 0,
+        "games": 0
+      },
+      "pitching": {
+        "strikeouts_avg": 1,
+        "hits_allowed_avg": 0,
+        "walks_allowed_avg": 0,
+        "earned_runs_avg": 0,
+        "outs_avg": 1.6,
+        "era": 2.67,
+        "appearances": 2
+      },
+      "tc_batting": {
+        "hits": 0,
+        "rbi": 0,
+        "runs": 0,
+        "hr": 0,
+        "total_bases": 0,
+        "sb": 0,
+        "singles": 0,
+        "doubles": 0,
+        "walks": 0
+      },
+      "tc_pitching": {
+        "strikeouts": 0.3,
+        "hits_allowed": 0.5,
+        "walks_allowed": 0.5,
+        "earned_runs": 0.5,
+        "outs": 0.8
+      },
+      "lines": {},
+      "edges": {}
+    },
+    {
+      "name": "Julio Rodriguez",
+      "pos": "CF",
+      "team": "SEA",
+      "status": "ACTIVE",
+      "batting": {
+        "hits_avg": 1.33,
+        "rbi_avg": 1.17,
+        "runs_avg": 0.5,
+        "hr_avg": 0.5,
+        "total_bases_avg": 2.1,
+        "sb_avg": 0,
+        "singles_avg": 1.33,
+        "doubles_avg": 0,
+        "walks_avg": 0,
+        "avg": 0.262,
+        "games": 6
+      },
+      "pitching": {
+        "strikeouts_avg": 0,
+        "hits_allowed_avg": 0,
+        "walks_allowed_avg": 0,
+        "earned_runs_avg": 0,
+        "outs_avg": 0,
+        "era": 0,
+        "appearances": 0
+      },
+      "tc_batting": {
+        "hits": 1.1,
+        "rbi": 1,
+        "runs": 0.4,
+        "hr": 0.4,
+        "total_bases": 1.8,
+        "sb": 0,
+        "singles": 1.1,
+        "doubles": 0,
+        "walks": 0
+      },
+      "tc_pitching": {
+        "strikeouts": 0,
+        "hits_allowed": 0.5,
+        "walks_allowed": 0.5,
+        "earned_runs": 0.5,
+        "outs": 0
+      },
+      "lines": {},
+      "edges": {}
+    },
+    {
+      "name": "Cole Young",
+      "pos": "2B",
+      "team": "SEA",
+      "status": "ACTIVE",
+      "batting": {
+        "hits_avg": 1,
+        "rbi_avg": 0.5,
+        "runs_avg": 0.83,
+        "hr_avg": 0.17,
+        "total_bases_avg": 1.28,
+        "sb_avg": 0,
+        "singles_avg": 1,
+        "doubles_avg": 0,
+        "walks_avg": 0.17,
+        "avg": 0.242,
+        "games": 6
+      },
+      "pitching": {
+        "strikeouts_avg": 0,
+        "hits_allowed_avg": 0,
+        "walks_allowed_avg": 0,
+        "earned_runs_avg": 0,
+        "outs_avg": 0,
+        "era": 0,
+        "appearances": 0
+      },
+      "tc_batting": {
+        "hits": 0.8,
+        "rbi": 0.4,
+        "runs": 0.7,
+        "hr": 0.1,
+        "total_bases": 1.1,
+        "sb": 0,
+        "singles": 0.8,
+        "doubles": 0,
+        "walks": 0.1
+      },
+      "tc_pitching": {
+        "strikeouts": 0,
+        "hits_allowed": 0.5,
+        "walks_allowed": 0.5,
+        "earned_runs": 0.5,
+        "outs": 0
+      },
+      "lines": {
+        "strikeouts": 1.2,
+        "hits": 1.2,
+        "rbi": 1.2,
+        "total_bases": 3.6,
+        "runs": 1.2
+      },
+      "edges": {
+        "hits": -0.4,
+        "rbi": -0.8,
+        "total_bases": -2.5,
+        "runs": -0.5
+      }
+    },
+    {
+      "name": "Jose Ferrer",
+      "pos": "RP",
+      "team": "SEA",
+      "status": "ACTIVE",
+      "batting": {
+        "hits_avg": 0,
+        "rbi_avg": 0,
+        "runs_avg": 0,
+        "hr_avg": 0,
+        "total_bases_avg": 0,
+        "sb_avg": 0,
+        "singles_avg": 0,
+        "doubles_avg": 0,
+        "walks_avg": 0,
+        "avg": 0,
+        "games": 0
+      },
+      "pitching": {
+        "strikeouts_avg": 0,
+        "hits_allowed_avg": 1,
+        "walks_allowed_avg": 0,
+        "earned_runs_avg": 0,
+        "outs_avg": 1.8,
+        "era": 1.77,
+        "appearances": 2
+      },
+      "tc_batting": {
+        "hits": 0,
+        "rbi": 0,
+        "runs": 0,
+        "hr": 0,
+        "total_bases": 0,
+        "sb": 0,
+        "singles": 0,
+        "doubles": 0,
+        "walks": 0
+      },
+      "tc_pitching": {
+        "strikeouts": 0,
+        "hits_allowed": 1.3,
+        "walks_allowed": 0.5,
+        "earned_runs": 0.5,
+        "outs": 0.9
+      },
+      "lines": {},
+      "edges": {}
+    },
+    {
+      "name": "Matt Brash",
+      "pos": "RP",
+      "team": "SEA",
+      "status": "ACTIVE",
+      "batting": {
+        "hits_avg": 0,
+        "rbi_avg": 0,
+        "runs_avg": 0,
+        "hr_avg": 0,
+        "total_bases_avg": 0,
+        "sb_avg": 0,
+        "singles_avg": 0,
+        "doubles_avg": 0,
+        "walks_avg": 0,
+        "avg": 0,
+        "games": 0
+      },
+      "pitching": {
+        "strikeouts_avg": 1,
+        "hits_allowed_avg": 2,
+        "walks_allowed_avg": 2,
+        "earned_runs_avg": 1,
+        "outs_avg": 0.6,
+        "era": 0.64,
+        "appearances": 1
+      },
+      "tc_batting": {
+        "hits": 0,
+        "rbi": 0,
+        "runs": 0,
+        "hr": 0,
+        "total_bases": 0,
+        "sb": 0,
+        "singles": 0,
+        "doubles": 0,
+        "walks": 0
+      },
+      "tc_pitching": {
+        "strikeouts": 0.3,
+        "hits_allowed": 2.1,
+        "walks_allowed": 2.1,
+        "earned_runs": 1.3,
+        "outs": 0
+      },
+      "lines": {},
+      "edges": {}
+    },
+    {
+      "name": "Bryan Woo",
+      "pos": "SP",
+      "team": "SEA",
+      "status": "ACTIVE",
+      "batting": {
+        "hits_avg": 0,
+        "rbi_avg": 0,
+        "runs_avg": 0,
+        "hr_avg": 0,
+        "total_bases_avg": 0,
+        "sb_avg": 0,
+        "singles_avg": 0,
+        "doubles_avg": 0,
+        "walks_avg": 0,
+        "avg": 0,
+        "games": 0
+      },
+      "pitching": {
+        "strikeouts_avg": 9,
+        "hits_allowed_avg": 2,
+        "walks_allowed_avg": 0,
+        "earned_runs_avg": 0,
+        "outs_avg": 21,
+        "era": 3.44,
+        "appearances": 1
+      },
+      "tc_batting": {
+        "hits": 0,
+        "rbi": 0,
+        "runs": 0,
+        "hr": 0,
+        "total_bases": 0,
+        "sb": 0,
+        "singles": 0,
+        "doubles": 0,
+        "walks": 0
+      },
+      "tc_pitching": {
+        "strikeouts": 6.7,
+        "hits_allowed": 2.1,
+        "walks_allowed": 0.5,
+        "earned_runs": 0.5,
+        "outs": 16.3
+      },
+      "lines": {
+        "hits_allowed": 10.9,
+        "earned_runs": 6,
+        "strikeouts": 10.1
+      },
+      "edges": {
+        "hits_allowed": -8.8,
+        "earned_runs": -5.5,
+        "strikeouts": -3.4
+      }
+    },
+    {
+      "name": "George Kirby",
+      "pos": "SP",
+      "team": "SEA",
+      "status": "ACTIVE",
+      "batting": {
+        "hits_avg": 0,
+        "rbi_avg": 0,
+        "runs_avg": 0,
+        "hr_avg": 0,
+        "total_bases_avg": 0,
+        "sb_avg": 0,
+        "singles_avg": 0,
+        "doubles_avg": 0,
+        "walks_avg": 0,
+        "avg": 0,
+        "games": 0
+      },
+      "pitching": {
+        "strikeouts_avg": 4,
+        "hits_allowed_avg": 6,
+        "walks_allowed_avg": 1,
+        "earned_runs_avg": 4,
+        "outs_avg": 15.3,
+        "era": 3.77,
+        "appearances": 1
+      },
+      "tc_batting": {
+        "hits": 0,
+        "rbi": 0,
+        "runs": 0,
+        "hr": 0,
+        "total_bases": 0,
+        "sb": 0,
+        "singles": 0,
+        "doubles": 0,
+        "walks": 0
+      },
+      "tc_pitching": {
+        "strikeouts": 2.7,
+        "hits_allowed": 5.3,
+        "walks_allowed": 1.3,
+        "earned_runs": 3.7,
+        "outs": 11.7
+      },
+      "lines": {},
+      "edges": {}
+    },
+    {
+      "name": "Luis Castillo",
+      "pos": "SP",
+      "team": "SEA",
+      "status": "ACTIVE",
+      "batting": {
+        "hits_avg": 0,
+        "rbi_avg": 0,
+        "runs_avg": 0,
+        "hr_avg": 0,
+        "total_bases_avg": 0,
+        "sb_avg": 0,
+        "singles_avg": 0,
+        "doubles_avg": 0,
+        "walks_avg": 0,
+        "avg": 0,
+        "games": 0
+      },
+      "pitching": {
+        "strikeouts_avg": 4.5,
+        "hits_allowed_avg": 2,
+        "walks_allowed_avg": 2,
+        "earned_runs_avg": 0.5,
+        "outs_avg": 13.5,
+        "era": 5.71,
+        "appearances": 2
+      },
+      "tc_batting": {
+        "hits": 0,
+        "rbi": 0,
+        "runs": 0,
+        "hr": 0,
+        "total_bases": 0,
+        "sb": 0,
+        "singles": 0,
+        "doubles": 0,
+        "walks": 0
+      },
+      "tc_pitching": {
+        "strikeouts": 3.1,
+        "hits_allowed": 2.1,
+        "walks_allowed": 2.1,
+        "earned_runs": 0.9,
+        "outs": 10.3
+      },
+      "lines": {},
+      "edges": {}
+    },
+    {
+      "name": "Luke Raley",
+      "pos": "RF",
+      "team": "SEA",
+      "status": "ACTIVE",
+      "batting": {
+        "hits_avg": 1.17,
+        "rbi_avg": 0.67,
+        "runs_avg": 0.5,
+        "hr_avg": 0.5,
+        "total_bases_avg": 1.71,
+        "sb_avg": 0,
+        "singles_avg": 1.17,
+        "doubles_avg": 0,
+        "walks_avg": 0.17,
+        "avg": 0.272,
+        "games": 6
+      },
+      "pitching": {
+        "strikeouts_avg": 0,
+        "hits_allowed_avg": 0,
+        "walks_allowed_avg": 0,
+        "earned_runs_avg": 0,
+        "outs_avg": 0,
+        "era": 0,
+        "appearances": 0
+      },
+      "tc_batting": {
+        "hits": 1,
+        "rbi": 0.6,
+        "runs": 0.4,
+        "hr": 0.4,
+        "total_bases": 1.5,
+        "sb": 0,
+        "singles": 1,
+        "doubles": 0,
+        "walks": 0.1
+      },
+      "tc_pitching": {
+        "strikeouts": 0,
+        "hits_allowed": 0.5,
+        "walks_allowed": 0.5,
+        "earned_runs": 0.5,
+        "outs": 0
+      },
+      "lines": {
+        "strikeouts": 3.6,
+        "hits": 1.2,
+        "rbi": 1.2,
+        "total_bases": 3.6,
+        "runs": 1.2
+      },
+      "edges": {
+        "hits": -0.2,
+        "rbi": -0.6,
+        "total_bases": -2.1,
+        "runs": -0.8
+      }
+    },
+    {
+      "name": "Randy Arozarena",
+      "pos": "LF",
+      "team": "SEA",
+      "status": "ACTIVE",
+      "batting": {
+        "hits_avg": 1.33,
+        "rbi_avg": 0.67,
+        "runs_avg": 0.67,
+        "hr_avg": 0.17,
+        "total_bases_avg": 2.25,
+        "sb_avg": 0,
+        "singles_avg": 1.33,
+        "doubles_avg": 0,
+        "walks_avg": 0,
+        "avg": 0.295,
+        "games": 6
+      },
+      "pitching": {
+        "strikeouts_avg": 0,
+        "hits_allowed_avg": 0,
+        "walks_allowed_avg": 0,
+        "earned_runs_avg": 0,
+        "outs_avg": 0,
+        "era": 0,
+        "appearances": 0
+      },
+      "tc_batting": {
+        "hits": 1.1,
+        "rbi": 0.6,
+        "runs": 0.6,
+        "hr": 0.1,
+        "total_bases": 1.9,
+        "sb": 0,
+        "singles": 1.1,
+        "doubles": 0,
+        "walks": 0
+      },
+      "tc_pitching": {
+        "strikeouts": 0,
+        "hits_allowed": 0.5,
+        "walks_allowed": 0.5,
+        "earned_runs": 0.5,
+        "outs": 0
+      },
+      "lines": {
+        "strikeouts": 3.6,
+        "hits": 3.6,
+        "rbi": 1.2,
+        "total_bases": 3.6,
+        "runs": 1.2
+      },
+      "edges": {
+        "hits": -2.5,
+        "rbi": -0.6,
+        "total_bases": -1.7,
+        "runs": -0.6
+      }
+    },
+    {
+      "name": "Eduard Bazardo",
+      "pos": "RP",
+      "team": "SEA",
+      "status": "ACTIVE",
+      "batting": {
+        "hits_avg": 0,
+        "rbi_avg": 0,
+        "runs_avg": 0,
+        "hr_avg": 0,
+        "total_bases_avg": 0,
+        "sb_avg": 0,
+        "singles_avg": 0,
+        "doubles_avg": 0,
+        "walks_avg": 0,
+        "avg": 0,
+        "games": 0
+      },
+      "pitching": {
+        "strikeouts_avg": 0.5,
+        "hits_allowed_avg": 1.5,
+        "walks_allowed_avg": 0.5,
+        "earned_runs_avg": 0,
+        "outs_avg": 3,
+        "era": 2.17,
+        "appearances": 2
+      },
+      "tc_batting": {
+        "hits": 0,
+        "rbi": 0,
+        "runs": 0,
+        "hr": 0,
+        "total_bases": 0,
+        "sb": 0,
+        "singles": 0,
+        "doubles": 0,
+        "walks": 0
+      },
+      "tc_pitching": {
+        "strikeouts": 0,
+        "hits_allowed": 1.7,
+        "walks_allowed": 0.9,
+        "earned_runs": 0.5,
+        "outs": 1.9
+      },
+      "lines": {},
+      "edges": {}
+    },
+    {
+      "name": "Patrick Wisdom",
+      "pos": "3B",
+      "team": "SEA",
+      "status": "ACTIVE",
+      "batting": {
+        "hits_avg": 1,
+        "rbi_avg": 0,
+        "runs_avg": 0,
+        "hr_avg": 0,
+        "total_bases_avg": 0.23,
+        "sb_avg": 0,
+        "singles_avg": 1,
+        "doubles_avg": 0,
+        "walks_avg": 0,
+        "avg": 0.154,
+        "games": 1
+      },
+      "pitching": {
+        "strikeouts_avg": 0,
+        "hits_allowed_avg": 0,
+        "walks_allowed_avg": 0,
+        "earned_runs_avg": 0,
+        "outs_avg": 0,
+        "era": 0,
+        "appearances": 0
+      },
+      "tc_batting": {
+        "hits": 0.8,
+        "rbi": 0,
+        "runs": 0,
+        "hr": 0,
+        "total_bases": 0.2,
+        "sb": 0,
+        "singles": 0.8,
+        "doubles": 0,
+        "walks": 0
+      },
+      "tc_pitching": {
+        "strikeouts": 0,
+        "hits_allowed": 0.5,
+        "walks_allowed": 0.5,
+        "earned_runs": 0.5,
+        "outs": 0
+      },
+      "lines": {},
+      "edges": {}
+    },
+    {
+      "name": "Cooper Criswell",
+      "pos": "RP",
+      "team": "SEA",
+      "status": "ACTIVE",
+      "batting": {
+        "hits_avg": 0,
+        "rbi_avg": 0,
+        "runs_avg": 0,
+        "hr_avg": 0,
+        "total_bases_avg": 0,
+        "sb_avg": 0,
+        "singles_avg": 0,
+        "doubles_avg": 0,
+        "walks_avg": 0,
+        "avg": 0,
+        "games": 0
+      },
+      "pitching": {
+        "strikeouts_avg": 0.3,
+        "hits_allowed_avg": 1,
+        "walks_allowed_avg": 0.3,
+        "earned_runs_avg": 0.3,
+        "outs_avg": 4,
+        "era": 3.2,
+        "appearances": 3
+      },
+      "tc_batting": {
+        "hits": 0,
+        "rbi": 0,
+        "runs": 0,
+        "hr": 0,
+        "total_bases": 0,
+        "sb": 0,
+        "singles": 0,
+        "doubles": 0,
+        "walks": 0
+      },
+      "tc_pitching": {
+        "strikeouts": 0,
+        "hits_allowed": 1.3,
+        "walks_allowed": 0.7,
+        "earned_runs": 0.7,
+        "outs": 2.7
+      },
+      "lines": {},
+      "edges": {}
+    },
+    {
+      "name": "Emerson Hancock",
+      "pos": "SP",
+      "team": "SEA",
+      "status": "ACTIVE",
+      "batting": {
+        "hits_avg": 0,
+        "rbi_avg": 0,
+        "runs_avg": 0,
+        "hr_avg": 0,
+        "total_bases_avg": 0,
+        "sb_avg": 0,
+        "singles_avg": 0,
+        "doubles_avg": 0,
+        "walks_avg": 0,
+        "avg": 0,
+        "games": 0
+      },
+      "pitching": {
+        "strikeouts_avg": 3,
+        "hits_allowed_avg": 1,
+        "walks_allowed_avg": 2,
+        "earned_runs_avg": 0,
+        "outs_avg": 18,
+        "era": 2.78,
+        "appearances": 1
+      },
+      "tc_batting": {
+        "hits": 0,
+        "rbi": 0,
+        "runs": 0,
+        "hr": 0,
+        "total_bases": 0,
+        "sb": 0,
+        "singles": 0,
+        "doubles": 0,
+        "walks": 0
+      },
+      "tc_pitching": {
+        "strikeouts": 1.9,
+        "hits_allowed": 1.3,
+        "walks_allowed": 2.1,
+        "earned_runs": 0.5,
+        "outs": 13.9
+      },
+      "lines": {},
+      "edges": {}
+    },
+    {
+      "name": "Bryce Miller",
+      "pos": "SP",
+      "team": "SEA",
+      "status": "ACTIVE",
+      "batting": {
+        "hits_avg": 0,
+        "rbi_avg": 0,
+        "runs_avg": 0,
+        "hr_avg": 0,
+        "total_bases_avg": 0,
+        "sb_avg": 0,
+        "singles_avg": 0,
+        "doubles_avg": 0,
+        "walks_avg": 0,
+        "avg": 0,
+        "games": 0
+      },
+      "pitching": {
+        "strikeouts_avg": 5,
+        "hits_allowed_avg": 3,
+        "walks_allowed_avg": 0.5,
+        "earned_runs_avg": 1,
+        "outs_avg": 15,
+        "era": 1.98,
+        "appearances": 2
+      },
+      "tc_batting": {
+        "hits": 0,
+        "rbi": 0,
+        "runs": 0,
+        "hr": 0,
+        "total_bases": 0,
+        "sb": 0,
+        "singles": 0,
+        "doubles": 0,
+        "walks": 0
+      },
+      "tc_pitching": {
+        "strikeouts": 3.5,
+        "hits_allowed": 2.9,
+        "walks_allowed": 0.9,
+        "earned_runs": 1.3,
+        "outs": 11.5
+      },
+      "lines": {},
+      "edges": {}
+    },
+    {
+      "name": "Jhonny Pereda",
+      "pos": "C",
+      "team": "SEA",
+      "status": "ACTIVE",
+      "batting": {
+        "hits_avg": 1,
+        "rbi_avg": 0,
+        "runs_avg": 0.5,
+        "hr_avg": 0,
+        "total_bases_avg": 1.1,
+        "sb_avg": 0,
+        "singles_avg": 1,
+        "doubles_avg": 0,
+        "walks_avg": 0.5,
+        "avg": 0.207,
+        "games": 4
+      },
+      "pitching": {
+        "strikeouts_avg": 0,
+        "hits_allowed_avg": 0,
+        "walks_allowed_avg": 0,
+        "earned_runs_avg": 0,
+        "outs_avg": 0,
+        "era": 0,
+        "appearances": 0
+      },
+      "tc_batting": {
+        "hits": 0.8,
+        "rbi": 0,
+        "runs": 0.4,
+        "hr": 0,
+        "total_bases": 0.9,
+        "sb": 0,
+        "singles": 0.8,
+        "doubles": 0,
+        "walks": 0.4
+      },
+      "tc_pitching": {
+        "strikeouts": 0,
+        "hits_allowed": 0.5,
+        "walks_allowed": 0.5,
+        "earned_runs": 0.5,
+        "outs": 0
+      },
+      "lines": {},
+      "edges": {}
+    },
+    {
+      "name": "Josh Naylor",
+      "pos": "1B",
+      "team": "SEA",
+      "status": "ACTIVE",
+      "batting": {
+        "hits_avg": 1.33,
+        "rbi_avg": 0.17,
+        "runs_avg": 0.67,
+        "hr_avg": 0,
+        "total_bases_avg": 1.52,
+        "sb_avg": 0,
+        "singles_avg": 1.33,
+        "doubles_avg": 0,
+        "walks_avg": 0.17,
+        "avg": 0.255,
+        "games": 6
+      },
+      "pitching": {
+        "strikeouts_avg": 0,
+        "hits_allowed_avg": 0,
+        "walks_allowed_avg": 0,
+        "earned_runs_avg": 0,
+        "outs_avg": 0,
+        "era": 0,
+        "appearances": 0
+      },
+      "tc_batting": {
+        "hits": 1.1,
+        "rbi": 0.1,
+        "runs": 0.6,
+        "hr": 0,
+        "total_bases": 1.3,
+        "sb": 0,
+        "singles": 1.1,
+        "doubles": 0,
+        "walks": 0.1
+      },
+      "tc_pitching": {
+        "strikeouts": 0,
+        "hits_allowed": 0.5,
+        "walks_allowed": 0.5,
+        "earned_runs": 0.5,
+        "outs": 0
+      },
+      "lines": {
+        "strikeouts": 1.2,
+        "hits": 1.2,
+        "rbi": 1.2,
+        "total_bases": 3.6,
+        "runs": 1.2
+      },
+      "edges": {
+        "hits": -0.1,
+        "rbi": -1.1,
+        "total_bases": -2.3,
+        "runs": -0.6
+      }
+    },
+    {
+      "name": "Andres Munoz",
+      "pos": "RP",
+      "team": "SEA",
+      "status": "ACTIVE",
+      "batting": {
+        "hits_avg": 0,
+        "rbi_avg": 0,
+        "runs_avg": 0,
+        "hr_avg": 0,
+        "total_bases_avg": 0,
+        "sb_avg": 0,
+        "singles_avg": 0,
+        "doubles_avg": 0,
+        "walks_avg": 0,
+        "avg": 0,
+        "games": 0
+      },
+      "pitching": {
+        "strikeouts_avg": 1,
+        "hits_allowed_avg": 2,
+        "walks_allowed_avg": 0,
+        "earned_runs_avg": 1,
+        "outs_avg": 3,
+        "era": 4.88,
+        "appearances": 2
+      },
+      "tc_batting": {
+        "hits": 0,
+        "rbi": 0,
+        "runs": 0,
+        "hr": 0,
+        "total_bases": 0,
+        "sb": 0,
+        "singles": 0,
+        "doubles": 0,
+        "walks": 0
+      },
+      "tc_pitching": {
+        "strikeouts": 0.3,
+        "hits_allowed": 2.1,
+        "walks_allowed": 0.5,
+        "earned_runs": 1.3,
+        "outs": 1.9
+      },
+      "lines": {},
+      "edges": {}
+    },
+    {
+      "name": "Colt Emerson",
+      "pos": "3B",
+      "team": "SEA",
+      "status": "ACTIVE",
+      "batting": {
+        "hits_avg": 0.67,
+        "rbi_avg": 0.5,
+        "runs_avg": 0.5,
+        "hr_avg": 0.17,
+        "total_bases_avg": 1.64,
+        "sb_avg": 0,
+        "singles_avg": 0.67,
+        "doubles_avg": 0,
+        "walks_avg": 0.5,
+        "avg": 0.24,
+        "games": 6
+      },
+      "pitching": {
+        "strikeouts_avg": 0,
+        "hits_allowed_avg": 0,
+        "walks_allowed_avg": 0,
+        "earned_runs_avg": 0,
+        "outs_avg": 0,
+        "era": 0,
+        "appearances": 0
+      },
+      "tc_batting": {
+        "hits": 0.6,
+        "rbi": 0.4,
+        "runs": 0.4,
+        "hr": 0.1,
+        "total_bases": 1.4,
+        "sb": 0,
+        "singles": 0.6,
+        "doubles": 0,
+        "walks": 0.4
+      },
+      "tc_pitching": {
+        "strikeouts": 0,
+        "hits_allowed": 0.5,
+        "walks_allowed": 0.5,
+        "earned_runs": 0.5,
+        "outs": 0
+      },
+      "lines": {
+        "strikeouts": 1.2,
+        "hits": 1.2,
+        "rbi": 1.2,
+        "total_bases": 3.6,
+        "runs": 1.2
+      },
+      "edges": {
+        "hits": -0.6,
+        "rbi": -0.8,
+        "total_bases": -2.2,
+        "runs": -0.8
+      }
+    },
+    {
+      "name": "Dominic Canzone",
+      "pos": "DH",
+      "team": "SEA",
+      "status": "ACTIVE",
+      "batting": {
+        "hits_avg": 1.25,
+        "rbi_avg": 1,
+        "runs_avg": 0.75,
+        "hr_avg": 0.75,
+        "total_bases_avg": 1.62,
+        "sb_avg": 0,
+        "singles_avg": 1.25,
+        "doubles_avg": 0,
+        "walks_avg": 0.25,
+        "avg": 0.239,
+        "games": 4
+      },
+      "pitching": {
+        "strikeouts_avg": 0,
+        "hits_allowed_avg": 0,
+        "walks_allowed_avg": 0,
+        "earned_runs_avg": 0,
+        "outs_avg": 0,
+        "era": 0,
+        "appearances": 0
+      },
+      "tc_batting": {
+        "hits": 1.1,
+        "rbi": 0.8,
+        "runs": 0.6,
+        "hr": 0.6,
+        "total_bases": 1.4,
+        "sb": 0,
+        "singles": 1.1,
+        "doubles": 0,
+        "walks": 0.2
+      },
+      "tc_pitching": {
+        "strikeouts": 0,
+        "hits_allowed": 0.5,
+        "walks_allowed": 0.5,
+        "earned_runs": 0.5,
+        "outs": 0
+      },
+      "lines": {
+        "strikeouts": 1.2,
+        "hits": 1.2,
+        "rbi": 1.2,
+        "total_bases": 3.6,
+        "runs": 1.2
+      },
+      "edges": {
+        "hits": -0.1,
+        "rbi": -0.4,
+        "total_bases": -2.2,
+        "runs": -0.6
+      }
+    },
+    {
+      "name": "J.P. Crawford",
+      "pos": "SS",
+      "team": "SEA",
+      "status": "ACTIVE",
+      "batting": {
+        "hits_avg": 1.5,
+        "rbi_avg": 0.83,
+        "runs_avg": 1,
+        "hr_avg": 0.5,
+        "total_bases_avg": 1.62,
+        "sb_avg": 0,
+        "singles_avg": 1.5,
+        "doubles_avg": 0,
+        "walks_avg": 0.33,
+        "avg": 0.211,
+        "games": 6
+      },
+      "pitching": {
+        "strikeouts_avg": 0,
+        "hits_allowed_avg": 0,
+        "walks_allowed_avg": 0,
+        "earned_runs_avg": 0,
+        "outs_avg": 0,
+        "era": 0,
+        "appearances": 0
+      },
+      "tc_batting": {
+        "hits": 1.3,
+        "rbi": 0.7,
+        "runs": 0.8,
+        "hr": 0.4,
+        "total_bases": 1.4,
+        "sb": 0,
+        "singles": 1.3,
+        "doubles": 0,
+        "walks": 0.3
+      },
+      "tc_pitching": {
+        "strikeouts": 0,
+        "hits_allowed": 0.5,
+        "walks_allowed": 0.5,
+        "earned_runs": 0.5,
+        "outs": 0
+      },
+      "lines": {
+        "strikeouts": 1.2,
+        "hits": 1.2,
+        "rbi": 1.2,
+        "total_bases": 3.6,
+        "runs": 1.2
+      },
+      "edges": {
+        "hits": 0.1,
+        "rbi": -0.5,
+        "total_bases": -2.2,
+        "runs": -0.4
+      }
+    },
+    {
+      "name": "Alex Hoppe",
+      "pos": "RP",
+      "team": "SEA",
+      "status": "ACTIVE",
+      "batting": {
+        "hits_avg": 0,
+        "rbi_avg": 0,
+        "runs_avg": 0,
+        "hr_avg": 0,
+        "total_bases_avg": 0,
+        "sb_avg": 0,
+        "singles_avg": 0,
+        "doubles_avg": 0,
+        "walks_avg": 0,
+        "avg": 0,
+        "games": 0
+      },
+      "pitching": {
+        "strikeouts_avg": 0,
+        "hits_allowed_avg": 0,
+        "walks_allowed_avg": 1,
+        "earned_runs_avg": 0,
+        "outs_avg": 3,
+        "era": 5.84,
+        "appearances": 1
+      },
+      "tc_batting": {
+        "hits": 0,
+        "rbi": 0,
+        "runs": 0,
+        "hr": 0,
+        "total_bases": 0,
+        "sb": 0,
+        "singles": 0,
+        "doubles": 0,
+        "walks": 0
+      },
+      "tc_pitching": {
+        "strikeouts": 0,
+        "hits_allowed": 0.5,
+        "walks_allowed": 1.3,
+        "earned_runs": 0.5,
+        "outs": 1.9
+      },
+      "lines": {},
+      "edges": {}
+    },
+    {
+      "name": "Victor Robles",
+      "pos": "RF",
+      "team": "SEA",
+      "status": "ACTIVE",
+      "batting": {
+        "hits_avg": 1,
+        "rbi_avg": 0.2,
+        "runs_avg": 0.2,
+        "hr_avg": 0,
+        "total_bases_avg": 0.76,
+        "sb_avg": 0,
+        "singles_avg": 1,
+        "doubles_avg": 0,
+        "walks_avg": 0,
+        "avg": 0.282,
+        "games": 5
+      },
+      "pitching": {
+        "strikeouts_avg": 0,
+        "hits_allowed_avg": 0,
+        "walks_allowed_avg": 0,
+        "earned_runs_avg": 0,
+        "outs_avg": 0,
+        "era": 0,
+        "appearances": 0
+      },
+      "tc_batting": {
+        "hits": 0.8,
+        "rbi": 0.2,
+        "runs": 0.2,
+        "hr": 0,
+        "total_bases": 0.6,
+        "sb": 0,
+        "singles": 0.8,
+        "doubles": 0,
+        "walks": 0
+      },
+      "tc_pitching": {
+        "strikeouts": 0,
+        "hits_allowed": 0.5,
+        "walks_allowed": 0.5,
+        "earned_runs": 0.5,
+        "outs": 0
+      },
+      "lines": {},
+      "edges": {}
+    },
+    {
+      "name": "Rob Refsnyder",
+      "pos": "DH",
+      "team": "SEA",
+      "status": "ACTIVE",
+      "batting": {
+        "hits_avg": 0.67,
+        "rbi_avg": 1,
+        "runs_avg": 0.67,
+        "hr_avg": 0.33,
+        "total_bases_avg": 0.45,
+        "sb_avg": 0,
+        "singles_avg": 0.67,
+        "doubles_avg": 0,
+        "walks_avg": 0,
+        "avg": 0.118,
+        "games": 3
+      },
+      "pitching": {
+        "strikeouts_avg": 0,
+        "hits_allowed_avg": 0,
+        "walks_allowed_avg": 0,
+        "earned_runs_avg": 0,
+        "outs_avg": 0,
+        "era": 0,
+        "appearances": 0
+      },
+      "tc_batting": {
+        "hits": 0.6,
+        "rbi": 0.8,
+        "runs": 0.6,
+        "hr": 0.3,
+        "total_bases": 0.4,
+        "sb": 0,
+        "singles": 0.6,
+        "doubles": 0,
+        "walks": 0
+      },
+      "tc_pitching": {
+        "strikeouts": 0,
+        "hits_allowed": 0.5,
+        "walks_allowed": 0.5,
+        "earned_runs": 0.5,
+        "outs": 0
+      },
+      "lines": {},
+      "edges": {}
+    }
+  ],
+  "home_players": [
+    {
+      "name": "Paul Skenes",
+      "pos": "SP",
+      "team": "PIT",
+      "status": "ACTIVE",
+      "batting": {
+        "hits_avg": 0,
+        "rbi_avg": 0,
+        "runs_avg": 0,
+        "hr_avg": 0,
+        "total_bases_avg": 0,
+        "sb_avg": 0,
+        "singles_avg": 0,
+        "doubles_avg": 0,
+        "walks_avg": 0,
+        "avg": 0,
+        "games": 0
+      },
+      "pitching": {
+        "strikeouts_avg": 10,
+        "hits_allowed_avg": 4,
+        "walks_allowed_avg": 3,
+        "earned_runs_avg": 1,
+        "outs_avg": 15.3,
+        "era": 2.89,
+        "appearances": 1
+      },
+      "tc_batting": {
+        "hits": 0,
+        "rbi": 0,
+        "runs": 0,
+        "hr": 0,
+        "total_bases": 0,
+        "sb": 0,
+        "singles": 0,
+        "doubles": 0,
+        "walks": 0
+      },
+      "tc_pitching": {
+        "strikeouts": 7.5,
+        "hits_allowed": 3.7,
+        "walks_allowed": 2.9,
+        "earned_runs": 1.3,
+        "outs": 11.7
+      },
+      "lines": {},
+      "edges": {}
+    },
+    {
+      "name": "Marcell Ozuna",
+      "pos": "DH",
+      "team": "PIT",
+      "status": "ACTIVE",
+      "batting": {
+        "hits_avg": 0.67,
+        "rbi_avg": 0.33,
+        "runs_avg": 0,
+        "hr_avg": 0,
+        "total_bases_avg": 1.32,
+        "sb_avg": 0,
+        "singles_avg": 0.67,
+        "doubles_avg": 0,
+        "walks_avg": 0,
+        "avg": 0.185,
+        "games": 3
+      },
+      "pitching": {
+        "strikeouts_avg": 0,
+        "hits_allowed_avg": 0,
+        "walks_allowed_avg": 0,
+        "earned_runs_avg": 0,
+        "outs_avg": 0,
+        "era": 0,
+        "appearances": 0
+      },
+      "tc_batting": {
+        "hits": 0.6,
+        "rbi": 0.3,
+        "runs": 0,
+        "hr": 0,
+        "total_bases": 1.1,
+        "sb": 0,
+        "singles": 0.6,
+        "doubles": 0,
+        "walks": 0
+      },
+      "tc_pitching": {
+        "strikeouts": 0,
+        "hits_allowed": 0.5,
+        "walks_allowed": 0.5,
+        "earned_runs": 0.5,
+        "outs": 0
+      },
+      "lines": {
+        "strikeouts": 3.6,
+        "hits": 3.6,
+        "rbi": 1.2,
+        "total_bases": 3.6,
+        "runs": 1.2
+      },
+      "edges": {
+        "hits": -3,
+        "rbi": -0.9,
+        "total_bases": -2.5
+      }
+    },
+    {
+      "name": "Esmerlyn Valdez",
+      "pos": "RF",
+      "team": "PIT",
+      "status": "ACTIVE",
+      "batting": {
+        "hits_avg": 0.5,
+        "rbi_avg": 1.5,
+        "runs_avg": 0.5,
+        "hr_avg": 0.5,
+        "total_bases_avg": 2.33,
+        "sb_avg": 0,
+        "singles_avg": 0.5,
+        "doubles_avg": 0,
+        "walks_avg": 0.5,
+        "avg": 0.146,
+        "games": 2
+      },
+      "pitching": {
+        "strikeouts_avg": 0,
+        "hits_allowed_avg": 0,
+        "walks_allowed_avg": 0,
+        "earned_runs_avg": 0,
+        "outs_avg": 0,
+        "era": 0,
+        "appearances": 0
+      },
+      "tc_batting": {
+        "hits": 0.4,
+        "rbi": 1.3,
+        "runs": 0.4,
+        "hr": 0.4,
+        "total_bases": 2,
+        "sb": 0,
+        "singles": 0.4,
+        "doubles": 0,
+        "walks": 0.4
+      },
+      "tc_pitching": {
+        "strikeouts": 0,
+        "hits_allowed": 0.5,
+        "walks_allowed": 0.5,
+        "earned_runs": 0.5,
+        "outs": 0
+      },
+      "lines": {},
+      "edges": {}
+    },
+    {
+      "name": "Henry Davis",
+      "pos": "C",
+      "team": "PIT",
+      "status": "ACTIVE",
+      "batting": {
+        "hits_avg": 0.5,
+        "rbi_avg": 0.75,
+        "runs_avg": 0.25,
+        "hr_avg": 0.25,
+        "total_bases_avg": 0.96,
+        "sb_avg": 0,
+        "singles_avg": 0.5,
+        "doubles_avg": 0,
+        "walks_avg": 0.25,
+        "avg": 0.139,
+        "games": 4
+      },
+      "pitching": {
+        "strikeouts_avg": 0,
+        "hits_allowed_avg": 0,
+        "walks_allowed_avg": 0,
+        "earned_runs_avg": 0,
+        "outs_avg": 0,
+        "era": 0,
+        "appearances": 0
+      },
+      "tc_batting": {
+        "hits": 0.4,
+        "rbi": 0.6,
+        "runs": 0.2,
+        "hr": 0.2,
+        "total_bases": 0.8,
+        "sb": 0,
+        "singles": 0.4,
+        "doubles": 0,
+        "walks": 0.2
+      },
+      "tc_pitching": {
+        "strikeouts": 0,
+        "hits_allowed": 0.5,
+        "walks_allowed": 0.5,
+        "earned_runs": 0.5,
+        "outs": 0
+      },
+      "lines": {},
+      "edges": {}
+    },
+    {
+      "name": "Carmen Mlodzinski",
+      "pos": "SP",
+      "team": "PIT",
+      "status": "ACTIVE",
+      "batting": {
+        "hits_avg": 0,
+        "rbi_avg": 0,
+        "runs_avg": 0,
+        "hr_avg": 0,
+        "total_bases_avg": 0,
+        "sb_avg": 0,
+        "singles_avg": 0,
+        "doubles_avg": 0,
+        "walks_avg": 0,
+        "avg": 0,
+        "games": 0
+      },
+      "pitching": {
+        "strikeouts_avg": 2,
+        "hits_allowed_avg": 5,
+        "walks_allowed_avg": 3,
+        "earned_runs_avg": 1,
+        "outs_avg": 15,
+        "era": 3.76,
+        "appearances": 1
+      },
+      "tc_batting": {
+        "hits": 0,
+        "rbi": 0,
+        "runs": 0,
+        "hr": 0,
+        "total_bases": 0,
+        "sb": 0,
+        "singles": 0,
+        "doubles": 0,
+        "walks": 0
+      },
+      "tc_pitching": {
+        "strikeouts": 1.1,
+        "hits_allowed": 4.5,
+        "walks_allowed": 2.9,
+        "earned_runs": 1.3,
+        "outs": 11.5
+      },
+      "lines": {},
+      "edges": {}
+    },
+    {
+      "name": "Jhostynxon Garcia",
+      "pos": "RF",
+      "team": "PIT",
+      "status": "ACTIVE",
+      "batting": {
+        "hits_avg": 0.2,
+        "rbi_avg": 0,
+        "runs_avg": 0.2,
+        "hr_avg": 0,
+        "total_bases_avg": 0.52,
+        "sb_avg": 0,
+        "singles_avg": 0.2,
+        "doubles_avg": 0,
+        "walks_avg": 0,
+        "avg": 0.231,
+        "games": 5
+      },
+      "pitching": {
+        "strikeouts_avg": 0,
+        "hits_allowed_avg": 0,
+        "walks_allowed_avg": 0,
+        "earned_runs_avg": 0,
+        "outs_avg": 0,
+        "era": 0,
+        "appearances": 0
+      },
+      "tc_batting": {
+        "hits": 0.2,
+        "rbi": 0,
+        "runs": 0.2,
+        "hr": 0,
+        "total_bases": 0.4,
+        "sb": 0,
+        "singles": 0.2,
+        "doubles": 0,
+        "walks": 0
+      },
+      "tc_pitching": {
+        "strikeouts": 0,
+        "hits_allowed": 0.5,
+        "walks_allowed": 0.5,
+        "earned_runs": 0.5,
+        "outs": 0
+      },
+      "lines": {},
+      "edges": {}
+    },
+    {
+      "name": "Justin Lawrence",
+      "pos": "RP",
+      "team": "PIT",
+      "status": "ACTIVE",
+      "batting": {
+        "hits_avg": 0,
+        "rbi_avg": 0,
+        "runs_avg": 0,
+        "hr_avg": 0,
+        "total_bases_avg": 0,
+        "sb_avg": 0,
+        "singles_avg": 0,
+        "doubles_avg": 0,
+        "walks_avg": 0,
+        "avg": 0,
+        "games": 0
+      },
+      "pitching": {
+        "strikeouts_avg": 3,
+        "hits_allowed_avg": 2,
+        "walks_allowed_avg": 2,
+        "earned_runs_avg": 1,
+        "outs_avg": 3.6,
+        "era": 5.32,
+        "appearances": 1
+      },
+      "tc_batting": {
+        "hits": 0,
+        "rbi": 0,
+        "runs": 0,
+        "hr": 0,
+        "total_bases": 0,
+        "sb": 0,
+        "singles": 0,
+        "doubles": 0,
+        "walks": 0
+      },
+      "tc_pitching": {
+        "strikeouts": 1.9,
+        "hits_allowed": 2.1,
+        "walks_allowed": 2.1,
+        "earned_runs": 1.3,
+        "outs": 2.4
+      },
+      "lines": {},
+      "edges": {}
+    },
+    {
+      "name": "Gregory Soto",
+      "pos": "RP",
+      "team": "PIT",
+      "status": "ACTIVE",
+      "batting": {
+        "hits_avg": 0,
+        "rbi_avg": 0,
+        "runs_avg": 0,
+        "hr_avg": 0,
+        "total_bases_avg": 0,
+        "sb_avg": 0,
+        "singles_avg": 0,
+        "doubles_avg": 0,
+        "walks_avg": 0,
+        "avg": 0,
+        "games": 0
+      },
+      "pitching": {
+        "strikeouts_avg": 0.7,
+        "hits_allowed_avg": 0,
+        "walks_allowed_avg": 0.3,
+        "earned_runs_avg": 0,
+        "outs_avg": 3.1,
+        "era": 2.04,
+        "appearances": 3
+      },
+      "tc_batting": {
+        "hits": 0,
+        "rbi": 0,
+        "runs": 0,
+        "hr": 0,
+        "total_bases": 0,
+        "sb": 0,
+        "singles": 0,
+        "doubles": 0,
+        "walks": 0
+      },
+      "tc_pitching": {
+        "strikeouts": 0.1,
+        "hits_allowed": 0.5,
+        "walks_allowed": 0.7,
+        "earned_runs": 0.5,
+        "outs": 2
+      },
+      "lines": {},
+      "edges": {}
+    },
+    {
+      "name": "Konnor Griffin",
+      "pos": "SS",
+      "team": "PIT",
+      "status": "ACTIVE",
+      "batting": {
+        "hits_avg": 1.2,
+        "rbi_avg": 0.4,
+        "runs_avg": 0.8,
+        "hr_avg": 0.2,
+        "total_bases_avg": 1.57,
+        "sb_avg": 0,
+        "singles_avg": 1.2,
+        "doubles_avg": 0,
+        "walks_avg": 0.4,
+        "avg": 0.264,
+        "games": 5
+      },
+      "pitching": {
+        "strikeouts_avg": 0,
+        "hits_allowed_avg": 0,
+        "walks_allowed_avg": 0,
+        "earned_runs_avg": 0,
+        "outs_avg": 0,
+        "era": 0,
+        "appearances": 0
+      },
+      "tc_batting": {
+        "hits": 1,
+        "rbi": 0.3,
+        "runs": 0.7,
+        "hr": 0.2,
+        "total_bases": 1.3,
+        "sb": 0,
+        "singles": 1,
+        "doubles": 0,
+        "walks": 0.3
+      },
+      "tc_pitching": {
+        "strikeouts": 0,
+        "hits_allowed": 0.5,
+        "walks_allowed": 0.5,
+        "earned_runs": 0.5,
+        "outs": 0
+      },
+      "lines": {},
+      "edges": {}
+    },
+    {
+      "name": "Jared Triolo",
+      "pos": "SS",
+      "team": "PIT",
+      "status": "ACTIVE",
+      "batting": {
+        "hits_avg": 0.8,
+        "rbi_avg": 0.4,
+        "runs_avg": 0.2,
+        "hr_avg": 0,
+        "total_bases_avg": 0.89,
+        "sb_avg": 0,
+        "singles_avg": 0.8,
+        "doubles_avg": 0,
+        "walks_avg": 0,
+        "avg": 0.238,
+        "games": 5
+      },
+      "pitching": {
+        "strikeouts_avg": 0,
+        "hits_allowed_avg": 0,
+        "walks_allowed_avg": 0,
+        "earned_runs_avg": 0,
+        "outs_avg": 0,
+        "era": 0,
+        "appearances": 0
+      },
+      "tc_batting": {
+        "hits": 0.7,
+        "rbi": 0.3,
+        "runs": 0.2,
+        "hr": 0,
+        "total_bases": 0.8,
+        "sb": 0,
+        "singles": 0.7,
+        "doubles": 0,
+        "walks": 0
+      },
+      "tc_pitching": {
+        "strikeouts": 0,
+        "hits_allowed": 0.5,
+        "walks_allowed": 0.5,
+        "earned_runs": 0.5,
+        "outs": 0
+      },
+      "lines": {
+        "strikeouts": 1.2,
+        "hits": 3.6,
+        "rbi": 1.2,
+        "total_bases": 3.6,
+        "runs": 1.2
+      },
+      "edges": {
+        "hits": -2.9,
+        "rbi": -0.9,
+        "total_bases": -2.8,
+        "runs": -1
+      }
+    },
+    {
+      "name": "Bryan Reynolds",
+      "pos": "LF",
+      "team": "PIT",
+      "status": "ACTIVE",
+      "batting": {
+        "hits_avg": 1.57,
+        "rbi_avg": 0.86,
+        "runs_avg": 1.14,
+        "hr_avg": 0.29,
+        "total_bases_avg": 1.35,
+        "sb_avg": 0,
+        "singles_avg": 1.57,
+        "doubles_avg": 0,
+        "walks_avg": 0.86,
+        "avg": 0.268,
+        "games": 7
+      },
+      "pitching": {
+        "strikeouts_avg": 0,
+        "hits_allowed_avg": 0,
+        "walks_allowed_avg": 0,
+        "earned_runs_avg": 0,
+        "outs_avg": 0,
+        "era": 0,
+        "appearances": 0
+      },
+      "tc_batting": {
+        "hits": 1.3,
+        "rbi": 0.7,
+        "runs": 1,
+        "hr": 0.2,
+        "total_bases": 1.1,
+        "sb": 0,
+        "singles": 1.3,
+        "doubles": 0,
+        "walks": 0.7
+      },
+      "tc_pitching": {
+        "strikeouts": 0,
+        "hits_allowed": 0.5,
+        "walks_allowed": 0.5,
+        "earned_runs": 0.5,
+        "outs": 0
+      },
+      "lines": {
+        "strikeouts": 3.6,
+        "hits": 3.6,
+        "rbi": 1.2,
+        "total_bases": 6,
+        "runs": 1.2
+      },
+      "edges": {
+        "hits": -2.3,
+        "rbi": -0.5,
+        "total_bases": -4.9,
+        "runs": -0.2
+      }
+    },
+    {
+      "name": "Mitch Keller",
+      "pos": "SP",
+      "team": "PIT",
+      "status": "ACTIVE",
+      "batting": {
+        "hits_avg": 0,
+        "rbi_avg": 0,
+        "runs_avg": 0,
+        "hr_avg": 0,
+        "total_bases_avg": 0,
+        "sb_avg": 0,
+        "singles_avg": 0,
+        "doubles_avg": 0,
+        "walks_avg": 0,
+        "avg": 0,
+        "games": 0
+      },
+      "pitching": {
+        "strikeouts_avg": 5,
+        "hits_allowed_avg": 10,
+        "walks_allowed_avg": 1,
+        "earned_runs_avg": 7,
+        "outs_avg": 12,
+        "era": 4.35,
+        "appearances": 1
+      },
+      "tc_batting": {
+        "hits": 0,
+        "rbi": 0,
+        "runs": 0,
+        "hr": 0,
+        "total_bases": 0,
+        "sb": 0,
+        "singles": 0,
+        "doubles": 0,
+        "walks": 0
+      },
+      "tc_pitching": {
+        "strikeouts": 3.5,
+        "hits_allowed": 8.5,
+        "walks_allowed": 1.3,
+        "earned_runs": 6.1,
+        "outs": 9.1
+      },
+      "lines": {},
+      "edges": {}
+    },
+    {
+      "name": "Jake Mangum",
+      "pos": "LF",
+      "team": "PIT",
+      "status": "ACTIVE",
+      "batting": {
+        "hits_avg": 1,
+        "rbi_avg": 0.8,
+        "runs_avg": 0.4,
+        "hr_avg": 0.2,
+        "total_bases_avg": 0.77,
+        "sb_avg": 0,
+        "singles_avg": 1,
+        "doubles_avg": 0,
+        "walks_avg": 0.2,
+        "avg": 0.257,
+        "games": 5
+      },
+      "pitching": {
+        "strikeouts_avg": 0,
+        "hits_allowed_avg": 0,
+        "walks_allowed_avg": 0,
+        "earned_runs_avg": 0,
+        "outs_avg": 0,
+        "era": 0,
+        "appearances": 0
+      },
+      "tc_batting": {
+        "hits": 0.8,
+        "rbi": 0.7,
+        "runs": 0.3,
+        "hr": 0.2,
+        "total_bases": 0.7,
+        "sb": 0,
+        "singles": 0.8,
+        "doubles": 0,
+        "walks": 0.2
+      },
+      "tc_pitching": {
+        "strikeouts": 0,
+        "hits_allowed": 0.5,
+        "walks_allowed": 0.5,
+        "earned_runs": 0.5,
+        "outs": 0
+      },
+      "lines": {
+        "strikeouts": 1.2,
+        "hits": 3.6,
+        "rbi": 1.2,
+        "total_bases": 3.6,
+        "runs": 1.2
+      },
+      "edges": {
+        "hits": -2.8,
+        "rbi": -0.5,
+        "total_bases": -2.9,
+        "runs": -0.9
+      }
+    },
+    {
+      "name": "Mason Montgomery",
+      "pos": "RP",
+      "team": "PIT",
+      "status": "ACTIVE",
+      "batting": {
+        "hits_avg": 0,
+        "rbi_avg": 0,
+        "runs_avg": 0,
+        "hr_avg": 0,
+        "total_bases_avg": 0,
+        "sb_avg": 0,
+        "singles_avg": 0,
+        "doubles_avg": 0,
+        "walks_avg": 0,
+        "avg": 0,
+        "games": 0
+      },
+      "pitching": {
+        "strikeouts_avg": 1,
+        "hits_allowed_avg": 1,
+        "walks_allowed_avg": 1,
+        "earned_runs_avg": 1,
+        "outs_avg": 2.1,
+        "era": 3.57,
+        "appearances": 2
+      },
+      "tc_batting": {
+        "hits": 0,
+        "rbi": 0,
+        "runs": 0,
+        "hr": 0,
+        "total_bases": 0,
+        "sb": 0,
+        "singles": 0,
+        "doubles": 0,
+        "walks": 0
+      },
+      "tc_pitching": {
+        "strikeouts": 0.3,
+        "hits_allowed": 1.3,
+        "walks_allowed": 1.3,
+        "earned_runs": 1.3,
+        "outs": 1.2
+      },
+      "lines": {},
+      "edges": {}
+    },
+    {
+      "name": "Brandon Lowe",
+      "pos": "2B",
+      "team": "PIT",
+      "status": "ACTIVE",
+      "batting": {
+        "hits_avg": 1,
+        "rbi_avg": 0.71,
+        "runs_avg": 0.86,
+        "hr_avg": 0.14,
+        "total_bases_avg": 2.1,
+        "sb_avg": 0,
+        "singles_avg": 1,
+        "doubles_avg": 0,
+        "walks_avg": 0.14,
+        "avg": 0.264,
+        "games": 7
+      },
+      "pitching": {
+        "strikeouts_avg": 0,
+        "hits_allowed_avg": 0,
+        "walks_allowed_avg": 0,
+        "earned_runs_avg": 0,
+        "outs_avg": 0,
+        "era": 0,
+        "appearances": 0
+      },
+      "tc_batting": {
+        "hits": 0.8,
+        "rbi": 0.6,
+        "runs": 0.7,
+        "hr": 0.1,
+        "total_bases": 1.8,
+        "sb": 0,
+        "singles": 0.8,
+        "doubles": 0,
+        "walks": 0.1
+      },
+      "tc_pitching": {
+        "strikeouts": 0,
+        "hits_allowed": 0.5,
+        "walks_allowed": 0.5,
+        "earned_runs": 0.5,
+        "outs": 0
+      },
+      "lines": {
+        "strikeouts": 3.6,
+        "hits": 3.6,
+        "hr": 1.2,
+        "rbi": 1.2,
+        "total_bases": 6,
+        "runs": 1.2
+      },
+      "edges": {
+        "hits": -2.8,
+        "hr": -1.1,
+        "rbi": -0.6,
+        "total_bases": -4.2,
+        "runs": -0.5
+      }
+    },
+    {
+      "name": "Spencer Horwitz",
+      "pos": "1B",
+      "team": "PIT",
+      "status": "ACTIVE",
+      "batting": {
+        "hits_avg": 1.43,
+        "rbi_avg": 0.43,
+        "runs_avg": 0.86,
+        "hr_avg": 0.29,
+        "total_bases_avg": 1.78,
+        "sb_avg": 0,
+        "singles_avg": 1.43,
+        "doubles_avg": 0,
+        "walks_avg": 0.57,
+        "avg": 0.287,
+        "games": 7
+      },
+      "pitching": {
+        "strikeouts_avg": 0,
+        "hits_allowed_avg": 0,
+        "walks_allowed_avg": 0,
+        "earned_runs_avg": 0,
+        "outs_avg": 0,
+        "era": 0,
+        "appearances": 0
+      },
+      "tc_batting": {
+        "hits": 1.2,
+        "rbi": 0.4,
+        "runs": 0.7,
+        "hr": 0.2,
+        "total_bases": 1.5,
+        "sb": 0,
+        "singles": 1.2,
+        "doubles": 0,
+        "walks": 0.5
+      },
+      "tc_pitching": {
+        "strikeouts": 0,
+        "hits_allowed": 0.5,
+        "walks_allowed": 0.5,
+        "earned_runs": 0.5,
+        "outs": 0
+      },
+      "lines": {
+        "strikeouts": 1.2,
+        "hits": 3.6,
+        "rbi": 1.2,
+        "total_bases": 6,
+        "runs": 1.2
+      },
+      "edges": {
+        "hits": -2.4,
+        "rbi": -0.8,
+        "total_bases": -4.5,
+        "runs": -0.5
+      }
+    },
+    {
+      "name": "Bubba Chandler",
+      "pos": "SP",
+      "team": "PIT",
+      "status": "ACTIVE",
+      "batting": {
+        "hits_avg": 0,
+        "rbi_avg": 0,
+        "runs_avg": 0,
+        "hr_avg": 0,
+        "total_bases_avg": 0,
+        "sb_avg": 0,
+        "singles_avg": 0,
+        "doubles_avg": 0,
+        "walks_avg": 0,
+        "avg": 0,
+        "games": 0
+      },
+      "pitching": {
+        "strikeouts_avg": 5,
+        "hits_allowed_avg": 8,
+        "walks_allowed_avg": 2,
+        "earned_runs_avg": 4,
+        "outs_avg": 15,
+        "era": 4.85,
+        "appearances": 1
+      },
+      "tc_batting": {
+        "hits": 0,
+        "rbi": 0,
+        "runs": 0,
+        "hr": 0,
+        "total_bases": 0,
+        "sb": 0,
+        "singles": 0,
+        "doubles": 0,
+        "walks": 0
+      },
+      "tc_pitching": {
+        "strikeouts": 3.5,
+        "hits_allowed": 6.9,
+        "walks_allowed": 2.1,
+        "earned_runs": 3.7,
+        "outs": 11.5
+      },
+      "lines": {},
+      "edges": {}
+    },
+    {
+      "name": "Ryan O'Hearn",
+      "pos": "RF",
+      "team": "PIT",
+      "status": "ACTIVE",
+      "batting": {
+        "hits_avg": 2,
+        "rbi_avg": 1,
+        "runs_avg": 1,
+        "hr_avg": 1,
+        "total_bases_avg": 1.92,
+        "sb_avg": 0,
+        "singles_avg": 2,
+        "doubles_avg": 0,
+        "walks_avg": 0,
+        "avg": 0.294,
+        "games": 1
+      },
+      "pitching": {
+        "strikeouts_avg": 0,
+        "hits_allowed_avg": 0,
+        "walks_allowed_avg": 0,
+        "earned_runs_avg": 0,
+        "outs_avg": 0,
+        "era": 0,
+        "appearances": 0
+      },
+      "tc_batting": {
+        "hits": 1.7,
+        "rbi": 0.8,
+        "runs": 0.8,
+        "hr": 0.8,
+        "total_bases": 1.6,
+        "sb": 0,
+        "singles": 1.7,
+        "doubles": 0,
+        "walks": 0
+      },
+      "tc_pitching": {
+        "strikeouts": 0,
+        "hits_allowed": 0.5,
+        "walks_allowed": 0.5,
+        "earned_runs": 0.5,
+        "outs": 0
+      },
+      "lines": {
+        "strikeouts": 1.2,
+        "hits": 3.6,
+        "rbi": 1.2,
+        "total_bases": 6,
+        "runs": 1.2
+      },
+      "edges": {
+        "hits": -1.9,
+        "rbi": -0.4,
+        "total_bases": -4.4,
+        "runs": -0.4
+      }
+    },
+    {
+      "name": "Wilber Dotel",
+      "pos": "RP",
+      "team": "PIT",
+      "status": "ACTIVE",
+      "batting": {
+        "hits_avg": 0,
+        "rbi_avg": 0,
+        "runs_avg": 0,
+        "hr_avg": 0,
+        "total_bases_avg": 0,
+        "sb_avg": 0,
+        "singles_avg": 0,
+        "doubles_avg": 0,
+        "walks_avg": 0,
+        "avg": 0,
+        "games": 0
+      },
+      "pitching": {
+        "strikeouts_avg": 4,
+        "hits_allowed_avg": 1,
+        "walks_allowed_avg": 0,
+        "earned_runs_avg": 0,
+        "outs_avg": 9,
+        "era": 1.5,
+        "appearances": 2
+      },
+      "tc_batting": {
+        "hits": 0,
+        "rbi": 0,
+        "runs": 0,
+        "hr": 0,
+        "total_bases": 0,
+        "sb": 0,
+        "singles": 0,
+        "doubles": 0,
+        "walks": 0
+      },
+      "tc_pitching": {
+        "strikeouts": 2.7,
+        "hits_allowed": 1.3,
+        "walks_allowed": 0.5,
+        "earned_runs": 0.5,
+        "outs": 6.7
+      },
+      "lines": {},
+      "edges": {}
+    },
+    {
+      "name": "Yohan Ramirez",
+      "pos": "RP",
+      "team": "PIT",
+      "status": "ACTIVE",
+      "batting": {
+        "hits_avg": 0,
+        "rbi_avg": 0,
+        "runs_avg": 0,
+        "hr_avg": 0,
+        "total_bases_avg": 0,
+        "sb_avg": 0,
+        "singles_avg": 0,
+        "doubles_avg": 0,
+        "walks_avg": 0,
+        "avg": 0,
+        "games": 0
+      },
+      "pitching": {
+        "strikeouts_avg": 0.7,
+        "hits_allowed_avg": 1.3,
+        "walks_allowed_avg": 0.3,
+        "earned_runs_avg": 1.7,
+        "outs_avg": 2.1,
+        "era": 4.79,
+        "appearances": 3
+      },
+      "tc_batting": {
+        "hits": 0,
+        "rbi": 0,
+        "runs": 0,
+        "hr": 0,
+        "total_bases": 0,
+        "sb": 0,
+        "singles": 0,
+        "doubles": 0,
+        "walks": 0
+      },
+      "tc_pitching": {
+        "strikeouts": 0.1,
+        "hits_allowed": 1.5,
+        "walks_allowed": 0.7,
+        "earned_runs": 1.9,
+        "outs": 1.2
+      },
+      "lines": {},
+      "edges": {}
+    },
+    {
+      "name": "Tyler Callihan",
+      "pos": "LF",
+      "team": "PIT",
+      "status": "ACTIVE",
+      "batting": {
+        "hits_avg": 0.33,
+        "rbi_avg": 0.33,
+        "runs_avg": 0.33,
+        "hr_avg": 0,
+        "total_bases_avg": 0.89,
+        "sb_avg": 0,
+        "singles_avg": 0.33,
+        "doubles_avg": 0,
+        "walks_avg": 0.67,
+        "avg": 0.444,
+        "games": 3
+      },
+      "pitching": {
+        "strikeouts_avg": 0,
+        "hits_allowed_avg": 0,
+        "walks_allowed_avg": 0,
+        "earned_runs_avg": 0,
+        "outs_avg": 0,
+        "era": 0,
+        "appearances": 0
+      },
+      "tc_batting": {
+        "hits": 0.3,
+        "rbi": 0.3,
+        "runs": 0.3,
+        "hr": 0,
+        "total_bases": 0.8,
+        "sb": 0,
+        "singles": 0.3,
+        "doubles": 0,
+        "walks": 0.6
+      },
+      "tc_pitching": {
+        "strikeouts": 0,
+        "hits_allowed": 0.5,
+        "walks_allowed": 0.5,
+        "earned_runs": 0.5,
+        "outs": 0
+      },
+      "lines": {},
+      "edges": {}
+    },
+    {
+      "name": "Nick Gonzales",
+      "pos": "3B",
+      "team": "PIT",
+      "status": "ACTIVE",
+      "batting": {
+        "hits_avg": 1,
+        "rbi_avg": 0.71,
+        "runs_avg": 0.86,
+        "hr_avg": 0.14,
+        "total_bases_avg": 1.3,
+        "sb_avg": 0,
+        "singles_avg": 1,
+        "doubles_avg": 0,
+        "walks_avg": 0.14,
+        "avg": 0.3,
+        "games": 7
+      },
+      "pitching": {
+        "strikeouts_avg": 0,
+        "hits_allowed_avg": 0,
+        "walks_allowed_avg": 0,
+        "earned_runs_avg": 0,
+        "outs_avg": 0,
+        "era": 0,
+        "appearances": 0
+      },
+      "tc_batting": {
+        "hits": 0.8,
+        "rbi": 0.6,
+        "runs": 0.7,
+        "hr": 0.1,
+        "total_bases": 1.1,
+        "sb": 0,
+        "singles": 0.8,
+        "doubles": 0,
+        "walks": 0.1
+      },
+      "tc_pitching": {
+        "strikeouts": 0,
+        "hits_allowed": 0.5,
+        "walks_allowed": 0.5,
+        "earned_runs": 0.5,
+        "outs": 0
+      },
+      "lines": {
+        "strikeouts": 1.2,
+        "hits": 3.6,
+        "rbi": 1.2,
+        "total_bases": 6,
+        "runs": 1.2
+      },
+      "edges": {
+        "hits": -2.8,
+        "rbi": -0.6,
+        "total_bases": -4.9,
+        "runs": -0.5
+      }
+    },
+    {
+      "name": "Cam Sanders",
+      "pos": "RP",
+      "team": "PIT",
+      "status": "ACTIVE",
+      "batting": {
+        "hits_avg": 0,
+        "rbi_avg": 0,
+        "runs_avg": 0,
+        "hr_avg": 0,
+        "total_bases_avg": 0,
+        "sb_avg": 0,
+        "singles_avg": 0,
+        "doubles_avg": 0,
+        "walks_avg": 0,
+        "avg": 0,
+        "games": 0
+      },
+      "pitching": {
+        "strikeouts_avg": 1,
+        "hits_allowed_avg": 0,
+        "walks_allowed_avg": 0,
+        "earned_runs_avg": 0,
+        "outs_avg": 3,
+        "era": 9,
+        "appearances": 1
+      },
+      "tc_batting": {
+        "hits": 0,
+        "rbi": 0,
+        "runs": 0,
+        "hr": 0,
+        "total_bases": 0,
+        "sb": 0,
+        "singles": 0,
+        "doubles": 0,
+        "walks": 0
+      },
+      "tc_pitching": {
+        "strikeouts": 0.3,
+        "hits_allowed": 0.5,
+        "walks_allowed": 0.5,
+        "earned_runs": 0.5,
+        "outs": 1.9
+      },
+      "lines": {},
+      "edges": {}
+    },
+    {
+      "name": "Endy Rodriguez",
+      "pos": "C",
+      "team": "PIT",
+      "status": "ACTIVE",
+      "batting": {
+        "hits_avg": 0.33,
+        "rbi_avg": 0,
+        "runs_avg": 0.67,
+        "hr_avg": 0,
+        "total_bases_avg": 0.77,
+        "sb_avg": 0,
+        "singles_avg": 0.33,
+        "doubles_avg": 0,
+        "walks_avg": 1.67,
+        "avg": 0.296,
+        "games": 3
+      },
+      "pitching": {
+        "strikeouts_avg": 0,
+        "hits_allowed_avg": 0,
+        "walks_allowed_avg": 0,
+        "earned_runs_avg": 0,
+        "outs_avg": 0,
+        "era": 0,
+        "appearances": 0
+      },
+      "tc_batting": {
+        "hits": 0.3,
+        "rbi": 0,
+        "runs": 0.6,
+        "hr": 0,
+        "total_bases": 0.7,
+        "sb": 0,
+        "singles": 0.3,
+        "doubles": 0,
+        "walks": 1.4
+      },
+      "tc_pitching": {
+        "strikeouts": 0,
+        "hits_allowed": 0.5,
+        "walks_allowed": 0.5,
+        "earned_runs": 0.5,
+        "outs": 0
+      },
+      "lines": {},
+      "edges": {}
+    },
+    {
+      "name": "Jared Jones",
+      "pos": "SP",
+      "team": "PIT",
+      "status": "ACTIVE",
+      "batting": {
+        "hits_avg": 0,
+        "rbi_avg": 0,
+        "runs_avg": 0,
+        "hr_avg": 0,
+        "total_bases_avg": 0,
+        "sb_avg": 0,
+        "singles_avg": 0,
+        "doubles_avg": 0,
+        "walks_avg": 0,
+        "avg": 0,
+        "games": 0
+      },
+      "pitching": {
+        "strikeouts_avg": 6,
+        "hits_allowed_avg": 7,
+        "walks_allowed_avg": 2,
+        "earned_runs_avg": 5,
+        "outs_avg": 12.3,
+        "era": 10.38,
+        "appearances": 1
+      },
+      "tc_batting": {
+        "hits": 0,
+        "rbi": 0,
+        "runs": 0,
+        "hr": 0,
+        "total_bases": 0,
+        "sb": 0,
+        "singles": 0,
+        "doubles": 0,
+        "walks": 0
+      },
+      "tc_pitching": {
+        "strikeouts": 4.3,
+        "hits_allowed": 6.1,
+        "walks_allowed": 2.1,
+        "earned_runs": 4.5,
+        "outs": 9.3
+      },
+      "lines": {},
+      "edges": {}
+    },
+    {
+      "name": "Evan Sisk",
+      "pos": "RP",
+      "team": "PIT",
+      "status": "ACTIVE",
+      "batting": {
+        "hits_avg": 0,
+        "rbi_avg": 0,
+        "runs_avg": 0,
+        "hr_avg": 0,
+        "total_bases_avg": 0,
+        "sb_avg": 0,
+        "singles_avg": 0,
+        "doubles_avg": 0,
+        "walks_avg": 0,
+        "avg": 0,
+        "games": 0
+      },
+      "pitching": {
+        "strikeouts_avg": 1.3,
+        "hits_allowed_avg": 0.3,
+        "walks_allowed_avg": 0.7,
+        "earned_runs_avg": 0,
+        "outs_avg": 1.5,
+        "era": 1.51,
+        "appearances": 3
+      },
+      "tc_batting": {
+        "hits": 0,
+        "rbi": 0,
+        "runs": 0,
+        "hr": 0,
+        "total_bases": 0,
+        "sb": 0,
+        "singles": 0,
+        "doubles": 0,
+        "walks": 0
+      },
+      "tc_pitching": {
+        "strikeouts": 0.5,
+        "hits_allowed": 0.7,
+        "walks_allowed": 1.1,
+        "earned_runs": 0.5,
+        "outs": 0.7
+      },
+      "lines": {},
+      "edges": {}
+    },
+    {
+      "name": "Braxton Ashcraft",
+      "pos": "SP",
+      "team": "PIT",
+      "status": "ACTIVE",
+      "batting": {
+        "hits_avg": 0,
+        "rbi_avg": 0,
+        "runs_avg": 0,
+        "hr_avg": 0,
+        "total_bases_avg": 0,
+        "sb_avg": 0,
+        "singles_avg": 0,
+        "doubles_avg": 0,
+        "walks_avg": 0,
+        "avg": 0,
+        "games": 0
+      },
+      "pitching": {
+        "strikeouts_avg": 8,
+        "hits_allowed_avg": 6,
+        "walks_allowed_avg": 0.5,
+        "earned_runs_avg": 1.5,
+        "outs_avg": 18.1,
+        "era": 2.76,
+        "appearances": 2
+      },
+      "tc_batting": {
+        "hits": 0,
+        "rbi": 0,
+        "runs": 0,
+        "hr": 0,
+        "total_bases": 0,
+        "sb": 0,
+        "singles": 0,
+        "doubles": 0,
+        "walks": 0
+      },
+      "tc_pitching": {
+        "strikeouts": 5.9,
+        "hits_allowed": 5.3,
+        "walks_allowed": 0.9,
+        "earned_runs": 1.7,
+        "outs": 14
+      },
+      "lines": {
+        "hits_allowed": 13.3,
+        "earned_runs": 6,
+        "strikeouts": 13.3
+      },
+      "edges": {
+        "hits_allowed": -8,
+        "earned_runs": -4.3,
+        "strikeouts": -7.4
+      }
+    },
+    {
+      "name": "Dennis Santana",
+      "pos": "RP",
+      "team": "PIT",
+      "status": "ACTIVE",
+      "batting": {
+        "hits_avg": 0,
+        "rbi_avg": 0,
+        "runs_avg": 0,
+        "hr_avg": 0,
+        "total_bases_avg": 0,
+        "sb_avg": 0,
+        "singles_avg": 0,
+        "doubles_avg": 0,
+        "walks_avg": 0,
+        "avg": 0,
+        "games": 0
+      },
+      "pitching": {
+        "strikeouts_avg": 1.3,
+        "hits_allowed_avg": 0.3,
+        "walks_allowed_avg": 1,
+        "earned_runs_avg": 0,
+        "outs_avg": 2.3,
+        "era": 5,
+        "appearances": 3
+      },
+      "tc_batting": {
+        "hits": 0,
+        "rbi": 0,
+        "runs": 0,
+        "hr": 0,
+        "total_bases": 0,
+        "sb": 0,
+        "singles": 0,
+        "doubles": 0,
+        "walks": 0
+      },
+      "tc_pitching": {
+        "strikeouts": 0.5,
+        "hits_allowed": 0.7,
+        "walks_allowed": 1.3,
+        "earned_runs": 0.5,
+        "outs": 1.3
+      },
+      "lines": {},
+      "edges": {}
+    },
+    {
+      "name": "Brandan Bidois",
+      "pos": "RP",
+      "team": "PIT",
+      "status": "ACTIVE",
+      "batting": {
+        "hits_avg": 0,
+        "rbi_avg": 0,
+        "runs_avg": 0,
+        "hr_avg": 0,
+        "total_bases_avg": 0,
+        "sb_avg": 0,
+        "singles_avg": 0,
+        "doubles_avg": 0,
+        "walks_avg": 0,
+        "avg": 0,
+        "games": 0
+      },
+      "pitching": {
+        "strikeouts_avg": 2,
+        "hits_allowed_avg": 1.3,
+        "walks_allowed_avg": 0.7,
+        "earned_runs_avg": 1,
+        "outs_avg": 4.2,
+        "era": 3.86,
+        "appearances": 3
+      },
+      "tc_batting": {
+        "hits": 0,
+        "rbi": 0,
+        "runs": 0,
+        "hr": 0,
+        "total_bases": 0,
+        "sb": 0,
+        "singles": 0,
+        "doubles": 0,
+        "walks": 0
+      },
+      "tc_pitching": {
+        "strikeouts": 1.1,
+        "hits_allowed": 1.5,
+        "walks_allowed": 1.1,
+        "earned_runs": 1.3,
+        "outs": 2.9
+      },
+      "lines": {},
+      "edges": {}
+    },
+    {
+      "name": "Oneil Cruz",
+      "pos": "CF",
+      "team": "PIT",
+      "status": "ACTIVE",
+      "batting": {
+        "hits_avg": 1,
+        "rbi_avg": 1,
+        "runs_avg": 0.71,
+        "hr_avg": 0.29,
+        "total_bases_avg": 1.5,
+        "sb_avg": 0,
+        "singles_avg": 1,
+        "doubles_avg": 0,
+        "walks_avg": 0.71,
+        "avg": 0.258,
+        "games": 7
+      },
+      "pitching": {
+        "strikeouts_avg": 0,
+        "hits_allowed_avg": 0,
+        "walks_allowed_avg": 0,
+        "earned_runs_avg": 0,
+        "outs_avg": 0,
+        "era": 0,
+        "appearances": 0
+      },
+      "tc_batting": {
+        "hits": 0.8,
+        "rbi": 0.8,
+        "runs": 0.6,
+        "hr": 0.2,
+        "total_bases": 1.3,
+        "sb": 0,
+        "singles": 0.8,
+        "doubles": 0,
+        "walks": 0.6
+      },
+      "tc_pitching": {
+        "strikeouts": 0,
+        "hits_allowed": 0.5,
+        "walks_allowed": 0.5,
+        "earned_runs": 0.5,
+        "outs": 0
+      },
+      "lines": {},
+      "edges": {}
+    }
+  ],
+  "valid_props": [
+    {
+      "player": "Bryan Woo",
+      "team": "SEA",
+      "pos": "SP",
+      "stat": "hits_allowed",
+      "market_line": 10.9,
+      "tc_projection": 2.1,
+      "edge": -8.8,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Braxton Ashcraft",
+      "team": "PIT",
+      "pos": "SP",
+      "stat": "hits_allowed",
+      "market_line": 13.3,
+      "tc_projection": 5.3,
+      "edge": -8,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Braxton Ashcraft",
+      "team": "PIT",
+      "pos": "SP",
+      "stat": "strikeouts",
+      "market_line": 13.3,
+      "tc_projection": 5.9,
+      "edge": -7.4,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Bryan Woo",
+      "team": "SEA",
+      "pos": "SP",
+      "stat": "earned_runs",
+      "market_line": 6,
+      "tc_projection": 0.5,
+      "edge": -5.5,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Bryan Reynolds",
+      "team": "PIT",
+      "pos": "LF",
+      "stat": "total_bases",
+      "market_line": 6,
+      "tc_projection": 1.1,
+      "edge": -4.9,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Nick Gonzales",
+      "team": "PIT",
+      "pos": "3B",
+      "stat": "total_bases",
+      "market_line": 6,
+      "tc_projection": 1.1,
+      "edge": -4.9,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Spencer Horwitz",
+      "team": "PIT",
+      "pos": "1B",
+      "stat": "total_bases",
+      "market_line": 6,
+      "tc_projection": 1.5,
+      "edge": -4.5,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Ryan O'Hearn",
+      "team": "PIT",
+      "pos": "RF",
+      "stat": "total_bases",
+      "market_line": 6,
+      "tc_projection": 1.6,
+      "edge": -4.4,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Braxton Ashcraft",
+      "team": "PIT",
+      "pos": "SP",
+      "stat": "earned_runs",
+      "market_line": 6,
+      "tc_projection": 1.7,
+      "edge": -4.3,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Brandon Lowe",
+      "team": "PIT",
+      "pos": "2B",
+      "stat": "total_bases",
+      "market_line": 6,
+      "tc_projection": 1.8,
+      "edge": -4.2,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Bryan Woo",
+      "team": "SEA",
+      "pos": "SP",
+      "stat": "strikeouts",
+      "market_line": 10.1,
+      "tc_projection": 6.7,
+      "edge": -3.4,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Marcell Ozuna",
+      "team": "PIT",
+      "pos": "DH",
+      "stat": "hits",
+      "market_line": 3.6,
+      "tc_projection": 0.6,
+      "edge": -3,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Jared Triolo",
+      "team": "PIT",
+      "pos": "SS",
+      "stat": "hits",
+      "market_line": 3.6,
+      "tc_projection": 0.7,
+      "edge": -2.9,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Jake Mangum",
+      "team": "PIT",
+      "pos": "LF",
+      "stat": "total_bases",
+      "market_line": 3.6,
+      "tc_projection": 0.7,
+      "edge": -2.9,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Jared Triolo",
+      "team": "PIT",
+      "pos": "SS",
+      "stat": "total_bases",
+      "market_line": 3.6,
+      "tc_projection": 0.8,
+      "edge": -2.8,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Jake Mangum",
+      "team": "PIT",
+      "pos": "LF",
+      "stat": "hits",
+      "market_line": 3.6,
+      "tc_projection": 0.8,
+      "edge": -2.8,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Brandon Lowe",
+      "team": "PIT",
+      "pos": "2B",
+      "stat": "hits",
+      "market_line": 3.6,
+      "tc_projection": 0.8,
+      "edge": -2.8,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Nick Gonzales",
+      "team": "PIT",
+      "pos": "3B",
+      "stat": "hits",
+      "market_line": 3.6,
+      "tc_projection": 0.8,
+      "edge": -2.8,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Cole Young",
+      "team": "SEA",
+      "pos": "2B",
+      "stat": "total_bases",
+      "market_line": 3.6,
+      "tc_projection": 1.1,
+      "edge": -2.5,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Randy Arozarena",
+      "team": "SEA",
+      "pos": "LF",
+      "stat": "hits",
+      "market_line": 3.6,
+      "tc_projection": 1.1,
+      "edge": -2.5,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Marcell Ozuna",
+      "team": "PIT",
+      "pos": "DH",
+      "stat": "total_bases",
+      "market_line": 3.6,
+      "tc_projection": 1.1,
+      "edge": -2.5,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Spencer Horwitz",
+      "team": "PIT",
+      "pos": "1B",
+      "stat": "hits",
+      "market_line": 3.6,
+      "tc_projection": 1.2,
+      "edge": -2.4,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Josh Naylor",
+      "team": "SEA",
+      "pos": "1B",
+      "stat": "total_bases",
+      "market_line": 3.6,
+      "tc_projection": 1.3,
+      "edge": -2.3,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Bryan Reynolds",
+      "team": "PIT",
+      "pos": "LF",
+      "stat": "hits",
+      "market_line": 3.6,
+      "tc_projection": 1.3,
+      "edge": -2.3,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Colt Emerson",
+      "team": "SEA",
+      "pos": "3B",
+      "stat": "total_bases",
+      "market_line": 3.6,
+      "tc_projection": 1.4,
+      "edge": -2.2,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Dominic Canzone",
+      "team": "SEA",
+      "pos": "DH",
+      "stat": "total_bases",
+      "market_line": 3.6,
+      "tc_projection": 1.4,
+      "edge": -2.2,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "J.P. Crawford",
+      "team": "SEA",
+      "pos": "SS",
+      "stat": "total_bases",
+      "market_line": 3.6,
+      "tc_projection": 1.4,
+      "edge": -2.2,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Luke Raley",
+      "team": "SEA",
+      "pos": "RF",
+      "stat": "total_bases",
+      "market_line": 3.6,
+      "tc_projection": 1.5,
+      "edge": -2.1,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Ryan O'Hearn",
+      "team": "PIT",
+      "pos": "RF",
+      "stat": "hits",
+      "market_line": 3.6,
+      "tc_projection": 1.7,
+      "edge": -1.9,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Randy Arozarena",
+      "team": "SEA",
+      "pos": "LF",
+      "stat": "total_bases",
+      "market_line": 3.6,
+      "tc_projection": 1.9,
+      "edge": -1.7,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Josh Naylor",
+      "team": "SEA",
+      "pos": "1B",
+      "stat": "rbi",
+      "market_line": 1.2,
+      "tc_projection": 0.1,
+      "edge": -1.1,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Brandon Lowe",
+      "team": "PIT",
+      "pos": "2B",
+      "stat": "hr",
+      "market_line": 1.2,
+      "tc_projection": 0.1,
+      "edge": -1.1,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Jared Triolo",
+      "team": "PIT",
+      "pos": "SS",
+      "stat": "runs",
+      "market_line": 1.2,
+      "tc_projection": 0.2,
+      "edge": -1,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Marcell Ozuna",
+      "team": "PIT",
+      "pos": "DH",
+      "stat": "rbi",
+      "market_line": 1.2,
+      "tc_projection": 0.3,
+      "edge": -0.9,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Jared Triolo",
+      "team": "PIT",
+      "pos": "SS",
+      "stat": "rbi",
+      "market_line": 1.2,
+      "tc_projection": 0.3,
+      "edge": -0.9,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Jake Mangum",
+      "team": "PIT",
+      "pos": "LF",
+      "stat": "runs",
+      "market_line": 1.2,
+      "tc_projection": 0.3,
+      "edge": -0.9,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Cole Young",
+      "team": "SEA",
+      "pos": "2B",
+      "stat": "rbi",
+      "market_line": 1.2,
+      "tc_projection": 0.4,
+      "edge": -0.8,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Luke Raley",
+      "team": "SEA",
+      "pos": "RF",
+      "stat": "runs",
+      "market_line": 1.2,
+      "tc_projection": 0.4,
+      "edge": -0.8,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Colt Emerson",
+      "team": "SEA",
+      "pos": "3B",
+      "stat": "rbi",
+      "market_line": 1.2,
+      "tc_projection": 0.4,
+      "edge": -0.8,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Colt Emerson",
+      "team": "SEA",
+      "pos": "3B",
+      "stat": "runs",
+      "market_line": 1.2,
+      "tc_projection": 0.4,
+      "edge": -0.8,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Spencer Horwitz",
+      "team": "PIT",
+      "pos": "1B",
+      "stat": "rbi",
+      "market_line": 1.2,
+      "tc_projection": 0.4,
+      "edge": -0.8,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Luke Raley",
+      "team": "SEA",
+      "pos": "RF",
+      "stat": "rbi",
+      "market_line": 1.2,
+      "tc_projection": 0.6,
+      "edge": -0.6,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Randy Arozarena",
+      "team": "SEA",
+      "pos": "LF",
+      "stat": "rbi",
+      "market_line": 1.2,
+      "tc_projection": 0.6,
+      "edge": -0.6,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Randy Arozarena",
+      "team": "SEA",
+      "pos": "LF",
+      "stat": "runs",
+      "market_line": 1.2,
+      "tc_projection": 0.6,
+      "edge": -0.6,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Josh Naylor",
+      "team": "SEA",
+      "pos": "1B",
+      "stat": "runs",
+      "market_line": 1.2,
+      "tc_projection": 0.6,
+      "edge": -0.6,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Colt Emerson",
+      "team": "SEA",
+      "pos": "3B",
+      "stat": "hits",
+      "market_line": 1.2,
+      "tc_projection": 0.6,
+      "edge": -0.6,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Dominic Canzone",
+      "team": "SEA",
+      "pos": "DH",
+      "stat": "runs",
+      "market_line": 1.2,
+      "tc_projection": 0.6,
+      "edge": -0.6,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Brandon Lowe",
+      "team": "PIT",
+      "pos": "2B",
+      "stat": "rbi",
+      "market_line": 1.2,
+      "tc_projection": 0.6,
+      "edge": -0.6,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Nick Gonzales",
+      "team": "PIT",
+      "pos": "3B",
+      "stat": "rbi",
+      "market_line": 1.2,
+      "tc_projection": 0.6,
+      "edge": -0.6,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Cole Young",
+      "team": "SEA",
+      "pos": "2B",
+      "stat": "runs",
+      "market_line": 1.2,
+      "tc_projection": 0.7,
+      "edge": -0.5,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "J.P. Crawford",
+      "team": "SEA",
+      "pos": "SS",
+      "stat": "rbi",
+      "market_line": 1.2,
+      "tc_projection": 0.7,
+      "edge": -0.5,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Bryan Reynolds",
+      "team": "PIT",
+      "pos": "LF",
+      "stat": "rbi",
+      "market_line": 1.2,
+      "tc_projection": 0.7,
+      "edge": -0.5,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Jake Mangum",
+      "team": "PIT",
+      "pos": "LF",
+      "stat": "rbi",
+      "market_line": 1.2,
+      "tc_projection": 0.7,
+      "edge": -0.5,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Brandon Lowe",
+      "team": "PIT",
+      "pos": "2B",
+      "stat": "runs",
+      "market_line": 1.2,
+      "tc_projection": 0.7,
+      "edge": -0.5,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Spencer Horwitz",
+      "team": "PIT",
+      "pos": "1B",
+      "stat": "runs",
+      "market_line": 1.2,
+      "tc_projection": 0.7,
+      "edge": -0.5,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Nick Gonzales",
+      "team": "PIT",
+      "pos": "3B",
+      "stat": "runs",
+      "market_line": 1.2,
+      "tc_projection": 0.7,
+      "edge": -0.5,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Cole Young",
+      "team": "SEA",
+      "pos": "2B",
+      "stat": "hits",
+      "market_line": 1.2,
+      "tc_projection": 0.8,
+      "edge": -0.4,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Dominic Canzone",
+      "team": "SEA",
+      "pos": "DH",
+      "stat": "rbi",
+      "market_line": 1.2,
+      "tc_projection": 0.8,
+      "edge": -0.4,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "J.P. Crawford",
+      "team": "SEA",
+      "pos": "SS",
+      "stat": "runs",
+      "market_line": 1.2,
+      "tc_projection": 0.8,
+      "edge": -0.4,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Ryan O'Hearn",
+      "team": "PIT",
+      "pos": "RF",
+      "stat": "rbi",
+      "market_line": 1.2,
+      "tc_projection": 0.8,
+      "edge": -0.4,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Ryan O'Hearn",
+      "team": "PIT",
+      "pos": "RF",
+      "stat": "runs",
+      "market_line": 1.2,
+      "tc_projection": 0.8,
+      "edge": -0.4,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Luke Raley",
+      "team": "SEA",
+      "pos": "RF",
+      "stat": "hits",
+      "market_line": 1.2,
+      "tc_projection": 1,
+      "edge": -0.2,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Bryan Reynolds",
+      "team": "PIT",
+      "pos": "LF",
+      "stat": "runs",
+      "market_line": 1.2,
+      "tc_projection": 1,
+      "edge": -0.2,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Josh Naylor",
+      "team": "SEA",
+      "pos": "1B",
+      "stat": "hits",
+      "market_line": 1.2,
+      "tc_projection": 1.1,
+      "edge": -0.1,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Dominic Canzone",
+      "team": "SEA",
+      "pos": "DH",
+      "stat": "hits",
+      "market_line": 1.2,
+      "tc_projection": 1.1,
+      "edge": -0.1,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "J.P. Crawford",
+      "team": "SEA",
+      "pos": "SS",
+      "stat": "hits",
+      "market_line": 1.2,
+      "tc_projection": 1.3,
+      "edge": 0.1,
+      "direction": "OVER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Cole Young",
+      "team": "SEA",
+      "pos": "2B",
+      "stat": "strikeouts",
+      "market_line": 1.2,
+      "tc_projection": 0,
+      "edge": 0,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Luke Raley",
+      "team": "SEA",
+      "pos": "RF",
+      "stat": "strikeouts",
+      "market_line": 3.6,
+      "tc_projection": 0,
+      "edge": 0,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Randy Arozarena",
+      "team": "SEA",
+      "pos": "LF",
+      "stat": "strikeouts",
+      "market_line": 3.6,
+      "tc_projection": 0,
+      "edge": 0,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Josh Naylor",
+      "team": "SEA",
+      "pos": "1B",
+      "stat": "strikeouts",
+      "market_line": 1.2,
+      "tc_projection": 0,
+      "edge": 0,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Colt Emerson",
+      "team": "SEA",
+      "pos": "3B",
+      "stat": "strikeouts",
+      "market_line": 1.2,
+      "tc_projection": 0,
+      "edge": 0,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Dominic Canzone",
+      "team": "SEA",
+      "pos": "DH",
+      "stat": "strikeouts",
+      "market_line": 1.2,
+      "tc_projection": 0,
+      "edge": 0,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "J.P. Crawford",
+      "team": "SEA",
+      "pos": "SS",
+      "stat": "strikeouts",
+      "market_line": 1.2,
+      "tc_projection": 0,
+      "edge": 0,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Marcell Ozuna",
+      "team": "PIT",
+      "pos": "DH",
+      "stat": "strikeouts",
+      "market_line": 3.6,
+      "tc_projection": 0,
+      "edge": 0,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Marcell Ozuna",
+      "team": "PIT",
+      "pos": "DH",
+      "stat": "runs",
+      "market_line": 1.2,
+      "tc_projection": 0,
+      "edge": 0,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Jared Triolo",
+      "team": "PIT",
+      "pos": "SS",
+      "stat": "strikeouts",
+      "market_line": 1.2,
+      "tc_projection": 0,
+      "edge": 0,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Bryan Reynolds",
+      "team": "PIT",
+      "pos": "LF",
+      "stat": "strikeouts",
+      "market_line": 3.6,
+      "tc_projection": 0,
+      "edge": 0,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Jake Mangum",
+      "team": "PIT",
+      "pos": "LF",
+      "stat": "strikeouts",
+      "market_line": 1.2,
+      "tc_projection": 0,
+      "edge": 0,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Brandon Lowe",
+      "team": "PIT",
+      "pos": "2B",
+      "stat": "strikeouts",
+      "market_line": 3.6,
+      "tc_projection": 0,
+      "edge": 0,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Spencer Horwitz",
+      "team": "PIT",
+      "pos": "1B",
+      "stat": "strikeouts",
+      "market_line": 1.2,
+      "tc_projection": 0,
+      "edge": 0,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Ryan O'Hearn",
+      "team": "PIT",
+      "pos": "RF",
+      "stat": "strikeouts",
+      "market_line": 1.2,
+      "tc_projection": 0,
+      "edge": 0,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Nick Gonzales",
+      "team": "PIT",
+      "pos": "3B",
+      "stat": "strikeouts",
+      "market_line": 1.2,
+      "tc_projection": 0,
+      "edge": 0,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    }
+  ],
+  "roster_counts": {
+    "away_total": 26,
+    "home_total": 30
+  },
+  "dk_available": true,
+  "prop_source": "sdio_lines",
+  "sdio_props_count": 20,
+  "mode": "live"
+}

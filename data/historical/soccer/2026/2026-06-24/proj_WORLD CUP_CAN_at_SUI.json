@@ -1,0 +1,2037 @@
+{
+  "mode": "live",
+  "sport": "WORLD CUP",
+  "matchup": "CAN@SUI",
+  "away_team": "CAN",
+  "home_team": "SUI",
+  "signal": "WC PROPS LIVE (self-edge)",
+  "valid_props": [
+    {
+      "player": "Derek Cornelius",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Luc de Fougerolles",
+      "stat": "FOULS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Luc de Fougerolles",
+      "stat": "CARDS",
+      "market_line": 1.5,
+      "tc_projection": 1.7,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Richie Laryea",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Richie Laryea",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Alistair Johnston",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Alistair Johnston",
+      "stat": "FOULS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Alistair Johnston",
+      "stat": "CARDS",
+      "market_line": 1.5,
+      "tc_projection": 1.7,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Stephen Eust\u00e1quio",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Stephen Eust\u00e1quio",
+      "stat": "FOULS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Isma\u00ebl Kon\u00e9",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Isma\u00ebl Kon\u00e9",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Liam Millar",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Tani Oluwaseyi",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Tani Oluwaseyi",
+      "stat": "SHOTS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Jonathan David",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Jonathan David",
+      "stat": "SHOTS",
+      "market_line": 4,
+      "tc_projection": 4.5,
+      "edge": 0.5,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Cyle Larin",
+      "stat": "GOALS",
+      "market_line": 1.5,
+      "tc_projection": 1.7,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Cyle Larin",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Cyle Larin",
+      "stat": "SHOTS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Promise David",
+      "stat": "ASSISTS",
+      "market_line": 1.5,
+      "tc_projection": 1.7,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Promise David",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Promise David",
+      "stat": "FOULS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Homam Ahmed",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Homam Ahmed",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Manuel Akanji",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Manuel Akanji",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Nico Elvedi",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Nico Elvedi",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ricardo Rodr\u00edguez",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Denis Zakaria",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Denis Zakaria",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Denis Zakaria",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Denis Zakaria",
+      "stat": "CARDS",
+      "market_line": 0.5,
+      "tc_projection": 0.6,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Granit Xhaka",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Remo Freuler",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Michel Aebischer",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Michel Aebischer",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Breel Embolo",
+      "stat": "GOALS",
+      "market_line": 0.5,
+      "tc_projection": 0.6,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Breel Embolo",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Breel Embolo",
+      "stat": "SHOTS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Breel Embolo",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Rub\u00e9n Vargas",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Rub\u00e9n Vargas",
+      "stat": "SHOTS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Rub\u00e9n Vargas",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Dan Ndoye",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Dan Ndoye",
+      "stat": "SHOTS",
+      "market_line": 4,
+      "tc_projection": 4.5,
+      "edge": 0.5,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Fabian Rieder",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Zeki Amdouni",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Johan Manzambi",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Johan Manzambi",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ardon Jashari",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Brian Rodr\u00edguez",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Brian Rodr\u00edguez",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "dk-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Alfie Jones",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Alfie Jones",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Alfie Jones",
+      "stat": "TACKLES",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Alfie Jones",
+      "stat": "PASSES",
+      "market_line": 20,
+      "tc_projection": 22.4,
+      "edge": 2.4,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Alfie Jones",
+      "stat": "CORNERS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ali Ahmed",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ali Ahmed",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ali Ahmed",
+      "stat": "TACKLES",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ali Ahmed",
+      "stat": "PASSES",
+      "market_line": 20,
+      "tc_projection": 22.4,
+      "edge": 2.4,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Ali Ahmed",
+      "stat": "CORNERS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Alphonso Davies",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Alphonso Davies",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Alphonso Davies",
+      "stat": "TACKLES",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Alphonso Davies",
+      "stat": "PASSES",
+      "market_line": 20,
+      "tc_projection": 22.4,
+      "edge": 2.4,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Alphonso Davies",
+      "stat": "CORNERS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Aur\u00e8le Amenda",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Aur\u00e8le Amenda",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Aur\u00e8le Amenda",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Aur\u00e8le Amenda",
+      "stat": "TACKLES",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Aur\u00e8le Amenda",
+      "stat": "PASSES",
+      "market_line": 30,
+      "tc_projection": 33.6,
+      "edge": 3.6,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Aur\u00e8le Amenda",
+      "stat": "CORNERS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Cedric Itten",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Cedric Itten",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Cedric Itten",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Cedric Itten",
+      "stat": "TACKLES",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Cedric Itten",
+      "stat": "PASSES",
+      "market_line": 30,
+      "tc_projection": 33.6,
+      "edge": 3.6,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Cedric Itten",
+      "stat": "CORNERS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Christian Fassnacht",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Christian Fassnacht",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Christian Fassnacht",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Christian Fassnacht",
+      "stat": "TACKLES",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Christian Fassnacht",
+      "stat": "PASSES",
+      "market_line": 30,
+      "tc_projection": 33.6,
+      "edge": 3.6,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Christian Fassnacht",
+      "stat": "CORNERS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Dayne St. Clair",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Dayne St. Clair",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Dayne St. Clair",
+      "stat": "TACKLES",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Dayne St. Clair",
+      "stat": "PASSES",
+      "market_line": 20,
+      "tc_projection": 22.4,
+      "edge": 2.4,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Dayne St. Clair",
+      "stat": "CORNERS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Djibril Sow",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Djibril Sow",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Djibril Sow",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Djibril Sow",
+      "stat": "TACKLES",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Djibril Sow",
+      "stat": "PASSES",
+      "market_line": 30,
+      "tc_projection": 33.6,
+      "edge": 3.6,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Djibril Sow",
+      "stat": "CORNERS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Eray C\u00f6mert",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Eray C\u00f6mert",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Eray C\u00f6mert",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Eray C\u00f6mert",
+      "stat": "TACKLES",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Eray C\u00f6mert",
+      "stat": "PASSES",
+      "market_line": 30,
+      "tc_projection": 33.6,
+      "edge": 3.6,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Eray C\u00f6mert",
+      "stat": "CORNERS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Gregor Kobel",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Gregor Kobel",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Gregor Kobel",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Gregor Kobel",
+      "stat": "TACKLES",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Gregor Kobel",
+      "stat": "PASSES",
+      "market_line": 30,
+      "tc_projection": 33.6,
+      "edge": 3.6,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Gregor Kobel",
+      "stat": "CORNERS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Jacob Shaffelburg",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Jacob Shaffelburg",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Jacob Shaffelburg",
+      "stat": "TACKLES",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Jacob Shaffelburg",
+      "stat": "PASSES",
+      "market_line": 20,
+      "tc_projection": 22.4,
+      "edge": 2.4,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Jacob Shaffelburg",
+      "stat": "CORNERS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Jayden Nelson",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Jayden Nelson",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Jayden Nelson",
+      "stat": "TACKLES",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Jayden Nelson",
+      "stat": "PASSES",
+      "market_line": 20,
+      "tc_projection": 22.4,
+      "edge": 2.4,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Jayden Nelson",
+      "stat": "CORNERS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Joel Waterman",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Joel Waterman",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Joel Waterman",
+      "stat": "TACKLES",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Joel Waterman",
+      "stat": "PASSES",
+      "market_line": 20,
+      "tc_projection": 22.4,
+      "edge": 2.4,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Joel Waterman",
+      "stat": "CORNERS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Jonathan Osorio",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Jonathan Osorio",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Jonathan Osorio",
+      "stat": "TACKLES",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Jonathan Osorio",
+      "stat": "PASSES",
+      "market_line": 20,
+      "tc_projection": 22.4,
+      "edge": 2.4,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Jonathan Osorio",
+      "stat": "CORNERS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Luca Jaquez",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Luca Jaquez",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Luca Jaquez",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Luca Jaquez",
+      "stat": "TACKLES",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Luca Jaquez",
+      "stat": "PASSES",
+      "market_line": 30,
+      "tc_projection": 33.6,
+      "edge": 3.6,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Luca Jaquez",
+      "stat": "CORNERS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Marvin Keller",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Marvin Keller",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Marvin Keller",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Marvin Keller",
+      "stat": "TACKLES",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Marvin Keller",
+      "stat": "PASSES",
+      "market_line": 30,
+      "tc_projection": 33.6,
+      "edge": 3.6,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Marvin Keller",
+      "stat": "CORNERS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Mathieu Choini\u00e8re",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Mathieu Choini\u00e8re",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Mathieu Choini\u00e8re",
+      "stat": "TACKLES",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Mathieu Choini\u00e8re",
+      "stat": "PASSES",
+      "market_line": 20,
+      "tc_projection": 22.4,
+      "edge": 2.4,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Mathieu Choini\u00e8re",
+      "stat": "CORNERS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Maxime Cr\u00e9peau",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Maxime Cr\u00e9peau",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Maxime Cr\u00e9peau",
+      "stat": "TACKLES",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Maxime Cr\u00e9peau",
+      "stat": "PASSES",
+      "market_line": 20,
+      "tc_projection": 22.4,
+      "edge": 2.4,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Maxime Cr\u00e9peau",
+      "stat": "CORNERS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Miro Muheim",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Miro Muheim",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Miro Muheim",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Miro Muheim",
+      "stat": "TACKLES",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Miro Muheim",
+      "stat": "PASSES",
+      "market_line": 30,
+      "tc_projection": 33.6,
+      "edge": 3.6,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Miro Muheim",
+      "stat": "CORNERS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Mo\u00efse Bombito",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Mo\u00efse Bombito",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Mo\u00efse Bombito",
+      "stat": "TACKLES",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Mo\u00efse Bombito",
+      "stat": "PASSES",
+      "market_line": 20,
+      "tc_projection": 22.4,
+      "edge": 2.4,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Mo\u00efse Bombito",
+      "stat": "CORNERS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Nathan Saliba",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Nathan Saliba",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Nathan Saliba",
+      "stat": "TACKLES",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Nathan Saliba",
+      "stat": "PASSES",
+      "market_line": 20,
+      "tc_projection": 22.4,
+      "edge": 2.4,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Nathan Saliba",
+      "stat": "CORNERS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Niko Sigur",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Niko Sigur",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Niko Sigur",
+      "stat": "TACKLES",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Niko Sigur",
+      "stat": "PASSES",
+      "market_line": 20,
+      "tc_projection": 22.4,
+      "edge": 2.4,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Niko Sigur",
+      "stat": "CORNERS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Noah Okafor",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Noah Okafor",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Noah Okafor",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Noah Okafor",
+      "stat": "TACKLES",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Noah Okafor",
+      "stat": "PASSES",
+      "market_line": 30,
+      "tc_projection": 33.6,
+      "edge": 3.6,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Noah Okafor",
+      "stat": "CORNERS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Owen Goodman",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Owen Goodman",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Owen Goodman",
+      "stat": "TACKLES",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Owen Goodman",
+      "stat": "PASSES",
+      "market_line": 20,
+      "tc_projection": 22.4,
+      "edge": 2.4,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Owen Goodman",
+      "stat": "CORNERS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Silvan Widmer",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Silvan Widmer",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Silvan Widmer",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Silvan Widmer",
+      "stat": "TACKLES",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Silvan Widmer",
+      "stat": "PASSES",
+      "market_line": 30,
+      "tc_projection": 33.6,
+      "edge": 3.6,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Silvan Widmer",
+      "stat": "CORNERS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Tajon Buchanan",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Tajon Buchanan",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Tajon Buchanan",
+      "stat": "TACKLES",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Tajon Buchanan",
+      "stat": "PASSES",
+      "market_line": 20,
+      "tc_projection": 22.4,
+      "edge": 2.4,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Tajon Buchanan",
+      "stat": "CORNERS",
+      "market_line": 2,
+      "tc_projection": 2.2,
+      "edge": 0.2,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Yvon Mvogo",
+      "stat": "SHOTS_ON_TARGET",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Yvon Mvogo",
+      "stat": "SHOTS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Yvon Mvogo",
+      "stat": "FOULS",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Yvon Mvogo",
+      "stat": "TACKLES",
+      "market_line": 1,
+      "tc_projection": 1.1,
+      "edge": 0.1,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Yvon Mvogo",
+      "stat": "PASSES",
+      "market_line": 30,
+      "tc_projection": 33.6,
+      "edge": 3.6,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    },
+    {
+      "player": "Yvon Mvogo",
+      "stat": "CORNERS",
+      "market_line": 3,
+      "tc_projection": 3.4,
+      "edge": 0.4,
+      "direction": "OVER",
+      "source": "fd-derived",
+      "status": "ACTIVE"
+    }
+  ],
+  "source": "worldcup_picks.py \u00b7 54 players \u00b7 book: self-edge",
+  "roster_counts": {
+    "away": 54,
+    "home": 0,
+    "away_active": 54,
+    "home_active": 0
+  },
+  "odds": {
+    "total": null,
+    "ml_source": "self-edge"
+  },
+  "team_to_win": "SUI",
+  "team_to_win_reason": "home court/field advantage",
+  "ml_pick": "SUI",
+  "spread_pick": "SUI",
+  "total_lean": "OVER",
+  "book_source_honest": "self-edge (no FD/DK player props on Odds API free tier)"
+}

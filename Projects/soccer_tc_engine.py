@@ -188,6 +188,78 @@ def fetch_soccer_odds(event_id: str, sport_key: str = "soccer_fifa_world_cup") -
         print(f"[soccer] Odds fetch failed for {event_id}: {e}", file=sys.stderr)
         return {"event_id": event_id, "error": str(e)}
 
+def fetch_live_stats(event_id: str, sport_key: str = "soccer_fifa_world_cup") -> dict:
+    """Fetch player + team stats for a live/soon-to-be-live soccer event.
+
+    Returns:
+        {
+          "event_id": str,
+          "players": [ { "name", "team", "G", "A", "SH", "SOT", "PASS", "TKL", "Cards" } ... ],
+          "team":    { home: { "possession", "corners", "shots", "shots_on_target" },
+                       away: { "possession", "corners", "shots", "shots_on_target" } }
+        }
+
+    Uses the projection engine as the stat source (no live feed exposed by
+    Odds API for player props in WC). DK/BetMGM lines come from fetch_soccer_odds.
+    """
+    odds = fetch_soccer_odds(event_id, sport_key)
+    home = odds.get("home_team") or "Home"
+    away = odds.get("away_team") or "Away"
+
+    home_strength = get_team_strength(home)
+    away_strength = get_team_strength(away)
+
+    squad_home = generate_default_squad(home)
+    squad_away = generate_default_squad(away)
+
+    def _proj(squad, team_name, strength):
+        out = []
+        for p in squad:
+            try:
+                ps = project_player_stats(p, team_name, strength, p.get("position", "M"))
+                stats = ps.get("stats", {})
+                out.append({
+                    "name": p.get("name", "Unknown"),
+                    "team": team_name,
+                    "G":  stats.get("goals", 0.0),
+                    "A":  stats.get("assists", 0.0),
+                    "SH": stats.get("shots", 0.0),
+                    "SOT":stats.get("shots_on_target", 0.0),
+                    "PASS": stats.get("passes", 0.0),
+                    "TKL": stats.get("tackles", 0.0),
+                    "Cards": stats.get("cards", 0.0),
+                })
+            except Exception:
+                continue
+        return out
+
+    players = _proj(squad_home, home, home_strength) + _proj(squad_away, away, away_strength)
+
+    home_total = project_game_total(home_strength, away_strength)
+    away_total = project_game_total(away_strength, home_strength)
+
+    def _split(total, share):
+        return {
+            "possession": f"{int(round(50 + (share - 1.0) * 10))}%",
+            "corners":    max(0, int(round(total.get("projected_total", 2.5) * (0.6 + 0.1 * share)))),
+            "shots":      max(0, int(round(total.get("projected_total", 12) * (0.45 + 0.05 * share)))),
+            "shots_on_target": max(0, int(round(total.get("projected_total", 4) * (0.45 + 0.05 * share)))),
+        }
+
+    return {
+        "event_id": event_id,
+        "players": players,
+        "team": {
+            home: _split(home_total, home_strength),
+            away: _split(away_total, away_strength),
+        },
+        "odds_summary": {
+            "h2h":      (odds.get("draftkings") or {}).get("h2h") or (odds.get("betmgm") or {}).get("h2h"),
+            "totals":   (odds.get("betmgm") or {}).get("totals"),
+            "btts":     (odds.get("draftkings") or {}).get("btts") or (odds.get("betmgm") or {}).get("btts"),
+        },
+    }
+
 # ═══════════════════════════════════════════════════════════════════════════════
 # SOCCER TC FORMULA
 # ═══════════════════════════════════════════════════════════════════════════════
