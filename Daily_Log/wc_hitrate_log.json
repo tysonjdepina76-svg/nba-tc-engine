@@ -166,5 +166,47 @@
         "rate": 0.0
       }
     }
+  },
+  {
+    "date": "2026-06-29",
+    "graded_at": "2026-06-30",
+    "total": 282,
+    "hits": 155,
+    "misses": 127,
+    "hit_rate": 54.96,
+    "by_direction": {
+      "UNDER": {
+        "hits": 147,
+        "total": 197,
+        "rate": 74.62
+      },
+      "OVER": {
+        "hits": 8,
+        "total": 85,
+        "rate": 9.41
+      }
+    },
+    "by_stat": {
+      "fouls": {
+        "hits": 83,
+        "total": 133,
+        "rate": 62.41
+      },
+      "shots": {
+        "hits": 66,
+        "total": 130,
+        "rate": 50.77
+      },
+      "assists": {
+        "hits": 3,
+        "total": 8,
+        "rate": 37.5
+      },
+      "goals": {
+        "hits": 3,
+        "total": 11,
+        "rate": 27.27
+      }
+    }
   }
 ]
