@@ -22,6 +22,7 @@ Output:
 import csv
 import json
 import sys
+import time
 from collections import defaultdict
 from pathlib import Path
 
@@ -29,6 +30,7 @@ PICKS_CSV = Path("/home/workspace/Daily_Log/worldcup/20260629/picks.csv")
 PROPS_JSON = Path("/home/workspace/Daily_Log/worldcup/20260629/props.json")
 BOX_CSV    = Path("/home/workspace/Reports/wc_player_stats_20260630.csv")
 OUT_CSV    = Path("/home/workspace/Reports/wc_backtest_recent_20260630.csv")
+GRADED_CSV = Path("/home/workspace/Reports/wc_backtest_recent_20260630.csv")
 LOG_JSON   = Path("/home/workspace/Daily_Log/wc_hitrate_log.json")
 
 # map pick "stat" → boxscore column
@@ -90,15 +92,63 @@ def main():
     edge_map = load_edge_map()
     box = load_boxscores()
 
+    # Load picks with timeout protection
+    try:
+        with open(PICKS_CSV) as f:
+            reader = csv.DictReader(f)
+            rows = list(reader)
+    except FileNotFoundError:
+        print(f"FATAL: {PICKS_CSV} not found")
+        return
+    except Exception as e:
+        print(f"FATAL: failed to read picks: {e}")
+        return
+    print(f"Loaded {len(rows)} picks")
+
+    # 100-row batching with 60s hard timeout
+    BATCH = 100
+    TIMEOUT_SEC = 60
+    start = time.time()
     graded = []
     skipped = defaultdict(int)
-    with open(PICKS_CSV) as f:
-        for row in csv.DictReader(f):
-            matchup = row["matchup"]
-            player  = row["player"]
-            stat    = row["stat"]
-            line    = float(row["line"]) if row["line"] else 0.0
-            over_price = float(row["over_price"]) if row["over_price"] else 0.0
+
+    def save_progress():
+        """Flush current graded results so timeout doesn't lose work."""
+        with open(GRADED_CSV, "w", newline="") as f:
+            # discover columns from first graded row, fallback to safe default
+            cols = list(graded[0].keys()) if graded else [
+                "matchup","player","stat","line","direction","edge_pct",
+                "edge_source","actual","spread","hit","boxscore_match"
+            ]
+            w = csv.DictWriter(f, fieldnames=cols)
+            w.writeheader()
+            for g in graded:
+                w.writerow(g)
+
+    for i, row in enumerate(rows):
+        # progress log every 10 rows
+        if i % 10 == 0:
+            elapsed = time.time() - start
+            print(f"  [{elapsed:5.1f}s] row {i}/{len(rows)} graded={len(graded)} skipped={sum(skipped.values())}")
+
+        # hard timeout — save and bail
+        if time.time() - start > TIMEOUT_SEC:
+            print(f"TIMEOUT at row {i} — saving progress")
+            save_progress()
+            break
+
+        # batch boundary — small GC pause
+        if i > 0 and i % BATCH == 0:
+            print(f"  batch boundary at row {i}")
+            save_progress()
+
+        # per-row processing wrapped in try/except so one bad row doesn't crash
+        try:
+            matchup = row.get("matchup", "")
+            player  = row.get("player", "").strip()
+            stat    = row.get("stat", "").strip()
+            line    = float(row.get("line") or 0.0)
+            over_price = float(row.get("over_price") or 0.0)
 
             edge = edge_map.get((matchup, player, stat))
             if edge is None:
@@ -136,6 +186,9 @@ def main():
                 "edge_src": edge_src,
                 "result": "HIT" if hit else "MISS",
             })
+        except Exception as e:
+            print(f"  row {i} error: {e}")
+            continue
 
     # write CSV
     OUT_CSV.parent.mkdir(parents=True, exist_ok=True)

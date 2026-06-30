@@ -387,12 +387,11 @@ def _line_range_signal(entry: dict) -> tuple:
     spread = round(hi - lo, 2)
     above = sum(1 for v in all_lines if v > consensus)
     below = sum(1 for v in all_lines if v < consensus)
-    # 2026-06-29 fix: direction should be driven by where the books' highest
-    # line sits relative to the lowest line, NOT by majority vote vs consensus.
-    # Highest line = books think player can exceed it → OVER is the lean
-    # (we'd tail the over only if line is reachable but books disagree).
-    # Tie-break: OVER when hi >= lo (default), UNDER when hi < lo.
-    if hi >= lo:
+    # 2026-06-30 tighten: with hi/lo only, hi >= lo is always true — that
+    # caused OVER lean to fire on every pick (17% hit rate). Require spread
+    # >= 0.5 (books genuinely disagree) AND majority above consensus for OVER,
+    # otherwise default to UNDER (the conservative side).
+    if spread >= 0.5 and above > below:
         direction = "OVER"
     else:
         direction = "UNDER"
