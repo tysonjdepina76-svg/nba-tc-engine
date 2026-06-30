@@ -1682,6 +1682,63 @@
           }
         },
         {
+          "player": "Sabrina Ionescu",
+          "team": "NY",
+          "role": "START",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 8.6,
+              "line": 7.5,
+              "edge": 1.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 3.4,
+              "line": 3.0,
+              "edge": 0.4,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 3.1,
+              "line": 2.5,
+              "edge": 0.6,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 1.1,
+              "line": 1.0,
+              "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.2,
+              "line": 0.0,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.0,
+              "line": 0.0,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
           "player": "Julie Vanloo",
           "team": "NY",
           "role": "BENCH",
@@ -1739,29 +1796,21 @@
           }
         },
         {
-          "player": "Sabrina Ionescu",
+          "player": "Aubrey Griffin",
           "team": "NY",
-          "role": "START",
+          "role": "BENCH",
           "status": "ACTIVE",
           "pos": "",
           "projections": {
             "PTS": {
-              "tc_projection": 8.6,
-              "line": 7.5,
-              "edge": 1.1,
+              "tc_projection": 6.2,
+              "line": 5.5,
+              "edge": 0.7,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
             },
             "REB": {
-              "tc_projection": 3.4,
-              "line": 3.0,
-              "edge": 0.4,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "AST": {
               "tc_projection": 3.1,
               "line": 2.5,
               "edge": 0.6,
@@ -1769,18 +1818,26 @@
               "dk_line": null,
               "valid": false
             },
+            "AST": {
+              "tc_projection": 0.0,
+              "line": 0.0,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
             "3PM": {
-              "tc_projection": 1.1,
-              "line": 1.0,
-              "edge": 0.1,
+              "tc_projection": 0.0,
+              "line": 0.0,
+              "edge": 0.0,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
             },
             "STL": {
-              "tc_projection": 0.2,
+              "tc_projection": 0.0,
               "line": 0.0,
-              "edge": 0.2,
+              "edge": 0.0,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
@@ -1853,63 +1910,6 @@
           }
         },
         {
-          "player": "Aubrey Griffin",
-          "team": "NY",
-          "role": "BENCH",
-          "status": "ACTIVE",
-          "pos": "",
-          "projections": {
-            "PTS": {
-              "tc_projection": 6.2,
-              "line": 5.5,
-              "edge": 0.7,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "REB": {
-              "tc_projection": 3.1,
-              "line": 2.5,
-              "edge": 0.6,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "AST": {
-              "tc_projection": 0.0,
-              "line": 0.0,
-              "edge": 0.0,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "3PM": {
-              "tc_projection": 0.0,
-              "line": 0.0,
-              "edge": 0.0,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "STL": {
-              "tc_projection": 0.0,
-              "line": 0.0,
-              "edge": 0.0,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "BLK": {
-              "tc_projection": 0.0,
-              "line": 0.0,
-              "edge": 0.0,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            }
-          }
-        },
-        {
           "player": "Alex Fowler",
           "team": "NY",
           "role": "BENCH",
@@ -1952,6 +1952,63 @@
               "tc_projection": 0.8,
               "line": 0.5,
               "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.0,
+              "line": 0.0,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Anneli Maley",
+          "team": "NY",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 0.9,
+              "line": 1.0,
+              "edge": -0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 4.5,
+              "line": 4.0,
+              "edge": 0.5,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 0.0,
+              "line": 0.0,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.0,
+              "line": 0.0,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 2.7,
+              "line": 2.5,
+              "edge": 0.2,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
@@ -2017,63 +2074,6 @@
               "tc_projection": 0.3,
               "line": 0.5,
               "edge": -0.2,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            }
-          }
-        },
-        {
-          "player": "Anneli Maley",
-          "team": "NY",
-          "role": "BENCH",
-          "status": "ACTIVE",
-          "pos": "",
-          "projections": {
-            "PTS": {
-              "tc_projection": 0.9,
-              "line": 1.0,
-              "edge": -0.1,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "REB": {
-              "tc_projection": 4.5,
-              "line": 4.0,
-              "edge": 0.5,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "AST": {
-              "tc_projection": 0.0,
-              "line": 0.0,
-              "edge": 0.0,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "3PM": {
-              "tc_projection": 0.0,
-              "line": 0.0,
-              "edge": 0.0,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "STL": {
-              "tc_projection": 2.7,
-              "line": 2.5,
-              "edge": 0.2,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "BLK": {
-              "tc_projection": 0.0,
-              "line": 0.0,
-              "edge": 0.0,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
@@ -2716,63 +2716,6 @@
           }
         },
         {
-          "player": "Raquel Carrera",
-          "team": "NY",
-          "role": "BENCH",
-          "status": "ACTIVE",
-          "pos": "",
-          "projections": {
-            "PTS": {
-              "tc_projection": 10.3,
-              "line": 9.0,
-              "edge": 1.3,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "REB": {
-              "tc_projection": 6.9,
-              "line": 6.0,
-              "edge": 0.9,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "AST": {
-              "tc_projection": 1.0,
-              "line": 1.0,
-              "edge": 0.0,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "3PM": {
-              "tc_projection": 0.5,
-              "line": 0.5,
-              "edge": 0.0,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "STL": {
-              "tc_projection": 0.5,
-              "line": 0.5,
-              "edge": 0.0,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "BLK": {
-              "tc_projection": 0.5,
-              "line": 0.5,
-              "edge": 0.0,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            }
-          }
-        },
-        {
           "player": "Aubrey Griffin",
           "team": "NY",
           "role": "BENCH",
@@ -2822,6 +2765,63 @@
             "BLK": {
               "tc_projection": 0.0,
               "line": 0.0,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Raquel Carrera",
+          "team": "NY",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 10.3,
+              "line": 9.0,
+              "edge": 1.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 6.9,
+              "line": 6.0,
+              "edge": 0.9,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 1.0,
+              "line": 1.0,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.5,
+              "line": 0.5,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.5,
+              "line": 0.5,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.5,
+              "line": 0.5,
               "edge": 0.0,
               "direction": "PASS",
               "dk_line": null,
@@ -2887,63 +2887,6 @@
           }
         },
         {
-          "player": "Rebecca Allen",
-          "team": "NY",
-          "role": "BENCH",
-          "status": "ACTIVE",
-          "pos": "",
-          "projections": {
-            "PTS": {
-              "tc_projection": 4.7,
-              "line": 4.0,
-              "edge": 0.7,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "REB": {
-              "tc_projection": 2.8,
-              "line": 2.5,
-              "edge": 0.3,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "AST": {
-              "tc_projection": 1.2,
-              "line": 1.0,
-              "edge": 0.2,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "3PM": {
-              "tc_projection": 0.9,
-              "line": 1.0,
-              "edge": -0.1,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "STL": {
-              "tc_projection": 0.6,
-              "line": 0.5,
-              "edge": 0.1,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "BLK": {
-              "tc_projection": 0.3,
-              "line": 0.5,
-              "edge": -0.2,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            }
-          }
-        },
-        {
           "player": "Anneli Maley",
           "team": "NY",
           "role": "BENCH",
@@ -2994,6 +2937,63 @@
               "tc_projection": 0.0,
               "line": 0.0,
               "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Rebecca Allen",
+          "team": "NY",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 4.7,
+              "line": 4.0,
+              "edge": 0.7,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 2.8,
+              "line": 2.5,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 1.2,
+              "line": 1.0,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.9,
+              "line": 1.0,
+              "edge": -0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.6,
+              "line": 0.5,
+              "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.3,
+              "line": 0.5,
+              "edge": -0.2,
               "direction": "PASS",
               "dk_line": null,
               "valid": false

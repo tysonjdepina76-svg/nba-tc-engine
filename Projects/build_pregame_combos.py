@@ -358,10 +358,12 @@ def _parse_player_props(odds_data):
 # ── Combo Builder (booklines ONLY — no TC math) ─────────
 
 # Sports we run combos for. Each maps to (consensus sport key, stat list).
+# 2026-06-30 winning strategy: WC filter = fouls + shots only.
+# OVER signals are 9.4% broken (under too aggressive); keep UNDER as default.
 COMBO_SPORT_CONFIG = {
     "WNBA": {"stats": ["points", "rebounds", "assists", "threes", "steals", "blocks"]},
     "MLB":  {"stats": ["points"]},
-    "WORLD CUP": {"stats": ["goals", "assists", "shots", "shots_on_target", "passes"]},
+    "WORLD CUP": {"stats": ["fouls", "shots"]},
 }
 
 def _line_range_signal(entry: dict) -> tuple:
@@ -436,6 +438,12 @@ def build_combos(sport: str, away: str, home: str) -> dict:
             if consensus_line is None: continue
             direction, spread, hi, lo, book_count, edge_pct = _line_range_signal(entry)
             if direction is None: continue
+            # 2026-06-30 winning filter: WC UNDER-only. OVER hit rate
+            # is 9.4% broken. Force UNDER on all WC legs regardless of
+            # books' high-side lean.
+            if sport_upper == "WORLD CUP" and stat in ("fouls", "shots"):
+                direction = "UNDER"
+                edge_pct = max(edge_pct, 0.0)
             # Quality filter: need >=1 book. Spread only matters with 2+ books.
             # 2026-06-29: MLB SGO only returns DK (no multi-book overlap),
             # so we accept single-book lines. Revisit when 2+ books available.
