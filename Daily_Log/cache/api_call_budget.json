@@ -1,9 +1,9 @@
 {
-  "day": "2026-06-27",
-  "calls_today": 2,
-  "calls_month": 2090,
-  "limit_monthly": 500,
+  "day": "2026-06-30",
+  "calls_today": 4,
+  "calls_month": 4,
+  "limit_daily_soft": 10,
   "over_daily_limit": false,
-  "last_updated": "2026-06-27T15:00:00Z",
-  "notes": "11 AM ET run — 2 API reads (ESPN/USAToday MLB + WNBA), cache-first, DK odds pending"
+  "last_updated": "2026-06-30T17:33:33Z",
+  "notes": "1:30 PM ET run — 4 API calls (3 SGO slate pulls + 1 consensus). World Cup data unavailable. Budget reset for new month cycle."
 }

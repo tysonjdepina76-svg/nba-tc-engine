@@ -1,41 +1,184 @@
 {
-  "updated": "2026-06-29T16:02:00-04:00",
-  "entries": {
-    "world_cup": {
-      "files": [
-        "proj_WORLD CUP_PAR_at_GER.json",
-        "proj_WORLD CUP_MAR_at_NED.json"
-      ],
+  "updated": "2026-06-30T20:09:11+0000",
+  "entries": [
+    {
+      "key": "wc_matches",
+      "file": "matches.json",
+      "source": "/home/workspace/Daily_Log/worldcup/2026-06-30/matches.json",
+      "sport": "WORLD CUP",
       "ttl_hours": 2,
-      "expires": "2026-06-29T18:02:00-04:00"
+      "expires": "2026-06-30T22:09:11+0000",
+      "size_bytes": 90460
     },
-    "mlb": {
-      "files": [
-        "proj_MLB_CHW_at_BAL.json",
-        "proj_MLB_PIT_at_PHI.json",
-        "proj_MLB_TEX_at_CLE.json",
-        "proj_MLB_DET_at_NYY.json",
-        "proj_MLB_NYM_at_TOR.json",
-        "proj_MLB_WSH_at_BOS.json",
-        "proj_MLB_CIN_at_MIL.json",
-        "proj_MLB_SD_at_CHC.json",
-        "proj_MLB_MIN_at_HOU.json",
-        "proj_MLB_MIA_at_COL.json",
-        "proj_MLB_LAA_at_SEA.json",
-        "proj_MLB_LAD_at_ATH.json",
-        "proj_MLB_SF_at_ARI.json"
-      ],
-      "ttl_hours": 3,
-      "expires": "2026-06-29T19:02:00-04:00",
-      "note": "From 1:30 PM cache \u2014 13 games, fresh until 6:30 PM refresh"
+    {
+      "key": "wc_props",
+      "file": "props.json",
+      "source": "/home/workspace/Daily_Log/worldcup/2026-06-30/props.json",
+      "sport": "WORLD CUP",
+      "ttl_hours": 2,
+      "expires": "2026-06-30T22:09:11+0000",
+      "size_bytes": 83267
     },
-    "wnba": {
-      "files": [
-        "proj_WNBA_LV_at_NY.json"
-      ],
+    {
+      "key": "wc_picks",
+      "file": "picks.csv",
+      "source": "/home/workspace/Daily_Log/worldcup/2026-06-30/picks.csv",
+      "sport": "WORLD CUP",
+      "ttl_hours": 2,
+      "expires": "2026-06-30T22:09:11+0000",
+      "size_bytes": 57679
+    },
+    {
+      "key": "mlb_proj_proj_MLB_CHW_at_BAL",
+      "file": "2026-06-30/proj_MLB_CHW_at_BAL.json",
+      "sport": "MLB",
       "ttl_hours": 3,
-      "expires": "2026-06-29T19:02:00-04:00",
-      "note": "1 game LV@NY, no DK props yet"
+      "expires": "2026-06-30T23:09:11+0000",
+      "size_bytes": 204036
+    },
+    {
+      "key": "mlb_proj_proj_MLB_CIN_at_MIL",
+      "file": "2026-06-30/proj_MLB_CIN_at_MIL.json",
+      "sport": "MLB",
+      "ttl_hours": 3,
+      "expires": "2026-06-30T23:09:11+0000",
+      "size_bytes": 219125
+    },
+    {
+      "key": "mlb_proj_proj_MLB_DET_at_NYY",
+      "file": "2026-06-30/proj_MLB_DET_at_NYY.json",
+      "sport": "MLB",
+      "ttl_hours": 3,
+      "expires": "2026-06-30T23:09:11+0000",
+      "size_bytes": 206952
+    },
+    {
+      "key": "mlb_proj_proj_MLB_LAA_at_SEA",
+      "file": "2026-06-30/proj_MLB_LAA_at_SEA.json",
+      "sport": "MLB",
+      "ttl_hours": 3,
+      "expires": "2026-06-30T23:09:11+0000",
+      "size_bytes": 207529
+    },
+    {
+      "key": "mlb_proj_proj_MLB_LAD_at_ATH",
+      "file": "2026-06-30/proj_MLB_LAD_at_ATH.json",
+      "sport": "MLB",
+      "ttl_hours": 3,
+      "expires": "2026-06-30T23:09:11+0000",
+      "size_bytes": 212256
+    },
+    {
+      "key": "mlb_proj_proj_MLB_MIA_at_COL",
+      "file": "2026-06-30/proj_MLB_MIA_at_COL.json",
+      "sport": "MLB",
+      "ttl_hours": 3,
+      "expires": "2026-06-30T23:09:11+0000",
+      "size_bytes": 205097
+    },
+    {
+      "key": "mlb_proj_proj_MLB_MIN_at_HOU",
+      "file": "2026-06-30/proj_MLB_MIN_at_HOU.json",
+      "sport": "MLB",
+      "ttl_hours": 3,
+      "expires": "2026-06-30T23:09:11+0000",
+      "size_bytes": 216249
+    },
+    {
+      "key": "mlb_proj_proj_MLB_NYM_at_TOR",
+      "file": "2026-06-30/proj_MLB_NYM_at_TOR.json",
+      "sport": "MLB",
+      "ttl_hours": 3,
+      "expires": "2026-06-30T23:09:11+0000",
+      "size_bytes": 196692
+    },
+    {
+      "key": "mlb_proj_proj_MLB_PIT_at_PHI",
+      "file": "2026-06-30/proj_MLB_PIT_at_PHI.json",
+      "sport": "MLB",
+      "ttl_hours": 3,
+      "expires": "2026-06-30T23:09:11+0000",
+      "size_bytes": 208381
+    },
+    {
+      "key": "mlb_proj_proj_MLB_SD_at_CHC",
+      "file": "2026-06-30/proj_MLB_SD_at_CHC.json",
+      "sport": "MLB",
+      "ttl_hours": 3,
+      "expires": "2026-06-30T23:09:11+0000",
+      "size_bytes": 208815
+    },
+    {
+      "key": "mlb_proj_proj_MLB_SF_at_ARI",
+      "file": "2026-06-30/proj_MLB_SF_at_ARI.json",
+      "sport": "MLB",
+      "ttl_hours": 3,
+      "expires": "2026-06-30T23:09:11+0000",
+      "size_bytes": 227661
+    },
+    {
+      "key": "mlb_proj_proj_MLB_STL_at_ATL",
+      "file": "2026-06-30/proj_MLB_STL_at_ATL.json",
+      "sport": "MLB",
+      "ttl_hours": 3,
+      "expires": "2026-06-30T23:09:11+0000",
+      "size_bytes": 188546
+    },
+    {
+      "key": "mlb_proj_proj_MLB_TB_at_KC",
+      "file": "2026-06-30/proj_MLB_TB_at_KC.json",
+      "sport": "MLB",
+      "ttl_hours": 3,
+      "expires": "2026-06-30T23:09:11+0000",
+      "size_bytes": 209412
+    },
+    {
+      "key": "mlb_proj_proj_MLB_TEX_at_CLE",
+      "file": "2026-06-30/proj_MLB_TEX_at_CLE.json",
+      "sport": "MLB",
+      "ttl_hours": 3,
+      "expires": "2026-06-30T23:09:11+0000",
+      "size_bytes": 210257
+    },
+    {
+      "key": "mlb_proj_proj_MLB_WSH_at_BOS",
+      "file": "2026-06-30/proj_MLB_WSH_at_BOS.json",
+      "sport": "MLB",
+      "ttl_hours": 3,
+      "expires": "2026-06-30T23:09:11+0000",
+      "size_bytes": 204030
+    },
+    {
+      "key": "wnba_proj_proj_WNBA_LV_at_NY",
+      "file": "2026-06-30/proj_WNBA_LV_at_NY.json",
+      "sport": "WNBA",
+      "ttl_hours": 3,
+      "expires": "2026-06-30T23:09:11+0000",
+      "size_bytes": 81095
+    },
+    {
+      "key": "slate_mlb",
+      "file": "2026-06-30/slate_MLB.json",
+      "sport": "MLB",
+      "ttl_hours": 6,
+      "expires": "2026-07-01T02:09:11+0000",
+      "size_bytes": 6277
+    },
+    {
+      "key": "slate_wnba",
+      "file": "2026-06-30/slate_WNBA.json",
+      "sport": "WNBA",
+      "ttl_hours": 6,
+      "expires": "2026-07-01T02:09:11+0000",
+      "size_bytes": 157
+    },
+    {
+      "key": "slate_world cup",
+      "file": "2026-06-30/slate_WORLD CUP.json",
+      "sport": "WORLD CUP",
+      "ttl_hours": 6,
+      "expires": "2026-07-01T02:09:11+0000",
+      "size_bytes": 1279
     }
-  }
+  ]
 }

@@ -1,8 +1,8 @@
 {
-  "date": "2026-06-29",
+  "date": "2026-06-30",
   "calls": [
     {
-      "time": "2026-06-29T17:32:48Z",
+      "time": "2026-06-30T17:32:56Z",
       "endpoint": "SGO/ESPN WNBA Slate",
       "sport": "WNBA",
       "status": "success",
@@ -10,7 +10,7 @@
       "remaining_header": "N/A"
     },
     {
-      "time": "2026-06-29T17:32:48Z",
+      "time": "2026-06-30T17:32:56Z",
       "endpoint": "SGO/ESPN MLB Slate",
       "sport": "MLB",
       "status": "success",
@@ -18,7 +18,7 @@
       "remaining_header": "N/A"
     },
     {
-      "time": "2026-06-29T17:32:48Z",
+      "time": "2026-06-30T17:32:56Z",
       "endpoint": "SGO/ESPN World Cup Slate",
       "sport": "WORLD CUP",
       "status": "success",
@@ -26,15 +26,15 @@
       "remaining_header": "N/A"
     },
     {
-      "time": "2026-06-29T17:33:16Z",
-      "endpoint": "Odds API WNBA Events",
+      "time": "2026-06-30T17:33:33Z",
+      "endpoint": "SGO Multi-Source Consensus (WNBA)",
       "sport": "WNBA",
       "status": "success",
-      "limit_used": "1",
+      "limit_used": "100",
       "remaining_header": "N/A"
     }
   ],
   "total_calls_today": 4,
   "sgo_limit": 100,
-  "notes": "1:30 PM ET primary slate run. SGO limit=100 active on all calls. 4 API calls used."
+  "notes": "1:30 PM ET primary slate run. SGO limit=100 active on all calls. 4 API calls used (3 slate + 1 consensus). World Cup data unavailable for all 3 games."
 }
