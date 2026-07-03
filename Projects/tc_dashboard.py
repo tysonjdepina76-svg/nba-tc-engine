@@ -4,9 +4,13 @@
 import json
 import os
 import sys
+import importlib
 import urllib.request
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).parent))
+from sports_registry import REGISTRY, DataSource  # noqa: E402
 
 import pandas as pd
 import requests
@@ -20,13 +24,14 @@ WORKSPACE = Path("/home/workspace")
 sys.path.insert(0, str(WORKSPACE / "tc-sports-app"))
 from src.domain.entities import Sport, BADGE_COLORS
 from src.domain.sport_config import get_sport_config, stat_keys
+try:
+    from src.adapters.sgo import fetch_events as _sgo_fetch_events
+except Exception:
+    _sgo_fetch_events = None
 
-LOG_DIR = WORKSPACE / "Daily_Log"
-IMAGES_DIR = WORKSPACE / "reports" / "images"
-
-# ─── Sport source matrix (locked by user directive) ─────
+# ─── Data source matrix (locked by user directive 2026-07-02) ─────
 # NBA, WNBA, NFL → TC Math
-# SOCCER, MLB, NHL → Bookmaker lines
+# SOCCER, MLB, NHL → Bookmaker lines (SGO + OddsAPI tiered)
 SPORT_SOURCE = {
     "NBA": "TC_MATH",
     "WNBA": "TC_MATH",
@@ -35,6 +40,13 @@ SPORT_SOURCE = {
     "MLB": "BOOKMAKER",
     "NHL": "BOOKMAKER",
 }
+
+def get_data_source(sport: str) -> str:
+    """Return data source for sport: 'tc' or 'booklines'."""
+    return "tc" if SPORT_SOURCE.get(sport) == "TC_MATH" else "booklines"
+
+LOG_DIR = WORKSPACE / "Daily_Log"
+IMAGES_DIR = WORKSPACE / "reports" / "images"
 
 # Sport → ESPN path + display label
 SPORT_PATHS = {
@@ -245,7 +257,7 @@ def render_roster(sport: str, matchup: str | None):
                 "Role": role,
                 "Status": p.get("status", "ACTIVE"),
             }
-            projs = p.get("projections", {}) or {}
+            projs = _flat_to_projected(p, keys)  # handles
             for k in keys:
                 slot = projs.get(k, {}) or {}
                 row[f"{k}_TC"] = slot.get("tc_projection")
@@ -328,13 +340,15 @@ def render_lines(sport: str, matchup: str | None):
         return
     lines = _espn_dk_lines(espn_path, parts[0], parts[1])
     if not any(lines.values()):
-        st.caption(f"No DK lines for {sport} {matchup} (off-season or lines not posted)")
+        reason = "OddsAPI 401 (quota maxed)" if sport in ("SOCCER", "WORLD CUP") else "DK lines not posted yet"
+        st.caption(f"No DK lines for {sport} {matchup} — {reason} (ESPN only posts lines 2")
         return
     c1, c2, c3, c4 = st.columns(4)
     c1.metric("Total", lines.get("total") or "—")
     c2.metric("Spread", lines.get("spread") or "—")
     c3.metric("ML Home", lines.get("ml_home") or "—")
     c4.metric("ML Away", lines.get("ml_away") or "—")
+    st.caption(f"ESPN: {espn_path} • {datetime.now(ET).strftime('%I:%M %p ET')}")
 
 def render_metrics(sport: str, matchup: str | None):
     """Sport-aware industry-standard metrics.
@@ -604,6 +618,60 @@ def render_live_combos(sport: str, matchup: str | None):
 # ─── Parlay Builder (live-combos API → parlay legs) ──────
 PARLAY_API_BASE = "http://localhost:8000/live-combos"
 
+def flatten_picks(picks, sport):
+    """Flatten projections based on sport structure."""
+    flattened = []
+    for pick in picks:
+        if sport in ("NBA", "WNBA"):
+            if "projections" in pick and isinstance(pick["projections"], dict):
+                proj = pick.pop("projections")
+                for key, value in proj.items():
+                    if isinstance(value, dict) and "tc_projection" in value:
+                        pick[f"tc_{key}"] = value["tc_projection"]
+        # MLB / SOCCER / NHL / NFL — already flat, no transform
+        flattened.append(pick)
+    return flattened
+
+
+def load_combos(sport, date):
+    """Load all combos_*.json for a date from Daily_Log, optionally filter by sport.
+    Supports both naming conventions:
+      - combos_away_home.json (per-matchup, may have sport field in JSON)
+      - combos_SPORT_*.json (sport-prefixed, legacy)
+    Supports both JSON shapes:
+      - {"combos": [...]} (user-specified)
+      - {"legs": [...], "qualified": [...]} (current pipeline)
+    """
+    log_dir = Path(f"/home/workspace/Daily_Log/{date}")
+    if not log_dir.exists():
+        return []
+    # Match both naming conventions
+    files = list(log_dir.glob("combos_*.json"))
+    files = [f for f in files if f.suffix == ".json"]
+    all_combos = []
+    for f in files:
+        try:
+            data = json.loads(f.read_text())
+        except Exception:
+            continue
+        if not isinstance(data, dict):
+            continue
+        # Filter by sport if file declares one
+        if "sport" in data and data["sport"] and sport:
+            if str(data["sport"]).upper() != sport.upper():
+                continue
+        # Extract combos from either shape
+        items = data.get("combos") or data.get("legs") or data.get("qualified") or []
+        if not isinstance(items, list):
+            continue
+        for c in items:
+            if isinstance(c, dict):
+                c["_source_file"] = f.name
+                all_combos.append(c)
+    return all_combos
+
+
+
 def fetch_live_combos(sport: str, date_str: str) -> list:
     """Fetch combos from the live-combos API. Returns [] on any failure."""
     try:
@@ -615,66 +683,47 @@ def fetch_live_combos(sport: str, date_str: str) -> list:
         return [{"_error": str(e)}]
 
 
-def render_parlay_builder(sport: str, matchup: str | None):
-    """Display live combos as parlay legs with hit prob / edge / confidence + Build button."""
-    date_str = st.session_state.get("parlay_date") or datetime.now(ET).strftime("%Y-%m-%d")
-    c1, c2 = st.columns([2, 1])
-    with c1:
-        new_date = st.date_input("Date", value=datetime.strptime(date_str, "%Y-%m-%d"), key="parlay_date_input")
-        date_str = new_date.strftime("%Y-%m-%d")
+def render_parlay_builder(sport, matchup):
+    """Build a parlay slip from combos in Daily_Log. Uses session state so Add buttons survive reruns."""
+    st.subheader("🧾 Parlay Builder")
+    date_str = datetime.now(ET).strftime("%Y-%m-%d")
+    if "parlay_slip" not in st.session_state or st.session_state.get("parlay_date") != date_str:
+        st.session_state["parlay_slip"] = []
         st.session_state["parlay_date"] = date_str
-    with c2:
-        st.metric("API", PARLAY_API_BASE)
-        refresh = st.button("🔄 Refresh combos", use_container_width=True)
-
-    combos = fetch_live_combos(sport, date_str)
+    slip = st.session_state["parlay_slip"]
+    combos = load_combos(sport, date_str)
     if not combos:
-        st.info("No combos found for this sport/date")
+        st.info(f"No combos in Daily_Log/{date_str} for {sport}. Run daily_picks.py to generate.")
         return
-    if isinstance(combos[0], dict) and combos[0].get("_error"):
-        st.error(f"live-combos API error: {combos[0]['_error']}")
-        return
+    st.caption(f"{len(combos)} combos available — pick up to 10")
+    for i, combo in enumerate(combos[:10]):
+        with st.expander(f"🎟️ Combo {i+1} — hit {float(combo.get('hit_probability', 0)):.1%}"):
+            cols = st.columns([3, 1, 1, 1])
+            players = " + ".join(combo.get("players", []))
+            cols[0].write(f"**{players}**")
+            cols[1].write(f"Hit: {float(combo.get('hit_probability', 0)):.1%}")
+            cols[2].write(f"Edge: {float(combo.get('avg_edge', 0)):+.2f}")
+            in_slip = any(c is combo or c.get('_idx') == i for c in slip)
+            btn_label = "✓ Added" if in_slip else "➕ Add"
+            if cols[3].button(btn_label, key=f"add_{i}", disabled=in_slip):
+                combo_copy = dict(combo); combo_copy["_idx"] = i
+                slip.append(combo_copy)
+                st.rerun()
+    if slip:
+        st.divider()
+        st.write("### 📋 Your Parlay Slip")
+        total_hit = 1.0
+        for s in slip:
+            total_hit *= float(s.get("hit_probability", 0) or 0)
+            players = " + ".join(s.get("players", []))
+            st.write(f"- {players} (Hit: {float(s.get('hit_probability', 0)):.1%})")
+        st.metric("Combined Hit Probability", f"{total_hit:.2%}")
+        est_payout = len(slip) * 264
+        st.metric("Estimated Payout (per $100)", f"${est_payout}")
+        if st.button("🗑️ Clear slip"):
+            st.session_state["parlay_slip"] = []
+            st.rerun()
 
-    # optional matchup filter (players' team abbreviations — best effort)
-    if matchup and "@" in matchup:
-        away, home = matchup.upper().split("@", 1)
-        before = len(combos)
-        combos = [
-            c for c in combos
-            if any(away in str(p).upper() or home in str(p).upper() for p in c.get("players", []))
-        ]
-        if not combos:
-            st.caption(f"No combos match {matchup} (showing {before} total)")
-            return
-
-    st.caption(f"{len(combos)} combos available • sorted by hit probability")
-
-    for idx, combo in enumerate(combos[:10]):
-        players = combo.get("players", []) or []
-        title = " + ".join(players[:4]) + ("…" if len(players) > 4 else "")
-        hit = float(combo.get("hit_probability", 0))
-        edge = float(combo.get("avg_edge", 0))
-        conf = float(combo.get("avg_confidence", 0))
-        n_legs = int(combo.get("num_legs", len(combo.get("legs", []))))
-
-        with st.expander(f"🎟️ {n_legs}-leg parlay — {title}  •  hit {hit:.1%}"):
-            m1, m2, m3 = st.columns(3)
-            m1.metric("Hit Probability", f"{hit:.1%}")
-            m2.metric("Avg Edge", f"{edge:+.2f}")
-            m3.metric("Confidence", f"{conf:.1%}")
-            st.write("**Legs:**")
-            for leg in combo.get("legs", []):
-                st.write(
-                    f"- {leg.get('player','?')} — {leg.get('stat','')} "
-                    f"{leg.get('direction','OVER')} {leg.get('line','')}  "
-                    f"(proj {float(leg.get('tc_projection', 0)):.1f}, "
-                    f"edge {float(leg.get('edge', 0)):+.1f})"
-                )
-            if st.button(f"✅ Build Parlay", key=f"build_parlay_{idx}_{players[0] if players else idx}"):
-                st.session_state.setdefault("built_parlays", []).append({
-                    "sport": sport, "date": date_str, "combo": combo,
-                })
-                st.success(f"Parlay built ({len(st.session_state['built_parlays'])} in slip)")
 
 
 # ─── Sidebar ─────────────────────────────────────────────
@@ -983,3 +1032,122 @@ def render_fight_card(sport: str):
                 st.image(out)
             except Exception as e:
                 st.error(f"Poster generation failed: {e}")
+
+
+# ============================================================================
+# Sports Registry Dispatcher (wired 2026-07-01)
+# ============================================================================
+
+def handle_project_game(sport: str, match: str = None, dry_run: bool = False):
+    """Single entry point for ALL sports via sports_registry.
+
+    Returns dict with projections, or None on failure.
+    If dry_run=True, just verifies the path works without returning data.
+    """
+    try:
+        config = REGISTRY.get(sport)
+    except Exception as e:
+        st.error(f"❌ Registry lookup failed for {sport}: {e}")
+        return None
+
+    if not config.enabled:
+        st.error(f"❌ {config.name} is currently disabled")
+        return None
+
+    if config.source == DataSource.OFF_SEASON:
+        st.warning(f"⚪ {config.name} is off-season — no live slate")
+        return None
+
+    if config.source == DataSource.COMING_SOON:
+        st.warning(f"⚠️ {config.name} not yet wired")
+        return None
+
+    if config.source == DataSource.TC_ENGINE:
+        return _run_tc_engine(config, match, dry_run)
+
+    if config.source == DataSource.BOOK_LINES:
+        return _run_book_lines(config, match, dry_run)
+
+    st.error(f"❌ No data source configured for {sport}")
+    return None
+
+
+def _run_tc_engine(config, match, dry_run):
+    try:
+        mod = importlib.import_module(config.module)
+        fn = getattr(mod, config.fn, None)
+        if fn is None:
+            st.error(f"❌ {config.module}.{config.fn}() not found")
+            return None
+        if dry_run:
+            return {"status": "ok", "sport": config.key, "engine": config.module}
+        return fn(match) if match else fn()
+    except ImportError as e:
+        st.error(f"❌ TC engine {config.module} not found: {e}")
+        return None
+    except Exception as e:
+        st.error(f"❌ Error running {config.module}.{config.fn}(): {e}")
+        return None
+
+
+def _run_book_lines(config, match, dry_run):
+    if config.fetcher is None:
+        st.warning(f"⚠️ {config.name} has no fetcher configured")
+        return None
+    if dry_run:
+        return {"status": "ok", "sport": config.key, "source": "book_lines"}
+    try:
+        return config.fetcher(match) if match else config.fetcher()
+    except Exception as e:
+        st.error(f"❌ Book line fetch failed for {config.name}: {e}")
+        return None
+
+
+def show_system_status():
+    """Sidebar widget — shows live health for every registered sport."""
+    st.sidebar.subheader("📊 System Status")
+    for sport_key, config in REGISTRY._registry.items():
+        try:
+            test = handle_project_game(sport_key, dry_run=True)
+            status = "✅" if test else "⚠️"
+        except Exception:
+            status = "❌"
+        label = config.source.value.replace("_", " ").title()
+        st.sidebar.text(f"{status} {sport_key.upper()}: {label}")
+
+
+# ─── Helper: flat MLB fields → nested projections ──
+def _flat_to_projected(player: dict, stat_keys: list) -> dict:
+    """Convert flat player dict (MLB tc_h, line_h, edge_h) to nested projections.
+    Also handles WNBA-style nested p.projections[key].
+    Case-insensitive: stat_keys may be uppercase (AVG) but proj fields are lowercase (avg).
+    """
+    out = {}
+    nested = player.get("projections")
+    has_nested = isinstance(nested, dict) and nested and any(isinstance(v, dict) for v in nested.values())
+    for k in stat_keys:
+        kl = k.lower()
+        ku = k.upper()
+        # Try nested first (WNBA style)
+        tc = line = edge = None
+        if has_nested and (nested.get(k) or nested.get(kl) or nested.get(ku)):
+            slot = nested.get(k) or nested.get(kl) or nested.get(ku) or {}
+            tc = slot.get("tc_projection")
+            line = slot.get("line")
+            edge = slot.get("edge")
+        # Fall back to flat (MLB style) — case-insensitive lookup
+        if tc is None:
+            tc = player.get(f"tc_{kl}") or player.get(f"tc_{ku}") or player.get(f"tc_{k}")
+        if line is None:
+            line = player.get(f"line_{kl}") or player.get(f"line_{ku}") or player.get(f"line_{k}")
+        if edge is None:
+            edge = player.get(f"edge_{kl}") or player.get(f"edge_{ku}") or player.get(f"edge_{k}")
+        direction = None
+        if edge is not None:
+            try:
+                ev = float(edge)
+                direction = "OVER" if ev > 0 else "UNDER" if ev < 0 else "PASS"
+            except (TypeError, ValueError):
+                pass
+        out[k] = {"tc_projection": tc, "line": line, "edge": edge, "direction": direction}
+    return out

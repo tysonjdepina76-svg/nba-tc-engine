@@ -45,6 +45,116 @@ WNBA_TEAM_IDS_REVERSE = {v: k for k, v in WNBA_TEAMS.items()}
 
 SEASON_CACHE = {}
 
+# ---------------------------------------------------------------------------
+# INJURY FEED — single source of truth for OUT/QUESTIONABLE/ACTIVE per player.
+# Loaded from ESPN site API per-slate + on-disk cache for the day.
+# Cached for 1 hour per slate to avoid hammering during a run.
+# ---------------------------------------------------------------------------
+INJURY_CACHE = {}      # {date_str: {name_lower: "ACTIVE"|"OUT"|"QUESTIONABLE"|"PROBABLE"}}
+INJURY_TTL = 3600      # seconds
+
+def _injury_cache_path(date_str: str) -> Path:
+    d = LOG_DIR / date_str
+    d.mkdir(parents=True, exist_ok=True)
+    return d / "wnba_injuries.json"
+
+
+def _fetch_team_roster_injuries(team_abbr: str, timeout: int = 5) -> dict:
+    """Pull injury/roster status for one WNBA team via ESPN site API.
+    Returns {name_lower: status_str}. Returns {} on any error."""
+    import urllib.request
+    team_id = WNBA_TEAMS.get(team_abbr)
+    if not team_id:
+        return {}
+    url = f"https://site.api.espn.com/apis/site/v2/sports/basketball/wnba/teams/{team_id}/roster"
+    try:
+        req = urllib.request.Request(url, headers={"Accept": "application/json"})
+        with urllib.request.urlopen(req, timeout=timeout) as r:
+            data = json.loads(r.read().decode())
+    except Exception:
+        return {}
+    out = {}
+    # Roster endpoint doesn't always include status — fall back to default ACTIVE
+    for grp in (data.get("athlete") or []):
+        for ath in (grp.get("items") or []):
+            name = ath.get("displayName") or ath.get("fullName") or ""
+            if not name:
+                continue
+            inj = ath.get("injuries") or []
+            status = "ACTIVE"
+            if inj:
+                # ESPN shape: injuries[0].status (e.g., "Out", "Questionable", "Probable")
+                s = (inj[0].get("status") or "").strip().lower()
+                if s in ("out", "injured", "doubtful"):
+                    status = "OUT"
+                elif s in ("questionable", "day-to-day", "day to day"):
+                    status = "QUESTIONABLE"
+                elif s in ("probable",):
+                    status = "PROBABLE"
+            out[name.lower()] = status
+    return out
+
+
+def load_injury_report(date_str: str = None, force: bool = False) -> dict:
+    """Return {name_lower: status} for every WNBA player on the current slate.
+    Merges per-team rosters; cached on disk for INJURY_TTL seconds.
+    """
+    if date_str is None:
+        date_str = datetime.now().strftime("%Y-%m-%d")
+    if not force and date_str in INJURY_CACHE:
+        return INJURY_CACHE[date_str]
+
+    cache_file = _injury_cache_path(date_str)
+    if not force and cache_file.exists():
+        age = datetime.now().timestamp() - cache_file.stat().st_mtime
+        if age < INJURY_TTL:
+            try:
+                merged = json.loads(cache_file.read_text())
+                INJURY_CACHE[date_str] = merged
+                return merged
+            except Exception:
+                pass
+
+    merged = {}
+    for abbr in WNBA_TEAMS.keys():
+        try:
+            merged.update(_fetch_team_roster_injuries(abbr))
+        except Exception:
+            continue
+    # Also load a manual override file if it exists (used for late scratches the
+    # ESPN feed doesn't yet show — Costanza Verona (DAL) was the original case).
+    override_file = LOG_DIR / date_str / "wnba_injury_overrides.json"
+    if override_file.exists():
+        try:
+            for name, status in json.loads(override_file.read_text()).items():
+                merged[name.lower()] = status
+        except Exception:
+            pass
+
+    try:
+        cache_file.write_text(json.dumps(merged, indent=2, sort_keys=True))
+    except Exception:
+        pass
+    INJURY_CACHE[date_str] = merged
+    return merged
+
+
+def status_for(name: str, injuries: dict) -> str:
+    """Lookup a player's status from the injury report. Default ACTIVE."""
+    if not name or not injuries:
+        return "ACTIVE"
+    return injuries.get(name.lower(), "ACTIVE")
+
+
+# ---------------------------------------------------------------------------
+# INJURY FEED — single source of truth for OUT/QUESTIONABLE/ACTIVE per player.
+# Loaded from ESPN site API per-slate + on-disk cache for the day.
+# Without this, every player was hardcoded ACTIVE and OUT picks leaked through
+# (Verona bug — fixed 2026-07-02). Keys are lowercased full names.
+# ---------------------------------------------------------------------------
+INJURY_CACHE: dict = {}
+
+
 def load_secrets():
     sf = Path("/root/.zo/secrets.env")
     if sf.exists():
@@ -175,6 +285,89 @@ def compute_tc_projection(season_stats: dict, stat_key: str, player_minutes: flo
     return round(tc, 1)
 
 
+def _fetch_dk_lines_with_fallback(away: str, home: str) -> tuple:
+    """Fetch DraftKings lines: ESPN site API first, OddsAPI as fallback.
+
+    Returns: (dk_total, dk_spread, dk_ml_home, dk_ml_away, ml_source)
+    """
+    # 1. ESPN site API — embedded DK odds (provider.id == "100")
+    try:
+        url = f"https://site.api.espn.com/apis/site/v2/sports/basketball/wnba/scoreboard"
+        data = _fetch(url, timeout=4)
+        if not data.get("_error"):
+            for ev in data.get("events", []):
+                comp = (ev.get("competitions") or [{}])[0]
+                comps = comp.get("competitors", [])
+                a_team = next((t.get("team", {}).get("abbreviation", "").upper() for t in comps if t.get("homeAway") == "away"), "")
+                h_team = next((t.get("team", {}).get("abbreviation", "").upper() for t in comps if t.get("homeAway") == "home"), "")
+                if a_team != away.upper() and h_team != home.upper():
+                    continue
+                odds_list = comp.get("odds", []) or []
+                dk_odds = next((o for o in odds_list if (o.get("provider", {}) or {}).get("id") == "100" or (o.get("provider", {}) or {}).get("name") == "DraftKings"), None)
+                if dk_odds:
+                    ml = dk_odds.get("moneyline", {}) or {}
+                    return (
+                        dk_odds.get("overUnder"),
+                        dk_odds.get("spread"),
+                        ml.get("home", {}).get("close", {}).get("odds"),
+                        ml.get("away", {}).get("close", {}).get("odds"),
+                        "ESPN DraftKings embedded",
+                    )
+    except Exception:
+        pass
+
+    # 2. OddsAPI fallback (events with book=draftkings)
+    try:
+        key = os.environ.get("ODDS_API_KEY", "")
+        if not key:
+            return (None, None, None, None, "ESPN Core API (self-edge)")
+        url = f"https://api.theoddsapi.com/odds/?sport_key=basketball_wnba&regions=us&markets=h2h,spreads,totals&bookmakers=draftkings&apiKey={key}"
+        data = _fetch(url, timeout=4)
+        if data.get("_error"):
+            return (None, None, None, None, "ESPN Core API (self-edge)")
+        # Map full team names to ESPN abbreviations
+        # "Atlanta Dream" -> "ATL", "Washington Mystics" -> "WSH"
+        def team_to_abbr(full: str) -> str:
+            if not full: return ""
+            for abbr, name in WNBA_ABBREV.items():
+                if full.lower() == name.lower() or full.lower().startswith(name.lower().split()[-1].lower()):
+                    return abbr
+            return ""
+        for ev in data.get("data", []):
+            at_abbr = team_to_abbr(ev.get("away_team") or "")
+            ht_abbr = team_to_abbr(ev.get("home_team") or "")
+            if at_abbr != away.upper() and ht_abbr != home.upper():
+                continue
+            dk_total = dk_spread = dk_ml_home = dk_ml_away = None
+            for book in ev.get("books", []):
+                if book.get("book") != "draftkings":
+                    continue
+                market = book.get("market")
+                for oc in book.get("outcomes", []):
+                    price = oc.get("price")
+                    point = oc.get("point")
+                    if market == "totals":
+                        if price is not None and (oc.get("name") or "").lower() == "over":
+                            dk_total = point
+                    elif market == "spreads":
+                        if price is not None:
+                            n = (oc.get("name") or "").lower()
+                            if home.lower() in n or ht_abbr.lower() in n or away.lower() in n:
+                                dk_spread = point
+                    elif market == "h2h":
+                        n = (oc.get("name") or "").lower()
+                        # Check by last word of team name OR abbr — must match HOME exactly
+                        if WNBA_ABBREV.get(home).lower() in n or ht_abbr.lower() in n:
+                            dk_ml_home = price
+                        elif away.lower() in n or at_abbr.lower() in n:
+                            dk_ml_away = price
+            return (dk_total, dk_spread, dk_ml_home, dk_ml_away, "OddsAPI DraftKings")
+    except Exception:
+        pass
+
+    return (None, None, None, None, "ESPN Core API (self-edge)")
+
+
 def compute_line_and_edge(tc_projection: float) -> Tuple[float, float, str]:
     raw = tc_projection * LINE_FACTOR
     line = round(raw * 2) / 2
@@ -188,10 +381,13 @@ def project_game(away: str, home: str) -> dict:
     load_secrets()
     away = away.upper()
     home = home.upper()
-    
+
     # Fetch season stats for all players
     all_stats = fetch_all_season_stats(150)
-    
+
+    # Fetch injury report — single source of truth for ACTIVE/OUT/QUESTIONABLE
+    injuries = load_injury_report()
+
     # Filter players by team
     away_players = []
     home_players = []
@@ -200,24 +396,26 @@ def project_game(away: str, home: str) -> dict:
             continue
         team = sinfo.get("team", "")
         if team == away:
+            pname = sinfo.get("name", name_lower.title())
             away_players.append({
-                "name": sinfo.get("name", name_lower.title()),
-                "player": sinfo.get("name", name_lower.title()),
+                "name": pname,
+                "player": pname,
                 "team": team,
                 "role": "BENCH",
-                "status": "ACTIVE",
+                "status": status_for(pname, injuries),
                 "pos": "",
                 "min": DEFAULT_MINUTES,
                 "avgMinutes": float(sinfo.get("avgMinutes") or 0),
                 "season_stats": sinfo,
             })
         elif team == home:
+            pname = sinfo.get("name", name_lower.title())
             home_players.append({
-                "name": sinfo.get("name", name_lower.title()),
-                "player": sinfo.get("name", name_lower.title()),
+                "name": pname,
+                "player": pname,
                 "team": team,
                 "role": "BENCH",
-                "status": "ACTIVE",
+                "status": status_for(pname, injuries),
                 "pos": "",
                 "min": DEFAULT_MINUTES,
                 "avgMinutes": float(sinfo.get("avgMinutes") or 0),
@@ -246,15 +444,18 @@ def project_game(away: str, home: str) -> dict:
     total_props = len(valid_props)
     over_count = sum(1 for vp in valid_props if vp.get("direction") == "OVER")
     signal = "OVER" if over_count > total_props / 2 else ("UNDER" if total_props > 0 else "ROSTER LOADED")
-    
+
+    # DK lines — ESPN site API first, OddsAPI fallback
+    dk_total, dk_spread, dk_ml_home, dk_ml_away, ml_source = _fetch_dk_lines_with_fallback(away, home)
+
     return {
         "mode": "live", "sport": "WNBA",
         "matchup": f"{away}@{home}",
         "away_team": away, "home_team": home,
-        "source": "ESPN Core API (self-edge)",
+        "source": "ESPN Core API (self-edge)" if ml_source == "ESPN Core API (self-edge)" else f"ESPN + OddsAPI fallback ({ml_source})",
         "signal": signal,
-        "dk_total": None,
-        "odds": {"total": None, "ml_source": "ESPN Core API (self-edge)"},
+        "dk_total": dk_total,
+        "odds": {"total": dk_total, "spread": dk_spread, "ml_home": dk_ml_home, "ml_away": dk_ml_away, "ml_source": ml_source},
         "away": {
             "all": {"players": away_proj},
             "starters": {"players": [p for p in away_proj if p.get("role") == "START"]},
@@ -280,7 +481,18 @@ def _project_one(player_info: dict) -> dict:
         "pos": player_info.get("pos", ""),
         "projections": {},
     }
-    
+
+    # OUT players: zero projections, no valid props. The injury report is the
+    # source of truth; compute_tc_projection's OUT logic is a backstop but we
+    # also short-circuit here so the player never enters valid_props.
+    if (proj["status"] or "ACTIVE").upper() == "OUT":
+        for stat_key in ("PTS", "REB", "AST", "3PM", "STL", "BLK"):
+            proj["projections"][stat_key] = {
+                "tc_projection": 0.0, "line": 0.0, "edge": 0.0,
+                "direction": "PASS", "dk_line": None, "valid": False,
+            }
+        return proj
+
     for stat_key in ("PTS", "REB", "AST", "3PM", "STL", "BLK"):
         tc = compute_tc_projection(season, stat_key, player_info.get("min", DEFAULT_MINUTES), player_info.get("status", "ACTIVE"))
         line, edge, direction = compute_line_and_edge(tc)
@@ -293,7 +505,12 @@ def _project_one(player_info: dict) -> dict:
 
 
 def _extract_valid(proj: dict, team: str) -> list:
+    """Filter to valid props. OUT players produce no entries (proj.valid=False)."""
     props = []
+    # Defense-in-depth: never let an OUT player produce a pick, even if the
+    # caller forgot to skip them. (Was the Costanza Verona (DAL) bug.)
+    if (proj.get("status") or "ACTIVE").upper() == "OUT":
+        return props
     for sk, pd in proj.get("projections", {}).items():
         if pd.get("valid"):
             props.append({

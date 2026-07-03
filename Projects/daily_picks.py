@@ -400,7 +400,7 @@ def run_daily_log(sports=ALL_SPORTS):
             continue  # skip generic fetch for WNBA
 
         # ── WORLD CUP: load from local worldcup_picks.py output (no /api/tc live-stats) ──
-        if sport == "WORLD_CUP":
+        if sport in ("WORLD CUP", "WORLD_CUP", "SOCCER"):
             from soccer_tc_engine import project_matchup, get_worldcup_slate
             wc_slate = get_worldcup_slate()
             if not wc_slate:

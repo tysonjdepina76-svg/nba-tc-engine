@@ -1,0 +1,1443 @@
+{
+  "mode": "live",
+  "sport": "WNBA",
+  "matchup": "ATL@WSH",
+  "away_team": "ATL",
+  "home_team": "WSH",
+  "source": "ESPN Core API (self-edge)",
+  "signal": "OVER",
+  "dk_total": null,
+  "odds": {
+    "total": null,
+    "ml_source": "ESPN Core API (self-edge)"
+  },
+  "away": {
+    "all": {
+      "players": []
+    },
+    "starters": {
+      "players": []
+    },
+    "bench": {
+      "players": []
+    }
+  },
+  "home": {
+    "all": {
+      "players": [
+        {
+          "player": "Rhyne Howard",
+          "team": "WSH",
+          "role": "START",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 13.3,
+              "line": 11.5,
+              "edge": 1.8,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 2.7,
+              "line": 2.5,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 2.3,
+              "line": 2.0,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 2.3,
+              "line": 2.0,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 1.8,
+              "line": 1.5,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.6,
+              "line": 0.5,
+              "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Allisha Gray",
+          "team": "WSH",
+          "role": "START",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 13.9,
+              "line": 12.0,
+              "edge": 1.9,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 2.4,
+              "line": 2.0,
+              "edge": 0.4,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 1.6,
+              "line": 1.5,
+              "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 1.3,
+              "line": 1.0,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 1.2,
+              "line": 1.0,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.2,
+              "line": 0.0,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Angel Reese",
+          "team": "WSH",
+          "role": "START",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 12.3,
+              "line": 11.0,
+              "edge": 1.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 9.6,
+              "line": 8.5,
+              "edge": 1.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 2.0,
+              "line": 2.0,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.1,
+              "line": 0.0,
+              "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 1.3,
+              "line": 1.0,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.6,
+              "line": 0.5,
+              "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Jordin Canada",
+          "team": "WSH",
+          "role": "START",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 9.4,
+              "line": 8.5,
+              "edge": 0.9,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 2.9,
+              "line": 2.5,
+              "edge": 0.4,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 5.7,
+              "line": 5.0,
+              "edge": 0.7,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.7,
+              "line": 0.5,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 1.7,
+              "line": 1.5,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.2,
+              "line": 0.0,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Naz Hillmon",
+          "team": "WSH",
+          "role": "START",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 7.5,
+              "line": 6.5,
+              "edge": 1.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 4.0,
+              "line": 3.5,
+              "edge": 0.5,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 1.2,
+              "line": 1.0,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.8,
+              "line": 0.5,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.6,
+              "line": 0.5,
+              "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.1,
+              "line": 0.0,
+              "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Madina Okot",
+          "team": "WSH",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 14.2,
+              "line": 12.5,
+              "edge": 1.7,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 9.4,
+              "line": 8.5,
+              "edge": 0.9,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 0.7,
+              "line": 0.5,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.1,
+              "line": 0.0,
+              "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.8,
+              "line": 0.5,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.8,
+              "line": 0.5,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Te-Hina Paopao",
+          "team": "WSH",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 8.2,
+              "line": 7.0,
+              "edge": 1.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 2.0,
+              "line": 2.0,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 3.1,
+              "line": 2.5,
+              "edge": 0.6,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 2.0,
+              "line": 2.0,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.4,
+              "line": 0.5,
+              "edge": -0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.3,
+              "line": 0.5,
+              "edge": -0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Isobel Borlase",
+          "team": "WSH",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 9.2,
+              "line": 8.0,
+              "edge": 1.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 2.8,
+              "line": 2.5,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 1.9,
+              "line": 1.5,
+              "edge": 0.4,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 1.0,
+              "line": 1.0,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.5,
+              "line": 0.5,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.2,
+              "line": 0.0,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Indya Nivar",
+          "team": "WSH",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 7.7,
+              "line": 7.0,
+              "edge": 0.7,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 7.3,
+              "line": 6.5,
+              "edge": 0.8,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 3.2,
+              "line": 3.0,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.9,
+              "line": 1.0,
+              "edge": -0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 2.3,
+              "line": 2.0,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.9,
+              "line": 1.0,
+              "edge": -0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Sika Kone",
+          "team": "WSH",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 9.5,
+              "line": 8.5,
+              "edge": 1.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 6.0,
+              "line": 5.5,
+              "edge": 0.5,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 1.7,
+              "line": 1.5,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.6,
+              "line": 0.5,
+              "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.3,
+              "line": 0.5,
+              "edge": -0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.0,
+              "line": 0.0,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Aaliyah Nye",
+          "team": "WSH",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 4.7,
+              "line": 4.0,
+              "edge": 0.7,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 0.0,
+              "line": 0.0,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 3.1,
+              "line": 2.5,
+              "edge": 0.6,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 1.6,
+              "line": 1.5,
+              "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 1.6,
+              "line": 1.5,
+              "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.0,
+              "line": 0.0,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Amy Okonkwo",
+          "team": "WSH",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 25.0,
+              "line": 22.0,
+              "edge": 3.0,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 25.0,
+              "line": 22.0,
+              "edge": 3.0,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "AST": {
+              "tc_projection": 0.0,
+              "line": 0.0,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.0,
+              "line": 0.0,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.0,
+              "line": 0.0,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.0,
+              "line": 0.0,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        }
+      ]
+    },
+    "starters": {
+      "players": [
+        {
+          "player": "Rhyne Howard",
+          "team": "WSH",
+          "role": "START",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 13.3,
+              "line": 11.5,
+              "edge": 1.8,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 2.7,
+              "line": 2.5,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 2.3,
+              "line": 2.0,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 2.3,
+              "line": 2.0,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 1.8,
+              "line": 1.5,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.6,
+              "line": 0.5,
+              "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Allisha Gray",
+          "team": "WSH",
+          "role": "START",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 13.9,
+              "line": 12.0,
+              "edge": 1.9,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 2.4,
+              "line": 2.0,
+              "edge": 0.4,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 1.6,
+              "line": 1.5,
+              "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 1.3,
+              "line": 1.0,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 1.2,
+              "line": 1.0,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.2,
+              "line": 0.0,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Angel Reese",
+          "team": "WSH",
+          "role": "START",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 12.3,
+              "line": 11.0,
+              "edge": 1.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 9.6,
+              "line": 8.5,
+              "edge": 1.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 2.0,
+              "line": 2.0,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.1,
+              "line": 0.0,
+              "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 1.3,
+              "line": 1.0,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.6,
+              "line": 0.5,
+              "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Jordin Canada",
+          "team": "WSH",
+          "role": "START",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 9.4,
+              "line": 8.5,
+              "edge": 0.9,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 2.9,
+              "line": 2.5,
+              "edge": 0.4,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 5.7,
+              "line": 5.0,
+              "edge": 0.7,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.7,
+              "line": 0.5,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 1.7,
+              "line": 1.5,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.2,
+              "line": 0.0,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Naz Hillmon",
+          "team": "WSH",
+          "role": "START",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 7.5,
+              "line": 6.5,
+              "edge": 1.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 4.0,
+              "line": 3.5,
+              "edge": 0.5,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 1.2,
+              "line": 1.0,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.8,
+              "line": 0.5,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.6,
+              "line": 0.5,
+              "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.1,
+              "line": 0.0,
+              "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        }
+      ]
+    },
+    "bench": {
+      "players": [
+        {
+          "player": "Madina Okot",
+          "team": "WSH",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 14.2,
+              "line": 12.5,
+              "edge": 1.7,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 9.4,
+              "line": 8.5,
+              "edge": 0.9,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 0.7,
+              "line": 0.5,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.1,
+              "line": 0.0,
+              "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.8,
+              "line": 0.5,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.8,
+              "line": 0.5,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Te-Hina Paopao",
+          "team": "WSH",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 8.2,
+              "line": 7.0,
+              "edge": 1.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 2.0,
+              "line": 2.0,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 3.1,
+              "line": 2.5,
+              "edge": 0.6,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 2.0,
+              "line": 2.0,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.4,
+              "line": 0.5,
+              "edge": -0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.3,
+              "line": 0.5,
+              "edge": -0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Isobel Borlase",
+          "team": "WSH",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 9.2,
+              "line": 8.0,
+              "edge": 1.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 2.8,
+              "line": 2.5,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 1.9,
+              "line": 1.5,
+              "edge": 0.4,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 1.0,
+              "line": 1.0,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.5,
+              "line": 0.5,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.2,
+              "line": 0.0,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Indya Nivar",
+          "team": "WSH",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 7.7,
+              "line": 7.0,
+              "edge": 0.7,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 7.3,
+              "line": 6.5,
+              "edge": 0.8,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 3.2,
+              "line": 3.0,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.9,
+              "line": 1.0,
+              "edge": -0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 2.3,
+              "line": 2.0,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.9,
+              "line": 1.0,
+              "edge": -0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Sika Kone",
+          "team": "WSH",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 9.5,
+              "line": 8.5,
+              "edge": 1.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 6.0,
+              "line": 5.5,
+              "edge": 0.5,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 1.7,
+              "line": 1.5,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.6,
+              "line": 0.5,
+              "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.3,
+              "line": 0.5,
+              "edge": -0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.0,
+              "line": 0.0,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Aaliyah Nye",
+          "team": "WSH",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 4.7,
+              "line": 4.0,
+              "edge": 0.7,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 0.0,
+              "line": 0.0,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 3.1,
+              "line": 2.5,
+              "edge": 0.6,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 1.6,
+              "line": 1.5,
+              "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 1.6,
+              "line": 1.5,
+              "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.0,
+              "line": 0.0,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Amy Okonkwo",
+          "team": "WSH",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 25.0,
+              "line": 22.0,
+              "edge": 3.0,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 25.0,
+              "line": 22.0,
+              "edge": 3.0,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "AST": {
+              "tc_projection": 0.0,
+              "line": 0.0,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.0,
+              "line": 0.0,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.0,
+              "line": 0.0,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.0,
+              "line": 0.0,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        }
+      ]
+    }
+  },
+  "roster_counts": {
+    "away": 0,
+    "home": 12
+  },
+  "valid_props": [
+    {
+      "player": "Amy Okonkwo",
+      "team": "WSH",
+      "stat": "PTS",
+      "direction": "OVER",
+      "market_line": 22.0,
+      "tc_projection": 25.0,
+      "tc_target": 22.0,
+      "edge": 3.0,
+      "threshold": 2.0,
+      "raw_average": 25.0,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "BENCH"
+    },
+    {
+      "player": "Amy Okonkwo",
+      "team": "WSH",
+      "stat": "REB",
+      "direction": "OVER",
+      "market_line": 22.0,
+      "tc_projection": 25.0,
+      "tc_target": 22.0,
+      "edge": 3.0,
+      "threshold": 2.0,
+      "raw_average": 25.0,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "BENCH"
+    }
+  ]
+}

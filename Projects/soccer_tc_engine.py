@@ -44,6 +44,7 @@ LOG_DIR = WORKSPACE / "Daily_Log"
 LOG_DIR.mkdir(exist_ok=True)
 
 SECRETS_FILE = "/root/.zo/secrets.env"
+ODDS_BASE = "https://api.theoddsapi.com"
 
 def load_secrets():
     """Load API keys from secrets file."""
@@ -127,16 +128,30 @@ EDGE_STRONG = 1.0      # strong signal (wider edge)
 # ═══════════════════════════════════════════════════════════════════════════════
 
 def fetch_world_cup_events() -> List[dict]:
-    """Fetch all active World Cup events from Odds API."""
+    """Fetch all active World Cup events from Odds API.
+
+    Odds API spec: GET /events/?sport_key={key}
+    The /sports/{key}/events path no longer exists on the current v4 spec.
+    """
     all_events = []
     for sport_key in SOCCER_SPORTS:
         try:
+            params = {"sport_key": sport_key}
+            api_key = os.environ.get("ODDS_API_KEY", "")
+            if api_key:
+                params["apiKey"] = api_key
             r = requests.get(
-                f"{ODDS_BASE}/sports/{sport_key}/events",
+                f"{ODDS_BASE}/events/",
+                params=params,
                 timeout=15,
             )
             r.raise_for_status()
-            events = r.json()
+            payload = r.json()
+            # Odds API wraps events in {"data": [...]} on v4 spec
+            if isinstance(payload, dict) and "data" in payload:
+                events = payload.get("data") or []
+            else:
+                events = payload or []
             for ev in events:
                 ev["_sport_key"] = sport_key
             all_events.extend(events)
@@ -390,6 +405,49 @@ def tc_soccer_stat(
 # GAME-LEVEL PROJECTIONS (H2H, TOTALS, BTTS)
 # ═══════════════════════════════════════════════════════════════════════════════
 
+def project_team_match_stats(home_strength: float, away_strength: float) -> dict:
+    """Project team-level match stats (corners + shots on target) for each team.
+
+    Used for game-line picks (e.g. Belgium team total corners OVER 4.5).
+
+    League baselines (World Cup 2026):
+      - Corners:    home ~5.5 / game, away ~4.5 / game
+      - SOT:        home ~5.5 / game, away ~4.0 / game
+    Scaled by team strength ratio and home/away factor.
+    """
+    # League baselines
+    home_corner_base = 5.5
+    away_corner_base = 4.5
+    home_sot_base = 5.5
+    away_sot_base = 4.0
+
+    # Home advantage: +8% corners and SOT
+    home_factor = 1.08
+    away_factor = 0.92
+
+    # Strength ratio scales possession/attacking output
+    # Home scale = home_strength / league_avg
+    league_avg = 1.0
+    home_scale = home_strength / league_avg
+    away_scale = away_strength / league_avg
+
+    home_corners = round(home_corner_base * home_factor * home_scale, 2)
+    away_corners = round(away_corner_base * away_factor * away_scale, 2)
+    home_sot = round(home_sot_base * home_factor * home_scale, 2)
+    away_sot = round(away_sot_base * away_factor * away_scale, 2)
+
+    total_corners = round(home_corners + away_corners, 2)
+    total_sot = round(home_sot + away_sot, 2)
+
+    return {
+        "home_corners_proj": home_corners,
+        "away_corners_proj": away_corners,
+        "total_corners_proj": total_corners,
+        "home_sot_proj": home_sot,
+        "away_sot_proj": away_sot,
+        "total_sot_proj": total_sot,
+    }
+
 def project_game_total(home_strength: float, away_strength: float) -> dict:
     """Project total goals using Poisson model based on team strengths.
 
@@ -598,23 +656,23 @@ def run_soccer_pipeline(target_matchup: Optional[str] = None) -> dict:
 
         matchup = f"{away}@{home}"
 
-        # Filter by target matchup if specified
+        # Filter by target matchup if specified (tolerant of abbreviations)
         if target_matchup:
-            target = target_matchup.upper().replace("@", " ").replace(" VS ", " ").split()
-            matchup_teams = [away.upper(), home.upper()]
-            if not all(t in matchup_teams for t in target if len(t) >= 3):
-                continue
+            tokens = [t.upper() for t in target_matchup.upper().replace("@", " ").replace(" VS ", " ").split() if len(t) >= 3]
+            if tokens:
+                matchup_teams = [away.upper(), home.upper()]
+                if not all(any(tok in team or team in tok for team in matchup_teams) for tok in tokens):
+                    continue
 
         print(f"\n  ⚽ {matchup}")
 
         # Fetch odds
-        eid = ev.get("id", "")
+        eid = ev.get("event_id") or ev.get("id", "")
         sport_key = ev.get("_sport_key", "soccer_fifa_world_cup")
         odds = fetch_soccer_odds(eid, sport_key)
-        if odds.get("error"):
-            print(f"    ⚠️ Odds error: {odds['error']}")
-            continue
-
+        odds_available = not odds.get("error")
+        if not odds_available:
+            print(f"    ⚠️ Odds error: {odds.get('error', 'unknown')} (continuing with self-edge only)")
         # Team strengths
         home_str = get_team_strength(home)
         away_str = get_team_strength(away)
@@ -623,6 +681,7 @@ def run_soccer_pipeline(target_matchup: Optional[str] = None) -> dict:
         total_proj = project_game_total(home_str, away_str)
         btts_proj = project_btts(home_str, away_str)
         h2h_proj = project_h2h(home_str, away_str)
+        team_stats_proj = project_team_match_stats(home_str, away_str)
 
         # Extract available DK/BetMGM lines
         dk_lines = odds.get("draftkings", {})
@@ -669,6 +728,8 @@ def run_soccer_pipeline(target_matchup: Optional[str] = None) -> dict:
         print(f"    H2H: {h2h_proj['home_win_prob']:.0%} {home} win | {h2h_proj['draw_prob']:.0%} draw")
         print(f"    Total: {total_proj['total_expected_goals']:.2f} goals expected → {total_proj['signal']} 2.5")
         print(f"    BTTS: {btts_proj['btts_probability']:.0%} → {btts_proj['signal']}")
+        print(f"    Corners: {home} {team_stats_proj['home_corners_proj']} | {away} {team_stats_proj['away_corners_proj']} (total {team_stats_proj['total_corners_proj']})")
+        print(f"    SOT: {home} {team_stats_proj['home_sot_proj']} | {away} {team_stats_proj['away_sot_proj']} (total {team_stats_proj['total_sot_proj']})")
         print(f"    DK: h2h={len(dk_h2h)}mkts, btts={len(dk_btts)}mkts | BetMGM: totals={len(bm_totals)}mkts")
 
         # Player projections (both teams)
@@ -703,7 +764,7 @@ def run_soccer_pipeline(target_matchup: Optional[str] = None) -> dict:
             "starter_projections": starters,
         })
 
-    # Write outputs
+    # Write outputs (OUTSIDE the per-event loop — was being overwritten once per event)
     if all_game_picks:
         # Game picks JSON
         (today_dir / "soccer_game_picks.json").write_text(json.dumps(all_game_picks, indent=2))
@@ -902,3 +963,54 @@ if __name__ == "__main__":
     if args.report:
         report = generate_report()
         print(report)
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# Public helpers (used by daily_picks.py + other modules)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+def project_matchup(away: str, home: str) -> dict:
+    """Project a single World Cup matchup — returns a dict with valid_props / picks.
+
+    Returns a dict shaped for the daily_picks.py consumer. On any failure, returns
+    a dict containing the "error" key so the caller can log and skip.
+    """
+    try:
+        result = run_soccer_pipeline(target_matchup=f"{away}@{home}")
+        games = result.get("summaries") or []
+        if not games:
+            return {"error": f"No data for WORLD CUP {away}@{home}"}
+        g = games[0]
+        return {
+            "matchup": g.get("matchup", f"{away}@{home}"),
+            "away_team": g.get("away", away),
+            "home_team": g.get("home", home),
+            "h2h_signal": g.get("h2h_signal"),
+            "totals_signal": g.get("totals_signal"),
+            "btts_signal": g.get("btts_signal"),
+            "team_stats": g.get("team_stats"),
+            "starter_projections": g.get("starter_projections", 0),
+        }
+    except Exception as e:
+        return {"error": f"project_matchup({away}@{home}): {e}"}
+
+
+def get_worldcup_slate() -> dict:
+    """Return the current World Cup slate (games list) — minimal shape for daily_picks."""
+    try:
+        events = fetch_world_cup_events()
+    except Exception as e:
+        return {"games": [], "error": str(e)}
+    games = []
+    for ev in events:
+        away = ev.get("away_team", "")
+        home = ev.get("home_team", "")
+        if not away or not home:
+            continue
+        games.append({
+            "away": {"team": away},
+            "home": {"team": home},
+            "event_id": ev.get("event_id") or ev.get("id", ""),
+            "commence_time": ev.get("start_time") or ev.get("commence_time", ""),
+        })
+    return {"games": games, "events_total": len(events)}
