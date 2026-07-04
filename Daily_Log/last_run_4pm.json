@@ -1,0 +1,19 @@
+{
+  "timestamp": "2026-07-03T16:04:59.824773-04:00",
+  "pipeline": "4PM World Cup Lineup Lock",
+  "phases": {
+    "phase_0_health": "OK \u2014 5 secrets, dashboard up, last run 3.5h ago",
+    "phase_1_world_cup": "9 games refreshed, TC self-edge (Odds API 401 quota maxed)",
+    "phase_2_evening": "WNBA: MIN@NY + CHI@LV no scratches. MLB: 13 games, ESPN blocked.",
+    "phase_3_cache": "12 files cached, manifest written (WC 2h TTL, MLB/WNBA 3h TTL)",
+    "phase_4_report": "Emailed to both addresses"
+  },
+  "world_cup_games": 9,
+  "world_cup_picks": 0,
+  "api_calls": 1,
+  "errors": [
+    "Odds API 401 on 9 WC events (quota maxed)",
+    "ESPN MLB scoreboard blocked (JS)",
+    "soccer CSV overwrite bug (only Belgium@USA retained)"
+  ]
+}

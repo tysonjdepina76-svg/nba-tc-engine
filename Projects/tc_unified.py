@@ -237,6 +237,40 @@ SPORT_COLUMNS = {
 }
 
 
+def render_wnba_projections(proj: dict) -> pd.DataFrame:
+    """Flatten all players into a one-row-per-player table with PTS/REB/AST/STL/BLK/3PM + max edge.
+    No edge filter applied — all roster players shown. Edge column gets a green dot
+    when the player's best edge across stats is >= 2.0.
+    """
+    rows = []
+    for side in ("away", "home"):
+        for player in (proj.get(side, {}).get("all", {}).get("players") or []):
+            if (player.get("status") or "ACTIVE").upper() == "OUT":
+                continue
+            proj_map = player.get("projections") or {}
+            stat_row = {
+                "Player": player.get("player", "?"),
+                "Team": player.get("team", ""),
+                "Role": player.get("role", ""),
+                "PTS": "-", "REB": "-", "AST": "-", "STL": "-", "BLK": "-", "3PM": "-",
+            }
+            max_edge = 0.0
+            for stat_key, sd in proj_map.items():
+                tc = sd.get("tc_projection", 0)
+                edge = sd.get("edge", 0)
+                stat_row[stat_key] = round(tc, 1)
+                if abs(edge) > abs(max_edge):
+                    max_edge = edge
+            stat_row["Max Edge"] = f"🟢 {round(max_edge, 1)}" if abs(max_edge) >= 2.0 else round(max_edge, 1)
+            rows.append(stat_row)
+    if not rows:
+        return pd.DataFrame()
+    return pd.DataFrame(rows)
+
+
+
+
+
 def get_sport_columns(sport: str) -> list:
     return SPORT_COLUMNS.get(sport, ["Player", "Team", "Stats", "Edge", "Conf"])
 
@@ -484,35 +518,64 @@ def get_sport_data(sport: str, date: str) -> dict:
         if not proj:
             st.caption(f"No proj JSON for {sport} {matchup} in {DATA_DIR.name}")
         else:
+            # Build player grid. Default to per-player view (one row per
+            # player) since valid_props is usually sparse — the per-stat view
+            # is for when you want to see all stats for a single player.
             vp = proj.get("valid_props", []) or []
             if not vp:
-                st.caption("No valid_props in this proj JSON.")
+                vp = proj.get("all", {}).get("players", []) or []
+            if not vp:
+                st.caption("No player projections in this proj JSON.")
             else:
-                df = pd.DataFrame(vp)
-                if "edge" in df.columns:
-                    df = df[df["edge"].abs() >= st.session_state.min_edge]
-                if dir_choice != "ALL" and "direction" in df.columns:
-                    df = df[df["direction"].str.upper() == dir_choice]
-                if team_filter and "team" in df.columns:
-                    df = df[df["team"].str.upper() == team_filter]
-                if stat_filter and "stat" in df.columns:
-                    df = df[df["stat"].str.upper().str.contains(stat_filter, na=False)]
-                if "books" in df.columns and books:
-                    df = df[df["books"].apply(lambda bs: any(b in (bs or []) for b in books))]
-                elif "book" in df.columns and books:
-                    df = df[df["book"].str.upper().isin([b.upper() for b in books])]
-                if df.empty:
-                    st.caption("No props match filters — try lowering min_edge or clearing team/stat/books")
+                if sport == "WNBA":
+                    df = render_wnba_projections(proj)
+                    st.dataframe(df, use_container_width=True, hide_index=True)
+                    edges = []
+                    for side in ("away", "home"):
+                        for player in (proj.get(side, {}).get("all", {}).get("players") or []):
+                            if (player.get("status") or "ACTIVE").upper() == "OUT":
+                                continue
+                            best = 0.0
+                            for sk, sd in (player.get("projections") or {}).items():
+                                e = sd.get("edge", 0)
+                                if abs(e) > abs(best):
+                                    best = e
+                            edges.append(best)
+                    if edges:
+                        n = len(edges)
+                        mean_edge = sum(edges) / n
+                        max_edge = max(edges)
+                        min_edge = min(edges)
+                        count_ge_2 = sum(1 for e in edges if abs(e) >= 2.0)
+                        st.caption(f"Edge stats: n={n}, mean={mean_edge:+.2f}, max={max_edge:+.2f}, min={min_edge:+.2f}, >=2.0={count_ge_2}")
+                    else:
+                        st.caption("Edge stats: no players")
                 else:
-                    st.dataframe(
-                        df, use_container_width=True, hide_index=True,
-                        column_config={
-                            "edge": st.column_config.NumberColumn(format="%+.2f"),
-                            "tc_projection": st.column_config.NumberColumn(format="%.2f"),
-                            "market_line": st.column_config.NumberColumn(format="%.2f"),
-                        } if "edge" in df.columns else None,
-                    )
-                    st.caption(f"{len(df)} props after filters")
+                    df = pd.DataFrame(vp)
+                    if "edge" in df.columns:
+                        df = df[df["edge"].abs() >= st.session_state.min_edge]
+                    if dir_choice != "ALL" and "direction" in df.columns:
+                        df = df[df["direction"].str.upper() == dir_choice]
+                    if team_filter and "team" in df.columns:
+                        df = df[df["team"].str.upper() == team_filter]
+                    if stat_filter and "stat" in df.columns:
+                        df = df[df["stat"].str.upper().str.contains(stat_filter, na=False)]
+                    if "books" in df.columns and books:
+                        df = df[df["books"].apply(lambda bs: any(b in (bs or []) for b in books))]
+                    elif "book" in df.columns and books:
+                        df = df[df["book"].str.upper().isin([b.upper() for b in books])]
+                    if df.empty:
+                        st.caption("No props match filters — try lowering min_edge or clearing team/stat/books")
+                    else:
+                        st.dataframe(
+                            df, use_container_width=True, hide_index=True,
+                            column_config={
+                                "edge": st.column_config.NumberColumn(format="%+.2f"),
+                                "tc_projection": st.column_config.NumberColumn(format="%.2f"),
+                                "market_line": st.column_config.NumberColumn(format="%.2f"),
+                            } if "edge" in df.columns else None,
+                        )
+                        st.caption(f"{len(df)} props after filters")
 
 
     # ── COMPONENT 6: Parlay Builder (merged with combos) ─────

@@ -1,37 +1,40 @@
 {
-  "updated": "2026-07-01T17:34:00Z",
+  "updated_at": "2026-07-03T20:04:20.408372+00:00",
   "entries": {
-    "slate_WNBA.json": {
-      "ttl_hours": 6,
-      "path": "Daily_Log/2026-07-01/slate_WNBA.json"
+    "world_cup": {
+      "ttl_hours": 2,
+      "expires": "2026-07-03T22:04:20.408381+00:00",
+      "files": [
+        "proj_WORLD CUP_Egypt_at_Australia.json",
+        "proj_WORLD CUP_Cape Verde_at_Argentina.json",
+        "proj_WORLD CUP_Ghana_at_Colombia.json",
+        "proj_WORLD CUP_Morocco_at_Canada.json",
+        "proj_WORLD CUP_France_at_Paraguay.json",
+        "proj_WORLD CUP_Norway_at_Brazil.json",
+        "proj_WORLD CUP_England_at_Mexico.json",
+        "proj_WORLD CUP_Spain_at_Portugal.json",
+        "proj_WORLD CUP_Belgium_at_USA.json",
+        "soccer_game_picks.csv",
+        "soccer_player_picks.csv",
+        "soccer_player_projs.json"
+      ],
+      "source": "daily_picks.py WORLD CUP refresh at 4PM ET"
     },
-    "slate_MLB.json": {
-      "ttl_hours": 6,
-      "path": "Daily_Log/2026-07-01/slate_MLB.json"
-    },
-    "slate_WORLD CUP.json": {
-      "ttl_hours": 6,
-      "path": "Daily_Log/2026-07-01/slate_WORLD CUP.json"
-    },
-    "picks.csv": {
+    "mlb_evening": {
       "ttl_hours": 3,
-      "path": "Daily_Log/2026-07-01/picks.csv"
+      "expires": "2026-07-03T23:04:20.408390+00:00",
+      "source": "Cached from 1:30 PM ET run",
+      "note": "ESPN scoreboard blocked (JS). Using slate data."
     },
-    "picks.json": {
+    "wnba_evening": {
       "ttl_hours": 3,
-      "path": "Daily_Log/2026-07-01/picks.json"
-    },
-    "proj_WNBA_*": {
-      "ttl_hours": 6,
-      "path": "Daily_Log/2026-07-01/proj_WNBA_*.json"
-    },
-    "proj_MLB_*": {
-      "ttl_hours": 6,
-      "path": "Daily_Log/2026-07-01/proj_MLB_*.json"
-    },
-    "injuries_wnba": {
-      "ttl_hours": 6,
-      "path": "Daily_Log/cache/injuries/wnba_2026-07-01.json"
+      "expires": "2026-07-03T23:04:20.408393+00:00",
+      "games": [
+        "MIN@NY",
+        "CHI@LV"
+      ],
+      "source": "1:30 PM slate \u2014 no late scratches detected",
+      "note": "Wnba_injuries.json empty"
     }
   }
 }

@@ -126,14 +126,17 @@ def stat_format(value, label: str) -> str:
 
 @dataclass
 class SportConfig:
-    key: str
-    name: str
-    source: DataSource
+    key: str = ""
+    name: str = ""
+    source: DataSource = None
     module: Optional[str] = None
     fn: Optional[str] = None
     fetcher: Optional[Callable] = None
+    line_fetcher: Optional[Callable] = None
     enabled: bool = True
     error_msg: Optional[str] = None
+    display_name: str = ""
+    schema: Optional[Dict] = None
 
 
 class SportsRegistry:
@@ -154,20 +157,48 @@ class SportsRegistry:
         # === ACTIVE SPORTS (wired 2026-07-01) ===
         # MLB = BOOK_LINES — TC engine module=None (page consumes /api/dk-lines directly)
         # WNBA = TC_ENGINE — full player projections
+        # Lazy import — sources/ lives inside Projects/
+        from sources.mlb_book_fetcher import fetch_mlb_book_lines
+        from sources.wnba_lines_fetcher import fetch_wnba_lines
+        from sources.line_fetcher import fetch_lines
+
         self._registry['mlb'] = SportConfig(
-            key='mlb', name='MLB',
+            key='mlb', name='MLB', display_name='MLB Baseball',
             source=DataSource.BOOK_LINES,
             module=None, fn=None,
+            fetcher=fetch_mlb_book_lines,
+            line_fetcher=fetch_lines,
+            schema={
+                'stat_labels': ['AVG', 'HR', 'RBI', 'R', 'SB', 'OPS', 'ERA', 'WHIP', 'SO'],
+                'stat_type': 'per_game',
+                'default_sort': 'AVG',
+                'color': '#003278',
+                'display_name': 'MLB',
+                'category': 'baseball',
+                'formatting': {
+                    'AVG': '%.3f', 'ERA': '%.2f', 'WHIP': '%.2f', 'OPS': '%.3f',
+                    'HR': '%d', 'RBI': '%d', 'R': '%d', 'SB': '%d', 'SO': '%d',
+                },
+            },
         )
         self._registry['wnba'] = SportConfig(
             key='wnba', name='WNBA',
             source=DataSource.TC_ENGINE,
             module='wnba_tc_engine', fn='project_game',
+            fetcher=None,  # TC engine handles projections
+            line_fetcher=fetch_wnba_lines,  # ESPN ML/spread/total
         )
+        from sources.soccer_lines_fetcher import fetch_soccer_lines
         self._registry['soccer'] = SportConfig(
             key='soccer', name='Soccer / World Cup',
             source=DataSource.BOOK_LINES,
             module='soccer_tc_engine', fn='project_matchup',
+            line_fetcher=fetch_soccer_lines,  # Odds API → quota_exhausted fallback
+            schema={
+                'stat_labels': ['Goals', 'Shots', 'Corners', 'Pass%', 'Tackles', 'Fouls', 'Yellow', 'Red'],
+                'stat_keys':   ['goals', 'shots', 'corners', 'pass_pct', 'tackles', 'fouls', 'yellow_cards', 'red_cards'],
+                'color': '#7B1FA2',
+            },
         )
 
         # === OFF-SEASON (engines purged 2026-06-27) ===
@@ -182,6 +213,11 @@ class SportsRegistry:
     def get(self, sport: str) -> SportConfig:
         if sport in self._registry:
             return self._registry[sport]
+        # Aliases
+        if sport.upper() == "WC":
+            return self._registry.get("soccer", self.get("soccer"))
+        if sport.upper() == "WORLD CUP":
+            return self._registry.get("soccer", self.get("soccer"))
         # Fuzzy match
         sl = sport.lower()
         for k, cfg in self._registry.items():

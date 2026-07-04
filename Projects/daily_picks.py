@@ -162,8 +162,59 @@ def filter_future_games(games, sport):
         out.append(g)
     return out
 
+def _fetch_lines_via_registry(sport):
+    """Look up the line_fetcher in sports_registry for this sport and call it.
+    Returns a dict with at minimum {"games": [...], "source": "..."} or {} on failure.
+    Never raises — returns {} if the sport has no line_fetcher or it errors.
+    """
+    try:
+        from sports_registry import REGISTRY
+        cfg = REGISTRY.get(sport)
+        if not cfg or not cfg.line_fetcher:
+            return {}
+        result = cfg.line_fetcher() or {}
+        return result if isinstance(result, dict) else {}
+    except Exception as e:
+        print(f"  [line_fetcher] {sport} fetch failed: {e}")
+        return {}
+
+
+def _merge_lines_into_games(slate_entries, lines_games):
+    """Merge spread/moneyline/total from lines_games into slate_entries by matchup key.
+    Matchup key is f"{away}@{home}" (normalized to handle dict vs string away/home).
+    Mutates slate_entries in place. Missing fields stay as None.
+    """
+    lines_by_matchup = {}
+    for g in lines_games:
+        if not g.get("away") or not g.get("home"):
+            continue
+        away_raw = g.get("away", {})
+        home_raw = g.get("home", {})
+        away = away_raw.get("team", "") if isinstance(away_raw, dict) else (away_raw if isinstance(away_raw, str) else "")
+        home = home_raw.get("team", "") if isinstance(home_raw, dict) else (home_raw if isinstance(home_raw, str) else "")
+        matchup = f"{away}@{home}"
+        lines_by_matchup[matchup] = g
+    for g in slate_entries:
+        if not g.get("away") or not g.get("home"):
+            continue
+        away_raw = g.get("away", {})
+        home_raw = g.get("home", {})
+        away = away_raw.get("team", "") if isinstance(away_raw, dict) else (away_raw if isinstance(away_raw, str) else "")
+        home = home_raw.get("team", "") if isinstance(home_raw, dict) else (home_raw if isinstance(home_raw, str) else "")
+        matchup = f"{away}@{home}"
+        src = lines_by_matchup.get(matchup)
+        if not src:
+            continue
+        g["spread"] = src.get("spread")
+        g["moneyline"] = src.get("moneyline")
+        g["total"] = src.get("total")
+        g["lines_source"] = src.get("source")
+
+
 def fetch_game_projection(sport, away, home):
-    """Fetch full TC projection for a single game."""
+    """Look up the configured engine/fetcher for this sport and return a projection.
+    Returns dict with keys:
+    """
     try:
         r = requests.get(
             f"{API_BASE}/api/tc",
@@ -342,6 +393,15 @@ def run_daily_log(sports=ALL_SPORTS):
 
             games = [g for g in raw_games if not g.get("completed") and "final" not in (g.get("status","") or "").lower()]
             skipped_completed += len(raw_games) - len(games)
+
+            # Conditional merge of market lines from the line_fetcher.
+            # Only merge if we actually got non-empty data; otherwise log and continue.
+            _lines = _fetch_lines_via_registry(sport)
+            if _lines.get("games"):
+                _merge_lines_into_games(raw_games, _lines["games"])
+                print(f"  Merged lines for {len(_lines['games'])} game(s) from {_lines.get('source','?')}")
+            elif _lines:
+                print(f"  {sport} lines unavailable (source={_lines.get('source','none')}) — proceeding without market data")
 
             (today_dir / f"slate_{sport}.json").write_text(json.dumps({"games": raw_games}, indent=2))
             print(f"  Slate has {len(raw_games)} game(s); {len(games)} upcoming after filtering completed")
@@ -530,6 +590,15 @@ def run_daily_log(sports=ALL_SPORTS):
 
             games = filter_future_games(raw_games, sport)
             skipped_completed += len(raw_games) - len(games)
+
+            # Conditional merge of market lines from the line_fetcher.
+            # Only merge if we actually got non-empty data; otherwise log and continue.
+            _lines = _fetch_lines_via_registry(sport)
+            if _lines.get("games"):
+                _merge_lines_into_games(raw_games, _lines["games"])
+                print(f"  Merged lines for {len(_lines['games'])} game(s) from {_lines.get('source','?')}")
+            elif _lines:
+                print(f"  {sport} lines unavailable (source={_lines.get('source','none')}) — proceeding without market data")
 
             # Save raw slate (full, including completed games, for backtest)
             (today_dir / f"slate_{sport}.json").write_text(json.dumps(slate, indent=2))

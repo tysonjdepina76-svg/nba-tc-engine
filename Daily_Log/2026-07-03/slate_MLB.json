@@ -3,25 +3,381 @@
   "sport": "MLB",
   "games": [
     {
-      "id": "401815994",
-      "name": "Pittsburgh Pirates at Philadelphia Phillies",
-      "date": "2026-07-02T16:35Z",
+      "id": "401816007",
+      "name": "St. Louis Cardinals at Chicago Cubs",
+      "date": "2026-07-03T20:05Z",
       "status": "Final",
       "completed": true,
       "clock": "0:00",
       "period": 9,
-      "detail": "PIT @ PHI",
+      "detail": "STL @ CHC",
       "away": {
-        "team": "PIT",
-        "score": "6"
+        "team": "STL",
+        "score": "17"
       },
       "home": {
-        "team": "PHI",
+        "team": "CHC",
         "score": "1"
       },
       "players": [
         {
-          "name": "Jake Mangum",
+          "name": "JJ Wetherholt",
+          "team": "STL",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Ivan Herrera",
+          "team": "STL",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Jimmy Crooks",
+          "team": "STL",
+          "role": "BENCH",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Jordan Walker",
+          "team": "STL",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Nelson Velazquez",
+          "team": "STL",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Alec Burleson",
+          "team": "STL",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Pedro Pages",
+          "team": "STL",
+          "role": "BENCH",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Masyn Winn",
+          "team": "STL",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Bryan Torres",
+          "team": "STL",
+          "role": "BENCH",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Jose Fermin",
+          "team": "STL",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Blaze Jordan",
+          "team": "STL",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Nathan Church",
+          "team": "STL",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Pete Crow-Armstrong",
+          "team": "CHC",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Justin Dean",
+          "team": "CHC",
+          "role": "BENCH",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Alex Bregman",
+          "team": "CHC",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Michael Busch",
+          "team": "CHC",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Seiya Suzuki",
+          "team": "CHC",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Ian Happ",
+          "team": "CHC",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Kevin Alcantara",
+          "team": "CHC",
+          "role": "BENCH",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Nico Hoerner",
+          "team": "CHC",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Michael Conforto",
+          "team": "CHC",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Carson Kelly",
+          "team": "CHC",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Dansby Swanson",
+          "team": "CHC",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Pedro Ramirez",
+          "team": "CHC",
+          "role": "BENCH",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "401816006",
+      "name": "Pittsburgh Pirates at Washington Nationals",
+      "date": "2026-07-03T22:45Z",
+      "status": "In Progress",
+      "completed": false,
+      "clock": "0:00",
+      "period": 8,
+      "detail": "PIT @ WSH",
+      "away": {
+        "team": "PIT",
+        "score": "1"
+      },
+      "home": {
+        "team": "WSH",
+        "score": "9"
+      },
+      "players": [
+        {
+          "name": "Konnor Griffin",
           "team": "PIT",
           "role": "START",
           "minutes": 0,
@@ -77,20 +433,6 @@
           }
         },
         {
-          "name": "Billy Cook",
-          "team": "PIT",
-          "role": "BENCH",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
           "name": "Ryan O'Hearn",
           "team": "PIT",
           "role": "START",
@@ -119,7 +461,7 @@
           }
         },
         {
-          "name": "Marcell Ozuna",
+          "name": "Jake Mangum",
           "team": "PIT",
           "role": "START",
           "minutes": 0,
@@ -161,8 +503,8 @@
           }
         },
         {
-          "name": "Trea Turner",
-          "team": "PHI",
+          "name": "James Wood",
+          "team": "WSH",
           "role": "START",
           "minutes": 0,
           "actual": {
@@ -175,8 +517,8 @@
           }
         },
         {
-          "name": "Kyle Schwarber",
-          "team": "PHI",
+          "name": "Luis Garcia Jr.",
+          "team": "WSH",
           "role": "START",
           "minutes": 0,
           "actual": {
@@ -189,8 +531,8 @@
           }
         },
         {
-          "name": "Bryce Harper",
-          "team": "PHI",
+          "name": "Jose Tena",
+          "team": "WSH",
           "role": "START",
           "minutes": 0,
           "actual": {
@@ -203,8 +545,8 @@
           }
         },
         {
-          "name": "Brandon Marsh",
-          "team": "PHI",
+          "name": "CJ Abrams",
+          "team": "WSH",
           "role": "START",
           "minutes": 0,
           "actual": {
@@ -217,8 +559,8 @@
           }
         },
         {
-          "name": "Alec Bohm",
-          "team": "PHI",
+          "name": "Dylan Crews",
+          "team": "WSH",
           "role": "START",
           "minutes": 0,
           "actual": {
@@ -231,8 +573,8 @@
           }
         },
         {
-          "name": "Bryson Stott",
-          "team": "PHI",
+          "name": "Daylen Lile",
+          "team": "WSH",
           "role": "START",
           "minutes": 0,
           "actual": {
@@ -245,8 +587,8 @@
           }
         },
         {
-          "name": "Gabriel Rincones Jr.",
-          "team": "PHI",
+          "name": "Keibert Ruiz",
+          "team": "WSH",
           "role": "START",
           "minutes": 0,
           "actual": {
@@ -259,8 +601,8 @@
           }
         },
         {
-          "name": "Justin Crawford",
-          "team": "PHI",
+          "name": "Jorbit Vivas",
+          "team": "WSH",
           "role": "START",
           "minutes": 0,
           "actual": {
@@ -273,8 +615,8 @@
           }
         },
         {
-          "name": "Rafael Marchan",
-          "team": "PHI",
+          "name": "Nasim Nunez",
+          "team": "WSH",
           "role": "START",
           "minutes": 0,
           "actual": {
@@ -289,23 +631,421 @@
       ]
     },
     {
-      "id": "401815996",
-      "name": "Cincinnati Reds at Milwaukee Brewers",
-      "date": "2026-07-02T18:10Z",
-      "status": "Final",
-      "completed": true,
+      "id": "401816004",
+      "name": "Minnesota Twins at New York Yankees",
+      "date": "2026-07-03T23:05Z",
+      "status": "In Progress",
+      "completed": false,
       "clock": "0:00",
-      "period": 9,
-      "detail": "CIN @ MIL",
+      "period": 4,
+      "detail": "MIN @ NYY",
       "away": {
-        "team": "CIN",
-        "score": "7"
-      },
-      "home": {
-        "team": "MIL",
+        "team": "MIN",
         "score": "2"
       },
+      "home": {
+        "team": "NYY",
+        "score": "3"
+      },
       "players": [
+        {
+          "name": "Trevor Larnach",
+          "team": "MIN",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Brooks Lee",
+          "team": "MIN",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Kody Clemens",
+          "team": "MIN",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Josh Bell",
+          "team": "MIN",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Royce Lewis",
+          "team": "MIN",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Victor Caratini",
+          "team": "MIN",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Ryan Kreidler",
+          "team": "MIN",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Tristan Gray",
+          "team": "MIN",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Luke Keaschall",
+          "team": "MIN",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Trent Grisham",
+          "team": "NYY",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Ben Rice",
+          "team": "NYY",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Jasson Dominguez",
+          "team": "NYY",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Cody Bellinger",
+          "team": "NYY",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Paul Goldschmidt",
+          "team": "NYY",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Jazz Chisholm Jr.",
+          "team": "NYY",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Ryan McMahon",
+          "team": "NYY",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Jose Caballero",
+          "team": "NYY",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Austin Wells",
+          "team": "NYY",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "401816002",
+      "name": "Baltimore Orioles at Cincinnati Reds",
+      "date": "2026-07-03T23:10Z",
+      "status": "In Progress",
+      "completed": false,
+      "clock": "0:00",
+      "period": 8,
+      "detail": "BAL @ CIN",
+      "away": {
+        "team": "BAL",
+        "score": "3"
+      },
+      "home": {
+        "team": "CIN",
+        "score": "0"
+      },
+      "players": [
+        {
+          "name": "Gunnar Henderson",
+          "team": "BAL",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Adley Rutschman",
+          "team": "BAL",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Taylor Ward",
+          "team": "BAL",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Pete Alonso",
+          "team": "BAL",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Samuel Basallo",
+          "team": "BAL",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Dylan Beavers",
+          "team": "BAL",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Colton Cowser",
+          "team": "BAL",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Blaze Alexander",
+          "team": "BAL",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Jackson Holliday",
+          "team": "BAL",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
         {
           "name": "Elly De La Cruz",
           "team": "CIN",
@@ -335,7 +1075,7 @@
           }
         },
         {
-          "name": "JJ Bleday",
+          "name": "Spencer Steer",
           "team": "CIN",
           "role": "START",
           "minutes": 0,
@@ -363,37 +1103,65 @@
           }
         },
         {
-          "name": "Nathaniel Lowe",
-          "team": "CIN",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Spencer Steer",
-          "team": "CIN",
-          "role": "BENCH",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
           "name": "Noelvi Marte",
           "team": "CIN",
           "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "JJ Bleday",
+          "team": "CIN",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Tyler Stephenson",
+          "team": "CIN",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Matt McLain",
+          "team": "CIN",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "TJ Friedl",
+          "team": "CIN",
+          "role": "BENCH",
           "minutes": 0,
           "actual": {
             "pts": 0,
@@ -417,868 +1185,49 @@
             "stl": 0,
             "blk": 0
           }
-        },
-        {
-          "name": "Matt McLain",
-          "team": "CIN",
-          "role": "BENCH",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Jose Trevino",
-          "team": "CIN",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "TJ Friedl",
-          "team": "CIN",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Christian Yelich",
-          "team": "MIL",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Jackson Chourio",
-          "team": "MIL",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Brice Turang",
-          "team": "MIL",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "William Contreras",
-          "team": "MIL",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Jake Bauers",
-          "team": "MIL",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Garrett Mitchell",
-          "team": "MIL",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Sal Frelick",
-          "team": "MIL",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Cooper Pratt",
-          "team": "MIL",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "David Hamilton",
-          "team": "MIL",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Joey Ortiz",
-          "team": "MIL",
-          "role": "BENCH",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
         }
       ]
     },
     {
-      "id": "401815999",
-      "name": "Miami Marlins at Colorado Rockies",
-      "date": "2026-07-02T19:10Z",
-      "status": "Final",
-      "completed": true,
-      "clock": "0:00",
-      "period": 9,
-      "detail": "MIA @ COL",
-      "away": {
-        "team": "MIA",
-        "score": "4"
-      },
-      "home": {
-        "team": "COL",
-        "score": "14"
-      },
-      "players": [
-        {
-          "name": "Liam Hicks",
-          "team": "MIA",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Leo Jimenez",
-          "team": "MIA",
-          "role": "BENCH",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Otto Lopez",
-          "team": "MIA",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Kyle Stowers",
-          "team": "MIA",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Xavier Edwards",
-          "team": "MIA",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Griffin Conine",
-          "team": "MIA",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Owen Caissie",
-          "team": "MIA",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Heriberto Hernandez",
-          "team": "MIA",
-          "role": "BENCH",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Jakob Marsee",
-          "team": "MIA",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Javier Sanoja",
-          "team": "MIA",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Joe Mack",
-          "team": "MIA",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Jake McCarthy",
-          "team": "COL",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Mickey Moniak",
-          "team": "COL",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "TJ Rumfield",
-          "team": "COL",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Willi Castro",
-          "team": "COL",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Ezequiel Tovar",
-          "team": "COL",
-          "role": "BENCH",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Troy Johnston",
-          "team": "COL",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Cole Carrigg",
-          "team": "COL",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Kyle Karros",
-          "team": "COL",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Brett Sullivan",
-          "team": "COL",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Edouard Julien",
-          "team": "COL",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        }
-      ]
-    },
-    {
-      "id": "401815993",
+      "id": "401816003",
       "name": "Chicago White Sox at Cleveland Guardians",
-      "date": "2026-07-02T22:40Z",
-      "status": "Final",
-      "completed": true,
+      "date": "2026-07-03T23:10Z",
+      "status": "Rain Delay",
+      "completed": false,
       "clock": "0:00",
-      "period": 9,
+      "period": 5,
       "detail": "CHW @ CLE",
       "away": {
         "team": "CHW",
-        "score": "5"
+        "score": "3"
       },
       "home": {
         "team": "CLE",
-        "score": "6"
+        "score": "1"
       },
-      "players": [
-        {
-          "name": "Sam Antonacci",
-          "team": "CHW",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Randal Grichuk",
-          "team": "CHW",
-          "role": "BENCH",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Junior Perez",
-          "team": "CHW",
-          "role": "BENCH",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Miguel Vargas",
-          "team": "CHW",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Kyle Teel",
-          "team": "CHW",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Andrew Benintendi",
-          "team": "CHW",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Colson Montgomery",
-          "team": "CHW",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Braden Montgomery",
-          "team": "CHW",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Chase Meidroth",
-          "team": "CHW",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Tristan Peters",
-          "team": "CHW",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Jacob Gonzalez",
-          "team": "CHW",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Travis Bazzana",
-          "team": "CLE",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Chase DeLauter",
-          "team": "CLE",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Kyle Manzardo",
-          "team": "CLE",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Rhys Hoskins",
-          "team": "CLE",
-          "role": "BENCH",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Daniel Schneemann",
-          "team": "CLE",
-          "role": "BENCH",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Kahlil Watson",
-          "team": "CLE",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Brayan Rocchio",
-          "team": "CLE",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Cooper Ingle",
-          "team": "CLE",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "David Fry",
-          "team": "CLE",
-          "role": "BENCH",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Gabriel Arias",
-          "team": "CLE",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Patrick Bailey",
-          "team": "CLE",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Steven Kwan",
-          "team": "CLE",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        }
-      ]
+      "players": []
     },
     {
-      "id": "401815995",
-      "name": "St. Louis Cardinals at Atlanta Braves",
-      "date": "2026-07-02T23:15Z",
-      "status": "Final",
-      "completed": true,
+      "id": "401816005",
+      "name": "New York Mets at Atlanta Braves",
+      "date": "2026-07-03T23:15Z",
+      "status": "In Progress",
+      "completed": false,
       "clock": "0:00",
-      "period": 9,
-      "detail": "STL @ ATL",
+      "period": 7,
+      "detail": "NYM @ ATL",
       "away": {
-        "team": "STL",
-        "score": "11"
+        "team": "NYM",
+        "score": "2"
       },
       "home": {
         "team": "ATL",
-        "score": "5"
+        "score": "4"
       },
       "players": [
         {
-          "name": "JJ Wetherholt",
-          "team": "STL",
+          "name": "A.J. Ewing",
+          "team": "NYM",
           "role": "START",
           "minutes": 0,
           "actual": {
@@ -1291,106 +1240,8 @@
           }
         },
         {
-          "name": "Ivan Herrera",
-          "team": "STL",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Alec Burleson",
-          "team": "STL",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Jordan Walker",
-          "team": "STL",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Lars Nootbaar",
-          "team": "STL",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Masyn Winn",
-          "team": "STL",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Nathan Church",
-          "team": "STL",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Blaze Jordan",
-          "team": "STL",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Bryan Torres",
-          "team": "STL",
+          "name": "Tyrone Taylor",
+          "team": "NYM",
           "role": "BENCH",
           "minutes": 0,
           "actual": {
@@ -1403,22 +1254,8 @@
           }
         },
         {
-          "name": "Pedro Pages",
-          "team": "STL",
-          "role": "BENCH",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Jimmy Crooks",
-          "team": "STL",
+          "name": "Juan Soto",
+          "team": "NYM",
           "role": "START",
           "minutes": 0,
           "actual": {
@@ -1431,9 +1268,93 @@
           }
         },
         {
-          "name": "Jose Fermin",
-          "team": "STL",
-          "role": "BENCH",
+          "name": "Bo Bichette",
+          "team": "NYM",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Francisco Lindor",
+          "team": "NYM",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Carson Benge",
+          "team": "NYM",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Jared Young",
+          "team": "NYM",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Francisco Alvarez",
+          "team": "NYM",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Brett Baty",
+          "team": "NYM",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Luis Torrens",
+          "team": "NYM",
+          "role": "START",
           "minutes": 0,
           "actual": {
             "pts": 0,
@@ -1487,7 +1408,7 @@
           }
         },
         {
-          "name": "Michael Harris II",
+          "name": "Mauricio Dubon",
           "team": "ATL",
           "role": "START",
           "minutes": 0,
@@ -1501,7 +1422,7 @@
           }
         },
         {
-          "name": "Mauricio Dubon",
+          "name": "Michael Harris II",
           "team": "ATL",
           "role": "START",
           "minutes": 0,
@@ -1557,7 +1478,7 @@
           }
         },
         {
-          "name": "Jim Jarvis",
+          "name": "Jorge Mateo",
           "team": "ATL",
           "role": "START",
           "minutes": 0,
@@ -1573,21 +1494,293 @@
       ]
     },
     {
-      "id": "401815998",
-      "name": "Tampa Bay Rays at Kansas City Royals",
-      "date": "2026-07-02T23:40Z",
-      "status": "Final",
-      "completed": true,
+      "id": "401816009",
+      "name": "San Francisco Giants at Colorado Rockies",
+      "date": "2026-07-04T00:10Z",
+      "status": "In Progress",
+      "completed": false,
       "clock": "0:00",
-      "period": 9,
-      "detail": "TB @ KC",
+      "period": 4,
+      "detail": "SF @ COL",
       "away": {
-        "team": "TB",
-        "score": "5"
+        "team": "SF",
+        "score": "1"
       },
       "home": {
-        "team": "KC",
-        "score": "2"
+        "team": "COL",
+        "score": "7"
+      },
+      "players": [
+        {
+          "name": "Luis Arraez",
+          "team": "SF",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Casey Schmitt",
+          "team": "SF",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Heliot Ramos",
+          "team": "SF",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Rafael Devers",
+          "team": "SF",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Jung Hoo Lee",
+          "team": "SF",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Willy Adames",
+          "team": "SF",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Bryce Eldridge",
+          "team": "SF",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Victor Bericoto",
+          "team": "SF",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Drew Cavanaugh",
+          "team": "SF",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Jake McCarthy",
+          "team": "COL",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Mickey Moniak",
+          "team": "COL",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Hunter Goodman",
+          "team": "COL",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "TJ Rumfield",
+          "team": "COL",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Cole Carrigg",
+          "team": "COL",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Tyler Freeman",
+          "team": "COL",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Edouard Julien",
+          "team": "COL",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Kyle Karros",
+          "team": "COL",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Ezequiel Tovar",
+          "team": "COL",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "401816008",
+      "name": "Tampa Bay Rays at Houston Astros",
+      "date": "2026-07-04T00:15Z",
+      "status": "In Progress",
+      "completed": false,
+      "clock": "0:00",
+      "period": 4,
+      "detail": "TB @ HOU",
+      "away": {
+        "team": "TB",
+        "score": "0"
+      },
+      "home": {
+        "team": "HOU",
+        "score": "0"
       },
       "players": [
         {
@@ -1633,6 +1826,34 @@
           }
         },
         {
+          "name": "Cedric Mullins",
+          "team": "TB",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Jonny DeLuca",
+          "team": "TB",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
           "name": "Victor Mesa Jr.",
           "team": "TB",
           "role": "START",
@@ -1647,21 +1868,7 @@
           }
         },
         {
-          "name": "Chandler Simpson",
-          "team": "TB",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Cedric Mullins",
+          "name": "Ben Williamson",
           "team": "TB",
           "role": "START",
           "minutes": 0,
@@ -1689,78 +1896,8 @@
           }
         },
         {
-          "name": "Richie Palacios",
-          "team": "TB",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Ben Williamson",
-          "team": "TB",
-          "role": "BENCH",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Hunter Feduccia",
-          "team": "TB",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Jonny DeLuca",
-          "team": "TB",
-          "role": "BENCH",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
           "name": "Nick Fortes",
           "team": "TB",
-          "role": "BENCH",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Carter Jensen",
-          "team": "KC",
           "role": "START",
           "minutes": 0,
           "actual": {
@@ -1773,8 +1910,8 @@
           }
         },
         {
-          "name": "Bobby Witt Jr.",
-          "team": "KC",
+          "name": "Jose Altuve",
+          "team": "HOU",
           "role": "START",
           "minutes": 0,
           "actual": {
@@ -1787,8 +1924,8 @@
           }
         },
         {
-          "name": "Jac Caglianone",
-          "team": "KC",
+          "name": "Yordan Alvarez",
+          "team": "HOU",
           "role": "START",
           "minutes": 0,
           "actual": {
@@ -1801,8 +1938,8 @@
           }
         },
         {
-          "name": "Lane Thomas",
-          "team": "KC",
+          "name": "Isaac Paredes",
+          "team": "HOU",
           "role": "START",
           "minutes": 0,
           "actual": {
@@ -1815,8 +1952,8 @@
           }
         },
         {
-          "name": "Starling Marte",
-          "team": "KC",
+          "name": "Christian Walker",
+          "team": "HOU",
           "role": "START",
           "minutes": 0,
           "actual": {
@@ -1829,22 +1966,8 @@
           }
         },
         {
-          "name": "Josh Rojas",
-          "team": "KC",
-          "role": "BENCH",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Nick Loftin",
-          "team": "KC",
+          "name": "Cam Smith",
+          "team": "HOU",
           "role": "START",
           "minutes": 0,
           "actual": {
@@ -1857,8 +1980,8 @@
           }
         },
         {
-          "name": "Michael Massey",
-          "team": "KC",
+          "name": "Taylor Trammell",
+          "team": "HOU",
           "role": "START",
           "minutes": 0,
           "actual": {
@@ -1871,8 +1994,8 @@
           }
         },
         {
-          "name": "Isaac Collins",
-          "team": "KC",
+          "name": "Yainer Diaz",
+          "team": "HOU",
           "role": "START",
           "minutes": 0,
           "actual": {
@@ -1885,8 +2008,22 @@
           }
         },
         {
-          "name": "Kameron Misner",
-          "team": "KC",
+          "name": "Jake Meyers",
+          "team": "HOU",
+          "role": "START",
+          "minutes": 0,
+          "actual": {
+            "pts": 0,
+            "reb": 0,
+            "ast": 0,
+            "tpm": 0,
+            "stl": 0,
+            "blk": 0
+          }
+        },
+        {
+          "name": "Nick Allen",
+          "team": "HOU",
           "role": "START",
           "minutes": 0,
           "actual": {
@@ -1901,961 +2038,100 @@
       ]
     },
     {
-      "id": "401815997",
-      "name": "Detroit Tigers at Texas Rangers",
-      "date": "2026-07-03T00:05Z",
-      "status": "Final",
-      "completed": true,
+      "id": "401816010",
+      "name": "Boston Red Sox at Los Angeles Angels",
+      "date": "2026-07-04T01:38Z",
+      "status": "Scheduled",
+      "completed": false,
       "clock": "0:00",
-      "period": 9,
-      "detail": "DET @ TEX",
+      "period": 1,
+      "detail": "BOS @ LAA",
       "away": {
-        "team": "DET",
-        "score": "4"
+        "team": "BOS",
+        "score": "0"
       },
       "home": {
-        "team": "TEX",
-        "score": "10"
+        "team": "LAA",
+        "score": "0"
       },
-      "players": [
-        {
-          "name": "Kevin McGonigle",
-          "team": "DET",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Dillon Dingler",
-          "team": "DET",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Kerry Carpenter",
-          "team": "DET",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Riley Greene",
-          "team": "DET",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Colt Keith",
-          "team": "DET",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Matt Vierling",
-          "team": "DET",
-          "role": "BENCH",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Spencer Torkelson",
-          "team": "DET",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Zach McKinstry",
-          "team": "DET",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "James Outman",
-          "team": "DET",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Ben Malgeri",
-          "team": "DET",
-          "role": "BENCH",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Hao-Yu Lee",
-          "team": "DET",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Justin Foscue",
-          "team": "TEX",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Josh Smith",
-          "team": "TEX",
-          "role": "BENCH",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Josh Jung",
-          "team": "TEX",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Ezequiel Duran",
-          "team": "TEX",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Jake Burger",
-          "team": "TEX",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Kyle Higashioka",
-          "team": "TEX",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Cameron Cauley",
-          "team": "TEX",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Evan Carter",
-          "team": "TEX",
-          "role": "BENCH",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Elias Diaz",
-          "team": "TEX",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Alejandro Osuna",
-          "team": "TEX",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Nicky Lopez",
-          "team": "TEX",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        }
-      ]
+      "players": []
     },
     {
-      "id": "401816000",
-      "name": "Los Angeles Angels at Seattle Mariners",
-      "date": "2026-07-03T01:40Z",
-      "status": "Final",
-      "completed": true,
+      "id": "401816011",
+      "name": "Miami Marlins at Athletics Athletics",
+      "date": "2026-07-04T01:40Z",
+      "status": "Scheduled",
+      "completed": false,
       "clock": "0:00",
-      "period": 9,
-      "detail": "LAA @ SEA",
+      "period": 1,
+      "detail": "MIA @ ATH",
       "away": {
-        "team": "LAA",
+        "team": "MIA",
+        "score": "0"
+      },
+      "home": {
+        "team": "ATH",
+        "score": "0"
+      },
+      "players": []
+    },
+    {
+      "id": "401816012",
+      "name": "Milwaukee Brewers at Arizona Diamondbacks",
+      "date": "2026-07-04T01:45Z",
+      "status": "Scheduled",
+      "completed": false,
+      "clock": "0:00",
+      "period": 1,
+      "detail": "MIL @ ARI",
+      "away": {
+        "team": "MIL",
+        "score": "0"
+      },
+      "home": {
+        "team": "ARI",
+        "score": "0"
+      },
+      "players": []
+    },
+    {
+      "id": "401816013",
+      "name": "San Diego Padres at Los Angeles Dodgers",
+      "date": "2026-07-04T02:10Z",
+      "status": "Scheduled",
+      "completed": false,
+      "clock": "0:00",
+      "period": 1,
+      "detail": "SD @ LAD",
+      "away": {
+        "team": "SD",
+        "score": "0"
+      },
+      "home": {
+        "team": "LAD",
+        "score": "0"
+      },
+      "players": []
+    },
+    {
+      "id": "401816014",
+      "name": "Toronto Blue Jays at Seattle Mariners",
+      "date": "2026-07-04T02:10Z",
+      "status": "Scheduled",
+      "completed": false,
+      "clock": "0:00",
+      "period": 1,
+      "detail": "TOR @ SEA",
+      "away": {
+        "team": "TOR",
         "score": "0"
       },
       "home": {
         "team": "SEA",
-        "score": "1"
+        "score": "0"
       },
-      "players": [
-        {
-          "name": "Zach Neto",
-          "team": "LAA",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Nolan Schanuel",
-          "team": "LAA",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Jose Siri",
-          "team": "LAA",
-          "role": "BENCH",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Denzer Guzman",
-          "team": "LAA",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Jorge Soler",
-          "team": "LAA",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Donovan Walton",
-          "team": "LAA",
-          "role": "BENCH",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Wade Meckler",
-          "team": "LAA",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Jo Adell",
-          "team": "LAA",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Oswald Peraza",
-          "team": "LAA",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Josh Lowe",
-          "team": "LAA",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Logan O'Hoppe",
-          "team": "LAA",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "J.P. Crawford",
-          "team": "SEA",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Julio Rodriguez",
-          "team": "SEA",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Victor Robles",
-          "team": "SEA",
-          "role": "BENCH",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Weston Wilson",
-          "team": "SEA",
-          "role": "BENCH",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Dominic Canzone",
-          "team": "SEA",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Randy Arozarena",
-          "team": "SEA",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Josh Naylor",
-          "team": "SEA",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Cal Raleigh",
-          "team": "SEA",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Luke Raley",
-          "team": "SEA",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Cole Young",
-          "team": "SEA",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Colt Emerson",
-          "team": "SEA",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        }
-      ]
-    },
-    {
-      "id": "401816001",
-      "name": "San Diego Padres at Los Angeles Dodgers",
-      "date": "2026-07-03T02:10Z",
-      "status": "Final",
-      "completed": true,
-      "clock": "0:00",
-      "period": 9,
-      "detail": "SD @ LAD",
-      "away": {
-        "team": "SD",
-        "score": "7"
-      },
-      "home": {
-        "team": "LAD",
-        "score": "12"
-      },
-      "players": [
-        {
-          "name": "Fernando Tatis Jr.",
-          "team": "SD",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Jake Cronenworth",
-          "team": "SD",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Manny Machado",
-          "team": "SD",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Gavin Sheets",
-          "team": "SD",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Miguel Andujar",
-          "team": "SD",
-          "role": "BENCH",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Ty France",
-          "team": "SD",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Jackson Merrill",
-          "team": "SD",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Xander Bogaerts",
-          "team": "SD",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Freddy Fermin",
-          "team": "SD",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Rodolfo Duran",
-          "team": "SD",
-          "role": "BENCH",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Samad Taylor",
-          "team": "SD",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Shohei Ohtani",
-          "team": "LAD",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Andy Pages",
-          "team": "LAD",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Freddie Freeman",
-          "team": "LAD",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Mookie Betts",
-          "team": "LAD",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Max Muncy",
-          "team": "LAD",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Kyle Tucker",
-          "team": "LAD",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Teoscar Hernandez",
-          "team": "LAD",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Dalton Rushing",
-          "team": "LAD",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        },
-        {
-          "name": "Tommy Edman",
-          "team": "LAD",
-          "role": "START",
-          "minutes": 0,
-          "actual": {
-            "pts": 0,
-            "reb": 0,
-            "ast": 0,
-            "tpm": 0,
-            "stl": 0,
-            "blk": 0
-          }
-        }
-      ]
+      "players": []
     }
   ],
-  "timestamp": "2026-07-03T08:04:40.624858"
+  "timestamp": "2026-07-04T01:19:00.940820"
 }

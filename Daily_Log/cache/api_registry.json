@@ -1,7 +1,7 @@
 {
   "calls": [
     {
-      "time": "2026-07-01T17:34:00Z",
+      "time": "2026-07-03T17:33:00Z",
       "endpoint": "SGO/ESPN WNBA Slate",
       "sport": "WNBA",
       "status": "success",
@@ -9,7 +9,7 @@
       "remaining_header": "N/A"
     },
     {
-      "time": "2026-07-01T17:34:00Z",
+      "time": "2026-07-03T17:33:00Z",
       "endpoint": "SGO/ESPN MLB Slate",
       "sport": "MLB",
       "status": "success",
@@ -17,7 +17,7 @@
       "remaining_header": "N/A"
     },
     {
-      "time": "2026-07-01T17:34:00Z",
+      "time": "2026-07-03T17:33:00Z",
       "endpoint": "SGO/ESPN World Cup Slate",
       "sport": "WORLD CUP",
       "status": "success",
@@ -25,7 +25,7 @@
       "remaining_header": "N/A"
     },
     {
-      "time": "2026-07-01T17:34:00Z",
+      "time": "2026-07-03T17:34:00Z",
       "endpoint": "SGO Multi-Source Consensus (WNBA)",
       "sport": "WNBA",
       "status": "success",
@@ -35,5 +35,5 @@
   ],
   "total_calls_today": 4,
   "sgo_limit": 100,
-  "notes": "1:30 PM ET primary slate run. SGO limit=100 on all calls. 4 API calls (3 slate + 1 consensus). World Cup data unavailable for all 3 games."
+  "notes": "1:30 PM ET primary slate run. SGO limit=100 on all calls. 4 API calls (3 slate + 1 consensus). Odds API 401 on all WC events (Business tier quota maxed \u2014 expected)."
 }

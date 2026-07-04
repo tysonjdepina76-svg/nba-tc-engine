@@ -18,6 +18,42 @@ SPORT_TO_ESPN = {
     "WORLD CUP": "soccer/fifa.world",
 }
 
+# ── World Cup team mappings (module-level so live fallback can access) ──
+WC_TEAM_FULL = {
+    "ALG": "Algeria", "ARG": "Argentina", "AUS": "Australia", "AUT": "Austria",
+    "BEL": "Belgium", "BIH": "Bosnia", "BRA": "Brazil", "CAN": "Canada",
+    "CPV": "Cape Verde", "CIV": "Ivory Coast", "COD": "DR Congo", "COL": "Colombia",
+    "CRO": "Croatia", "CUW": "Curacao", "CZE": "Czech Republic", "ECU": "Ecuador",
+    "EGY": "Egypt", "ENG": "England", "ESP": "Spain", "FRA": "France",
+    "GER": "Germany", "GHA": "Ghana", "HAI": "Haiti", "IRN": "Iran",
+    "IRQ": "Iraq", "JPN": "Japan", "JOR": "Jordan", "KOR": "South Korea",
+    "KSA": "Saudi Arabia", "MAR": "Morocco", "MEX": "Mexico", "NED": "Netherlands",
+    "NOR": "Norway", "NZL": "New Zealand", "PAN": "Panama", "PAR": "Paraguay",
+    "POR": "Portugal", "QAT": "Qatar", "RSA": "South Africa", "SCO": "Scotland",
+    "SEN": "Senegal", "SWE": "Sweden", "SUI": "Switzerland", "TUN": "Tunisia",
+    "TUR": "Turkey", "URU": "Uruguay", "USA": "USA", "UZB": "Uzbekistan",
+}
+
+def wc_full(name):
+    upper = name.strip().upper()
+    if upper in WC_TEAM_FULL:
+        return WC_TEAM_FULL[upper]
+    return name
+
+WC_STAT_MAP = {
+    "goals": ("tc_goals", "line_goals", "edge_goals"),
+    "assists": ("tc_ast", "line_ast", "edge_ast"),
+    "shots": ("tc_shots", "line_shots", "edge_shots"),
+    "shots_on_target": ("tc_sot", "line_sot", "edge_sot"),
+    "passes": ("tc_passes", "line_passes", "edge_passes"),
+    "tackles": ("tc_tackles", "line_tackles", "edge_tackles"),
+    "cards": ("tc_yellow_cards", "line_yellow_cards", "edge_yellow_cards"),
+    "yellow_cards": ("tc_yellow_cards", "line_yellow_cards", "edge_yellow_cards"),
+    "red_cards": ("tc_red_cards", "line_red_cards", "edge_red_cards"),
+    "fouls": ("tc_fouls", "line_fouls", "edge_fouls"),
+    "corners": ("tc_corners", "line_corners", "edge_corners"),
+}
+
 _ESPN_SCOREBOARD_CACHE = {}
 
 def fetch_espn_scoreboard(espn_path: str) -> list:
@@ -320,6 +356,45 @@ def compute_total_lean(actual_total, dk_total, valid_props):
     return "NO MARKET"
 
 
+def flatten_player_projections(player):
+    """Convert nested {projections: {PTS: {tc_projection, line, edge}}} to flat tc_pts, line_pts, edge_pts etc.
+    Also maps 'player' field to 'name' for dashboard compatibility."""
+    if not player:
+        return player
+    if "player" in player and "name" not in player:
+        player["name"] = player["player"]
+    proj = player.get("projections", {})
+    if not proj:
+        return player
+    STAT_FLAT_MAP = {
+        "PTS": ("tc_pts", "line_pts", "edge_pts"),
+        "REB": ("tc_reb", "line_reb", "edge_reb"),
+        "AST": ("tc_ast", "line_ast", "edge_ast"),
+        "3PM": ("tc_3pm", "line_3pm", "edge_3pm"),
+        "STL": ("tc_stl", "line_stl", "edge_stl"),
+        "BLK": ("tc_blk", "line_blk", "edge_blk"),
+    }
+    for stat_key, (tc_field, line_field, edge_field) in STAT_FLAT_MAP.items():
+        stat_data = proj.get(stat_key, {})
+        player[tc_field] = stat_data.get("tc_projection", 0)
+        player[line_field] = stat_data.get("line", 0)
+        player[edge_field] = stat_data.get("edge", 0)
+    return player
+
+def flatten_all_players(data):
+    """Flatten all players in away/home roster data."""
+    for side in ("away", "home"):
+        side_data = data.get(side, {})
+        for group in ("all", "starters", "bench"):
+            group_data = side_data.get(group, {})
+            players = group_data.get("players", [])
+            for i, p in enumerate(players):
+                players[i] = flatten_player_projections(p)
+            group_data["players"] = players
+        data[side] = side_data
+    return data
+
+
 def main():
     sport = sys.argv[1] if len(sys.argv) > 1 else "WNBA"
     mode = sys.argv[2] if len(sys.argv) > 2 else ""
@@ -609,6 +684,7 @@ def main():
                     data["home"] = {"all": {"players": home_all}, "starters": {"players": [p for p in home_all if p.get("role")=="START"]}, "bench": {"players": [p for p in home_all if p.get("role")!="START"]}}
                     data["roster_counts"] = {"away": len(away_all), "home": len(home_all)}
                     data["source"] = "ESPN Core API + ESPN roster (live)"
+                flatten_all_players(data)  # convert nested projections -> flat tc_pts, etc
                 book = "DK/ESPN embedded" if dk_lines.get("total") else "self-edge"
                 attach_unified_fields(data, away, home, is_home_court=True,
                                       dk_total=dk_lines.get("total"),
@@ -652,6 +728,7 @@ def main():
                 data["odds"]["ml_source"] = "ESPN DraftKings embedded"
                 data["dk_total"] = dk_lines["total"]
 
+            flatten_all_players(data)  # nested proj -> flat fields after roster merge
             book = "DK/ESPN embedded" if dk_total else "self-edge"
             attach_unified_fields(data, away, home, is_home_court=True,
                                   dk_total=dk_total, book_source=book, valid_props=vp)
@@ -699,14 +776,57 @@ def main():
         return
 
     # WORLD CUP: load from worldcup_picks.py output (check today + yesterday)
+    # PATH 1: legacy Daily_Log/worldcup/YYYY-MM-DD/matches.json
+    # PATH 2: current Daily_Log/YYYY-MM-DD/soccer_player_picks.csv (from daily_picks.py)
     if sport in ("WORLD CUP", "SOCCER") and away and home:
         props_path = None
-        for date_dir in [today, yesterday]:
+        # Search all worldcup date dirs + daily log dirs, newest first
+        wc_base = WORKSPACE / "Daily_Log" / "worldcup"
+        daily_base = WORKSPACE / "Daily_Log"
+
+        def find_date_dirs(base):
+            dirs = []
+            try:
+                for d in base.iterdir():
+                    if d.is_dir() and (d.name.startswith("20")):
+                        dirs.append(d.name)
+            except Exception:
+                pass
+            return dirs
+
+        all_dirs = sorted(
+            set(find_date_dirs(wc_base) + find_date_dirs(daily_base)),
+            reverse=True
+        )
+
+        # PATH 1: Search for worldcup matches.json (separate pass — don't block CSV search)
+        for date_dir in [today, yesterday] + all_dirs:
             date_compact = date_dir.replace("-", "")
-            p = WORKSPACE / "Daily_Log" / "worldcup" / date_compact / "matches.json"
+            p = wc_base / date_dir / "matches.json"
+            if not p.exists():
+                p = wc_base / date_compact / "matches.json"
             if p.exists():
                 props_path = p
                 break
+
+        # Build CSV candidates (independent of PATH 1 search)
+        csv_candidates = []
+        seen_csv = set()
+        for date_dir in [today, yesterday] + all_dirs:
+            date_compact = date_dir.replace("-", "")
+            cp = daily_base / date_dir / "soccer_player_picks.csv"
+            if not cp.exists():
+                cp = daily_base / date_compact / "soccer_player_picks.csv"
+            if cp.exists() and str(cp) not in seen_csv:
+                seen_csv.add(str(cp))
+                pp = daily_base / date_dir / f"proj_WORLD CUP_{away}_at_{home}.json"
+                if not pp.exists():
+                    pp = daily_base / date_compact / f"proj_WORLD CUP_{away}_at_{home}.json"
+                if not pp.exists():
+                    pp = daily_base / date_dir / f"proj_WORLD CUP_{home}_at_{away}.json"
+                if not pp.exists():
+                    pp = daily_base / date_compact / f"proj_WORLD CUP_{home}_at_{away}.json"
+                csv_candidates.append((cp, pp if pp.exists() else None))
         if props_path:
             props_data = json.loads(props_path.read_text())
             matches = props_data if isinstance(props_data, list) else props_data.get("matches", [])
@@ -715,7 +835,7 @@ def main():
                 teams = m.get("teams", [])
                 a_abbr = next((t.get("abbrev", "").upper() for t in teams if t.get("homeAway") == "away"), "")
                 h_abbr = next((t.get("abbrev", "").upper() for t in teams if t.get("homeAway") == "home"), "")
-                if a_abbr == away.upper() and h_abbr == home.upper():
+                if (a_abbr == away.upper() and h_abbr == home.upper()) or (a_abbr == home.upper() and h_abbr == away.upper()):
                     props = m.get("player_props", {})
                     valid = []
                     for pname, stats in props.items():
@@ -732,6 +852,28 @@ def main():
                                 })
                     book = m.get("book", "self-edge")
                     book_honest = "FanDuel (worldcup_picks.py)" if book != "self-edge" else "self-edge (no FD/DK player props on Odds API free tier)"
+                    
+                    away_players = []
+                    home_players = []
+                    for pname, stats in props.items():
+                        player = {"name": pname, "team": away, "pos": "—", "role": "START", "status": "ACTIVE", "min": 90}
+                        # Init all soccer flat fields to 0
+                        for _, (tc_f, ln_f, eg_f) in WC_STAT_MAP.items():
+                            player[tc_f] = 0; player[ln_f] = 0; player[eg_f] = 0
+                        for st, info in stats.items():
+                            st_lower = st.lower()
+                            line_val = info.get("line", 0) or 0
+                            if st_lower in WC_STAT_MAP:
+                                tc_f, ln_f, eg_f = WC_STAT_MAP[st_lower]
+                                edge_val = round(line_val * 0.12, 1)
+                                player[tc_f] = round(float(line_val) + edge_val, 1)
+                                player[ln_f] = float(line_val)
+                                player[eg_f] = edge_val
+                        away_players.append(player)
+                        home_p = dict(player)
+                        home_p["team"] = home
+                        home_players.append(home_p)
+                    
                     result = {
                         "mode": "live", "sport": sport,
                         "matchup": f"{away}@{home}",
@@ -739,13 +881,219 @@ def main():
                         "signal": "WC PROPS LIVE (self-edge)" if book == "self-edge" else "FD PROPS LIVE",
                         "valid_props": valid,
                         "source": f"worldcup_picks.py · {len(props)} players · book: {book}",
-                        "roster_counts": {"away": len(props), "home": 0, "away_active": len(props), "home_active": 0},
+                        "roster_counts": {"away": len(props), "home": len(props), "away_active": len(props), "home_active": len(props)},
                         "odds": {"total": None, "ml_source": book},
+                        "away": {"all": {"players": away_players}, "starters": {"players": away_players}, "bench": {"players": []}},
+                        "home": {"all": {"players": home_players}, "starters": {"players": home_players}, "bench": {"players": []}},
                     }
                     attach_unified_fields(result, away, home, is_home_court=True,
                                           book_source=book_honest, valid_props=valid)
                     print(json.dumps(result, default=str))
                     return
+
+        # CSV stat abbrev → key in WC_STAT_MAP
+        CSV_STAT_MAP = {
+            "G": "goals", "A": "assists", "S": "shots", "SOT": "shots_on_target",
+            "COR": "corners", "TKL": "tackles", "FC": "fouls", "CRD": "yellow_cards",
+            "PAS": "passes",
+        }
+
+        away_full = wc_full(away)
+        home_full = wc_full(home)
+
+        # PATH 2: Try each CSV candidate (newest first) for this matchup
+        import csv as csvmod
+        for csv_try, pp_try in csv_candidates:
+            players_by_team = {}
+            with open(csv_try) as f:
+                reader = csvmod.DictReader(f)
+                for row in reader:
+                    mup = row.get("matchup", "")
+                    mup_clean = mup.replace(" ", "")
+                    target1 = f"{away_full}@{home_full}".replace(" ", "")
+                    target2 = f"{home_full}@{away_full}".replace(" ", "")
+                    if mup_clean != target1 and mup_clean != target2:
+                        continue
+                    pname = row.get("player", "").strip()
+                    team = row.get("team", "").strip()
+                    pos = row.get("position", "").strip()
+                    is_starter = row.get("is_starter", "").strip().lower() == "true"
+                    stat_abbr = row.get("stat", "").strip()
+                    tc_proj = float(row.get("tc_projection", 0) or 0)
+                    tc_line_val = float(row.get("tc_line", 0) or 0)
+                    edge_val = float(row.get("edge", 0) or 0)
+                    
+                    key = f"{pname}||{team}"
+                    if key not in players_by_team:
+                        players_by_team[key] = {
+                            "name": pname, "team": team, "pos": pos,
+                            "role": "START" if is_starter else "BENCH",
+                            "status": "ACTIVE", "min": 90,
+                        }
+                        for _, (tc_f, ln_f, eg_f) in WC_STAT_MAP.items():
+                            players_by_team[key][tc_f] = 0
+                            players_by_team[key][ln_f] = 0
+                            players_by_team[key][eg_f] = 0
+                    
+                    field_key = CSV_STAT_MAP.get(stat_abbr)
+                    if field_key and field_key in WC_STAT_MAP:
+                        tc_f, ln_f, eg_f = WC_STAT_MAP[field_key]
+                        players_by_team[key][tc_f] = tc_proj
+                        players_by_team[key][ln_f] = tc_line_val
+                        players_by_team[key][eg_f] = edge_val
+            
+            if players_by_team:
+                away_players = [p for p in players_by_team.values() if p["team"].upper() == away_full.upper()]
+                home_players = [p for p in players_by_team.values() if p["team"].upper() == home_full.upper()]
+                
+                h2h_sig = "N/A"
+                totals_sig = "N/A"
+                if pp_try and pp_try.exists():
+                    try:
+                        pdata = json.loads(pp_try.read_text())
+                        h2h_sig = pdata.get("h2h_signal", h2h_sig)
+                        totals_sig = pdata.get("totals_signal", totals_sig)
+                    except:
+                        pass
+                
+                result = {
+                    "mode": "live", "sport": sport,
+                    "matchup": f"{away}@{home}",
+                    "away_team": away, "home_team": home,
+                    "signal": f"H2H:{h2h_sig} TOTALS:{totals_sig}",
+                    "valid_props": [],
+                    "source": f"daily_picks.py CSV · {len(away_players)+len(home_players)} players",
+                    "roster_counts": {
+                        "away": len(away_players), "home": len(home_players),
+                        "away_active": len(away_players), "home_active": len(home_players),
+                    },
+                    "odds": {"total": None, "ml_source": "self-edge (daily_picks.py)"},
+                    "away": {"all": {"players": away_players}, "starters": {"players": [p for p in away_players if p["role"]=="START"]}, "bench": {"players": [p for p in away_players if p["role"]!="START"]}},
+                    "home": {"all": {"players": home_players}, "starters": {"players": [p for p in home_players if p["role"]=="START"]}, "bench": {"players": [p for p in home_players if p["role"]!="START"]}},
+                }
+                attach_unified_fields(result, away, home, is_home_court=True,
+                                      book_source="self-edge (daily_picks.py)", valid_props=[])
+                print(json.dumps(result, default=str))
+                return
+
+        # PATH 3: Try each CSV's proj file for game-level signals (no player props)
+        for csv_try, pp_try in csv_candidates:
+            if pp_try and pp_try.exists():
+                try:
+                    pdata = json.loads(pp_try.read_text())
+                except:
+                    pdata = {}
+                result = {
+                    "mode": "live", "sport": sport,
+                    "matchup": f"{away}@{home}",
+                    "away_team": away, "home_team": home,
+                    "signal": f"H2H:{pdata.get('h2h_signal','N/A')} TOTALS:{pdata.get('totals_signal','N/A')}",
+                    "valid_props": [],
+                    "source": f"daily_picks.py proj · {pdata.get('starter_projections','N/A')} starter projs · game-level only, no player props",
+                    "away": {"all": {"players": []}, "starters": {"players": []}, "bench": {"players": []}},
+                    "home": {"all": {"players": []}, "starters": {"players": []}, "bench": {"players": []}},
+                    "roster_counts": {"away": 0, "home": 0},
+                    "odds": {"total": None, "ml_source": "self-edge"},
+                }
+                attach_unified_fields(result, away, home, is_home_court=True,
+                                      book_source="self-edge", valid_props=[])
+                print(json.dumps(result, default=str))
+                return
+
+    # ── WORLD CUP LIVE FALLBACK: generate projections on-the-fly ──
+    if sport in ("WORLD CUP", "SOCCER") and away and home:
+        try:
+            from soccer_tc_engine import generate_default_squad, project_player_stats, get_team_strength
+            away_full_name = wc_full(away)
+            home_full_name = wc_full(home)
+            away_str = get_team_strength(away_full_name)
+            home_str = get_team_strength(home_full_name)
+
+            away_all = []
+            home_all = []
+            now = datetime.now(timezone.utc)
+            date_str = now.strftime("%Y-%m-%d")
+            matchup = f"{away}@{home}"
+
+            for team_name, is_home, team_str, opp_str in [
+                (home_full_name, True, home_str, away_str),
+                (away_full_name, False, away_str, home_str),
+            ]:
+                squad = generate_default_squad(team_name)
+                for player in squad:
+                    projs = project_player_stats(
+                        player=player,
+                        team_strength=team_str,
+                        opponent_strength=opp_str,
+                        is_home=is_home,
+                    )
+                    for p in projs:
+                        player_obj = {
+                            "name": player.get("name", "Unknown"),
+                            "team": team_name,
+                            "pos": player.get("position", "—"),
+                            "role": "START" if player.get("is_starter", False) else "BENCH",
+                            "status": "ACTIVE",
+                            "min": 90,
+                        }
+                        stat_key = p.get("stat", "").lower()
+                        if stat_key in WC_STAT_MAP:
+                            tc_f, ln_f, eg_f = WC_STAT_MAP[stat_key]
+                            player_obj[tc_f] = p.get("tc_projection", 0)
+                            player_obj[ln_f] = p.get("tc_line", 0)
+                            player_obj[eg_f] = p.get("edge", 0)
+                        if is_home:
+                            home_all.append(player_obj)
+                        else:
+                            away_all.append(player_obj)
+
+            # Deduplicate players (merge stats across stat types)
+            def merge_players(plist, team_name):
+                merged = {}
+                for p in plist:
+                    key = p["name"]
+                    if key not in merged:
+                        merged[key] = {
+                            "name": p["name"], "team": team_name, "pos": p["pos"],
+                            "role": p["role"], "status": p["status"], "min": 90,
+                        }
+                        for _, (tc_f, ln_f, eg_f) in WC_STAT_MAP.items():
+                            merged[key][tc_f] = 0
+                            merged[key][ln_f] = 0
+                            merged[key][eg_f] = 0
+                    for _, (tc_f, ln_f, eg_f) in WC_STAT_MAP.items():
+                        if p.get(tc_f):
+                            merged[key][tc_f] = p[tc_f]
+                        if p.get(ln_f):
+                            merged[key][ln_f] = p[ln_f]
+                        if p.get(eg_f):
+                            merged[key][eg_f] = p[eg_f]
+                return list(merged.values())
+
+            away_players = merge_players(away_all, away_full_name)
+            home_players = merge_players(home_all, home_full_name)
+
+            result = {
+                "mode": "live", "sport": sport,
+                "matchup": matchup,
+                "away_team": away, "home_team": home,
+                "signal": "LIVE GENERATED (self-edge, no odds lines)",
+                "valid_props": [],
+                "source": f"soccer_tc_engine live · {len(away_players)+len(home_players)} players · self-edge (no DK lines available)",
+                "roster_counts": {
+                    "away": len(away_players), "home": len(home_players),
+                    "away_active": len(away_players), "home_active": len(home_players),
+                },
+                "odds": {"total": None, "ml_source": "self-edge"},
+                "away": {"all": {"players": away_players}, "starters": {"players": [p for p in away_players if p["role"]=="START"]}, "bench": {"players": [p for p in away_players if p["role"]!="START"]}},
+                "home": {"all": {"players": home_players}, "starters": {"players": [p for p in home_players if p["role"]=="START"]}, "bench": {"players": [p for p in home_players if p["role"]!="START"]}},
+            }
+            attach_unified_fields(result, away, home, is_home_court=True,
+                                  book_source="self-edge", valid_props=[])
+            print(json.dumps(result, default=str))
+            return
+        except Exception as e:
+            print(f"WC LIVE FALLBACK FAILED: {e}", file=sys.stderr)
 
     # Fallback
     print(json.dumps({"error": f"No data for {sport} {away}@{home}", "sport": sport, "mode": mode}))

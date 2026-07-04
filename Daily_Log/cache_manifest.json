@@ -1,120 +1,48 @@
 {
-  "generated_at": "2026-07-02T20:05:07.504542Z",
-  "generated_by": "TC 4PM World Cup Lock",
-  "entries": [
-    {
-      "file": "proj_WORLD CUP_Algeria_at_Switzerland.json",
-      "type": "world_cup_projection",
-      "ttl_hours": 2,
-      "expires": "2026-07-02T22:00:00Z",
-      "size_bytes": 220
+  "updated": "2026-07-03T17:34:00Z",
+  "date": "2026-07-03",
+  "entries": {
+    "slate_WNBA.json": {
+      "ttl_hours": 6,
+      "source": "SGO/ESPN",
+      "status": "fresh"
     },
-    {
-      "file": "proj_WORLD CUP_Austria_at_Spain.json",
-      "type": "world_cup_projection",
-      "ttl_hours": 2,
-      "expires": "2026-07-02T22:00:00Z",
-      "size_bytes": 209
+    "slate_MLB.json": {
+      "ttl_hours": 6,
+      "source": "SGO/ESPN",
+      "status": "fresh"
     },
-    {
-      "file": "proj_WORLD CUP_Belgium_at_USA.json",
-      "type": "world_cup_projection",
-      "ttl_hours": 2,
-      "expires": "2026-07-02T22:00:00Z",
-      "size_bytes": 205
+    "picks.csv": {
+      "ttl_hours": 6,
+      "source": "TC Pipeline",
+      "lines": 1021
     },
-    {
-      "file": "proj_WORLD CUP_Cape Verde_at_Argentina.json",
-      "type": "world_cup_projection",
-      "ttl_hours": 2,
-      "expires": "2026-07-02T22:00:00Z",
-      "size_bytes": 224
+    "picks.json": {
+      "ttl_hours": 6,
+      "source": "TC Pipeline"
     },
-    {
-      "file": "proj_WORLD CUP_Croatia_at_Portugal.json",
-      "type": "world_cup_projection",
-      "ttl_hours": 2,
-      "expires": "2026-07-02T22:00:00Z",
-      "size_bytes": 215
+    "soccer_game_picks.csv": {
+      "ttl_hours": 6,
+      "source": "TC Pipeline (self-edge only)",
+      "lines": 1
     },
-    {
-      "file": "proj_WORLD CUP_Egypt_at_Australia.json",
-      "type": "world_cup_projection",
-      "ttl_hours": 2,
-      "expires": "2026-07-02T22:00:00Z",
-      "size_bytes": 214
+    "soccer_player_picks.csv": {
+      "ttl_hours": 6,
+      "source": "TC Pipeline (self-edge only)",
+      "lines": 324
     },
-    {
-      "file": "proj_WORLD CUP_England_at_Mexico.json",
-      "type": "world_cup_projection",
-      "ttl_hours": 2,
-      "expires": "2026-07-02T22:00:00Z",
-      "size_bytes": 211
+    "soccer_player_projs.json": {
+      "ttl_hours": 6,
+      "source": "TC Pipeline"
     },
-    {
-      "file": "proj_WORLD CUP_France_at_Paraguay.json",
-      "type": "world_cup_projection",
-      "ttl_hours": 2,
-      "expires": "2026-07-02T22:00:00Z",
-      "size_bytes": 214
+    "wnba_injuries.json": {
+      "ttl_hours": 12,
+      "source": "ESPN WNBA Injury Scrape"
     },
-    {
-      "file": "proj_WORLD CUP_Ghana_at_Colombia.json",
-      "type": "world_cup_projection",
-      "ttl_hours": 2,
-      "expires": "2026-07-02T22:00:00Z",
-      "size_bytes": 212
-    },
-    {
-      "file": "proj_WORLD CUP_Morocco_at_Canada.json",
-      "type": "world_cup_projection",
-      "ttl_hours": 2,
-      "expires": "2026-07-02T22:00:00Z",
-      "size_bytes": 212
-    },
-    {
-      "file": "proj_WORLD CUP_Norway_at_Brazil.json",
-      "type": "world_cup_projection",
-      "ttl_hours": 2,
-      "expires": "2026-07-02T22:00:00Z",
-      "size_bytes": 209
-    },
-    {
-      "file": "soccer_game_picks.csv",
-      "type": "world_cup_picks",
-      "ttl_hours": 2,
-      "expires": "2026-07-02T22:00:00Z",
-      "size_bytes": 379
-    },
-    {
-      "file": "soccer_player_picks.csv",
-      "type": "world_cup_picks",
-      "ttl_hours": 2,
-      "expires": "2026-07-02T22:00:00Z",
-      "size_bytes": 32937
-    },
-    {
-      "file": "proj_MLB_CHW_at_CLE.json",
-      "type": "mlb_projection",
-      "ttl_hours": 3,
-      "expires": "2026-07-02T23:00:00Z",
-      "size_bytes": 202349
-    },
-    {
-      "file": "proj_MLB_CIN_at_MIL.json",
-      "type": "mlb_projection",
-      "ttl_hours": 3,
-      "expires": "2026-07-02T23:00:00Z",
-      "size_bytes": 211735
-    },
-    {
-      "file": "proj_MLB_DET_at_TEX.json",
-      "type": "mlb_projection",
-      "ttl_hours": 3,
-      "expires": "2026-07-02T23:00:00Z",
-      "size_bytes": 205375
+    "cache/injuries/wnba_2026-07-03.json": {
+      "ttl_hours": 12,
+      "source": "ESPN WNBA Injury Scrape",
+      "injuries": 38
     }
-  ],
-  "total_entries": 16,
-  "total_size_bytes": 655120
+  }
 }
