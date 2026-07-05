@@ -370,8 +370,53 @@ def get_sport_data(sport: str, date: str) -> dict:
     if "combo_source" not in st.session_state:
         st.session_state.combo_source = "booklines (SGO / OddsAPI) — NOT TC math"
 
+    # ── Combo Builder sidebar ──────────────────────────
+    st.sidebar.subheader("🎯 Combo Builder")
 
-    # ── Header ────────────────────────────────────────────────
+    num_legs = st.sidebar.slider(
+        "Number of legs",
+        min_value=2,
+        max_value=8,
+        value=3,
+        help="How many legs to include in each combo"
+    )
+
+    stake = st.sidebar.number_input(
+        "Stake ($)",
+        min_value=1,
+        value=10,
+        step=1
+    )
+
+    min_odds = st.sidebar.slider(
+        "Minimum odds (American)",
+        min_value=100,
+        max_value=500,
+        value=200,
+        step=10,
+        help="Only include legs with odds >= this value"
+    )
+
+    # Optional extras
+    direction = st.sidebar.selectbox(
+        "Direction",
+        options=["Any", "Over", "Under"],
+        index=0,
+        help="Filter by Over/Under (optional)"
+    )
+
+    stat_filter = st.sidebar.multiselect(
+        "Stat types",
+        options=["PTS", "REB", "AST", "AVG", "HR", "RBI", "Goals", "Shots"],
+        default=[],
+        help="Leave empty to include all stats"
+    )
+
+    if st.sidebar.button("Generate Combos"):
+        st.sidebar.success(f"Combos generated with {num_legs} legs, min odds {min_odds}.")
+
+
+    # ── Header ────────────────────────────────
     hdr_l, hdr_r = st.columns([3, 1])
     with hdr_l:
         st.title("🏆 SPORTS TC — Unified")

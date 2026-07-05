@@ -156,7 +156,32 @@ def fetch_mlb_book_lines(matchup: Optional[str] = None, dry_run: bool = False) -
     except Exception as e:
         log.warning(f"mlb_sdio_props fetch failed: {e}")
 
-    # 4. Cache
+    # 4. Baseball-Reference leaderboards (tier-3 player-stats fallback, cached)
+    try:
+        from sources.scrapers import BaseballReferenceScraper
+        from sources.utils.cache import cache_fetch
+        batters = cache_fetch(
+            "mlb_batting_br",
+            lambda: BaseballReferenceScraper(season=2026).fetch_batting(),
+            ttl_hours=6) or []
+        pitchers = cache_fetch(
+            "mlb_pitching_br",
+            lambda: BaseballReferenceScraper(season=2026).fetch_pitching(),
+            ttl_hours=6) or []
+        if batters or pitchers:
+            data = {
+                "sport": "MLB",
+                "lines": [],
+                "source": "baseball_reference",
+                "player_stats": {"batters": batters, "pitchers": pitchers},
+            }
+            if not dry_run:
+                _save_cache(data)
+            return data
+    except Exception as e:
+        log.warning(f"Baseball-Reference scrape failed: {e}")
+
+    # 5. Cache
     cached = _load_cache()
     if cached:
         cached["source"] = "cache"

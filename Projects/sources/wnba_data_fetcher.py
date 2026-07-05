@@ -133,7 +133,31 @@ def fetch_wnba_lines(matchup: Optional[str] = None, dry_run: bool = False) -> Di
             _save_cache(data)
         return data
 
-    # 3. Cache
+    # 3. Basketball-Reference player stats (tier-3 fallback, cached)
+    try:
+        from sources.scrapers import BasketballReferenceScraper
+        from sources.utils.cache import cache_fetch
+        from datetime import datetime as _dt
+        players = cache_fetch(
+            "wnba_stats_br",
+            lambda: BasketballReferenceScraper(season=2026).fetch_player_stats(),
+            ttl_hours=6,
+        ) or []
+        if players:
+            data = {
+                "sport": "WNBA",
+                "lines": [],
+                "source": "basketball_reference",
+                "timestamp": _dt.now().isoformat(),
+                "games": [{"players": players}],
+            }
+            if not dry_run:
+                _save_cache(data)
+            return data
+    except Exception as e:
+        log.warning(f"Basketball-Reference scrape failed: {e}")
+
+    # 4. Cache
     cached = _load_cache()
     if cached:
         cached["source"] = "cache"
@@ -141,5 +165,5 @@ def fetch_wnba_lines(matchup: Optional[str] = None, dry_run: bool = False) -> Di
             cached["lines"] = [g for g in cached.get("lines", []) if f"{g['away']}@{g['home']}" == matchup]
         return cached
 
-    # 4. Empty
+    # 5. Empty
     return {"sport": "WNBA", "lines": [], "source": "none"}

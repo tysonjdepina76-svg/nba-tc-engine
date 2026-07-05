@@ -737,6 +737,26 @@ with st.sidebar:
     src = SPORT_SOURCE.get(sport_choice, "—")
     st.caption(f"Source: **{src}** • Pipeline priority")
 
+    st.sidebar.subheader("Combo Builder")
+    num_legs = st.sidebar.slider("Number of legs", 2, 8, 3, key="combo_legs")
+    stake = st.sidebar.number_input("Stake ($)", min_value=1, value=10, key="combo_stake")
+    min_odds = st.sidebar.slider("Min edge %", 0.0, 20.0, 5.0, 0.5, key="combo_min_edge")
+    direction = st.sidebar.selectbox("Direction", ["OVER", "UNDER", "EITHER"], key="combo_dir")
+    stat_filter = st.sidebar.multiselect(
+        "Stat filter (optional)",
+        ["pts", "reb", "ast", "3pm", "stl", "blk", "pra", "strikeouts", "hits_allowed", "earned_runs", "total_bases", "hits"],
+        key="combo_stats",
+    )
+    if st.sidebar.button("🎰 Build Combo", key="combo_build"):
+        st.session_state["combo_params"] = {
+            "num_legs": num_legs,
+            "stake": stake,
+            "min_edge": min_odds,
+            "direction": direction,
+            "stat_filter": stat_filter,
+        }
+        st.session_state["combo_result"] = st.session_state["combo_params"]
+
 # ─── Header ──────────────────────────────────────────────
 st.title("🏆 SPORTS TC — Multi-Sport Analytics")
 st.caption(
@@ -795,6 +815,16 @@ if matchup_choice and "@" in matchup_choice and espn_path:
             f'</div>',
             unsafe_allow_html=True,
         )
+
+# ─── Combo Builder result (from sidebar) ──
+if st.session_state.get("combo_result"):
+    _p = st.session_state["combo_result"]
+    with st.container(border=True):
+        st.write(f"**{len(_p.get('stat_filter', []))} stats** • {len(_p.get('num_legs', 0))} legs")
+        st.write(f"Stake: ${_p.get('stake', 0)}")
+        st.write(f"Min Edge: {_p.get('min_edge', 0)}%")
+        st.write(f"Direction: {_p.get('direction', '')}")
+        st.write(f"Stats: {', '.join(_p.get('stat_filter', []))}")
 
 tab_roster, tab_lines, tab_proj, tab_cards, tab_parlay, tab_combos = st.tabs([
     "📋 Roster + TC", "📈 Lines", "🎯 Projections", "🎴 Cards", "📊 Parlay Builder", "🔥 Live Combos",
