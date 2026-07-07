@@ -1,587 +1,170 @@
 {
-  "written_at": "2026-07-05T03:57:57.692325Z",
-  "entry_count": 83,
-  "entries": [
-    {
-      "path": "cache/matches.json",
-      "size": 90460,
-      "mtime": "2026-06-30T20:05:03.552171",
-      "ttl_hours": 3,
-      "expires": "2026-06-30T23:05:03.552171"
-    },
-    {
-      "path": "cache/oddsapi_status.json",
-      "size": 202,
-      "mtime": "2026-07-04T12:45:05.972939",
-      "ttl_hours": 3,
-      "expires": "2026-07-04T15:45:05.972939"
-    },
-    {
-      "path": "cache/props.json",
-      "size": 83267,
-      "mtime": "2026-06-30T20:05:03.555012",
-      "ttl_hours": 3,
-      "expires": "2026-06-30T23:05:03.555012"
-    },
-    {
-      "path": "cache/proj_WORLD CUP_Norway_at_Brazil.json",
-      "size": 209,
-      "mtime": "2026-07-03T20:03:12.665589",
-      "ttl_hours": 2,
-      "expires": "2026-07-03T22:03:12.665589"
-    },
-    {
-      "path": "cache/soccer_player_projs.json",
-      "size": 201460,
-      "mtime": "2026-07-03T20:03:13.469606",
-      "ttl_hours": 3,
-      "expires": "2026-07-03T23:03:13.469606"
-    },
-    {
-      "path": "cache/nfl_preseason_schedule.json",
-      "size": 213,
-      "mtime": "2026-07-04T12:45:05.970939",
-      "ttl_hours": 3,
-      "expires": "2026-07-04T15:45:05.970939"
-    },
-    {
-      "path": "cache/api_call_budget.json",
-      "size": 368,
-      "mtime": "2026-07-04T17:34:47.133700",
-      "ttl_hours": 3,
-      "expires": "2026-07-04T20:34:47.133700"
-    },
-    {
-      "path": "cache/proj_WORLD CUP_Ghana_at_Colombia.json",
-      "size": 212,
-      "mtime": "2026-07-03T20:03:11.862573",
-      "ttl_hours": 2,
-      "expires": "2026-07-03T22:03:11.862573"
-    },
-    {
-      "path": "cache/quota_exhausted.json",
-      "size": 3,
-      "mtime": "2026-06-22T23:38:18",
-      "ttl_hours": 3,
-      "expires": "2026-06-23T02:38:18"
-    },
-    {
-      "path": "cache/proj_WORLD CUP_Cape Verde_at_Argentina.json",
-      "size": 224,
-      "mtime": "2026-07-03T20:03:11.591567",
-      "ttl_hours": 2,
-      "expires": "2026-07-03T22:03:11.591567"
-    },
-    {
-      "path": "cache/proj_WORLD CUP_ARG_at_JOR.json",
-      "size": 163394,
-      "mtime": "2026-06-27T20:07:39.370266",
-      "ttl_hours": 2,
-      "expires": "2026-06-27T22:07:39.370266"
-    },
-    {
-      "path": "cache/proj_WORLD CUP_UZB_at_COD.json",
-      "size": 65284,
-      "mtime": "2026-06-27T20:07:39.372266",
-      "ttl_hours": 2,
-      "expires": "2026-06-27T22:07:39.372266"
-    },
-    {
-      "path": "cache/soccer_player_picks.csv",
-      "size": 32937,
-      "mtime": "2026-07-03T20:03:13.471606",
-      "ttl_hours": 3,
-      "expires": "2026-07-03T23:03:13.471606"
-    },
-    {
-      "path": "cache/picks.csv",
-      "size": 57679,
-      "mtime": "2026-06-30T20:05:03.556593",
-      "ttl_hours": 3,
-      "expires": "2026-06-30T23:05:03.556593"
-    },
-    {
-      "path": "cache/proj_WORLD CUP_ENG_at_PAN.json",
-      "size": 73202,
-      "mtime": "2026-06-27T20:07:39.371266",
-      "ttl_hours": 2,
-      "expires": "2026-06-27T22:07:39.371266"
-    },
-    {
-      "path": "cache/proj_WORLD CUP_Spain_at_Portugal.json",
-      "size": 211,
-      "mtime": "2026-07-03T20:03:13.205601",
-      "ttl_hours": 2,
-      "expires": "2026-07-03T22:03:13.205601"
-    },
-    {
-      "path": "cache/proj_WORLD CUP_Belgium_at_USA.json",
-      "size": 205,
-      "mtime": "2026-07-03T20:03:13.472606",
-      "ttl_hours": 2,
-      "expires": "2026-07-03T22:03:13.472606"
-    },
-    {
-      "path": "cache/cache_manifest.json",
-      "size": 1295,
-      "mtime": "2026-07-03T20:04:20.407988",
-      "ttl_hours": 3,
-      "expires": "2026-07-03T23:04:20.407988"
-    },
-    {
-      "path": "cache/proj_WORLD CUP_Egypt_at_Australia.json",
-      "size": 214,
-      "mtime": "2026-07-03T20:03:11.312561",
-      "ttl_hours": 2,
-      "expires": "2026-07-03T22:03:11.312561"
-    },
-    {
-      "path": "cache/api_registry.json",
-      "size": 1075,
-      "mtime": "2026-07-03T17:36:35.556978",
-      "ttl_hours": 3,
-      "expires": "2026-07-03T20:36:35.556978"
-    },
-    {
-      "path": "cache/soccer_game_picks.csv",
-      "size": 379,
-      "mtime": "2026-07-03T20:03:13.461606",
-      "ttl_hours": 3,
-      "expires": "2026-07-03T23:03:13.461606"
-    },
-    {
-      "path": "cache/proj_WORLD CUP_England_at_Mexico.json",
-      "size": 211,
-      "mtime": "2026-07-03T20:03:12.933595",
-      "ttl_hours": 2,
-      "expires": "2026-07-03T22:03:12.933595"
-    },
-    {
-      "path": "cache/proj_WORLD CUP_GHA_at_CRO.json",
-      "size": 64914,
-      "mtime": "2026-06-27T20:07:39.371266",
-      "ttl_hours": 2,
-      "expires": "2026-06-27T22:07:39.371266"
-    },
-    {
-      "path": "cache/proj_WORLD CUP_AUT_at_ALG.json",
-      "size": 163419,
-      "mtime": "2026-06-27T20:07:39.371266",
-      "ttl_hours": 2,
-      "expires": "2026-06-27T22:07:39.371266"
-    },
-    {
-      "path": "cache/proj_WORLD CUP_France_at_Paraguay.json",
-      "size": 214,
-      "mtime": "2026-07-03T20:03:12.398584",
-      "ttl_hours": 2,
-      "expires": "2026-07-03T22:03:12.398584"
-    },
-    {
-      "path": "cache/proj_WORLD CUP_POR_at_COL.json",
-      "size": 69822,
-      "mtime": "2026-06-27T20:07:39.372266",
-      "ttl_hours": 2,
-      "expires": "2026-06-27T22:07:39.372266"
-    },
-    {
-      "path": "cache/proj_WORLD CUP_Morocco_at_Canada.json",
-      "size": 212,
-      "mtime": "2026-07-03T20:03:12.134578",
-      "ttl_hours": 2,
-      "expires": "2026-07-03T22:03:12.134578"
-    },
-    {
-      "path": "cache/injuries/wnba_2026-07-03.json",
-      "size": 4384,
-      "mtime": "2026-07-03T17:34:48.954812",
-      "ttl_hours": 5,
-      "expires": "2026-07-03T22:34:48.954812"
-    },
-    {
-      "path": "cache/injuries/wnba_2026-06-29.json",
-      "size": 508,
-      "mtime": "2026-06-29T17:34:16.428498",
-      "ttl_hours": 5,
-      "expires": "2026-06-29T22:34:16.428498"
-    },
-    {
-      "path": "cache/injuries/wnba_2026-07-02.json",
-      "size": 2048,
-      "mtime": "2026-07-02T15:05:44.253605",
-      "ttl_hours": 5,
-      "expires": "2026-07-02T20:05:44.253605"
-    },
-    {
-      "path": "cache/injuries/wnba_2026-06-27.json",
-      "size": 2657,
-      "mtime": "2026-06-27T15:03:58.029447",
-      "ttl_hours": 5,
-      "expires": "2026-06-27T20:03:58.029447"
-    },
-    {
-      "path": "cache/injuries/wnba_2026-07-01.json",
-      "size": 15810,
-      "mtime": "2026-07-01T17:35:22.659504",
-      "ttl_hours": 5,
-      "expires": "2026-07-01T22:35:22.659504"
-    },
-    {
-      "path": "cache/injuries/wnba_2026-06-30.json",
-      "size": 904,
-      "mtime": "2026-06-30T15:06:44.291794",
-      "ttl_hours": 5,
-      "expires": "2026-06-30T20:06:44.291794"
-    },
-    {
-      "path": "cache/injuries/wnba_2026-07-04.json",
-      "size": 4927,
-      "mtime": "2026-07-04T15:07:16.993186",
-      "ttl_hours": 5,
-      "expires": "2026-07-04T20:07:16.993186"
-    },
-    {
-      "path": "cache/odds/wc_all.json",
-      "size": 100130,
-      "mtime": "2026-06-19T17:33:12",
-      "ttl_hours": 2,
-      "expires": "2026-06-19T19:33:12"
-    },
-    {
-      "path": "cache/odds/wc_Brazil_Haiti.json",
-      "size": 61590,
-      "mtime": "2026-06-19T17:33:12",
-      "ttl_hours": 2,
-      "expires": "2026-06-19T19:33:12"
-    },
-    {
-      "path": "cache/odds/mlb_early_2026-07-03.json",
-      "size": 1256,
-      "mtime": "2026-07-03T15:10:44.703570",
-      "ttl_hours": 3,
-      "expires": "2026-07-03T18:10:44.703570"
-    },
-    {
-      "path": "cache/odds/wc_Scotland_Morocco.json",
-      "size": 67131,
-      "mtime": "2026-06-19T17:33:12",
-      "ttl_hours": 2,
-      "expires": "2026-06-19T19:33:12"
-    },
-    {
-      "path": "cache/odds/mlb_early_2026-07-02.json",
-      "size": 613,
-      "mtime": "2026-07-02T15:05:44.253605",
-      "ttl_hours": 3,
-      "expires": "2026-07-02T18:05:44.253605"
-    },
-    {
-      "path": "cache/odds/mlb_early_2026-07-01.json",
-      "size": 1487,
-      "mtime": "2026-07-01T15:05:36.345615",
-      "ttl_hours": 3,
-      "expires": "2026-07-01T18:05:36.345615"
-    },
-    {
-      "path": "cache/odds/mlb_early_2026-06-30.json",
-      "size": 200,
-      "mtime": "2026-06-30T15:05:07.859394",
-      "ttl_hours": 3,
-      "expires": "2026-06-30T18:05:07.859394"
-    },
-    {
-      "path": "cache/odds/mlb_early_2026-06-29.json",
-      "size": 1141,
-      "mtime": "2026-06-29T15:06:24.887352",
-      "ttl_hours": 3,
-      "expires": "2026-06-29T18:06:24.887352"
-    },
-    {
-      "path": "cache/odds/mlb_early_2026-06-27.json",
-      "size": 2253,
-      "mtime": "2026-06-27T15:03:58.121449",
-      "ttl_hours": 3,
-      "expires": "2026-06-27T18:03:58.121449"
-    },
-    {
-      "path": "cache/odds/mlb_early_2026-07-04.json",
-      "size": 1532,
-      "mtime": "2026-07-04T15:07:16.977186",
-      "ttl_hours": 3,
-      "expires": "2026-07-04T18:07:16.977186"
-    },
-    {
-      "path": "cache/odds/2026-06-19/wnba_TOR_CON.json",
-      "size": 996,
-      "mtime": "2026-06-19T17:32:49",
-      "ttl_hours": 5,
-      "expires": "2026-06-19T22:32:49"
-    },
-    {
-      "path": "cache/api_scan/scan_20260622_225418.json",
-      "size": 2237,
-      "mtime": "2026-06-22T22:54:19",
-      "ttl_hours": 3,
-      "expires": "2026-06-23T01:54:19"
-    },
-    {
-      "path": "cache/api_scan/scan_20260623_173139.json",
-      "size": 2238,
-      "mtime": "2026-06-23T17:31:41.099615",
-      "ttl_hours": 3,
-      "expires": "2026-06-23T20:31:41.099615"
-    },
-    {
-      "path": "cache/api_scan/scan_20260624_173239.json",
-      "size": 2237,
-      "mtime": "2026-06-24T17:32:40.376347",
-      "ttl_hours": 3,
-      "expires": "2026-06-24T20:32:40.376347"
-    },
-    {
-      "path": "cache/api_scan/scan_20260623_173233.json",
-      "size": 2237,
-      "mtime": "2026-06-23T17:32:34.359372",
-      "ttl_hours": 3,
-      "expires": "2026-06-23T20:32:34.359372"
-    },
-    {
-      "path": "cache/api_scan/scan_20260629_211400.json",
-      "size": 2545,
-      "mtime": "2026-06-29T21:14:01.006117",
-      "ttl_hours": 3,
-      "expires": "2026-06-30T00:14:01.006117"
-    },
-    {
-      "path": "cache/api_scan/scan_20260629_211356.json",
-      "size": 2546,
-      "mtime": "2026-06-29T21:13:57.692148",
-      "ttl_hours": 3,
-      "expires": "2026-06-30T00:13:57.692148"
-    },
-    {
-      "path": "cache/api_scan/scan_20260622_210844.json",
-      "size": 2237,
-      "mtime": "2026-06-22T21:08:46",
-      "ttl_hours": 3,
-      "expires": "2026-06-23T00:08:46"
-    },
-    {
-      "path": "cache/api_scan/scan_20260625_173239.json",
-      "size": 2237,
-      "mtime": "2026-06-25T17:32:40.463207",
-      "ttl_hours": 3,
-      "expires": "2026-06-25T20:32:40.463207"
-    },
-    {
-      "path": "Daily_Log/2026-07-04/proj_WORLD CUP_Morocco_at_Canada.json",
-      "size": 212,
-      "mtime": "2026-07-04T17:33:39.160529",
-      "ttl_hours": 2,
-      "expires": "2026-07-04T19:33:39.160529"
-    },
-    {
-      "path": "Daily_Log/2026-07-04/proj_WORLD CUP_France_at_Paraguay.json",
-      "size": 214,
-      "mtime": "2026-07-04T17:33:39.389530",
-      "ttl_hours": 2,
-      "expires": "2026-07-04T19:33:39.389530"
-    },
-    {
-      "path": "Daily_Log/2026-07-04/proj_WORLD CUP_Norway_at_Brazil.json",
-      "size": 209,
-      "mtime": "2026-07-05T03:57:10.957113",
-      "ttl_hours": 2,
-      "expires": "2026-07-05T05:57:10.957113"
-    },
-    {
-      "path": "Daily_Log/2026-07-04/proj_WORLD CUP_England_at_Mexico.json",
-      "size": 211,
-      "mtime": "2026-07-05T03:57:11.191114",
-      "ttl_hours": 2,
-      "expires": "2026-07-05T05:57:11.191114"
-    },
-    {
-      "path": "Daily_Log/2026-07-04/proj_WORLD CUP_Spain_at_Portugal.json",
-      "size": 211,
-      "mtime": "2026-07-05T03:57:11.422114",
-      "ttl_hours": 2,
-      "expires": "2026-07-05T05:57:11.422114"
-    },
-    {
-      "path": "Daily_Log/2026-07-04/proj_WORLD CUP_Belgium_at_USA.json",
-      "size": 205,
-      "mtime": "2026-07-05T03:57:11.650115",
-      "ttl_hours": 2,
-      "expires": "2026-07-05T05:57:11.650115"
-    },
-    {
-      "path": "Daily_Log/2026-07-04/proj_WORLD CUP_Egypt_at_Argentina.json",
-      "size": 213,
-      "mtime": "2026-07-05T03:57:11.883116",
-      "ttl_hours": 2,
-      "expires": "2026-07-05T05:57:11.883116"
-    },
-    {
-      "path": "Daily_Log/2026-07-04/proj_WORLD CUP_Colombia_at_Switzerland.json",
-      "size": 223,
-      "mtime": "2026-07-05T03:57:12.118116",
-      "ttl_hours": 2,
-      "expires": "2026-07-05T05:57:12.118116"
-    },
-    {
-      "path": "Daily_Log/2026-07-04/proj_WNBA_GS_at_ATL.json",
-      "size": 714,
-      "mtime": "2026-07-04T17:33:04.643441",
-      "ttl_hours": 3,
-      "expires": "2026-07-04T20:33:04.643441"
-    },
-    {
-      "path": "Daily_Log/2026-07-04/proj_WNBA_POR_at_SEA.json",
-      "size": 40443,
-      "mtime": "2026-07-04T17:33:05.113442",
-      "ttl_hours": 3,
-      "expires": "2026-07-04T20:33:05.113442"
-    },
-    {
-      "path": "Daily_Log/2026-07-04/proj_MLB_PIT_at_WSH.json",
-      "size": 212227,
-      "mtime": "2026-07-04T17:33:08.609451",
-      "ttl_hours": 3,
-      "expires": "2026-07-04T20:33:08.609451"
-    },
-    {
-      "path": "Daily_Log/2026-07-04/proj_MLB_MIN_at_NYY.json",
-      "size": 208460,
-      "mtime": "2026-07-04T17:33:11.003457",
-      "ttl_hours": 3,
-      "expires": "2026-07-04T20:33:11.003457"
-    },
-    {
-      "path": "Daily_Log/2026-07-04/proj_MLB_DET_at_TEX.json",
-      "size": 196938,
-      "mtime": "2026-07-04T17:33:13.487464",
-      "ttl_hours": 3,
-      "expires": "2026-07-04T20:33:13.487464"
-    },
-    {
-      "path": "Daily_Log/2026-07-04/proj_MLB_TOR_at_SEA.json",
-      "size": 219939,
-      "mtime": "2026-07-04T17:33:15.857470",
-      "ttl_hours": 3,
-      "expires": "2026-07-04T20:33:15.857470"
-    },
-    {
-      "path": "Daily_Log/2026-07-04/proj_MLB_BAL_at_CIN.json",
-      "size": 205041,
-      "mtime": "2026-07-04T17:33:18.489476",
-      "ttl_hours": 3,
-      "expires": "2026-07-04T20:33:18.489476"
-    },
-    {
-      "path": "Daily_Log/2026-07-04/proj_MLB_CHW_at_CLE.json",
-      "size": 202907,
-      "mtime": "2026-07-04T17:33:20.512482",
-      "ttl_hours": 3,
-      "expires": "2026-07-04T20:33:20.512482"
-    },
-    {
-      "path": "Daily_Log/2026-07-04/proj_MLB_TB_at_HOU.json",
-      "size": 202035,
-      "mtime": "2026-07-04T17:33:22.666487",
-      "ttl_hours": 3,
-      "expires": "2026-07-04T20:33:22.666487"
-    },
-    {
-      "path": "Daily_Log/2026-07-04/proj_MLB_NYM_at_ATL.json",
-      "size": 197937,
-      "mtime": "2026-07-04T17:33:24.502492",
-      "ttl_hours": 3,
-      "expires": "2026-07-04T20:33:24.502492"
-    },
-    {
-      "path": "Daily_Log/2026-07-04/proj_MLB_STL_at_CHC.json",
-      "size": 214276,
-      "mtime": "2026-07-05T03:57:02.915094",
-      "ttl_hours": 3,
-      "expires": "2026-07-05T06:57:02.915094"
-    },
-    {
-      "path": "Daily_Log/2026-07-04/proj_MLB_PHI_at_KC.json",
-      "size": 206012,
-      "mtime": "2026-07-04T17:33:28.694503",
-      "ttl_hours": 3,
-      "expires": "2026-07-04T20:33:28.694503"
-    },
-    {
-      "path": "Daily_Log/2026-07-04/proj_MLB_SF_at_COL.json",
-      "size": 216689,
-      "mtime": "2026-07-04T17:33:31.007509",
-      "ttl_hours": 3,
-      "expires": "2026-07-04T20:33:31.007509"
-    },
-    {
-      "path": "Daily_Log/2026-07-04/proj_MLB_BOS_at_LAA.json",
-      "size": 209896,
-      "mtime": "2026-07-05T03:57:04.744098",
-      "ttl_hours": 3,
-      "expires": "2026-07-05T06:57:04.744098"
-    },
-    {
-      "path": "Daily_Log/2026-07-04/proj_MLB_MIA_at_ATH.json",
-      "size": 204121,
-      "mtime": "2026-07-05T03:57:06.812103",
-      "ttl_hours": 3,
-      "expires": "2026-07-05T06:57:06.812103"
-    },
-    {
-      "path": "Daily_Log/2026-07-04/proj_MLB_MIL_at_ARI.json",
-      "size": 215690,
-      "mtime": "2026-07-05T03:57:08.681108",
-      "ttl_hours": 3,
-      "expires": "2026-07-05T06:57:08.681108"
-    },
-    {
-      "path": "Daily_Log/2026-07-04/proj_MLB_SD_at_LAD.json",
-      "size": 207686,
-      "mtime": "2026-07-05T03:57:10.599113",
-      "ttl_hours": 3,
-      "expires": "2026-07-05T06:57:10.599113"
-    },
-    {
-      "path": "Daily_Log/2026-07-04/proj_WORLD CUP_Morocco_at_France.json",
-      "size": 211,
-      "mtime": "2026-07-05T03:57:12.348117",
-      "ttl_hours": 2,
-      "expires": "2026-07-05T05:57:12.348117"
-    },
-    {
-      "path": "Daily_Log/2026-07-05/soccer_game_picks.json",
-      "size": 673,
-      "mtime": "2026-07-05T03:57:12.338117",
-      "ttl_hours": 3,
-      "expires": "2026-07-05T06:57:12.338117"
-    },
-    {
-      "path": "Daily_Log/2026-07-05/soccer_game_picks.csv",
-      "size": 388,
-      "mtime": "2026-07-05T03:57:12.338117",
-      "ttl_hours": 3,
-      "expires": "2026-07-05T06:57:12.338117"
-    },
-    {
-      "path": "Daily_Log/2026-07-05/soccer_player_projs.json",
-      "size": 203094,
-      "mtime": "2026-07-05T03:57:12.345117",
-      "ttl_hours": 3,
-      "expires": "2026-07-05T06:57:12.345117"
-    },
-    {
-      "path": "Daily_Log/2026-07-05/soccer_player_picks.csv",
-      "size": 34895,
-      "mtime": "2026-07-05T03:57:12.348117",
-      "ttl_hours": 3,
-      "expires": "2026-07-05T06:57:12.348117"
+  "updated": "2026-07-07T23:59:06.638583+00:00",
+  "ttl": {
+    "WORLD CUP": "2h (until 6:30 PM ET refresh)",
+    "MLB": "3h",
+    "WNBA": "until 9 PM ET (end of evening games)"
+  },
+  "entries": {
+    "proj_WORLD CUP_Belgium_at_USA.json": {
+      "cached_at": "2026-07-03T20:03:13.472606+00:00",
+      "expires": "2026-07-03T22:03:13.472606+00:00",
+      "size_bytes": 205
+    },
+    "api_call_budget.json": {
+      "cached_at": "2026-07-05T17:35:26.470706+00:00",
+      "expires": "2026-07-05T20:35:26.470706+00:00",
+      "size_bytes": 374
+    },
+    "proj_WORLD CUP_POR_at_COL.json": {
+      "cached_at": "2026-06-27T20:07:39.372266+00:00",
+      "expires": "2026-06-27T22:07:39.372266+00:00",
+      "size_bytes": 69822
+    },
+    "props.json": {
+      "cached_at": "2026-06-30T20:05:03.555012+00:00",
+      "expires": "2026-06-30T23:05:03.555012+00:00",
+      "size_bytes": 83267
+    },
+    "proj_WORLD CUP_Egypt_at_Australia.json": {
+      "cached_at": "2026-07-03T20:03:11.312561+00:00",
+      "expires": "2026-07-03T22:03:11.312561+00:00",
+      "size_bytes": 214
+    },
+    "matches.json": {
+      "cached_at": "2026-06-30T20:05:03.552171+00:00",
+      "expires": "2026-06-30T23:05:03.552171+00:00",
+      "size_bytes": 90460
+    },
+    "proj_WORLD CUP_Cape Verde_at_Argentina.json": {
+      "cached_at": "2026-07-03T20:03:11.591567+00:00",
+      "expires": "2026-07-03T22:03:11.591567+00:00",
+      "size_bytes": 224
+    },
+    "oddsapi_status.json": {
+      "cached_at": "2026-07-07T23:58:28.223253+00:00",
+      "expires": "2026-07-08T02:58:28.223253+00:00",
+      "size_bytes": 202
+    },
+    "api_registry.json": {
+      "cached_at": "2026-07-03T17:36:35.556978+00:00",
+      "expires": "2026-07-03T20:36:35.556978+00:00",
+      "size_bytes": 1075
+    },
+    "soccer_game_picks.csv": {
+      "cached_at": "2026-07-07T23:59:04.823322+00:00",
+      "expires": "2026-07-08T02:59:04.823322+00:00",
+      "size_bytes": 402
+    },
+    "proj_WORLD CUP_Norway_at_Brazil.json": {
+      "cached_at": "2026-07-03T20:03:12.665589+00:00",
+      "expires": "2026-07-03T22:03:12.665589+00:00",
+      "size_bytes": 209
+    },
+    "proj_WORLD CUP_GHA_at_CRO.json": {
+      "cached_at": "2026-06-27T20:07:39.371266+00:00",
+      "expires": "2026-06-27T22:07:39.371266+00:00",
+      "size_bytes": 64914
+    },
+    "quota_exhausted.json": {
+      "cached_at": "2026-06-22T23:38:18+00:00",
+      "expires": "2026-06-23T02:38:18+00:00",
+      "size_bytes": 3
+    },
+    "proj_WORLD CUP_England_at_Mexico.json": {
+      "cached_at": "2026-07-03T20:03:12.933595+00:00",
+      "expires": "2026-07-03T22:03:12.933595+00:00",
+      "size_bytes": 211
+    },
+    "nfl_preseason_schedule.json": {
+      "cached_at": "2026-07-07T23:58:28.223253+00:00",
+      "expires": "2026-07-08T02:58:28.223253+00:00",
+      "size_bytes": 213
+    },
+    "proj_WORLD CUP_AUT_at_ALG.json": {
+      "cached_at": "2026-06-27T20:07:39.371266+00:00",
+      "expires": "2026-06-27T22:07:39.371266+00:00",
+      "size_bytes": 163419
+    },
+    "soccer_player_picks.csv": {
+      "cached_at": "2026-07-07T23:59:04.833322+00:00",
+      "expires": "2026-07-08T02:59:04.833322+00:00",
+      "size_bytes": 39423
+    },
+    "cache_manifest.json": {
+      "cached_at": "2026-07-03T20:04:20.407988+00:00",
+      "expires": "2026-07-03T23:04:20.407988+00:00",
+      "size_bytes": 1295
+    },
+    "proj_WORLD CUP_UZB_at_COD.json": {
+      "cached_at": "2026-06-27T20:07:39.372266+00:00",
+      "expires": "2026-06-27T22:07:39.372266+00:00",
+      "size_bytes": 65284
+    },
+    "proj_WORLD CUP_ARG_at_JOR.json": {
+      "cached_at": "2026-06-27T20:07:39.370266+00:00",
+      "expires": "2026-06-27T22:07:39.370266+00:00",
+      "size_bytes": 163394
+    },
+    "proj_WORLD CUP_France_at_Paraguay.json": {
+      "cached_at": "2026-07-03T20:03:12.398584+00:00",
+      "expires": "2026-07-03T22:03:12.398584+00:00",
+      "size_bytes": 214
+    },
+    "proj_WORLD CUP_Morocco_at_Canada.json": {
+      "cached_at": "2026-07-03T20:03:12.134578+00:00",
+      "expires": "2026-07-03T22:03:12.134578+00:00",
+      "size_bytes": 212
+    },
+    "proj_WORLD CUP_ENG_at_PAN.json": {
+      "cached_at": "2026-06-27T20:07:39.371266+00:00",
+      "expires": "2026-06-27T22:07:39.371266+00:00",
+      "size_bytes": 73202
+    },
+    "proj_WORLD CUP_Ghana_at_Colombia.json": {
+      "cached_at": "2026-07-03T20:03:11.862573+00:00",
+      "expires": "2026-07-03T22:03:11.862573+00:00",
+      "size_bytes": 212
+    },
+    "soccer_player_projs.json": {
+      "cached_at": "2026-07-07T23:59:04.830322+00:00",
+      "expires": "2026-07-08T02:59:04.830322+00:00",
+      "size_bytes": 207784
+    },
+    "picks.csv": {
+      "cached_at": "2026-06-30T20:05:03.556593+00:00",
+      "expires": "2026-06-30T23:05:03.556593+00:00",
+      "size_bytes": 57679
+    },
+    "proj_WORLD CUP_Spain_at_Portugal.json": {
+      "cached_at": "2026-07-03T20:03:13.205601+00:00",
+      "expires": "2026-07-03T22:03:13.205601+00:00",
+      "size_bytes": 211
+    },
+    "proj_WORLD CUP_Morocco_at_France.json": {
+      "cached_at": "2026-07-07T23:59:04.130321+00:00",
+      "expires": "2026-07-08T01:59:04.130321+00:00",
+      "size_bytes": 211
+    },
+    "proj_WORLD CUP_Belgium_at_Spain.json": {
+      "cached_at": "2026-07-07T23:59:04.365321+00:00",
+      "expires": "2026-07-08T01:59:04.365321+00:00",
+      "size_bytes": 209
+    },
+    "proj_WORLD CUP_England_at_Norway.json": {
+      "cached_at": "2026-07-07T23:59:04.604322+00:00",
+      "expires": "2026-07-08T01:59:04.604322+00:00",
+      "size_bytes": 211
+    },
+    "proj_WORLD CUP_Switzerland_at_Argentina.json": {
+      "cached_at": "2026-07-07T23:59:04.833322+00:00",
+      "expires": "2026-07-08T01:59:04.833322+00:00",
+      "size_bytes": 225
+    },
+    "soccer_game_picks.json": {
+      "cached_at": "2026-07-07T23:59:04.823322+00:00",
+      "expires": "2026-07-08T02:59:04.823322+00:00",
+      "size_bytes": 687
     }
-  ]
+  }
 }

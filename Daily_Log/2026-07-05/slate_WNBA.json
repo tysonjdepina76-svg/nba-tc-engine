@@ -1,18 +1,26 @@
 {
   "games": [
     {
-      "away": "GS",
-      "home": "ATL",
-      "status": "Final",
-      "completed": true,
-      "event_id": "401857039"
+      "away": "DAL",
+      "home": "TOR",
+      "status": "Scheduled",
+      "completed": false,
+      "event_id": "401857041",
+      "ml_home": 190,
+      "ml_away": -230,
+      "dk_spread": 6.5,
+      "dk_total": 185.5
     },
     {
-      "away": "POR",
-      "home": "SEA",
-      "status": "Final",
-      "completed": true,
-      "event_id": "401857040"
+      "away": "IND",
+      "home": "LV",
+      "status": "Scheduled",
+      "completed": false,
+      "event_id": "401857042",
+      "ml_home": -155,
+      "ml_away": 130,
+      "dk_spread": -3.5,
+      "dk_total": 179.5
     }
   ]
 }

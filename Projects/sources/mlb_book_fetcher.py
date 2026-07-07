@@ -79,8 +79,121 @@ def fetch_sportsdata_mlb() -> Optional[Dict[str, Any]]:
         return None
 
 
+def _fetch_espn_odds_for_event(event_id: str) -> dict:
+    """Fetch DraftKings moneyline/spread/total from ESPN's dedicated odds endpoint.
+
+    ESPN's scoreboard endpoint does NOT include odds inline — they live at
+    `sports.core.api.espn.com/.../events/{id}/competitions/{id}/odds`.
+    Returns: {'ml_home': int|None, 'ml_away': int|None, 'spread': float|None, 'total': float|None, 'source': str}
+    """
+    if not event_id:
+        return {"ml_home": None, "ml_away": None, "spread": None, "total": None, "source": "none"}
+    import requests as _r
+    url = f"https://sports.core.api.espn.com/v2/sports/baseball/leagues/mlb/events/{event_id}/competitions/{event_id}/odds"
+    try:
+        resp = _r.get(url, headers={"User-Agent": "Mozilla/5.0"}, timeout=5)
+        if resp.status_code != 200:
+            return {"ml_home": None, "ml_away": None, "spread": None, "total": None, "source": "none"}
+        items = (resp.json() or {}).get("items") or []
+        if not items:
+            return {"ml_home": None, "ml_away": None, "spread": None, "total": None, "source": "none"}
+        # Prefer DraftKings (provider.id=100), fall back to first item
+        pick = next((o for o in items if (o.get("provider") or {}).get("name", "").lower() == "draftkings"), items[0])
+        provider_name = (pick.get("provider") or {}).get("name", "")
+        out = {"ml_home": None, "ml_away": None, "spread": None, "total": None, "source": provider_name}
+        # ML/spread live on awayTeamOdds / homeTeamOdds
+        for side_key, ml_key in (("homeTeamOdds", "ml_home"), ("awayTeamOdds", "ml_away")):
+            side = pick.get(side_key) or {}
+            ml = side.get("moneyLine")
+            if ml is not None:
+                try: out[ml_key] = int(ml)
+                except (TypeError, ValueError): pass
+        # Spread — ESPN stores it at top-level `spread` (home-favored convention).
+        # Fall back to homeTeamOdds.current.pointSpread.alternateDisplayValue.
+        top_spread = pick.get("spread")
+        if top_spread is not None:
+            try: out["spread"] = float(top_spread)
+            except (TypeError, ValueError): pass
+        if out["spread"] is None:
+            for side_key in ("homeTeamOdds", "awayTeamOdds"):
+                side = pick.get(side_key) or {}
+                ps = side.get("pointSpread")
+                if ps is None: continue
+                if isinstance(ps, dict):
+                    raw = ps.get("alternateDisplayValue") or ps.get("displayValue")
+                else:
+                    raw = ps
+                try: out["spread"] = float(raw); break
+                except (TypeError, ValueError): pass
+        # Total
+        total = pick.get("overUnder")
+        if total is not None:
+            try: out["total"] = float(total)
+            except (TypeError, ValueError): pass
+        return out
+    except Exception as e:
+        log.warning(f"ESPN core odds fetch failed for {event_id}: {e}")
+        return {"ml_home": None, "ml_away": None, "spread": None, "total": None, "source": "none"}
+
+
+def _extract_espn_odds(event: dict) -> dict:
+    """Pull h2h/spread/total from ESPN event odds array.
+
+    ESPN returns odds per bookmaker under competitions[0].odds[].
+    Each item has: provider.id, details, over/under, spread, moneyline.
+    Returns: {'ml_home': int|None, 'ml_away': int|None,
+              'spread': float|None, 'total': float|None}
+    """
+    comp = (event.get("competitions") or [{}])[0]
+    odds_list = comp.get("odds") or []
+    if not odds_list:
+        return {"ml_home": None, "ml_away": None, "spread": None, "total": None}
+
+    preferred = {"draftkings": None, "fanduel": None, "betmgm": None}
+    for o in odds_list:
+        prov = (o.get("provider") or {}).get("id", "").lower()
+        if prov in preferred and preferred[prov] is None:
+            preferred[prov] = o
+
+    pick = next((v for v in preferred.values() if v), odds_list[0])
+
+    out = {"ml_home": None, "ml_away": None, "spread": None, "total": None}
+
+    home_team = next((c for c in (comp.get("competitors") or []) if c.get("homeAway") == "home"), {})
+    away_team = next((c for c in (comp.get("competitors") or []) if c.get("homeAway") == "away"), {})
+
+    home_odds = home_team.get("odds") or {}
+    away_odds = away_team.get("odds") or {}
+
+    if "moneyLine" in home_odds:
+        try: out["ml_home"] = int(home_odds["moneyLine"])
+        except (TypeError, ValueError): pass
+    if "moneyLine" in away_odds:
+        try: out["ml_away"] = int(away_odds["moneyLine"])
+        except (TypeError, ValueError): pass
+
+    if "pointSpread" in home_odds:
+        ps = home_odds["pointSpread"]
+        if isinstance(ps, dict):
+            try: out["spread"] = float(ps.get("alternateDisplayValue") or ps.get("displayValue") or 0)
+            except (TypeError, ValueError): pass
+        elif isinstance(ps, (int, float)):
+            out["spread"] = float(ps)
+    if "spread" in home_odds:
+        sp = home_odds["spread"]
+        if isinstance(sp, dict) and out["spread"] is None:
+            try: out["spread"] = float(sp.get("alternateDisplayValue") or sp.get("displayValue") or 0)
+            except (TypeError, ValueError): pass
+
+    if "total" in pick:
+        try: out["total"] = float(pick["total"].get("close", {}).get("displayValue") or pick["total"].get("displayValue") or 0)
+        except (TypeError, ValueError, AttributeError): pass
+
+    return out
+
+
 def fetch_espn_mlb() -> Optional[Dict[str, Any]]:
-    """Pull MLB games from ESPN scoreboard."""
+    """Pull MLB games from ESPN scoreboard + extract DK ML/spread/total."""
     try:
         import requests
         from datetime import datetime, timezone
@@ -105,13 +218,18 @@ def fetch_espn_mlb() -> Optional[Dict[str, Any]]:
                     away = abbr
             if not away or not home:
                 continue
+            odds = _fetch_espn_odds_for_event(e.get("id"))
             lines.append({
                 "away": away,
                 "home": home,
                 "event_id": e.get("id"),
                 "status": e.get("status", {}).get("type", {}).get("description", "Scheduled"),
                 "first_pitch": e.get("date"),
-                "source": "espn",
+                "ml_home": odds["ml_home"],
+                "ml_away": odds["ml_away"],
+                "spread": odds["spread"],
+                "total": odds["total"],
+                "source": odds["source"],
             })
         if not lines:
             return None
@@ -124,22 +242,28 @@ def fetch_espn_mlb() -> Optional[Dict[str, Any]]:
 def fetch_mlb_book_lines(matchup: Optional[str] = None, dry_run: bool = False) -> Dict[str, Any]:
     """Public entry point — tries SportsData.io → ESPN → mlb_sdio_props → cache."""
     # 1. SportsData.io
-    data = fetch_sportsdata_mlb()
-    if data and data.get("lines"):
-        if matchup:
-            data["lines"] = [g for g in data["lines"] if f"{g['away']}@{g['home']}" == matchup]
-        if not dry_run:
-            _save_cache(data)
-        return data
+    try:
+        data = fetch_sportsdata_mlb()
+        if data and data.get("lines"):
+            if matchup:
+                data["lines"] = [g for g in data["lines"] if f"{g['away']}@{g['home']}" == matchup]
+            if not dry_run:
+                _save_cache(data)
+            return data
+    except Exception as e:
+        log.warning(f"SportsData.io MLB fetch failed: {e}")
 
     # 2. ESPN
-    data = fetch_espn_mlb()
-    if data and data.get("lines"):
-        if matchup:
-            data["lines"] = [g for g in data["lines"] if f"{g['away']}@{g['home']}" == matchup]
-        if not dry_run:
-            _save_cache(data)
-        return data
+    try:
+        data = fetch_espn_mlb()
+        if data and data.get("lines"):
+            if matchup:
+                data["lines"] = [g for g in data["lines"] if f"{g['away']}@{g['home']}" == matchup]
+            if not dry_run:
+                _save_cache(data)
+            return data
+    except Exception as e:
+        log.warning(f"ESPN MLB fetch failed: {e}")
 
     # 3. mlb_sdio_props (existing TC engine)
     try:

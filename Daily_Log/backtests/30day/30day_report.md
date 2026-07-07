@@ -1,6 +1,6 @@
 # TC 30-Day Backtest — All Sports
-**Generated:** 2026-06-29 12:10
-**Picks analyzed:** 108 settled (of 10922 total) from 20 dates
+**Generated:** 2026-07-07 23:58
+**Picks analyzed:** 108 settled (of 13354 total) from 24 dates
 
 ## Hit Rates by Stat
 | Stat | Picks | Hit Rate | Avg Edge |

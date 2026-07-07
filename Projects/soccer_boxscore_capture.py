@@ -28,8 +28,13 @@ BOX_DIR.mkdir(parents=True, exist_ok=True)
 
 # ─── registry ────────────────────────────────────────────────
 def _loadreg():
-    try: return json.loads(REG_PATH.read_text()) if REG_PATH.exists() else {}
-    except: return {}
+    try:
+        data = json.loads(REG_PATH.read_text()) if REG_PATH.exists() else {}
+        if isinstance(data, list):
+            return {str(eid): 0 for eid in data}
+        return data
+    except:
+        return {}
 
 def _savereg(r):
     REG_PATH.write_text(json.dumps(r, indent=2))

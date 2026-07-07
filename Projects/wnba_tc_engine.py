@@ -526,6 +526,42 @@ def _extract_valid(proj: dict, team: str) -> list:
     return props
 
 
+def _fetch_espn_odds_for_event(event_id: str) -> dict:
+    """Fetch DraftKings moneyline/spread/total from ESPN's dedicated odds endpoint.
+
+    URL shape: /v2/sports/{sport}/leagues/{league}/events/{id}/competitions/{id}/odds
+    Returns: {items: [{provider, overUnder, spread, homeTeamOdds, awayTeamOdds, ...}]}
+    We pick DraftKings (provider.id=100), extract ml_home, ml_away, spread, total.
+    """
+    if not event_id:
+        return {"ml_home": None, "ml_away": None, "dk_spread": None, "dk_total": None, "source": "none"}
+    url = f"https://sports.core.api.espn.com/v2/sports/basketball/leagues/wnba/events/{event_id}/competitions/{event_id}/odds"
+    data = _fetch(url, timeout=4)
+    if data.get("_error"):
+        return {"ml_home": None, "ml_away": None, "dk_spread": None, "dk_total": None, "source": "none"}
+    items = (data.get("items") or [])
+    if not items:
+        return {"ml_home": None, "ml_away": None, "dk_spread": None, "dk_total": None, "source": "none"}
+    pick = next((o for o in items if (o.get("provider") or {}).get("name", "").lower() == "draftkings"), items[0])
+    provider_name = (pick.get("provider") or {}).get("name", "")
+    out = {"ml_home": None, "ml_away": None, "dk_spread": None, "dk_total": None, "source": provider_name}
+    for side_key, ml_key in (("homeTeamOdds", "ml_home"), ("awayTeamOdds", "ml_away")):
+        side = pick.get(side_key) or {}
+        ml = side.get("moneyLine")
+        if ml is not None:
+            try: out[ml_key] = int(ml)
+            except (TypeError, ValueError): pass
+    sp = pick.get("spread")
+    if sp is not None:
+        try: out["dk_spread"] = float(sp)
+        except (TypeError, ValueError): pass
+    tot = pick.get("overUnder")
+    if tot is not None:
+        try: out["dk_total"] = float(tot)
+        except (TypeError, ValueError): pass
+    return out
+
+
 def get_today_slate() -> list:
     """Get today's WNBA slate. Uses Core API if site API times out."""
     data = _fetch("https://site.api.espn.com/apis/site/v2/sports/basketball/wnba/scoreboard", timeout=4)
@@ -541,9 +577,12 @@ def get_today_slate() -> list:
         h_abbr = (h.get("team") or {}).get("abbreviation", "")
         status = (ev.get("status") or {}).get("type", {}).get("description", "")
         completed = (ev.get("status") or {}).get("type", {}).get("completed", False)
+        odds = _fetch_espn_odds_for_event(ev.get("id"))
         games.append({
             "away": a_abbr, "home": h_abbr, "status": status,
             "completed": completed, "event_id": ev.get("id"),
+            "ml_home": odds.get("ml_home"), "ml_away": odds.get("ml_away"),
+            "dk_spread": odds.get("dk_spread"), "dk_total": odds.get("dk_total"),
         })
     return games
 

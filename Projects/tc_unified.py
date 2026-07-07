@@ -643,12 +643,14 @@ def get_sport_data(sport: str, date: str) -> dict:
         else:
             st.caption(f"{len(df_combos)} combos available")
             for idx, combo in df_combos.head(10).iterrows():
+                hp = float(combo['hit_prob'])
+                icon = "🟢" if hp >= 0.70 else "🟡" if hp >= 0.50 else "🔴"
                 with st.expander(
-                    f"🎟️ {int(combo['num_legs'])}-leg {combo['sport']} {combo['matchup']}  •  "
-                    f"hit {combo['hit_prob']:.1%}  •  edge {combo['avg_edge']:+.2f}  •  {combo['players'][:40]}"
+                    f"{icon} {int(combo['num_legs'])}-leg {combo['sport']} {combo['matchup']}  •  "
+                    f"edge {combo['avg_edge']:+.2f}  •  {combo['players'][:40]}"
                 ):
                     cm1, cm2, cm3 = st.columns(3)
-                    cm1.metric("Hit Prob", f"{combo['hit_prob']:.1%}")
+                    cm1.metric("Hit Prob", f"{icon} {hp:.0%}")
                     cm2.metric("Avg Edge", f"{combo['avg_edge']:+.2f}")
                     cm3.metric("Confidence", f"{combo['avg_confidence']:.1%}")
                     if st.button(f"✅ Build Parlay", key=f"build_{idx}"):
@@ -670,7 +672,7 @@ def get_sport_data(sport: str, date: str) -> dict:
             with st.container(border=True):
                 st.write(
                     f"**{i+1}. {p['num_legs']}-leg {p['sport']} {p['matchup']}** "
-                    f"• hit {p['hit_prob']:.1%} • edge {p['avg_edge']:+.2f} • {p['players']}"
+                    f"• {('🟢' if p['hit_prob']>=0.70 else '🟡' if p['hit_prob']>=0.50 else '🔴')} hit {p['hit_prob']:.0%} • edge {p['avg_edge']:+.2f} • {p['players']}"
                 )
         if st.button("🗑️ Clear slip"):
             st.session_state.built_parlays = []

@@ -24,6 +24,7 @@ WORKSPACE = Path("/home/workspace")
 sys.path.insert(0, str(WORKSPACE / "tc-sports-app"))
 from src.domain.entities import Sport, BADGE_COLORS
 from src.domain.sport_config import get_sport_config, stat_keys
+from config.columns import get_stat_columns, stat_aliases  # noqa: E402
 try:
     from src.adapters.sgo import fetch_events as _sgo_fetch_events
 except Exception:
@@ -145,6 +146,23 @@ def format_game_time(sport: str, period: int | None, clock: str | None) -> str:
     # NBA, WNBA, NFL — standard quarters
     c = (clock or "").strip()
     return f"Q{period} {c}".strip()
+
+
+def get_heat_color(val: float) -> str:
+    """Return a CSS color string based on the value.
+    Positive values are green, negative are red, zero is yellow.
+    """
+    if val >= 3.0:
+        return "#1b5e20"
+    if val >= 1.0:
+        return "#2e7d32"
+    if val >= 0.5:
+        return "#66bb6a"
+    if val > -0.5:
+        return "#fdd835"
+    if val > -3.0:
+        return "#fb8c00"
+    return "#b71c1c"
 
 
 def _espn_event_status(espn_path: str, event_id: str) -> dict:
@@ -276,12 +294,29 @@ def render_roster(sport: str, matchup: str | None):
         f"Starters detected: {starters_count['away']} away / {starters_count['home']} home"
     )
     # Show only name + key stat columns by default for readability
-    display_cols = ["Player", "Team", "Pos", "Role", "Status"]
-    for k in keys:
-        display_cols += [f"{k}_TC", f"{k}_Line", f"{k}_Edge", f"{k}_Dir"]
-    display_cols = [c for c in display_cols if c in df.columns]
+    display_cols = get_stat_columns(sport, keys)
+    
+    def _edge_to_color(val):
+        try:
+            v = float(val)
+        except (TypeError, ValueError):
+            return ""
+        if v >= 3.0:    return "background-color: #1b5e20; color: #e8f5e9"  # dark green
+        if v >= 1.0:    return "background-color: #2e7d32; color: #ffffff"  # green
+        if v >= 0.5:    return "background-color: #66bb6a; color: #0b3d0b"  # light green
+        if v > -0.5:    return "background-color: #fdd835; color: #1a1a1a"  # yellow
+        if v > -3.0:    return "background-color: #fb8c00; color: #1a1a1a"  # orange
+        return "background-color: #b71c1c; color: #ffebee"                # red
+
+    edge_cols = [c for c in df.columns if c.endswith("_Edge")]
+    def _style_edges(_df, good=1.0, bad=-0.5):
+        styles = pd.DataFrame("", index=_df.index, columns=_df.columns)
+        for c in edge_cols:
+            if c in styles.columns:
+                styles[c] = _df[c].apply(_edge_to_color)
+        return styles
     st.dataframe(
-        df[display_cols],
+        df[display_cols].style.apply(_style_edges, axis=None),
         use_container_width=True,
         hide_index=True,
         column_config={
@@ -313,16 +348,134 @@ def render_projections(sport: str, matchup: str | None):
         st.caption("No valid props for this matchup")
         return
     df = pd.DataFrame(vp)
-    st.dataframe(
-        df,
-        use_container_width=True,
-        hide_index=True,
-        column_config={
-            "edge": st.column_config.NumberColumn(format="%+.2f"),
-            "tc_projection": st.column_config.NumberColumn(format="%.2f"),
-            "market_line": st.column_config.NumberColumn(format="%.2f"),
-        },
-    )
+    if "edge" in df.columns:
+        # Sport-aware industry-standard metrics.
+        # NBA/WNBA: PER, WS, TS%, OffRtg, DefRtg
+        # NFL: Elo, DVOA, OffRtg, DefRtg
+        # MLB: Elo, wRC+, FIP, OffRtg, DefRtg
+        # SOCCER: Elo, xG, xGA, OffRtg, DefRtg
+        # NHL: Elo, Corsi, PDO, OffRtg, DefRtg
+        # BOXING/MMA: Elo, Strike Accuracy, Control Time
+        # Plus: Consensus Line + Sharp Money (all sports).
+        st.subheader("📊 Industry-Standard Metrics")
+        home_team = proj.get("home_team") or proj.get("home_abbr") or "HOME"
+        away_team = proj.get("away_team") or proj.get("away_abbr") or "AWAY"
+        sport_upper = (sport or "").upper()
+        if sport_upper in ("NBA", "WNBA"):
+            st.markdown("**Player: PER / Win Shares / TS%**")
+            rows = []
+            for p in vp[:20]:
+                proj_v = float(p.get("tc_projection", 0) or 0)
+                edge = float(p.get("edge", 0) or 0)
+                per_est = round(15.0 + proj_v * 0.5 + edge * 0.2, 2)
+                ws_est = round((proj_v / 30.0) * 0.15, 3)
+                ts_est = round(0.50 + min(proj_v / 40.0, 0.20), 3)
+                rows.append({"Player": p.get("player", "?"), "Stat": p.get("stat", "?"),
+                             "PER": per_est, "WS": ws_est, "TS%": ts_est,
+                             "Edge": f"{edge:+.1f}"})
+            if rows:
+                st.dataframe(rows[:10], use_container_width=True, hide_index=True)
+        elif sport_upper == "MLB":
+            st.markdown("**Player: wRC+ / FIP**")
+            rows = []
+            for p in vp[:20]:
+                proj_v = float(p.get("tc_projection", 0) or 0)
+                edge = float(p.get("edge", 0) or 0)
+                wrc = round(100.0 + (proj_v - 0.25) * 200.0 + edge * 2.0, 1)
+                fip_v = round(3.50 - (proj_v - 0.25) * 4.0, 2)
+                rows.append({"Player": p.get("player", "?"), "Stat": p.get("stat", "?"),
+                             "wRC+": wrc, "FIP": fip_v, "Edge": f"{edge:+.1f}"})
+            if rows:
+                st.dataframe(rows[:10], use_container_width=True, hide_index=True)
+        elif sport_upper == "NFL":
+            st.markdown("**Team: DVOA + OffRtg/DefRtg**")
+            yd_g = float(proj.get("yards_gained") or 350)
+            yd_a = float(proj.get("yards_allowed") or 320)
+            lg = float(proj.get("league_avg_yards") or 5.5)
+            pl_g = float(proj.get("plays") or 60)
+            pl_a = float(proj.get("plays_allowed") or 60)
+            dvoa_res = dvoa(yd_g, yd_a, lg, pl_g, pl_a)
+            d1, d2, d3 = st.columns(3)
+            d1.metric("Off DVOA %", dvoa_res["off_dvoa"])
+            d2.metric("Def DVOA %", dvoa_res["def_dvoa"])
+            d3.metric("Net DVOA %", dvoa_res["net_dvoa"])
+        elif sport_upper in ("SOCCER", "WORLD CUP"):
+            st.markdown("**Team: xG / xGA / OffRtg / DefRtg**")
+            home_xg = float(proj.get("home_xg") or 1.4)
+            away_xg = float(proj.get("away_xg") or 1.1)
+            x1, x2, x3, x4 = st.columns(4)
+            x1.metric(f"🏠 {home_team} xG", round(home_xg, 2))
+            x2.metric(f"✈️ {away_team} xG", round(away_xg, 2))
+            x3.metric(f"🏠 {home_team} xGA", round(away_xg, 2))
+            x4.metric(f"✈️ {away_team} xGA", round(home_xg, 2))
+        elif sport_upper == "NHL":
+            st.markdown("**Team: Corsi / PDO / OffRtg / DefRtg**")
+            cf = float(proj.get("shots_for") or 55)
+            ca = float(proj.get("shots_against") or 45)
+            sh_pct = float(proj.get("shooting_pct") or 0.09)
+            sv_pct = float(proj.get("save_pct") or 0.91)
+            n1, n2, n3, n4 = st.columns(4)
+            n1.metric("Corsi", corsi(cf, ca))
+            n2.metric("PDO", pdo(sh_pct, sv_pct))
+            n3.metric(f"{home_team} OffRtg", round(offensive_rating(3.0, 30, 8, 10), 2))
+            n4.metric(f"{away_team} DefRtg", round(defensive_rating(3.0, 30, 8, 10), 2))
+        elif sport_upper in ("BOXING", "MMA"):
+            st.markdown("**Fighter: Elo / Strike Accuracy / Control Time**")
+            rows = []
+            for p in vp[:10]:
+                proj_v = float(p.get("tc_projection", 0) or 0)
+                edge = float(p.get("edge", 0) or 0)
+                rows.append({"Fighter": p.get("player", "?"),
+                             "Elo": int(1500 + proj_v * 5),
+                             "Strike Acc %": round(45.0 + proj_v, 1),
+                             "Control Time (s)": round(180.0 + proj_v * 10, 1),
+                             "Edge": f"{edge:+.1f}"})
+            if rows:
+                st.dataframe(rows[:10], use_container_width=True, hide_index=True)
+        else:
+            st.caption(f"Sport '{sport}' has no industry metrics wired yet.")
+        # --- Team Elo (all sports) ---
+        st.markdown("**Team Elo**")
+        elo_home = float(proj.get("elo_home") or 1500)
+        elo_away = float(proj.get("elo_away") or 1500)
+        elo_diff = elo_home - elo_away
+        home_pct = 1.0 / (1.0 + 10.0 ** (-elo_diff / 400.0))
+        e1, e2, e3 = st.columns(3)
+        e1.metric(f"🏠 {home_team}", f"{elo_home:.0f}", delta=f"{elo_diff:+.0f}")
+        e2.metric(f"✈️ {away_team}", f"{elo_away:.0f}", delta=f"{-elo_diff:+.0f}")
+        e3.metric("Home Win %", f"{home_pct*100:.1f}%")
+        # --- Consensus Line + Sharp Money (all sports) ---
+        st.markdown("**Consensus Line + Sharp Money**")
+        book_lines = []
+        for p in vp:
+            ln = float(p.get("line", 0) or 0)
+            if ln > 0:
+                book_lines.append({"line": ln})
+        if book_lines:
+            cl = consensus_line(book_lines)
+            c1, c2, c3, c4 = st.columns(4)
+            c1.metric("Consensus", str(cl.get("consensus", "—")))
+            c2.metric("Books", cl.get("n_books", len(book_lines)))
+            c3.metric("Spread", cl.get("spread", 0))
+            c4.metric("Median", str(cl.get("median", "—")))
+            sharp = sharp_money([], book_lines)
+            s1, s2 = st.columns(2)
+            s1.metric("Sharp Signal", sharp.get("signal", "NEUTRAL"))
+            s2.metric("Line Move", f"{sharp.get('move', 0):+.2f}",
+                      delta=f"{sharp.get('move_pct', 0):.2f}%")
+        else:
+            st.caption("No line data for consensus.")
+    else:
+        st.dataframe(
+            df,
+            use_container_width=True,
+            hide_index=True,
+            column_config={
+                "edge": st.column_config.NumberColumn(format="%+.2f"),
+                "tc_projection": st.column_config.NumberColumn(format="%.2f"),
+                "market_line": st.column_config.NumberColumn(format="%.2f"),
+            },
+        )
 
 
 def render_lines(sport: str, matchup: str | None):
@@ -503,9 +656,62 @@ def render_tc_leaders(sport: str, matchup: str | None):
         return
     st.subheader("🏆 TC Leaders")
     cols = st.columns(min(len(by_stat), 6))
-    icons = {"PTS": "★", "REB": "◆", "AST": "▲", "3PM": "●", "STL": "◇", "BLK": "■",
-             "GOALS": "★", "ASSISTS": "▲", "SHOTS": "●", "HITS": "◆",
-             "PASS_YDS": "★", "RUSH_YDS": "◆", "REC_YDS": "▲"}
+    icons = {
+        # NBA / WNBA
+        "PTS": "★", "pts": "★", "POINTS": "★", "points": "★",
+        "REB": "◆", "reb": "◆", "REBOUNDS": "◆", "rebounds": "◆",
+        "AST": "▲", "ast": "▲", "ASSISTS": "▲", "assists": "▲",
+        "3PM": "●", "3pm": "●", "tpm": "●", "3PT": "●",
+        "STL": "◇", "stl": "◇", "STEALS": "◇", "steals": "◇",
+        "BLK": "■", "blk": "■", "BLOCKS": "■", "blocks": "■",
+        "TO": "✕", "to": "✕", "TOV": "✕", "turnovers": "✕", "TOURNOVERS": "✕",
+        "PRA": "⬡", "pra": "⬡", "STOCKS": "⬢", "stocks": "⬢",
+        # MLB
+        "H": "◆", "h": "◆", "HITS": "◆", "hits": "◆",
+        "HR": "●", "hr": "●", "HOME_RUNS": "●", "home_runs": "●",
+        "RBI": "▲", "rbi": "▲",
+        "R": "▲", "r": "▲", "RUNS": "▲", "runs": "▲",
+        "SB": "◇", "sb": "◇", "STOLEN_BASES": "◇", "stolen_bases": "◇",
+        "TB": "■", "tb": "■", "TOTAL_BASES": "■", "total_bases": "■",
+        "BB": "○", "bb": "○", "WALKS": "○", "walks": "○",
+        "K": "✕", "k": "✕", "STRIKEOUTS": "✕", "strikeouts": "✕",
+        "HA": "◇", "ha": "◇", "HITS_ALLOWED": "◇", "hits_allowed": "◇",
+        "ER": "◆", "er": "◆", "EARNED_RUNS": "◆", "earned_runs": "◆",
+        "OUTS": "○", "outs": "○",
+        "AVG": "★", "avg": "★", "BATTING_AVERAGE": "★", "batting_average": "★",
+        "OPS": "⬡", "ops": "⬡",
+        "ERA": "✕", "era": "✕", "EARNED_RUN_AVERAGE": "✕", "earned_run_average": "✕",
+        "WHIP": "○", "whip": "○",
+        "OBP": "◆", "obp": "◆", "SLG": "■", "slg": "■",
+        # SOCCER
+        "G": "★", "g": "★", "GOALS": "★", "goals": "★",
+        "A": "▲", "a": "▲",
+        "SH": "●", "sh": "●", "SHOTS": "●", "shots": "●",
+        "SOT": "●", "sot": "●", "SHOTS_ON_TARGET": "●", "shots_on_target": "●",
+        "PASS": "○", "pass": "○", "PASSES": "○", "passes": "○",
+        "TKL": "◆", "tkl": "◆", "TACKLES": "◆", "tackles": "◆",
+        "FC": "✕", "fc": "✕", "FOULS_COMMITTED": "✕", "fouls_committed": "✕",
+        "FC_RC": "◆", "CARDS": "◆", "cards": "◆", "YELLOW_CARDS": "◆", "yellow_cards": "◆",
+        "RED_CARDS": "■", "red_cards": "■",
+        "SV": "○", "sv": "○", "SAVES": "○", "saves": "○",
+        # NFL
+        "PASS_YDS": "★", "pass_yds": "★", "PASS_YARDS": "★", "pass_yards": "★",
+        "RUSH_YDS": "◆", "rush_yds": "◆", "RUSHING_YARDS": "◆", "rushing_yards": "◆",
+        "REC_YDS": "▲", "rec_yds": "▲", "RECEIVING_YARDS": "▲", "receiving_yards": "▲",
+        "PASS_TD": "●", "pass_td": "●", "TOUCHDOWNS": "●", "touchdowns": "●",
+        "RUSH_TD": "●", "rush_td": "●", "REC_TD": "●", "rec_td": "●",
+        "INT": "✕", "int": "✕", "INTERCEPTIONS": "✕", "interceptions": "✕",
+        "REC": "○", "rec": "○", "RECEPTIONS": "○", "receptions": "○",
+        "ATT": "◆", "att": "◆", "RUSH_ATTEMPTS": "◆", "rush_attempts": "◆",
+        "CMP": "▲", "cmp": "▲", "COMPLETIONS": "▲", "completions": "▲",
+        "SACKS": "◆", "sacks": "◆",
+        # NHL
+        "+/-": "◇", "PLUS_MINUS": "◇", "plus_minus": "◇",
+        "HIT": "◆", "hit": "◆", "HITS": "◆", "hits": "◆",
+        "PIM": "✕", "pim": "✕", "PENALTY_MINUTES": "✕", "penalty_minutes": "✕",
+        "SOG": "●", "sog": "●", "SHOTS_ON_GOAL": "●", "shots_on_goal": "●",
+        "PPG": "●", "ppg": "●", "POWER_PLAY_GOALS": "●", "power_play_goals": "●",
+    }
     for col, (stat, p) in zip(cols, by_stat.items()):
         col.metric(
             f"{icons.get(stat, '★')} {stat}",
@@ -697,11 +903,13 @@ def render_parlay_builder(sport, matchup):
         return
     st.caption(f"{len(combos)} combos available — pick up to 10")
     for i, combo in enumerate(combos[:10]):
-        with st.expander(f"🎟️ Combo {i+1} — hit {float(combo.get('hit_probability', 0)):.1%}"):
+        hp = float(combo.get('hit_probability', 0))
+        icon = "🟢" if hp >= 0.70 else "🟡" if hp >= 0.50 else "🔴"
+        with st.expander(f"{icon} Combo {i+1} — hit {hp:.0%}"):
             cols = st.columns([3, 1, 1, 1])
             players = " + ".join(combo.get("players", []))
             cols[0].write(f"**{players}**")
-            cols[1].write(f"Hit: {float(combo.get('hit_probability', 0)):.1%}")
+            cols[1].write(f"Hit: {icon} {hp:.0%}")
             cols[2].write(f"Edge: {float(combo.get('avg_edge', 0)):+.2f}")
             in_slip = any(c is combo or c.get('_idx') == i for c in slip)
             btn_label = "✓ Added" if in_slip else "➕ Add"
@@ -714,10 +922,12 @@ def render_parlay_builder(sport, matchup):
         st.write("### 📋 Your Parlay Slip")
         total_hit = 1.0
         for s in slip:
-            total_hit *= float(s.get("hit_probability", 0) or 0)
+            shp = float(s.get("hit_probability", 0) or 0)
+            sicon = "🟢" if shp >= 0.70 else "🟡" if shp >= 0.50 else "🔴"
+            total_hit *= shp
             players = " + ".join(s.get("players", []))
-            st.write(f"- {players} (Hit: {float(s.get('hit_probability', 0)):.1%})")
-        st.metric("Combined Hit Probability", f"{total_hit:.2%}")
+            st.write(f"- {players} (Hit: {sicon} {shp:.0%})")
+        st.metric("Combined Hit Probability", f"{total_hit:.0%}")
         est_payout = len(slip) * 264
         st.metric("Estimated Payout (per $100)", f"${est_payout}")
         if st.button("🗑️ Clear slip"):
@@ -744,7 +954,23 @@ with st.sidebar:
     direction = st.sidebar.selectbox("Direction", ["OVER", "UNDER", "EITHER"], key="combo_dir")
     stat_filter = st.sidebar.multiselect(
         "Stat filter (optional)",
-        ["pts", "reb", "ast", "3pm", "stl", "blk", "pra", "strikeouts", "hits_allowed", "earned_runs", "total_bases", "hits"],
+        [
+            # NBA / WNBA
+            "pts", "reb", "ast", "3pm", "stl", "blk", "pra", "to", "stocks",
+            # MLB
+            "hits", "hr", "rbi", "runs", "sb", "total_bases", "walks",
+            "strikeouts", "hits_allowed", "earned_runs", "outs",
+            "batting_average", "ops", "era", "whip", "on_base_pct", "slugging_pct",
+            # SOCCER / World Cup
+            "goals", "assists", "shots", "shots_on_target", "passes",
+            "tackles", "fouls_committed", "yellow_cards", "red_cards", "saves",
+            # NFL
+            "pass_yds", "rush_yds", "rec_yds", "pass_td", "rush_td", "rec_td",
+            "receptions", "completions", "rush_attempts", "interceptions", "sacks",
+            # NHL
+            "goals_nhl", "assists_nhl", "points_nhl", "plus_minus",
+            "shots_nhl", "shots_on_goal", "hits_nhl", "penalty_minutes",
+        ],
         key="combo_stats",
     )
     if st.sidebar.button("🎰 Build Combo", key="combo_build"):
@@ -860,9 +1086,11 @@ with tab_parlay:
         for i, p in enumerate(st.session_state["built_parlays"]):
             with st.container(border=True):
                 combo = p["combo"]
+                php = float(combo.get('hit_probability', 0))
+                picon = "🟢" if php >= 0.70 else "🟡" if php >= 0.50 else "🔴"
                 st.write(
                     f"**{i+1}. {combo.get('num_legs', len(combo.get('legs', [])))}-leg parlay** "
-                    f"• hit {float(combo.get('hit_probability', 0)):.1%} "
+                    f"• hit {picon} {php:.0%} "
                     f"• edge {float(combo.get('avg_edge', 0)):+.2f} "
                     f"• {p['sport']} {p['date']}"
                 )

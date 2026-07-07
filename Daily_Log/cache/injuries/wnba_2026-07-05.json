@@ -1,0 +1,37 @@
+{
+  "date": "2026-07-05",
+  "fetched_at": "2026-07-05T17:35:00Z",
+  "source": "ESPN WNBA Injury Report",
+  "games_today": [
+    {
+      "matchup": "DAL@TOR",
+      "tip": "3:00 PM ET",
+      "injuries": {
+        "DAL": [],
+        "TOR": [
+          {"player": "Temi Fagbenle", "pos": "C", "status": "Out", "reason": "eye", "return": "Jul 8"},
+          {"player": "Brittney Sykes", "pos": "G", "status": "Out", "reason": "foot", "return": "Jul 14"},
+          {"player": "Kiki Rice", "pos": "G", "status": "Out", "reason": "ankle", "return": "Jul 14"}
+        ]
+      }
+    },
+    {
+      "matchup": "IND@LV",
+      "tip": "7:00 PM ET",
+      "injuries": {
+        "IND": [
+          {"player": "Caitlin Clark", "pos": "G", "status": "Out", "reason": "back", "return": "Jul 8"}
+        ],
+        "LV": [
+          {"player": "A'ja Wilson", "pos": "C", "status": "Out", "reason": "ankle", "return": "Jul 9"},
+          {"player": "Dana Evans", "pos": "G", "status": "Out", "reason": "leg", "return": "Jul 9"},
+          {"player": "Janiah Barker", "pos": "F", "status": "Out", "reason": "leg", "return": "Jul 9"}
+        ]
+      }
+    }
+  ],
+  "impacted_picks": [
+    {"player": "A'ja Wilson", "team": "LV", "pick": "PTS OVER 17.5", "status": "INVALID — Player OUT"}
+  ],
+  "notes": "Wilson out with ankle injury — removes top WNBA pick. Clark (IND) also out. Both teams missing key players for IND@LV."
+}
