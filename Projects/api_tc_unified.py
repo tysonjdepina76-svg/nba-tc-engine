@@ -419,7 +419,31 @@ def main():
         ep = espn_paths.get(sport, "basketball/wnba")
         import urllib.request, concurrent.futures
 
-        WNBA_LABELS = ["MIN", "PTS", "FG", "3PT", "FT", "REB", "AST", "TO", "STL", "BLK", "OREB", "DREB", "PF", "+/-"]
+        # ESPN label → sport-agnostic canonical key mapping (used by frontend stat config)
+        ESPN_LABEL_MAP = {
+            # Basketball (WNBA)
+            "min": "minutes", "pts": "pts", "fg": "fg", "3pt": "tpm", "ft": "ft",
+            "reb": "reb", "ast": "ast", "to": "to", "stl": "stl", "blk": "blk",
+            "oreb": "oreb", "dreb": "dreb", "pf": "pf", "+/-": "plusminus",
+            # MLB batting
+            "ab": "ab", "r": "r", "h": "h", "rbi": "rbi", "hr": "hr",
+            "bb": "bb", "k": "so", "avg": "avg", "obp": "obp", "slg": "slg",
+            "h-ab": "h_ab", "#p": "pitches",
+            # MLB pitching
+            "ip": "ip", "er": "er", "era": "era", "pc-st": "pc_st", "pc": "pc",
+            # Soccer (if available)
+            "goals": "goals", "shots": "shots", "assists": "ast",
+            "shots_on_target": "sot", "fouls_committed": "fouls",
+            "yellow_cards": "yc", "red_cards": "rc",
+        }
+
+        # Per-sport: which stat blocks to include and their "kind" tag
+        SPORT_BLOCK_RULES = {
+            "WNBA": [{"index": 0, "kind": "player"}],
+            "MLB": [{"index": 0, "kind": "batting"}, {"index": 1, "kind": "pitching"}],
+            "WORLD CUP": [{"index": 0, "kind": "player"}],
+            "SOCCER": [{"index": 0, "kind": "player"}],
+        }
 
         def fetch_boxscore_players(event_id, away_abbr, home_abbr):
             players_list = []
@@ -430,38 +454,79 @@ def main():
                 )
                 summary = json.loads(r.read())
                 bs_players = (summary.get("boxscore") or {}).get("players", [])
+                block_rules = SPORT_BLOCK_RULES.get(sport, [{"index": 0, "kind": "player"}])
+
                 for team_data in bs_players:
                     team_abbr = (team_data.get("team") or {}).get("abbreviation", "")
-                    stats_block = (team_data.get("statistics") or [{}])[0]
-                    labels = stats_block.get("labels", WNBA_LABELS)
-                    athletes = stats_block.get("athletes", [])
-                    for athlete_entry in athletes:
-                        if athlete_entry.get("didNotPlay"):
+                    stats_blocks = team_data.get("statistics", [])
+
+                    for rule in block_rules:
+                        idx = rule.get("index", 0)
+                        kind = rule.get("kind", "player")
+                        if idx >= len(stats_blocks):
                             continue
-                        athlete = athlete_entry.get("athlete", {})
-                        name = athlete.get("displayName", athlete.get("fullName", "Unknown"))
-                        raw_stats = athlete_entry.get("stats", [])
-                        stat_map = {}
-                        for i, label in enumerate(labels):
-                            val = raw_stats[i] if i < len(raw_stats) else "0"
-                            try:
-                                stat_map[label.lower()] = float(val) if "." in str(val) or val.replace("-","").isdigit() else 0
-                            except:
-                                stat_map[label.lower()] = 0
-                        players_list.append({
-                            "name": name,
-                            "team": team_abbr,
-                            "role": "START" if athlete_entry.get("starter") else "BENCH",
-                            "minutes": stat_map.get("min", 0),
-                            "actual": {
-                                "pts": stat_map.get("pts", 0),
-                                "reb": stat_map.get("reb", 0),
-                                "ast": stat_map.get("ast", 0),
-                                "tpm": stat_map.get("3pt", 0),
-                                "stl": stat_map.get("stl", 0),
-                                "blk": stat_map.get("blk", 0),
-                            },
-                        })
+                        stats_block = stats_blocks[idx]
+                        labels = stats_block.get("labels", [])
+                        athletes = stats_block.get("athletes", [])
+
+                        for athlete_entry in athletes:
+                            if athlete_entry.get("didNotPlay"):
+                                continue
+                            athlete = athlete_entry.get("athlete", {})
+                            name = athlete.get("displayName", athlete.get("fullName", "Unknown"))
+                            if not name or name == "Unknown":
+                                continue
+
+                            raw_stats = athlete_entry.get("stats", [])
+                            # Build canonical stat map from ESPN labels
+                            stat_map = {}
+                            for i, label in enumerate(labels):
+                                val = raw_stats[i] if i < len(raw_stats) else "0"
+                                try:
+                                    parsed = float(val) if "." in str(val) or str(val).replace("-", "").replace("+", "").isdigit() else 0
+                                except Exception:
+                                    parsed = 0
+                                canonical = ESPN_LABEL_MAP.get(label.lower(), label.lower().replace(" ", "_"))
+                                stat_map[canonical] = parsed
+
+                            # Minutes: WNBA = "min" label, MLB = use "ab" as proxy for participation
+                            minutes_val = stat_map.get("minutes", 0)
+                            if minutes_val == 0 and kind == "batting":
+                                minutes_val = stat_map.get("ab", 0)  # plate appearances proxy
+
+                            # Build actual dict with all canonical keys
+                            actual = {}
+                            for canon_key, canon_val in stat_map.items():
+                                actual[canon_key] = canon_val
+
+                            # Ensure commonly-expected keys exist at top level
+                            actual["pts"] = actual.get("pts", 0)
+                            actual["reb"] = actual.get("reb", 0)
+                            actual["ast"] = actual.get("ast", 0)
+                            actual["tpm"] = actual.get("tpm", 0)
+                            actual["stl"] = actual.get("stl", 0)
+                            actual["blk"] = actual.get("blk", 0)
+                            # MLB-specific top-level
+                            actual["h"] = actual.get("h", 0)
+                            actual["hr"] = actual.get("hr", 0)
+                            actual["rbi"] = actual.get("rbi", 0)
+                            actual["r"] = actual.get("r", 0)
+                            actual["sb"] = actual.get("sb", 0)
+                            actual["avg"] = actual.get("avg", 0)
+                            actual["so"] = actual.get("so", 0)
+
+                            is_starter = athlete_entry.get("starter", False)
+                            role = "START" if is_starter else ("BULLPEN" if kind == "pitching" else "BENCH")
+
+                            players_list.append({
+                                "name": name,
+                                "team": team_abbr,
+                                "role": role,
+                                "kind": kind,
+                                "minutes": minutes_val,
+                                "starter": is_starter,
+                                "actual": actual,
+                            })
             except Exception:
                 pass
             return players_list

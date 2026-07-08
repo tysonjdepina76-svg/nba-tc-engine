@@ -3,43 +3,56 @@
   "matchup": "ARI@SD",
   "home_team": "SD",
   "away_team": "ARI",
-  "dk_total": 9,
+  "dk_total": 12.5,
   "source": "ESPN + The Odds API + SportsDataIO",
   "valid_props": [
     {
-      "player": "Zac Gallen",
-      "team": "ARI",
+      "player": "Michael King",
+      "team": "SD",
+      "pos": "SP",
+      "stat": "strikeouts",
+      "market_line": 5.4,
+      "tc_projection": 1.9,
+      "edge": -3.5,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Michael King",
+      "team": "SD",
       "pos": "SP",
       "stat": "hits_allowed",
-      "market_line": 2.9,
-      "tc_projection": 6.5,
-      "edge": 3.6,
+      "market_line": 4.4,
+      "tc_projection": 6.1,
+      "edge": 1.7,
       "direction": "OVER",
       "signal": "OVER",
       "status": "ACTIVE",
       "source": "sdio_lines"
     },
     {
-      "player": "Zac Gallen",
+      "player": "Pavin Smith",
       "team": "ARI",
-      "pos": "SP",
-      "stat": "earned_runs",
-      "market_line": 1.3,
-      "tc_projection": 3.3,
-      "edge": 2,
-      "direction": "OVER",
-      "signal": "OVER",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Corbin Carroll",
-      "team": "ARI",
-      "pos": "RF",
+      "pos": "DH",
       "stat": "total_bases",
-      "market_line": 0.8,
-      "tc_projection": 1.8,
-      "edge": 1,
+      "market_line": 1.5,
+      "tc_projection": 0.5,
+      "edge": -1,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Samad Taylor",
+      "team": "SD",
+      "pos": "LF",
+      "stat": "hits",
+      "market_line": 0.5,
+      "tc_projection": 1.3,
+      "edge": 0.8,
       "direction": "OVER",
       "signal": "OVER",
       "status": "ACTIVE",
@@ -49,25 +62,25 @@
       "player": "Ketel Marte",
       "team": "ARI",
       "pos": "2B",
-      "stat": "total_bases",
-      "market_line": 0.8,
-      "tc_projection": 1.7,
-      "edge": 0.9,
+      "stat": "hits",
+      "market_line": 0.5,
+      "tc_projection": 1.2,
+      "edge": 0.7,
       "direction": "OVER",
       "signal": "OVER",
       "status": "ACTIVE",
       "source": "sdio_lines"
     },
     {
-      "player": "Samad Taylor",
+      "player": "Xander Bogaerts",
       "team": "SD",
-      "pos": "LF",
-      "stat": "hits",
-      "market_line": 0.3,
-      "tc_projection": 1.2,
-      "edge": 0.9,
-      "direction": "OVER",
-      "signal": "OVER",
+      "pos": "SS",
+      "stat": "total_bases",
+      "market_line": 1.5,
+      "tc_projection": 0.8,
+      "edge": -0.7,
+      "direction": "UNDER",
+      "signal": "UNDER",
       "status": "ACTIVE",
       "source": "sdio_lines"
     },
@@ -75,25 +88,12 @@
       "player": "Geraldo Perdomo",
       "team": "ARI",
       "pos": "SS",
-      "stat": "hits",
-      "market_line": 0.3,
-      "tc_projection": 1,
-      "edge": 0.7,
-      "direction": "OVER",
-      "signal": "OVER",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Gavin Sheets",
-      "team": "SD",
-      "pos": "1B",
       "stat": "total_bases",
-      "market_line": 0.8,
-      "tc_projection": 1.5,
-      "edge": 0.7,
-      "direction": "OVER",
-      "signal": "OVER",
+      "market_line": 1.5,
+      "tc_projection": 0.9,
+      "edge": -0.6,
+      "direction": "UNDER",
+      "signal": "UNDER",
       "status": "ACTIVE",
       "source": "sdio_lines"
     },
@@ -102,21 +102,8 @@
       "team": "SD",
       "pos": "LF",
       "stat": "rbi",
-      "market_line": 0.3,
-      "tc_projection": 1,
-      "edge": 0.7,
-      "direction": "OVER",
-      "signal": "OVER",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Gabriel Moreno",
-      "team": "ARI",
-      "pos": "C",
-      "stat": "total_bases",
-      "market_line": 0.8,
-      "tc_projection": 1.4,
+      "market_line": 0.5,
+      "tc_projection": 1.1,
       "edge": 0.6,
       "direction": "OVER",
       "signal": "OVER",
@@ -124,12 +111,12 @@
       "source": "sdio_lines"
     },
     {
-      "player": "Nolan Arenado",
+      "player": "Gabriel Moreno",
       "team": "ARI",
-      "pos": "3B",
-      "stat": "total_bases",
-      "market_line": 0.8,
-      "tc_projection": 1.3,
+      "pos": "C",
+      "stat": "hits",
+      "market_line": 0.5,
+      "tc_projection": 1,
       "edge": 0.5,
       "direction": "OVER",
       "signal": "OVER",
@@ -137,12 +124,12 @@
       "source": "sdio_lines"
     },
     {
-      "player": "Pavin Smith",
+      "player": "Lourdes Gurriel Jr.",
       "team": "ARI",
-      "pos": "DH",
+      "pos": "LF",
       "stat": "total_bases",
-      "market_line": 0.8,
-      "tc_projection": 0.3,
+      "market_line": 1.5,
+      "tc_projection": 1,
       "edge": -0.5,
       "direction": "UNDER",
       "signal": "UNDER",
@@ -150,428 +137,389 @@
       "source": "sdio_lines"
     },
     {
-      "player": "Manny Machado",
-      "team": "SD",
-      "pos": "3B",
-      "stat": "total_bases",
-      "market_line": 0.8,
-      "tc_projection": 1.3,
-      "edge": 0.5,
-      "direction": "OVER",
-      "signal": "OVER",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Gavin Sheets",
+      "player": "Ty France",
       "team": "SD",
       "pos": "1B",
-      "stat": "hits",
-      "market_line": 0.3,
-      "tc_projection": 0.8,
-      "edge": 0.5,
-      "direction": "OVER",
-      "signal": "OVER",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Fernando Tatis Jr.",
-      "team": "SD",
-      "pos": "RF",
-      "stat": "hits",
-      "market_line": 0.8,
-      "tc_projection": 1.3,
-      "edge": 0.5,
-      "direction": "OVER",
-      "signal": "OVER",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Fernando Tatis Jr.",
-      "team": "SD",
-      "pos": "RF",
       "stat": "total_bases",
-      "market_line": 0.8,
-      "tc_projection": 1.3,
-      "edge": 0.5,
-      "direction": "OVER",
-      "signal": "OVER",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Jackson Merrill",
-      "team": "SD",
-      "pos": "CF",
-      "stat": "total_bases",
-      "market_line": 0.8,
-      "tc_projection": 1.3,
-      "edge": 0.5,
-      "direction": "OVER",
-      "signal": "OVER",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Samad Taylor",
-      "team": "SD",
-      "pos": "LF",
-      "stat": "total_bases",
-      "market_line": 0.8,
-      "tc_projection": 1.3,
-      "edge": 0.5,
-      "direction": "OVER",
-      "signal": "OVER",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Corbin Carroll",
-      "team": "ARI",
-      "pos": "RF",
-      "stat": "hits",
-      "market_line": 0.3,
-      "tc_projection": 0.7,
-      "edge": 0.4,
-      "direction": "OVER",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Manny Machado",
-      "team": "SD",
-      "pos": "3B",
-      "stat": "hits",
-      "market_line": 0.3,
-      "tc_projection": 0.7,
-      "edge": 0.4,
-      "direction": "OVER",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Xander Bogaerts",
-      "team": "SD",
-      "pos": "SS",
-      "stat": "runs",
-      "market_line": 0.3,
-      "tc_projection": 0.7,
-      "edge": 0.4,
-      "direction": "OVER",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Gavin Sheets",
-      "team": "SD",
-      "pos": "1B",
-      "stat": "rbi",
-      "market_line": 0.3,
-      "tc_projection": 0.7,
-      "edge": 0.4,
-      "direction": "OVER",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Gabriel Moreno",
-      "team": "ARI",
-      "pos": "C",
-      "stat": "hits",
-      "market_line": 0.8,
-      "tc_projection": 1.1,
-      "edge": 0.3,
-      "direction": "OVER",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Ketel Marte",
-      "team": "ARI",
-      "pos": "2B",
-      "stat": "hits",
-      "market_line": 0.8,
-      "tc_projection": 1.1,
-      "edge": 0.3,
-      "direction": "OVER",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Fernando Tatis Jr.",
-      "team": "SD",
-      "pos": "RF",
-      "stat": "rbi",
-      "market_line": 0.3,
-      "tc_projection": 0.6,
-      "edge": 0.3,
-      "direction": "OVER",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Sung-Mun Song",
-      "team": "SD",
-      "pos": "2B",
-      "stat": "hits",
-      "market_line": 0.3,
-      "tc_projection": 0.6,
-      "edge": 0.3,
-      "direction": "OVER",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Samad Taylor",
-      "team": "SD",
-      "pos": "LF",
-      "stat": "runs",
-      "market_line": 0.3,
-      "tc_projection": 0.6,
-      "edge": 0.3,
-      "direction": "OVER",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Gabriel Moreno",
-      "team": "ARI",
-      "pos": "C",
-      "stat": "rbi",
-      "market_line": 0.3,
-      "tc_projection": 0.5,
-      "edge": 0.2,
-      "direction": "OVER",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Gabriel Moreno",
-      "team": "ARI",
-      "pos": "C",
-      "stat": "runs",
-      "market_line": 0.3,
-      "tc_projection": 0.5,
-      "edge": 0.2,
-      "direction": "OVER",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Nolan Arenado",
-      "team": "ARI",
-      "pos": "3B",
-      "stat": "hits",
-      "market_line": 0.3,
-      "tc_projection": 0.5,
-      "edge": 0.2,
-      "direction": "OVER",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Nolan Arenado",
-      "team": "ARI",
-      "pos": "3B",
-      "stat": "rbi",
-      "market_line": 0.3,
-      "tc_projection": 0.1,
-      "edge": -0.2,
-      "direction": "UNDER",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Nolan Arenado",
-      "team": "ARI",
-      "pos": "3B",
-      "stat": "runs",
-      "market_line": 0.3,
-      "tc_projection": 0.1,
-      "edge": -0.2,
-      "direction": "UNDER",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Geraldo Perdomo",
-      "team": "ARI",
-      "pos": "SS",
-      "stat": "total_bases",
-      "market_line": 0.8,
+      "market_line": 1.5,
       "tc_projection": 1,
-      "edge": 0.2,
-      "direction": "OVER",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Ketel Marte",
-      "team": "ARI",
-      "pos": "2B",
-      "stat": "rbi",
-      "market_line": 0.3,
-      "tc_projection": 0.5,
-      "edge": 0.2,
-      "direction": "OVER",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Ketel Marte",
-      "team": "ARI",
-      "pos": "2B",
-      "stat": "runs",
-      "market_line": 0.3,
-      "tc_projection": 0.1,
-      "edge": -0.2,
+      "edge": -0.5,
       "direction": "UNDER",
-      "signal": "PASS",
+      "signal": "UNDER",
       "status": "ACTIVE",
       "source": "sdio_lines"
     },
     {
-      "player": "Corbin Carroll",
-      "team": "ARI",
-      "pos": "RF",
-      "stat": "rbi",
-      "market_line": 0.3,
-      "tc_projection": 0.5,
-      "edge": 0.2,
-      "direction": "OVER",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Corbin Carroll",
-      "team": "ARI",
-      "pos": "RF",
-      "stat": "runs",
-      "market_line": 0.3,
-      "tc_projection": 0.5,
-      "edge": 0.2,
-      "direction": "OVER",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Fernando Tatis Jr.",
+      "player": "Michael King",
       "team": "SD",
-      "pos": "RF",
-      "stat": "runs",
-      "market_line": 0.3,
-      "tc_projection": 0.5,
-      "edge": 0.2,
-      "direction": "OVER",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Jackson Merrill",
-      "team": "SD",
-      "pos": "CF",
-      "stat": "hits",
-      "market_line": 0.8,
-      "tc_projection": 1,
-      "edge": 0.2,
-      "direction": "OVER",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Jackson Merrill",
-      "team": "SD",
-      "pos": "CF",
-      "stat": "runs",
-      "market_line": 0.3,
-      "tc_projection": 0.5,
-      "edge": 0.2,
-      "direction": "OVER",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Geraldo Perdomo",
-      "team": "ARI",
-      "pos": "SS",
-      "stat": "rbi",
-      "market_line": 0.3,
-      "tc_projection": 0.2,
-      "edge": -0.1,
-      "direction": "UNDER",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Geraldo Perdomo",
-      "team": "ARI",
-      "pos": "SS",
-      "stat": "runs",
-      "market_line": 0.3,
-      "tc_projection": 0.4,
-      "edge": 0.1,
-      "direction": "OVER",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Pavin Smith",
-      "team": "ARI",
-      "pos": "DH",
-      "stat": "hits",
-      "market_line": 0.3,
-      "tc_projection": 0.2,
-      "edge": -0.1,
-      "direction": "UNDER",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Pavin Smith",
-      "team": "ARI",
-      "pos": "DH",
-      "stat": "rbi",
-      "market_line": 0.3,
-      "tc_projection": 0.2,
-      "edge": -0.1,
-      "direction": "UNDER",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Zac Gallen",
-      "team": "ARI",
       "pos": "SP",
-      "stat": "strikeouts",
+      "stat": "earned_runs",
       "market_line": 2.4,
-      "tc_projection": 2.3,
+      "tc_projection": 2.9,
+      "edge": 0.5,
+      "direction": "OVER",
+      "signal": "OVER",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Nolan Arenado",
+      "team": "ARI",
+      "pos": "3B",
+      "stat": "rbi",
+      "market_line": 0.5,
+      "tc_projection": 0.1,
+      "edge": -0.4,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Corbin Carroll",
+      "team": "ARI",
+      "pos": "RF",
+      "stat": "total_bases",
+      "market_line": 1.5,
+      "tc_projection": 1.9,
+      "edge": 0.4,
+      "direction": "OVER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Lourdes Gurriel Jr.",
+      "team": "ARI",
+      "pos": "LF",
+      "stat": "hits",
+      "market_line": 0.5,
+      "tc_projection": 0.8,
+      "edge": 0.3,
+      "direction": "OVER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Lourdes Gurriel Jr.",
+      "team": "ARI",
+      "pos": "LF",
+      "stat": "rbi",
+      "market_line": 0.5,
+      "tc_projection": 0.8,
+      "edge": 0.3,
+      "direction": "OVER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Geraldo Perdomo",
+      "team": "ARI",
+      "pos": "SS",
+      "stat": "hits",
+      "market_line": 0.5,
+      "tc_projection": 0.8,
+      "edge": 0.3,
+      "direction": "OVER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Ketel Marte",
+      "team": "ARI",
+      "pos": "2B",
+      "stat": "runs",
+      "market_line": 0.5,
+      "tc_projection": 0.2,
+      "edge": -0.3,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Pavin Smith",
+      "team": "ARI",
+      "pos": "DH",
+      "stat": "rbi",
+      "market_line": 0.5,
+      "tc_projection": 0.2,
+      "edge": -0.3,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Pavin Smith",
+      "team": "ARI",
+      "pos": "DH",
+      "stat": "runs",
+      "market_line": 0.5,
+      "tc_projection": 0.2,
+      "edge": -0.3,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Ty France",
+      "team": "SD",
+      "pos": "1B",
+      "stat": "hits",
+      "market_line": 0.5,
+      "tc_projection": 0.2,
+      "edge": -0.3,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Ty France",
+      "team": "SD",
+      "pos": "1B",
+      "stat": "runs",
+      "market_line": 0.5,
+      "tc_projection": 0.2,
+      "edge": -0.3,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Manny Machado",
+      "team": "SD",
+      "pos": "3B",
+      "stat": "hits",
+      "market_line": 0.5,
+      "tc_projection": 0.8,
+      "edge": 0.3,
+      "direction": "OVER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Manny Machado",
+      "team": "SD",
+      "pos": "3B",
+      "stat": "total_bases",
+      "market_line": 1.5,
+      "tc_projection": 1.2,
+      "edge": -0.3,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Fernando Tatis Jr.",
+      "team": "SD",
+      "pos": "RF",
+      "stat": "hits",
+      "market_line": 1.5,
+      "tc_projection": 1.2,
+      "edge": -0.3,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Jackson Merrill",
+      "team": "SD",
+      "pos": "CF",
+      "stat": "hits",
+      "market_line": 0.5,
+      "tc_projection": 0.8,
+      "edge": 0.3,
+      "direction": "OVER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Ketel Marte",
+      "team": "ARI",
+      "pos": "2B",
+      "stat": "total_bases",
+      "market_line": 1.5,
+      "tc_projection": 1.7,
+      "edge": 0.2,
+      "direction": "OVER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Corbin Carroll",
+      "team": "ARI",
+      "pos": "RF",
+      "stat": "hits",
+      "market_line": 0.5,
+      "tc_projection": 0.7,
+      "edge": 0.2,
+      "direction": "OVER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Xander Bogaerts",
+      "team": "SD",
+      "pos": "SS",
+      "stat": "runs",
+      "market_line": 0.5,
+      "tc_projection": 0.7,
+      "edge": 0.2,
+      "direction": "OVER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Gavin Sheets",
+      "team": "SD",
+      "pos": "1B",
+      "stat": "hits",
+      "market_line": 0.5,
+      "tc_projection": 0.7,
+      "edge": 0.2,
+      "direction": "OVER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Fernando Tatis Jr.",
+      "team": "SD",
+      "pos": "RF",
+      "stat": "total_bases",
+      "market_line": 1.5,
+      "tc_projection": 1.3,
+      "edge": -0.2,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Jackson Merrill",
+      "team": "SD",
+      "pos": "CF",
+      "stat": "total_bases",
+      "market_line": 1.5,
+      "tc_projection": 1.3,
+      "edge": -0.2,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Gabriel Moreno",
+      "team": "ARI",
+      "pos": "C",
+      "stat": "rbi",
+      "market_line": 0.5,
+      "tc_projection": 0.4,
+      "edge": -0.1,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Gabriel Moreno",
+      "team": "ARI",
+      "pos": "C",
+      "stat": "total_bases",
+      "market_line": 1.5,
+      "tc_projection": 1.4,
+      "edge": -0.1,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Gabriel Moreno",
+      "team": "ARI",
+      "pos": "C",
+      "stat": "runs",
+      "market_line": 0.5,
+      "tc_projection": 0.4,
+      "edge": -0.1,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Nolan Arenado",
+      "team": "ARI",
+      "pos": "3B",
+      "stat": "total_bases",
+      "market_line": 1.5,
+      "tc_projection": 1.4,
+      "edge": -0.1,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Geraldo Perdomo",
+      "team": "ARI",
+      "pos": "SS",
+      "stat": "rbi",
+      "market_line": 0.5,
+      "tc_projection": 0.4,
+      "edge": -0.1,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Pavin Smith",
+      "team": "ARI",
+      "pos": "DH",
+      "stat": "hits",
+      "market_line": 0.5,
+      "tc_projection": 0.4,
+      "edge": -0.1,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Corbin Carroll",
+      "team": "ARI",
+      "pos": "RF",
+      "stat": "rbi",
+      "market_line": 0.5,
+      "tc_projection": 0.4,
+      "edge": -0.1,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Corbin Carroll",
+      "team": "ARI",
+      "pos": "RF",
+      "stat": "runs",
+      "market_line": 0.5,
+      "tc_projection": 0.4,
       "edge": -0.1,
       "direction": "UNDER",
       "signal": "PASS",
@@ -583,10 +531,10 @@
       "team": "SD",
       "pos": "3B",
       "stat": "rbi",
-      "market_line": 0.3,
+      "market_line": 0.5,
       "tc_projection": 0.4,
-      "edge": 0.1,
-      "direction": "OVER",
+      "edge": -0.1,
+      "direction": "UNDER",
       "signal": "PASS",
       "status": "ACTIVE",
       "source": "sdio_lines"
@@ -596,21 +544,8 @@
       "team": "SD",
       "pos": "3B",
       "stat": "runs",
-      "market_line": 0.3,
+      "market_line": 0.5,
       "tc_projection": 0.4,
-      "edge": 0.1,
-      "direction": "OVER",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Xander Bogaerts",
-      "team": "SD",
-      "pos": "SS",
-      "stat": "hits",
-      "market_line": 0.8,
-      "tc_projection": 0.7,
       "edge": -0.1,
       "direction": "UNDER",
       "signal": "PASS",
@@ -618,12 +553,12 @@
       "source": "sdio_lines"
     },
     {
-      "player": "Xander Bogaerts",
+      "player": "Gavin Sheets",
       "team": "SD",
-      "pos": "SS",
-      "stat": "total_bases",
-      "market_line": 0.8,
-      "tc_projection": 0.9,
+      "pos": "1B",
+      "stat": "rbi",
+      "market_line": 0.5,
+      "tc_projection": 0.6,
       "edge": 0.1,
       "direction": "OVER",
       "signal": "PASS",
@@ -635,8 +570,21 @@
       "team": "SD",
       "pos": "1B",
       "stat": "runs",
-      "market_line": 0.3,
+      "market_line": 0.5,
       "tc_projection": 0.4,
+      "edge": -0.1,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Fernando Tatis Jr.",
+      "team": "SD",
+      "pos": "RF",
+      "stat": "rbi",
+      "market_line": 0.5,
+      "tc_projection": 0.6,
       "edge": 0.1,
       "direction": "OVER",
       "signal": "PASS",
@@ -648,21 +596,21 @@
       "team": "SD",
       "pos": "CF",
       "stat": "rbi",
-      "market_line": 0.3,
+      "market_line": 0.5,
       "tc_projection": 0.4,
-      "edge": 0.1,
-      "direction": "OVER",
+      "edge": -0.1,
+      "direction": "UNDER",
       "signal": "PASS",
       "status": "ACTIVE",
       "source": "sdio_lines"
     },
     {
-      "player": "Sung-Mun Song",
+      "player": "Samad Taylor",
       "team": "SD",
-      "pos": "2B",
-      "stat": "total_bases",
-      "market_line": 0.8,
-      "tc_projection": 0.7,
+      "pos": "LF",
+      "stat": "runs",
+      "market_line": 0.5,
+      "tc_projection": 0.4,
       "edge": -0.1,
       "direction": "UNDER",
       "signal": "PASS",
@@ -674,7 +622,33 @@
       "team": "ARI",
       "pos": "C",
       "stat": "strikeouts",
-      "market_line": 0.3,
+      "market_line": 0.5,
+      "tc_projection": 0,
+      "edge": 0,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Lourdes Gurriel Jr.",
+      "team": "ARI",
+      "pos": "LF",
+      "stat": "strikeouts",
+      "market_line": 0.5,
+      "tc_projection": 0,
+      "edge": 0,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Lourdes Gurriel Jr.",
+      "team": "ARI",
+      "pos": "LF",
+      "stat": "runs",
+      "market_line": 0.5,
       "tc_projection": 0,
       "edge": 0,
       "direction": "UNDER",
@@ -687,7 +661,33 @@
       "team": "ARI",
       "pos": "3B",
       "stat": "strikeouts",
-      "market_line": 0.3,
+      "market_line": 0.5,
+      "tc_projection": 0,
+      "edge": 0,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Nolan Arenado",
+      "team": "ARI",
+      "pos": "3B",
+      "stat": "hits",
+      "market_line": 0.5,
+      "tc_projection": 0.5,
+      "edge": 0,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Nolan Arenado",
+      "team": "ARI",
+      "pos": "3B",
+      "stat": "runs",
+      "market_line": 0.5,
       "tc_projection": 0,
       "edge": 0,
       "direction": "UNDER",
@@ -700,8 +700,21 @@
       "team": "ARI",
       "pos": "SS",
       "stat": "strikeouts",
-      "market_line": 0.3,
+      "market_line": 0.5,
       "tc_projection": 0,
+      "edge": 0,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Geraldo Perdomo",
+      "team": "ARI",
+      "pos": "SS",
+      "stat": "runs",
+      "market_line": 0.5,
+      "tc_projection": 0.5,
       "edge": 0,
       "direction": "UNDER",
       "signal": "PASS",
@@ -713,8 +726,21 @@
       "team": "ARI",
       "pos": "2B",
       "stat": "strikeouts",
-      "market_line": 0.3,
+      "market_line": 0.5,
       "tc_projection": 0,
+      "edge": 0,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Ketel Marte",
+      "team": "ARI",
+      "pos": "2B",
+      "stat": "rbi",
+      "market_line": 0.5,
+      "tc_projection": 0.5,
       "edge": 0,
       "direction": "UNDER",
       "signal": "PASS",
@@ -726,20 +752,7 @@
       "team": "ARI",
       "pos": "DH",
       "stat": "strikeouts",
-      "market_line": 0.3,
-      "tc_projection": 0,
-      "edge": 0,
-      "direction": "UNDER",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Pavin Smith",
-      "team": "ARI",
-      "pos": "DH",
-      "stat": "runs",
-      "market_line": 0.3,
+      "market_line": 0.5,
       "tc_projection": 0,
       "edge": 0,
       "direction": "UNDER",
@@ -752,7 +765,33 @@
       "team": "ARI",
       "pos": "RF",
       "stat": "strikeouts",
-      "market_line": 0.3,
+      "market_line": 0.5,
+      "tc_projection": 0,
+      "edge": 0,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Ty France",
+      "team": "SD",
+      "pos": "1B",
+      "stat": "strikeouts",
+      "market_line": 0.5,
+      "tc_projection": 0,
+      "edge": 0,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Ty France",
+      "team": "SD",
+      "pos": "1B",
+      "stat": "rbi",
+      "market_line": 0.5,
       "tc_projection": 0,
       "edge": 0,
       "direction": "UNDER",
@@ -765,7 +804,7 @@
       "team": "SD",
       "pos": "3B",
       "stat": "strikeouts",
-      "market_line": 0.3,
+      "market_line": 0.5,
       "tc_projection": 0,
       "edge": 0,
       "direction": "UNDER",
@@ -778,7 +817,7 @@
       "team": "SD",
       "pos": "SS",
       "stat": "strikeouts",
-      "market_line": 0.3,
+      "market_line": 0.5,
       "tc_projection": 0,
       "edge": 0,
       "direction": "UNDER",
@@ -790,8 +829,21 @@
       "player": "Xander Bogaerts",
       "team": "SD",
       "pos": "SS",
+      "stat": "hits",
+      "market_line": 0.5,
+      "tc_projection": 0.5,
+      "edge": 0,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Xander Bogaerts",
+      "team": "SD",
+      "pos": "SS",
       "stat": "rbi",
-      "market_line": 0.3,
+      "market_line": 0.5,
       "tc_projection": 0,
       "edge": 0,
       "direction": "UNDER",
@@ -804,8 +856,21 @@
       "team": "SD",
       "pos": "1B",
       "stat": "strikeouts",
-      "market_line": 0.3,
+      "market_line": 0.5,
       "tc_projection": 0,
+      "edge": 0,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Gavin Sheets",
+      "team": "SD",
+      "pos": "1B",
+      "stat": "total_bases",
+      "market_line": 1.5,
+      "tc_projection": 1.5,
       "edge": 0,
       "direction": "UNDER",
       "signal": "PASS",
@@ -817,8 +882,21 @@
       "team": "SD",
       "pos": "RF",
       "stat": "strikeouts",
-      "market_line": 0.3,
+      "market_line": 0.5,
       "tc_projection": 0,
+      "edge": 0,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Fernando Tatis Jr.",
+      "team": "SD",
+      "pos": "RF",
+      "stat": "runs",
+      "market_line": 0.5,
+      "tc_projection": 0.5,
       "edge": 0,
       "direction": "UNDER",
       "signal": "PASS",
@@ -830,7 +908,7 @@
       "team": "SD",
       "pos": "CF",
       "stat": "strikeouts",
-      "market_line": 0.8,
+      "market_line": 0.5,
       "tc_projection": 0,
       "edge": 0,
       "direction": "UNDER",
@@ -839,38 +917,12 @@
       "source": "sdio_lines"
     },
     {
-      "player": "Sung-Mun Song",
+      "player": "Jackson Merrill",
       "team": "SD",
-      "pos": "2B",
-      "stat": "strikeouts",
-      "market_line": 0.3,
-      "tc_projection": 0,
-      "edge": 0,
-      "direction": "UNDER",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Sung-Mun Song",
-      "team": "SD",
-      "pos": "2B",
-      "stat": "rbi",
-      "market_line": 0.3,
-      "tc_projection": 0,
-      "edge": 0,
-      "direction": "UNDER",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "sdio_lines"
-    },
-    {
-      "player": "Sung-Mun Song",
-      "team": "SD",
-      "pos": "2B",
+      "pos": "CF",
       "stat": "runs",
-      "market_line": 0.3,
-      "tc_projection": 0,
+      "market_line": 0.5,
+      "tc_projection": 0.5,
       "edge": 0,
       "direction": "UNDER",
       "signal": "PASS",
@@ -882,8 +934,21 @@
       "team": "SD",
       "pos": "LF",
       "stat": "strikeouts",
-      "market_line": 0.3,
+      "market_line": 1.5,
       "tc_projection": 0,
+      "edge": 0,
+      "direction": "UNDER",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "sdio_lines"
+    },
+    {
+      "player": "Samad Taylor",
+      "team": "SD",
+      "pos": "LF",
+      "stat": "total_bases",
+      "market_line": 1.5,
+      "tc_projection": 1.5,
       "edge": 0,
       "direction": "UNDER",
       "signal": "PASS",
@@ -892,14 +957,14 @@
     }
   ],
   "roster_counts": {
-    "away": 27,
-    "home": 28,
-    "away_active": 27,
-    "home_active": 28
+    "away": 28,
+    "home": 29,
+    "away_active": 28,
+    "home_active": 29
   },
   "dk_available": true,
   "prop_source": "sdio_lines",
-  "sdio_props_count": 20,
+  "sdio_props_count": 19,
   "away": {
     "all": {
       "players": [
@@ -910,7 +975,7 @@
           "status": "ACTIVE",
           "role": "BATTER",
           "min": 0,
-          "tc_h": 0.7,
+          "tc_h": 0.6,
           "tc_hr": 0,
           "tc_rbi": 0.2,
           "tc_r": 0.2,
@@ -928,15 +993,15 @@
           "edge_sb": 0,
           "edge_avg": 0,
           "batting": {
-            "hits": 0.7,
+            "hits": 0.6,
             "rbi": 0.2,
             "runs": 0.2,
             "hr": 0,
-            "total_bases": 0.6,
+            "total_bases": 0.7,
             "sb": 0,
-            "singles": 0.7,
+            "singles": 0.6,
             "doubles": 0,
-            "walks": 0.3
+            "walks": 0.4
           },
           "pitching": {
             "strikeouts_avg": 0,
@@ -948,15 +1013,15 @@
             "appearances": 0
           },
           "tc_batting": {
-            "hits": 0.7,
+            "hits": 0.6,
             "rbi": 0.2,
             "runs": 0.2,
             "hr": 0,
-            "total_bases": 0.6,
+            "total_bases": 0.7,
             "sb": 0,
-            "singles": 0.7,
+            "singles": 0.6,
             "doubles": 0,
-            "walks": 0.3
+            "walks": 0.4
           },
           "tc_pitching": {
             "strikeouts": 0,
@@ -997,7 +1062,7 @@
             "rbi": 0,
             "runs": 0.4,
             "hr": 0,
-            "total_bases": 1.1,
+            "total_bases": 1,
             "sb": 0,
             "singles": 0,
             "doubles": 0,
@@ -1017,7 +1082,7 @@
             "rbi": 0,
             "runs": 0.4,
             "hr": 0,
-            "total_bases": 1.1,
+            "total_bases": 1,
             "sb": 0,
             "singles": 0,
             "doubles": 0,
@@ -1040,31 +1105,31 @@
           "status": "ACTIVE",
           "role": "BATTER",
           "min": 0,
-          "tc_h": 1.1,
+          "tc_h": 1.2,
           "tc_hr": 0,
           "tc_rbi": 0.5,
-          "tc_r": 0.1,
+          "tc_r": 0.2,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 0.8,
+          "line_h": 0.5,
           "line_hr": 0,
-          "line_rbi": 0.3,
-          "line_r": 0.3,
+          "line_rbi": 0.5,
+          "line_r": 0.5,
           "line_sb": 0,
-          "edge_h": 0.3,
+          "edge_h": 0.7,
           "edge_hr": 0,
-          "edge_rbi": 0.2,
-          "edge_r": -0.2,
+          "edge_rbi": 0,
+          "edge_r": -0.3,
           "edge_sb": 0,
           "edge_avg": 0,
           "batting": {
-            "hits": 1.1,
+            "hits": 1.2,
             "rbi": 0.5,
-            "runs": 0.1,
+            "runs": 0.2,
             "hr": 0,
             "total_bases": 1.7,
             "sb": 0,
-            "singles": 1.1,
+            "singles": 1.2,
             "doubles": 0,
             "walks": 0.2
           },
@@ -1078,13 +1143,13 @@
             "appearances": 0
           },
           "tc_batting": {
-            "hits": 1.1,
+            "hits": 1.2,
             "rbi": 0.5,
-            "runs": 0.1,
+            "runs": 0.2,
             "hr": 0,
             "total_bases": 1.7,
             "sb": 0,
-            "singles": 1.1,
+            "singles": 1.2,
             "doubles": 0,
             "walks": 0.2
           },
@@ -1096,17 +1161,17 @@
             "outs": 0
           },
           "lines_raw": {
-            "strikeouts": 0.3,
-            "hits": 0.8,
-            "rbi": 0.3,
-            "total_bases": 0.8,
-            "runs": 0.3
+            "strikeouts": 0.5,
+            "hits": 0.5,
+            "rbi": 0.5,
+            "total_bases": 1.5,
+            "runs": 0.5
           },
           "edges_raw": {
-            "hits": 0.3,
-            "rbi": 0.2,
-            "total_bases": 0.9,
-            "runs": -0.2
+            "hits": 0.7,
+            "rbi": 0,
+            "total_bases": 0.2,
+            "runs": -0.3
           }
         },
         {
@@ -1119,30 +1184,30 @@
           "tc_h": 0.5,
           "tc_hr": 0,
           "tc_rbi": 0.1,
-          "tc_r": 0.1,
+          "tc_r": 0,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 0.3,
+          "line_h": 0.5,
           "line_hr": 0,
-          "line_rbi": 0.3,
-          "line_r": 0.3,
+          "line_rbi": 0.5,
+          "line_r": 0.5,
           "line_sb": 0,
-          "edge_h": 0.2,
+          "edge_h": 0,
           "edge_hr": 0,
-          "edge_rbi": -0.2,
-          "edge_r": -0.2,
+          "edge_rbi": -0.4,
+          "edge_r": 0,
           "edge_sb": 0,
           "edge_avg": 0,
           "batting": {
             "hits": 0.5,
             "rbi": 0.1,
-            "runs": 0.1,
+            "runs": 0,
             "hr": 0,
-            "total_bases": 1.3,
+            "total_bases": 1.4,
             "sb": 0,
             "singles": 0.5,
             "doubles": 0,
-            "walks": 0.4
+            "walks": 0.2
           },
           "pitching": {
             "strikeouts_avg": 0,
@@ -1156,13 +1221,13 @@
           "tc_batting": {
             "hits": 0.5,
             "rbi": 0.1,
-            "runs": 0.1,
+            "runs": 0,
             "hr": 0,
-            "total_bases": 1.3,
+            "total_bases": 1.4,
             "sb": 0,
             "singles": 0.5,
             "doubles": 0,
-            "walks": 0.4
+            "walks": 0.2
           },
           "tc_pitching": {
             "strikeouts": 0,
@@ -1172,17 +1237,16 @@
             "outs": 0
           },
           "lines_raw": {
-            "strikeouts": 0.3,
-            "hits": 0.3,
-            "rbi": 0.3,
-            "total_bases": 0.8,
-            "runs": 0.3
+            "strikeouts": 0.5,
+            "hits": 0.5,
+            "rbi": 0.5,
+            "total_bases": 1.5,
+            "runs": 0.5
           },
           "edges_raw": {
-            "hits": 0.2,
-            "rbi": -0.2,
-            "total_bases": 0.5,
-            "runs": -0.2
+            "hits": 0,
+            "rbi": -0.4,
+            "total_bases": -0.1
           }
         },
         {
@@ -1192,31 +1256,31 @@
           "status": "ACTIVE",
           "role": "BATTER",
           "min": 0,
-          "tc_h": 1.1,
-          "tc_hr": 0.4,
-          "tc_rbi": 0.5,
-          "tc_r": 0.5,
+          "tc_h": 1,
+          "tc_hr": 0.2,
+          "tc_rbi": 0.4,
+          "tc_r": 0.4,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 0.8,
+          "line_h": 0.5,
           "line_hr": 0,
-          "line_rbi": 0.3,
-          "line_r": 0.3,
+          "line_rbi": 0.5,
+          "line_r": 0.5,
           "line_sb": 0,
-          "edge_h": 0.3,
+          "edge_h": 0.5,
           "edge_hr": 0,
-          "edge_rbi": 0.2,
-          "edge_r": 0.2,
+          "edge_rbi": -0.1,
+          "edge_r": -0.1,
           "edge_sb": 0,
           "edge_avg": 0,
           "batting": {
-            "hits": 1.1,
-            "rbi": 0.5,
-            "runs": 0.5,
-            "hr": 0.4,
+            "hits": 1,
+            "rbi": 0.4,
+            "runs": 0.4,
+            "hr": 0.2,
             "total_bases": 1.4,
             "sb": 0,
-            "singles": 1.1,
+            "singles": 1,
             "doubles": 0,
             "walks": 0.6
           },
@@ -1230,13 +1294,13 @@
             "appearances": 0
           },
           "tc_batting": {
-            "hits": 1.1,
-            "rbi": 0.5,
-            "runs": 0.5,
-            "hr": 0.4,
+            "hits": 1,
+            "rbi": 0.4,
+            "runs": 0.4,
+            "hr": 0.2,
             "total_bases": 1.4,
             "sb": 0,
-            "singles": 1.1,
+            "singles": 1,
             "doubles": 0,
             "walks": 0.6
           },
@@ -1248,17 +1312,17 @@
             "outs": 0
           },
           "lines_raw": {
-            "strikeouts": 0.3,
-            "hits": 0.8,
-            "rbi": 0.3,
-            "total_bases": 0.8,
-            "runs": 0.3
+            "strikeouts": 0.5,
+            "hits": 0.5,
+            "rbi": 0.5,
+            "total_bases": 1.5,
+            "runs": 0.5
           },
           "edges_raw": {
-            "hits": 0.3,
-            "rbi": 0.2,
-            "total_bases": 0.6,
-            "runs": 0.2
+            "hits": 0.5,
+            "rbi": -0.1,
+            "total_bases": -0.1,
+            "runs": -0.1
           }
         },
         {
@@ -1333,9 +1397,9 @@
           "status": "ACTIVE",
           "role": "BATTER",
           "min": 0,
-          "tc_h": 0.5,
+          "tc_h": 0.4,
           "tc_hr": 0,
-          "tc_rbi": 0.2,
+          "tc_rbi": 0,
           "tc_r": 0.2,
           "tc_sb": 0,
           "tc_avg": 0,
@@ -1351,13 +1415,13 @@
           "edge_sb": 0,
           "edge_avg": 0,
           "batting": {
-            "hits": 0.5,
-            "rbi": 0.2,
+            "hits": 0.4,
+            "rbi": 0,
             "runs": 0.2,
             "hr": 0,
-            "total_bases": 1.2,
+            "total_bases": 1.1,
             "sb": 0,
-            "singles": 0.5,
+            "singles": 0.4,
             "doubles": 0,
             "walks": 0.2
           },
@@ -1371,13 +1435,13 @@
             "appearances": 0
           },
           "tc_batting": {
-            "hits": 0.5,
-            "rbi": 0.2,
+            "hits": 0.4,
+            "rbi": 0,
             "runs": 0.2,
             "hr": 0,
-            "total_bases": 1.2,
+            "total_bases": 1.1,
             "sb": 0,
-            "singles": 0.5,
+            "singles": 0.4,
             "doubles": 0,
             "walks": 0.2
           },
@@ -1420,7 +1484,7 @@
             "rbi": 0,
             "runs": 0,
             "hr": 0,
-            "total_bases": 0.3,
+            "total_bases": 0.2,
             "sb": 0,
             "singles": 0.2,
             "doubles": 0,
@@ -1440,7 +1504,7 @@
             "rbi": 0,
             "runs": 0,
             "hr": 0,
-            "total_bases": 0.3,
+            "total_bases": 0.2,
             "sb": 0,
             "singles": 0.2,
             "doubles": 0,
@@ -1528,33 +1592,33 @@
           "status": "ACTIVE",
           "role": "BATTER",
           "min": 0,
-          "tc_h": 0.2,
-          "tc_hr": 0,
+          "tc_h": 0.4,
+          "tc_hr": 0.2,
           "tc_rbi": 0.2,
-          "tc_r": 0,
+          "tc_r": 0.2,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 0.3,
+          "line_h": 0.5,
           "line_hr": 0,
-          "line_rbi": 0.3,
-          "line_r": 0.3,
+          "line_rbi": 0.5,
+          "line_r": 0.5,
           "line_sb": 0,
           "edge_h": -0.1,
           "edge_hr": 0,
-          "edge_rbi": -0.1,
-          "edge_r": 0,
+          "edge_rbi": -0.3,
+          "edge_r": -0.3,
           "edge_sb": 0,
           "edge_avg": 0,
           "batting": {
-            "hits": 0.2,
+            "hits": 0.4,
             "rbi": 0.2,
-            "runs": 0,
-            "hr": 0,
-            "total_bases": 0.3,
+            "runs": 0.2,
+            "hr": 0.2,
+            "total_bases": 0.5,
             "sb": 0,
-            "singles": 0.2,
+            "singles": 0.4,
             "doubles": 0,
-            "walks": 0.6
+            "walks": 0.4
           },
           "pitching": {
             "strikeouts_avg": 0,
@@ -1566,15 +1630,15 @@
             "appearances": 0
           },
           "tc_batting": {
-            "hits": 0.2,
+            "hits": 0.4,
             "rbi": 0.2,
-            "runs": 0,
-            "hr": 0,
-            "total_bases": 0.3,
+            "runs": 0.2,
+            "hr": 0.2,
+            "total_bases": 0.5,
             "sb": 0,
-            "singles": 0.2,
+            "singles": 0.4,
             "doubles": 0,
-            "walks": 0.6
+            "walks": 0.4
           },
           "tc_pitching": {
             "strikeouts": 0,
@@ -1584,16 +1648,17 @@
             "outs": 0
           },
           "lines_raw": {
-            "strikeouts": 0.3,
-            "hits": 0.3,
-            "rbi": 0.3,
-            "total_bases": 0.8,
-            "runs": 0.3
+            "strikeouts": 0.5,
+            "hits": 0.5,
+            "rbi": 0.5,
+            "total_bases": 1.5,
+            "runs": 0.5
           },
           "edges_raw": {
             "hits": -0.1,
-            "rbi": -0.1,
-            "total_bases": -0.5
+            "rbi": -0.3,
+            "total_bases": -1,
+            "runs": -0.3
           }
         },
         {
@@ -1606,7 +1671,7 @@
           "tc_h": 0.3,
           "tc_hr": 0.1,
           "tc_rbi": 0.1,
-          "tc_r": 0.6,
+          "tc_r": 0.4,
           "tc_sb": 0,
           "tc_avg": 0,
           "line_h": 0,
@@ -1623,13 +1688,13 @@
           "batting": {
             "hits": 0.3,
             "rbi": 0.1,
-            "runs": 0.6,
+            "runs": 0.4,
             "hr": 0.1,
             "total_bases": 1,
             "sb": 0,
             "singles": 0.3,
             "doubles": 0,
-            "walks": 0.4
+            "walks": 0.3
           },
           "pitching": {
             "strikeouts_avg": 0,
@@ -1643,13 +1708,13 @@
           "tc_batting": {
             "hits": 0.3,
             "rbi": 0.1,
-            "runs": 0.6,
+            "runs": 0.4,
             "hr": 0.1,
             "total_bases": 1,
             "sb": 0,
             "singles": 0.3,
             "doubles": 0,
-            "walks": 0.4
+            "walks": 0.3
           },
           "tc_pitching": {
             "strikeouts": 0,
@@ -1668,10 +1733,10 @@
           "status": "ACTIVE",
           "role": "BATTER",
           "min": 0,
-          "tc_h": 0.8,
+          "tc_h": 0.6,
           "tc_hr": 0,
-          "tc_rbi": 0.8,
-          "tc_r": 0.4,
+          "tc_rbi": 0.6,
+          "tc_r": 0.3,
           "tc_sb": 0,
           "tc_avg": 0,
           "line_h": 0,
@@ -1686,15 +1751,15 @@
           "edge_sb": 0,
           "edge_avg": 0,
           "batting": {
-            "hits": 0.8,
-            "rbi": 0.8,
-            "runs": 0.4,
+            "hits": 0.6,
+            "rbi": 0.6,
+            "runs": 0.3,
             "hr": 0,
-            "total_bases": 1.5,
+            "total_bases": 1.3,
             "sb": 0,
-            "singles": 0.8,
+            "singles": 0.6,
             "doubles": 0,
-            "walks": 0.4
+            "walks": 0.6
           },
           "pitching": {
             "strikeouts_avg": 0,
@@ -1706,15 +1771,15 @@
             "appearances": 0
           },
           "tc_batting": {
-            "hits": 0.8,
-            "rbi": 0.8,
-            "runs": 0.4,
+            "hits": 0.6,
+            "rbi": 0.6,
+            "runs": 0.3,
             "hr": 0,
-            "total_bases": 1.5,
+            "total_bases": 1.3,
             "sb": 0,
-            "singles": 0.8,
+            "singles": 0.6,
             "doubles": 0,
-            "walks": 0.4
+            "walks": 0.6
           },
           "tc_pitching": {
             "strikeouts": 0,
@@ -1727,6 +1792,81 @@
           "edges_raw": {}
         },
         {
+          "name": "Lourdes Gurriel Jr.",
+          "pos": "LF",
+          "team": "ARI",
+          "status": "ACTIVE",
+          "role": "BATTER",
+          "min": 0,
+          "tc_h": 0.8,
+          "tc_hr": 0,
+          "tc_rbi": 0.8,
+          "tc_r": 0,
+          "tc_sb": 0,
+          "tc_avg": 0,
+          "line_h": 0.5,
+          "line_hr": 0,
+          "line_rbi": 0.5,
+          "line_r": 0.5,
+          "line_sb": 0,
+          "edge_h": 0.3,
+          "edge_hr": 0,
+          "edge_rbi": 0.3,
+          "edge_r": 0,
+          "edge_sb": 0,
+          "edge_avg": 0,
+          "batting": {
+            "hits": 0.8,
+            "rbi": 0.8,
+            "runs": 0,
+            "hr": 0,
+            "total_bases": 1,
+            "sb": 0,
+            "singles": 0.8,
+            "doubles": 0,
+            "walks": 0
+          },
+          "pitching": {
+            "strikeouts_avg": 0,
+            "hits_allowed_avg": 0,
+            "walks_allowed_avg": 0,
+            "earned_runs_avg": 0,
+            "outs_avg": 0,
+            "era": 0,
+            "appearances": 0
+          },
+          "tc_batting": {
+            "hits": 0.8,
+            "rbi": 0.8,
+            "runs": 0,
+            "hr": 0,
+            "total_bases": 1,
+            "sb": 0,
+            "singles": 0.8,
+            "doubles": 0,
+            "walks": 0
+          },
+          "tc_pitching": {
+            "strikeouts": 0,
+            "hits_allowed": 0.5,
+            "walks_allowed": 0.5,
+            "earned_runs": 0.5,
+            "outs": 0
+          },
+          "lines_raw": {
+            "strikeouts": 0.5,
+            "hits": 0.5,
+            "rbi": 0.5,
+            "total_bases": 1.5,
+            "runs": 0.5
+          },
+          "edges_raw": {
+            "hits": 0.3,
+            "rbi": 0.3,
+            "total_bases": -0.5
+          }
+        },
+        {
           "name": "Corbin Carroll",
           "pos": "RF",
           "team": "ARI",
@@ -1734,32 +1874,32 @@
           "role": "BATTER",
           "min": 0,
           "tc_h": 0.7,
-          "tc_hr": 0.4,
-          "tc_rbi": 0.5,
-          "tc_r": 0.5,
+          "tc_hr": 0.2,
+          "tc_rbi": 0.4,
+          "tc_r": 0.4,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 0.3,
+          "line_h": 0.5,
           "line_hr": 0,
-          "line_rbi": 0.3,
-          "line_r": 0.3,
+          "line_rbi": 0.5,
+          "line_r": 0.5,
           "line_sb": 0,
-          "edge_h": 0.4,
+          "edge_h": 0.2,
           "edge_hr": 0,
-          "edge_rbi": 0.2,
-          "edge_r": 0.2,
+          "edge_rbi": -0.1,
+          "edge_r": -0.1,
           "edge_sb": 0,
           "edge_avg": 0,
           "batting": {
             "hits": 0.7,
-            "rbi": 0.5,
-            "runs": 0.5,
-            "hr": 0.4,
-            "total_bases": 1.8,
+            "rbi": 0.4,
+            "runs": 0.4,
+            "hr": 0.2,
+            "total_bases": 1.9,
             "sb": 0,
             "singles": 0.7,
             "doubles": 0,
-            "walks": 0.4
+            "walks": 0.2
           },
           "pitching": {
             "strikeouts_avg": 0,
@@ -1772,14 +1912,14 @@
           },
           "tc_batting": {
             "hits": 0.7,
-            "rbi": 0.5,
-            "runs": 0.5,
-            "hr": 0.4,
-            "total_bases": 1.8,
+            "rbi": 0.4,
+            "runs": 0.4,
+            "hr": 0.2,
+            "total_bases": 1.9,
             "sb": 0,
             "singles": 0.7,
             "doubles": 0,
-            "walks": 0.4
+            "walks": 0.2
           },
           "tc_pitching": {
             "strikeouts": 0,
@@ -1789,17 +1929,17 @@
             "outs": 0
           },
           "lines_raw": {
-            "strikeouts": 0.3,
-            "hits": 0.3,
-            "rbi": 0.3,
-            "total_bases": 0.8,
-            "runs": 0.3
+            "strikeouts": 0.5,
+            "hits": 0.5,
+            "rbi": 0.5,
+            "total_bases": 1.5,
+            "runs": 0.5
           },
           "edges_raw": {
-            "hits": 0.4,
-            "rbi": 0.2,
-            "total_bases": 1,
-            "runs": 0.2
+            "hits": 0.2,
+            "rbi": -0.1,
+            "total_bases": 0.4,
+            "runs": -0.1
           }
         },
         {
@@ -1809,33 +1949,33 @@
           "status": "ACTIVE",
           "role": "BATTER",
           "min": 0,
-          "tc_h": 1,
+          "tc_h": 0.8,
           "tc_hr": 0.1,
-          "tc_rbi": 0.2,
-          "tc_r": 0.4,
+          "tc_rbi": 0.4,
+          "tc_r": 0.5,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 0.3,
+          "line_h": 0.5,
           "line_hr": 0,
-          "line_rbi": 0.3,
-          "line_r": 0.3,
+          "line_rbi": 0.5,
+          "line_r": 0.5,
           "line_sb": 0,
-          "edge_h": 0.7,
+          "edge_h": 0.3,
           "edge_hr": 0,
           "edge_rbi": -0.1,
-          "edge_r": 0.1,
+          "edge_r": 0,
           "edge_sb": 0,
           "edge_avg": 0,
           "batting": {
-            "hits": 1,
-            "rbi": 0.2,
-            "runs": 0.4,
+            "hits": 0.8,
+            "rbi": 0.4,
+            "runs": 0.5,
             "hr": 0.1,
-            "total_bases": 1,
+            "total_bases": 0.9,
             "sb": 0,
-            "singles": 1,
+            "singles": 0.8,
             "doubles": 0,
-            "walks": 0.7
+            "walks": 1
           },
           "pitching": {
             "strikeouts_avg": 0,
@@ -1847,15 +1987,15 @@
             "appearances": 0
           },
           "tc_batting": {
-            "hits": 1,
-            "rbi": 0.2,
-            "runs": 0.4,
+            "hits": 0.8,
+            "rbi": 0.4,
+            "runs": 0.5,
             "hr": 0.1,
-            "total_bases": 1,
+            "total_bases": 0.9,
             "sb": 0,
-            "singles": 1,
+            "singles": 0.8,
             "doubles": 0,
-            "walks": 0.7
+            "walks": 1
           },
           "tc_pitching": {
             "strikeouts": 0,
@@ -1865,17 +2005,17 @@
             "outs": 0
           },
           "lines_raw": {
-            "strikeouts": 0.3,
-            "hits": 0.3,
-            "rbi": 0.3,
-            "total_bases": 0.8,
-            "runs": 0.3
+            "strikeouts": 0.5,
+            "hits": 0.5,
+            "rbi": 0.5,
+            "total_bases": 1.5,
+            "runs": 0.5
           },
           "edges_raw": {
-            "hits": 0.7,
+            "hits": 0.3,
             "rbi": -0.1,
-            "total_bases": 0.2,
-            "runs": 0.1
+            "total_bases": -0.6,
+            "runs": 0
           }
         },
         {
@@ -1914,13 +2054,13 @@
             "walks": 0
           },
           "pitching": {
-            "strikeouts_avg": 0.8,
-            "hits_allowed_avg": 1.2,
-            "walks_allowed_avg": 0.2,
+            "strikeouts_avg": 1,
+            "hits_allowed_avg": 1.7,
+            "walks_allowed_avg": 0.3,
             "earned_runs_avg": 0,
-            "outs_avg": 2.3,
-            "era": 2.74,
-            "appearances": 4
+            "outs_avg": 2.1,
+            "era": 2.7,
+            "appearances": 3
           },
           "tc_batting": {
             "hits": 0,
@@ -1934,11 +2074,11 @@
             "walks": 0
           },
           "tc_pitching": {
-            "strikeouts": 0.1,
-            "hits_allowed": 1.5,
+            "strikeouts": 0.3,
+            "hits_allowed": 1.9,
             "walks_allowed": 0.7,
             "earned_runs": 0.5,
-            "outs": 1.3
+            "outs": 1.2
           },
           "lines_raw": {},
           "edges_raw": {}
@@ -2109,13 +2249,13 @@
             "walks": 0
           },
           "pitching": {
-            "strikeouts_avg": 0.5,
-            "hits_allowed_avg": 1,
+            "strikeouts_avg": 0.3,
+            "hits_allowed_avg": 0.7,
             "walks_allowed_avg": 0,
-            "earned_runs_avg": 0.5,
+            "earned_runs_avg": 0.3,
             "outs_avg": 3,
-            "era": 3.18,
-            "appearances": 2
+            "era": 3.12,
+            "appearances": 3
           },
           "tc_batting": {
             "hits": 0,
@@ -2130,9 +2270,9 @@
           },
           "tc_pitching": {
             "strikeouts": 0,
-            "hits_allowed": 1.3,
+            "hits_allowed": 1.1,
             "walks_allowed": 0.5,
-            "earned_runs": 0.9,
+            "earned_runs": 0.7,
             "outs": 1.9
           },
           "lines_raw": {},
@@ -2240,12 +2380,12 @@
           },
           "pitching": {
             "strikeouts_avg": 1,
-            "hits_allowed_avg": 1,
-            "walks_allowed_avg": 1,
-            "earned_runs_avg": 0.7,
-            "outs_avg": 3.2,
-            "era": 2.02,
-            "appearances": 3
+            "hits_allowed_avg": 1.5,
+            "walks_allowed_avg": 1.5,
+            "earned_runs_avg": 1,
+            "outs_avg": 3.3,
+            "era": 2.2,
+            "appearances": 2
           },
           "tc_batting": {
             "hits": 0,
@@ -2260,9 +2400,9 @@
           },
           "tc_pitching": {
             "strikeouts": 0.3,
-            "hits_allowed": 1.3,
-            "walks_allowed": 1.3,
-            "earned_runs": 1.1,
+            "hits_allowed": 1.7,
+            "walks_allowed": 1.7,
+            "earned_runs": 1.3,
             "outs": 2.1
           },
           "lines_raw": {},
@@ -2304,13 +2444,13 @@
             "walks": 0
           },
           "pitching": {
-            "strikeouts_avg": 1,
-            "hits_allowed_avg": 0.3,
-            "walks_allowed_avg": 0.3,
-            "earned_runs_avg": 0,
+            "strikeouts_avg": 1.2,
+            "hits_allowed_avg": 0.5,
+            "walks_allowed_avg": 0.2,
+            "earned_runs_avg": 0.2,
             "outs_avg": 3,
-            "era": 3.2,
-            "appearances": 3
+            "era": 3.23,
+            "appearances": 4
           },
           "tc_batting": {
             "hits": 0,
@@ -2324,10 +2464,10 @@
             "walks": 0
           },
           "tc_pitching": {
-            "strikeouts": 0.3,
-            "hits_allowed": 0.7,
+            "strikeouts": 0.5,
+            "hits_allowed": 0.9,
             "walks_allowed": 0.7,
-            "earned_runs": 0.5,
+            "earned_runs": 0.7,
             "outs": 1.9
           },
           "lines_raw": {},
@@ -2434,13 +2574,13 @@
             "walks": 0
           },
           "pitching": {
-            "strikeouts_avg": 2,
-            "hits_allowed_avg": 8,
-            "walks_allowed_avg": 1,
-            "earned_runs_avg": 7,
-            "outs_avg": 12,
-            "era": 5.19,
-            "appearances": 1
+            "strikeouts_avg": 3.5,
+            "hits_allowed_avg": 8.5,
+            "walks_allowed_avg": 0.5,
+            "earned_runs_avg": 4.5,
+            "outs_avg": 16.5,
+            "era": 5.08,
+            "appearances": 2
           },
           "tc_batting": {
             "hits": 0,
@@ -2454,11 +2594,11 @@
             "walks": 0
           },
           "tc_pitching": {
-            "strikeouts": 1.1,
-            "hits_allowed": 6.9,
-            "walks_allowed": 1.3,
-            "earned_runs": 6.1,
-            "outs": 9.1
+            "strikeouts": 2.3,
+            "hits_allowed": 7.3,
+            "walks_allowed": 0.9,
+            "earned_runs": 4.1,
+            "outs": 12.7
           },
           "lines_raw": {},
           "edges_raw": {}
@@ -2499,13 +2639,13 @@
             "walks": 0
           },
           "pitching": {
-            "strikeouts_avg": 6.5,
-            "hits_allowed_avg": 2.5,
-            "walks_allowed_avg": 1,
+            "strikeouts_avg": 7,
+            "hits_allowed_avg": 2,
+            "walks_allowed_avg": 0,
             "earned_runs_avg": 1,
             "outs_avg": 21,
-            "era": 3.19,
-            "appearances": 2
+            "era": 3.11,
+            "appearances": 1
           },
           "tc_batting": {
             "hits": 0,
@@ -2519,9 +2659,9 @@
             "walks": 0
           },
           "tc_pitching": {
-            "strikeouts": 4.7,
-            "hits_allowed": 2.5,
-            "walks_allowed": 1.3,
+            "strikeouts": 5.1,
+            "hits_allowed": 2.1,
+            "walks_allowed": 0.5,
             "earned_runs": 1.3,
             "outs": 16.3
           },
@@ -2655,16 +2795,8 @@
             "earned_runs": 3.3,
             "outs": 12.8
           },
-          "lines_raw": {
-            "hits_allowed": 2.9,
-            "earned_runs": 1.3,
-            "strikeouts": 2.4
-          },
-          "edges_raw": {
-            "hits_allowed": 3.6,
-            "earned_runs": 2,
-            "strikeouts": -0.1
-          }
+          "lines_raw": {},
+          "edges_raw": {}
         },
         {
           "name": "Merrill Kelly",
@@ -2742,7 +2874,7 @@
           "status": "ACTIVE",
           "role": "BATTER",
           "min": 0,
-          "tc_h": 0.7,
+          "tc_h": 0.6,
           "tc_hr": 0,
           "tc_rbi": 0.2,
           "tc_r": 0.2,
@@ -2760,15 +2892,15 @@
           "edge_sb": 0,
           "edge_avg": 0,
           "batting": {
-            "hits": 0.7,
+            "hits": 0.6,
             "rbi": 0.2,
             "runs": 0.2,
             "hr": 0,
-            "total_bases": 0.6,
+            "total_bases": 0.7,
             "sb": 0,
-            "singles": 0.7,
+            "singles": 0.6,
             "doubles": 0,
-            "walks": 0.3
+            "walks": 0.4
           },
           "pitching": {
             "strikeouts_avg": 0,
@@ -2780,15 +2912,15 @@
             "appearances": 0
           },
           "tc_batting": {
-            "hits": 0.7,
+            "hits": 0.6,
             "rbi": 0.2,
             "runs": 0.2,
             "hr": 0,
-            "total_bases": 0.6,
+            "total_bases": 0.7,
             "sb": 0,
-            "singles": 0.7,
+            "singles": 0.6,
             "doubles": 0,
-            "walks": 0.3
+            "walks": 0.4
           },
           "tc_pitching": {
             "strikeouts": 0,
@@ -2829,7 +2961,7 @@
             "rbi": 0,
             "runs": 0.4,
             "hr": 0,
-            "total_bases": 1.1,
+            "total_bases": 1,
             "sb": 0,
             "singles": 0,
             "doubles": 0,
@@ -2849,7 +2981,7 @@
             "rbi": 0,
             "runs": 0.4,
             "hr": 0,
-            "total_bases": 1.1,
+            "total_bases": 1,
             "sb": 0,
             "singles": 0,
             "doubles": 0,
@@ -2872,31 +3004,31 @@
           "status": "ACTIVE",
           "role": "BATTER",
           "min": 0,
-          "tc_h": 1.1,
+          "tc_h": 1.2,
           "tc_hr": 0,
           "tc_rbi": 0.5,
-          "tc_r": 0.1,
+          "tc_r": 0.2,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 0.8,
+          "line_h": 0.5,
           "line_hr": 0,
-          "line_rbi": 0.3,
-          "line_r": 0.3,
+          "line_rbi": 0.5,
+          "line_r": 0.5,
           "line_sb": 0,
-          "edge_h": 0.3,
+          "edge_h": 0.7,
           "edge_hr": 0,
-          "edge_rbi": 0.2,
-          "edge_r": -0.2,
+          "edge_rbi": 0,
+          "edge_r": -0.3,
           "edge_sb": 0,
           "edge_avg": 0,
           "batting": {
-            "hits": 1.1,
+            "hits": 1.2,
             "rbi": 0.5,
-            "runs": 0.1,
+            "runs": 0.2,
             "hr": 0,
             "total_bases": 1.7,
             "sb": 0,
-            "singles": 1.1,
+            "singles": 1.2,
             "doubles": 0,
             "walks": 0.2
           },
@@ -2910,13 +3042,13 @@
             "appearances": 0
           },
           "tc_batting": {
-            "hits": 1.1,
+            "hits": 1.2,
             "rbi": 0.5,
-            "runs": 0.1,
+            "runs": 0.2,
             "hr": 0,
             "total_bases": 1.7,
             "sb": 0,
-            "singles": 1.1,
+            "singles": 1.2,
             "doubles": 0,
             "walks": 0.2
           },
@@ -2928,17 +3060,17 @@
             "outs": 0
           },
           "lines_raw": {
-            "strikeouts": 0.3,
-            "hits": 0.8,
-            "rbi": 0.3,
-            "total_bases": 0.8,
-            "runs": 0.3
+            "strikeouts": 0.5,
+            "hits": 0.5,
+            "rbi": 0.5,
+            "total_bases": 1.5,
+            "runs": 0.5
           },
           "edges_raw": {
-            "hits": 0.3,
-            "rbi": 0.2,
-            "total_bases": 0.9,
-            "runs": -0.2
+            "hits": 0.7,
+            "rbi": 0,
+            "total_bases": 0.2,
+            "runs": -0.3
           }
         },
         {
@@ -2951,30 +3083,30 @@
           "tc_h": 0.5,
           "tc_hr": 0,
           "tc_rbi": 0.1,
-          "tc_r": 0.1,
+          "tc_r": 0,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 0.3,
+          "line_h": 0.5,
           "line_hr": 0,
-          "line_rbi": 0.3,
-          "line_r": 0.3,
+          "line_rbi": 0.5,
+          "line_r": 0.5,
           "line_sb": 0,
-          "edge_h": 0.2,
+          "edge_h": 0,
           "edge_hr": 0,
-          "edge_rbi": -0.2,
-          "edge_r": -0.2,
+          "edge_rbi": -0.4,
+          "edge_r": 0,
           "edge_sb": 0,
           "edge_avg": 0,
           "batting": {
             "hits": 0.5,
             "rbi": 0.1,
-            "runs": 0.1,
+            "runs": 0,
             "hr": 0,
-            "total_bases": 1.3,
+            "total_bases": 1.4,
             "sb": 0,
             "singles": 0.5,
             "doubles": 0,
-            "walks": 0.4
+            "walks": 0.2
           },
           "pitching": {
             "strikeouts_avg": 0,
@@ -2988,13 +3120,13 @@
           "tc_batting": {
             "hits": 0.5,
             "rbi": 0.1,
-            "runs": 0.1,
+            "runs": 0,
             "hr": 0,
-            "total_bases": 1.3,
+            "total_bases": 1.4,
             "sb": 0,
             "singles": 0.5,
             "doubles": 0,
-            "walks": 0.4
+            "walks": 0.2
           },
           "tc_pitching": {
             "strikeouts": 0,
@@ -3004,17 +3136,16 @@
             "outs": 0
           },
           "lines_raw": {
-            "strikeouts": 0.3,
-            "hits": 0.3,
-            "rbi": 0.3,
-            "total_bases": 0.8,
-            "runs": 0.3
+            "strikeouts": 0.5,
+            "hits": 0.5,
+            "rbi": 0.5,
+            "total_bases": 1.5,
+            "runs": 0.5
           },
           "edges_raw": {
-            "hits": 0.2,
-            "rbi": -0.2,
-            "total_bases": 0.5,
-            "runs": -0.2
+            "hits": 0,
+            "rbi": -0.4,
+            "total_bases": -0.1
           }
         },
         {
@@ -3024,31 +3155,31 @@
           "status": "ACTIVE",
           "role": "BATTER",
           "min": 0,
-          "tc_h": 1.1,
-          "tc_hr": 0.4,
-          "tc_rbi": 0.5,
-          "tc_r": 0.5,
+          "tc_h": 1,
+          "tc_hr": 0.2,
+          "tc_rbi": 0.4,
+          "tc_r": 0.4,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 0.8,
+          "line_h": 0.5,
           "line_hr": 0,
-          "line_rbi": 0.3,
-          "line_r": 0.3,
+          "line_rbi": 0.5,
+          "line_r": 0.5,
           "line_sb": 0,
-          "edge_h": 0.3,
+          "edge_h": 0.5,
           "edge_hr": 0,
-          "edge_rbi": 0.2,
-          "edge_r": 0.2,
+          "edge_rbi": -0.1,
+          "edge_r": -0.1,
           "edge_sb": 0,
           "edge_avg": 0,
           "batting": {
-            "hits": 1.1,
-            "rbi": 0.5,
-            "runs": 0.5,
-            "hr": 0.4,
+            "hits": 1,
+            "rbi": 0.4,
+            "runs": 0.4,
+            "hr": 0.2,
             "total_bases": 1.4,
             "sb": 0,
-            "singles": 1.1,
+            "singles": 1,
             "doubles": 0,
             "walks": 0.6
           },
@@ -3062,13 +3193,13 @@
             "appearances": 0
           },
           "tc_batting": {
-            "hits": 1.1,
-            "rbi": 0.5,
-            "runs": 0.5,
-            "hr": 0.4,
+            "hits": 1,
+            "rbi": 0.4,
+            "runs": 0.4,
+            "hr": 0.2,
             "total_bases": 1.4,
             "sb": 0,
-            "singles": 1.1,
+            "singles": 1,
             "doubles": 0,
             "walks": 0.6
           },
@@ -3080,17 +3211,17 @@
             "outs": 0
           },
           "lines_raw": {
-            "strikeouts": 0.3,
-            "hits": 0.8,
-            "rbi": 0.3,
-            "total_bases": 0.8,
-            "runs": 0.3
+            "strikeouts": 0.5,
+            "hits": 0.5,
+            "rbi": 0.5,
+            "total_bases": 1.5,
+            "runs": 0.5
           },
           "edges_raw": {
-            "hits": 0.3,
-            "rbi": 0.2,
-            "total_bases": 0.6,
-            "runs": 0.2
+            "hits": 0.5,
+            "rbi": -0.1,
+            "total_bases": -0.1,
+            "runs": -0.1
           }
         },
         {
@@ -3165,9 +3296,9 @@
           "status": "ACTIVE",
           "role": "BATTER",
           "min": 0,
-          "tc_h": 0.5,
+          "tc_h": 0.4,
           "tc_hr": 0,
-          "tc_rbi": 0.2,
+          "tc_rbi": 0,
           "tc_r": 0.2,
           "tc_sb": 0,
           "tc_avg": 0,
@@ -3183,13 +3314,13 @@
           "edge_sb": 0,
           "edge_avg": 0,
           "batting": {
-            "hits": 0.5,
-            "rbi": 0.2,
+            "hits": 0.4,
+            "rbi": 0,
             "runs": 0.2,
             "hr": 0,
-            "total_bases": 1.2,
+            "total_bases": 1.1,
             "sb": 0,
-            "singles": 0.5,
+            "singles": 0.4,
             "doubles": 0,
             "walks": 0.2
           },
@@ -3203,13 +3334,13 @@
             "appearances": 0
           },
           "tc_batting": {
-            "hits": 0.5,
-            "rbi": 0.2,
+            "hits": 0.4,
+            "rbi": 0,
             "runs": 0.2,
             "hr": 0,
-            "total_bases": 1.2,
+            "total_bases": 1.1,
             "sb": 0,
-            "singles": 0.5,
+            "singles": 0.4,
             "doubles": 0,
             "walks": 0.2
           },
@@ -3252,7 +3383,7 @@
             "rbi": 0,
             "runs": 0,
             "hr": 0,
-            "total_bases": 0.3,
+            "total_bases": 0.2,
             "sb": 0,
             "singles": 0.2,
             "doubles": 0,
@@ -3272,7 +3403,7 @@
             "rbi": 0,
             "runs": 0,
             "hr": 0,
-            "total_bases": 0.3,
+            "total_bases": 0.2,
             "sb": 0,
             "singles": 0.2,
             "doubles": 0,
@@ -3364,33 +3495,33 @@
           "status": "ACTIVE",
           "role": "BATTER",
           "min": 0,
-          "tc_h": 0.2,
-          "tc_hr": 0,
+          "tc_h": 0.4,
+          "tc_hr": 0.2,
           "tc_rbi": 0.2,
-          "tc_r": 0,
+          "tc_r": 0.2,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 0.3,
+          "line_h": 0.5,
           "line_hr": 0,
-          "line_rbi": 0.3,
-          "line_r": 0.3,
+          "line_rbi": 0.5,
+          "line_r": 0.5,
           "line_sb": 0,
           "edge_h": -0.1,
           "edge_hr": 0,
-          "edge_rbi": -0.1,
-          "edge_r": 0,
+          "edge_rbi": -0.3,
+          "edge_r": -0.3,
           "edge_sb": 0,
           "edge_avg": 0,
           "batting": {
-            "hits": 0.2,
+            "hits": 0.4,
             "rbi": 0.2,
-            "runs": 0,
-            "hr": 0,
-            "total_bases": 0.3,
+            "runs": 0.2,
+            "hr": 0.2,
+            "total_bases": 0.5,
             "sb": 0,
-            "singles": 0.2,
+            "singles": 0.4,
             "doubles": 0,
-            "walks": 0.6
+            "walks": 0.4
           },
           "pitching": {
             "strikeouts_avg": 0,
@@ -3402,15 +3533,15 @@
             "appearances": 0
           },
           "tc_batting": {
-            "hits": 0.2,
+            "hits": 0.4,
             "rbi": 0.2,
-            "runs": 0,
-            "hr": 0,
-            "total_bases": 0.3,
+            "runs": 0.2,
+            "hr": 0.2,
+            "total_bases": 0.5,
             "sb": 0,
-            "singles": 0.2,
+            "singles": 0.4,
             "doubles": 0,
-            "walks": 0.6
+            "walks": 0.4
           },
           "tc_pitching": {
             "strikeouts": 0,
@@ -3420,16 +3551,17 @@
             "outs": 0
           },
           "lines_raw": {
-            "strikeouts": 0.3,
-            "hits": 0.3,
-            "rbi": 0.3,
-            "total_bases": 0.8,
-            "runs": 0.3
+            "strikeouts": 0.5,
+            "hits": 0.5,
+            "rbi": 0.5,
+            "total_bases": 1.5,
+            "runs": 0.5
           },
           "edges_raw": {
             "hits": -0.1,
-            "rbi": -0.1,
-            "total_bases": -0.5
+            "rbi": -0.3,
+            "total_bases": -1,
+            "runs": -0.3
           }
         },
         {
@@ -3442,7 +3574,7 @@
           "tc_h": 0.3,
           "tc_hr": 0.1,
           "tc_rbi": 0.1,
-          "tc_r": 0.6,
+          "tc_r": 0.4,
           "tc_sb": 0,
           "tc_avg": 0,
           "line_h": 0,
@@ -3459,13 +3591,13 @@
           "batting": {
             "hits": 0.3,
             "rbi": 0.1,
-            "runs": 0.6,
+            "runs": 0.4,
             "hr": 0.1,
             "total_bases": 1,
             "sb": 0,
             "singles": 0.3,
             "doubles": 0,
-            "walks": 0.4
+            "walks": 0.3
           },
           "pitching": {
             "strikeouts_avg": 0,
@@ -3479,13 +3611,13 @@
           "tc_batting": {
             "hits": 0.3,
             "rbi": 0.1,
-            "runs": 0.6,
+            "runs": 0.4,
             "hr": 0.1,
             "total_bases": 1,
             "sb": 0,
             "singles": 0.3,
             "doubles": 0,
-            "walks": 0.4
+            "walks": 0.3
           },
           "tc_pitching": {
             "strikeouts": 0,
@@ -3504,10 +3636,10 @@
           "status": "ACTIVE",
           "role": "BATTER",
           "min": 0,
-          "tc_h": 0.8,
+          "tc_h": 0.6,
           "tc_hr": 0,
-          "tc_rbi": 0.8,
-          "tc_r": 0.4,
+          "tc_rbi": 0.6,
+          "tc_r": 0.3,
           "tc_sb": 0,
           "tc_avg": 0,
           "line_h": 0,
@@ -3522,15 +3654,15 @@
           "edge_sb": 0,
           "edge_avg": 0,
           "batting": {
-            "hits": 0.8,
-            "rbi": 0.8,
-            "runs": 0.4,
+            "hits": 0.6,
+            "rbi": 0.6,
+            "runs": 0.3,
             "hr": 0,
-            "total_bases": 1.5,
+            "total_bases": 1.3,
             "sb": 0,
-            "singles": 0.8,
+            "singles": 0.6,
             "doubles": 0,
-            "walks": 0.4
+            "walks": 0.6
           },
           "pitching": {
             "strikeouts_avg": 0,
@@ -3542,15 +3674,15 @@
             "appearances": 0
           },
           "tc_batting": {
-            "hits": 0.8,
-            "rbi": 0.8,
-            "runs": 0.4,
+            "hits": 0.6,
+            "rbi": 0.6,
+            "runs": 0.3,
             "hr": 0,
-            "total_bases": 1.5,
+            "total_bases": 1.3,
             "sb": 0,
-            "singles": 0.8,
+            "singles": 0.6,
             "doubles": 0,
-            "walks": 0.4
+            "walks": 0.6
           },
           "tc_pitching": {
             "strikeouts": 0,
@@ -3563,6 +3695,81 @@
           "edges_raw": {}
         },
         {
+          "name": "Lourdes Gurriel Jr.",
+          "pos": "LF",
+          "team": "ARI",
+          "status": "ACTIVE",
+          "role": "BATTER",
+          "min": 0,
+          "tc_h": 0.8,
+          "tc_hr": 0,
+          "tc_rbi": 0.8,
+          "tc_r": 0,
+          "tc_sb": 0,
+          "tc_avg": 0,
+          "line_h": 0.5,
+          "line_hr": 0,
+          "line_rbi": 0.5,
+          "line_r": 0.5,
+          "line_sb": 0,
+          "edge_h": 0.3,
+          "edge_hr": 0,
+          "edge_rbi": 0.3,
+          "edge_r": 0,
+          "edge_sb": 0,
+          "edge_avg": 0,
+          "batting": {
+            "hits": 0.8,
+            "rbi": 0.8,
+            "runs": 0,
+            "hr": 0,
+            "total_bases": 1,
+            "sb": 0,
+            "singles": 0.8,
+            "doubles": 0,
+            "walks": 0
+          },
+          "pitching": {
+            "strikeouts_avg": 0,
+            "hits_allowed_avg": 0,
+            "walks_allowed_avg": 0,
+            "earned_runs_avg": 0,
+            "outs_avg": 0,
+            "era": 0,
+            "appearances": 0
+          },
+          "tc_batting": {
+            "hits": 0.8,
+            "rbi": 0.8,
+            "runs": 0,
+            "hr": 0,
+            "total_bases": 1,
+            "sb": 0,
+            "singles": 0.8,
+            "doubles": 0,
+            "walks": 0
+          },
+          "tc_pitching": {
+            "strikeouts": 0,
+            "hits_allowed": 0.5,
+            "walks_allowed": 0.5,
+            "earned_runs": 0.5,
+            "outs": 0
+          },
+          "lines_raw": {
+            "strikeouts": 0.5,
+            "hits": 0.5,
+            "rbi": 0.5,
+            "total_bases": 1.5,
+            "runs": 0.5
+          },
+          "edges_raw": {
+            "hits": 0.3,
+            "rbi": 0.3,
+            "total_bases": -0.5
+          }
+        },
+        {
           "name": "Corbin Carroll",
           "pos": "RF",
           "team": "ARI",
@@ -3570,32 +3777,32 @@
           "role": "BATTER",
           "min": 0,
           "tc_h": 0.7,
-          "tc_hr": 0.4,
-          "tc_rbi": 0.5,
-          "tc_r": 0.5,
+          "tc_hr": 0.2,
+          "tc_rbi": 0.4,
+          "tc_r": 0.4,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 0.3,
+          "line_h": 0.5,
           "line_hr": 0,
-          "line_rbi": 0.3,
-          "line_r": 0.3,
+          "line_rbi": 0.5,
+          "line_r": 0.5,
           "line_sb": 0,
-          "edge_h": 0.4,
+          "edge_h": 0.2,
           "edge_hr": 0,
-          "edge_rbi": 0.2,
-          "edge_r": 0.2,
+          "edge_rbi": -0.1,
+          "edge_r": -0.1,
           "edge_sb": 0,
           "edge_avg": 0,
           "batting": {
             "hits": 0.7,
-            "rbi": 0.5,
-            "runs": 0.5,
-            "hr": 0.4,
-            "total_bases": 1.8,
+            "rbi": 0.4,
+            "runs": 0.4,
+            "hr": 0.2,
+            "total_bases": 1.9,
             "sb": 0,
             "singles": 0.7,
             "doubles": 0,
-            "walks": 0.4
+            "walks": 0.2
           },
           "pitching": {
             "strikeouts_avg": 0,
@@ -3608,14 +3815,14 @@
           },
           "tc_batting": {
             "hits": 0.7,
-            "rbi": 0.5,
-            "runs": 0.5,
-            "hr": 0.4,
-            "total_bases": 1.8,
+            "rbi": 0.4,
+            "runs": 0.4,
+            "hr": 0.2,
+            "total_bases": 1.9,
             "sb": 0,
             "singles": 0.7,
             "doubles": 0,
-            "walks": 0.4
+            "walks": 0.2
           },
           "tc_pitching": {
             "strikeouts": 0,
@@ -3625,17 +3832,17 @@
             "outs": 0
           },
           "lines_raw": {
-            "strikeouts": 0.3,
-            "hits": 0.3,
-            "rbi": 0.3,
-            "total_bases": 0.8,
-            "runs": 0.3
+            "strikeouts": 0.5,
+            "hits": 0.5,
+            "rbi": 0.5,
+            "total_bases": 1.5,
+            "runs": 0.5
           },
           "edges_raw": {
-            "hits": 0.4,
-            "rbi": 0.2,
-            "total_bases": 1,
-            "runs": 0.2
+            "hits": 0.2,
+            "rbi": -0.1,
+            "total_bases": 0.4,
+            "runs": -0.1
           }
         },
         {
@@ -3645,33 +3852,33 @@
           "status": "ACTIVE",
           "role": "BATTER",
           "min": 0,
-          "tc_h": 1,
+          "tc_h": 0.8,
           "tc_hr": 0.1,
-          "tc_rbi": 0.2,
-          "tc_r": 0.4,
+          "tc_rbi": 0.4,
+          "tc_r": 0.5,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 0.3,
+          "line_h": 0.5,
           "line_hr": 0,
-          "line_rbi": 0.3,
-          "line_r": 0.3,
+          "line_rbi": 0.5,
+          "line_r": 0.5,
           "line_sb": 0,
-          "edge_h": 0.7,
+          "edge_h": 0.3,
           "edge_hr": 0,
           "edge_rbi": -0.1,
-          "edge_r": 0.1,
+          "edge_r": 0,
           "edge_sb": 0,
           "edge_avg": 0,
           "batting": {
-            "hits": 1,
-            "rbi": 0.2,
-            "runs": 0.4,
+            "hits": 0.8,
+            "rbi": 0.4,
+            "runs": 0.5,
             "hr": 0.1,
-            "total_bases": 1,
+            "total_bases": 0.9,
             "sb": 0,
-            "singles": 1,
+            "singles": 0.8,
             "doubles": 0,
-            "walks": 0.7
+            "walks": 1
           },
           "pitching": {
             "strikeouts_avg": 0,
@@ -3683,15 +3890,15 @@
             "appearances": 0
           },
           "tc_batting": {
-            "hits": 1,
-            "rbi": 0.2,
-            "runs": 0.4,
+            "hits": 0.8,
+            "rbi": 0.4,
+            "runs": 0.5,
             "hr": 0.1,
-            "total_bases": 1,
+            "total_bases": 0.9,
             "sb": 0,
-            "singles": 1,
+            "singles": 0.8,
             "doubles": 0,
-            "walks": 0.7
+            "walks": 1
           },
           "tc_pitching": {
             "strikeouts": 0,
@@ -3701,17 +3908,17 @@
             "outs": 0
           },
           "lines_raw": {
-            "strikeouts": 0.3,
-            "hits": 0.3,
-            "rbi": 0.3,
-            "total_bases": 0.8,
-            "runs": 0.3
+            "strikeouts": 0.5,
+            "hits": 0.5,
+            "rbi": 0.5,
+            "total_bases": 1.5,
+            "runs": 0.5
           },
           "edges_raw": {
-            "hits": 0.7,
+            "hits": 0.3,
             "rbi": -0.1,
-            "total_bases": 0.2,
-            "runs": 0.1
+            "total_bases": -0.6,
+            "runs": 0
           }
         },
         {
@@ -3750,13 +3957,13 @@
             "walks": 0
           },
           "pitching": {
-            "strikeouts_avg": 0.8,
-            "hits_allowed_avg": 1.2,
-            "walks_allowed_avg": 0.2,
+            "strikeouts_avg": 1,
+            "hits_allowed_avg": 1.7,
+            "walks_allowed_avg": 0.3,
             "earned_runs_avg": 0,
-            "outs_avg": 2.3,
-            "era": 2.74,
-            "appearances": 4
+            "outs_avg": 2.1,
+            "era": 2.7,
+            "appearances": 3
           },
           "tc_batting": {
             "hits": 0,
@@ -3770,11 +3977,11 @@
             "walks": 0
           },
           "tc_pitching": {
-            "strikeouts": 0.1,
-            "hits_allowed": 1.5,
+            "strikeouts": 0.3,
+            "hits_allowed": 1.9,
             "walks_allowed": 0.7,
             "earned_runs": 0.5,
-            "outs": 1.3
+            "outs": 1.2
           },
           "lines_raw": {},
           "edges_raw": {}
@@ -3945,13 +4152,13 @@
             "walks": 0
           },
           "pitching": {
-            "strikeouts_avg": 0.5,
-            "hits_allowed_avg": 1,
+            "strikeouts_avg": 0.3,
+            "hits_allowed_avg": 0.7,
             "walks_allowed_avg": 0,
-            "earned_runs_avg": 0.5,
+            "earned_runs_avg": 0.3,
             "outs_avg": 3,
-            "era": 3.18,
-            "appearances": 2
+            "era": 3.12,
+            "appearances": 3
           },
           "tc_batting": {
             "hits": 0,
@@ -3966,9 +4173,9 @@
           },
           "tc_pitching": {
             "strikeouts": 0,
-            "hits_allowed": 1.3,
+            "hits_allowed": 1.1,
             "walks_allowed": 0.5,
-            "earned_runs": 0.9,
+            "earned_runs": 0.7,
             "outs": 1.9
           },
           "lines_raw": {},
@@ -4076,12 +4283,12 @@
           },
           "pitching": {
             "strikeouts_avg": 1,
-            "hits_allowed_avg": 1,
-            "walks_allowed_avg": 1,
-            "earned_runs_avg": 0.7,
-            "outs_avg": 3.2,
-            "era": 2.02,
-            "appearances": 3
+            "hits_allowed_avg": 1.5,
+            "walks_allowed_avg": 1.5,
+            "earned_runs_avg": 1,
+            "outs_avg": 3.3,
+            "era": 2.2,
+            "appearances": 2
           },
           "tc_batting": {
             "hits": 0,
@@ -4096,9 +4303,9 @@
           },
           "tc_pitching": {
             "strikeouts": 0.3,
-            "hits_allowed": 1.3,
-            "walks_allowed": 1.3,
-            "earned_runs": 1.1,
+            "hits_allowed": 1.7,
+            "walks_allowed": 1.7,
+            "earned_runs": 1.3,
             "outs": 2.1
           },
           "lines_raw": {},
@@ -4140,13 +4347,13 @@
             "walks": 0
           },
           "pitching": {
-            "strikeouts_avg": 1,
-            "hits_allowed_avg": 0.3,
-            "walks_allowed_avg": 0.3,
-            "earned_runs_avg": 0,
+            "strikeouts_avg": 1.2,
+            "hits_allowed_avg": 0.5,
+            "walks_allowed_avg": 0.2,
+            "earned_runs_avg": 0.2,
             "outs_avg": 3,
-            "era": 3.2,
-            "appearances": 3
+            "era": 3.23,
+            "appearances": 4
           },
           "tc_batting": {
             "hits": 0,
@@ -4160,10 +4367,10 @@
             "walks": 0
           },
           "tc_pitching": {
-            "strikeouts": 0.3,
-            "hits_allowed": 0.7,
+            "strikeouts": 0.5,
+            "hits_allowed": 0.9,
             "walks_allowed": 0.7,
-            "earned_runs": 0.5,
+            "earned_runs": 0.7,
             "outs": 1.9
           },
           "lines_raw": {},
@@ -4270,13 +4477,13 @@
             "walks": 0
           },
           "pitching": {
-            "strikeouts_avg": 2,
-            "hits_allowed_avg": 8,
-            "walks_allowed_avg": 1,
-            "earned_runs_avg": 7,
-            "outs_avg": 12,
-            "era": 5.19,
-            "appearances": 1
+            "strikeouts_avg": 3.5,
+            "hits_allowed_avg": 8.5,
+            "walks_allowed_avg": 0.5,
+            "earned_runs_avg": 4.5,
+            "outs_avg": 16.5,
+            "era": 5.08,
+            "appearances": 2
           },
           "tc_batting": {
             "hits": 0,
@@ -4290,11 +4497,11 @@
             "walks": 0
           },
           "tc_pitching": {
-            "strikeouts": 1.1,
-            "hits_allowed": 6.9,
-            "walks_allowed": 1.3,
-            "earned_runs": 6.1,
-            "outs": 9.1
+            "strikeouts": 2.3,
+            "hits_allowed": 7.3,
+            "walks_allowed": 0.9,
+            "earned_runs": 4.1,
+            "outs": 12.7
           },
           "lines_raw": {},
           "edges_raw": {}
@@ -4335,13 +4542,13 @@
             "walks": 0
           },
           "pitching": {
-            "strikeouts_avg": 6.5,
-            "hits_allowed_avg": 2.5,
-            "walks_allowed_avg": 1,
+            "strikeouts_avg": 7,
+            "hits_allowed_avg": 2,
+            "walks_allowed_avg": 0,
             "earned_runs_avg": 1,
             "outs_avg": 21,
-            "era": 3.19,
-            "appearances": 2
+            "era": 3.11,
+            "appearances": 1
           },
           "tc_batting": {
             "hits": 0,
@@ -4355,9 +4562,9 @@
             "walks": 0
           },
           "tc_pitching": {
-            "strikeouts": 4.7,
-            "hits_allowed": 2.5,
-            "walks_allowed": 1.3,
+            "strikeouts": 5.1,
+            "hits_allowed": 2.1,
+            "walks_allowed": 0.5,
             "earned_runs": 1.3,
             "outs": 16.3
           },
@@ -4491,16 +4698,8 @@
             "earned_runs": 3.3,
             "outs": 12.8
           },
-          "lines_raw": {
-            "hits_allowed": 2.9,
-            "earned_runs": 1.3,
-            "strikeouts": 2.4
-          },
-          "edges_raw": {
-            "hits_allowed": 3.6,
-            "earned_runs": 2,
-            "strikeouts": -0.1
-          }
+          "lines_raw": {},
+          "edges_raw": {}
         },
         {
           "name": "Merrill Kelly",
@@ -4651,15 +4850,15 @@
           "tc_r": 0.2,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 0,
+          "line_h": 0.5,
           "line_hr": 0,
-          "line_rbi": 0,
-          "line_r": 0,
+          "line_rbi": 0.5,
+          "line_r": 0.5,
           "line_sb": 0,
-          "edge_h": 0,
+          "edge_h": -0.3,
           "edge_hr": 0,
           "edge_rbi": 0,
-          "edge_r": 0,
+          "edge_r": -0.3,
           "edge_sb": 0,
           "edge_avg": 0,
           "batting": {
@@ -4667,7 +4866,7 @@
             "rbi": 0,
             "runs": 0.2,
             "hr": 0,
-            "total_bases": 1.1,
+            "total_bases": 1,
             "sb": 0,
             "singles": 0.2,
             "doubles": 0,
@@ -4687,11 +4886,162 @@
             "rbi": 0,
             "runs": 0.2,
             "hr": 0,
-            "total_bases": 1.1,
+            "total_bases": 1,
             "sb": 0,
             "singles": 0.2,
             "doubles": 0,
             "walks": 0.2
+          },
+          "tc_pitching": {
+            "strikeouts": 0,
+            "hits_allowed": 0.5,
+            "walks_allowed": 0.5,
+            "earned_runs": 0.5,
+            "outs": 0
+          },
+          "lines_raw": {
+            "strikeouts": 0.5,
+            "hits": 0.5,
+            "rbi": 0.5,
+            "total_bases": 1.5,
+            "runs": 0.5
+          },
+          "edges_raw": {
+            "hits": -0.3,
+            "total_bases": -0.5,
+            "runs": -0.3
+          }
+        },
+        {
+          "name": "Gavin Sheets",
+          "pos": "1B",
+          "team": "SD",
+          "status": "ACTIVE",
+          "role": "BATTER",
+          "min": 0,
+          "tc_h": 0.7,
+          "tc_hr": 0.1,
+          "tc_rbi": 0.6,
+          "tc_r": 0.4,
+          "tc_sb": 0,
+          "tc_avg": 0,
+          "line_h": 0.5,
+          "line_hr": 0,
+          "line_rbi": 0.5,
+          "line_r": 0.5,
+          "line_sb": 0,
+          "edge_h": 0.2,
+          "edge_hr": 0,
+          "edge_rbi": 0.1,
+          "edge_r": -0.1,
+          "edge_sb": 0,
+          "edge_avg": 0,
+          "batting": {
+            "hits": 0.7,
+            "rbi": 0.6,
+            "runs": 0.4,
+            "hr": 0.1,
+            "total_bases": 1.5,
+            "sb": 0,
+            "singles": 0.7,
+            "doubles": 0,
+            "walks": 0.2
+          },
+          "pitching": {
+            "strikeouts_avg": 0,
+            "hits_allowed_avg": 0,
+            "walks_allowed_avg": 0,
+            "earned_runs_avg": 0,
+            "outs_avg": 0,
+            "era": 0,
+            "appearances": 0
+          },
+          "tc_batting": {
+            "hits": 0.7,
+            "rbi": 0.6,
+            "runs": 0.4,
+            "hr": 0.1,
+            "total_bases": 1.5,
+            "sb": 0,
+            "singles": 0.7,
+            "doubles": 0,
+            "walks": 0.2
+          },
+          "tc_pitching": {
+            "strikeouts": 0,
+            "hits_allowed": 0.5,
+            "walks_allowed": 0.5,
+            "earned_runs": 0.5,
+            "outs": 0
+          },
+          "lines_raw": {
+            "strikeouts": 0.5,
+            "hits": 0.5,
+            "rbi": 0.5,
+            "total_bases": 1.5,
+            "runs": 0.5
+          },
+          "edges_raw": {
+            "hits": 0.2,
+            "rbi": 0.1,
+            "total_bases": 0,
+            "runs": -0.1
+          }
+        },
+        {
+          "name": "Sung-Mun Song",
+          "pos": "2B",
+          "team": "SD",
+          "status": "ACTIVE",
+          "role": "BATTER",
+          "min": 0,
+          "tc_h": 0.4,
+          "tc_hr": 0,
+          "tc_rbi": 0,
+          "tc_r": 0,
+          "tc_sb": 0,
+          "tc_avg": 0,
+          "line_h": 0,
+          "line_hr": 0,
+          "line_rbi": 0,
+          "line_r": 0,
+          "line_sb": 0,
+          "edge_h": 0,
+          "edge_hr": 0,
+          "edge_rbi": 0,
+          "edge_r": 0,
+          "edge_sb": 0,
+          "edge_avg": 0,
+          "batting": {
+            "hits": 0.4,
+            "rbi": 0,
+            "runs": 0,
+            "hr": 0,
+            "total_bases": 0.6,
+            "sb": 0,
+            "singles": 0.4,
+            "doubles": 0,
+            "walks": 0
+          },
+          "pitching": {
+            "strikeouts_avg": 0,
+            "hits_allowed_avg": 0,
+            "walks_allowed_avg": 0,
+            "earned_runs_avg": 0,
+            "outs_avg": 0,
+            "era": 0,
+            "appearances": 0
+          },
+          "tc_batting": {
+            "hits": 0.4,
+            "rbi": 0,
+            "runs": 0,
+            "hr": 0,
+            "total_bases": 0.6,
+            "sb": 0,
+            "singles": 0.4,
+            "doubles": 0,
+            "walks": 0
           },
           "tc_pitching": {
             "strikeouts": 0,
@@ -4704,187 +5054,37 @@
           "edges_raw": {}
         },
         {
-          "name": "Gavin Sheets",
-          "pos": "1B",
-          "team": "SD",
-          "status": "ACTIVE",
-          "role": "BATTER",
-          "min": 0,
-          "tc_h": 0.8,
-          "tc_hr": 0.1,
-          "tc_rbi": 0.7,
-          "tc_r": 0.4,
-          "tc_sb": 0,
-          "tc_avg": 0,
-          "line_h": 0.3,
-          "line_hr": 0,
-          "line_rbi": 0.3,
-          "line_r": 0.3,
-          "line_sb": 0,
-          "edge_h": 0.5,
-          "edge_hr": 0,
-          "edge_rbi": 0.4,
-          "edge_r": 0.1,
-          "edge_sb": 0,
-          "edge_avg": 0,
-          "batting": {
-            "hits": 0.8,
-            "rbi": 0.7,
-            "runs": 0.4,
-            "hr": 0.1,
-            "total_bases": 1.5,
-            "sb": 0,
-            "singles": 0.8,
-            "doubles": 0,
-            "walks": 0.3
-          },
-          "pitching": {
-            "strikeouts_avg": 0,
-            "hits_allowed_avg": 0,
-            "walks_allowed_avg": 0,
-            "earned_runs_avg": 0,
-            "outs_avg": 0,
-            "era": 0,
-            "appearances": 0
-          },
-          "tc_batting": {
-            "hits": 0.8,
-            "rbi": 0.7,
-            "runs": 0.4,
-            "hr": 0.1,
-            "total_bases": 1.5,
-            "sb": 0,
-            "singles": 0.8,
-            "doubles": 0,
-            "walks": 0.3
-          },
-          "tc_pitching": {
-            "strikeouts": 0,
-            "hits_allowed": 0.5,
-            "walks_allowed": 0.5,
-            "earned_runs": 0.5,
-            "outs": 0
-          },
-          "lines_raw": {
-            "strikeouts": 0.3,
-            "hits": 0.3,
-            "rbi": 0.3,
-            "total_bases": 0.8,
-            "runs": 0.3
-          },
-          "edges_raw": {
-            "hits": 0.5,
-            "rbi": 0.4,
-            "total_bases": 0.7,
-            "runs": 0.1
-          }
-        },
-        {
-          "name": "Sung-Mun Song",
-          "pos": "2B",
-          "team": "SD",
-          "status": "ACTIVE",
-          "role": "BATTER",
-          "min": 0,
-          "tc_h": 0.6,
-          "tc_hr": 0,
-          "tc_rbi": 0,
-          "tc_r": 0,
-          "tc_sb": 0,
-          "tc_avg": 0,
-          "line_h": 0.3,
-          "line_hr": 0,
-          "line_rbi": 0.3,
-          "line_r": 0.3,
-          "line_sb": 0,
-          "edge_h": 0.3,
-          "edge_hr": 0,
-          "edge_rbi": 0,
-          "edge_r": 0,
-          "edge_sb": 0,
-          "edge_avg": 0,
-          "batting": {
-            "hits": 0.6,
-            "rbi": 0,
-            "runs": 0,
-            "hr": 0,
-            "total_bases": 0.7,
-            "sb": 0,
-            "singles": 0.6,
-            "doubles": 0,
-            "walks": 0
-          },
-          "pitching": {
-            "strikeouts_avg": 0,
-            "hits_allowed_avg": 0,
-            "walks_allowed_avg": 0,
-            "earned_runs_avg": 0,
-            "outs_avg": 0,
-            "era": 0,
-            "appearances": 0
-          },
-          "tc_batting": {
-            "hits": 0.6,
-            "rbi": 0,
-            "runs": 0,
-            "hr": 0,
-            "total_bases": 0.7,
-            "sb": 0,
-            "singles": 0.6,
-            "doubles": 0,
-            "walks": 0
-          },
-          "tc_pitching": {
-            "strikeouts": 0,
-            "hits_allowed": 0.5,
-            "walks_allowed": 0.5,
-            "earned_runs": 0.5,
-            "outs": 0
-          },
-          "lines_raw": {
-            "strikeouts": 0.3,
-            "hits": 0.3,
-            "rbi": 0.3,
-            "total_bases": 0.8,
-            "runs": 0.3
-          },
-          "edges_raw": {
-            "hits": 0.3,
-            "total_bases": -0.1
-          }
-        },
-        {
           "name": "Manny Machado",
           "pos": "3B",
           "team": "SD",
           "status": "ACTIVE",
           "role": "BATTER",
           "min": 0,
-          "tc_h": 0.7,
+          "tc_h": 0.8,
           "tc_hr": 0.1,
           "tc_rbi": 0.4,
           "tc_r": 0.4,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 0.3,
+          "line_h": 0.5,
           "line_hr": 0,
-          "line_rbi": 0.3,
-          "line_r": 0.3,
+          "line_rbi": 0.5,
+          "line_r": 0.5,
           "line_sb": 0,
-          "edge_h": 0.4,
+          "edge_h": 0.3,
           "edge_hr": 0,
-          "edge_rbi": 0.1,
-          "edge_r": 0.1,
+          "edge_rbi": -0.1,
+          "edge_r": -0.1,
           "edge_sb": 0,
           "edge_avg": 0,
           "batting": {
-            "hits": 0.7,
+            "hits": 0.8,
             "rbi": 0.4,
             "runs": 0.4,
             "hr": 0.1,
-            "total_bases": 1.3,
+            "total_bases": 1.2,
             "sb": 0,
-            "singles": 0.7,
+            "singles": 0.8,
             "doubles": 0,
             "walks": 0.1
           },
@@ -4898,13 +5098,13 @@
             "appearances": 0
           },
           "tc_batting": {
-            "hits": 0.7,
+            "hits": 0.8,
             "rbi": 0.4,
             "runs": 0.4,
             "hr": 0.1,
-            "total_bases": 1.3,
+            "total_bases": 1.2,
             "sb": 0,
-            "singles": 0.7,
+            "singles": 0.8,
             "doubles": 0,
             "walks": 0.1
           },
@@ -4916,17 +5116,17 @@
             "outs": 0
           },
           "lines_raw": {
-            "strikeouts": 0.3,
-            "hits": 0.3,
-            "rbi": 0.3,
-            "total_bases": 0.8,
-            "runs": 0.3
+            "strikeouts": 0.5,
+            "hits": 0.5,
+            "rbi": 0.5,
+            "total_bases": 1.5,
+            "runs": 0.5
           },
           "edges_raw": {
-            "hits": 0.4,
-            "rbi": 0.1,
-            "total_bases": 0.5,
-            "runs": 0.1
+            "hits": 0.3,
+            "rbi": -0.1,
+            "total_bases": -0.3,
+            "runs": -0.1
           }
         },
         {
@@ -4936,10 +5136,10 @@
           "status": "ACTIVE",
           "role": "BATTER",
           "min": 0,
-          "tc_h": 1.1,
-          "tc_hr": 0.6,
-          "tc_rbi": 1.1,
-          "tc_r": 1.1,
+          "tc_h": 0.8,
+          "tc_hr": 0.4,
+          "tc_rbi": 0.8,
+          "tc_r": 0.8,
           "tc_sb": 0,
           "tc_avg": 0,
           "line_h": 0,
@@ -4954,13 +5154,13 @@
           "edge_sb": 0,
           "edge_avg": 0,
           "batting": {
-            "hits": 1.1,
-            "rbi": 1.1,
-            "runs": 1.1,
-            "hr": 0.6,
-            "total_bases": 0.9,
+            "hits": 0.8,
+            "rbi": 0.8,
+            "runs": 0.8,
+            "hr": 0.4,
+            "total_bases": 1,
             "sb": 0,
-            "singles": 1.1,
+            "singles": 0.8,
             "doubles": 0,
             "walks": 0
           },
@@ -4974,13 +5174,13 @@
             "appearances": 0
           },
           "tc_batting": {
-            "hits": 1.1,
-            "rbi": 1.1,
-            "runs": 1.1,
-            "hr": 0.6,
-            "total_bases": 0.9,
+            "hits": 0.8,
+            "rbi": 0.8,
+            "runs": 0.8,
+            "hr": 0.4,
+            "total_bases": 1,
             "sb": 0,
-            "singles": 1.1,
+            "singles": 0.8,
             "doubles": 0,
             "walks": 0
           },
@@ -5001,10 +5201,10 @@
           "status": "ACTIVE",
           "role": "BATTER",
           "min": 0,
-          "tc_h": 0.7,
-          "tc_hr": 0.3,
-          "tc_rbi": 0.8,
-          "tc_r": 0.3,
+          "tc_h": 0.4,
+          "tc_hr": 0.2,
+          "tc_rbi": 0.4,
+          "tc_r": 0.2,
           "tc_sb": 0,
           "tc_avg": 0,
           "line_h": 0,
@@ -5019,15 +5219,15 @@
           "edge_sb": 0,
           "edge_avg": 0,
           "batting": {
-            "hits": 0.7,
-            "rbi": 0.8,
-            "runs": 0.3,
-            "hr": 0.3,
+            "hits": 0.4,
+            "rbi": 0.4,
+            "runs": 0.2,
+            "hr": 0.2,
             "total_bases": 0.8,
             "sb": 0,
-            "singles": 0.7,
+            "singles": 0.4,
             "doubles": 0,
-            "walks": 0.3
+            "walks": 0.4
           },
           "pitching": {
             "strikeouts_avg": 0,
@@ -5039,15 +5239,15 @@
             "appearances": 0
           },
           "tc_batting": {
-            "hits": 0.7,
-            "rbi": 0.8,
-            "runs": 0.3,
-            "hr": 0.3,
+            "hits": 0.4,
+            "rbi": 0.4,
+            "runs": 0.2,
+            "hr": 0.2,
             "total_bases": 0.8,
             "sb": 0,
-            "singles": 0.7,
+            "singles": 0.4,
             "doubles": 0,
-            "walks": 0.3
+            "walks": 0.4
           },
           "tc_pitching": {
             "strikeouts": 0,
@@ -5066,33 +5266,33 @@
           "status": "ACTIVE",
           "role": "BATTER",
           "min": 0,
-          "tc_h": 1,
+          "tc_h": 0.8,
           "tc_hr": 0.1,
           "tc_rbi": 0.4,
           "tc_r": 0.5,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 0.8,
+          "line_h": 0.5,
           "line_hr": 0,
-          "line_rbi": 0.3,
-          "line_r": 0.3,
+          "line_rbi": 0.5,
+          "line_r": 0.5,
           "line_sb": 0,
-          "edge_h": 0.2,
+          "edge_h": 0.3,
           "edge_hr": 0,
-          "edge_rbi": 0.1,
-          "edge_r": 0.2,
+          "edge_rbi": -0.1,
+          "edge_r": 0,
           "edge_sb": 0,
           "edge_avg": 0,
           "batting": {
-            "hits": 1,
+            "hits": 0.8,
             "rbi": 0.4,
             "runs": 0.5,
             "hr": 0.1,
             "total_bases": 1.3,
             "sb": 0,
-            "singles": 1,
+            "singles": 0.8,
             "doubles": 0,
-            "walks": 0.2
+            "walks": 0.1
           },
           "pitching": {
             "strikeouts_avg": 0,
@@ -5104,15 +5304,15 @@
             "appearances": 0
           },
           "tc_batting": {
-            "hits": 1,
+            "hits": 0.8,
             "rbi": 0.4,
             "runs": 0.5,
             "hr": 0.1,
             "total_bases": 1.3,
             "sb": 0,
-            "singles": 1,
+            "singles": 0.8,
             "doubles": 0,
-            "walks": 0.2
+            "walks": 0.1
           },
           "tc_pitching": {
             "strikeouts": 0,
@@ -5122,17 +5322,17 @@
             "outs": 0
           },
           "lines_raw": {
-            "strikeouts": 0.8,
-            "hits": 0.8,
-            "rbi": 0.3,
-            "total_bases": 0.8,
-            "runs": 0.3
+            "strikeouts": 0.5,
+            "hits": 0.5,
+            "rbi": 0.5,
+            "total_bases": 1.5,
+            "runs": 0.5
           },
           "edges_raw": {
-            "hits": 0.2,
-            "rbi": 0.1,
-            "total_bases": 0.5,
-            "runs": 0.2
+            "hits": 0.3,
+            "rbi": -0.1,
+            "total_bases": -0.2,
+            "runs": 0
           }
         },
         {
@@ -5142,7 +5342,7 @@
           "status": "ACTIVE",
           "role": "BATTER",
           "min": 0,
-          "tc_h": 0.7,
+          "tc_h": 0.6,
           "tc_hr": 0,
           "tc_rbi": 0,
           "tc_r": 0.3,
@@ -5160,15 +5360,15 @@
           "edge_sb": 0,
           "edge_avg": 0,
           "batting": {
-            "hits": 0.7,
+            "hits": 0.6,
             "rbi": 0,
             "runs": 0.3,
             "hr": 0,
             "total_bases": 1,
             "sb": 0,
-            "singles": 0.7,
+            "singles": 0.6,
             "doubles": 0,
-            "walks": 0.8
+            "walks": 0.7
           },
           "pitching": {
             "strikeouts_avg": 0,
@@ -5180,15 +5380,15 @@
             "appearances": 0
           },
           "tc_batting": {
-            "hits": 0.7,
+            "hits": 0.6,
             "rbi": 0,
             "runs": 0.3,
             "hr": 0,
             "total_bases": 1,
             "sb": 0,
-            "singles": 0.7,
+            "singles": 0.6,
             "doubles": 0,
-            "walks": 0.8
+            "walks": 0.7
           },
           "tc_pitching": {
             "strikeouts": 0,
@@ -5207,7 +5407,7 @@
           "status": "ACTIVE",
           "role": "BATTER",
           "min": 0,
-          "tc_h": 0.3,
+          "tc_h": 0,
           "tc_hr": 0,
           "tc_rbi": 0,
           "tc_r": 0,
@@ -5225,15 +5425,15 @@
           "edge_sb": 0,
           "edge_avg": 0,
           "batting": {
-            "hits": 0.3,
+            "hits": 0,
             "rbi": 0,
             "runs": 0,
             "hr": 0,
-            "total_bases": 0.5,
+            "total_bases": 0.2,
             "sb": 0,
-            "singles": 0.3,
+            "singles": 0,
             "doubles": 0,
-            "walks": 0.3
+            "walks": 0.4
           },
           "pitching": {
             "strikeouts_avg": 0,
@@ -5245,15 +5445,15 @@
             "appearances": 0
           },
           "tc_batting": {
-            "hits": 0.3,
+            "hits": 0,
             "rbi": 0,
             "runs": 0,
             "hr": 0,
-            "total_bases": 0.5,
+            "total_bases": 0.2,
             "sb": 0,
-            "singles": 0.3,
+            "singles": 0,
             "doubles": 0,
-            "walks": 0.3
+            "walks": 0.4
           },
           "tc_pitching": {
             "strikeouts": 0,
@@ -5272,33 +5472,33 @@
           "status": "ACTIVE",
           "role": "BATTER",
           "min": 0,
-          "tc_h": 1.2,
+          "tc_h": 1.3,
           "tc_hr": 0.1,
-          "tc_rbi": 1,
-          "tc_r": 0.6,
+          "tc_rbi": 1.1,
+          "tc_r": 0.4,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 0.3,
+          "line_h": 0.5,
           "line_hr": 0,
-          "line_rbi": 0.3,
-          "line_r": 0.3,
+          "line_rbi": 0.5,
+          "line_r": 0.5,
           "line_sb": 0,
-          "edge_h": 0.9,
+          "edge_h": 0.8,
           "edge_hr": 0,
-          "edge_rbi": 0.7,
-          "edge_r": 0.3,
+          "edge_rbi": 0.6,
+          "edge_r": -0.1,
           "edge_sb": 0,
           "edge_avg": 0,
           "batting": {
-            "hits": 1.2,
-            "rbi": 1,
-            "runs": 0.6,
+            "hits": 1.3,
+            "rbi": 1.1,
+            "runs": 0.4,
             "hr": 0.1,
-            "total_bases": 1.3,
+            "total_bases": 1.5,
             "sb": 0,
-            "singles": 1.2,
+            "singles": 1.3,
             "doubles": 0,
-            "walks": 0.4
+            "walks": 0.1
           },
           "pitching": {
             "strikeouts_avg": 0,
@@ -5310,15 +5510,15 @@
             "appearances": 0
           },
           "tc_batting": {
-            "hits": 1.2,
-            "rbi": 1,
-            "runs": 0.6,
+            "hits": 1.3,
+            "rbi": 1.1,
+            "runs": 0.4,
             "hr": 0.1,
-            "total_bases": 1.3,
+            "total_bases": 1.5,
             "sb": 0,
-            "singles": 1.2,
+            "singles": 1.3,
             "doubles": 0,
-            "walks": 0.4
+            "walks": 0.1
           },
           "tc_pitching": {
             "strikeouts": 0,
@@ -5328,17 +5528,17 @@
             "outs": 0
           },
           "lines_raw": {
-            "strikeouts": 0.3,
-            "hits": 0.3,
-            "rbi": 0.3,
-            "total_bases": 0.8,
-            "runs": 0.3
+            "strikeouts": 1.5,
+            "hits": 0.5,
+            "rbi": 0.5,
+            "total_bases": 1.5,
+            "runs": 0.5
           },
           "edges_raw": {
-            "hits": 0.9,
-            "rbi": 0.7,
-            "total_bases": 0.5,
-            "runs": 0.3
+            "hits": 0.8,
+            "rbi": 0.6,
+            "total_bases": 0,
+            "runs": -0.1
           }
         },
         {
@@ -5374,7 +5574,7 @@
             "sb": 0,
             "singles": 0.3,
             "doubles": 0,
-            "walks": 0.1
+            "walks": 0.2
           },
           "pitching": {
             "strikeouts_avg": 0,
@@ -5394,7 +5594,7 @@
             "sb": 0,
             "singles": 0.3,
             "doubles": 0,
-            "walks": 0.1
+            "walks": 0.2
           },
           "tc_pitching": {
             "strikeouts": 0,
@@ -5413,31 +5613,31 @@
           "status": "ACTIVE",
           "role": "BATTER",
           "min": 0,
-          "tc_h": 1.3,
+          "tc_h": 1.2,
           "tc_hr": 0.1,
           "tc_rbi": 0.6,
           "tc_r": 0.5,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 0.8,
+          "line_h": 1.5,
           "line_hr": 0,
-          "line_rbi": 0.3,
-          "line_r": 0.3,
+          "line_rbi": 0.5,
+          "line_r": 0.5,
           "line_sb": 0,
-          "edge_h": 0.5,
+          "edge_h": -0.3,
           "edge_hr": 0,
-          "edge_rbi": 0.3,
-          "edge_r": 0.2,
+          "edge_rbi": 0.1,
+          "edge_r": 0,
           "edge_sb": 0,
           "edge_avg": 0,
           "batting": {
-            "hits": 1.3,
+            "hits": 1.2,
             "rbi": 0.6,
             "runs": 0.5,
             "hr": 0.1,
             "total_bases": 1.3,
             "sb": 0,
-            "singles": 1.3,
+            "singles": 1.2,
             "doubles": 0,
             "walks": 0.4
           },
@@ -5451,13 +5651,13 @@
             "appearances": 0
           },
           "tc_batting": {
-            "hits": 1.3,
+            "hits": 1.2,
             "rbi": 0.6,
             "runs": 0.5,
             "hr": 0.1,
             "total_bases": 1.3,
             "sb": 0,
-            "singles": 1.3,
+            "singles": 1.2,
             "doubles": 0,
             "walks": 0.4
           },
@@ -5469,17 +5669,17 @@
             "outs": 0
           },
           "lines_raw": {
-            "strikeouts": 0.3,
-            "hits": 0.8,
-            "rbi": 0.3,
-            "total_bases": 0.8,
-            "runs": 0.3
+            "strikeouts": 0.5,
+            "hits": 1.5,
+            "rbi": 0.5,
+            "total_bases": 1.5,
+            "runs": 0.5
           },
           "edges_raw": {
-            "hits": 0.5,
-            "rbi": 0.3,
-            "total_bases": 0.5,
-            "runs": 0.2
+            "hits": -0.3,
+            "rbi": 0.1,
+            "total_bases": -0.2,
+            "runs": 0
           }
         },
         {
@@ -5511,7 +5711,7 @@
             "rbi": 0,
             "runs": 0,
             "hr": 0,
-            "total_bases": 0.4,
+            "total_bases": 0.5,
             "sb": 0,
             "singles": 0,
             "doubles": 0,
@@ -5531,7 +5731,7 @@
             "rbi": 0,
             "runs": 0,
             "hr": 0,
-            "total_bases": 0.4,
+            "total_bases": 0.5,
             "sb": 0,
             "singles": 0,
             "doubles": 0,
@@ -5554,31 +5754,31 @@
           "status": "ACTIVE",
           "role": "BATTER",
           "min": 0,
-          "tc_h": 0.7,
+          "tc_h": 0.5,
           "tc_hr": 0,
           "tc_rbi": 0,
           "tc_r": 0.7,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 0.8,
+          "line_h": 0.5,
           "line_hr": 0,
-          "line_rbi": 0.3,
-          "line_r": 0.3,
+          "line_rbi": 0.5,
+          "line_r": 0.5,
           "line_sb": 0,
-          "edge_h": -0.1,
+          "edge_h": 0,
           "edge_hr": 0,
           "edge_rbi": 0,
-          "edge_r": 0.4,
+          "edge_r": 0.2,
           "edge_sb": 0,
           "edge_avg": 0,
           "batting": {
-            "hits": 0.7,
+            "hits": 0.5,
             "rbi": 0,
             "runs": 0.7,
             "hr": 0,
-            "total_bases": 0.9,
+            "total_bases": 0.8,
             "sb": 0,
-            "singles": 0.7,
+            "singles": 0.5,
             "doubles": 0,
             "walks": 0.5
           },
@@ -5592,13 +5792,13 @@
             "appearances": 0
           },
           "tc_batting": {
-            "hits": 0.7,
+            "hits": 0.5,
             "rbi": 0,
             "runs": 0.7,
             "hr": 0,
-            "total_bases": 0.9,
+            "total_bases": 0.8,
             "sb": 0,
-            "singles": 0.7,
+            "singles": 0.5,
             "doubles": 0,
             "walks": 0.5
           },
@@ -5610,16 +5810,16 @@
             "outs": 0
           },
           "lines_raw": {
-            "strikeouts": 0.3,
-            "hits": 0.8,
-            "rbi": 0.3,
-            "total_bases": 0.8,
-            "runs": 0.3
+            "strikeouts": 0.5,
+            "hits": 0.5,
+            "rbi": 0.5,
+            "total_bases": 1.5,
+            "runs": 0.5
           },
           "edges_raw": {
-            "hits": -0.1,
-            "total_bases": 0.1,
-            "runs": 0.4
+            "hits": 0,
+            "total_bases": -0.7,
+            "runs": 0.2
           }
         },
         {
@@ -5658,12 +5858,12 @@
             "walks": 0
           },
           "pitching": {
-            "strikeouts_avg": 1,
-            "hits_allowed_avg": 1.3,
-            "walks_allowed_avg": 1.3,
+            "strikeouts_avg": 1.3,
+            "hits_allowed_avg": 0.7,
+            "walks_allowed_avg": 1,
             "earned_runs_avg": 0,
             "outs_avg": 3.2,
-            "era": 2.28,
+            "era": 2.2,
             "appearances": 3
           },
           "tc_batting": {
@@ -5678,9 +5878,9 @@
             "walks": 0
           },
           "tc_pitching": {
-            "strikeouts": 0.3,
-            "hits_allowed": 1.5,
-            "walks_allowed": 1.5,
+            "strikeouts": 0.5,
+            "hits_allowed": 1.1,
+            "walks_allowed": 1.3,
             "earned_runs": 0.5,
             "outs": 2.1
           },
@@ -5918,13 +6118,13 @@
             "walks": 0
           },
           "pitching": {
-            "strikeouts_avg": 1.3,
-            "hits_allowed_avg": 1.3,
+            "strikeouts_avg": 1.5,
+            "hits_allowed_avg": 1,
             "walks_allowed_avg": 0,
-            "earned_runs_avg": 1,
-            "outs_avg": 3.2,
-            "era": 1.67,
-            "appearances": 3
+            "earned_runs_avg": 0.5,
+            "outs_avg": 3,
+            "era": 1.79,
+            "appearances": 2
           },
           "tc_batting": {
             "hits": 0,
@@ -5938,11 +6138,11 @@
             "walks": 0
           },
           "tc_pitching": {
-            "strikeouts": 0.5,
-            "hits_allowed": 1.5,
+            "strikeouts": 0.7,
+            "hits_allowed": 1.3,
             "walks_allowed": 0.5,
-            "earned_runs": 1.3,
-            "outs": 2.1
+            "earned_runs": 0.9,
+            "outs": 1.9
           },
           "lines_raw": {},
           "edges_raw": {}
@@ -6113,13 +6313,13 @@
             "walks": 0
           },
           "pitching": {
-            "strikeouts_avg": 1.3,
-            "hits_allowed_avg": 1.3,
-            "walks_allowed_avg": 0.3,
-            "earned_runs_avg": 0.7,
-            "outs_avg": 3.4,
-            "era": 3.98,
-            "appearances": 3
+            "strikeouts_avg": 0.5,
+            "hits_allowed_avg": 1.5,
+            "walks_allowed_avg": 0,
+            "earned_runs_avg": 0.5,
+            "outs_avg": 2,
+            "era": 4,
+            "appearances": 2
           },
           "tc_batting": {
             "hits": 0,
@@ -6133,11 +6333,76 @@
             "walks": 0
           },
           "tc_pitching": {
-            "strikeouts": 0.5,
-            "hits_allowed": 1.5,
-            "walks_allowed": 0.7,
-            "earned_runs": 1.1,
-            "outs": 2.2
+            "strikeouts": 0,
+            "hits_allowed": 1.7,
+            "walks_allowed": 0.5,
+            "earned_runs": 0.9,
+            "outs": 1.1
+          },
+          "lines_raw": {},
+          "edges_raw": {}
+        },
+        {
+          "name": "Kyle Hart",
+          "pos": "RP",
+          "team": "SD",
+          "status": "ACTIVE",
+          "role": "PITCHER",
+          "min": 0,
+          "tc_h": 0,
+          "tc_hr": 0,
+          "tc_rbi": 0,
+          "tc_r": 0,
+          "tc_sb": 0,
+          "tc_avg": 0,
+          "line_h": 0,
+          "line_hr": 0,
+          "line_rbi": 0,
+          "line_r": 0,
+          "line_sb": 0,
+          "edge_h": 0,
+          "edge_hr": 0,
+          "edge_rbi": 0,
+          "edge_r": 0,
+          "edge_sb": 0,
+          "edge_avg": 0,
+          "batting": {
+            "hits": 0,
+            "rbi": 0,
+            "runs": 0,
+            "hr": 0,
+            "total_bases": 0,
+            "sb": 0,
+            "singles": 0,
+            "doubles": 0,
+            "walks": 0
+          },
+          "pitching": {
+            "strikeouts_avg": 1,
+            "hits_allowed_avg": 1,
+            "walks_allowed_avg": 0,
+            "earned_runs_avg": 0,
+            "outs_avg": 6,
+            "era": 4.82,
+            "appearances": 1
+          },
+          "tc_batting": {
+            "hits": 0,
+            "rbi": 0,
+            "runs": 0,
+            "hr": 0,
+            "total_bases": 0,
+            "sb": 0,
+            "singles": 0,
+            "doubles": 0,
+            "walks": 0
+          },
+          "tc_pitching": {
+            "strikeouts": 0.3,
+            "hits_allowed": 1.3,
+            "walks_allowed": 0.5,
+            "earned_runs": 0.5,
+            "outs": 4.3
           },
           "lines_raw": {},
           "edges_raw": {}
@@ -6308,13 +6573,13 @@
             "walks": 0
           },
           "pitching": {
-            "strikeouts_avg": 4,
-            "hits_allowed_avg": 7,
+            "strikeouts_avg": 5,
+            "hits_allowed_avg": 6,
             "walks_allowed_avg": 2,
-            "earned_runs_avg": 3,
-            "outs_avg": 13.5,
+            "earned_runs_avg": 2,
+            "outs_avg": 15,
             "era": 3.63,
-            "appearances": 2
+            "appearances": 1
           },
           "tc_batting": {
             "hits": 0,
@@ -6328,11 +6593,11 @@
             "walks": 0
           },
           "tc_pitching": {
-            "strikeouts": 2.7,
-            "hits_allowed": 6.1,
+            "strikeouts": 3.5,
+            "hits_allowed": 5.3,
             "walks_allowed": 2.1,
-            "earned_runs": 2.9,
-            "outs": 10.3
+            "earned_runs": 2.1,
+            "outs": 11.5
           },
           "lines_raw": {},
           "edges_raw": {}
@@ -6399,8 +6664,16 @@
             "earned_runs": 2.9,
             "outs": 14.4
           },
-          "lines_raw": {},
-          "edges_raw": {}
+          "lines_raw": {
+            "hits_allowed": 4.4,
+            "earned_runs": 2.4,
+            "strikeouts": 5.4
+          },
+          "edges_raw": {
+            "hits_allowed": 1.7,
+            "earned_runs": 0.5,
+            "strikeouts": -3.5
+          }
         },
         {
           "name": "Lucas Giolito",
@@ -6438,13 +6711,13 @@
             "walks": 0
           },
           "pitching": {
-            "strikeouts_avg": 3,
-            "hits_allowed_avg": 2,
-            "walks_allowed_avg": 5,
-            "earned_runs_avg": 1,
-            "outs_avg": 12,
-            "era": 4.35,
-            "appearances": 1
+            "strikeouts_avg": 2.5,
+            "hits_allowed_avg": 4.5,
+            "walks_allowed_avg": 4,
+            "earned_runs_avg": 2,
+            "outs_avg": 13.5,
+            "era": 4.46,
+            "appearances": 2
           },
           "tc_batting": {
             "hits": 0,
@@ -6458,11 +6731,11 @@
             "walks": 0
           },
           "tc_pitching": {
-            "strikeouts": 1.9,
-            "hits_allowed": 2.1,
-            "walks_allowed": 4.5,
-            "earned_runs": 1.3,
-            "outs": 9.1
+            "strikeouts": 1.5,
+            "hits_allowed": 4.1,
+            "walks_allowed": 3.7,
+            "earned_runs": 2.1,
+            "outs": 10.3
           },
           "lines_raw": {},
           "edges_raw": {}
@@ -6549,15 +6822,15 @@
           "tc_r": 0.2,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 0,
+          "line_h": 0.5,
           "line_hr": 0,
-          "line_rbi": 0,
-          "line_r": 0,
+          "line_rbi": 0.5,
+          "line_r": 0.5,
           "line_sb": 0,
-          "edge_h": 0,
+          "edge_h": -0.3,
           "edge_hr": 0,
           "edge_rbi": 0,
-          "edge_r": 0,
+          "edge_r": -0.3,
           "edge_sb": 0,
           "edge_avg": 0,
           "batting": {
@@ -6565,7 +6838,7 @@
             "rbi": 0,
             "runs": 0.2,
             "hr": 0,
-            "total_bases": 1.1,
+            "total_bases": 1,
             "sb": 0,
             "singles": 0.2,
             "doubles": 0,
@@ -6585,11 +6858,162 @@
             "rbi": 0,
             "runs": 0.2,
             "hr": 0,
-            "total_bases": 1.1,
+            "total_bases": 1,
             "sb": 0,
             "singles": 0.2,
             "doubles": 0,
             "walks": 0.2
+          },
+          "tc_pitching": {
+            "strikeouts": 0,
+            "hits_allowed": 0.5,
+            "walks_allowed": 0.5,
+            "earned_runs": 0.5,
+            "outs": 0
+          },
+          "lines_raw": {
+            "strikeouts": 0.5,
+            "hits": 0.5,
+            "rbi": 0.5,
+            "total_bases": 1.5,
+            "runs": 0.5
+          },
+          "edges_raw": {
+            "hits": -0.3,
+            "total_bases": -0.5,
+            "runs": -0.3
+          }
+        },
+        {
+          "name": "Gavin Sheets",
+          "pos": "1B",
+          "team": "SD",
+          "status": "ACTIVE",
+          "role": "BATTER",
+          "min": 0,
+          "tc_h": 0.7,
+          "tc_hr": 0.1,
+          "tc_rbi": 0.6,
+          "tc_r": 0.4,
+          "tc_sb": 0,
+          "tc_avg": 0,
+          "line_h": 0.5,
+          "line_hr": 0,
+          "line_rbi": 0.5,
+          "line_r": 0.5,
+          "line_sb": 0,
+          "edge_h": 0.2,
+          "edge_hr": 0,
+          "edge_rbi": 0.1,
+          "edge_r": -0.1,
+          "edge_sb": 0,
+          "edge_avg": 0,
+          "batting": {
+            "hits": 0.7,
+            "rbi": 0.6,
+            "runs": 0.4,
+            "hr": 0.1,
+            "total_bases": 1.5,
+            "sb": 0,
+            "singles": 0.7,
+            "doubles": 0,
+            "walks": 0.2
+          },
+          "pitching": {
+            "strikeouts_avg": 0,
+            "hits_allowed_avg": 0,
+            "walks_allowed_avg": 0,
+            "earned_runs_avg": 0,
+            "outs_avg": 0,
+            "era": 0,
+            "appearances": 0
+          },
+          "tc_batting": {
+            "hits": 0.7,
+            "rbi": 0.6,
+            "runs": 0.4,
+            "hr": 0.1,
+            "total_bases": 1.5,
+            "sb": 0,
+            "singles": 0.7,
+            "doubles": 0,
+            "walks": 0.2
+          },
+          "tc_pitching": {
+            "strikeouts": 0,
+            "hits_allowed": 0.5,
+            "walks_allowed": 0.5,
+            "earned_runs": 0.5,
+            "outs": 0
+          },
+          "lines_raw": {
+            "strikeouts": 0.5,
+            "hits": 0.5,
+            "rbi": 0.5,
+            "total_bases": 1.5,
+            "runs": 0.5
+          },
+          "edges_raw": {
+            "hits": 0.2,
+            "rbi": 0.1,
+            "total_bases": 0,
+            "runs": -0.1
+          }
+        },
+        {
+          "name": "Sung-Mun Song",
+          "pos": "2B",
+          "team": "SD",
+          "status": "ACTIVE",
+          "role": "BATTER",
+          "min": 0,
+          "tc_h": 0.4,
+          "tc_hr": 0,
+          "tc_rbi": 0,
+          "tc_r": 0,
+          "tc_sb": 0,
+          "tc_avg": 0,
+          "line_h": 0,
+          "line_hr": 0,
+          "line_rbi": 0,
+          "line_r": 0,
+          "line_sb": 0,
+          "edge_h": 0,
+          "edge_hr": 0,
+          "edge_rbi": 0,
+          "edge_r": 0,
+          "edge_sb": 0,
+          "edge_avg": 0,
+          "batting": {
+            "hits": 0.4,
+            "rbi": 0,
+            "runs": 0,
+            "hr": 0,
+            "total_bases": 0.6,
+            "sb": 0,
+            "singles": 0.4,
+            "doubles": 0,
+            "walks": 0
+          },
+          "pitching": {
+            "strikeouts_avg": 0,
+            "hits_allowed_avg": 0,
+            "walks_allowed_avg": 0,
+            "earned_runs_avg": 0,
+            "outs_avg": 0,
+            "era": 0,
+            "appearances": 0
+          },
+          "tc_batting": {
+            "hits": 0.4,
+            "rbi": 0,
+            "runs": 0,
+            "hr": 0,
+            "total_bases": 0.6,
+            "sb": 0,
+            "singles": 0.4,
+            "doubles": 0,
+            "walks": 0
           },
           "tc_pitching": {
             "strikeouts": 0,
@@ -6602,187 +7026,37 @@
           "edges_raw": {}
         },
         {
-          "name": "Gavin Sheets",
-          "pos": "1B",
-          "team": "SD",
-          "status": "ACTIVE",
-          "role": "BATTER",
-          "min": 0,
-          "tc_h": 0.8,
-          "tc_hr": 0.1,
-          "tc_rbi": 0.7,
-          "tc_r": 0.4,
-          "tc_sb": 0,
-          "tc_avg": 0,
-          "line_h": 0.3,
-          "line_hr": 0,
-          "line_rbi": 0.3,
-          "line_r": 0.3,
-          "line_sb": 0,
-          "edge_h": 0.5,
-          "edge_hr": 0,
-          "edge_rbi": 0.4,
-          "edge_r": 0.1,
-          "edge_sb": 0,
-          "edge_avg": 0,
-          "batting": {
-            "hits": 0.8,
-            "rbi": 0.7,
-            "runs": 0.4,
-            "hr": 0.1,
-            "total_bases": 1.5,
-            "sb": 0,
-            "singles": 0.8,
-            "doubles": 0,
-            "walks": 0.3
-          },
-          "pitching": {
-            "strikeouts_avg": 0,
-            "hits_allowed_avg": 0,
-            "walks_allowed_avg": 0,
-            "earned_runs_avg": 0,
-            "outs_avg": 0,
-            "era": 0,
-            "appearances": 0
-          },
-          "tc_batting": {
-            "hits": 0.8,
-            "rbi": 0.7,
-            "runs": 0.4,
-            "hr": 0.1,
-            "total_bases": 1.5,
-            "sb": 0,
-            "singles": 0.8,
-            "doubles": 0,
-            "walks": 0.3
-          },
-          "tc_pitching": {
-            "strikeouts": 0,
-            "hits_allowed": 0.5,
-            "walks_allowed": 0.5,
-            "earned_runs": 0.5,
-            "outs": 0
-          },
-          "lines_raw": {
-            "strikeouts": 0.3,
-            "hits": 0.3,
-            "rbi": 0.3,
-            "total_bases": 0.8,
-            "runs": 0.3
-          },
-          "edges_raw": {
-            "hits": 0.5,
-            "rbi": 0.4,
-            "total_bases": 0.7,
-            "runs": 0.1
-          }
-        },
-        {
-          "name": "Sung-Mun Song",
-          "pos": "2B",
-          "team": "SD",
-          "status": "ACTIVE",
-          "role": "BATTER",
-          "min": 0,
-          "tc_h": 0.6,
-          "tc_hr": 0,
-          "tc_rbi": 0,
-          "tc_r": 0,
-          "tc_sb": 0,
-          "tc_avg": 0,
-          "line_h": 0.3,
-          "line_hr": 0,
-          "line_rbi": 0.3,
-          "line_r": 0.3,
-          "line_sb": 0,
-          "edge_h": 0.3,
-          "edge_hr": 0,
-          "edge_rbi": 0,
-          "edge_r": 0,
-          "edge_sb": 0,
-          "edge_avg": 0,
-          "batting": {
-            "hits": 0.6,
-            "rbi": 0,
-            "runs": 0,
-            "hr": 0,
-            "total_bases": 0.7,
-            "sb": 0,
-            "singles": 0.6,
-            "doubles": 0,
-            "walks": 0
-          },
-          "pitching": {
-            "strikeouts_avg": 0,
-            "hits_allowed_avg": 0,
-            "walks_allowed_avg": 0,
-            "earned_runs_avg": 0,
-            "outs_avg": 0,
-            "era": 0,
-            "appearances": 0
-          },
-          "tc_batting": {
-            "hits": 0.6,
-            "rbi": 0,
-            "runs": 0,
-            "hr": 0,
-            "total_bases": 0.7,
-            "sb": 0,
-            "singles": 0.6,
-            "doubles": 0,
-            "walks": 0
-          },
-          "tc_pitching": {
-            "strikeouts": 0,
-            "hits_allowed": 0.5,
-            "walks_allowed": 0.5,
-            "earned_runs": 0.5,
-            "outs": 0
-          },
-          "lines_raw": {
-            "strikeouts": 0.3,
-            "hits": 0.3,
-            "rbi": 0.3,
-            "total_bases": 0.8,
-            "runs": 0.3
-          },
-          "edges_raw": {
-            "hits": 0.3,
-            "total_bases": -0.1
-          }
-        },
-        {
           "name": "Manny Machado",
           "pos": "3B",
           "team": "SD",
           "status": "ACTIVE",
           "role": "BATTER",
           "min": 0,
-          "tc_h": 0.7,
+          "tc_h": 0.8,
           "tc_hr": 0.1,
           "tc_rbi": 0.4,
           "tc_r": 0.4,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 0.3,
+          "line_h": 0.5,
           "line_hr": 0,
-          "line_rbi": 0.3,
-          "line_r": 0.3,
+          "line_rbi": 0.5,
+          "line_r": 0.5,
           "line_sb": 0,
-          "edge_h": 0.4,
+          "edge_h": 0.3,
           "edge_hr": 0,
-          "edge_rbi": 0.1,
-          "edge_r": 0.1,
+          "edge_rbi": -0.1,
+          "edge_r": -0.1,
           "edge_sb": 0,
           "edge_avg": 0,
           "batting": {
-            "hits": 0.7,
+            "hits": 0.8,
             "rbi": 0.4,
             "runs": 0.4,
             "hr": 0.1,
-            "total_bases": 1.3,
+            "total_bases": 1.2,
             "sb": 0,
-            "singles": 0.7,
+            "singles": 0.8,
             "doubles": 0,
             "walks": 0.1
           },
@@ -6796,13 +7070,13 @@
             "appearances": 0
           },
           "tc_batting": {
-            "hits": 0.7,
+            "hits": 0.8,
             "rbi": 0.4,
             "runs": 0.4,
             "hr": 0.1,
-            "total_bases": 1.3,
+            "total_bases": 1.2,
             "sb": 0,
-            "singles": 0.7,
+            "singles": 0.8,
             "doubles": 0,
             "walks": 0.1
           },
@@ -6814,17 +7088,17 @@
             "outs": 0
           },
           "lines_raw": {
-            "strikeouts": 0.3,
-            "hits": 0.3,
-            "rbi": 0.3,
-            "total_bases": 0.8,
-            "runs": 0.3
+            "strikeouts": 0.5,
+            "hits": 0.5,
+            "rbi": 0.5,
+            "total_bases": 1.5,
+            "runs": 0.5
           },
           "edges_raw": {
-            "hits": 0.4,
-            "rbi": 0.1,
-            "total_bases": 0.5,
-            "runs": 0.1
+            "hits": 0.3,
+            "rbi": -0.1,
+            "total_bases": -0.3,
+            "runs": -0.1
           }
         },
         {
@@ -6834,10 +7108,10 @@
           "status": "ACTIVE",
           "role": "BATTER",
           "min": 0,
-          "tc_h": 1.1,
-          "tc_hr": 0.6,
-          "tc_rbi": 1.1,
-          "tc_r": 1.1,
+          "tc_h": 0.8,
+          "tc_hr": 0.4,
+          "tc_rbi": 0.8,
+          "tc_r": 0.8,
           "tc_sb": 0,
           "tc_avg": 0,
           "line_h": 0,
@@ -6852,13 +7126,13 @@
           "edge_sb": 0,
           "edge_avg": 0,
           "batting": {
-            "hits": 1.1,
-            "rbi": 1.1,
-            "runs": 1.1,
-            "hr": 0.6,
-            "total_bases": 0.9,
+            "hits": 0.8,
+            "rbi": 0.8,
+            "runs": 0.8,
+            "hr": 0.4,
+            "total_bases": 1,
             "sb": 0,
-            "singles": 1.1,
+            "singles": 0.8,
             "doubles": 0,
             "walks": 0
           },
@@ -6872,13 +7146,13 @@
             "appearances": 0
           },
           "tc_batting": {
-            "hits": 1.1,
-            "rbi": 1.1,
-            "runs": 1.1,
-            "hr": 0.6,
-            "total_bases": 0.9,
+            "hits": 0.8,
+            "rbi": 0.8,
+            "runs": 0.8,
+            "hr": 0.4,
+            "total_bases": 1,
             "sb": 0,
-            "singles": 1.1,
+            "singles": 0.8,
             "doubles": 0,
             "walks": 0
           },
@@ -6899,10 +7173,10 @@
           "status": "ACTIVE",
           "role": "BATTER",
           "min": 0,
-          "tc_h": 0.7,
-          "tc_hr": 0.3,
-          "tc_rbi": 0.8,
-          "tc_r": 0.3,
+          "tc_h": 0.4,
+          "tc_hr": 0.2,
+          "tc_rbi": 0.4,
+          "tc_r": 0.2,
           "tc_sb": 0,
           "tc_avg": 0,
           "line_h": 0,
@@ -6917,15 +7191,15 @@
           "edge_sb": 0,
           "edge_avg": 0,
           "batting": {
-            "hits": 0.7,
-            "rbi": 0.8,
-            "runs": 0.3,
-            "hr": 0.3,
+            "hits": 0.4,
+            "rbi": 0.4,
+            "runs": 0.2,
+            "hr": 0.2,
             "total_bases": 0.8,
             "sb": 0,
-            "singles": 0.7,
+            "singles": 0.4,
             "doubles": 0,
-            "walks": 0.3
+            "walks": 0.4
           },
           "pitching": {
             "strikeouts_avg": 0,
@@ -6937,15 +7211,15 @@
             "appearances": 0
           },
           "tc_batting": {
-            "hits": 0.7,
-            "rbi": 0.8,
-            "runs": 0.3,
-            "hr": 0.3,
+            "hits": 0.4,
+            "rbi": 0.4,
+            "runs": 0.2,
+            "hr": 0.2,
             "total_bases": 0.8,
             "sb": 0,
-            "singles": 0.7,
+            "singles": 0.4,
             "doubles": 0,
-            "walks": 0.3
+            "walks": 0.4
           },
           "tc_pitching": {
             "strikeouts": 0,
@@ -6964,33 +7238,33 @@
           "status": "ACTIVE",
           "role": "BATTER",
           "min": 0,
-          "tc_h": 1,
+          "tc_h": 0.8,
           "tc_hr": 0.1,
           "tc_rbi": 0.4,
           "tc_r": 0.5,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 0.8,
+          "line_h": 0.5,
           "line_hr": 0,
-          "line_rbi": 0.3,
-          "line_r": 0.3,
+          "line_rbi": 0.5,
+          "line_r": 0.5,
           "line_sb": 0,
-          "edge_h": 0.2,
+          "edge_h": 0.3,
           "edge_hr": 0,
-          "edge_rbi": 0.1,
-          "edge_r": 0.2,
+          "edge_rbi": -0.1,
+          "edge_r": 0,
           "edge_sb": 0,
           "edge_avg": 0,
           "batting": {
-            "hits": 1,
+            "hits": 0.8,
             "rbi": 0.4,
             "runs": 0.5,
             "hr": 0.1,
             "total_bases": 1.3,
             "sb": 0,
-            "singles": 1,
+            "singles": 0.8,
             "doubles": 0,
-            "walks": 0.2
+            "walks": 0.1
           },
           "pitching": {
             "strikeouts_avg": 0,
@@ -7002,15 +7276,15 @@
             "appearances": 0
           },
           "tc_batting": {
-            "hits": 1,
+            "hits": 0.8,
             "rbi": 0.4,
             "runs": 0.5,
             "hr": 0.1,
             "total_bases": 1.3,
             "sb": 0,
-            "singles": 1,
+            "singles": 0.8,
             "doubles": 0,
-            "walks": 0.2
+            "walks": 0.1
           },
           "tc_pitching": {
             "strikeouts": 0,
@@ -7020,17 +7294,17 @@
             "outs": 0
           },
           "lines_raw": {
-            "strikeouts": 0.8,
-            "hits": 0.8,
-            "rbi": 0.3,
-            "total_bases": 0.8,
-            "runs": 0.3
+            "strikeouts": 0.5,
+            "hits": 0.5,
+            "rbi": 0.5,
+            "total_bases": 1.5,
+            "runs": 0.5
           },
           "edges_raw": {
-            "hits": 0.2,
-            "rbi": 0.1,
-            "total_bases": 0.5,
-            "runs": 0.2
+            "hits": 0.3,
+            "rbi": -0.1,
+            "total_bases": -0.2,
+            "runs": 0
           }
         },
         {
@@ -7040,7 +7314,7 @@
           "status": "ACTIVE",
           "role": "BATTER",
           "min": 0,
-          "tc_h": 0.7,
+          "tc_h": 0.6,
           "tc_hr": 0,
           "tc_rbi": 0,
           "tc_r": 0.3,
@@ -7058,15 +7332,15 @@
           "edge_sb": 0,
           "edge_avg": 0,
           "batting": {
-            "hits": 0.7,
+            "hits": 0.6,
             "rbi": 0,
             "runs": 0.3,
             "hr": 0,
             "total_bases": 1,
             "sb": 0,
-            "singles": 0.7,
+            "singles": 0.6,
             "doubles": 0,
-            "walks": 0.8
+            "walks": 0.7
           },
           "pitching": {
             "strikeouts_avg": 0,
@@ -7078,15 +7352,15 @@
             "appearances": 0
           },
           "tc_batting": {
-            "hits": 0.7,
+            "hits": 0.6,
             "rbi": 0,
             "runs": 0.3,
             "hr": 0,
             "total_bases": 1,
             "sb": 0,
-            "singles": 0.7,
+            "singles": 0.6,
             "doubles": 0,
-            "walks": 0.8
+            "walks": 0.7
           },
           "tc_pitching": {
             "strikeouts": 0,
@@ -7109,7 +7383,7 @@
           "status": "ACTIVE",
           "role": "BATTER",
           "min": 0,
-          "tc_h": 0.3,
+          "tc_h": 0,
           "tc_hr": 0,
           "tc_rbi": 0,
           "tc_r": 0,
@@ -7127,15 +7401,15 @@
           "edge_sb": 0,
           "edge_avg": 0,
           "batting": {
-            "hits": 0.3,
+            "hits": 0,
             "rbi": 0,
             "runs": 0,
             "hr": 0,
-            "total_bases": 0.5,
+            "total_bases": 0.2,
             "sb": 0,
-            "singles": 0.3,
+            "singles": 0,
             "doubles": 0,
-            "walks": 0.3
+            "walks": 0.4
           },
           "pitching": {
             "strikeouts_avg": 0,
@@ -7147,15 +7421,15 @@
             "appearances": 0
           },
           "tc_batting": {
-            "hits": 0.3,
+            "hits": 0,
             "rbi": 0,
             "runs": 0,
             "hr": 0,
-            "total_bases": 0.5,
+            "total_bases": 0.2,
             "sb": 0,
-            "singles": 0.3,
+            "singles": 0,
             "doubles": 0,
-            "walks": 0.3
+            "walks": 0.4
           },
           "tc_pitching": {
             "strikeouts": 0,
@@ -7174,33 +7448,33 @@
           "status": "ACTIVE",
           "role": "BATTER",
           "min": 0,
-          "tc_h": 1.2,
+          "tc_h": 1.3,
           "tc_hr": 0.1,
-          "tc_rbi": 1,
-          "tc_r": 0.6,
+          "tc_rbi": 1.1,
+          "tc_r": 0.4,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 0.3,
+          "line_h": 0.5,
           "line_hr": 0,
-          "line_rbi": 0.3,
-          "line_r": 0.3,
+          "line_rbi": 0.5,
+          "line_r": 0.5,
           "line_sb": 0,
-          "edge_h": 0.9,
+          "edge_h": 0.8,
           "edge_hr": 0,
-          "edge_rbi": 0.7,
-          "edge_r": 0.3,
+          "edge_rbi": 0.6,
+          "edge_r": -0.1,
           "edge_sb": 0,
           "edge_avg": 0,
           "batting": {
-            "hits": 1.2,
-            "rbi": 1,
-            "runs": 0.6,
+            "hits": 1.3,
+            "rbi": 1.1,
+            "runs": 0.4,
             "hr": 0.1,
-            "total_bases": 1.3,
+            "total_bases": 1.5,
             "sb": 0,
-            "singles": 1.2,
+            "singles": 1.3,
             "doubles": 0,
-            "walks": 0.4
+            "walks": 0.1
           },
           "pitching": {
             "strikeouts_avg": 0,
@@ -7212,15 +7486,15 @@
             "appearances": 0
           },
           "tc_batting": {
-            "hits": 1.2,
-            "rbi": 1,
-            "runs": 0.6,
+            "hits": 1.3,
+            "rbi": 1.1,
+            "runs": 0.4,
             "hr": 0.1,
-            "total_bases": 1.3,
+            "total_bases": 1.5,
             "sb": 0,
-            "singles": 1.2,
+            "singles": 1.3,
             "doubles": 0,
-            "walks": 0.4
+            "walks": 0.1
           },
           "tc_pitching": {
             "strikeouts": 0,
@@ -7230,17 +7504,17 @@
             "outs": 0
           },
           "lines_raw": {
-            "strikeouts": 0.3,
-            "hits": 0.3,
-            "rbi": 0.3,
-            "total_bases": 0.8,
-            "runs": 0.3
+            "strikeouts": 1.5,
+            "hits": 0.5,
+            "rbi": 0.5,
+            "total_bases": 1.5,
+            "runs": 0.5
           },
           "edges_raw": {
-            "hits": 0.9,
-            "rbi": 0.7,
-            "total_bases": 0.5,
-            "runs": 0.3
+            "hits": 0.8,
+            "rbi": 0.6,
+            "total_bases": 0,
+            "runs": -0.1
           }
         },
         {
@@ -7276,7 +7550,7 @@
             "sb": 0,
             "singles": 0.3,
             "doubles": 0,
-            "walks": 0.1
+            "walks": 0.2
           },
           "pitching": {
             "strikeouts_avg": 0,
@@ -7296,7 +7570,7 @@
             "sb": 0,
             "singles": 0.3,
             "doubles": 0,
-            "walks": 0.1
+            "walks": 0.2
           },
           "tc_pitching": {
             "strikeouts": 0,
@@ -7315,31 +7589,31 @@
           "status": "ACTIVE",
           "role": "BATTER",
           "min": 0,
-          "tc_h": 1.3,
+          "tc_h": 1.2,
           "tc_hr": 0.1,
           "tc_rbi": 0.6,
           "tc_r": 0.5,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 0.8,
+          "line_h": 1.5,
           "line_hr": 0,
-          "line_rbi": 0.3,
-          "line_r": 0.3,
+          "line_rbi": 0.5,
+          "line_r": 0.5,
           "line_sb": 0,
-          "edge_h": 0.5,
+          "edge_h": -0.3,
           "edge_hr": 0,
-          "edge_rbi": 0.3,
-          "edge_r": 0.2,
+          "edge_rbi": 0.1,
+          "edge_r": 0,
           "edge_sb": 0,
           "edge_avg": 0,
           "batting": {
-            "hits": 1.3,
+            "hits": 1.2,
             "rbi": 0.6,
             "runs": 0.5,
             "hr": 0.1,
             "total_bases": 1.3,
             "sb": 0,
-            "singles": 1.3,
+            "singles": 1.2,
             "doubles": 0,
             "walks": 0.4
           },
@@ -7353,13 +7627,13 @@
             "appearances": 0
           },
           "tc_batting": {
-            "hits": 1.3,
+            "hits": 1.2,
             "rbi": 0.6,
             "runs": 0.5,
             "hr": 0.1,
             "total_bases": 1.3,
             "sb": 0,
-            "singles": 1.3,
+            "singles": 1.2,
             "doubles": 0,
             "walks": 0.4
           },
@@ -7371,17 +7645,17 @@
             "outs": 0
           },
           "lines_raw": {
-            "strikeouts": 0.3,
-            "hits": 0.8,
-            "rbi": 0.3,
-            "total_bases": 0.8,
-            "runs": 0.3
+            "strikeouts": 0.5,
+            "hits": 1.5,
+            "rbi": 0.5,
+            "total_bases": 1.5,
+            "runs": 0.5
           },
           "edges_raw": {
-            "hits": 0.5,
-            "rbi": 0.3,
-            "total_bases": 0.5,
-            "runs": 0.2
+            "hits": -0.3,
+            "rbi": 0.1,
+            "total_bases": -0.2,
+            "runs": 0
           }
         },
         {
@@ -7413,7 +7687,7 @@
             "rbi": 0,
             "runs": 0,
             "hr": 0,
-            "total_bases": 0.4,
+            "total_bases": 0.5,
             "sb": 0,
             "singles": 0,
             "doubles": 0,
@@ -7433,7 +7707,7 @@
             "rbi": 0,
             "runs": 0,
             "hr": 0,
-            "total_bases": 0.4,
+            "total_bases": 0.5,
             "sb": 0,
             "singles": 0,
             "doubles": 0,
@@ -7456,31 +7730,31 @@
           "status": "ACTIVE",
           "role": "BATTER",
           "min": 0,
-          "tc_h": 0.7,
+          "tc_h": 0.5,
           "tc_hr": 0,
           "tc_rbi": 0,
           "tc_r": 0.7,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 0.8,
+          "line_h": 0.5,
           "line_hr": 0,
-          "line_rbi": 0.3,
-          "line_r": 0.3,
+          "line_rbi": 0.5,
+          "line_r": 0.5,
           "line_sb": 0,
-          "edge_h": -0.1,
+          "edge_h": 0,
           "edge_hr": 0,
           "edge_rbi": 0,
-          "edge_r": 0.4,
+          "edge_r": 0.2,
           "edge_sb": 0,
           "edge_avg": 0,
           "batting": {
-            "hits": 0.7,
+            "hits": 0.5,
             "rbi": 0,
             "runs": 0.7,
             "hr": 0,
-            "total_bases": 0.9,
+            "total_bases": 0.8,
             "sb": 0,
-            "singles": 0.7,
+            "singles": 0.5,
             "doubles": 0,
             "walks": 0.5
           },
@@ -7494,13 +7768,13 @@
             "appearances": 0
           },
           "tc_batting": {
-            "hits": 0.7,
+            "hits": 0.5,
             "rbi": 0,
             "runs": 0.7,
             "hr": 0,
-            "total_bases": 0.9,
+            "total_bases": 0.8,
             "sb": 0,
-            "singles": 0.7,
+            "singles": 0.5,
             "doubles": 0,
             "walks": 0.5
           },
@@ -7512,16 +7786,16 @@
             "outs": 0
           },
           "lines_raw": {
-            "strikeouts": 0.3,
-            "hits": 0.8,
-            "rbi": 0.3,
-            "total_bases": 0.8,
-            "runs": 0.3
+            "strikeouts": 0.5,
+            "hits": 0.5,
+            "rbi": 0.5,
+            "total_bases": 1.5,
+            "runs": 0.5
           },
           "edges_raw": {
-            "hits": -0.1,
-            "total_bases": 0.1,
-            "runs": 0.4
+            "hits": 0,
+            "total_bases": -0.7,
+            "runs": 0.2
           }
         },
         {
@@ -7560,12 +7834,12 @@
             "walks": 0
           },
           "pitching": {
-            "strikeouts_avg": 1,
-            "hits_allowed_avg": 1.3,
-            "walks_allowed_avg": 1.3,
+            "strikeouts_avg": 1.3,
+            "hits_allowed_avg": 0.7,
+            "walks_allowed_avg": 1,
             "earned_runs_avg": 0,
             "outs_avg": 3.2,
-            "era": 2.28,
+            "era": 2.2,
             "appearances": 3
           },
           "tc_batting": {
@@ -7580,9 +7854,9 @@
             "walks": 0
           },
           "tc_pitching": {
-            "strikeouts": 0.3,
-            "hits_allowed": 1.5,
-            "walks_allowed": 1.5,
+            "strikeouts": 0.5,
+            "hits_allowed": 1.1,
+            "walks_allowed": 1.3,
             "earned_runs": 0.5,
             "outs": 2.1
           },
@@ -7820,13 +8094,13 @@
             "walks": 0
           },
           "pitching": {
-            "strikeouts_avg": 1.3,
-            "hits_allowed_avg": 1.3,
+            "strikeouts_avg": 1.5,
+            "hits_allowed_avg": 1,
             "walks_allowed_avg": 0,
-            "earned_runs_avg": 1,
-            "outs_avg": 3.2,
-            "era": 1.67,
-            "appearances": 3
+            "earned_runs_avg": 0.5,
+            "outs_avg": 3,
+            "era": 1.79,
+            "appearances": 2
           },
           "tc_batting": {
             "hits": 0,
@@ -7840,11 +8114,11 @@
             "walks": 0
           },
           "tc_pitching": {
-            "strikeouts": 0.5,
-            "hits_allowed": 1.5,
+            "strikeouts": 0.7,
+            "hits_allowed": 1.3,
             "walks_allowed": 0.5,
-            "earned_runs": 1.3,
-            "outs": 2.1
+            "earned_runs": 0.9,
+            "outs": 1.9
           },
           "lines_raw": {},
           "edges_raw": {}
@@ -8015,13 +8289,13 @@
             "walks": 0
           },
           "pitching": {
-            "strikeouts_avg": 1.3,
-            "hits_allowed_avg": 1.3,
-            "walks_allowed_avg": 0.3,
-            "earned_runs_avg": 0.7,
-            "outs_avg": 3.4,
-            "era": 3.98,
-            "appearances": 3
+            "strikeouts_avg": 0.5,
+            "hits_allowed_avg": 1.5,
+            "walks_allowed_avg": 0,
+            "earned_runs_avg": 0.5,
+            "outs_avg": 2,
+            "era": 4,
+            "appearances": 2
           },
           "tc_batting": {
             "hits": 0,
@@ -8035,11 +8309,76 @@
             "walks": 0
           },
           "tc_pitching": {
-            "strikeouts": 0.5,
-            "hits_allowed": 1.5,
-            "walks_allowed": 0.7,
-            "earned_runs": 1.1,
-            "outs": 2.2
+            "strikeouts": 0,
+            "hits_allowed": 1.7,
+            "walks_allowed": 0.5,
+            "earned_runs": 0.9,
+            "outs": 1.1
+          },
+          "lines_raw": {},
+          "edges_raw": {}
+        },
+        {
+          "name": "Kyle Hart",
+          "pos": "RP",
+          "team": "SD",
+          "status": "ACTIVE",
+          "role": "PITCHER",
+          "min": 0,
+          "tc_h": 0,
+          "tc_hr": 0,
+          "tc_rbi": 0,
+          "tc_r": 0,
+          "tc_sb": 0,
+          "tc_avg": 0,
+          "line_h": 0,
+          "line_hr": 0,
+          "line_rbi": 0,
+          "line_r": 0,
+          "line_sb": 0,
+          "edge_h": 0,
+          "edge_hr": 0,
+          "edge_rbi": 0,
+          "edge_r": 0,
+          "edge_sb": 0,
+          "edge_avg": 0,
+          "batting": {
+            "hits": 0,
+            "rbi": 0,
+            "runs": 0,
+            "hr": 0,
+            "total_bases": 0,
+            "sb": 0,
+            "singles": 0,
+            "doubles": 0,
+            "walks": 0
+          },
+          "pitching": {
+            "strikeouts_avg": 1,
+            "hits_allowed_avg": 1,
+            "walks_allowed_avg": 0,
+            "earned_runs_avg": 0,
+            "outs_avg": 6,
+            "era": 4.82,
+            "appearances": 1
+          },
+          "tc_batting": {
+            "hits": 0,
+            "rbi": 0,
+            "runs": 0,
+            "hr": 0,
+            "total_bases": 0,
+            "sb": 0,
+            "singles": 0,
+            "doubles": 0,
+            "walks": 0
+          },
+          "tc_pitching": {
+            "strikeouts": 0.3,
+            "hits_allowed": 1.3,
+            "walks_allowed": 0.5,
+            "earned_runs": 0.5,
+            "outs": 4.3
           },
           "lines_raw": {},
           "edges_raw": {}
@@ -8210,13 +8549,13 @@
             "walks": 0
           },
           "pitching": {
-            "strikeouts_avg": 4,
-            "hits_allowed_avg": 7,
+            "strikeouts_avg": 5,
+            "hits_allowed_avg": 6,
             "walks_allowed_avg": 2,
-            "earned_runs_avg": 3,
-            "outs_avg": 13.5,
+            "earned_runs_avg": 2,
+            "outs_avg": 15,
             "era": 3.63,
-            "appearances": 2
+            "appearances": 1
           },
           "tc_batting": {
             "hits": 0,
@@ -8230,11 +8569,11 @@
             "walks": 0
           },
           "tc_pitching": {
-            "strikeouts": 2.7,
-            "hits_allowed": 6.1,
+            "strikeouts": 3.5,
+            "hits_allowed": 5.3,
             "walks_allowed": 2.1,
-            "earned_runs": 2.9,
-            "outs": 10.3
+            "earned_runs": 2.1,
+            "outs": 11.5
           },
           "lines_raw": {},
           "edges_raw": {}
@@ -8301,8 +8640,16 @@
             "earned_runs": 2.9,
             "outs": 14.4
           },
-          "lines_raw": {},
-          "edges_raw": {}
+          "lines_raw": {
+            "hits_allowed": 4.4,
+            "earned_runs": 2.4,
+            "strikeouts": 5.4
+          },
+          "edges_raw": {
+            "hits_allowed": 1.7,
+            "earned_runs": 0.5,
+            "strikeouts": -3.5
+          }
         },
         {
           "name": "Lucas Giolito",
@@ -8340,13 +8687,13 @@
             "walks": 0
           },
           "pitching": {
-            "strikeouts_avg": 3,
-            "hits_allowed_avg": 2,
-            "walks_allowed_avg": 5,
-            "earned_runs_avg": 1,
-            "outs_avg": 12,
-            "era": 4.35,
-            "appearances": 1
+            "strikeouts_avg": 2.5,
+            "hits_allowed_avg": 4.5,
+            "walks_allowed_avg": 4,
+            "earned_runs_avg": 2,
+            "outs_avg": 13.5,
+            "era": 4.46,
+            "appearances": 2
           },
           "tc_batting": {
             "hits": 0,
@@ -8360,11 +8707,11 @@
             "walks": 0
           },
           "tc_pitching": {
-            "strikeouts": 1.9,
-            "hits_allowed": 2.1,
-            "walks_allowed": 4.5,
-            "earned_runs": 1.3,
-            "outs": 9.1
+            "strikeouts": 1.5,
+            "hits_allowed": 4.1,
+            "walks_allowed": 3.7,
+            "earned_runs": 2.1,
+            "outs": 10.3
           },
           "lines_raw": {},
           "edges_raw": {}
@@ -8378,13 +8725,13 @@
   "edge": null,
   "signal": null,
   "odds": {
-    "total": 9,
+    "total": 12.5,
     "ml_source": "DraftKings via SportsDataIO"
   },
   "team_to_win": "SD",
   "team_to_win_reason": "home court/field advantage",
   "ml_pick": "SD",
   "spread_pick": "SD",
-  "total_lean": "OVER",
+  "total_lean": "UNDER",
   "book_source_honest": "DraftKings via SportsDataIO"
 }

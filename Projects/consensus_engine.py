@@ -468,11 +468,14 @@ def fetch_consensus_for_matchup(sport: str, away: str, home: str, markets=None) 
         return sgo_res
 
     try:
+        mkt = markets or "player_points,player_rebounds,player_assists,player_threes,player_steals,player_blocks"
         r = requests.get(
             f"{ODDS_BASE}/odds/",
             params={
                 "sport_key": sport_key,
                 "regions": "us",
+                "markets": mkt,
+                "oddsFormat": "american",
                 "apiKey": ODDS_KEY,
             },
             timeout=15

@@ -710,9 +710,10 @@ def run_daily_log(sports=ALL_SPORTS):
         "edge", "threshold", "raw_average", "source", "actual", "result",
     ]
     write_header = not csv_path.exists()
-    with open(csv_path, "w", newline="") as f:
+    with open(csv_path, "a" if csv_path.exists() else "w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=csv_fields)
-        w.writeheader()
+        if write_header:
+            w.writeheader()
         for p in all_picks:
             row = {k: p.get(k, "") for k in csv_fields}
             w.writerow(row)
@@ -866,9 +867,18 @@ def run_daily_log(sports=ALL_SPORTS):
     return last_run
 
 if __name__ == "__main__":
-    sports_order = ["WNBA", "MLB"]
-    if len(sys.argv) > 1:
-        sports = tuple(s.upper() for s in sys.argv[1:])
-    else:
-        sports = sports_order
+    import argparse
+    parser = argparse.ArgumentParser(description="TC Sports Daily Picks")
+    parser.add_argument("--sport", required=True, choices=["NBA", "WNBA", "NFL", "MLB", "SOCCER", "NHL", "WORLD_CUP"],
+                        help="Sport to generate picks for")
+    parser.add_argument("--date", default=now_et().strftime("%Y-%m-%d"),
+                        help="Date in YYYY-MM-DD format (default: today ET)")
+    parser.add_argument("--dry-run", action="store_true",
+                        help="Print projections without saving")
+    args = parser.parse_args()
+    sports = (args.sport,)
+    # override today with --date for downstream capture
+    os.environ["TC_RUN_DATE"] = args.date
+    if args.dry_run:
+        os.environ["TC_DRY_RUN"] = "1"
     run_daily_log(sports)

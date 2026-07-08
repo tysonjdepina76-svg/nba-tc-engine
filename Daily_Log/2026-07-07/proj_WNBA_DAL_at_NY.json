@@ -4,15 +4,15 @@
   "matchup": "DAL@NY",
   "away_team": "DAL",
   "home_team": "NY",
-  "source": "ESPN + OddsAPI fallback (ESPN DraftKings embedded)",
+  "source": "ESPN + OddsAPI fallback (OddsAPI DraftKings)",
   "signal": "OVER",
-  "dk_total": 175.5,
+  "dk_total": 172.5,
   "odds": {
-    "total": 175.5,
-    "spread": -4.5,
-    "ml_home": "-175",
-    "ml_away": "+145",
-    "ml_source": "ESPN DraftKings embedded"
+    "total": 172.5,
+    "spread": -9.5,
+    "ml_home": 500,
+    "ml_away": -810,
+    "ml_source": "OddsAPI DraftKings"
   },
   "away": {
     "all": {
@@ -132,63 +132,6 @@
           }
         },
         {
-          "player": "Azzi Fudd",
-          "team": "DAL",
-          "role": "START",
-          "status": "ACTIVE",
-          "pos": "",
-          "projections": {
-            "PTS": {
-              "tc_projection": 10.9,
-              "line": 9.5,
-              "edge": 1.4,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "REB": {
-              "tc_projection": 1.5,
-              "line": 1.5,
-              "edge": 0.0,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "AST": {
-              "tc_projection": 1.4,
-              "line": 1.0,
-              "edge": 0.4,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "3PM": {
-              "tc_projection": 1.6,
-              "line": 1.5,
-              "edge": 0.1,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "STL": {
-              "tc_projection": 1.4,
-              "line": 1.0,
-              "edge": 0.4,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "BLK": {
-              "tc_projection": 0.8,
-              "line": 0.5,
-              "edge": 0.3,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            }
-          }
-        },
-        {
           "player": "Arike Ogunbowale",
           "team": "DAL",
           "role": "START",
@@ -239,6 +182,63 @@
               "tc_projection": 0.0,
               "line": 0.0,
               "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Azzi Fudd",
+          "team": "DAL",
+          "role": "START",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 10.9,
+              "line": 9.5,
+              "edge": 1.4,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 1.5,
+              "line": 1.5,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 1.4,
+              "line": 1.0,
+              "edge": 0.4,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 1.6,
+              "line": 1.5,
+              "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 1.4,
+              "line": 1.0,
+              "edge": 0.4,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.8,
+              "line": 0.5,
+              "edge": 0.3,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
@@ -303,63 +303,6 @@
           }
         },
         {
-          "player": "Awak Kuier",
-          "team": "DAL",
-          "role": "BENCH",
-          "status": "ACTIVE",
-          "pos": "",
-          "projections": {
-            "PTS": {
-              "tc_projection": 8.4,
-              "line": 7.5,
-              "edge": 0.9,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "REB": {
-              "tc_projection": 4.3,
-              "line": 4.0,
-              "edge": 0.3,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "AST": {
-              "tc_projection": 1.1,
-              "line": 1.0,
-              "edge": 0.1,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "3PM": {
-              "tc_projection": 0.9,
-              "line": 1.0,
-              "edge": -0.1,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "STL": {
-              "tc_projection": 0.9,
-              "line": 1.0,
-              "edge": -0.1,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "BLK": {
-              "tc_projection": 1.5,
-              "line": 1.5,
-              "edge": 0.0,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            }
-          }
-        },
-        {
           "player": "Maddy Siegrist",
           "team": "DAL",
           "role": "BENCH",
@@ -410,6 +353,63 @@
               "tc_projection": 0.6,
               "line": 0.5,
               "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Awak Kuier",
+          "team": "DAL",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 8.4,
+              "line": 7.5,
+              "edge": 0.9,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 4.3,
+              "line": 4.0,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 1.1,
+              "line": 1.0,
+              "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.9,
+              "line": 1.0,
+              "edge": -0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.9,
+              "line": 1.0,
+              "edge": -0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 1.5,
+              "line": 1.5,
+              "edge": 0.0,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
@@ -588,63 +588,6 @@
           }
         },
         {
-          "player": "Odyssey Sims",
-          "team": "DAL",
-          "role": "BENCH",
-          "status": "ACTIVE",
-          "pos": "",
-          "projections": {
-            "PTS": {
-              "tc_projection": 8.4,
-              "line": 7.5,
-              "edge": 0.9,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "REB": {
-              "tc_projection": 1.3,
-              "line": 1.0,
-              "edge": 0.3,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "AST": {
-              "tc_projection": 4.1,
-              "line": 3.5,
-              "edge": 0.6,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "3PM": {
-              "tc_projection": 0.7,
-              "line": 0.5,
-              "edge": 0.2,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "STL": {
-              "tc_projection": 1.1,
-              "line": 1.0,
-              "edge": 0.1,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "BLK": {
-              "tc_projection": 0.3,
-              "line": 0.5,
-              "edge": -0.2,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            }
-          }
-        },
-        {
           "player": "Costanza Verona",
           "team": "DAL",
           "role": "BENCH",
@@ -695,6 +638,63 @@
               "tc_projection": 0.0,
               "line": 0.0,
               "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Odyssey Sims",
+          "team": "DAL",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 8.4,
+              "line": 7.5,
+              "edge": 0.9,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 1.3,
+              "line": 1.0,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 4.1,
+              "line": 3.5,
+              "edge": 0.6,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.7,
+              "line": 0.5,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 1.1,
+              "line": 1.0,
+              "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.3,
+              "line": 0.5,
+              "edge": -0.2,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
@@ -991,63 +991,6 @@
           }
         },
         {
-          "player": "Azzi Fudd",
-          "team": "DAL",
-          "role": "START",
-          "status": "ACTIVE",
-          "pos": "",
-          "projections": {
-            "PTS": {
-              "tc_projection": 10.9,
-              "line": 9.5,
-              "edge": 1.4,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "REB": {
-              "tc_projection": 1.5,
-              "line": 1.5,
-              "edge": 0.0,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "AST": {
-              "tc_projection": 1.4,
-              "line": 1.0,
-              "edge": 0.4,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "3PM": {
-              "tc_projection": 1.6,
-              "line": 1.5,
-              "edge": 0.1,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "STL": {
-              "tc_projection": 1.4,
-              "line": 1.0,
-              "edge": 0.4,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "BLK": {
-              "tc_projection": 0.8,
-              "line": 0.5,
-              "edge": 0.3,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            }
-          }
-        },
-        {
           "player": "Arike Ogunbowale",
           "team": "DAL",
           "role": "START",
@@ -1098,6 +1041,63 @@
               "tc_projection": 0.0,
               "line": 0.0,
               "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Azzi Fudd",
+          "team": "DAL",
+          "role": "START",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 10.9,
+              "line": 9.5,
+              "edge": 1.4,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 1.5,
+              "line": 1.5,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 1.4,
+              "line": 1.0,
+              "edge": 0.4,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 1.6,
+              "line": 1.5,
+              "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 1.4,
+              "line": 1.0,
+              "edge": 0.4,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.8,
+              "line": 0.5,
+              "edge": 0.3,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
@@ -1166,63 +1166,6 @@
           }
         },
         {
-          "player": "Awak Kuier",
-          "team": "DAL",
-          "role": "BENCH",
-          "status": "ACTIVE",
-          "pos": "",
-          "projections": {
-            "PTS": {
-              "tc_projection": 8.4,
-              "line": 7.5,
-              "edge": 0.9,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "REB": {
-              "tc_projection": 4.3,
-              "line": 4.0,
-              "edge": 0.3,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "AST": {
-              "tc_projection": 1.1,
-              "line": 1.0,
-              "edge": 0.1,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "3PM": {
-              "tc_projection": 0.9,
-              "line": 1.0,
-              "edge": -0.1,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "STL": {
-              "tc_projection": 0.9,
-              "line": 1.0,
-              "edge": -0.1,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "BLK": {
-              "tc_projection": 1.5,
-              "line": 1.5,
-              "edge": 0.0,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            }
-          }
-        },
-        {
           "player": "Maddy Siegrist",
           "team": "DAL",
           "role": "BENCH",
@@ -1273,6 +1216,63 @@
               "tc_projection": 0.6,
               "line": 0.5,
               "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Awak Kuier",
+          "team": "DAL",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 8.4,
+              "line": 7.5,
+              "edge": 0.9,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 4.3,
+              "line": 4.0,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 1.1,
+              "line": 1.0,
+              "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.9,
+              "line": 1.0,
+              "edge": -0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.9,
+              "line": 1.0,
+              "edge": -0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 1.5,
+              "line": 1.5,
+              "edge": 0.0,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
@@ -1451,63 +1451,6 @@
           }
         },
         {
-          "player": "Odyssey Sims",
-          "team": "DAL",
-          "role": "BENCH",
-          "status": "ACTIVE",
-          "pos": "",
-          "projections": {
-            "PTS": {
-              "tc_projection": 8.4,
-              "line": 7.5,
-              "edge": 0.9,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "REB": {
-              "tc_projection": 1.3,
-              "line": 1.0,
-              "edge": 0.3,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "AST": {
-              "tc_projection": 4.1,
-              "line": 3.5,
-              "edge": 0.6,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "3PM": {
-              "tc_projection": 0.7,
-              "line": 0.5,
-              "edge": 0.2,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "STL": {
-              "tc_projection": 1.1,
-              "line": 1.0,
-              "edge": 0.1,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "BLK": {
-              "tc_projection": 0.3,
-              "line": 0.5,
-              "edge": -0.2,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            }
-          }
-        },
-        {
           "player": "Costanza Verona",
           "team": "DAL",
           "role": "BENCH",
@@ -1558,6 +1501,63 @@
               "tc_projection": 0.0,
               "line": 0.0,
               "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Odyssey Sims",
+          "team": "DAL",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 8.4,
+              "line": 7.5,
+              "edge": 0.9,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 1.3,
+              "line": 1.0,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 4.1,
+              "line": 3.5,
+              "edge": 0.6,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.7,
+              "line": 0.5,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 1.1,
+              "line": 1.0,
+              "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.3,
+              "line": 0.5,
+              "edge": -0.2,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
@@ -1970,63 +1970,6 @@
           }
         },
         {
-          "player": "Rebekah Gardner",
-          "team": "NY",
-          "role": "BENCH",
-          "status": "ACTIVE",
-          "pos": "",
-          "projections": {
-            "PTS": {
-              "tc_projection": 8.9,
-              "line": 8.0,
-              "edge": 0.9,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "REB": {
-              "tc_projection": 3.6,
-              "line": 3.0,
-              "edge": 0.6,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "AST": {
-              "tc_projection": 2.1,
-              "line": 2.0,
-              "edge": 0.1,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "3PM": {
-              "tc_projection": 0.5,
-              "line": 0.5,
-              "edge": 0.0,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "STL": {
-              "tc_projection": 0.8,
-              "line": 0.5,
-              "edge": 0.3,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "BLK": {
-              "tc_projection": 0.3,
-              "line": 0.5,
-              "edge": -0.2,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            }
-          }
-        },
-        {
           "player": "Han Xu",
           "team": "NY",
           "role": "BENCH",
@@ -2084,113 +2027,56 @@
           }
         },
         {
-          "player": "Sabrina Ionescu",
-          "team": "NY",
-          "role": "START",
-          "status": "ACTIVE",
-          "pos": "",
-          "projections": {
-            "PTS": {
-              "tc_projection": 9.1,
-              "line": 8.0,
-              "edge": 1.1,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "REB": {
-              "tc_projection": 3.1,
-              "line": 2.5,
-              "edge": 0.6,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "AST": {
-              "tc_projection": 3.2,
-              "line": 3.0,
-              "edge": 0.2,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "3PM": {
-              "tc_projection": 1.3,
-              "line": 1.0,
-              "edge": 0.3,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "STL": {
-              "tc_projection": 0.4,
-              "line": 0.5,
-              "edge": -0.1,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "BLK": {
-              "tc_projection": 0.2,
-              "line": 0.0,
-              "edge": 0.2,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            }
-          }
-        },
-        {
-          "player": "Julie Vanloo",
+          "player": "Rebekah Gardner",
           "team": "NY",
           "role": "BENCH",
           "status": "ACTIVE",
           "pos": "",
           "projections": {
             "PTS": {
-              "tc_projection": 9.0,
+              "tc_projection": 8.9,
               "line": 8.0,
-              "edge": 1.0,
+              "edge": 0.9,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
             },
             "REB": {
-              "tc_projection": 3.1,
-              "line": 2.5,
+              "tc_projection": 3.6,
+              "line": 3.0,
               "edge": 0.6,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
             },
             "AST": {
-              "tc_projection": 8.3,
-              "line": 7.5,
-              "edge": 0.8,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "3PM": {
-              "tc_projection": 2.2,
+              "tc_projection": 2.1,
               "line": 2.0,
-              "edge": 0.2,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "STL": {
-              "tc_projection": 0.6,
-              "line": 0.5,
               "edge": 0.1,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
             },
-            "BLK": {
-              "tc_projection": 0.0,
-              "line": 0.0,
+            "3PM": {
+              "tc_projection": 0.5,
+              "line": 0.5,
               "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.8,
+              "line": 0.5,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.3,
+              "line": 0.5,
+              "edge": -0.2,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
@@ -2240,6 +2126,63 @@
               "tc_projection": 0.1,
               "line": 0.0,
               "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.2,
+              "line": 0.0,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Sabrina Ionescu",
+          "team": "NY",
+          "role": "START",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 9.1,
+              "line": 8.0,
+              "edge": 1.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 3.1,
+              "line": 2.5,
+              "edge": 0.6,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 3.2,
+              "line": 3.0,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 1.3,
+              "line": 1.0,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.4,
+              "line": 0.5,
+              "edge": -0.1,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
@@ -2305,6 +2248,63 @@
               "tc_projection": 0.1,
               "line": 0.0,
               "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Julie Vanloo",
+          "team": "NY",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 9.0,
+              "line": 8.0,
+              "edge": 1.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 3.1,
+              "line": 2.5,
+              "edge": 0.6,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 8.3,
+              "line": 7.5,
+              "edge": 0.8,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 2.2,
+              "line": 2.0,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.6,
+              "line": 0.5,
+              "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.0,
+              "line": 0.0,
+              "edge": 0.0,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
@@ -3004,63 +3004,6 @@
           }
         },
         {
-          "player": "Rebekah Gardner",
-          "team": "NY",
-          "role": "BENCH",
-          "status": "ACTIVE",
-          "pos": "",
-          "projections": {
-            "PTS": {
-              "tc_projection": 8.9,
-              "line": 8.0,
-              "edge": 0.9,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "REB": {
-              "tc_projection": 3.6,
-              "line": 3.0,
-              "edge": 0.6,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "AST": {
-              "tc_projection": 2.1,
-              "line": 2.0,
-              "edge": 0.1,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "3PM": {
-              "tc_projection": 0.5,
-              "line": 0.5,
-              "edge": 0.0,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "STL": {
-              "tc_projection": 0.8,
-              "line": 0.5,
-              "edge": 0.3,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "BLK": {
-              "tc_projection": 0.3,
-              "line": 0.5,
-              "edge": -0.2,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            }
-          }
-        },
-        {
           "player": "Han Xu",
           "team": "NY",
           "role": "BENCH",
@@ -3118,56 +3061,56 @@
           }
         },
         {
-          "player": "Julie Vanloo",
+          "player": "Rebekah Gardner",
           "team": "NY",
           "role": "BENCH",
           "status": "ACTIVE",
           "pos": "",
           "projections": {
             "PTS": {
-              "tc_projection": 9.0,
+              "tc_projection": 8.9,
               "line": 8.0,
-              "edge": 1.0,
+              "edge": 0.9,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
             },
             "REB": {
-              "tc_projection": 3.1,
-              "line": 2.5,
+              "tc_projection": 3.6,
+              "line": 3.0,
               "edge": 0.6,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
             },
             "AST": {
-              "tc_projection": 8.3,
-              "line": 7.5,
-              "edge": 0.8,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "3PM": {
-              "tc_projection": 2.2,
+              "tc_projection": 2.1,
               "line": 2.0,
-              "edge": 0.2,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "STL": {
-              "tc_projection": 0.6,
-              "line": 0.5,
               "edge": 0.1,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
             },
-            "BLK": {
-              "tc_projection": 0.0,
-              "line": 0.0,
+            "3PM": {
+              "tc_projection": 0.5,
+              "line": 0.5,
               "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.8,
+              "line": 0.5,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.3,
+              "line": 0.5,
+              "edge": -0.2,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
@@ -3225,6 +3168,63 @@
               "tc_projection": 0.2,
               "line": 0.0,
               "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Julie Vanloo",
+          "team": "NY",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 9.0,
+              "line": 8.0,
+              "edge": 1.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 3.1,
+              "line": 2.5,
+              "edge": 0.6,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 8.3,
+              "line": 7.5,
+              "edge": 0.8,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 2.2,
+              "line": 2.0,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.6,
+              "line": 0.5,
+              "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.0,
+              "line": 0.0,
+              "edge": 0.0,
               "direction": "PASS",
               "dk_line": null,
               "valid": false

@@ -4,15 +4,15 @@
   "matchup": "CHI@PHX",
   "away_team": "CHI",
   "home_team": "PHX",
-  "source": "ESPN + OddsAPI fallback (ESPN DraftKings embedded)",
+  "source": "ESPN + OddsAPI fallback (OddsAPI DraftKings)",
   "signal": "ROSTER LOADED",
-  "dk_total": 172.5,
+  "dk_total": 169.5,
   "odds": {
-    "total": 172.5,
+    "total": 169.5,
     "spread": -3.5,
-    "ml_home": "-155",
-    "ml_away": "+130",
-    "ml_source": "ESPN DraftKings embedded"
+    "ml_home": 110,
+    "ml_away": -140,
+    "ml_source": "OddsAPI DraftKings"
   },
   "away": {
     "all": {
