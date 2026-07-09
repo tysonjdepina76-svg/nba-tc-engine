@@ -23,7 +23,7 @@ Usage:
 Author: Tyson | Zo Computer | TC Pipeline
 """
 
-import argparse, csv, datetime, json, math, os, requests, sys
+import argparse, csv, datetime, json, math, os, requests, sys, time
 from dataclasses import dataclass, field
 from typing import List, Dict, Any, Optional, Tuple
 
@@ -569,6 +569,153 @@ def fetch_mlb_player_lines(game_id: str) -> Dict[str, Dict[str, float]]:
 
     return player_lines
 
+# ── SGO Player Prop Lines ──
+SGO_PLAYER_STAT_MAP = {
+    "rbi": "rbi", "hits": "hits", "homeruns": "hr", "totalbases": "total_bases",
+    "doubles": "doubles", "singles": "singles", "triples": "triples",
+    "basesonballs": "walks", "strikeouts": "strikeouts",
+    "stolenbases": "sb", "earnedruns": "earned_runs", "outs": "outs",
+}
+
+SGO_CACHE_FILE = "/tmp/sgo_mlb_cache.json"
+SGO_CACHE_TTL = 1800  # 30 minutes
+
+
+def _load_sgo_cache() -> Dict[str, Any]:
+    try:
+        if os.path.exists(SGO_CACHE_FILE):
+            mtime = os.path.getmtime(SGO_CACHE_FILE)
+            if time.time() - mtime > SGO_CACHE_TTL:
+                os.remove(SGO_CACHE_FILE)
+                return {}
+            with open(SGO_CACHE_FILE) as f:
+                return json.load(f)
+    except Exception:
+        return {}
+    return {}
+
+
+def _save_sgo_cache(data: Dict[str, Any]) -> None:
+    try:
+        with open(SGO_CACHE_FILE, "w") as f:
+            json.dump(data, f)
+    except Exception:
+        pass
+
+
+def fetch_sgo_player_lines(away_abbr: str, home_abbr: str) -> Dict[str, Dict[str, float]]:
+    """Fetch DK player prop lines from SportsGameOdds for a specific matchup.
+    Returns {player_name: {stat_key: line_value}}. Cached per-game for 30 min."""
+    cache_key = f"{away_abbr}_{home_abbr}".upper()
+    cache = _load_sgo_cache()
+    if cache_key in cache:
+        entry = cache[cache_key]
+        if time.time() - entry.get("ts", 0) < SGO_CACHE_TTL:
+            print(f"    ✓ SGO cache hit: {len(entry.get('lines', {}))} players")
+            return entry["lines"]
+
+    sgo_key = os.environ.get("SPORTSGAMEODDS_API_KEY", "") or os.environ.get("SGO_API_KEY", "")
+
+    if not sgo_key:
+        secrets_file = "/root/.zo/secrets.env"
+        if os.path.exists(secrets_file):
+            with open(secrets_file) as f:
+                for line in f:
+                    line = line.strip()
+                    if line and not line.startswith("#") and "=" in line:
+                        k, v = line.split("=", 1)
+                        k, v = k.strip(), v.strip().strip('"').strip("'")
+                        if "SPORTSGAMEODDS" in k.upper() or "SGO" in k.upper():
+                            sgo_key = v
+                            break
+
+    if not sgo_key:
+        print("    SGO: no API key configured")
+        return {}
+
+    player_lines: Dict[str, Dict[str, float]] = {}
+    try:
+        time.sleep(0.5)  # rate-limit protection
+        url = "https://api.sportsgameodds.com/v2/events?leagueID=MLB&oddsAvailable=true&limit=50"
+        resp = requests.get(url, headers={"x-api-key": sgo_key, "Accept": "application/json"}, timeout=20)
+        if resp.status_code != 200:
+            print(f"    SGO error: {resp.status_code}")
+            return {}
+
+        data = resp.json()
+        events = data.get("data", [])
+        target_event = None
+        for e in events:
+            teams = e.get("teams", {})
+            a = (teams.get("away", {}).get("names", {}).get("short") or
+                 teams.get("away", {}).get("name", ""))
+            h = (teams.get("home", {}).get("names", {}).get("short") or
+                 teams.get("home", {}).get("name", ""))
+            if a == away_abbr and h == home_abbr:
+                target_event = e
+                break
+
+        if not target_event:
+            print(f"    SGO: no event found for {away_abbr}@{home_abbr}")
+            return {}
+
+        odds = target_event.get("odds", {})
+        for key, val in odds.items():
+            dk = val.get("byBookmaker", {}).get("draftkings")
+            if not dk or dk.get("available") is False:
+                continue
+            line_val = dk.get("overUnder") or dk.get("line")
+            if line_val is None:
+                continue
+
+            parts = key.split("-")
+            stat_raw = None
+            player_parts = []
+            found_stat = False
+            for i, part in enumerate(parts):
+                p_lower = part.lower()
+                if not found_stat:
+                    mapped = SGO_PLAYER_STAT_MAP.get(p_lower)
+                    if mapped:
+                        stat_raw = mapped
+                        found_stat = True
+                        continue
+                    if p_lower in ("hits+runs+rbi", "pitcher", "batting", "h2h", "rbi", ""):
+                        continue
+                if found_stat:
+                    if p_lower in ("ou", "game", "mlb", "1", "2", "3", "over", "under", ""):
+                        break
+                    player_parts.append(part)
+
+            if not stat_raw or not player_parts:
+                continue
+
+            player_name = " ".join(player_parts).strip().upper()
+            if not player_name:
+                continue
+
+            try:
+                line_num = float(line_val)
+            except (ValueError, TypeError):
+                continue
+
+            if player_name not in player_lines:
+                player_lines[player_name] = {}
+            if stat_raw not in player_lines[player_name]:
+                player_lines[player_name][stat_raw] = line_num
+
+        if player_lines:
+            print(f"    ✓ SGO: {len(player_lines)} players with DK props")
+            cache[cache_key] = {"ts": time.time(), "lines": player_lines}
+            _save_sgo_cache(cache)
+    except Exception as e:
+        print(f"    ⚠ SGO unavailable: {e}")
+        if cache_key in cache:
+            entry = cache[cache_key]
+            print(f"    ⚠ Using stale cache ({len(entry.get('lines', {}))} players)")
+
+    return player_lines
+
 def fetch_mlb_game_lines() -> List[Dict]:
     """Fetch MLB game odds with ML/spread/total from The Odds API."""
     key = load_api_key()
@@ -656,7 +803,7 @@ def project_mlb_game(home_abbr: str, away_abbr: str, game_id: str = None,
         "home_team": home_abbr,
         "away_team": away_abbr,
         "dk_total": dk_total,
-        "source": "ESPN + The Odds API + SportsDataIO",
+        "source": "ESPN + SGO DK Props + SDIO",
     }
 
     # Fetch rosters with stats
@@ -672,6 +819,14 @@ def project_mlb_game(home_abbr: str, away_abbr: str, game_id: str = None,
         print(f"  Fetching DK player lines for {away_abbr} @ {home_abbr}...")
         player_lines = fetch_mlb_player_lines(game_id)
         dk_api_available = bool(player_lines)
+
+    # ── Layer 1.5: SGO DK player prop lines (no quota limits) ──
+    sgo_lines = {}
+    if not dk_api_available:
+        print(f"  Fetching SGO player lines for {away_abbr} @ {home_abbr}...")
+        sgo_lines = fetch_sgo_player_lines(away_abbr, home_abbr)
+        if sgo_lines:
+            dk_api_available = True
 
     # ── Layer 2: SportsDataIO fallback ──
     sdio_lines = {}
@@ -701,6 +856,15 @@ def project_mlb_game(home_abbr: str, away_abbr: str, game_id: str = None,
             if tc_val > 0:
                 p.edges[stat_name] = round(tc_val - line_val, 2)
 
+        # SGO DK lines — match by uppercase name
+        sgo_player = sgo_lines.get((p.name or "").strip().upper(), {})
+        for stat_name, line_val in sgo_player.items():
+            if stat_name not in p.lines:
+                p.lines[stat_name] = line_val
+                tc_val = getattr(p, f"tc_{stat_name}", 0.0)
+                if tc_val > 0:
+                    p.edges[stat_name] = round(tc_val - line_val, 2)
+
         # SDIO lines
         sdio_player = sdio_lines.get(pname_lower, {})
         for stat_name, line_val in sdio_player.items():
@@ -713,11 +877,11 @@ def project_mlb_game(home_abbr: str, away_abbr: str, game_id: str = None,
     # Generate valid props — Odds API, SDIO, or self-edge fallback
     valid_props = []
     dk_available = any(p.lines for p in away_players + home_players)
-    line_source = "dk_lines" if dk_api_available else ("sdio_lines" if sdio_lines else "tc-internal-fallback")
+    line_source = "dk_lines" if player_lines else ("sgo_dk_lines" if sgo_lines else ("sdio_lines" if sdio_lines else "tc-internal-fallback"))
 
     if dk_available:
         # ── Odds API or SDIO lines available ──
-        use_thresh = EDGE_THRESH_MLB_SDIO if sdio_lines and not dk_api_available else EDGE_THRESH
+        use_thresh = EDGE_THRESH_MLB_SDIO if (sdio_lines or sgo_lines) and not player_lines else EDGE_THRESH
         for p in away_players + home_players:
             for stat_name, line_val in p.lines.items():
                 tc_val = getattr(p, f"tc_{stat_name}", 0.0)
@@ -726,7 +890,7 @@ def project_mlb_game(home_abbr: str, away_abbr: str, game_id: str = None,
                 signal = "PASS"
                 if abs(edge) >= use_thresh:
                     signal = direction
-                src = "dk_lines" if stat_name in player_lines.get(p.name, {}) else "sdio_lines"
+                src = "dk_lines" if stat_name in player_lines.get(p.name, {}) else ("sgo_dk_lines" if stat_name in sgo_lines.get(p.name.lower(), {}) else "sdio_lines")
                 valid_props.append({
                     "player": p.name, "team": p.team, "pos": p.pos,
                     "stat": stat_name, "market_line": line_val,

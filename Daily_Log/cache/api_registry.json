@@ -31,9 +31,57 @@
       "status": "success",
       "limit_used": "100",
       "remaining_header": "N/A"
+    },
+    {
+      "time": "2026-07-08T17:35:21.962335+00:00",
+      "endpoint": "OddsAPI Monitor",
+      "sport": "ALL",
+      "status": "success",
+      "limit_used": "1",
+      "remaining_header": "N/A - Business tier quota monitoring"
+    },
+    {
+      "time": "2026-07-08T17:35:21.962335+00:00",
+      "endpoint": "SGO/ESPN WNBA Slate + Projections",
+      "sport": "WNBA",
+      "status": "success",
+      "limit_used": "100",
+      "remaining_header": "N/A"
+    },
+    {
+      "time": "2026-07-08T17:35:21.962335+00:00",
+      "endpoint": "SGO/ESPN MLB Slate + Projections",
+      "sport": "MLB",
+      "status": "success",
+      "limit_used": "100",
+      "remaining_header": "N/A"
+    },
+    {
+      "time": "2026-07-08T17:35:21.962335+00:00",
+      "endpoint": "SGO/ESPN World Cup Slate + Projections",
+      "sport": "WORLD_CUP",
+      "status": "success",
+      "limit_used": "100",
+      "remaining_header": "N/A"
+    },
+    {
+      "time": "2026-07-08T17:35:21.962335+00:00",
+      "endpoint": "SportsDataIO MLB DK Lines",
+      "sport": "MLB",
+      "status": "success",
+      "limit_used": "N/A",
+      "remaining_header": "N/A"
+    },
+    {
+      "time": "2026-07-08T17:35:21.962335+00:00",
+      "endpoint": "OddsAPI World Cup (4 events)",
+      "sport": "WORLD_CUP",
+      "status": "401 - QUOTA MAXED",
+      "limit_used": "0",
+      "remaining_header": "Business tier exhausted"
     }
   ],
-  "total_calls_today": 4,
+  "total_calls_today": 6,
   "sgo_limit": 100,
-  "notes": "1:30 PM ET primary slate run. SGO limit=100 on all calls. 4 API calls (3 slate + 1 consensus). Odds API 401 on all WC events (Business tier quota maxed \u2014 expected)."
+  "notes": "1:30 PM ET primary slate run. WNBA 3/MLB 15/WC 4. Odds API Business quota maxed on WC. SGO limit=100 on all calls. SDIO lines for MLB."
 }

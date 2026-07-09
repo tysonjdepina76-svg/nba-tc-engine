@@ -239,8 +239,11 @@ def repair_services(service_status: dict) -> int:
 def run_daily_picks(sports: List[str]) -> bool:
     log("INFO", "DailyPicks", f"Running for: {', '.join(sports)}")
     try:
+        cmd = ["python3", str(PROJ_DIR / "daily_picks.py")]
+        for sport in sports:
+            cmd.extend(["--sport", sport])
         result = subprocess.run(
-            ["python3", str(PROJ_DIR / "daily_picks.py")] + sports,
+            cmd,
             capture_output=True, text=True, timeout=300, cwd=str(WORKSPACE))
         if result.returncode == 0:
             log("OK", "DailyPicks", f"Completed ({len(result.stdout.splitlines())} lines)")

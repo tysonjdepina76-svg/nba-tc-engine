@@ -1,0 +1,40 @@
+{
+  "date": "2026-07-08",
+  "fetched_at": "2026-07-08T11:05:00-04:00",
+  "source": "ESPN.com scoreboard",
+  "note": "No 1 PM ET games today. Earliest is TOR @ SF at 3:45 PM ET.",
+  "early_games": [
+    {
+      "game_id": "401816082",
+      "away": "TOR",
+      "home": "SF",
+      "away_record": "43-49",
+      "home_record": "38-53",
+      "start_time_et": "3:45 PM",
+      "venue": "Oracle Park, San Francisco, CA",
+      "away_pitcher": {"name": "D. Cease", "record": "5-4", "era": "2.79"},
+      "home_pitcher": {"name": "L. Webb", "record": "5-6", "era": "3.66"},
+      "dk_moneyline": {"TOR": -122, "SF": 101},
+      "broadcast": "ESPN Unlmtd, MLB.TV"
+    }
+  ],
+  "evening_games": [
+    {"away": "CHC", "home": "BAL", "time": "6:35 PM", "dk_ml": {"CHC": 105, "BAL": -126}},
+    {"away": "ATH", "home": "DET", "time": "6:40 PM"},
+    {"away": "ATL", "home": "PIT", "time": "6:40 PM"},
+    {"away": "NYY", "home": "TB", "time": "6:40 PM"},
+    {"away": "SEA", "home": "MIA", "time": "6:40 PM", "dk_ml": {"SEA": -131, "MIA": 109}},
+    {"away": "HOU", "home": "WSH", "time": "6:45 PM", "dk_ml": {"HOU": 113, "WSH": -136}},
+    {"away": "PHI", "home": "CIN", "time": "7:00 PM", "dk_ml": {"PHI": 119, "CIN": -143}},
+    {"away": "KC", "home": "NYM", "time": "7:10 PM", "dk_ml": {"KC": 148, "NYM": -180}},
+    {"away": "BOS", "home": "CHW", "time": "7:40 PM"},
+    {"away": "CLE", "home": "MIN", "time": "7:40 PM"},
+    {"away": "MIL", "home": "STL", "time": "7:45 PM"},
+    {"away": "LAA", "home": "TEX", "time": "8:05 PM", "dk_ml": {"LAA": 129, "TEX": -156}},
+    {"away": "ARI", "home": "SD", "time": "10:00 PM", "dk_ml": {"ARI": 119, "SD": -143}},
+    {"away": "COL", "home": "LAD", "time": "10:10 PM", "dk_ml": {"COL": 199, "LAD": -246}}
+  ],
+  "total_games": 15,
+  "early_count": 1,
+  "first_pitch_et": "3:45 PM"
+}

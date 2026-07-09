@@ -1,40 +1,189 @@
 {
-  "updated_at": "2026-07-03T20:04:20.408372+00:00",
-  "entries": {
-    "world_cup": {
+  "generated_at": "2026-07-08T20:04:21",
+  "generated_at_utc": "2026-07-08T20:04:21Z",
+  "entries": [
+    {
+      "type": "world_cup_projection",
+      "file": "Daily_Log/2026-07-08/proj_WORLD_CUP_Belgium_at_Spain.json",
+      "size": 209,
       "ttl_hours": 2,
-      "expires": "2026-07-03T22:04:20.408381+00:00",
-      "files": [
-        "proj_WORLD CUP_Egypt_at_Australia.json",
-        "proj_WORLD CUP_Cape Verde_at_Argentina.json",
-        "proj_WORLD CUP_Ghana_at_Colombia.json",
-        "proj_WORLD CUP_Morocco_at_Canada.json",
-        "proj_WORLD CUP_France_at_Paraguay.json",
-        "proj_WORLD CUP_Norway_at_Brazil.json",
-        "proj_WORLD CUP_England_at_Mexico.json",
-        "proj_WORLD CUP_Spain_at_Portugal.json",
-        "proj_WORLD CUP_Belgium_at_USA.json",
-        "soccer_game_picks.csv",
-        "soccer_player_picks.csv",
-        "soccer_player_projs.json"
-      ],
-      "source": "daily_picks.py WORLD CUP refresh at 4PM ET"
+      "expires_at": "22:00 UTC",
+      "mtime": "20:03:46"
     },
-    "mlb_evening": {
-      "ttl_hours": 3,
-      "expires": "2026-07-03T23:04:20.408390+00:00",
-      "source": "Cached from 1:30 PM ET run",
-      "note": "ESPN scoreboard blocked (JS). Using slate data."
+    {
+      "type": "world_cup_projection",
+      "file": "Daily_Log/2026-07-08/proj_WORLD_CUP_England_at_Norway.json",
+      "size": 211,
+      "ttl_hours": 2,
+      "expires_at": "22:00 UTC",
+      "mtime": "20:03:46"
     },
-    "wnba_evening": {
+    {
+      "type": "world_cup_projection",
+      "file": "Daily_Log/2026-07-08/proj_WORLD_CUP_Morocco_at_France.json",
+      "size": 211,
+      "ttl_hours": 2,
+      "expires_at": "22:00 UTC",
+      "mtime": "20:03:45"
+    },
+    {
+      "type": "world_cup_projection",
+      "file": "Daily_Log/2026-07-08/proj_WORLD_CUP_Switzerland_at_Argentina.json",
+      "size": 225,
+      "ttl_hours": 2,
+      "expires_at": "22:00 UTC",
+      "mtime": "20:03:46"
+    },
+    {
+      "type": "wnba_projection",
+      "file": "Daily_Log/2026-07-08/proj_WNBA_GS_at_TOR.json",
+      "size": 729,
+      "ttl_hours": 5,
+      "expires_at": "22:30 UTC",
+      "mtime": "17:33:27"
+    },
+    {
+      "type": "wnba_projection",
+      "file": "Daily_Log/2026-07-08/proj_WNBA_IND_at_LA.json",
+      "size": 80490,
+      "ttl_hours": 5,
+      "expires_at": "22:30 UTC",
+      "mtime": "17:33:28"
+    },
+    {
+      "type": "wnba_projection",
+      "file": "Daily_Log/2026-07-08/proj_WNBA_MIN_at_CON.json",
+      "size": 89299,
+      "ttl_hours": 5,
+      "expires_at": "22:30 UTC",
+      "mtime": "17:33:28"
+    },
+    {
+      "type": "mlb_projection",
+      "file": "Daily_Log/2026-07-08/proj_MLB_ARI_at_SD.json",
+      "size": 212141,
       "ttl_hours": 3,
-      "expires": "2026-07-03T23:04:20.408393+00:00",
-      "games": [
-        "MIN@NY",
-        "CHI@LV"
-      ],
-      "source": "1:30 PM slate \u2014 no late scratches detected",
-      "note": "Wnba_injuries.json empty"
+      "expires_at": "23:00 UTC",
+      "mtime": "17:33:59"
+    },
+    {
+      "type": "mlb_projection",
+      "file": "Daily_Log/2026-07-08/proj_MLB_ATH_at_DET.json",
+      "size": 225727,
+      "ttl_hours": 3,
+      "expires_at": "23:00 UTC",
+      "mtime": "17:33:33"
+    },
+    {
+      "type": "mlb_projection",
+      "file": "Daily_Log/2026-07-08/proj_MLB_ATL_at_PIT.json",
+      "size": 221313,
+      "ttl_hours": 3,
+      "expires_at": "23:00 UTC",
+      "mtime": "17:33:35"
+    },
+    {
+      "type": "mlb_projection",
+      "file": "Daily_Log/2026-07-08/proj_MLB_BOS_at_CHW.json",
+      "size": 206960,
+      "ttl_hours": 3,
+      "expires_at": "23:00 UTC",
+      "mtime": "17:33:50"
+    },
+    {
+      "type": "mlb_projection",
+      "file": "Daily_Log/2026-07-08/proj_MLB_CHC_at_BAL.json",
+      "size": 207944,
+      "ttl_hours": 3,
+      "expires_at": "23:00 UTC",
+      "mtime": "17:33:31"
+    },
+    {
+      "type": "mlb_projection",
+      "file": "Daily_Log/2026-07-08/proj_MLB_CLE_at_MIN.json",
+      "size": 206373,
+      "ttl_hours": 3,
+      "expires_at": "23:00 UTC",
+      "mtime": "17:33:52"
+    },
+    {
+      "type": "mlb_projection",
+      "file": "Daily_Log/2026-07-08/proj_MLB_COL_at_LAD.json",
+      "size": 212693,
+      "ttl_hours": 3,
+      "expires_at": "23:00 UTC",
+      "mtime": "17:34:01"
+    },
+    {
+      "type": "mlb_projection",
+      "file": "Daily_Log/2026-07-08/proj_MLB_HOU_at_WSH.json",
+      "size": 206809,
+      "ttl_hours": 3,
+      "expires_at": "23:00 UTC",
+      "mtime": "17:33:42"
+    },
+    {
+      "type": "mlb_projection",
+      "file": "Daily_Log/2026-07-08/proj_MLB_KC_at_NYM.json",
+      "size": 225661,
+      "ttl_hours": 3,
+      "expires_at": "23:00 UTC",
+      "mtime": "17:33:47"
+    },
+    {
+      "type": "mlb_projection",
+      "file": "Daily_Log/2026-07-08/proj_MLB_LAA_at_TEX.json",
+      "size": 216490,
+      "ttl_hours": 3,
+      "expires_at": "23:00 UTC",
+      "mtime": "17:33:56"
+    },
+    {
+      "type": "mlb_projection",
+      "file": "Daily_Log/2026-07-08/proj_MLB_MIL_at_STL.json",
+      "size": 202118,
+      "ttl_hours": 3,
+      "expires_at": "23:00 UTC",
+      "mtime": "17:33:54"
+    },
+    {
+      "type": "mlb_projection",
+      "file": "Daily_Log/2026-07-08/proj_MLB_NYY_at_TB.json",
+      "size": 202282,
+      "ttl_hours": 3,
+      "expires_at": "23:00 UTC",
+      "mtime": "17:33:38"
+    },
+    {
+      "type": "mlb_projection",
+      "file": "Daily_Log/2026-07-08/proj_MLB_PHI_at_CIN.json",
+      "size": 213300,
+      "ttl_hours": 3,
+      "expires_at": "23:00 UTC",
+      "mtime": "17:33:45"
+    },
+    {
+      "type": "mlb_projection",
+      "file": "Daily_Log/2026-07-08/proj_MLB_SEA_at_MIA.json",
+      "size": 212400,
+      "ttl_hours": 3,
+      "expires_at": "23:00 UTC",
+      "mtime": "17:33:40"
+    },
+    {
+      "type": "mlb_projection",
+      "file": "Daily_Log/2026-07-08/proj_MLB_TOR_at_SF.json",
+      "size": 210582,
+      "ttl_hours": 3,
+      "expires_at": "23:00 UTC",
+      "mtime": "17:33:28"
+    },
+    {
+      "type": "picks_csv",
+      "file": "Daily_Log/2026-07-08/picks.csv",
+      "size": 116080,
+      "ttl_hours": 6,
+      "mtime": "17:34:01"
     }
-  }
+  ]
 }

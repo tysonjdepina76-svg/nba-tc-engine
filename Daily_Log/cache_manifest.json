@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-07T23:59:06.638583+00:00",
+  "updated": "2026-07-08T17:34:54.142065",
   "ttl": {
     "WORLD CUP": "2h (until 6:30 PM ET refresh)",
     "MLB": "3h",
@@ -175,6 +175,41 @@
       "soccer_picks": "Daily_Log/2026-07-08/soccer_game_picks.csv",
       "injuries_wnba": "Daily_Log/cache/injuries/wnba_2026-07-08.json",
       "ttl_hours": 8
+    },
+    "slate_WNBA_2026-07-08": {
+      "path": "Daily_Log/2026-07-08/slate_WNBA.json",
+      "ttl_hours": 6,
+      "fetched": "2026-07-08T17:34:54.142021"
+    },
+    "slate_MLB_2026-07-08": {
+      "path": "Daily_Log/2026-07-08/slate_MLB.json",
+      "ttl_hours": 6,
+      "fetched": "2026-07-08T17:34:54.142044"
+    },
+    "picks_csv_2026-07-08": {
+      "path": "Daily_Log/2026-07-08/picks.csv",
+      "ttl_hours": 6,
+      "fetched": "2026-07-08T17:34:54.142047"
+    },
+    "picks_json_2026-07-08": {
+      "path": "Daily_Log/2026-07-08/picks.json",
+      "ttl_hours": 6,
+      "fetched": "2026-07-08T17:34:54.142049"
+    },
+    "wnba_injury_2026-07-08": {
+      "path": "Daily_Log/cache/injuries/wnba_espn_2026-07-08.json",
+      "ttl_hours": 12,
+      "fetched": "2026-07-08T17:34:54.142052"
+    },
+    "soccer_game_picks_2026-07-08": {
+      "path": "Daily_Log/2026-07-08/soccer_game_picks.csv",
+      "ttl_hours": 6,
+      "fetched": "2026-07-08T17:34:54.142053"
+    },
+    "soccer_player_picks_2026-07-08": {
+      "path": "Daily_Log/2026-07-08/soccer_player_picks.csv",
+      "ttl_hours": 6,
+      "fetched": "2026-07-08T17:34:54.142055"
     }
   },
   "last_updated": "2026-07-08"

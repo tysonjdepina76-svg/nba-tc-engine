@@ -168,37 +168,57 @@ def render_live_scoreboard(live_games):
     live = [g for g in live_games if g["state"] == "in"]
     pre = [g for g in live_games if g["state"] == "pre"]
     final = [g for g in live_games if g["state"] == "post"]
-    for header, group in [("🔴 LIVE", live), ("⏰ UPCOMING", pre), ("✅ FINAL", final)]:
-        if not group:
-            continue
-        st.subheader(f"{header} ({len(group)})")
-        for g in group:
+
+    if live:
+        st.subheader(f"🔴 LIVE NOW ({len(live)})")
+        for g in live:
             with st.expander(
                 f"{g['away_team']} {g['away_score']} @ {g['home_team']} {g['home_score']} — {g['inning_state']}",
-                expanded=(g["state"] == "in"),
+                expanded=True,
             ):
-                c1, c2, c3 = st.columns([2, 1, 2])
-                c1.metric(g["home_team"], g["home_score"])
-                c2.write(f"**{g['inning_state']}**")
-                if g["state"] == "in" and g["balls"] is not None:
-                    c2.write(f"Outs: {g['outs']} | B: {g['balls']} | S: {g['strikes']}")
-                c3.metric(g["away_team"], g["away_score"])
-                c4, c5 = st.columns(2)
-                c4.write(f"**Home Pitcher:** {g['home_pitcher']}")
-                c5.write(f"**Away Pitcher:** {g['away_pitcher']}")
-                o = g["odds"]
-                st.caption("Lines: ESPN free API has no odds — book lines unavailable")
-                st.write(
-                    f"Hits: {g['home_hits']}–{g['away_hits']} | "
-                    f"Errors: {g['home_errors']}–{g['away_errors']}"
-                )
-                if g["home_lines"] or g["away_lines"]:
-                    st.write(
-                        f"Innings: {g['away_team']} "
-                        f"{' '.join(g['away_lines']) if g['away_lines'] else '-'} | "
-                        f"{g['home_team']} "
-                        f"{' '.join(g['home_lines']) if g['home_lines'] else '-'}"
-                    )
+                _render_game_card(g)
+
+    if pre:
+        st.subheader(f"⏰ UPCOMING ({len(pre)})")
+        for g in pre:
+            with st.expander(
+                f"{g['away_team']} @ {g['home_team']} — {g['inning_state']}",
+                expanded=False,
+            ):
+                _render_game_card(g)
+
+    if final and st.checkbox(f"Show {len(final)} completed games", value=False):
+        st.subheader(f"✅ FINAL ({len(final)})")
+        for g in final:
+            with st.expander(
+                f"{g['away_team']} {g['away_score']} @ {g['home_team']} {g['home_score']} — Final",
+                expanded=False,
+            ):
+                _render_game_card(g)
+
+
+def _render_game_card(g):
+    c1, c2, c3 = st.columns([2, 1, 2])
+    c1.metric(g["home_team"], g["home_score"])
+    c2.write(f"**{g['inning_state']}**")
+    if g["state"] == "in" and g["balls"] is not None:
+        c2.write(f"Outs: {g['outs']} | B: {g['balls']} | S: {g['strikes']}")
+    c3.metric(g["away_team"], g["away_score"])
+    c4, c5 = st.columns(2)
+    c4.write(f"**Home Pitcher:** {g['home_pitcher']}")
+    c5.write(f"**Away Pitcher:** {g['away_pitcher']}")
+    st.caption("Lines: ESPN free API has no odds — book lines unavailable")
+    st.write(
+        f"Hits: {g['home_hits']}–{g['away_hits']} | "
+        f"Errors: {g['home_errors']}–{g['away_errors']}"
+    )
+    if g["home_lines"] or g["away_lines"]:
+        st.write(
+            f"Innings: {g['away_team']} "
+            f"{' '.join(g['away_lines']) if g['away_lines'] else '-'} | "
+            f"{g['home_team']} "
+            f"{' '.join(g['home_lines']) if g['home_lines'] else '-'}"
+        )
 
 
 def render_pitcher_matchup(games):
