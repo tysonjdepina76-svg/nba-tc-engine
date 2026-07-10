@@ -30,6 +30,10 @@ ET = timezone(timedelta(hours=-5))
 def now_et():
     return datetime.now(ET)
 def today_et():
+    # Honor TC_RUN_DATE env var (set by --date arg) so backtests can run for prior dates
+    _forced = os.environ.get("TC_RUN_DATE")
+    if _forced:
+        return _forced
     return now_et().strftime("%Y-%m-%d")
 
 try:
@@ -69,7 +73,11 @@ ED_THRESHOLD = 2.0  # TC edge threshold to call OVER/UNDER signal
 
 # ── API Call Budget Gate ──
 try:
-    from Projects.api_call_budget import budget_ok, budget_status, track_api_call, BUDGET_FILE
+    import sys as _sys
+    _tcsports = "/home/workspace/tc-sports-app/src"
+    if _tcsports not in _sys.path:
+        _sys.path.insert(0, _tcsports)
+    from monitoring.api_call_budget import budget_ok, budget_status, track_api_call, BUDGET_FILE
     _budget = budget_status()
     _daily_ok = budget_ok()
     print(f'   Budget: {_budget["calls_today"]}/{_budget["daily_limit"]} calls today, {_budget["calls_month"]}/{_budget["monthly_limit"]} calls this month')
@@ -863,6 +871,28 @@ def run_daily_log(sports=ALL_SPORTS):
             print(f"🖼️  Roundup: {rmsg}")
     except Exception as img_err:
         print(f"⚠️ Fantasy images skipped: {img_err}")
+
+    # ── Enhance: Position sizing + ML scoring + historical tracking ──
+    try:
+        from src.domain.enhance_picks import enhance
+        tracker_db = LOG_DIR / "tc_history.sqlite"
+        enhanced_count = 0
+        for sport_dir in today_dir.glob("proj_*.json"):
+            try:
+                data = json.loads(sport_dir.read_text())
+                picks_in = data.get("picks") if isinstance(data, dict) else data
+                if not picks_in:
+                    continue
+                result = enhance(picks_in, bankroll=10000.0, db_path=str(tracker_db))
+                out_path = sport_dir.parent / f"wiring_{sport_dir.stem.replace('proj_', '')}.json"
+                out_path.write_text(json.dumps(result, indent=2, default=str))
+                enhanced_count += len(result.get("positions", []))
+            except Exception as inner_err:
+                print(f"  ⚠️ enhance {sport_dir.name}: {inner_err}")
+        if enhanced_count:
+            print(f"📐 Enhanced {enhanced_count} picks → wiring_*.json (size+ML+history)")
+    except Exception as enhance_err:
+        print(f"⚠️ enhance_picks: {enhance_err}")
 
     return last_run
 
