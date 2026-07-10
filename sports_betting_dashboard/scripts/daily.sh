@@ -11,8 +11,12 @@ echo "=== TC Daily Runner — $(date '+%Y-%m-%d %H:%M:%S %Z') ==="
 
 # 1. Run daily picks (WNBA + MLB + World Cup)
 if [ "$MODE" != "--quick" ]; then
-    echo "→ Running daily_picks.py..."
-    cd "$WORKSPACE" && python3 Projects/daily_picks.py WNBA MLB 'WORLD CUP'
+    echo "→ Running daily_picks.py (WNBA)..."
+    cd "$WORKSPACE" && python3 Projects/daily_picks.py --sport WNBA
+    echo "→ Running daily_picks.py (MLB)..."
+    cd "$WORKSPACE" && python3 Projects/daily_picks.py --sport MLB
+    echo "→ Running daily_picks.py (WORLD_CUP)..."
+    cd "$WORKSPACE" && python3 Projects/daily_picks.py --sport WORLD_CUP
 fi
 
 # 2. Sync today's picks CSV → dashboard data dir

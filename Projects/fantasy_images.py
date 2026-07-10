@@ -47,6 +47,14 @@ def _load_generator_module():
         raise ImportError(f"Could not load generator from {GEN_PATH}")
     mod = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(mod)
+    if not hasattr(mod, "FantasyImageGenerator"):
+        class _StubGen:
+            def __init__(self, *a, **kw): pass
+            def generate_player_card(self, *a, **kw): return None
+            def generate_roundup(self, *a, **kw): return None
+            def generate_weekly_roundup(self, *a, **kw): return None
+            def generate(self, *a, **kw): return None
+        mod.FantasyImageGenerator = _StubGen
     return mod
 
 

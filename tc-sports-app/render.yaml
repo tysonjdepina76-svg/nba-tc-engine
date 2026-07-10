@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: tc-sports-dashboard
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: streamlit run src/dashboard/tc_dashboard.py --server.port $PORT

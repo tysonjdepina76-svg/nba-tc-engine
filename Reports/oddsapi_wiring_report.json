@@ -1,0 +1,48 @@
+{
+  "generated": "2026-07-08T07:05:17.635791",
+  "adapters": {
+    "WNBA": {
+      "sport_key": "basketball_wnba",
+      "events_count": 0,
+      "odds_count": 5,
+      "status": "\u2705 live"
+    },
+    "NFL": {
+      "sport_key": "americanfootball_nfl",
+      "events_count": 0,
+      "odds_count": 75,
+      "status": "\u2705 live"
+    },
+    "MLB": {
+      "sport_key": "baseball_mlb",
+      "events_count": 0,
+      "odds_count": 14,
+      "status": "\u2705 live"
+    },
+    "NBA": {
+      "status": "\u274c object of type 'NoneType' has no len()"
+    },
+    "NHL": {
+      "status": "\u274c object of type 'NoneType' has no len()"
+    }
+  },
+  "endpoints": {
+    "/sports/": "\u2705 sport list",
+    "/events/?sport_key=...": "\u2705 events by sport",
+    "/odds/?sport_key=...&markets=h2h,spreads,totals": "\u2705 game lines",
+    "/events/{id}/odds?markets=player_*": "\u2705 event player props",
+    "/events/{id}/props": "\u2705 raw event props (44KB+)",
+    "/historical/odds/?date=YYYY-MM-DD": "\u2705 historical lines",
+    "/futures/?sport_key=...": "\u26a0\ufe0f empty for off-season sports",
+    "/odds/?markets=player_* (sport-wide)": "\u274c 400 \u2014 use event_id"
+  },
+  "monitor": {
+    "status": "healthy",
+    "remaining": null,
+    "used": null,
+    "daily_count": 1,
+    "last_401": null,
+    "last_410": null,
+    "http_code": 200
+  }
+}

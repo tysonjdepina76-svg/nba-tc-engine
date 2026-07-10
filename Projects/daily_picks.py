@@ -874,6 +874,15 @@ def run_daily_log(sports=ALL_SPORTS):
 
     # ── Enhance: Position sizing + ML scoring + historical tracking ──
     try:
+        import sys as _esp
+        # Remove any conflicting src packages (e.g. tc-sports-app) before importing enhance_picks
+        _workspace = str(WORKSPACE)
+        for _p in [_p for _p in _esp.path if _p and __import__('os').path.isdir(__import__('os').path.join(_p, 'src', 'domain')) and not __import__('os').path.isfile(__import__('os').path.join(_p, 'src', 'domain', 'enhance_picks.py'))]:
+            _esp.path.remove(_p)
+        if _workspace not in _esp.path:
+            _esp.path.insert(0, _workspace)
+        if str(WORKSPACE / "Projects") not in _esp.path:
+            _esp.path.insert(0, str(WORKSPACE / "Projects"))
         from src.domain.enhance_picks import enhance
         tracker_db = LOG_DIR / "tc_history.sqlite"
         enhanced_count = 0
@@ -892,7 +901,12 @@ def run_daily_log(sports=ALL_SPORTS):
         if enhanced_count:
             print(f"📐 Enhanced {enhanced_count} picks → wiring_*.json (size+ML+history)")
     except Exception as enhance_err:
+        import traceback
+        import sys as _diag_sys
         print(f"⚠️ enhance_picks: {enhance_err}")
+        print(f"   sys.path[0:5]: {_diag_sys.path[:5]}")
+        print(f"   cwd: {__import__('os').getcwd()}")
+        traceback.print_exc()
 
     return last_run
 

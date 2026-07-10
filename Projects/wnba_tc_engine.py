@@ -28,9 +28,9 @@ STAT_ESPN_MAP = {
 }
 
 WNBA_TEAMS = {
-    "ATL": 7, "CHI": 12, "CON": 14, "DAL": 3, "GS": 22,
-    "IND": 11, "LV": 17, "LA": 5, "MIN": 8, "NY": 9,
-    "PHX": 19, "POR": 26, "SEA": 16, "TOR": 29, "WSH": 20,
+    "ATL": 20, "CHI": 19, "CON": 18, "DAL": 3, "GS": 129689,
+    "IND": 5, "LV": 17, "LA": 6, "MIN": 8, "NY": 9,
+    "PHX": 11, "POR": 132052, "SEA": 14, "TOR": 131935, "WSH": 16,
 }
 
 WNBA_ABBREV = {

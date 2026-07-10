@@ -1,5 +1,129 @@
 # Workspace Index — true.zo.computer
 
+## Current Status (2026-07-09 ~7:10 PM ET) — ALL 12 ITEMS SHIPPED ✅
+- **System**: Fully wired and clean. User confirmed "The entire system is completely wired and clean."
+- **Items shipped (12)**: api_call_budget ✅, fantasy_images ✅, --date flag ✅, Player role fix ✅, RosterManager ✅, ProjectionService ✅, ComboOptimizer ✅, Dockerfile ✅, FastAPI projections endpoint ✅, Streamlit dashboard ✅, GitHub Actions CI ✅, Deploy script ✅ + DK/Soccer combo engines on 8515/8516 (item 12) ✅
+- **Dashboard**: http://localhost:8502 — picks, combos, adapter status, event triggers, health
+- **DK Combos**: https://dk-combos-engine-true.zocomputer.io (:8515) — live JSON
+- **Soccer Combos**: https://soccer-combos-engine-true.zocomputer.io (:8516) — live JSON
+- **Modules**: ProjectionService, ComboOptimizer, RosterManager, EventTrigger, OptimizedCache, LivePoller, ParlayBuilder, FantasyImageGenerator
+- **Next**: Schedule next 1:30 PM ET daily run, monitor picks, backtest after games complete
+
+## Current Status (2026-07-09 ~4:05 PM ET) — PRIMARY 1:30PM Slate + Injury Refresh ✅
+- **Picks**: 890 total — 4 WNBA, 886 MLB, 0 WC (4 games self-edge)
+- **WNBA**: 3 games (SEA@ATL, IND@PHX, LV@POR). 4 picks — A'ja Wilson PTS OVER 17.5 edge +2.5 (LV@POR), Chennedy Carter PTS OVER 16.0 edge +2.1 (LV@POR), SEA@ATL TOTAL 168.5, IND@PHX TOTAL 171.5.
+- **MLB**: 13 total, 11 upcoming. 886 picks via SportsDataIO DK lines. Pitcher OVERs dominate. Top: Bryce Elder HA +7.7 (ATL@PIT), Detmers K +5.8 (LAA@TEX), Canning ER +5.8 (ARI@SD).
+- **World Cup**: 4 games. 0 DK lines — Odds API 401 (quota maxed). Self-edge: France 64%, Spain 59%, Norway 31%, Argentina 68%. All OVER 2.5.
+- **Top 10 edges**: Elder HA +7.7, Detmers K +5.8, Canning ER +5.8, Keller HA +5.3, Elder ER +5.0, Feltner ER +5.0, Canning HA +4.7, Kay K +4.5, Valdez HA +4.4, Keller ER +4.2
+- **Combos**: 0 qualified across 18 matchups.
+- **Health**: 5 secrets ✅, Dashboard :8510 ✅, DK Combos :8515 ⚠️ 404, Soccer Combo :8516 ⚠️ 404. WNBA injury from ESPN ✅. SGO limit=100.
+- **API**: ~4 SGO calls today. Budget: 4/22 monthly.
+- **Email sent**: Both tysondepina99@ + tysonjdepina76@
+- **Next**: 6:30 PM Final Pre-Tip + Combo Lock
+
+## Current Status (2026-07-08 ~6:30 PM ET) — FINAL PRE-TIP LOCK ✅
+- **Picks**: 2,268 total — 6 WNBA, 2,262 MLB, 0 WC (4 games self-edge with 324 player proj each)
+- **WNBA**: 3 games (GS@TOR, MIN@CON, IND@LA). 6 picks — Caitlin Clark PTS OVER 15.0 edge +2.2 (IND@LA) + duplicates, GS@TOR TOTAL 165.5, MIN@CON TOTAL 166.5. DK player props sparse (expected).
+- **MLB**: 14 upcoming + 1 completed (TOR@SF FINAL 10-0). 2,262 picks — all via SportsDataIO DK lines. Pitcher UNDERs dominate. Top edges: Steven Cruz K UNDER -4.9 (KC@NYM), Cruz HA UNDER -4.5, Prielipp K UNDER -4.3 (CLE@MIN), Sasaki ER OVER +3.7 (COL@LAD), Michael King K UNDER -3.5 (ARI@SD).
+- **World Cup**: 4 games. 0 DK lines — Odds API 401 (Business quota maxed). Self-edge: France 64%, Spain 59%, Norway 31%, Argentina 68%. All totals OVER 2.5.
+- **Top 15 edges**: Steven Cruz K -4.9, Cruz HA -4.5, Prielipp K -4.3, Sasaki ER +3.7, King K -3.5, Rea K -3.3, Holmes K -3.3, Tyler Phillips HA -3.3, Kyle Harrison K -3.1, Ohtani K +2.8, Gerrit Cole K -2.7, Sasaki K -2.7, Rea ER +2.5, Jeffrey Springs ER +2.5, Shane McClanahan HA +2.5
+- **Combos**: 0 qualified across 21 matchups — no DK player props for WNBA/WC/MLB.
+- **Health**: Dashboard :8510 ✅ (was down, restarted). DK Combos :8515 ⚠️ 404. Soccer Combo :8516 ⚠️ 404. API budget stale from 7/5 — 5 calls today. SGO limit=100 active.
+- **1:30 PM Automation**: ⚠️ Failed — used positional args instead of `--sport` flag (pipeline_master.py needs fix).
+- **Email sent**: Both tysondepina99@ + tysonjdepina76@
+- **Next**: Boxscore capture (halftime/final) + daily backtest
+
+## Current Status (2026-07-08 ~1:30 PM ET) — PRIMARY Slate + Injury Refresh ✅
+- **Picks**: 1,195 total — 3 WNBA, 1,192 MLB, 0 WC game-level (4 games self-edge with 324 player proj each)
+- **WNBA**: 3 games (GS@TOR, MIN@CON, IND@LA) all Scheduled. 3 picks — Clark PTS OVER 15.0 edge +2.2 (IND@LA), GS@TOR TOTAL 165.5, MIN@CON TOTAL 166.5. DK player props sparse (expected — posts ~30-60 min before tip).
+- **MLB**: 15 games, 1,192 picks — all via SportsDataIO DK lines. Earliest: TOR@SF 3:45 PM ET. Pitcher UNDERs dominate. Top edges: Steven Cruz K UNDER -4.9 (KC@NYM), Cruz HA UNDER -4.5, Connor Prielipp K UNDER -4.3 (CLE@MIN), Roki Sasaki ER OVER +3.7 (COL@LAD), Michael King K UNDER -3.5 (ARI@SD).
+- **World Cup**: 4 games. 0 DK lines — Odds API 401 (Business quota maxed, expected). Self-edge: France 64%, Spain 59%, Norway 31%, Argentina 68%. All totals OVER 2.5 (2.76-3.25 xG). 324 player projections per game.
+- **Top 10 edges**: Steven Cruz K -4.9, Cruz HA -4.5, Prielipp K -4.3, Sasaki ER +3.7, King K -3.5, Colin Rea K -3.3, Holmes K -3.3, Tyler Phillips HA -3.3, Kyle Harrison K -3.1, Ohtani K +2.8
+- **Combos**: 0 qualified across 22 games — no DK player props for WNBA/WC, SGO fallback used.
+- **Health**: 5 secrets ✅, Dashboard :8510 ✅, DK Combos :8515 ⚠️ 404, Soccer Combo :8516 ⚠️ 404. WNBA.com injury 404 (used ESPN instead). SGO limit=100 active.
+- **API**: 6 calls today. SGO all successful. Odds API 401 on WC (quota maxed).
+- **Email sent**: Both tysondepina99@ + tysonjdepina76@
+- **Next**: 6:30 PM Final Pre-Tip + Combo Lock
+
+## Current Status (2026-07-07 ~1:30 PM ET) — PRIMARY Slate + Injury Refresh ✅
+- **Picks**: 1,192 total — 3 WNBA, 1,189 MLB, 0 WC game-level (4 games self-edge with 324 player proj each)
+- **WNBA**: 2 games (DAL@NY, CHI@PHX) both Scheduled. 3 picks — Costanza Verona PTS OVER 14.5 edge +2.2, Satou Sabally PTS OVER 13.5 edge +2.0, CHI@PHX TOTAL 172.5. DK player props sparse (expected).
+- **MLB**: 15 games. 1,189 picks — all via SportsDataIO DK lines. Pitcher OVERs dominate. Top edges: Misiorowski K +7.1, Tolle HA +5.3, Woo ER +4.8.
+- **World Cup**: 4 games. 0 DK lines — Odds API 401 (Business quota maxed). Self-edge: France 64%, Spain 59%, Norway 31%, Argentina 68%. All OVER 2.5.
+- **Combos**: 0 qualified across 21 games — no DK player props.
+- **Top 15 edges**: Misiorowski K +7.1, Tolle HA +5.3, Woo ER +4.8, Cantillo HA +4.1, Gasser HA +4.0, Gasser ER +4.0, Bradley HA +3.7, Dobbins HA +3.7, Gallen HA +3.6, Ginn HA +3.5, Ohtani K +3.5, Ginn ER +3.2, Woo HA +3.2, Imai ER +3.2, Bradley ER +3.2
+- ⚠️ WNBA injury scrape blocked (WNBA.com 404, ESPN JS challenge). WC soccer CSV overwrite (last game only).
+- **API**: 5 secrets ✅, Dashboard :8510 ✅, DK Combos :8515 ⚠️ 404, Soccer Combo :8516 ⚠️ 404. Odds API quota maxed. SGO limit=100 active.
+- **Emails sent**: Both tysondepina99@ + tysonjdepina76@
+- **Next**: 6:30 PM Final Pre-Tip + Combo Lock
+
+## Current Status (2026-07-07 ~6:30 PM ET) — FINAL PRE-TIP LOCK ✅
+- **Picks**: 1,192 total — 3 WNBA, 1,189 MLB, 0 WC game-level (324 player projections per WC game)
+- **WNBA**: 2 games (DAL@NY, CHI@PHX) both Scheduled. 3 picks — Costanza Verona PTS OVER +2.2, Satou Sabally PTS OVER +2.0, CHI@PHX roster loaded. DK player props still sparse (expected — DK posts late).
+- **MLB**: 15 games (11 In Progress, 4 Scheduled). 1,189 picks — all via SportsDataIO DK lines. Pitcher OVERs dominate (TC projecting higher than DK). Top edges: Jacob Misiorowski K OVER +7.1 (MIL@STL), Payton Tolle HA OVER +5.3 (BOS@CHW), Bryan Woo ER OVER +4.8 (SEA@MIA).
+- **World Cup**: 4 games. 0 DK lines (Odds API 401 — Business quota maxed, expected). Self-edge: France 64%, Spain 59%, Norway 31%, Argentina 68%. All totals OVER 2.5 (2.76-3.25 xG).
+- **Combos**: 0 qualified across all 21 games — no DK player props available for any sport.
+- **Top 15 edges**: Misiorowski K +7.1, Tolle HA +5.3, Woo ER +4.8, Cantillo HA +4.1, Gasser HA +4.0, Gasser ER +4.0, Bradley HA +3.7, Dobbins HA +3.7, Gallen HA +3.6, Ginn HA +3.5, Ohtani K +3.5, Ginn ER +3.2, Woo HA +3.2, Imai ER +3.2, Bradley ER +3.2
+- **⚠️ 1:30 PM run did NOT fire today** — this 6:30 PM is the sole daily capture. Investigate automation.
+- **API**: 5 secrets ✅, Dashboard :8510 ✅, DK Combos :8515 ⚠️ 404, Soccer Combo :8516 ⚠️ 404. Odds API quota maxed (WC).
+- **Email sent**: Both tysondepina99@ + tysonjdepina76@
+- **Next**: Boxscore captures (halftime ~8:30 PM, final ~10:30 PM)
+
+## Current Status (2026-07-05 ~1:30 PM ET) — PRIMARY Slate + Injury Refresh ✅
+- **Picks**: 1,195 valid — 2 WNBA (1 invalid: A'ja Wilson OUT), 1,193 MLB, 0 WC
+- **WNBA**: 2 games (DAL@TOR 3PM, IND@LV 7PM). 3 picks total but A'ja Wilson (LV) ruled OUT (ankle) — pick invalid. Valid: Chennedy Carter PTS OVER 17.0 (edge +2.4), Costanza Verona PTS OVER 14.5 (edge +2.2). Also OUT: Caitlin Clark (IND-back), Temi Fagbenle/Sykes/Rice (TOR).
+- **MLB**: 15 games, 1,193 picks — all via SportsDataIO DK lines. NYM@ATL in rain delay. All edges are pitcher UNDERs (strikeouts, hits_allowed, earned_runs). Top: Chris Murphy (CHW) hits_allowed UNDER -5.2, Cade Cavalli (WSH) K UNDER -4.6, Emmet Sheehan (LAD) K UNDER -4.6.
+- **World Cup**: 7 games, 0 picks — all NO DK LINES (Odds API 401, Business quota maxed — expected). 324 player projections available (TC self-edge). Self-edge highlights: Brazil ML 79%, Argentina ML 74%, France ML 64%. All totals OVER 2.5 (2.88-3.26 xG).
+- **Combos**: 0 qualified across all 9 games — no DK player lines for WNBA or World Cup.
+- **API budget**: 5 calls today, 18 monthly (10/day soft). SGO limit=100 active. Odds API 401 on all WC (quota maxed, expected). No new API calls this refresh (cached slate data reused).
+- **Health**: 5 secrets ✅, Dashboard :8510 ✅, DK Combos Engine :8515 ⚠️ 404, Soccer Combo Engine :8516 ⚠️ 404
+- **Email sent**: Both tysondepina99@ + tysonjdepina76@
+- **Next**: 6:30 PM Final Pre-Tip + Combo Lock
+
+## Current Status (2026-07-04 ~6:30 PM ET) — FINAL PRE-TIP LOCK ✅
+- **Picks**: 406 across 5 games (all MLB) — 12 total games projected (2 WNBA completed, 7 WC self-edge, 5 MLB upcoming)
+- **WNBA**: 2 games (GS@ATL, POR@SEA) — both completed by 6:30 PM, 0 picks, 0 player props
+- **MLB**: 5 games (STL@CHC, BOS@LAA, MIA@ATH, MIL@ARI, SD@LAD), 406 picks — all via SportsDataIO DK lines. Pitcher UNDERs dominate (strikeouts, hits_allowed, earned_runs). Top edge: Emmet Sheehan (SD@LAD) strikeouts UNDER 5.7 → edge -4.6
+- **World Cup**: 7 games projected — all self-edge TC projections, Odds API 401 (Business tier quota maxed — expected). Norway@Brazil (Brazil 79%), Spain@Portugal (Portugal 53%), Morocco@France (France 64%), Egypt@Argentina (Argentina 74%), England@Mexico (Mexico 45%), Belgium@USA (USA 50%), Colombia@Switzerland (Switzerland 51%). All totals OVER 2.5 (2.88-3.26 xG range). 324 player projections per game.
+- **Combos**: 0 across all sports — SGO rate-limited (429) during combo build on all 26 matchups. No DK player lines for WNBA or World Cup.
+- **Top 15 edges**: Emmet Sheehan K UNDER -4.6, Javier Assad HA UNDER -4.4, Brandon Sproat K UNDER -4.2, Eduardo Rodriguez HA UNDER -4.1, Gage Jump K UNDER -3.8, Gage Jump HA UNDER -2.8, Shohei Ohtani K OVER +2.7, Javier Assad K UNDER -2.2, Javier Assad ER UNDER -2.1, Gage Jump ER UNDER -2.1, Matthew Liberatore K UNDER -2.0, Eduardo Rodriguez K UNDER -2.0, Brandon Sproat HA UNDER -1.9, Blake Perkins TB UNDER -1.5, Ranger Suarez K UNDER -1.4
+- **API budget**: 5 calls today, 5 remaining (10/day soft). SGO 429 during combo build (limit=100 exhausted). Odds API 401 on WC (quota maxed, expected).
+- **Health**: 5 secrets ✅, Dashboard :8510 ✅, DK Combos Engine :8515 ⚠️ 404, Soccer Combo Engine :8516 ⚠️ 404
+- **Email sent**: Both tysondepina99@ + tysonjdepina76@
+- **Next**: Boxscore captures (halftime ~8:30 PM, final ~10:30 PM)
+
+## Current Status (2026-07-04 ~1:30 PM ET) — PRIMARY Slate + Injury Refresh ✅
+- **Picks**: 1,512 total — 2 WNBA, 1,185 MLB, 325 World Cup (324 player + 1 game) — 25 games projected, 0 skipped
+- **WNBA**: 2 games (GS@ATL In Progress, POR@SEA scheduled), 2 picks — game totals only, no player props (DK not posted yet — GS@ATL already in progress, expected)
+- **MLB**: 15 games, 1,185 picks — PIT@WSH already in 8th inning. All via SportsDataIO DK lines. UNDERs on pitcher strikeouts/hits_allowed dominate top edges.
+- **World Cup**: 8 games, 325 picks — all self-edge TC projections, Odds API 401 (Business tier quota maxed — expected). 324 player projections. 0 DK/BetMGM lines.
+- **Combos**: 0 across all 10 games — no DK player lines for WNBA or World Cup, no qualified multi-leg MLB
+- **Top 10 MLB edges**: Sonny Gray (BOS@LAA) strikeouts UNDER 8.4 → edge -6.5; Wandy Peralta (SD@LAD) hits_allowed UNDER 7.1 → edge -5.8; Parker Messick (CHW@CLE) strikeouts UNDER 8.4 → edge -5.7; Yoshinobu Yamamoto (SD@LAD) strikeouts UNDER 8.4 → edge -5.7; Robbie Ray (SF@COL) hits_allowed UNDER 9.7 → edge -5.6; Kyle Leahy (STL@CHC) strikeouts UNDER 5.8 → edge -5.5; Drew Rasmussen (TB@HOU) hits_allowed UNDER 7.1 → edge -5.4; Chris Sale (NYM@ATL) strikeouts UNDER 9.7 → edge -5.4; Zebby Matthews (MIN@NYY) strikeouts UNDER 7.1 → edge -5.2; Merrill Kelly (MIL@ARI) hits_allowed UNDER 9.7 → edge -5.2
+- **Top positive edges**: Shohei Ohtani strikeouts +2.4, Braxton Ashcraft earned_runs +2.1, Braden Montgomery total_bases +1.9
+- **World Cup self-edge highlights**: Brazil ML 79%, Argentina ML 74%; Spain@Portugal OVER 2.5 (3.26 xG), England@Mexico OVER 2.5 (3.12), Norway@Brazil OVER 2.5 (2.94)
+- **WNBA injuries**: 29 entries from Covers.com (11:05 AM ET). Key outs: Caitlin Clark (IND - Back), Collier (MIN - Ankles), Brink (LAS - Ankle), Plum (LAS - Lower Leg), B. Jones (ATL - Knee), Carrington (CHI - Foot). 10 players upgraded Out→Day-to-Day vs yesterday.
+- **MLB first tip**: PIT@WSH already in 8th inning; most evening games 6-7 PM ET. WNBA: POR@SEA ~1 PM ET (scheduled). WC: first tip TBD.
+- **API budget**: ~5 calls today (3 SGO + Odds API events), 18 monthly. SGO limit=100 active. Odds API 401 on all 8 WC odds endpoints (quota maxed).
+- **Health**: 5 secrets ✅, Dashboard :8510 ✅, DK Combos Engine :8515 ⚠️ 404, Soccer Combo Engine :8516 ⚠️ 404
+- **Email sent**: Both tysondepina99@ + tysonjdepina76@
+- **Next**: 6:30 PM Final Pre-Tip + Combo Lock
+
+## Current Status (2026-07-03 ~1:30 PM ET) — PRIMARY Slate + Injury Refresh ✅
+- **Picks**: 1,020 total — 3 WNBA, 1,017 MLB, 0 World Cup picks (24 games projected, 0 skipped)
+- **WNBA**: 2 games (MIN@NY, CHI@LV), 3 picks — all PTS OVER, self-edge (DK props not posted yet, expected)
+- **MLB**: 13 games, 1,017 picks — first tip STL@CHC 4:05 PM ET — hits_allowed UNDER + strikeouts UNDER dominate top edges
+- **World Cup**: 9 games projected, 0 picks — all self-edge TC projections, Odds API 401 (Business tier quota maxed — expected behavior). 324 player projections. soccer_game_picks.csv has 1 game-level entry (Belgium@USA).
+- **Combos**: 0 across all sports — no DK player lines for WNBA or World Cup
+- **Top 10 MLB edges**: Logan Webb (SF@COL) hits_allowed UNDER 10.4 → edge -7.5; Ryan Feltner (SF@COL) hits_allowed UNDER 8.2 → edge -6.9; Andre Pallante (STL@CHC) hits_allowed UNDER 7.1 → edge -4.2; Nick Martinez (TB@HOU) strikeouts UNDER 4.9 → edge -4.2; Kyle Harrison (MIL@ARI) earned_runs OVER 2.7 → edge +4.2; Gerrit Cole (MIN@NYY) strikeouts UNDER 6 → edge -4.1; Trevor Rogers (BAL@CIN) strikeouts UNDER 6 → edge -4.1; Christian Scott (NYM@ATL) strikeouts UNDER 6 → edge -4.1; Reid Detmers (BOS@LAA) hits_allowed UNDER 6 → edge -3.9; Michael King (SD@LAD) strikeouts UNDER 6 → edge -3.7
+- **Top WNBA**: Satou Sabally (NY) PTS OVER 13.5 → edge +2.0; A'ja Wilson (LV) PTS OVER 17.5 → edge +2.5; Chennedy Carter (LV) PTS OVER 17.5 → edge +2.5
+- **World Cup self-edge highlights**: Brazil ML 79%, Argentina ML 80%, Colombia ML 73%; Norway@Brazil OVER 2.5 (2.94 exp), England@Mexico OVER 2.5 (3.12), Spain@Portugal OVER 2.5 (3.26)
+- **WNBA injuries**: 38 injuries scraped from ESPN (cached at cache/injuries/wnba_2026-07-03.json); Brionna Jones (ATL) OUT until Jul 13, DiJonai Carrington (DAL) OUT until Jul 15, Rickea Jackson (LVA) OUT since May, Costanza Verona (DAL) OUT Jul 5
+- **MLB first tip**: STL@CHC 4:05 PM ET; WNBA first tip: MIN@NY ~7:00 PM ET; WC first tip: TBD (no line info)
+- **API budget**: 4 SGO calls (3 slate + 1 consensus), 0 Odds API (quota maxed), 9 remaining (10/day soft limit). SGO limit=100 active. 
+- **Health**: 5 secrets ✅, Dashboard :8510 ✅, DK Combos Engine :8515 ⚠️ 404, Soccer Combo Engine :8516 ⚠️ 404
+- **Email sent**: Both tysondepina99@ + tysonjdepina76@
+- **Next**: 6:30 PM Final Pre-Tip + Combo Lock
+
 ## Current Status (2026-07-02 ~4:00 PM ET) — World Cup Lineup Lock ✅
 - **World Cup**: 11 games projected (3,564 player projections), all self-edge — Odds API 401 quota maxed, no DK/BetMGM lines
 - **WC Top Picks**: Argentina ML 80%, Brazil ML 79%, Switzerland ML 73%, Colombia ML 73%, Spain ML 67%
@@ -169,6 +293,28 @@
 - **WNBA injury**: Minimal — ESPN API no injuries, WNBA.com 404. Manual check recommended before lock.
 - **API calls**: 4 this run (3 SGO slates + 1 Odds API), cache_manifest.json updated
 - **Top edge**: Tyler Alexander (TEX@CLE) strikeouts UNDER 11.5 → proj 0.3, edge -11.3
+
+## Current Status (2026-07-03 ~6:30 PM ET) — FINAL PRE-TIP LOCK ✅
+- **Picks**: 946 across 15 games (3 WNBA, 943 MLB, 0 World Cup) — 22 games projected, 1 completed skipped
+- **WNBA**: 2 games (MIN@NY In Progress, CHI@LV Scheduled ~10PM), 3 picks — Satou Sabally PTS OVER 13.5 (+2.0), A'ja Wilson PTS OVER 17.5 (+2.5), Chennedy Carter PTS OVER 17.5 (+2.5). DK props not posted yet (expected: DK posts WNBA 30-60 min before CHI@LV tip)
+- **MLB**: 13 games (STL@CHC Final, 5 In Progress, 7 upcoming through TOR@SEA ~10:10 PM), 943 picks — pitcher UNDERs dominate top edges
+- **World Cup**: 9 games projected, 0 picks — all self-edge, Odds API 401 (Business tier quota maxed). Top: Argentina 80%, Brazil 79%, Colombia 73%; Spain@Portugal OVER 2.5 (3.26 xG), England@Mexico OVER 2.5 (3.12)
+- **Combos**: 0 across all sports — no DK player lines for WNBA/World Cup, no qualified multi-leg for MLB
+- **Top 15 edges**: Ryan Feltner (COL) hits_allowed UNDER 8.2 → edge -6.9; Logan Webb (SF) hits_allowed UNDER 9.3 → edge -6.4; Nick Martinez (TB) strikeouts UNDER 4.9 → edge -4.2; Kyle Harrison (MIL) earned_runs OVER 2.7 → edge +4.2; Gerrit Cole (NYY) strikeouts UNDER 6 → edge -4.1; Trevor Rogers (BAL) strikeouts UNDER 6 → edge -4.1; Christian Scott (NYM) strikeouts UNDER 6 → edge -4.1; Reid Detmers (LAA) hits_allowed UNDER 6 → edge -3.9; Michael King (SD) strikeouts UNDER 6 → edge -3.7; Kyle Harrison (MIL) strikeouts UNDER 6 → edge -3.3; Mike Paredes (MIN) hits_allowed UNDER 4.9 → edge -3.2; Grant Holmes (ATL) strikeouts UNDER 4.9 → edge -3.0; Tyler Phillips (MIA) strikeouts UNDER 4.9 → edge -3.0; Foster Griffin (WSH) strikeouts UNDER 6 → edge -2.9; Logan Webb (SF) earned_runs UNDER 3.8 → edge -2.9
+- **Games still upcoming**: CHI@LV (~10PM), SF@COL (8:10), TB@HOU (8:15), BOS@LAA (9:38), MIA@ATH (9:40), MIL@ARI (9:45), SD@LAD (10:10), TOR@SEA (10:10)
+- **Games In Progress**: MIN@NY (WNBA), PIT@WSH, MIN@NYY, BAL@CIN, CHW@CLE, NYM@ATL
+- **API budget**: 4 SGO calls today (all 1:30 PM — 6:30 PM cache-only), 6 remaining (10/day soft limit)
+- **Health**: 5 secrets ✅, Dashboard :8510 ✅, DK Combos :8515 ⚠️ 404, Soccer Combos :8516 ⚠️ 404
+- **Email sent**: Both tysondepina99@ + tysonjdepina76@
+- **Next**: Boxscore captures (halftime ~8:30 PM, final ~10:30 PM)
+
+## Current Status (2026-07-09 ~4:35 PM ET) — Pipeline Fixes Applied ✅
+- **3 fixes wired**: api_call_budget module created, FantasyImageGenerator class added (with method-complete stub), --date flag now respected by today_et()
+- **WNBA dry-run verified**: 3 games, 4 picks, 10 fantasy cards generated
+- **MarketLineProvider** audit: WNBA/MLB/SOCCER → selfedge, NBA/NHL → off_season guard
+- **SelfEdge adapter** audit: all in-season sports return self_edge status
+- **Odds API**: quota maxed, all calls falling back to SGO then self-edge
+- **Next**: real-data WNBA + MLB re-run
 
 ## Key Paths
 

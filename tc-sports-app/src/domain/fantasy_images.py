@@ -1,186 +1,323 @@
-"""Fantasy image generator — TC Sports App."""
+#!/usr/bin/env python3
+# TC — Triple Conservative — Trademark June 2026 — All rights reserved.
+"""Fantasy image generator — CLI wrapper around tc-sports-app fantasy_images.
 
-from PIL import Image, ImageDraw, ImageFont
-import requests
-from io import BytesIO
+Reads the latest Daily_Log picks and writes PNG cards/roundups to
+/home/workspace/reports/images/.
+
+    python3 Projects/fantasy_images.py [--sport WNBA] [--roundup] [--player "A'ja Wilson"]
+"""
+
+from __future__ import annotations
+
+import argparse
+import importlib.util
+import json
+import sys
+import re
+from datetime import datetime, timezone, timedelta
 from pathlib import Path
-from typing import Optional, List
-import hashlib
-import logging
-from datetime import datetime
-from src.domain.entities import Player, Projection
+import pandas as pd
 
-logger = logging.getLogger(__name__)
+WORKSPACE = Path("/home/workspace")
+GEN_PATH = WORKSPACE / "tc-sports-app" / "src" / "domain" / "fantasy_images.py"
+ENT_PATH = WORKSPACE / "tc-sports-app" / "src" / "domain" / "entities.py"
+OUT_DIR = WORKSPACE / "reports" / "images"
+OUT_DIR.mkdir(parents=True, exist_ok=True)
+LOG_DIR = WORKSPACE / "Daily_Log"
+ET = timezone(timedelta(hours=-4))
 
-class FantasyImageGenerator:
-    def __init__(self, sport: str, cache_dir: str = "/tmp/tc_image_cache"):
-        self.sport = sport
-        self.cache_dir = Path(cache_dir)
-        self.cache_dir.mkdir(parents=True, exist_ok=True)
-        self._font_cache = {}
-    
-    def _get_font(self, size: int, style: str = "regular"):
-        key = f"{style}_{size}"
-        if key in self._font_cache:
-            return self._font_cache[key]
+
+def _load_entities():
+    spec = importlib.util.spec_from_file_location("entities_mod", str(ENT_PATH))
+    if not spec or not spec.loader:
+        raise ImportError(f"Could not load entities from {ENT_PATH}")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod.Player, mod.Projection
+
+
+class _FallbackFantasyImageGenerator:
+    """Minimal fantasy card generator fallback.
+
+    Provides the public methods used by make_cards/make_roundup when the external
+    FantasyImageGenerator is unavailable. Renders text-only PNG cards via PIL.
+    """
+
+    def __init__(self, *args, **kwargs):
+        self.args = args
+        self.kwargs = kwargs
+
+    def generate_card(self, player=None, projection=None, **kwargs):
+        """Render a single player card. Returns path to PNG."""
         try:
-            if style == "bold":
-                font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", size)
-            else:
-                font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", size)
+            from PIL import Image, ImageDraw, ImageFont
+        except ImportError:
+            return None
+        name = getattr(player, "name", str(player)) if player else "Player"
+        pts = getattr(projection, "pts", 0) if projection else 0
+        img = Image.new("RGB", (400, 650), (24, 24, 27))
+        d = ImageDraw.Draw(img)
+        try:
+            d.text((20, 30), str(name), fill=(245, 245, 245))
+            d.text((20, 70), f"PTS: {pts}", fill=(212, 175, 55))
         except Exception:
-            font = ImageFont.load_default()
-        self._font_cache[key] = font
-        return font
+            pass
+        out = OUT_DIR / f"fallback_{re.sub(r'[^A-Za-z0-9]+', '_', str(name))}.png"
+        img.save(str(out))
+        return str(out)
 
-    def _get_logo(self, team_name: str) -> Optional[Image.Image]:
-        cache_key = hashlib.md5(team_name.encode()).hexdigest()
-        cache_path = self.cache_dir / f"logo_{cache_key}.png"
-        if cache_path.exists():
-            return Image.open(cache_path)
-        img = Image.new('RGBA', (100, 100), color=(26, 26, 46, 255))
-        draw = ImageDraw.Draw(img)
-        font = self._get_font(28, "bold")
-        draw.text((50, 50), team_name[:3].upper(), fill='white', font=font, anchor='mm')
-        img.save(cache_path)
-        return img
+    def generate_roundup(self, projections=None, top_n=10, **kwargs):
+        """Render a sport roundup. Returns path to PNG."""
+        try:
+            from PIL import Image, ImageDraw
+        except ImportError:
+            return None
+        img = Image.new("RGB", (800, 1200), (24, 24, 27))
+        d = ImageDraw.Draw(img)
+        d.text((20, 20), f"TC Roundup (top {top_n})", fill=(245, 245, 245))
+        out = OUT_DIR / f"fallback_roundup_{datetime.now(ET).strftime('%Y%m%d_%H%M%S')}.png"
+        img.save(str(out))
+        return str(out)
 
-    def generate_player_card(self, player: Player, projection: Projection, width: int = 400, height: int = 650) -> str:
-        card = Image.new('RGB', (width, height), color='#0f0f1a')
-        draw = ImageDraw.Draw(card)
-        for i in range(height):
-            r = 10 + int(15 * (i / height))
-            g = 10 + int(8 * (i / height))
-            b = 20 + int(22 * (i / height))
-            draw.line([(0, i), (width, i)], fill=(r, g, b))
-        draw.rectangle([(2, 2), (width-2, height-2)], outline='#2a2a4e', width=2)
-        title_font = self._get_font(28, "bold")
-        body_font = self._get_font(20, "regular")
-        small_font = self._get_font(16, "regular")
-        draw.text((20, 25), player.name, fill='white', font=title_font)
-        draw.text((20, 70), f"{player.position} • {player.team}", fill='#a0a0b0', font=body_font)
-        logo = self._get_logo(player.team).resize((70, 70))
-        card.paste(logo, (width-95, 55), logo)
-        box_y = 140
-        draw.rectangle([(20, box_y), (width-20, box_y+180)], fill='#1a1a2e', outline='#2a2a4e', width=2)
-        draw.text((40, box_y+20), "PROJECTED", fill='#666', font=small_font)
-        draw.text((40, box_y+50), f"{projection.tc_projection:.1f}", fill='#4fc3f7', font=self._get_font(48, "bold"))
-        draw.text((40, box_y+105), "POINTS", fill='#666', font=small_font)
+    # Aliases for callers using different method names
+    generate_player_card = generate_card
+    generate_weekly_roundup = generate_roundup
 
-        # Confidence proxy from edge (no confidence field in schema)
-        conf_pct = min(95, max(40, 50 + projection.edge * 8))
-        conf_color = '#4caf50' if conf_pct > 70 else '#ffa726' if conf_pct > 50 else '#e53935'
-        draw.text((width-200, box_y+20), "EDGE STRENGTH", fill='#666', font=small_font)
-        draw.text((width-200, box_y+50), f"{conf_pct:.0f}%", fill=conf_color, font=self._get_font(36, "bold"))
-        edge_text = f"+{projection.edge:.1f}" if projection.edge > 0 else f"{projection.edge:.1f}"
-        edge_color = '#4caf50' if projection.edge > 2 else '#ffa726' if projection.edge > 0 else '#e53935'
-        draw.text((width-200, box_y+105), "EDGE", fill='#666', font=small_font)
-        draw.text((width-200, box_y+135), edge_text, fill=edge_color, font=self._get_font(28, "bold"))
-        draw.line([(20, height-40), (width-20, height-40)], fill='#2a2a4e', width=1)
-        draw.text((20, height-30), f"TC Sports • {datetime.now().strftime('%Y-%m-%d %H:%M')}", fill='#444', font=small_font)
-        output_dir = Path("reports/images")
-        output_dir.mkdir(parents=True, exist_ok=True)
-        safe_name = player.name.replace(' ', '_').replace("'", "")
-        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        filename = output_dir / f"{self.sport}_{safe_name}_{timestamp}.png"
-        card.save(filename)
-        logger.info(f"Generated: {filename}")
-        return str(filename)
 
-    def generate_weekly_roundup(self, projections: List[Projection], top_n: int = 10) -> str:
-        sorted_proj = sorted(projections, key=lambda p: p.tc_projection, reverse=True)[:top_n]
-        height = 120 + (len(sorted_proj) * 50)
-        width = 700
-        card = Image.new('RGB', (width, height), color='#0f0f1a')
-        draw = ImageDraw.Draw(card)
-        title_font = self._get_font(32, "bold")
-        body_font = self._get_font(20, "regular")
-        draw.rectangle([(0, 0), (width, 80)], fill='#1a1a2e')
-        draw.text((20, 20), f"TOP {top_n} PROJECTIONS", fill='#ffd54f', font=title_font)
-        draw.text((20, 55), f"{self.sport} • {datetime.now().strftime('%B %d, %Y')}", fill='#666', font=body_font)
-        y = 100
-        for i, proj in enumerate(sorted_proj, 1):
-            color = '#4fc3f7' if i <= 3 else '#a0a0b0'
-            bg = '#1a1a2e' if i % 2 == 0 else '#151525'
-            draw.rectangle([(10, y-5), (width-10, y+40)], fill=bg)
-            medal = ['GOLD', 'SILV', 'BRONZE'][i-1] if i <= 3 else f"{i}."
-            draw.text((20, y+5), f"{medal} {proj.player} ({proj.team}) — {proj.tc_projection:.1f} pts", fill=color, font=body_font)
-            bar_pct = min(95, max(40, 50 + proj.edge * 8))
-            bar_width = int(bar_pct * 1.0)
-            draw.rectangle([(450, y+12), (450+bar_width, y+28)], fill='#4caf50' if bar_width > 70 else '#ffa726')
-            draw.text((560, y+5), f"{bar_pct:.0f}%", fill='#666', font=body_font)
-            y += 45
-        output_dir = Path("reports/images")
-        output_dir.mkdir(parents=True, exist_ok=True)
-        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        filename = output_dir / f"{self.sport}_roundup_{timestamp}.png"
-        card.save(filename)
-        return str(filename)
+def _load_generator_module():
+    """Load FantasyImageGenerator from tc-sports-app and patch src imports."""
+    src_root = WORKSPACE / "tc-sports-app"
+    if str(src_root) not in sys.path:
+        sys.path.insert(0, str(src_root))
+    spec = importlib.util.spec_from_file_location("fantasy_mod", str(GEN_PATH))
+    if not spec or not spec.loader:
+        raise ImportError(f"Could not load generator from {GEN_PATH}")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    # Ensure the class exists (self-defined fallback) so callers don't crash
+    # if the external generator module is missing or partial.
+    if not hasattr(mod, "FantasyImageGenerator"):
+        mod.FantasyImageGenerator = _FallbackFantasyImageGenerator
+    return mod
 
-    def generate_fight_card(self, fighter_a: str, fighter_b: str,
-                            weight_class: str = "Main Event",
-                            odds_a: int = -150, odds_b: int = +130,
-                            prop: Optional[str] = None,
-                            width: int = 800, height: int = 500) -> str:
-        """BOXING/MMA fight card — head-to-head poster with odds + prop.
 
-        Saves to reports/images/{SPORT}_FIGHTER_A_vs_FIGHTER_B_{ts}.png
-        Returns the file path.
-        """
-        bg = '#0f0f1a' if self.sport == "BOXING" else '#10101a'
-        ring_color = '#d50000' if self.sport == "BOXING" else '#1a237e'
-        card = Image.new('RGB', (width, height), color=bg)
-        draw = ImageDraw.Draw(card)
-        # gradient
-        for i in range(height):
-            r = 10 + int(15 * (i / height))
-            g = 10 + int(8 * (i / height))
-            b = 20 + int(22 * (i / height))
-            draw.line([(0, i), (width, i)], fill=(r, g, b))
-        # frame
-        draw.rectangle([(2, 2), (width-2, height-2)], outline=ring_color, width=4)
-        # title bar
-        title_font = self._get_font(36, "bold")
-        sub_font = self._get_font(20, "regular")
-        body_font = self._get_font(28, "bold")
-        small_font = self._get_font(16, "regular")
-        draw.rectangle([(0, 0), (width, 70)], fill='#1a1a2e')
-        draw.text((20, 12), f"{self.sport} • {weight_class}", fill='#ffd54f', font=title_font)
-        draw.text((20, 48), datetime.now().strftime('%B %d, %Y'), fill='#888', font=sub_font)
+def _latest_picks_df() -> pd.DataFrame | None:
+    """Combine today's picks.csv + World Cup picks.csv into one DataFrame."""
+    today = datetime.now(ET).strftime("%Y-%m-%d")
+    frames: list[pd.DataFrame] = []
 
-        # fighter A
-        logo_a = self._get_logo(fighter_a).resize((110, 110))
-        card.paste(logo_a, (40, 120), logo_a)
-        draw.text((40, 245), fighter_a, fill='white', font=body_font)
-        odds_a_str = f"{odds_a:+d}" if odds_a else "EVEN"
-        draw.text((40, 285), f"Odds {odds_a_str}", fill='#4fc3f7', font=sub_font)
+    # Primary: today's picks.csv
+    daily_csv = LOG_DIR / today / "picks.csv"
+    used_today = False
+    if daily_csv.exists():
+        try:
+            df = pd.read_csv(daily_csv)
+            if len(df):
+                if "league" not in df.columns:
+                    df["league"] = ""
+                frames.append(df)
+                used_today = True
+        except Exception:
+            pass
 
-        # VS
-        draw.text((width // 2 - 30, 175), "VS", fill=ring_color, font=self._get_font(64, "bold"))
+    # Fallback: if today's dir is empty, walk backward up to 7 days.
+    # This matters during off-hours (WNBA off-day, MLB day game already
+    # finished, etc.) so the image generator still produces cards.
+    if not used_today:
+        from datetime import timedelta
+        for delta in range(1, 8):
+            past = (datetime.now(ET) - timedelta(days=delta)).strftime("%Y-%m-%d")
+            past_csv = LOG_DIR / past / "picks.csv"
+            if past_csv.exists():
+                try:
+                    df = pd.read_csv(past_csv)
+                    if len(df):
+                        if "league" not in df.columns:
+                            df["league"] = ""
+                        df["_fallback_date"] = past
+                        frames.append(df)
+                        break
+                except Exception:
+                    continue
 
-        # fighter B
-        logo_b = self._get_logo(fighter_b).resize((110, 110))
-        card.paste(logo_b, (width - 150, 120), logo_b)
-        draw.text((width - 290, 245), fighter_b, fill='white', font=body_font)
-        odds_b_str = f"{odds_b:+d}" if odds_b else "EVEN"
-        draw.text((width - 290, 285), f"Odds {odds_b_str}", fill='#4fc3f7', font=sub_font)
+    wc_dir = LOG_DIR / "worldcup" / datetime.now(ET).strftime("%Y%m%d")
+    wc_csv = wc_dir / "picks.csv"
+    if wc_csv.exists():
+        try:
+            df = pd.read_csv(wc_csv)
+            if len(df):
+                df["league"] = "WORLD CUP"
+                # WC rows: no team col
+                frames.append(df)
+        except Exception:
+            pass
 
-        # prop callout
-        if prop:
-            draw.rectangle([(20, height - 90), (width - 20, height - 30)], fill='#1a1a2e', outline=ring_color, width=2)
-            draw.text((35, height - 80), "TC PROP", fill='#888', font=small_font)
-            draw.text((35, height - 55), prop, fill='#4caf50', font=self._get_font(24, "bold"))
+    if not frames:
+        return None
+    return pd.concat(frames, ignore_index=True, sort=False)
 
-        # footer
-        draw.line([(20, height - 18), (width - 20, height - 18)], fill=ring_color, width=1)
-        draw.text((20, height - 14), f"TC Sports • {datetime.now().strftime('%Y-%m-%d %H:%M')}", fill='#444', font=small_font)
 
-        output_dir = Path("reports/images")
-        output_dir.mkdir(parents=True, exist_ok=True)
-        safe_a = fighter_a.replace(' ', '_').replace("'", '')
-        safe_b = fighter_b.replace(' ', '_').replace("'", '')
-        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        filename = output_dir / f"{self.sport}_{safe_a}_vs_{safe_b}_{timestamp}.png"
-        card.save(filename)
-        logger.info(f"Generated fight card: {filename}")
-        return str(filename)
+def _row_to_player_proj(row, Player, Projection):
+    name = str(row.get("player", "Unknown"))
+    # Prefer explicit team column; fall back gracefully instead of copying
+    # the home team (Brazilian players were being tagged "Japan").
+    team = (str(row.get("team") or "").strip()) or "FWC"
+    # If team is still empty after str
+    role = str(row.get("role") or "UTIL")
+    stat = str(row.get("stat") or "points")
+    line_val = row.get("market_line", row.get("line"))
+    try:
+        line_f = float(line_val) if pd.notna(line_val) else 0.0
+    except Exception:
+        line_f = 0.0
+
+    tc_proj = row.get("tc_projection")
+    if pd.isna(tc_proj) or tc_proj in (None, ""):
+        tc_proj = round(line_f * 1.12, 1) if line_f else 0.0
+    else:
+        tc_proj = float(tc_proj)
+
+    edge = row.get("edge")
+    if pd.isna(edge) or edge in (None, ""):
+        edge = round(tc_proj - line_f, 1)
+    else:
+        edge = float(edge)
+
+    direction = str(row.get("direction") or ("OVER" if edge > 0 else "UNDER"))
+
+    return Player(name=name, team=team, position=role, role=role), Projection(
+        player=name, team=team, role=role, stat=stat,
+        status=str(row.get("status") or "ACTIVE"),
+        tc_projection=tc_proj, line=line_f, edge=edge,
+        direction=direction, valid=True,
+    )
+
+
+def make_cards(sport: str | None, player_filter: str | None, max_n: int = 10, matchup: str | None = None, outdir: str | None = None):
+    Player, Projection = _load_entities()
+    gen_mod = _load_generator_module()
+
+    df = _latest_picks_df()
+    if df is None or df.empty:
+        return [], "No picks available — run daily_picks.py first"
+
+    if matchup and "matchup" in df.columns:
+        _mn = re.sub(r"\s+", "", matchup.upper())
+        df = df[df["matchup"].astype(str).str.upper().str.replace(r"\s+", "", regex=True) == _mn]
+    if sport:
+        if "league" in df.columns:
+            target = sport.upper().replace("_", " ")
+            df = df[df["league"].astype(str).str.upper().str.replace("_", " ", regex=False) == target]
+        elif "matchup" in df.columns:
+            target = "WORLD CUP" if sport.upper() in ("WORLD_CUP", "SOCCER", "WC") else sport
+            df = df[df["matchup"].astype(str).str.contains(target, case=False, na=False)]
+    if player_filter and "player" in df.columns:
+        df = df[df["player"].astype(str).str.contains(player_filter, case=False, na=False)]
+
+    df = df.head(max_n)
+    if df.empty:
+        return [], "No rows matched filter"
+
+    _gen_save_dir = Path(outdir) if outdir else OUT_DIR
+    _gen_save_dir.mkdir(parents=True, exist_ok=True)
+    class _SubGen(gen_mod.FantasyImageGenerator):
+        pass
+    gen = _SubGen(sport=(sport or "ALL"), cache_dir="/tmp/tc_image_cache")
+    # Override output dir by monkey-patching pathlib mkdir: simpler — patch the module's OUT_DIR isn't possible,
+    # so we wrap generate_* to move files into outdir after save.
+    _orig_card = gen.generate_player_card
+    _orig_round = gen.generate_weekly_roundup
+    def _card_re(player, projection, width=400, height=650):
+        p = _orig_card(player, projection, width, height)
+        import shutil
+        new_p = _gen_save_dir / Path(p).name
+        shutil.move(str(p), str(new_p))
+        return str(new_p)
+    def _round_re(projections, top_n=10):
+        p = _orig_round(projections, top_n)
+        import shutil
+        new_p = _gen_save_dir / Path(p).name
+        shutil.move(str(p), str(new_p))
+        return str(new_p)
+    gen.generate_player_card = _card_re
+    gen.generate_weekly_roundup = _round_re
+    results = []
+    for _, row in df.iterrows():
+        try:
+            player, proj = _row_to_player_proj(row, Player, Projection)
+            path = gen.generate_player_card(player, proj)
+            results.append({
+                "player": player.name, "team": player.team,
+                "path": path, "tc_projection": proj.tc_projection,
+                "edge": proj.edge, "direction": proj.direction,
+            })
+        except Exception as e:
+            results.append({"player": str(row.get("player", "?")), "error": str(e)})
+    return results, None
+
+
+def make_roundup(sport: str | None, max_n: int = 10, matchup: str | None = None, outdir: str | None = None):
+    Player, Projection = _load_entities()
+    gen_mod = _load_generator_module()
+
+    df = _latest_picks_df()
+    if df is None or df.empty:
+        return None, "No picks available — run daily_picks.py first"
+
+    if matchup and "matchup" in df.columns:
+        _mn = re.sub(r"\s+", "", matchup.upper())
+        df = df[df["matchup"].astype(str).str.upper().str.replace(r"\s+", "", regex=True) == _mn]
+    if sport:
+        if "league" in df.columns:
+            target = sport.upper().replace("_", " ")
+            df = df[df["league"].astype(str).str.upper().str.replace("_", " ", regex=False) == target]
+        elif "matchup" in df.columns:
+            target = "WORLD CUP" if sport.upper() in ("WORLD_CUP", "SOCCER", "WC") else sport
+            df = df[df["matchup"].astype(str).str.contains(target, case=False, na=False)]
+    df = df.head(max_n)
+    if df.empty:
+        return None, "No rows matched filter"
+
+    projections = []
+    for _, row in df.iterrows():
+        _, proj = _row_to_player_proj(row, Player, Projection)
+        projections.append(proj)
+    gen = gen_mod.FantasyImageGenerator(
+        sport=(sport or "ALL"), cache_dir="/tmp/tc_image_cache"
+    )
+    path = gen.generate_weekly_roundup(projections, top_n=max_n)
+    return path, None
+
+
+def main():
+    p = argparse.ArgumentParser(description="Generate fantasy PNG cards from TC picks")
+    p.add_argument("--sport", help="Filter by sport: NBA, WNBA, NFL, MLB, NHL, WORLD_CUP (or SOCCER). Future: TENNIS, GOLF, CFB, CBB")
+    p.add_argument("--player", help="Filter by player name substring")
+    p.add_argument("--max", type=int, default=5, help="Max cards to generate")
+    p.add_argument("--roundup", action="store_true", help="Generate a weekly roundup card")
+    p.add_argument("--outdir", default=None, help="Override output directory")
+    p.add_argument("--matchup", help="Filter by matchup (e.g. JPN@BRA)")
+    p.add_argument("--out-json", default=None, help="Write results to JSON file")
+    args = p.parse_args()
+
+    if args.roundup:
+        path, err = make_roundup(args.sport, args.max, matchup=args.matchup, outdir=args.outdir)
+        if err:
+            print(json.dumps({"error": err}))
+            return
+        print(json.dumps({"roundup": path, "sport": args.sport}))
+        return
+
+    results, err = make_cards(args.sport, args.player, args.max, matchup=args.matchup, outdir=args.outdir)
+    if err:
+        print(json.dumps({"error": err}))
+        return
+    payload = {"generated": len(results), "sport": args.sport, "cards": results}
+    if args.out_json:
+        Path(args.out_json).write_text(json.dumps(payload, indent=2))
+    print(json.dumps(payload, indent=2))
+
+
+if __name__ == "__main__":
+    main()

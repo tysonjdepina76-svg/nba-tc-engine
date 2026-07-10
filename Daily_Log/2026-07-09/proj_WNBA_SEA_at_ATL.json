@@ -4,21 +4,21 @@
   "matchup": "SEA@ATL",
   "away_team": "SEA",
   "home_team": "ATL",
-  "source": "ESPN + OddsAPI fallback (ESPN DraftKings embedded)",
-  "signal": "ROSTER LOADED",
-  "dk_total": 168.5,
+  "source": "ESPN + OddsAPI fallback (OddsAPI DraftKings)",
+  "signal": "OVER",
+  "dk_total": 174.5,
   "odds": {
-    "total": 168.5,
-    "spread": -12.5,
-    "ml_home": "-625",
-    "ml_away": "+455",
-    "ml_source": "ESPN DraftKings embedded"
+    "total": 174.5,
+    "spread": 17.5,
+    "ml_home": -1950,
+    "ml_away": 950,
+    "ml_source": "OddsAPI DraftKings"
   },
   "away": {
     "all": {
       "players": [
         {
-          "player": "Sonia Citron",
+          "player": "Natisha Hiedeman",
           "team": "SEA",
           "role": "START",
           "status": "ACTIVE",
@@ -33,350 +33,8 @@
               "valid": false
             },
             "REB": {
-              "tc_projection": 2.9,
-              "line": 2.5,
-              "edge": 0.4,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "AST": {
-              "tc_projection": 2.6,
-              "line": 2.5,
-              "edge": 0.1,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "3PM": {
-              "tc_projection": 0.9,
-              "line": 1.0,
-              "edge": -0.1,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "STL": {
-              "tc_projection": 0.9,
-              "line": 1.0,
-              "edge": -0.1,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "BLK": {
-              "tc_projection": 0.5,
-              "line": 0.5,
-              "edge": 0.0,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            }
-          }
-        },
-        {
-          "player": "Kiki Iriafen",
-          "team": "SEA",
-          "role": "START",
-          "status": "ACTIVE",
-          "pos": "",
-          "projections": {
-            "PTS": {
-              "tc_projection": 13.5,
-              "line": 12.0,
-              "edge": 1.5,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "REB": {
-              "tc_projection": 8.2,
-              "line": 7.0,
-              "edge": 1.2,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "AST": {
-              "tc_projection": 1.5,
-              "line": 1.5,
-              "edge": 0.0,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "3PM": {
-              "tc_projection": 0.4,
-              "line": 0.5,
-              "edge": -0.1,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "STL": {
-              "tc_projection": 0.7,
-              "line": 0.5,
-              "edge": 0.2,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "BLK": {
-              "tc_projection": 0.3,
-              "line": 0.5,
-              "edge": -0.2,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            }
-          }
-        },
-        {
-          "player": "Shakira Austin",
-          "team": "SEA",
-          "role": "START",
-          "status": "ACTIVE",
-          "pos": "",
-          "projections": {
-            "PTS": {
-              "tc_projection": 11.6,
-              "line": 10.0,
-              "edge": 1.6,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "REB": {
-              "tc_projection": 8.1,
-              "line": 7.0,
-              "edge": 1.1,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "AST": {
-              "tc_projection": 2.4,
+              "tc_projection": 2.2,
               "line": 2.0,
-              "edge": 0.4,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "3PM": {
-              "tc_projection": 0.4,
-              "line": 0.5,
-              "edge": -0.1,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "STL": {
-              "tc_projection": 0.5,
-              "line": 0.5,
-              "edge": 0.0,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "BLK": {
-              "tc_projection": 1.2,
-              "line": 1.0,
-              "edge": 0.2,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            }
-          }
-        },
-        {
-          "player": "Michaela Onyenwere",
-          "team": "SEA",
-          "role": "START",
-          "status": "ACTIVE",
-          "pos": "",
-          "projections": {
-            "PTS": {
-              "tc_projection": 10.4,
-              "line": 9.0,
-              "edge": 1.4,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "REB": {
-              "tc_projection": 2.9,
-              "line": 2.5,
-              "edge": 0.4,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "AST": {
-              "tc_projection": 1.3,
-              "line": 1.0,
-              "edge": 0.3,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "3PM": {
-              "tc_projection": 1.3,
-              "line": 1.0,
-              "edge": 0.3,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "STL": {
-              "tc_projection": 0.4,
-              "line": 0.5,
-              "edge": -0.1,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "BLK": {
-              "tc_projection": 0.1,
-              "line": 0.0,
-              "edge": 0.1,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            }
-          }
-        },
-        {
-          "player": "Cotie McMahon",
-          "team": "SEA",
-          "role": "BENCH",
-          "status": "ACTIVE",
-          "pos": "",
-          "projections": {
-            "PTS": {
-              "tc_projection": 8.0,
-              "line": 7.0,
-              "edge": 1.0,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "REB": {
-              "tc_projection": 3.2,
-              "line": 3.0,
-              "edge": 0.2,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "AST": {
-              "tc_projection": 2.4,
-              "line": 2.0,
-              "edge": 0.4,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "3PM": {
-              "tc_projection": 1.0,
-              "line": 1.0,
-              "edge": 0.0,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "STL": {
-              "tc_projection": 0.6,
-              "line": 0.5,
-              "edge": 0.1,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "BLK": {
-              "tc_projection": 0.2,
-              "line": 0.0,
-              "edge": 0.2,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            }
-          }
-        },
-        {
-          "player": "Lauren Betts",
-          "team": "SEA",
-          "role": "BENCH",
-          "status": "ACTIVE",
-          "pos": "",
-          "projections": {
-            "PTS": {
-              "tc_projection": 9.8,
-              "line": 8.5,
-              "edge": 1.3,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "REB": {
-              "tc_projection": 5.6,
-              "line": 5.0,
-              "edge": 0.6,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "AST": {
-              "tc_projection": 1.3,
-              "line": 1.0,
-              "edge": 0.3,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "3PM": {
-              "tc_projection": 0.0,
-              "line": 0.0,
-              "edge": 0.0,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "STL": {
-              "tc_projection": 0.7,
-              "line": 0.5,
-              "edge": 0.2,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "BLK": {
-              "tc_projection": 0.6,
-              "line": 0.5,
-              "edge": 0.1,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            }
-          }
-        },
-        {
-          "player": "Georgia Amoore",
-          "team": "SEA",
-          "role": "START",
-          "status": "ACTIVE",
-          "pos": "",
-          "projections": {
-            "PTS": {
-              "tc_projection": 6.7,
-              "line": 6.0,
-              "edge": 0.7,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "REB": {
-              "tc_projection": 1.2,
-              "line": 1.0,
               "edge": 0.2,
               "direction": "PASS",
               "dk_line": null,
@@ -391,17 +49,17 @@
               "valid": false
             },
             "3PM": {
-              "tc_projection": 1.2,
-              "line": 1.0,
-              "edge": 0.2,
+              "tc_projection": 1.9,
+              "line": 1.5,
+              "edge": 0.4,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
             },
             "STL": {
-              "tc_projection": 0.3,
-              "line": 0.5,
-              "edge": -0.2,
+              "tc_projection": 1.1,
+              "line": 1.0,
+              "edge": 0.1,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
@@ -417,23 +75,365 @@
           }
         },
         {
-          "player": "Angela Dugalic",
+          "player": "Flau'jae Johnson",
           "team": "SEA",
-          "role": "BENCH",
+          "role": "START",
           "status": "ACTIVE",
           "pos": "",
           "projections": {
             "PTS": {
-              "tc_projection": 8.0,
-              "line": 7.0,
+              "tc_projection": 11.3,
+              "line": 10.0,
+              "edge": 1.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 4.8,
+              "line": 4.0,
+              "edge": 0.8,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 2.4,
+              "line": 2.0,
+              "edge": 0.4,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 1.2,
+              "line": 1.0,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.9,
+              "line": 1.0,
+              "edge": -0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.8,
+              "line": 0.5,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Awa Fam",
+          "team": "SEA",
+          "role": "START",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 10.0,
+              "line": 9.0,
               "edge": 1.0,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
             },
             "REB": {
-              "tc_projection": 6.1,
+              "tc_projection": 4.3,
+              "line": 4.0,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 1.5,
+              "line": 1.5,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 1.3,
+              "line": 1.0,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.9,
+              "line": 1.0,
+              "edge": -0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.8,
+              "line": 0.5,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Jade Melbourne",
+          "team": "SEA",
+          "role": "START",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 9.6,
+              "line": 8.5,
+              "edge": 1.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 2.3,
+              "line": 2.0,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 4.1,
+              "line": 3.5,
+              "edge": 0.6,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.7,
+              "line": 0.5,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 1.0,
+              "line": 1.0,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.2,
+              "line": 0.0,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Zia Cooke",
+          "team": "SEA",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 12.3,
+              "line": 11.0,
+              "edge": 1.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 3.2,
+              "line": 3.0,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 1.7,
+              "line": 1.5,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 1.4,
+              "line": 1.0,
+              "edge": 0.4,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.5,
+              "line": 0.5,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.0,
+              "line": 0.0,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Jordan Horston",
+          "team": "SEA",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 6.0,
               "line": 5.5,
+              "edge": 0.5,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 4.8,
+              "line": 4.0,
+              "edge": 0.8,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 2.1,
+              "line": 2.0,
+              "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.4,
+              "line": 0.5,
+              "edge": -0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 1.5,
+              "line": 1.5,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.8,
+              "line": 0.5,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Stefanie Dolson",
+          "team": "SEA",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 5.7,
+              "line": 5.0,
+              "edge": 0.7,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 3.4,
+              "line": 3.0,
+              "edge": 0.4,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 1.7,
+              "line": 1.5,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.8,
+              "line": 0.5,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.4,
+              "line": 0.5,
+              "edge": -0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.8,
+              "line": 0.5,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Katie Lou Samuelson",
+          "team": "SEA",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 6.3,
+              "line": 5.5,
+              "edge": 0.8,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 3.6,
+              "line": 3.0,
               "edge": 0.6,
               "direction": "PASS",
               "dk_line": null,
@@ -448,74 +448,17 @@
               "valid": false
             },
             "3PM": {
-              "tc_projection": 0.3,
-              "line": 0.5,
-              "edge": -0.2,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "STL": {
-              "tc_projection": 0.9,
+              "tc_projection": 1.4,
               "line": 1.0,
-              "edge": -0.1,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "BLK": {
-              "tc_projection": 0.6,
-              "line": 0.5,
-              "edge": 0.1,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            }
-          }
-        },
-        {
-          "player": "Cassandre Prosper",
-          "team": "SEA",
-          "role": "BENCH",
-          "status": "ACTIVE",
-          "pos": "",
-          "projections": {
-            "PTS": {
-              "tc_projection": 5.2,
-              "line": 4.5,
-              "edge": 0.7,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "REB": {
-              "tc_projection": 2.4,
-              "line": 2.0,
               "edge": 0.4,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
             },
-            "AST": {
-              "tc_projection": 1.0,
-              "line": 1.0,
-              "edge": 0.0,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "3PM": {
-              "tc_projection": 0.5,
-              "line": 0.5,
-              "edge": 0.0,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
             "STL": {
-              "tc_projection": 0.5,
-              "line": 0.5,
-              "edge": 0.0,
+              "tc_projection": 1.4,
+              "line": 1.0,
+              "edge": 0.4,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
@@ -531,56 +474,56 @@
           }
         },
         {
-          "player": "Lucy Olsen",
+          "player": "Dominique Malonga",
           "team": "SEA",
-          "role": "BENCH",
+          "role": "START",
           "status": "ACTIVE",
           "pos": "",
           "projections": {
             "PTS": {
-              "tc_projection": 8.3,
-              "line": 7.5,
-              "edge": 0.8,
+              "tc_projection": 15.7,
+              "line": 14.0,
+              "edge": 1.7,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
             },
             "REB": {
-              "tc_projection": 2.0,
-              "line": 2.0,
-              "edge": 0.0,
+              "tc_projection": 7.3,
+              "line": 6.5,
+              "edge": 0.8,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
             },
             "AST": {
-              "tc_projection": 3.6,
-              "line": 3.0,
-              "edge": 0.6,
+              "tc_projection": 1.3,
+              "line": 1.0,
+              "edge": 0.3,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
             },
             "3PM": {
-              "tc_projection": 1.0,
-              "line": 1.0,
-              "edge": 0.0,
+              "tc_projection": 0.7,
+              "line": 0.5,
+              "edge": 0.2,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
             },
             "STL": {
-              "tc_projection": 0.6,
+              "tc_projection": 0.8,
               "line": 0.5,
-              "edge": 0.1,
+              "edge": 0.3,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
             },
             "BLK": {
-              "tc_projection": 0.0,
-              "line": 0.0,
-              "edge": 0.0,
+              "tc_projection": 1.2,
+              "line": 1.0,
+              "edge": 0.2,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
@@ -588,48 +531,105 @@
           }
         },
         {
-          "player": "Alicia Florez",
+          "player": "Mackenzie Holmes",
           "team": "SEA",
           "role": "BENCH",
           "status": "ACTIVE",
           "pos": "",
           "projections": {
             "PTS": {
-              "tc_projection": 6.5,
-              "line": 5.5,
-              "edge": 1.0,
+              "tc_projection": 6.7,
+              "line": 6.0,
+              "edge": 0.7,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
             },
             "REB": {
-              "tc_projection": 3.2,
-              "line": 3.0,
+              "tc_projection": 7.1,
+              "line": 6.0,
+              "edge": 1.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 1.3,
+              "line": 1.0,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.7,
+              "line": 0.5,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 1.3,
+              "line": 1.0,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.7,
+              "line": 0.5,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Lexie Brown",
+          "team": "SEA",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 6.4,
+              "line": 5.5,
+              "edge": 0.9,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 2.2,
+              "line": 2.0,
               "edge": 0.2,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
             },
             "AST": {
-              "tc_projection": 4.5,
-              "line": 4.0,
-              "edge": 0.5,
+              "tc_projection": 1.9,
+              "line": 1.5,
+              "edge": 0.4,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
             },
             "3PM": {
-              "tc_projection": 0.6,
-              "line": 0.5,
-              "edge": 0.1,
+              "tc_projection": 1.5,
+              "line": 1.5,
+              "edge": 0.0,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
             },
             "STL": {
-              "tc_projection": 1.4,
-              "line": 1.0,
-              "edge": 0.4,
+              "tc_projection": 0.8,
+              "line": 0.5,
+              "edge": 0.3,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
@@ -645,56 +645,56 @@
           }
         },
         {
-          "player": "Rori Harmon",
+          "player": "Joyner Holmes",
           "team": "SEA",
           "role": "BENCH",
           "status": "ACTIVE",
           "pos": "",
           "projections": {
             "PTS": {
-              "tc_projection": 3.1,
-              "line": 2.5,
-              "edge": 0.6,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "REB": {
-              "tc_projection": 3.1,
-              "line": 2.5,
-              "edge": 0.6,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "AST": {
-              "tc_projection": 4.3,
-              "line": 4.0,
+              "tc_projection": 3.3,
+              "line": 3.0,
               "edge": 0.3,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
             },
+            "REB": {
+              "tc_projection": 8.3,
+              "line": 7.5,
+              "edge": 0.8,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 1.7,
+              "line": 1.5,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
             "3PM": {
-              "tc_projection": 0.4,
-              "line": 0.5,
-              "edge": -0.1,
+              "tc_projection": 0.0,
+              "line": 0.0,
+              "edge": 0.0,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
             },
             "STL": {
-              "tc_projection": 2.0,
-              "line": 2.0,
+              "tc_projection": 0.0,
+              "line": 0.0,
               "edge": 0.0,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
             },
             "BLK": {
-              "tc_projection": 0.0,
-              "line": 0.0,
-              "edge": 0.0,
+              "tc_projection": 5.0,
+              "line": 4.5,
+              "edge": 0.5,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
@@ -702,40 +702,97 @@
           }
         },
         {
-          "player": "Alex Wilson",
+          "player": "Ezi Magbegor",
           "team": "SEA",
           "role": "BENCH",
           "status": "ACTIVE",
           "pos": "",
           "projections": {
             "PTS": {
-              "tc_projection": 5.2,
-              "line": 4.5,
+              "tc_projection": 6.7,
+              "line": 6.0,
               "edge": 0.7,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
             },
             "REB": {
-              "tc_projection": 3.0,
-              "line": 2.5,
-              "edge": 0.5,
+              "tc_projection": 6.1,
+              "line": 5.5,
+              "edge": 0.6,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
             },
             "AST": {
-              "tc_projection": 1.3,
+              "tc_projection": 2.2,
+              "line": 2.0,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 1.1,
               "line": 1.0,
+              "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 1.1,
+              "line": 1.0,
+              "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 1.7,
+              "line": 1.5,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Taina Mair",
+          "team": "SEA",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 3.8,
+              "line": 3.5,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 3.8,
+              "line": 3.5,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 3.8,
+              "line": 3.5,
               "edge": 0.3,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
             },
             "3PM": {
-              "tc_projection": 0.9,
-              "line": 1.0,
-              "edge": -0.1,
+              "tc_projection": 0.0,
+              "line": 0.0,
+              "edge": 0.0,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
@@ -749,69 +806,8 @@
               "valid": false
             },
             "BLK": {
-              "tc_projection": 0.4,
-              "line": 0.5,
-              "edge": -0.1,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            }
-          }
-        }
-      ]
-    },
-    "starters": {
-      "players": [
-        {
-          "player": "Sonia Citron",
-          "team": "SEA",
-          "role": "START",
-          "status": "ACTIVE",
-          "pos": "",
-          "projections": {
-            "PTS": {
-              "tc_projection": 13.5,
-              "line": 12.0,
-              "edge": 1.5,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "REB": {
-              "tc_projection": 2.9,
-              "line": 2.5,
-              "edge": 0.4,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "AST": {
-              "tc_projection": 2.6,
-              "line": 2.5,
-              "edge": 0.1,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "3PM": {
-              "tc_projection": 0.9,
-              "line": 1.0,
-              "edge": -0.1,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "STL": {
-              "tc_projection": 0.9,
-              "line": 1.0,
-              "edge": -0.1,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "BLK": {
-              "tc_projection": 0.5,
-              "line": 0.5,
+              "tc_projection": 0.0,
+              "line": 0.0,
               "edge": 0.0,
               "direction": "PASS",
               "dk_line": null,
@@ -820,40 +816,40 @@
           }
         },
         {
-          "player": "Kiki Iriafen",
+          "player": "Taylor Thierry",
           "team": "SEA",
-          "role": "START",
+          "role": "BENCH",
           "status": "ACTIVE",
           "pos": "",
           "projections": {
             "PTS": {
-              "tc_projection": 13.5,
-              "line": 12.0,
-              "edge": 1.5,
+              "tc_projection": 3.9,
+              "line": 3.5,
+              "edge": 0.4,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
             },
             "REB": {
-              "tc_projection": 8.2,
-              "line": 7.0,
-              "edge": 1.2,
+              "tc_projection": 5.3,
+              "line": 4.5,
+              "edge": 0.8,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
             },
             "AST": {
-              "tc_projection": 1.5,
-              "line": 1.5,
+              "tc_projection": 0.0,
+              "line": 0.0,
               "edge": 0.0,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
             },
             "3PM": {
-              "tc_projection": 0.4,
-              "line": 0.5,
-              "edge": -0.1,
+              "tc_projection": 1.3,
+              "line": 1.0,
+              "edge": 0.3,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
@@ -867,147 +863,37 @@
               "valid": false
             },
             "BLK": {
-              "tc_projection": 0.3,
-              "line": 0.5,
-              "edge": -0.2,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            }
-          }
-        },
-        {
-          "player": "Shakira Austin",
-          "team": "SEA",
-          "role": "START",
-          "status": "ACTIVE",
-          "pos": "",
-          "projections": {
-            "PTS": {
-              "tc_projection": 11.6,
-              "line": 10.0,
-              "edge": 1.6,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "REB": {
-              "tc_projection": 8.1,
-              "line": 7.0,
-              "edge": 1.1,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "AST": {
-              "tc_projection": 2.4,
-              "line": 2.0,
-              "edge": 0.4,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "3PM": {
-              "tc_projection": 0.4,
-              "line": 0.5,
-              "edge": -0.1,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "STL": {
-              "tc_projection": 0.5,
-              "line": 0.5,
+              "tc_projection": 0.0,
+              "line": 0.0,
               "edge": 0.0,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
-            },
-            "BLK": {
-              "tc_projection": 1.2,
-              "line": 1.0,
-              "edge": 0.2,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
             }
           }
-        },
+        }
+      ]
+    },
+    "starters": {
+      "players": [
         {
-          "player": "Michaela Onyenwere",
+          "player": "Natisha Hiedeman",
           "team": "SEA",
           "role": "START",
           "status": "ACTIVE",
           "pos": "",
           "projections": {
             "PTS": {
-              "tc_projection": 10.4,
-              "line": 9.0,
-              "edge": 1.4,
+              "tc_projection": 13.5,
+              "line": 12.0,
+              "edge": 1.5,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
             },
             "REB": {
-              "tc_projection": 2.9,
-              "line": 2.5,
-              "edge": 0.4,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "AST": {
-              "tc_projection": 1.3,
-              "line": 1.0,
-              "edge": 0.3,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "3PM": {
-              "tc_projection": 1.3,
-              "line": 1.0,
-              "edge": 0.3,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "STL": {
-              "tc_projection": 0.4,
-              "line": 0.5,
-              "edge": -0.1,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "BLK": {
-              "tc_projection": 0.1,
-              "line": 0.0,
-              "edge": 0.1,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            }
-          }
-        },
-        {
-          "player": "Georgia Amoore",
-          "team": "SEA",
-          "role": "START",
-          "status": "ACTIVE",
-          "pos": "",
-          "projections": {
-            "PTS": {
-              "tc_projection": 6.7,
-              "line": 6.0,
-              "edge": 0.7,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "REB": {
-              "tc_projection": 1.2,
-              "line": 1.0,
+              "tc_projection": 2.2,
+              "line": 2.0,
               "edge": 0.2,
               "direction": "PASS",
               "dk_line": null,
@@ -1022,6 +908,63 @@
               "valid": false
             },
             "3PM": {
+              "tc_projection": 1.9,
+              "line": 1.5,
+              "edge": 0.4,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 1.1,
+              "line": 1.0,
+              "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.2,
+              "line": 0.0,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Flau'jae Johnson",
+          "team": "SEA",
+          "role": "START",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 11.3,
+              "line": 10.0,
+              "edge": 1.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 4.8,
+              "line": 4.0,
+              "edge": 0.8,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 2.4,
+              "line": 2.0,
+              "edge": 0.4,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
               "tc_projection": 1.2,
               "line": 1.0,
               "edge": 0.2,
@@ -1030,9 +973,123 @@
               "valid": false
             },
             "STL": {
-              "tc_projection": 0.3,
+              "tc_projection": 0.9,
+              "line": 1.0,
+              "edge": -0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.8,
               "line": 0.5,
-              "edge": -0.2,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Awa Fam",
+          "team": "SEA",
+          "role": "START",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 10.0,
+              "line": 9.0,
+              "edge": 1.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 4.3,
+              "line": 4.0,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 1.5,
+              "line": 1.5,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 1.3,
+              "line": 1.0,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.9,
+              "line": 1.0,
+              "edge": -0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.8,
+              "line": 0.5,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Jade Melbourne",
+          "team": "SEA",
+          "role": "START",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 9.6,
+              "line": 8.5,
+              "edge": 1.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 2.3,
+              "line": 2.0,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 4.1,
+              "line": 3.5,
+              "edge": 0.6,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.7,
+              "line": 0.5,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 1.0,
+              "line": 1.0,
+              "edge": 0.0,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
@@ -1040,6 +1097,63 @@
             "BLK": {
               "tc_projection": 0.2,
               "line": 0.0,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Dominique Malonga",
+          "team": "SEA",
+          "role": "START",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 15.7,
+              "line": 14.0,
+              "edge": 1.7,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 7.3,
+              "line": 6.5,
+              "edge": 0.8,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 1.3,
+              "line": 1.0,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.7,
+              "line": 0.5,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.8,
+              "line": 0.5,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 1.2,
+              "line": 1.0,
               "edge": 0.2,
               "direction": "PASS",
               "dk_line": null,
@@ -1052,16 +1166,16 @@
     "bench": {
       "players": [
         {
-          "player": "Cotie McMahon",
+          "player": "Zia Cooke",
           "team": "SEA",
           "role": "BENCH",
           "status": "ACTIVE",
           "pos": "",
           "projections": {
             "PTS": {
-              "tc_projection": 8.0,
-              "line": 7.0,
-              "edge": 1.0,
+              "tc_projection": 12.3,
+              "line": 11.0,
+              "edge": 1.3,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
@@ -1075,90 +1189,90 @@
               "valid": false
             },
             "AST": {
-              "tc_projection": 2.4,
-              "line": 2.0,
+              "tc_projection": 1.7,
+              "line": 1.5,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 1.4,
+              "line": 1.0,
               "edge": 0.4,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
             },
-            "3PM": {
-              "tc_projection": 1.0,
-              "line": 1.0,
+            "STL": {
+              "tc_projection": 0.5,
+              "line": 0.5,
               "edge": 0.0,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
             },
-            "STL": {
-              "tc_projection": 0.6,
-              "line": 0.5,
-              "edge": 0.1,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
             "BLK": {
-              "tc_projection": 0.2,
-              "line": 0.0,
-              "edge": 0.2,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            }
-          }
-        },
-        {
-          "player": "Lauren Betts",
-          "team": "SEA",
-          "role": "BENCH",
-          "status": "ACTIVE",
-          "pos": "",
-          "projections": {
-            "PTS": {
-              "tc_projection": 9.8,
-              "line": 8.5,
-              "edge": 1.3,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "REB": {
-              "tc_projection": 5.6,
-              "line": 5.0,
-              "edge": 0.6,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "AST": {
-              "tc_projection": 1.3,
-              "line": 1.0,
-              "edge": 0.3,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "3PM": {
               "tc_projection": 0.0,
               "line": 0.0,
               "edge": 0.0,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
+            }
+          }
+        },
+        {
+          "player": "Jordan Horston",
+          "team": "SEA",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 6.0,
+              "line": 5.5,
+              "edge": 0.5,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 4.8,
+              "line": 4.0,
+              "edge": 0.8,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 2.1,
+              "line": 2.0,
+              "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.4,
+              "line": 0.5,
+              "edge": -0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
             },
             "STL": {
-              "tc_projection": 0.7,
-              "line": 0.5,
-              "edge": 0.2,
+              "tc_projection": 1.5,
+              "line": 1.5,
+              "edge": 0.0,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
             },
             "BLK": {
-              "tc_projection": 0.6,
+              "tc_projection": 0.8,
               "line": 0.5,
-              "edge": 0.1,
+              "edge": 0.3,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
@@ -1166,23 +1280,80 @@
           }
         },
         {
-          "player": "Angela Dugalic",
+          "player": "Stefanie Dolson",
           "team": "SEA",
           "role": "BENCH",
           "status": "ACTIVE",
           "pos": "",
           "projections": {
             "PTS": {
-              "tc_projection": 8.0,
-              "line": 7.0,
-              "edge": 1.0,
+              "tc_projection": 5.7,
+              "line": 5.0,
+              "edge": 0.7,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
             },
             "REB": {
-              "tc_projection": 6.1,
+              "tc_projection": 3.4,
+              "line": 3.0,
+              "edge": 0.4,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 1.7,
+              "line": 1.5,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.8,
+              "line": 0.5,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.4,
+              "line": 0.5,
+              "edge": -0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.8,
+              "line": 0.5,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Katie Lou Samuelson",
+          "team": "SEA",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 6.3,
               "line": 5.5,
+              "edge": 0.8,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 3.6,
+              "line": 3.0,
               "edge": 0.6,
               "direction": "PASS",
               "dk_line": null,
@@ -1197,74 +1368,17 @@
               "valid": false
             },
             "3PM": {
-              "tc_projection": 0.3,
-              "line": 0.5,
-              "edge": -0.2,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "STL": {
-              "tc_projection": 0.9,
+              "tc_projection": 1.4,
               "line": 1.0,
-              "edge": -0.1,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "BLK": {
-              "tc_projection": 0.6,
-              "line": 0.5,
-              "edge": 0.1,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            }
-          }
-        },
-        {
-          "player": "Cassandre Prosper",
-          "team": "SEA",
-          "role": "BENCH",
-          "status": "ACTIVE",
-          "pos": "",
-          "projections": {
-            "PTS": {
-              "tc_projection": 5.2,
-              "line": 4.5,
-              "edge": 0.7,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "REB": {
-              "tc_projection": 2.4,
-              "line": 2.0,
               "edge": 0.4,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
             },
-            "AST": {
-              "tc_projection": 1.0,
-              "line": 1.0,
-              "edge": 0.0,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "3PM": {
-              "tc_projection": 0.5,
-              "line": 0.5,
-              "edge": 0.0,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
             "STL": {
-              "tc_projection": 0.5,
-              "line": 0.5,
-              "edge": 0.0,
+              "tc_projection": 1.4,
+              "line": 1.0,
+              "edge": 0.4,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
@@ -1280,56 +1394,56 @@
           }
         },
         {
-          "player": "Lucy Olsen",
+          "player": "Mackenzie Holmes",
           "team": "SEA",
           "role": "BENCH",
           "status": "ACTIVE",
           "pos": "",
           "projections": {
             "PTS": {
-              "tc_projection": 8.3,
-              "line": 7.5,
-              "edge": 0.8,
+              "tc_projection": 6.7,
+              "line": 6.0,
+              "edge": 0.7,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
             },
             "REB": {
-              "tc_projection": 2.0,
-              "line": 2.0,
-              "edge": 0.0,
+              "tc_projection": 7.1,
+              "line": 6.0,
+              "edge": 1.1,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
             },
             "AST": {
-              "tc_projection": 3.6,
-              "line": 3.0,
-              "edge": 0.6,
+              "tc_projection": 1.3,
+              "line": 1.0,
+              "edge": 0.3,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
             },
             "3PM": {
-              "tc_projection": 1.0,
-              "line": 1.0,
-              "edge": 0.0,
+              "tc_projection": 0.7,
+              "line": 0.5,
+              "edge": 0.2,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
             },
             "STL": {
-              "tc_projection": 0.6,
-              "line": 0.5,
-              "edge": 0.1,
+              "tc_projection": 1.3,
+              "line": 1.0,
+              "edge": 0.3,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
             },
             "BLK": {
-              "tc_projection": 0.0,
-              "line": 0.0,
-              "edge": 0.0,
+              "tc_projection": 0.7,
+              "line": 0.5,
+              "edge": 0.2,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
@@ -1337,48 +1451,48 @@
           }
         },
         {
-          "player": "Alicia Florez",
+          "player": "Lexie Brown",
           "team": "SEA",
           "role": "BENCH",
           "status": "ACTIVE",
           "pos": "",
           "projections": {
             "PTS": {
-              "tc_projection": 6.5,
+              "tc_projection": 6.4,
               "line": 5.5,
-              "edge": 1.0,
+              "edge": 0.9,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
             },
             "REB": {
-              "tc_projection": 3.2,
-              "line": 3.0,
+              "tc_projection": 2.2,
+              "line": 2.0,
               "edge": 0.2,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
             },
             "AST": {
-              "tc_projection": 4.5,
-              "line": 4.0,
-              "edge": 0.5,
+              "tc_projection": 1.9,
+              "line": 1.5,
+              "edge": 0.4,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
             },
             "3PM": {
-              "tc_projection": 0.6,
-              "line": 0.5,
-              "edge": 0.1,
+              "tc_projection": 1.5,
+              "line": 1.5,
+              "edge": 0.0,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
             },
             "STL": {
-              "tc_projection": 1.4,
-              "line": 1.0,
-              "edge": 0.4,
+              "tc_projection": 0.8,
+              "line": 0.5,
+              "edge": 0.3,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
@@ -1394,47 +1508,161 @@
           }
         },
         {
-          "player": "Rori Harmon",
+          "player": "Joyner Holmes",
           "team": "SEA",
           "role": "BENCH",
           "status": "ACTIVE",
           "pos": "",
           "projections": {
             "PTS": {
-              "tc_projection": 3.1,
-              "line": 2.5,
-              "edge": 0.6,
+              "tc_projection": 3.3,
+              "line": 3.0,
+              "edge": 0.3,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
             },
             "REB": {
-              "tc_projection": 3.1,
-              "line": 2.5,
+              "tc_projection": 8.3,
+              "line": 7.5,
+              "edge": 0.8,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 1.7,
+              "line": 1.5,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.0,
+              "line": 0.0,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.0,
+              "line": 0.0,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 5.0,
+              "line": 4.5,
+              "edge": 0.5,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Ezi Magbegor",
+          "team": "SEA",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 6.7,
+              "line": 6.0,
+              "edge": 0.7,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 6.1,
+              "line": 5.5,
               "edge": 0.6,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
             },
             "AST": {
-              "tc_projection": 4.3,
-              "line": 4.0,
+              "tc_projection": 2.2,
+              "line": 2.0,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 1.1,
+              "line": 1.0,
+              "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 1.1,
+              "line": 1.0,
+              "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 1.7,
+              "line": 1.5,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Taina Mair",
+          "team": "SEA",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 3.8,
+              "line": 3.5,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 3.8,
+              "line": 3.5,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 3.8,
+              "line": 3.5,
               "edge": 0.3,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
             },
             "3PM": {
-              "tc_projection": 0.4,
-              "line": 0.5,
-              "edge": -0.1,
+              "tc_projection": 0.0,
+              "line": 0.0,
+              "edge": 0.0,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
             },
             "STL": {
-              "tc_projection": 2.0,
-              "line": 2.0,
+              "tc_projection": 0.0,
+              "line": 0.0,
               "edge": 0.0,
               "direction": "PASS",
               "dk_line": null,
@@ -1451,45 +1679,29 @@
           }
         },
         {
-          "player": "Alex Wilson",
+          "player": "Taylor Thierry",
           "team": "SEA",
           "role": "BENCH",
           "status": "ACTIVE",
           "pos": "",
           "projections": {
             "PTS": {
-              "tc_projection": 5.2,
-              "line": 4.5,
-              "edge": 0.7,
+              "tc_projection": 3.9,
+              "line": 3.5,
+              "edge": 0.4,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
             },
             "REB": {
-              "tc_projection": 3.0,
-              "line": 2.5,
-              "edge": 0.5,
+              "tc_projection": 5.3,
+              "line": 4.5,
+              "edge": 0.8,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
             },
             "AST": {
-              "tc_projection": 1.3,
-              "line": 1.0,
-              "edge": 0.3,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "3PM": {
-              "tc_projection": 0.9,
-              "line": 1.0,
-              "edge": -0.1,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "STL": {
               "tc_projection": 0.0,
               "line": 0.0,
               "edge": 0.0,
@@ -1497,10 +1709,26 @@
               "dk_line": null,
               "valid": false
             },
-            "BLK": {
-              "tc_projection": 0.4,
+            "3PM": {
+              "tc_projection": 1.3,
+              "line": 1.0,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.7,
               "line": 0.5,
-              "edge": -0.1,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.0,
+              "line": 0.0,
+              "edge": 0.0,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
@@ -1512,18 +1740,1534 @@
   },
   "home": {
     "all": {
-      "players": []
+      "players": [
+        {
+          "player": "Rhyne Howard",
+          "team": "ATL",
+          "role": "START",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 13.4,
+              "line": 12.0,
+              "edge": 1.4,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 2.7,
+              "line": 2.5,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 2.3,
+              "line": 2.0,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 2.4,
+              "line": 2.0,
+              "edge": 0.4,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 1.7,
+              "line": 1.5,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.5,
+              "line": 0.5,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Allisha Gray",
+          "team": "ATL",
+          "role": "START",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 13.9,
+              "line": 12.0,
+              "edge": 1.9,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 2.4,
+              "line": 2.0,
+              "edge": 0.4,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 1.6,
+              "line": 1.5,
+              "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 1.2,
+              "line": 1.0,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 1.2,
+              "line": 1.0,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.3,
+              "line": 0.5,
+              "edge": -0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Angel Reese",
+          "team": "ATL",
+          "role": "START",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 12.1,
+              "line": 10.5,
+              "edge": 1.6,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 9.6,
+              "line": 8.5,
+              "edge": 1.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 2.1,
+              "line": 2.0,
+              "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.1,
+              "line": 0.0,
+              "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 1.3,
+              "line": 1.0,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.6,
+              "line": 0.5,
+              "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Jordin Canada",
+          "team": "ATL",
+          "role": "START",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 9.1,
+              "line": 8.0,
+              "edge": 1.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 2.9,
+              "line": 2.5,
+              "edge": 0.4,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 5.7,
+              "line": 5.0,
+              "edge": 0.7,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.7,
+              "line": 0.5,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 1.6,
+              "line": 1.5,
+              "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.2,
+              "line": 0.0,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Naz Hillmon",
+          "team": "ATL",
+          "role": "START",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 7.2,
+              "line": 6.5,
+              "edge": 0.7,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 4.1,
+              "line": 3.5,
+              "edge": 0.6,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 1.2,
+              "line": 1.0,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.8,
+              "line": 0.5,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.5,
+              "line": 0.5,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.2,
+              "line": 0.0,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Madina Okot",
+          "team": "ATL",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 14.9,
+              "line": 13.0,
+              "edge": 1.9,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 9.3,
+              "line": 8.0,
+              "edge": 1.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 0.6,
+              "line": 0.5,
+              "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.1,
+              "line": 0.0,
+              "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.8,
+              "line": 0.5,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.8,
+              "line": 0.5,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Isobel Borlase",
+          "team": "ATL",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 8.8,
+              "line": 7.5,
+              "edge": 1.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 2.9,
+              "line": 2.5,
+              "edge": 0.4,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 1.9,
+              "line": 1.5,
+              "edge": 0.4,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 1.0,
+              "line": 1.0,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.6,
+              "line": 0.5,
+              "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.2,
+              "line": 0.0,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Te-Hina Paopao",
+          "team": "ATL",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 7.9,
+              "line": 7.0,
+              "edge": 0.9,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 2.0,
+              "line": 2.0,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 3.0,
+              "line": 2.5,
+              "edge": 0.5,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 1.9,
+              "line": 1.5,
+              "edge": 0.4,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.4,
+              "line": 0.5,
+              "edge": -0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.3,
+              "line": 0.5,
+              "edge": -0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Sika Kone",
+          "team": "ATL",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 8.7,
+              "line": 7.5,
+              "edge": 1.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 5.4,
+              "line": 5.0,
+              "edge": 0.4,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 1.4,
+              "line": 1.0,
+              "edge": 0.4,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.7,
+              "line": 0.5,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.5,
+              "line": 0.5,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.0,
+              "line": 0.0,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Indya Nivar",
+          "team": "ATL",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 7.1,
+              "line": 6.0,
+              "edge": 1.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 7.1,
+              "line": 6.0,
+              "edge": 1.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 2.9,
+              "line": 2.5,
+              "edge": 0.4,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.8,
+              "line": 0.5,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 2.1,
+              "line": 2.0,
+              "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.8,
+              "line": 0.5,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Aaliyah Nye",
+          "team": "ATL",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 4.7,
+              "line": 4.0,
+              "edge": 0.7,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 0.0,
+              "line": 0.0,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 3.1,
+              "line": 2.5,
+              "edge": 0.6,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 1.6,
+              "line": 1.5,
+              "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 1.6,
+              "line": 1.5,
+              "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.0,
+              "line": 0.0,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Shatori Walker-Kimbrough",
+          "team": "ATL",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 0.0,
+              "line": 0.0,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 0.0,
+              "line": 0.0,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 0.0,
+              "line": 0.0,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.0,
+              "line": 0.0,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.0,
+              "line": 0.0,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.0,
+              "line": 0.0,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Amy Okonkwo",
+          "team": "ATL",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 25.0,
+              "line": 22.0,
+              "edge": 3.0,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 25.0,
+              "line": 22.0,
+              "edge": 3.0,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "AST": {
+              "tc_projection": 0.0,
+              "line": 0.0,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.0,
+              "line": 0.0,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.0,
+              "line": 0.0,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.0,
+              "line": 0.0,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        }
+      ]
     },
     "starters": {
-      "players": []
+      "players": [
+        {
+          "player": "Rhyne Howard",
+          "team": "ATL",
+          "role": "START",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 13.4,
+              "line": 12.0,
+              "edge": 1.4,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 2.7,
+              "line": 2.5,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 2.3,
+              "line": 2.0,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 2.4,
+              "line": 2.0,
+              "edge": 0.4,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 1.7,
+              "line": 1.5,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.5,
+              "line": 0.5,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Allisha Gray",
+          "team": "ATL",
+          "role": "START",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 13.9,
+              "line": 12.0,
+              "edge": 1.9,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 2.4,
+              "line": 2.0,
+              "edge": 0.4,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 1.6,
+              "line": 1.5,
+              "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 1.2,
+              "line": 1.0,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 1.2,
+              "line": 1.0,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.3,
+              "line": 0.5,
+              "edge": -0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Angel Reese",
+          "team": "ATL",
+          "role": "START",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 12.1,
+              "line": 10.5,
+              "edge": 1.6,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 9.6,
+              "line": 8.5,
+              "edge": 1.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 2.1,
+              "line": 2.0,
+              "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.1,
+              "line": 0.0,
+              "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 1.3,
+              "line": 1.0,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.6,
+              "line": 0.5,
+              "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Jordin Canada",
+          "team": "ATL",
+          "role": "START",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 9.1,
+              "line": 8.0,
+              "edge": 1.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 2.9,
+              "line": 2.5,
+              "edge": 0.4,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 5.7,
+              "line": 5.0,
+              "edge": 0.7,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.7,
+              "line": 0.5,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 1.6,
+              "line": 1.5,
+              "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.2,
+              "line": 0.0,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Naz Hillmon",
+          "team": "ATL",
+          "role": "START",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 7.2,
+              "line": 6.5,
+              "edge": 0.7,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 4.1,
+              "line": 3.5,
+              "edge": 0.6,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 1.2,
+              "line": 1.0,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.8,
+              "line": 0.5,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.5,
+              "line": 0.5,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.2,
+              "line": 0.0,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        }
+      ]
     },
     "bench": {
-      "players": []
+      "players": [
+        {
+          "player": "Madina Okot",
+          "team": "ATL",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 14.9,
+              "line": 13.0,
+              "edge": 1.9,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 9.3,
+              "line": 8.0,
+              "edge": 1.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 0.6,
+              "line": 0.5,
+              "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.1,
+              "line": 0.0,
+              "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.8,
+              "line": 0.5,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.8,
+              "line": 0.5,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Isobel Borlase",
+          "team": "ATL",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 8.8,
+              "line": 7.5,
+              "edge": 1.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 2.9,
+              "line": 2.5,
+              "edge": 0.4,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 1.9,
+              "line": 1.5,
+              "edge": 0.4,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 1.0,
+              "line": 1.0,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.6,
+              "line": 0.5,
+              "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.2,
+              "line": 0.0,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Te-Hina Paopao",
+          "team": "ATL",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 7.9,
+              "line": 7.0,
+              "edge": 0.9,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 2.0,
+              "line": 2.0,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 3.0,
+              "line": 2.5,
+              "edge": 0.5,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 1.9,
+              "line": 1.5,
+              "edge": 0.4,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.4,
+              "line": 0.5,
+              "edge": -0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.3,
+              "line": 0.5,
+              "edge": -0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Sika Kone",
+          "team": "ATL",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 8.7,
+              "line": 7.5,
+              "edge": 1.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 5.4,
+              "line": 5.0,
+              "edge": 0.4,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 1.4,
+              "line": 1.0,
+              "edge": 0.4,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.7,
+              "line": 0.5,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.5,
+              "line": 0.5,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.0,
+              "line": 0.0,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Indya Nivar",
+          "team": "ATL",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 7.1,
+              "line": 6.0,
+              "edge": 1.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 7.1,
+              "line": 6.0,
+              "edge": 1.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 2.9,
+              "line": 2.5,
+              "edge": 0.4,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.8,
+              "line": 0.5,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 2.1,
+              "line": 2.0,
+              "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.8,
+              "line": 0.5,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Aaliyah Nye",
+          "team": "ATL",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 4.7,
+              "line": 4.0,
+              "edge": 0.7,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 0.0,
+              "line": 0.0,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 3.1,
+              "line": 2.5,
+              "edge": 0.6,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 1.6,
+              "line": 1.5,
+              "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 1.6,
+              "line": 1.5,
+              "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.0,
+              "line": 0.0,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Shatori Walker-Kimbrough",
+          "team": "ATL",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 0.0,
+              "line": 0.0,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 0.0,
+              "line": 0.0,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 0.0,
+              "line": 0.0,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.0,
+              "line": 0.0,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.0,
+              "line": 0.0,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.0,
+              "line": 0.0,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Amy Okonkwo",
+          "team": "ATL",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 25.0,
+              "line": 22.0,
+              "edge": 3.0,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 25.0,
+              "line": 22.0,
+              "edge": 3.0,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "AST": {
+              "tc_projection": 0.0,
+              "line": 0.0,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.0,
+              "line": 0.0,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.0,
+              "line": 0.0,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.0,
+              "line": 0.0,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        }
+      ]
     }
   },
   "roster_counts": {
-    "away": 13,
-    "home": 0
+    "away": 15,
+    "home": 13
   },
-  "valid_props": []
+  "valid_props": [
+    {
+      "player": "Amy Okonkwo",
+      "team": "ATL",
+      "stat": "PTS",
+      "direction": "OVER",
+      "market_line": 22.0,
+      "tc_projection": 25.0,
+      "tc_target": 22.0,
+      "edge": 3.0,
+      "threshold": 2.0,
+      "raw_average": 25.0,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "BENCH"
+    },
+    {
+      "player": "Amy Okonkwo",
+      "team": "ATL",
+      "stat": "REB",
+      "direction": "OVER",
+      "market_line": 22.0,
+      "tc_projection": 25.0,
+      "tc_target": 22.0,
+      "edge": 3.0,
+      "threshold": 2.0,
+      "raw_average": 25.0,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "BENCH"
+    }
+  ]
 }

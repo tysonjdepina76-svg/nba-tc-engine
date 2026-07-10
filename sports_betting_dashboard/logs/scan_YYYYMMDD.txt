@@ -1,0 +1,35 @@
+==============================================
+  TC Pipeline Health Scan — v2.1
+  Date: YYYY-MM-DD HH:MM:SS UTC
+  Earliest game: N/A
+==============================================
+✓ PIPELINE_RUN: last=YYYY-MM-DDTHH:MM:SS
+✓ PICKS_TODAY: N picks
+✓ PROJ_FILES: N projection files
+✓ COMBOS: N files, sports=[WNBA MLB WORLD_CUP]
+✓ WNBA_TC_ENGINE: N projections
+✓ COMBO_FRESH: N games
+✓ MLB_FIELDS: no null edges
+✓ STREAMLIT: :8510 alive
+✓ CONSENSUS: N entries
+✓ ODDS_CACHE: N fresh (<2h)
+✓ BOXSCORES: last=YYYY-MM-DD
+✓ BACKTEST: combined_backtest.csv (N lines)
+ℹ LOG_DIRS: N daily directories
+ℹ DISK: N% used
+✓ API_LIMITS: N/6667 (N%) — N remaining [business]
+✓ EVENTS basketball_wnba: N
+✓ EVENTS baseball_mlb: N
+✓ EVENTS soccer_fifa_world_cup: N
+✓ SYMLINKS: today_picks.csv → YYYY-MM-DD
+✓ EMPTY_DIRS: none
+---
+✓ ROUTE /api/tc: 200
+✓ ROUTE /api/slate: 200
+✓ ROUTE /api/scan: 200
+✓ ROUTE /api/backtest: 200
+✓ ROUTE /api/daily-log: 200
+✓ ROUTE /api/combos: 200
+✓ ROUTE /api/dk-lines: 200
+✓ ROUTE /api/combo-prob: 200
+==============================================

@@ -247,7 +247,7 @@ def _sgo_normalize_to_bookmakers(event: dict, league: str) -> list:
 
 def _sgo_consensus_for_matchup(sport: str, away: str, home: str) -> dict:
     """Build consensus from SGO only (used when Odds API is dead)."""
-    league_map = {"MLB": "MLB", "WORLD CUP": "soccer_fifa_world_cup"}
+    league_map = {"MLB": "MLB", "WNBA": "basketball_wnba", "WORLD CUP": "soccer_fifa_world_cup"}
     league = league_map.get(sport.upper())
     if not league:
         return {"players": {}, "available_books": [], "source": "none", "error": f"No SGO league for {sport}"}
@@ -257,7 +257,7 @@ def _sgo_consensus_for_matchup(sport: str, away: str, home: str) -> dict:
         return {"players": {}, "available_books": [], "source": "none", "error": "SGO events empty"}
 
     # Match by team names
-    team_map = MLB_TEAM_MAP if sport.upper() == "MLB" else {}
+    team_map = WNBA_TEAM_MAP if sport.upper() == "WNBA" else (MLB_TEAM_MAP if sport.upper() == "MLB" else {})
     away_full = team_map.get(away.upper(), "").lower()
     home_full = team_map.get(home.upper(), "").lower()
 
@@ -500,7 +500,7 @@ def fetch_consensus_for_matchup(sport: str, away: str, home: str, markets=None) 
 
     ev = None
     a, h = away.upper(), home.upper()
-    team_map = WNBA_TEAM_MAP if sport.upper() == "WNBA" else MLB_TEAM_MAP if sport.upper() == "MLB" else {}
+    team_map = WNBA_TEAM_MAP if sport.upper() == "WNBA" else (MLB_TEAM_MAP if sport.upper() == "MLB" else {})
     away_full = team_map.get(a, "").lower()
     home_full = team_map.get(h, "").lower()
 

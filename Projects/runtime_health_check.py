@@ -49,7 +49,8 @@ def runtime_health_check():
             continue
 
         if config.source == DataSource.BOOK_LINES:
-            if config.fetcher is None:
+            fetcher = config.line_fetcher or config.fetcher
+            if fetcher is None:
                 issues.append(f"⚠️ {sport_key}: no fetcher")
             else:
                 sports_ok += 1

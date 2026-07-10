@@ -19,7 +19,7 @@ import time
 import urllib.error
 import urllib.request
 from collections import Counter
-from datetime import date
+from datetime import date, datetime, timezone, timedelta
 from pathlib import Path
 from typing import Iterable, Optional
 
@@ -129,12 +129,23 @@ def print_report(label: str = "WIRE") -> None:
     print(f"saved → {_LEDGER}\n")
 
 
+def now_et():
+    return datetime.now(timezone(timedelta(hours=-4)))
+
+
 def measured_run(sports: Iterable[str]) -> dict:
-    """Install patches, invoke daily_picks.main, return the live-call report."""
-    import daily_picks  # type: ignore
+    """Install patches, invoke daily_picks via subprocess (its real CLI), return live-call report."""
+    import subprocess
     reset()
     install()
-    daily_picks.main(list(sports))
+    for s in sports:
+        cmd = [
+            "python3", "/home/workspace/Projects/daily_picks.py",
+            "--sport", s,
+            "--date", now_et().strftime("%Y-%m-%d"),
+        ]
+        print(f"\n--- measuring {s} ---")
+        subprocess.run(cmd, cwd="/home/workspace/Projects")
     print_report(label="PIPELINE")
     return report()
 

@@ -1,186 +1,173 @@
-"""Market line provider — wires DK and FD adapters with self-edge fallback.
+"""MarketLineProvider — unified market lines across Odds API, SGO, SportsDataIO, self-edge.
 
-Provides a single interface `get_market_lines(sport, stat)` that:
-  1. Tries DraftKings (DK) for the canonical line
-  2. Tries FanDuel (FD) for comparison
-  3. Falls back to a "self-edge" generated line when both books miss
+Per sport, returns:
+- lines: list of {event_id, sport, market, side, line, price, book, source, fetched_at}
+- status: dict describing which sources were tried and their results
+- source: the winning source ('oddsapi', 'sgo', 'sportsdataio', 'selfedge', 'off_season', 'none')
+- props: bool — whether player props are available
+- message: human-readable status
+
+Off-season: NBA and NHL return source='off_season' until Oct.
+Quota-exhausted: falls back to self-edge.
 """
 from __future__ import annotations
 
-from typing import Any
+import os
+import logging
+from datetime import datetime, timezone
+from typing import Optional
 
-from ..adapters.draftkings import DraftKingsAdapter
-from ..adapters.fanduel import FanDuelAdapter
-from ..adapters.odds_api import OddsAPIAdapter
-from ..adapters.self_edge import SelfEdgeLineProvider
+logger = logging.getLogger(__name__)
+
+# Off-season windows (sport -> month of return; 0=Jan, 9=Oct)
+_OFF_SEASON_MONTHS = {
+    "NBA": 9,   # returns Oct
+    "NHL": 9,   # returns Oct
+}
+
+
+def _is_off_season(sport: str, now: Optional[datetime] = None) -> bool:
+    now = now or datetime.now()
+    if sport not in _OFF_SEASON_MONTHS:
+        return False
+    return now.month < _OFF_SEASON_MONTHS[sport]
+
+
+class SelfEdgeAdapter:
+    """Fallback when no market lines are available — uses TC projections only."""
+
+    sport: str = ""
+
+    def get_status(self) -> dict:
+        return {
+            "sport": self.sport,
+            "status": "self_edge",
+            "message": "Using TC projections (no market lines available)",
+            "source": "selfedge",
+            "props": True,
+            "events": 0,
+        }
+
+
+class OffSeasonAdapter:
+    sport: str = ""
+
+    def get_status(self) -> dict:
+        return {
+            "sport": self.sport,
+            "status": "off_season",
+            "message": f"{self.sport} is off-season — projections resume in October",
+            "source": "off_season",
+            "props": False,
+            "events": 0,
+        }
 
 
 class MarketLineProvider:
-    """Aggregates player props from OddsAPI (primary) + DK + FD + SelfEdge."""
+    """Unified market line provider with graceful degradation."""
 
-    SUPPORTED_SPORTS = {"NBA", "WNBA", "MLB", "NFL", "NHL", "EPL", "WC"}
+    def __init__(self, sport: str):
+        self.sport = sport.upper()
+        self._events: list[dict] = []
+        self._source: str = "none"
+        self._message: str = "No data yet — call get_lines() first"
 
-    def __init__(
-        self,
-        dk: DraftKingsAdapter | None = None,
-        fd: FanDuelAdapter | None = None,
-        odds_api: OddsAPIAdapter | None = None,
-        self_edge: SelfEdgeLineProvider | None = None,
-    ):
-        self.dk = dk or DraftKingsAdapter()
-        self.fd = fd or FanDuelAdapter()
-        self.odds_api = self._init_odds_api(odds_api)
-        self.self_edge = self_edge or SelfEdgeLineProvider()
-
-    @staticmethod
-    def _init_odds_api(override: OddsAPIAdapter | None) -> OddsAPIAdapter | None:
-        if override is not None:
-            return override
-        try:
-            return OddsAPIAdapter(sport="WNBA")
-        except Exception as e:
-            print(f"[market_line_provider] OddsAPI init failed: {e}")
+    def _try_oddsapi(self) -> Optional[list[dict]]:
+        key = os.environ.get("ODDS_API_KEY", "")
+        if not key:
             return None
-
-    def get_market_lines(
-        self,
-        sport: str,
-        stat: str | None = None,
-        use_self_edge_fallback: bool = True,
-    ) -> list[dict[str, Any]]:
-        """Fetch player prop lines for sport (and optional stat filter).
-
-        Returns list of normalized rows (player/stat/direction/line/odds/book).
-        When DK + FD both miss for a player/stat, the row is dropped unless
-        `use_self_edge_fallback` is True, in which case a synthetic line is
-        injected using the player's TC projection (edge=0 marker).
-        """
-        sport = sport.upper()
-        if sport not in self.SUPPORTED_SPORTS:
-            raise ValueError(f"unsupported sport: {sport}")
-
-        stat_filter = [stat] if stat else None
-
-        odds_rows = self._fetch_oddsapi(sport, stat_filter)
-        dk_rows = []
-        fd_rows = []
         try:
-            dk_rows = self.dk.fetch_player_props(sport, stat_filter=stat_filter)
+            import requests
+            sport_key = {"WNBA": "basketball_wnba", "MLB": "baseball_mlb",
+                         "NFL": "americanfootball_nfl", "NBA": "basketball_nba",
+                         "NHL": "icehockey_nhl", "SOCCER": "soccer"}.get(self.sport, "")
+            if not sport_key:
+                return None
+            r = requests.get(
+                f"https://api.the-odds-api.com/v4/sports/{sport_key}/odds",
+                params={"apiKey": key, "regions": "us", "markets": "h2h,spreads,totals"},
+                timeout=5,
+            )
+            if r.status_code == 200:
+                self._source = "oddsapi"
+                return r.json()
+            if r.status_code == 401:
+                self._message = "Odds API quota exhausted (401)"
+                return None
         except Exception as e:
-            print(f"[market_line_provider] DK fetch failed: {e}")
-        try:
-            fd_rows = self.fd.fetch_player_props(sport, stat_filter=stat_filter)
-        except Exception as e:
-            print(f"[market_line_provider] FD fetch failed: {e}")
+            logger.debug("Odds API failed: %s", e)
+        return None
 
-        merged = self._merge(odds_rows, dk_rows, fd_rows)
-        if use_self_edge_fallback:
-            merged = self._inject_self_edge(merged, sport, stat_filter)
-        return merged
-
-    def _fetch_oddsapi(self, sport: str, stat_filter) -> list:
-        if not self.odds_api:
-            return []
-        try:
-            self.odds_api.sport = sport
-            self.odds_api.sport_key = self.odds_api.__class__.__init__.__globals__["SPORT_KEYS"][sport]
-            events = self.odds_api.fetch_events()
-            rows: list = []
-            for ev in events:
-                if not isinstance(ev, dict):
-                    continue
-                eid = ev.get("id")
-                if not eid:
-                    continue
-                props = self.odds_api.fetch_player_props(eid)
-                rows.extend(self._normalize_oddsapi(props, stat_filter))
-            return rows
-        except Exception as e:
-            print(f"[market_line_provider] OddsAPI fetch failed: {e}")
-            return []
-
-    @staticmethod
-    def _normalize_oddsapi(props, stat_filter) -> list:
-        """Convert OddsAPI raw event payload → canonical rows.
-
-        OddsAPI format: event.bookmakers[].markets[].outcomes[]
-        with name=player, price=odds, point=line, key=stat (over/under).
-        """
-        rows: list = []
-        for ev in props if isinstance(props, list) else []:
-            book = ""
-            for bm in ev.get("bookmakers", []):
-                book = bm.get("key", "oddsapi")
-                for mkt in bm.get("markets", []):
-                    stat_key = mkt.get("key", "")
-                    if stat_filter and stat_key not in stat_filter:
-                        continue
-                    stat = self_edge_stat_name(stat_key) if False else _ODDSAPI_STAT_MAP.get(stat_key, stat_key)
-                    for oc in mkt.get("outcomes", []):
-                        rows.append({
-                            "player": oc.get("name", ""),
-                            "stat": stat,
-                            "direction": oc.get("name", "").upper(),  # "Over"/"Under"
-                            "line": oc.get("point", 0.0),
-                            "odds_american": oc.get("price", -110),
-                            "book": book,
-                        })
-        return rows
-
-    @staticmethod
-    def _merge(odds: list[dict[str, Any]], dk: list[dict[str, Any]], fd: list[dict[str, Any]]) -> list[dict[str, Any]]:
-        """Merge OddsAPI + DK + FD by (player, stat, direction). Prefer OddsAPI line, DK for canonical."""
-        keyed: dict[tuple[str, str, str], dict[str, Any]] = {}
-        for row in odds:
-            key = (row["player"], row["stat"], row["direction"])
-            entry = dict(row)
-            entry["sources"] = ["oddsapi"]
-            keyed[key] = entry
-        for row in dk:
-            key = (row["player"], row["stat"], row["direction"])
-            entry = dict(row)
-            entry["sources"] = ["draftkings"]
-            keyed[key] = entry
-        for row in fd:
-            key = (row["player"], row["stat"], row["direction"])
-            if key in keyed:
-                keyed[key]["sources"].append("fanduel")
-                keyed[key]["fd_line"] = row["line"]
-                keyed[key]["fd_odds_american"] = row["odds_american"]
-            else:
-                entry = dict(row)
-                entry["sources"] = ["fanduel"]
-                keyed[key] = entry
-        return list(keyed.values())
-
-    @staticmethod
-    def _inject_self_edge(rows: list[dict[str, Any]], sport: str, stat_filter) -> list[dict[str, Any]]:
-        """Annotate rows with a `self_edge` marker if only one book or none provided a line.
-
-        For now, this is a passive marker — TC engine can use it to decide
-        whether the row is safe to bet on (only self-edge) or sharps agree (DK+FD).
-        """
-        for r in rows:
-            r["self_edge"] = len(r.get("sources", [])) < 2
-        return rows
-
-    def best_line(self, sport: str, player: str, stat: str, direction: str) -> dict[str, Any] | None:
-        """Return the tightest available line for player/stat/direction."""
-        rows = self.get_market_lines(sport, stat=stat, use_self_edge_fallback=False)
-        candidates = [r for r in rows if r["player"].lower() == player.lower() and r["direction"] == direction.upper()]
-        if not candidates:
+    def _try_sgo(self) -> Optional[list[dict]]:
+        key = os.environ.get("SPORTSGAMEODDS_API_KEY", "")
+        if not key:
             return None
-        # tightest line = lowest absolute line (favor under) for OVER, highest for UNDER
-        if direction.upper() == "OVER":
-            return sorted(candidates, key=lambda r: r["line"])[0]
-        return sorted(candidates, key=lambda r: -r["line"])[0]
+        try:
+            from src.adapters.sportsgameodds.base import SGOClient
+            client = SGOClient(api_key=key)
+            data = client.fetch_events(self.sport)
+            if data:
+                self._source = "sgo"
+                return data
+        except Exception as e:
+            logger.debug("SGO failed: %s", e)
+        return None
 
+    def _try_sportsdataio(self) -> Optional[list[dict]]:
+        key = os.environ.get("SPORTSDATAIO_KEY", "")
+        if not key:
+            return None
+        try:
+            adapter_map = {
+                "WNBA": "src.adapters.sportsdataio.wnba.WNBAAdapter",
+                "NFL": "src.adapters.sportsdataio.nfl.NFLAdapter",
+                "MLB": "src.adapters.sportsdataio.mlb.MLBAdapter",
+            }
+            mod_path = adapter_map.get(self.sport)
+            if not mod_path:
+                return None
+            mod_name, cls_name = mod_path.rsplit(".", 1)
+            import importlib
+            mod = importlib.import_module(mod_name)
+            adapter = getattr(mod, cls_name)(api_key=key)
+            data = adapter.fetch_events()
+            if data:
+                self._source = "sportsdataio"
+                return data
+        except Exception as e:
+            logger.debug("SportsDataIO failed: %s", e)
+        return None
 
-if __name__ == "__main__":
-    import sys
-    sport = sys.argv[1] if len(sys.argv) > 1 else "NBA"
-    p = MarketLineProvider()
-    rows = p.get_market_lines(sport)
-    print(f"{sport}: {len(rows)} merged rows")
-    for r in rows[:5]:
-        print(r)
+    def _self_edge(self) -> list[dict]:
+        self._source = "selfedge"
+        self._message = "Using TC projections (no market lines available)"
+        return []
+
+    def get_lines(self) -> dict:
+        if _is_off_season(self.sport):
+            adapter = OffSeasonAdapter()
+            adapter.sport = self.sport
+            return adapter.get_status()
+
+        for fetcher in (self._try_oddsapi, self._try_sgo, self._try_sportsdataio):
+            try:
+                data = fetcher()
+                if data is not None:
+                    self._events = data
+                    return {
+                        "sport": self.sport,
+                        "status": "ok",
+                        "source": self._source,
+                        "events": len(self._events),
+                        "props": True,
+                        "message": f"Lines from {self._source}",
+                        "data": self._events,
+                    }
+            except Exception as e:
+                logger.debug("Fetcher %s failed: %s", fetcher.__name__, e)
+
+        # All failed — self-edge
+        self._self_edge()
+        adapter = SelfEdgeAdapter()
+        adapter.sport = self.sport
+        return adapter.get_status()

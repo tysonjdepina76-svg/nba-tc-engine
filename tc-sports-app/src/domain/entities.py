@@ -1,116 +1,206 @@
-# TC — Triple Conservative — Trademark June 2026 — All rights reserved.
-# Sports covered: NFL, NBA, WNBA, MLB, Soccer.
+"""Domain entities: Player, Game, Projection, Team, Boxscore, PlayerStats."""
 
-"""Player + Game dataclasses — pure data, no behavior, no I/O."""
-
-from dataclasses import dataclass, field
 from enum import Enum
-from typing import Dict, List, Optional
+from dataclasses import dataclass, field
 
 
 class Sport(Enum):
-    NBA = "NBA"
-    WNBA = "WNBA"
-    NFL = "NFL"
-    BOXING = "BOXING"
-    MMA = "MMA"
-    MLB = "MLB"
-    SOCCER = "SOCCER"
-    NHL = "NHL"
-    TENNIS = "TENNIS"
-    GOLF = "GOLF"
-    CFB = "CFB"
-    CBB = "CBB"
+    WNBA = "wnba"
+    NFL = "nfl"
+    MLB = "mlb"
+    NBA = "nba"
+    NHL = "nhl"
+    SOCCER = "soccer"
 
 
-BADGE_COLORS = {
-    "BOXING":  "#d50000",
-    "MMA":     "#1a237e",
-    "SOCCER":  "#2e7d32",
-    "NFL":     "#1a237e",
-    "NBA":     "#e65100",
-    "WNBA":    "#4a148c",
-    "MLB":     "#0d47a1",
-    "NHL":     "#c62828",
-    "TENNIS":  "#2e7d32",
-    "GOLF":    "#00695c",
-    "CFB":     "#1a237e",
-    "CBB":     "#e65100",
-}
+class GameStatus(Enum):
+    SCHEDULED = "scheduled"
+    LIVE = "live"
+    FINAL = "final"
+    POSTPONED = "postponed"
+
+
+@dataclass
+class Team:
+    abbr: str
+    name: str = ""
+    score: int = 0
+
+    @classmethod
+    def from_str(cls, abbr):
+        if isinstance(abbr, str) and len(abbr) <= 4 and abbr.isupper():
+            return cls(abbr=abbr, name=abbr)
+        return cls(abbr=str(abbr), name=str(abbr))
 
 
 @dataclass
 class Player:
     name: str
     team: str
-    role: str = "BENCH"
-    status: str = "ACTIVE"
-    position: str = ""
+    position: str
+    id: str = ""
+    role: str = "BENCH"  # STARTER, BENCH, PROBABLE, QUESTIONABLE, OUT
+    stats: dict = field(default_factory=dict)
 
-    # Minutes expected to play
-    minutes: float = 0.0
+    @classmethod
+    def from_dict(cls, d):
+        return cls(
+            id=d["id"],
+            name=d["name"],
+            team=d["team"],
+            position=d["position"],
+            role=d.get("role", "BENCH"),
+            stats=dict(d.get("stats", {})),
+        )
 
-    # Season averages (per game) — keys are stat codes ("PTS", "REB", "AST", etc.)
-    season_stats: Dict[str, float] = field(default_factory=dict)
+    def get_stat(self, key):
+        if key not in self.stats:
+            raise KeyError(f"Stat '{key}' not found on {self.name}")
+        return self.stats[key]
 
-    # Sport-specific role
-    is_batter: bool = True
+    @property
+    def minutes_avg(self):
+        return self.stats.get("min", 0.0)
 
-    def is_active(self) -> bool:
-        return self.status.upper() == "ACTIVE"
-
-    def is_questionable(self) -> bool:
-        return self.status.upper() in ("QUESTIONABLE", "Q", "DOUBTFUL")
-
-    def is_out(self) -> bool:
-        return self.status.upper() in ("OUT", "INJURED", "DNP")
+    def __repr__(self):
+        return f"<Player {self.name} ({self.team})>"
 
 
 @dataclass
 class Game:
-    away_team: str
-    home_team: str
+    id: str
     sport: str
-    source: str = ""
-    dk_total: Optional[float] = None
-    odds: Dict[str, Optional[str]] = field(default_factory=dict)
+    home: str
+    away: str
+    start_time: str = ""
+    home_team: Team = None
+    away_team: Team = None
+    status: GameStatus = GameStatus.SCHEDULED
 
-    def matchup(self) -> str:
-        return f"{self.away_team}@{self.home_team}"
+    @classmethod
+    def from_dict(cls, d):
+        status = d.get("status", "scheduled")
+        if isinstance(status, str):
+            try:
+                status = GameStatus(status)
+            except ValueError:
+                status = GameStatus.SCHEDULED
+        return cls(
+            id=d["id"],
+            sport=d["sport"],
+            home=d["home"],
+            away=d["away"],
+            start_time=d.get("start_time"),
+            status=status,
+            home_team=Team.from_str(d["home"]),
+            away_team=Team.from_str(d["away"]),
+        )
+
+    @property
+    def matchup(self):
+        return f"{self.away} @ {self.home}"
+
+    @property
+    def is_scheduled(self):
+        return self.status == GameStatus.SCHEDULED
+
+    @property
+    def is_final(self):
+        return self.status == GameStatus.FINAL
+
+
+@dataclass
+class PlayerStats:
+    player_id: str
+    player_name: str
+    team: str
+    minutes: float
+    stats: dict = field(default_factory=dict)
+
+
+@dataclass
+class Boxscore:
+    game_id: str
+    sport: str
+    player_stats: list = field(default_factory=list)
+
+    @classmethod
+    def from_dict(cls, d, sport="NBA"):
+        ps = []
+        for entry in d.get("boxscore", {}).get("players", []):
+            player = entry.get("player", {})
+            stats_dict = entry.get("stats", {})
+            mins_raw = stats_dict.get("minutes", "0")
+            try:
+                minutes = float(str(mins_raw).replace(":", "."))
+            except (ValueError, TypeError):
+                minutes = 0.0
+            ps.append(PlayerStats(
+                player_id=str(player.get("id", "")),
+                player_name=player.get("displayName", ""),
+                team=entry.get("team", ""),
+                minutes=minutes,
+                stats=dict(stats_dict),
+            ))
+        return cls(game_id=str(d.get("gameId", "")), sport=sport, player_stats=ps)
 
 
 @dataclass
 class Projection:
-    """One player + one stat. Pure output, no I/O."""
-    player: str
-    team: str
-    role: str
-    status: str
-    stat: str
-    tc_projection: float
-    line: float
-    edge: float
-    direction: str
-    valid: bool
+    player: str = ""
+    player_name: str = ""
+    player_id: str = ""
+    team: str = ""
+    role: str = ""
+    stat: str = ""
+    status: str = "ACTIVE"
+    line: float = 0.0
+    tc_projection: float = 0.0
+    edge: float = 0.0
+    direction: str = "OVER"
+    std_dev: float = 0.0
+    valid: bool = True
 
-    # Optional market-line metadata (None when no DK/FD line was available)
-    market_line: Optional[float] = None
-    market_source: Optional[str] = None     # e.g. "SGO" (DK via SGO) | "SEED"
-    market_agreement: Optional[float] = None # 0..1: 1.0 = all sources identical
+    @classmethod
+    def from_dict(cls, d):
+        direction = d["direction"]
+        if direction not in ("OVER", "UNDER"):
+            raise ValueError(f"direction must be OVER or UNDER, got {direction!r}")
+        return cls(
+            player_id=d["player_id"],
+            player_name=d["player_name"],
+            team=d["team"],
+            stat=d["stat"],
+            line=float(d["line"]),
+            projection=float(d["projection"]),
+            std_dev=float(d["std_dev"]),
+            direction=direction,
+        )
 
-    def to_dict(self) -> Dict:
+    @property
+    def edge_pct(self):
+        if self.line == 0:
+            return 0.0
+        if self.direction == "OVER":
+            return round(((self.projection - self.line) / self.line) * 100, 2)
+        return round(((self.line - self.projection) / self.line) * 100, 2)
+
+    @property
+    def confidence(self):
+        sd = max(self.std_dev, 0.1)
+        raw = 0.5 + (self.projection - self.line) / (2 * sd)
+        if self.direction == "UNDER":
+            raw = 0.5 + (self.line - self.projection) / (2 * sd)
+        return round(min(1.0, max(0.0, raw)), 4)
+
+    def to_dict(self):
         return {
-            "player": self.player,
+            "player_id": self.player_id,
+            "player_name": self.player_name,
             "team": self.team,
-            "role": self.role,
-            "status": self.status,
             "stat": self.stat,
-            "tc_projection": self.tc_projection,
             "line": self.line,
-            "edge": self.edge,
+            "projection": self.projection,
+            "std_dev": self.std_dev,
             "direction": self.direction,
-            "valid": self.valid,
-            "market_line": self.market_line,
-            "market_source": self.market_source,
-            "market_agreement": self.market_agreement,
         }

@@ -1,46 +1,41 @@
 #!/usr/bin/env python3
-"""Run inner daily_picks with HTTP call measurement.
+"""Run daily_picks with HTTP call measurement.
 
 Usage:
-    python3 /home/workspace/Projects/src/domain/daily_picks.py --sport WNBA --date 2026-06-29 --measure-calls
+    python3 /home/workspace/Projects/src/domain/daily_picks.py --sport WNBA --date 2026-07-02 --measure-calls
 
-Inner module: /home/workspace/tc-sports-app/src/domain/daily_picks.py
+Inner module: /home/workspace/Projects/daily_picks.py
 """
 
 from __future__ import annotations
 import argparse
+import importlib.util as _ilu
 import json
+import os
 import sys
 from pathlib import Path
 
 WORKSPACE = Path("/home/workspace")
-sys.path.insert(0, str(WORKSPACE / "tc-sports-app"))  # so `from src.domain import daily_picks` works
+sys.path.insert(0, str(WORKSPACE / "Projects"))
 
-import importlib.util as _ilu
 _inner_spec = _ilu.spec_from_file_location(
-    "tc_inner_dp",
-    WORKSPACE / "tc-sports-app" / "src" / "domain" / "daily_picks.py",
+    "projects_daily_picks",
+    WORKSPACE / "Projects" / "daily_picks.py",
 )
 if not _inner_spec or not _inner_spec.loader:
-    sys.exit("FATAL: cannot locate inner daily_picks.py")
+    sys.exit("FATAL: cannot locate Projects/daily_picks.py")
 _inner = _ilu.module_from_spec(_inner_spec)
 sys.modules[_inner_spec.name] = _inner
 _inner_spec.loader.exec_module(_inner)
 
-# Load Projects/src/measure.py under alias to avoid src package collision.
-sys.path.insert(0, str(WORKSPACE / "Projects"))
-import types as _types
-if "projects_src" not in sys.modules:
-    _pkg = _types.ModuleType("projects_src")
-    _pkg.__path__ = [str(WORKSPACE / "Projects" / "src")]
-    sys.modules["projects_src"] = _pkg
 _mspec = _ilu.spec_from_file_location(
     "projects_src.measure", WORKSPACE / "Projects" / "src" / "measure.py"
 )
-if _mspec and _mspec.loader:
-    _mmod = _ilu.module_from_spec(_mspec)
-    sys.modules[_mspec.name] = _mmod
-    _mspec.loader.exec_module(_mmod)
+if not _mspec or not _mspec.loader:
+    sys.exit("FATAL: cannot locate Projects/src/measure.py")
+_mmod = _ilu.module_from_spec(_mspec)
+sys.modules[_mspec.name] = _mmod
+_mspec.loader.exec_module(_mmod)
 from projects_src.measure import install, reset, report  # noqa: E402
 
 
@@ -54,23 +49,21 @@ def main() -> int:
     p.add_argument("--out", default=str(WORKSPACE / "Daily_Log" / "call_measurement.json"))
     args = p.parse_args()
 
+    os.environ["TC_RUN_DATE"] = args.date
+
     print("\n=== TC DAILY PICKS — HTTP CALL MEASUREMENT ===")
     print(f"Sport: {args.sport}   Date: {args.date}\n")
 
     install()
     reset()
 
-    # Run the inner main() with forwarded args.
-    sys.argv = [
-        "daily_picks.py",
-        "--sport", args.sport,
-        "--date", args.date,
-    ]
+    sys.argv = ["daily_picks.py", "--sport", args.sport, "--date", args.date]
     if args.dry_run:
         sys.argv.append("--dry-run")
     if args.phase:
         sys.argv += ["--phase", args.phase]
-    _inner.main()
+
+    _inner.run_daily_log((args.sport,))
 
     if args.measure_calls:
         print("\n=== HTTP CALL MEASUREMENT REPORT ===")

@@ -1,31 +1,35 @@
 {
   "date": "2026-07-09",
-  "fetched_at": "2026-07-09T20:05:57.302808",
-  "games": [
-    {
-      "away": "Seattle Storm",
-      "home": "Atlanta Dream",
-      "date": "2026-07-10T00:00Z",
-      "status": "STATUS_SCHEDULED",
-      "away_id": "14",
-      "home_id": "20"
-    },
-    {
-      "away": "Indiana Fever",
-      "home": "Phoenix Mercury",
-      "date": "2026-07-10T02:00Z",
-      "status": "STATUS_SCHEDULED",
-      "away_id": "5",
-      "home_id": "11"
-    },
-    {
-      "away": "Las Vegas Aces",
-      "home": "Portland Fire",
-      "date": "2026-07-10T02:00Z",
-      "status": "STATUS_SCHEDULED",
-      "away_id": "17",
-      "home_id": "132052"
-    }
+  "fetched": "2026-07-09T15:00:00-04:00",
+  "source": "https://ak-static.cms.nba.com/referee/wnba_injury/Injury-Report_2026-07-09_03_00PM.pdf",
+  "today_raw": [
+    "Nye, Aaliyah        Questionable     Injury/Illness - Left Knee; N/A",
+    "Thomas, Alyssa      Probable         Injury/Illness - Left Foot; -",
+    "Whitcomb, Sami      Probable",
+    "Evans, Dana         Doubtful         Injury/Illness - Left Leg; ijjury",
+    "Wilson, A'ja        Questionable     Injury/Illness - Right Leg; leg",
+    "Samuelson, Karlie   Questionable"
   ],
-  "source": "ESPN WNBA scoreboard"
+  "yesterday_raw": [
+    "Clark, Caitlin      Available        -",
+    "Nye, Aaliyah        Questionable   Injury/Illness - Left Knee; N/A",
+    "Thomas, Alyssa      Probable       Injury/Illness - Left Foot; -",
+    "Whitcomb, Sami      Probable",
+    "Evans, Dana         Doubtful       Injury/Illness - Left Leg; ijjury",
+    "Wilson, A'ja        Questionable   Injury/Illness - Right Leg; leg",
+    "Samuelson, Karlie   Questionable"
+  ],
+  "new_today": [
+    "Nye, Aaliyah        Questionable     Injury/Illness - Left Knee; N/A",
+    "Thomas, Alyssa      Probable         Injury/Illness - Left Foot; -",
+    "Evans, Dana         Doubtful         Injury/Illness - Left Leg; ijjury",
+    "Wilson, A'ja        Questionable     Injury/Illness - Right Leg; leg"
+  ],
+  "resolved_since_yesterday": [
+    "Clark, Caitlin      Available        -",
+    "Nye, Aaliyah        Questionable   Injury/Illness - Left Knee; N/A",
+    "Thomas, Alyssa      Probable       Injury/Illness - Left Foot; -",
+    "Evans, Dana         Doubtful       Injury/Illness - Left Leg; ijjury",
+    "Wilson, A'ja        Questionable   Injury/Illness - Right Leg; leg"
+  ]
 }

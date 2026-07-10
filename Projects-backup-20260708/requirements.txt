@@ -1,0 +1,7 @@
+# /home/workspace/Projects/requirements.txt
+# Generated 2026-07-02 from `grep -h '^import\|^from' *.py | cut -d' ' -f2 | sort -u`
+# Run: pip install -r /home/workspace/Projects/requirements.txt
+
+requests>=2.31.0      # http calls to SGO / Odds API / ESPN
+pandas>=2.0.0         # CSV/DataFrame handling in daily_picks.py + backtests
+streamlit>=1.30.0     # tc_dashboard.py on :8510

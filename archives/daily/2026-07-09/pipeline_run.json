@@ -1,0 +1,146 @@
+{
+  "timestamp": "2026-07-09T20:05:57.418242+00:00",
+  "local_time": "2026-07-09 15:05:47 ET",
+  "status": "UNHEALTHY",
+  "checks_passed": 5,
+  "warnings": 2,
+  "failures": 1,
+  "services_repaired": 2,
+  "files_purged": 0,
+  "all_ok": [
+    "Pregame Combos: built",
+    "Soccer TC Engine: completed",
+    "Output 'picks_csv': present",
+    "Output 'last_run': present",
+    "Output 'slate_wnba': present"
+  ],
+  "warnings_list": [
+    "Output 'picks_json': missing or empty",
+    "Output 'slate_nba': missing or empty"
+  ],
+  "failures_list": [
+    "Daily Picks: failed"
+  ],
+  "log": [
+    {
+      "time": "15:05:47",
+      "level": "OK",
+      "source": "Secrets",
+      "msg": "5 keys loaded"
+    },
+    {
+      "time": "15:05:47",
+      "level": "OK",
+      "source": "Streamlit Dashboard",
+      "msg": "port 8510 HTTP 200"
+    },
+    {
+      "time": "15:05:47",
+      "level": "WARN",
+      "source": "DK Combos Engine",
+      "msg": "port 8515 HTTP 404"
+    },
+    {
+      "time": "15:05:47",
+      "level": "WARN",
+      "source": "Soccer Combo Engine",
+      "msg": "port 8516 HTTP 404"
+    },
+    {
+      "time": "15:05:47",
+      "level": "FIX",
+      "source": "DK Combos",
+      "msg": "Restarting on port 8515..."
+    },
+    {
+      "time": "15:05:51",
+      "level": "OK",
+      "source": "DK Combos",
+      "msg": "Restarted"
+    },
+    {
+      "time": "15:05:51",
+      "level": "FIX",
+      "source": "Soccer Combos",
+      "msg": "Restarting on port 8516..."
+    },
+    {
+      "time": "15:05:55",
+      "level": "OK",
+      "source": "Soccer Combos",
+      "msg": "Restarted"
+    },
+    {
+      "time": "15:05:55",
+      "level": "INFO",
+      "source": "DailyPicks",
+      "msg": "Running for: WNBA, MLB, WORLD CUP"
+    },
+    {
+      "time": "15:05:55",
+      "level": "FAIL",
+      "source": "DailyPicks",
+      "msg": "Exit 2: usage: daily_picks.py [-h] --sport {NBA,WNBA,NFL,MLB,SOCCER,NHL,WORLD_CUP}\n                      [--date DATE] [--dry-run]\ndaily_picks.py: error: argument --sport: invalid choice: 'WORLD CUP' (choose "
+    },
+    {
+      "time": "15:05:55",
+      "level": "INFO",
+      "source": "Combos",
+      "msg": "Building pregame combos..."
+    },
+    {
+      "time": "15:05:56",
+      "level": "OK",
+      "source": "Combos",
+      "msg": "Completed"
+    },
+    {
+      "time": "15:05:56",
+      "level": "INFO",
+      "source": "Soccer",
+      "msg": "Running soccer TC engine..."
+    },
+    {
+      "time": "15:05:57",
+      "level": "OK",
+      "source": "Soccer",
+      "msg": "Completed"
+    },
+    {
+      "time": "15:05:57",
+      "level": "OK",
+      "source": "picks_csv",
+      "msg": "594 bytes"
+    },
+    {
+      "time": "15:05:57",
+      "level": "WARN",
+      "source": "picks_json",
+      "msg": "2 bytes"
+    },
+    {
+      "time": "15:05:57",
+      "level": "OK",
+      "source": "last_run",
+      "msg": "1995 bytes"
+    },
+    {
+      "time": "15:05:57",
+      "level": "WARN",
+      "source": "slate_nba",
+      "msg": "MISSING"
+    },
+    {
+      "time": "15:05:57",
+      "level": "OK",
+      "source": "slate_wnba",
+      "msg": "724 bytes"
+    },
+    {
+      "time": "15:05:57",
+      "level": "OK",
+      "source": "Purge",
+      "msg": "Nothing to purge \u2014 workspace clean"
+    }
+  ]
+}

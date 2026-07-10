@@ -151,9 +151,12 @@ check_routes() {
 
 check_consensus() {
     CONSENSUS="${LOG_DIR}/${TODAY}/consensus.json"
+    CONSENSUS_FILES=$(ls "${LOG_DIR}/${TODAY}"/consensus_*.json 2>/dev/null | wc -l)
     if [ -f "$CONSENSUS" ]; then
         COUNT=$(python3 -c "import json; d=json.load(open('${CONSENSUS}')); print(len(d) if isinstance(d,list) else d.get('total',0))" 2>/dev/null)
         echo "✓ CONSENSUS: ${COUNT} entries"
+    elif [ "$CONSENSUS_FILES" -gt 0 ]; then
+        echo "✓ CONSENSUS: ${CONSENSUS_FILES} per-game files (combined format)"
     else
         echo "✗ CONSENSUS: not generated"
     fi
