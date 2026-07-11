@@ -110,10 +110,22 @@ def _latest_dir(parent: Path) -> Optional[Path]:
     return sorted(candidates, key=lambda d: d.name, reverse=True)[0]
 
 def _read_worldcup_picks() -> Tuple[List[dict], Optional[str]]:
-    """Read the most recent FanDuel WC player-prop picks CSV.
+    """Read WC player-prop picks CSV. Prefers today's Daily_Log first.
 
     Returns (rows, date_str). Skips header if present.
     """
+    from datetime import datetime as _dt
+    today = _dt.now().strftime("%Y-%m-%d")
+    # Prefer today's per-player WC picks from main log dir
+    today_path = Path(f"/home/workspace/Daily_Log/{today}/soccer_player_picks.csv")
+    if today_path.exists():
+        import csv
+        rows = []
+        with today_path.open() as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                rows.append(row)
+        return rows, today
     d = _latest_dir(WORLDCUP_DIR)
     if not d:
         return [], None

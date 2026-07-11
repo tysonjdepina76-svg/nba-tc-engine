@@ -1,5 +1,18 @@
 # Workspace Index — true.zo.computer
 
+## Current Status (2026-07-11 ~6:25 PM ET) — SYSTEM GAP CLOSURE ✅
+
+- **7 gaps filled**:
+  1. `data/historical/mlb_historical.csv` — created with header row
+  2. `Daily_Log/archive/` — directory created
+  3. `/nba-tc` — NBA set to OFF_SEASON in REGISTRY (season over)
+  4. `/nba-tc` — old positional `daily_picks.py NBA WNBA` syntax replaced with `--sport WNBA --date` in 3 places (DailyLogPanel, LiveStatsPanel, ComboDashboard)
+  5. `/nba-tc` — Backtest tab KEPT hardcoded NBA_BACKTEST (52 playoff games, 58.5% hit rate) — `/api/backtest` endpoint exists but NBA data is static; live backtest data available via `/api/backtest` but frontend not yet wired (non-blocking, noted)
+  6. `data/picks/today_picks.csv` — symlink updated from 7/7 to 7/11
+  7. Pipeline health — `picks_json`/`slate_nba`/game O/U warnings are expected (NBA off-season + picks in CSV not JSON format)
+
+- **Next**: Backtest tab live-wire when multi-sport backtest data is available
+
 ## Current Status (2026-07-09 ~7:10 PM ET) — ALL 12 ITEMS SHIPPED ✅
 - **System**: Fully wired and clean. User confirmed "The entire system is completely wired and clean."
 - **Items shipped (12)**: api_call_budget ✅, fantasy_images ✅, --date flag ✅, Player role fix ✅, RosterManager ✅, ProjectionService ✅, ComboOptimizer ✅, Dockerfile ✅, FastAPI projections endpoint ✅, Streamlit dashboard ✅, GitHub Actions CI ✅, Deploy script ✅ + DK/Soccer combo engines on 8515/8516 (item 12) ✅

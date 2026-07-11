@@ -34,6 +34,7 @@ import requests
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
+from tc_math import over_under_signal
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # CONFIG
@@ -353,30 +354,27 @@ def tc_soccer_stat(
         # Poisson stats are low-count; round to nearest 0.5
         tc_line = round(tc_proj * 2) / 2
     else:
-        # Normal stats: NBA discount factor
-        tc_line = math.floor(tc_proj * 0.88 * 10) / 10 if tc_proj > 0 else 0.0
+        # Normal stats: honest market estimate (no discount bias)
+        tc_line = round(tc_proj * 2) / 2 if tc_proj > 0 else 0.0
 
-    # 7. Edge vs estimated line
+    # 7. Edge vs estimated line (no hard discount bias)
     edge = tc_proj - tc_line
 
-    # 8. Signal
+    # 8. Signal via sport-aware dispatcher (replaces 0.88x discount hack)
+    from tc_math import sport_over_under_signal
+    # sig_edge is PERCENTAGE (0.005 = 0.5%) for WC. Convert EDGE_THRESHOLD (absolute 0.5)
+    # to pct = 0.5 / typical_line. Use 0.05 (5%) for low-vol, 0.10 (10%) for vol stats.
     if stat_key in ("G", "A", "CRD"):
-        # Low-volume Poisson stats: tighter thresholds
-        if edge >= EDGE_THRESHOLD:
-            signal = "OVER"
-        elif edge <= -EDGE_THRESHOLD:
-            signal = "UNDER"
-        else:
-            signal = "PASS"
+        pct_threshold = 0.05
     else:
-        # Volume stats: wider threshold
-        threshold = EDGE_THRESHOLD * 2
-        if edge >= threshold:
-            signal = "OVER"
-        elif edge <= -threshold:
-            signal = "UNDER"
-        else:
-            signal = "PASS"
+        pct_threshold = 0.10
+    sig_dir, sig_edge = sport_over_under_signal(tc_proj, tc_line, sport="WC", min_edge=pct_threshold)
+    if sig_dir == "OVER":
+        signal = "OVER"
+    elif sig_dir == "UNDER":
+        signal = "UNDER"
+    else:
+        signal = "PASS"
 
     return {
         "stat": stat_key,
@@ -748,6 +746,7 @@ def run_soccer_pipeline(target_matchup: Optional[str] = None) -> dict:
                 for p in projs:
                     p["date"] = now.strftime("%Y-%m-%d")
                     p["matchup"] = matchup
+                    p["source"] = p.get("source", "SELF_EDGE" if not dk_h2h else "DK")
                     all_player_picks.append(p)
 
         # Summary
@@ -815,7 +814,7 @@ def run_soccer_pipeline(target_matchup: Optional[str] = None) -> dict:
             w = csv.DictWriter(f, fieldnames=[
                 "date", "matchup", "player", "team", "position", "is_starter",
                 "stat", "stat_name", "tc_projection", "tc_line", "edge", "signal",
-                "tc_raw", "tc_team_adj", "tc_opp_adj", "tc_home_adj",
+                "tc_raw", "tc_team_adj", "tc_opp_adj", "tc_home_adj", "source",
             ])
             w.writeheader()
             for pp in all_player_picks:
@@ -836,6 +835,7 @@ def run_soccer_pipeline(target_matchup: Optional[str] = None) -> dict:
                     "tc_team_adj": pp.get("tc_team_adj", ""),
                     "tc_opp_adj": pp.get("tc_opp_adj", ""),
                     "tc_home_adj": pp.get("tc_home_adj", ""),
+                    "source": pp.get("source", "SELF_EDGE"),
                 })
 
     # Last run summary

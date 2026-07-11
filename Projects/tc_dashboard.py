@@ -108,11 +108,25 @@ def main() -> None:
         if picks.empty:
             st.info("No picks_*.csv files yet.")
         else:
+            # Normalize source column for backward compatibility
+            if 'source' not in picks.columns:
+                picks['source'] = "UNKNOWN"
+            # Filter by source (DK / SGO / MOCK / SELF_EDGE)
+            src_opts = sorted(picks['source'].dropna().unique().tolist())
+            if src_opts:
+                sel = st.multiselect("Filter by source", src_opts, default=src_opts, key="src_filter_picks")
+                picks = picks[picks['source'].isin(sel)]
             st.dataframe(picks.tail(50), use_container_width=True)
         st.subheader("Today's projections")
         if today.empty:
             st.info("No projections saved for today yet.")
         else:
+            if 'source' not in today.columns:
+                today['source'] = "UNKNOWN"
+            src_opts_t = sorted(today['source'].dropna().unique().tolist())
+            if src_opts_t:
+                sel_t = st.multiselect("Filter by source", src_opts_t, default=src_opts_t, key="src_filter_today")
+                today = today[today['source'].isin(sel_t)]
             st.dataframe(today.tail(50), use_container_width=True)
 
     with tab3:

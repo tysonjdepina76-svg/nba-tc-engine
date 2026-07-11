@@ -26,6 +26,8 @@ Author: Tyson | Zo Computer | TC Pipeline
 import argparse, csv, datetime, json, math, os, requests, sys, time
 from dataclasses import dataclass, field
 from typing import List, Dict, Any, Optional, Tuple
+from tc_math import over_under_signal, shrink_projection, is_sane_edge, mlb_over_under_signal
+from tc_math import sport_over_under_signal
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # TC Constants (MLB-specific)
@@ -178,11 +180,11 @@ class MLBPlayer:
     def compute_pitcher(self):
         sf = self.sf()
         w = PITCHER_WEIGHT
-        self.tc_strikeouts = round(max(0.0, self.strikeouts_avg * w * sf + GAP_PITCHER), 1)
-        self.tc_hits_allowed = round(max(0.0, self.hits_allowed_avg * w * sf - GAP_PITCHER), 1)
-        self.tc_walks_allowed = round(max(0.0, self.walks_allowed_avg * w * sf - GAP_PITCHER), 1)
-        self.tc_earned_runs = round(max(0.0, self.earned_runs_avg * w * sf - GAP_PITCHER), 1)
-        self.tc_outs = round(max(0.0, self.outs_avg * w * sf + GAP_PITCHER), 1)
+        self.tc_strikeouts = round(max(0.0, self.strikeouts_avg * w * sf), 1)
+        self.tc_hits_allowed = round(max(0.0, self.hits_allowed_avg * w * sf), 1)
+        self.tc_walks_allowed = round(max(0.0, self.walks_allowed_avg * w * sf), 1)
+        self.tc_earned_runs = round(max(0.0, self.earned_runs_avg * w * sf), 1)
+        self.tc_outs = round(max(0.0, self.outs_avg * w * sf), 1)
 
     def compute_all(self):
         self.compute_batter()
@@ -877,24 +879,36 @@ def project_mlb_game(home_abbr: str, away_abbr: str, game_id: str = None,
     # Generate valid props — Odds API, SDIO, or self-edge fallback
     valid_props = []
     dk_available = any(p.lines for p in away_players + home_players)
-    line_source = "dk_lines" if player_lines else ("sgo_dk_lines" if sgo_lines else ("sdio_lines" if sdio_lines else "tc-internal-fallback"))
+    line_source = "OVER_UNDER"  # bookline bypass — no TC math, signal-only label
 
     if dk_available:
         # ── Odds API or SDIO lines available ──
-        use_thresh = EDGE_THRESH_MLB_SDIO if (sdio_lines or sgo_lines) and not player_lines else EDGE_THRESH
+        use_thresh_pct = 0.15 if (sdio_lines or sgo_lines) and not player_lines else 0.10
         for p in away_players + home_players:
             for stat_name, line_val in p.lines.items():
                 tc_val = getattr(p, f"tc_{stat_name}", 0.0)
-                edge = p.edges.get(stat_name, 0.0)
-                direction = "OVER" if edge > 0 else "UNDER"
-                signal = "PASS"
-                if abs(edge) >= use_thresh:
-                    signal = direction
-                src = "dk_lines" if stat_name in player_lines.get(p.name, {}) else ("sgo_dk_lines" if stat_name in sgo_lines.get(p.name.lower(), {}) else "sdio_lines")
+                if not is_sane_edge(tc_val, line_val):
+                    continue
+                is_pitcher = bool(p.pos and "P" in p.pos.upper())
+                sample = getattr(p, "appearances", 1) or 1
+                tc_val_shrunk = shrink_projection(tc_val, line_val, sample) if is_pitcher else tc_val
+                direction, edge_pct = mlb_over_under_signal(
+                    projection=tc_val_shrunk,
+                    market_line=line_val,
+                )
+                if direction == "INVALID":
+                    continue
+                if direction == "FLAT":
+                    signal = "PASS"
+                else:
+                    signal = direction if edge_pct >= use_thresh_pct else "PASS"
+                edge_abs = round(tc_val_shrunk - line_val, 2)
+                src = "OVER_UNDER"  # bookline bypass — no TC math, signal-only label
                 valid_props.append({
                     "player": p.name, "team": p.team, "pos": p.pos,
                     "stat": stat_name, "market_line": line_val,
-                    "tc_projection": tc_val, "edge": edge,
+                    "tc_projection": tc_val_shrunk, "tc_raw": tc_val, "edge": edge_abs,
+                    "edge_pct": round(edge_pct, 4),
                     "direction": direction, "signal": signal,
                     "status": p.status, "source": src,
                 })
@@ -915,16 +929,22 @@ def project_mlb_game(home_abbr: str, away_abbr: str, game_id: str = None,
                 self_line = math.floor(tc_val * LINE_FACTOR)
                 if self_line <= 0:
                     continue
-                edge = round(tc_val - self_line, 2)
-                direction = "OVER" if edge > 0 else "UNDER"
-                signal = "PASS"
-                self_edge_thresh = 1.0
-                if abs(edge) >= self_edge_thresh:
-                    signal = direction
+                direction, edge_pct = over_under_signal(
+                    projection=tc_val,
+                    market_line=self_line,
+                    min_abs_edge=0.0,
+                    use_pct_edge=True,
+                )
+                if direction in ("INVALID", "FLAT"):
+                    signal = "PASS"
+                else:
+                    signal = direction if edge_pct >= 0.20 else "PASS"
+                edge_abs = round(tc_val - self_line, 2)
                 valid_props.append({
                     "player": p.name, "team": p.team, "pos": p.pos,
                     "stat": stat_name, "market_line": self_line,
-                    "tc_projection": tc_val, "edge": edge,
+                    "tc_projection": tc_val, "edge": edge_abs,
+                    "edge_pct": round(edge_pct, 4),
                     "direction": direction, "signal": signal,
                     "status": p.status, "source": "tc-internal-fallback",
                 })

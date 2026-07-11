@@ -24,6 +24,54 @@ from pathlib import Path
 # ── All active sports in the pipeline ─────────────────────
 ALL_SPORTS = ("NBA", "WNBA", "MLB", "NHL", "WORLD_CUP", "NFL")
 BASKETBALL = {"NBA", "WNBA"}  # sports with full player props + rosters
+BOOKLINE_SPORTS = {"MLB", "NHL", "WORLD_CUP", "SOCCER"}
+
+def generate_ou_picks(projection, sport, matchup, date_str):
+    """Generate OVER/UNDER picks for bookline sports from raw projection + DK line.
+    Bypasses TC math — direction is set purely from (tc_projection vs market_line).
+    """
+    picks = []
+    for p in projection.get("valid_props", []):
+        if p.get("status") and p.get("status") not in ("ACTIVE", None):
+            continue
+        line = p.get("market_line")
+        proj = p.get("tc_projection")
+        if line is None or proj is None:
+            continue
+        try:
+            line = float(line); proj = float(proj)
+        except (TypeError, ValueError):
+            continue
+        if line <= 0:
+            continue
+        edge = proj - line  # positive = OVER, negative = UNDER
+        # Threshold: only fire when projection diverges from line by >= 0.5
+        if abs(edge) < 0.5:
+            continue
+        picks.append({
+            "date": date_str,
+            "league": sport,
+            "matchup": matchup,
+            "team": p.get("team"),
+            "player": p.get("player"),
+            "role": p.get("pos"),
+            "status": "ACTIVE",
+            "stat": p.get("stat"),
+            "direction": "OVER" if edge > 0 else "UNDER",
+            "signal": "OVER" if edge > 0 else "UNDER",
+            "market_line": line,
+            "tc_projection": proj,
+            "tc_target": None,
+            "edge": round(edge, 3),
+            "threshold": 0.5,
+            "raw_average": p.get("tc_raw"),
+            "source": "OVER_UNDER",  # critical: NOT TC math
+            "actual": None,
+            "result": "PENDING",
+        })
+    return picks
+
+from mock_lines import get_mock_market_line
 MLB_SPORTS = {"MLB"}  # sports with
 
 ET = timezone(timedelta(hours=-5))
@@ -180,7 +228,7 @@ def _fetch_lines_via_registry(sport):
         cfg = REGISTRY.get(sport)
         if not cfg or not cfg.line_fetcher:
             return {}
-        result = cfg.line_fetcher() or {}
+        result = cfg.line_fetcher(sport) or {}
         return result if isinstance(result, dict) else {}
     except Exception as e:
         print(f"  [line_fetcher] {sport} fetch failed: {e}")
@@ -235,6 +283,21 @@ def fetch_game_projection(sport, away, home):
         return {"error": f"HTTP {r.status_code}"}
     except Exception as e:
         return {"error": str(e)}
+
+
+def normalize_source(s):
+    """Collapse pipeline-specific source labels to canonical DK/SGO/MOCK/SELF_EDGE."""
+    s = (s or "").lower()
+    if "draftkings" in s or s == "dk" or "sdio" in s:
+        return "DK"
+    if "sgo" in s or "oddsapi" in s:
+        return "SGO"
+    if "mock" in s:
+        return "MOCK"
+    if "self" in s or "edge" in s:
+        return "SELF_EDGE"
+    return s.upper() or "UNKNOWN"
+
 
 def extract_picks(projection, sport, matchup):
     """Extract all valid prop picks from a projection response."""
@@ -568,20 +631,6 @@ def run_daily_log(sports=ALL_SPORTS):
                 safe = matchup.replace("@", "_at_")
                 (today_dir / f"proj_{sport}_{safe}.json").write_text(json.dumps(proj, indent=2))
 
-                # Extract picks + summary
-                picks = extract_picks(proj, sport, matchup)
-                summary = extract_game_summary(proj, sport, matchup)
-                if sport in BASKETBALL:
-                    pending = sum(1 for p in picks if p.get("market_line") in (None, ""))
-                    summary["pending_props_no_dk"] = pending
-                    summary["picks_with_dk"] = len(picks) - pending
-                all_picks.extend(picks)
-                all_summaries.append(summary)
-                if sport in BASKETBALL:
-                    print(f"    -> {len(picks)} valid picks, signal={summary['signal']} (DK: {len(picks) - pending}, pending: {pending})")
-                else:
-                    print(f"    -> {len(picks)} game-level entries, signal={summary['signal']}")
-
         else:
             slate = fetch_live_slate(sport)
             if "error" in slate:
@@ -710,6 +759,35 @@ def run_daily_log(sports=ALL_SPORTS):
                 else:
                     print(f"    -> {len(picks)} game-level entries, signal={summary['signal']}")
 
+                # BOOKLINE sports (MLB/NHL/WC): bypass TC math, re-derive O/U from line vs proj
+                if sport in BOOKLINE_SPORTS:
+                    picks = generate_ou_picks(proj, sport, matchup, today_dir.name)
+                else:
+                    picks = extract_picks(proj, sport, matchup)
+                summary = extract_game_summary(proj, sport, matchup)
+                if sport in BASKETBALL:
+                    pending = sum(1 for p in picks if p.get("market_line") in (None, ""))
+                    summary["pending_props_no_dk"] = pending
+                    summary["picks_with_dk"] = len(picks) - pending
+                all_picks.extend(picks)
+                all_summaries.append(summary)
+                if sport in BASKETBALL:
+                    print(f"    -> {len(picks)} valid picks, signal={summary['signal']} (DK: {len(picks) - pending}, pending: {pending})")
+                else:
+                    print(f"    -> {len(picks)} game-level entries, signal={summary['signal']}")
+
+    # Dedup protection (in case of re-runs for same day)
+    dedup_key = ["date", "player", "stat", "direction", "market_line", "matchup"]
+    seen = set()
+    deduped_picks = []
+    for p in all_picks:
+        k = tuple(str(p.get(c, "")) for c in dedup_key)
+        if k in seen:
+            continue
+        seen.add(k)
+        deduped_picks.append(p)
+    all_picks = deduped_picks
+
     # Write flat CSV — deduplicated, keeping DK-enriched versions
     csv_path = today_dir / "picks.csv"
     csv_fields = [
@@ -724,6 +802,7 @@ def run_daily_log(sports=ALL_SPORTS):
             w.writeheader()
         for p in all_picks:
             row = {k: p.get(k, "") for k in csv_fields}
+            row["source"] = normalize_source(row.get("source", ""))
             w.writerow(row)
 
     # Write structured picks
@@ -777,84 +856,158 @@ def run_daily_log(sports=ALL_SPORTS):
             print(f"Basketball combos: {sum(c['qualified'] for c in combo_summary if c.get('engine')=='dk_combos')} qualified legs across {len(bk_games)} games")
 
         # Soccer / World Cup games (use soccer_combo_engine)
-        wc_games = [(s["sport"], s["away_team"], s["home_team"]) for s in all_summaries if s["sport"] in ("WORLD CUP", "SOCCER")]
+        wc_games = [(s["sport"], s["away_team"], s["home_team"]) for s in all_summaries if s.get("sport") in ("WORLD_CUP", "WORLD CUP", "SOCCER")]
+        print(f"  >> DEBUG: wc_games count = {len(wc_games)}, sports = {set(s.get("sport") for s in all_summaries)}")
         if wc_games:
             print(f"\nBuilding TC combos for {len(wc_games)} soccer/World Cup games...")
             picks_rows, wc_date = _read_worldcup_picks()
             all_legs = build_combo_legs_from_worldcup(picks_rows)
             wc_total = 0
-            for sport, away, home in wc_games:
-                matchup_str = f"{away} @ {home}"
-                matchup_legs = [l for l in all_legs if away.upper() in l.match.upper() or home.upper() in l.match.upper()]
-                try:
-                    combos = sc_build(matchup_legs, max_legs=4) if matchup_legs else []
-                    # Standardize to /api/combo-prob format
+            wc_qualified = []
+            wc_total = 0
+            wc_player_picks_path = today_dir / "soccer_player_picks.csv"
+            if not wc_player_picks_path.exists():
+                print("  [soccer] No soccer_player_picks.csv; skipping WC combos")
+            else:
+                import csv as _csv
+                with open(wc_player_picks_path) as _f:
+                    wc_rows = list(_csv.DictReader(_f))
+                # Group by matchup
+                from collections import defaultdict
+                by_match = defaultdict(list)
+                for r in wc_rows:
+                    sig = (r.get("signal") or "PASS").upper()
+                    if sig == "PASS":
+                        continue
+                    if float(r.get("tc_projection") or 0) <= 0:
+                        continue
+                    by_match[r["matchup"]].append(r)
+
+                for matchup, rows in by_match.items():
+                    # Parse "Away@Home"
+                    try:
+                        away, home = matchup.split("@")
+                    except ValueError:
+                        continue
                     qualified = []
-                    for combo in combos:
-                        for leg in combo.legs:
-                            edge = 0.0
-                            try:
-                                odds_i = int(leg.odds)
-                                if odds_i > 0:
-                                    imp = 100.0 / (100.0 + odds_i)
-                                elif odds_i < 0:
-                                    imp = abs(odds_i) / (abs(odds_i) + 100.0)
-                                else:
-                                    imp = 0.5
-                            except:
-                                imp = 0.5
-                            if leg.direction.lower() == "over":
-                                edge = round(0.5 - imp, 4)
-                            else:
-                                edge = round(imp - 0.5, 4)
-                            qualified.append({
-                                "player": leg.player,
-                                "team": leg.team,
-                                "role": "",
-                                "stat": leg.stat,
-                                "direction": leg.direction,
-                                "dk_line": leg.line,
-                                "dk_odds": str(leg.odds),
-                                "tc_projection": leg.line,
-                                "raw_average": leg.line,
-                                "edge": edge,
-                                "threshold": 0,
-                                "qualifies_edge": True,
-                            })
-                    safe = f"{away}_{home}".lower()
-                    out = {
-                        "sport": sport,
-                        "away": away,
-                        "home": home,
-                        "matchup": matchup_str,
-                        "dk_game_total": None,
-                        "dk_ml_home": None,
-                        "dk_ml_away": None,
-                        "qualified": qualified,
-                        "legs": qualified,
-                        "matched_legs": len(matchup_legs),
-                        "qualified_legs": len(qualified),
-                    }
-                    (today_dir / f"combos_{safe}.json").write_text(json.dumps(out, indent=2))
-                    (today_dir / f"combos_{safe}.md").write_text(f"# WC Combos: {matchup_str}\n\n{len(combos)} combos, {len(qualified)} legs\n")
-                    combo_summary.append({
-                        "matchup": f"{away}@{home}", "sport": sport,
-                        "matched": len(matchup_legs),
-                        "qualified": len(qualified),
-                        "engine": "soccer_combos",
-                    })
-                    wc_total += len(qualified)
-                except Exception as e:
-                    combo_summary.append({
-                        "matchup": f"{away}@{home}", "sport": sport,
-                        "matched": 0, "qualified": 0,
-                        "engine": "soccer_combos", "error": str(e),
-                    })
-            print(f"Soccer combos: {wc_total} combos across {len(wc_games)} games")
+                    for r in rows:
+                        proj = float(r.get("tc_projection") or 0)
+                        role = r.get("position") or ""
+                        stat = r.get("stat") or ""
+                        # Map CSV stat key to combo engine stat
+                        stat_map = {
+                            "G": "goals", "A": "assists", "S": "shots",
+                            "SOT": "shots_on_target", "CORNERS": "corners",
+                            "TKL": "tackles", "FL": "fouls", "CARD": "cards",
+                            "PASS": "passes",
+                        }
+                        stat_combo = stat_map.get(stat, stat.lower())
+                        mock_line = get_mock_market_line(proj, sport="WC", player_role=role)
+                        sig_dir, sig_edge = self_edge_signal(proj, mock_line, sport="WC")
+                        if sig_dir == "FLAT":
+                            continue
+                        # Convert edge to model_prob and implied prob for fake odds
+                        model_prob = min(0.90, max(0.10, 0.5 + sig_edge))
+                        # Fake odds: -110 baseline, shift by model prob
+                        if model_prob >= 0.5:
+                            odds = int(-100 * model_prob / (1 - model_prob))
+                        else:
+                            odds = int(100 * (1 - model_prob) / model_prob)
+                        imp = abs(odds) / (abs(odds) + 100.0) if odds < 0 else 100.0 / (100.0 + odds)
+                        edge = round(model_prob - imp, 4)
+                        if edge < 0.02:
+                            continue
+                        qualified.append({
+                            "player": r.get("player", ""),
+                            "team": r.get("team", ""),
+                            "role": role,
+                            "stat": stat_combo,
+                            "direction": sig_dir.lower() if sig_dir != "FLAT" else "over",
+                            "dk_line": mock_line,
+                            "dk_odds": str(odds),
+                            "tc_projection": proj,
+                            "raw_average": proj,
+                            "edge": edge,
+                            "threshold": SELF_EDGE_THRESHOLDS.get("WC", 0.035),
+                            "qualifies_edge": True,
+                            "source": "SELF_EDGE",
+                            "matchup": matchup,
+                            "match": matchup.replace("@", " @ "),
+                            "commence": "",
+                            "book": "self_edge",
+                            "line": mock_line,
+                            "odds": odds,
+                            "model_prob": model_prob,
+                        })
+                    if qualified:
+                        combo_summary.append({
+                            "matchup": matchup,
+                            "away_team": away,
+                            "home_team": home,
+                            "engine": "self_edge",
+                            "legs": len(qualified),
+                            "qualified": len(qualified),
+                            "qualified_legs": qualified,
+                        })
+                        wc_total += len(qualified)
+                        wc_qualified.extend(qualified)
+            print(f"Soccer combos: {wc_total} self-edge legs across {len(by_match)} games")
 
         if combo_summary:
             (today_dir / "combos_summary.json").write_text(json.dumps(combo_summary, indent=2))
-            print(f"Combos: {sum(c['qualified'] for c in combo_summary)} total qualified across {len(combo_summary)} games")
+
+        # Self-edge WC picks → write to picks.csv directly (no DK lines)
+        if "WORLD_CUP" in sports or "SOCCER" in sports:
+            if today_dir.joinpath("soccer_player_picks.csv").exists():
+                self_edge_rows = []
+                import csv as _csv
+                with open(today_dir / "soccer_player_picks.csv") as _f:
+                    _r = _csv.DictReader(_f)
+                    for row in _r:
+                        sig = (row.get("signal") or "").upper()
+                        if sig in ("OVER", "UNDER"):
+                            self_edge_rows.append({
+                                "date": row.get("date", ""),
+                                "league": "WORLD_CUP",
+                                "matchup": row.get("matchup", ""),
+                                "team": row.get("team", ""),
+                                "player": row.get("player", ""),
+                                "role": row.get("position", ""),
+                                "status": "starter" if row.get("is_starter", "").lower() == "true" else "bench",
+                                "stat": row.get("stat", ""),
+                                "direction": sig,
+                                "market_line": row.get("tc_line", ""),
+                                "tc_projection": row.get("tc_projection", ""),
+                                "tc_target": row.get("tc_line", ""),
+                                "edge": row.get("edge", ""),
+                                "threshold": str(0.5),
+                                "raw_average": row.get("tc_projection", ""),
+                                "source": "SELF_EDGE",
+                                "actual": "",
+                                "result": "PENDING",
+                            })
+                if self_edge_rows:
+                    csv_path = today_dir / "picks.csv"
+                    csv_fields = [
+                        "date", "league", "matchup", "team", "player", "role", "status",
+                        "stat", "direction", "market_line", "tc_projection", "tc_target",
+                        "edge", "threshold", "raw_average", "source", "actual", "result",
+                    ]
+                    write_header = not csv_path.exists()
+                    with open(csv_path, "a" if csv_path.exists() else "w", newline="") as f:
+                        w = _csv.DictWriter(f, fieldnames=csv_fields)
+                        if write_header:
+                            w.writeheader()
+                        seen = set()
+                        for r in self_edge_rows:
+                            k = (r["date"], r["matchup"], r["player"], r["stat"], r["direction"])
+                            if k in seen:
+                                continue
+                            seen.add(k)
+                            w.writerow(r)
+                    print(f"WC self-edge picks written: {len(self_edge_rows)} rows")
+
+                print(f"Combos: {sum(c['qualified'] for c in combo_summary)} total qualified across {len(combo_summary)} games")
     except Exception as e:
         print(f"Combo builder: {e}")
 

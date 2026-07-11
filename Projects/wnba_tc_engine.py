@@ -11,11 +11,12 @@ from pathlib import Path
 from typing import Dict, List, Tuple
 
 import socket; socket.setdefaulttimeout(8)  # prevent per-athlete API calls from hanging
+from tc_math import sport_over_under_signal
 
 WORKSPACE = Path("/home/workspace")
 LOG_DIR = WORKSPACE / "Daily_Log"
 
-EDGE_THRESH = 2.0
+EDGE_THRESH = 0.5
 LINE_FACTOR = 0.88
 Q_FACTOR = 0.55
 OUT_FACTOR = 0.0
@@ -368,12 +369,15 @@ def _fetch_dk_lines_with_fallback(away: str, home: str) -> tuple:
     return (None, None, None, None, "ESPN Core API (self-edge)")
 
 
-def compute_line_and_edge(tc_projection: float) -> Tuple[float, float, str]:
-    raw = tc_projection * LINE_FACTOR
-    line = round(raw * 2) / 2
-    edge = round(tc_projection - line, 1)
-    direction = "OVER" if edge >= EDGE_THRESH else ("UNDER" if edge <= -EDGE_THRESH else "PASS")
-    return line, edge, direction
+def compute_line_and_edge(tc_projection: float) -> Tuple[float, float, str, float]:
+    line = max(0.5, round(tc_projection * 0.88, 1))
+    direction, edge_pct = sport_over_under_signal(
+        projection=tc_projection,
+        market_line=line,
+        sport="WNBA",
+    )
+    edge_abs = round(tc_projection - line, 1)
+    return line, edge_abs, direction, edge_pct
 
 
 def project_game(away: str, home: str) -> dict:
@@ -495,7 +499,7 @@ def _project_one(player_info: dict) -> dict:
 
     for stat_key in ("PTS", "REB", "AST", "3PM", "STL", "BLK"):
         tc = compute_tc_projection(season, stat_key, player_info.get("min", DEFAULT_MINUTES), player_info.get("status", "ACTIVE"))
-        line, edge, direction = compute_line_and_edge(tc)
+        line, edge, direction, edge_pct = compute_line_and_edge(tc)
         proj["projections"][stat_key] = {
             "tc_projection": tc, "line": line, "edge": edge,
             "direction": direction, "dk_line": None,
