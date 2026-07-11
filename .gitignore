@@ -3,6 +3,15 @@
 __pycache__/
 *.log
 .env
+
+# Generated artifacts — archived in historical_backtests.tar.gz
 Daily_Log/backtests/
 Projects/data/betting_history.db
-*backtest*.csv
+Reports/boxscore_combo_backtest_*.csv
+Reports/odds_backtest_report_*.md
+Daily_Log/backtests/odds_backtest_report_*.md
+Daily_Log/backtests/wnba_2026_rosters.json
+
+# Keep graded_picks + final boxscores as proof
+!Daily_Log/*/graded_picks.csv
+!Daily_Log/final/
