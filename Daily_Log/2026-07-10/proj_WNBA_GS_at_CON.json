@@ -6,74 +6,17 @@
   "home_team": "CON",
   "source": "ESPN + OddsAPI fallback (OddsAPI DraftKings)",
   "signal": "OVER",
-  "dk_total": 156.5,
+  "dk_total": 132.5,
   "odds": {
-    "total": 156.5,
-    "spread": 2.5,
-    "ml_home": 105,
+    "total": 132.5,
+    "spread": 14.5,
+    "ml_home": 8000,
     "ml_away": null,
     "ml_source": "OddsAPI DraftKings"
   },
   "away": {
     "all": {
       "players": [
-        {
-          "player": "Janelle Salaun",
-          "team": "GS",
-          "role": "START",
-          "status": "ACTIVE",
-          "pos": "",
-          "projections": {
-            "PTS": {
-              "tc_projection": 14.3,
-              "line": 12.5,
-              "edge": 1.8,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "REB": {
-              "tc_projection": 4.4,
-              "line": 4.0,
-              "edge": 0.4,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "AST": {
-              "tc_projection": 1.2,
-              "line": 1.0,
-              "edge": 0.2,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "3PM": {
-              "tc_projection": 2.8,
-              "line": 2.5,
-              "edge": 0.3,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "STL": {
-              "tc_projection": 0.6,
-              "line": 0.5,
-              "edge": 0.1,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "BLK": {
-              "tc_projection": 0.1,
-              "line": 0.0,
-              "edge": 0.1,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            }
-          }
-        },
         {
           "player": "Gabby Williams",
           "team": "GS",
@@ -189,6 +132,120 @@
           }
         },
         {
+          "player": "Janelle Salaun",
+          "team": "GS",
+          "role": "START",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 14.3,
+              "line": 12.5,
+              "edge": 1.8,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 4.4,
+              "line": 4.0,
+              "edge": 0.4,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 1.2,
+              "line": 1.0,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 2.8,
+              "line": 2.5,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.6,
+              "line": 0.5,
+              "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.1,
+              "line": 0.0,
+              "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Kayla Thornton",
+          "team": "GS",
+          "role": "START",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 8.1,
+              "line": 7.0,
+              "edge": 1.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 5.0,
+              "line": 4.5,
+              "edge": 0.5,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 0.7,
+              "line": 0.5,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 1.5,
+              "line": 1.5,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.7,
+              "line": 0.5,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.3,
+              "line": 0.5,
+              "edge": -0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
           "player": "Cecilia Zandalasini",
           "team": "GS",
           "role": "BENCH",
@@ -296,63 +353,6 @@
               "tc_projection": 0.0,
               "line": 0.0,
               "edge": 0.0,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            }
-          }
-        },
-        {
-          "player": "Kayla Thornton",
-          "team": "GS",
-          "role": "START",
-          "status": "ACTIVE",
-          "pos": "",
-          "projections": {
-            "PTS": {
-              "tc_projection": 8.1,
-              "line": 7.0,
-              "edge": 1.1,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "REB": {
-              "tc_projection": 5.0,
-              "line": 4.5,
-              "edge": 0.5,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "AST": {
-              "tc_projection": 0.7,
-              "line": 0.5,
-              "edge": 0.2,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "3PM": {
-              "tc_projection": 1.5,
-              "line": 1.5,
-              "edge": 0.0,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "STL": {
-              "tc_projection": 0.7,
-              "line": 0.5,
-              "edge": 0.2,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "BLK": {
-              "tc_projection": 0.3,
-              "line": 0.5,
-              "edge": -0.2,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
@@ -820,63 +820,6 @@
     "starters": {
       "players": [
         {
-          "player": "Janelle Salaun",
-          "team": "GS",
-          "role": "START",
-          "status": "ACTIVE",
-          "pos": "",
-          "projections": {
-            "PTS": {
-              "tc_projection": 14.3,
-              "line": 12.5,
-              "edge": 1.8,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "REB": {
-              "tc_projection": 4.4,
-              "line": 4.0,
-              "edge": 0.4,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "AST": {
-              "tc_projection": 1.2,
-              "line": 1.0,
-              "edge": 0.2,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "3PM": {
-              "tc_projection": 2.8,
-              "line": 2.5,
-              "edge": 0.3,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "STL": {
-              "tc_projection": 0.6,
-              "line": 0.5,
-              "edge": 0.1,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "BLK": {
-              "tc_projection": 0.1,
-              "line": 0.0,
-              "edge": 0.1,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            }
-          }
-        },
-        {
           "player": "Gabby Williams",
           "team": "GS",
           "role": "START",
@@ -984,6 +927,63 @@
               "tc_projection": 0.5,
               "line": 0.5,
               "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Janelle Salaun",
+          "team": "GS",
+          "role": "START",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 14.3,
+              "line": 12.5,
+              "edge": 1.8,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 4.4,
+              "line": 4.0,
+              "edge": 0.4,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 1.2,
+              "line": 1.0,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 2.8,
+              "line": 2.5,
+              "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.6,
+              "line": 0.5,
+              "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.1,
+              "line": 0.0,
+              "edge": 0.1,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
@@ -1628,40 +1628,40 @@
     "all": {
       "players": [
         {
-          "player": "Aaliyah Edwards",
+          "player": "Aneesah Morrow",
           "team": "CON",
-          "role": "BENCH",
+          "role": "START",
           "status": "ACTIVE",
           "pos": "",
           "projections": {
             "PTS": {
-              "tc_projection": 12.0,
-              "line": 10.5,
-              "edge": 1.5,
+              "tc_projection": 11.6,
+              "line": 10.0,
+              "edge": 1.6,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
             },
             "REB": {
-              "tc_projection": 4.9,
-              "line": 4.5,
-              "edge": 0.4,
+              "tc_projection": 10.3,
+              "line": 9.0,
+              "edge": 1.3,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
             },
             "AST": {
-              "tc_projection": 1.2,
-              "line": 1.0,
-              "edge": 0.2,
+              "tc_projection": 1.6,
+              "line": 1.5,
+              "edge": 0.1,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
             },
             "3PM": {
-              "tc_projection": 0.2,
-              "line": 0.0,
-              "edge": 0.2,
+              "tc_projection": 0.9,
+              "line": 1.0,
+              "edge": -0.1,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
@@ -1742,40 +1742,40 @@
           }
         },
         {
-          "player": "Aneesah Morrow",
+          "player": "Aaliyah Edwards",
           "team": "CON",
-          "role": "START",
+          "role": "BENCH",
           "status": "ACTIVE",
           "pos": "",
           "projections": {
             "PTS": {
-              "tc_projection": 11.6,
-              "line": 10.0,
-              "edge": 1.6,
+              "tc_projection": 12.0,
+              "line": 10.5,
+              "edge": 1.5,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
             },
             "REB": {
-              "tc_projection": 10.3,
-              "line": 9.0,
-              "edge": 1.3,
+              "tc_projection": 4.9,
+              "line": 4.5,
+              "edge": 0.4,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
             },
             "AST": {
-              "tc_projection": 1.6,
-              "line": 1.5,
-              "edge": 0.1,
+              "tc_projection": 1.2,
+              "line": 1.0,
+              "edge": 0.2,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
             },
             "3PM": {
-              "tc_projection": 0.9,
-              "line": 1.0,
-              "edge": -0.1,
+              "tc_projection": 0.2,
+              "line": 0.0,
+              "edge": 0.2,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
@@ -1913,63 +1913,6 @@
           }
         },
         {
-          "player": "Charlisse Leger-Walker",
-          "team": "CON",
-          "role": "BENCH",
-          "status": "ACTIVE",
-          "pos": "",
-          "projections": {
-            "PTS": {
-              "tc_projection": 8.3,
-              "line": 7.5,
-              "edge": 0.8,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "REB": {
-              "tc_projection": 2.4,
-              "line": 2.0,
-              "edge": 0.4,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "AST": {
-              "tc_projection": 3.4,
-              "line": 3.0,
-              "edge": 0.4,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "3PM": {
-              "tc_projection": 0.9,
-              "line": 1.0,
-              "edge": -0.1,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "STL": {
-              "tc_projection": 1.1,
-              "line": 1.0,
-              "edge": 0.1,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "BLK": {
-              "tc_projection": 0.2,
-              "line": 0.0,
-              "edge": 0.2,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            }
-          }
-        },
-        {
           "player": "Saniya Rivers",
           "team": "CON",
           "role": "START",
@@ -2020,6 +1963,63 @@
               "tc_projection": 0.8,
               "line": 0.5,
               "edge": 0.3,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Charlisse Leger-Walker",
+          "team": "CON",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 8.3,
+              "line": 7.5,
+              "edge": 0.8,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 2.4,
+              "line": 2.0,
+              "edge": 0.4,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 3.4,
+              "line": 3.0,
+              "edge": 0.4,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.9,
+              "line": 1.0,
+              "edge": -0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 1.1,
+              "line": 1.0,
+              "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.2,
+              "line": 0.0,
+              "edge": 0.2,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
@@ -2198,63 +2198,6 @@
           }
         },
         {
-          "player": "Leila Lacan",
-          "team": "CON",
-          "role": "START",
-          "status": "ACTIVE",
-          "pos": "",
-          "projections": {
-            "PTS": {
-              "tc_projection": 11.1,
-              "line": 10.0,
-              "edge": 1.1,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "REB": {
-              "tc_projection": 1.4,
-              "line": 1.0,
-              "edge": 0.4,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "AST": {
-              "tc_projection": 4.0,
-              "line": 3.5,
-              "edge": 0.5,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "3PM": {
-              "tc_projection": 1.1,
-              "line": 1.0,
-              "edge": 0.1,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "STL": {
-              "tc_projection": 1.9,
-              "line": 1.5,
-              "edge": 0.4,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "BLK": {
-              "tc_projection": 0.1,
-              "line": 0.0,
-              "edge": 0.1,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            }
-          }
-        },
-        {
           "player": "Brittney Griner",
           "team": "CON",
           "role": "START",
@@ -2305,6 +2248,63 @@
               "tc_projection": 1.7,
               "line": 1.5,
               "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Leila Lacan",
+          "team": "CON",
+          "role": "START",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 11.1,
+              "line": 10.0,
+              "edge": 1.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 1.4,
+              "line": 1.0,
+              "edge": 0.4,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 4.0,
+              "line": 3.5,
+              "edge": 0.5,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 1.1,
+              "line": 1.0,
+              "edge": 0.1,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 1.9,
+              "line": 1.5,
+              "edge": 0.4,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.1,
+              "line": 0.0,
+              "edge": 0.1,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
@@ -2601,63 +2601,6 @@
           }
         },
         {
-          "player": "Leila Lacan",
-          "team": "CON",
-          "role": "START",
-          "status": "ACTIVE",
-          "pos": "",
-          "projections": {
-            "PTS": {
-              "tc_projection": 11.1,
-              "line": 10.0,
-              "edge": 1.1,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "REB": {
-              "tc_projection": 1.4,
-              "line": 1.0,
-              "edge": 0.4,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "AST": {
-              "tc_projection": 4.0,
-              "line": 3.5,
-              "edge": 0.5,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "3PM": {
-              "tc_projection": 1.1,
-              "line": 1.0,
-              "edge": 0.1,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "STL": {
-              "tc_projection": 1.9,
-              "line": 1.5,
-              "edge": 0.4,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            },
-            "BLK": {
-              "tc_projection": 0.1,
-              "line": 0.0,
-              "edge": 0.1,
-              "direction": "PASS",
-              "dk_line": null,
-              "valid": false
-            }
-          }
-        },
-        {
           "player": "Brittney Griner",
           "team": "CON",
           "role": "START",
@@ -2713,68 +2656,68 @@
               "valid": false
             }
           }
-        }
-      ]
-    },
-    "bench": {
-      "players": [
+        },
         {
-          "player": "Aaliyah Edwards",
+          "player": "Leila Lacan",
           "team": "CON",
-          "role": "BENCH",
+          "role": "START",
           "status": "ACTIVE",
           "pos": "",
           "projections": {
             "PTS": {
-              "tc_projection": 12.0,
-              "line": 10.5,
-              "edge": 1.5,
+              "tc_projection": 11.1,
+              "line": 10.0,
+              "edge": 1.1,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
             },
             "REB": {
-              "tc_projection": 4.9,
-              "line": 4.5,
+              "tc_projection": 1.4,
+              "line": 1.0,
               "edge": 0.4,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
             },
             "AST": {
-              "tc_projection": 1.2,
-              "line": 1.0,
-              "edge": 0.2,
+              "tc_projection": 4.0,
+              "line": 3.5,
+              "edge": 0.5,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
             },
             "3PM": {
-              "tc_projection": 0.2,
-              "line": 0.0,
-              "edge": 0.2,
+              "tc_projection": 1.1,
+              "line": 1.0,
+              "edge": 0.1,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
             },
             "STL": {
-              "tc_projection": 1.0,
-              "line": 1.0,
-              "edge": 0.0,
+              "tc_projection": 1.9,
+              "line": 1.5,
+              "edge": 0.4,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
             },
             "BLK": {
-              "tc_projection": 0.5,
-              "line": 0.5,
-              "edge": 0.0,
+              "tc_projection": 0.1,
+              "line": 0.0,
+              "edge": 0.1,
               "direction": "PASS",
               "dk_line": null,
               "valid": false
             }
           }
-        },
+        }
+      ]
+    },
+    "bench": {
+      "players": [
         {
           "player": "Olivia Nelson-Ododa",
           "team": "CON",
@@ -2825,6 +2768,63 @@
             "BLK": {
               "tc_projection": 1.0,
               "line": 1.0,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Aaliyah Edwards",
+          "team": "CON",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 12.0,
+              "line": 10.5,
+              "edge": 1.5,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 4.9,
+              "line": 4.5,
+              "edge": 0.4,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 1.2,
+              "line": 1.0,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.2,
+              "line": 0.0,
+              "edge": 0.2,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 1.0,
+              "line": 1.0,
+              "edge": 0.0,
+              "direction": "PASS",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.5,
+              "line": 0.5,
               "edge": 0.0,
               "direction": "PASS",
               "dk_line": null,
