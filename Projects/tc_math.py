@@ -327,3 +327,34 @@ def stat_symbol(stat: str) -> str:
         "goals": "▲G", "shots": "●S",
     }
     return mapping.get(stat, stat)
+
+
+def is_sane_edge(tc_val: float, line_val: float, max_ratio: float = 2.5) -> bool:
+    """Reject edge if TC is wildly off market line (>max_ratio or 0)."""
+    if line_val is None or line_val <= 0:
+        return True  # No market line; allow self-edge
+    if tc_val is None or tc_val <= 0:
+        return False
+    ratio = max(tc_val, line_val) / min(tc_val, line_val)
+    return ratio <= max_ratio
+
+
+def shrink_projection(tc_val: float, line_val: float, sample: int = 1, k: int = 20) -> float:
+    """Bayesian-shrink TC projection toward market line based on sample size.
+    Higher sample = trust TC more; low sample = regress toward line.
+    """
+    if not tc_val or not line_val or sample is None or sample <= 0:
+        return tc_val
+    weight = sample / (sample + k)
+    return weight * tc_val + (1 - weight) * line_val
+
+
+
+
+
+def mlb_over_under_signal(projection: float, line: float = None, market_line: float = None) -> tuple:
+    """MLB-specific O/U signal. Returns (direction, edge_pct).
+    Accepts both `line=` and `market_line=` for backwards compat.
+    """
+    actual_line = market_line if market_line is not None else line
+    return over_under_signal(projection, actual_line, min_abs_edge=0.05, max_edge=0.5)

@@ -1,0 +1,656 @@
+{
+  "sport": "MLB",
+  "date": "2026-07-12",
+  "players": [
+    {
+      "id": "MLB_0",
+      "name": "Player 1",
+      "team": "LAD",
+      "stats": {
+        "hits": 15.6,
+        "runs": 27.1,
+        "total_bases": 6.4,
+        "rbi": 21.0,
+        "hr": 23.0,
+        "sb": 9.0
+      }
+    },
+    {
+      "id": "MLB_1",
+      "name": "Player 2",
+      "team": "STL",
+      "stats": {
+        "hits": 22.7,
+        "runs": 11.7,
+        "total_bases": 16.8,
+        "rbi": 18.0,
+        "hr": 16.7,
+        "sb": 10.8
+      }
+    },
+    {
+      "id": "MLB_2",
+      "name": "Player 3",
+      "team": "HOU",
+      "stats": {
+        "hits": 15.9,
+        "runs": 17.6,
+        "total_bases": 8.7,
+        "rbi": 13.3,
+        "hr": 14.3,
+        "sb": 17.0
+      }
+    },
+    {
+      "id": "MLB_3",
+      "name": "Player 4",
+      "team": "ATL",
+      "stats": {
+        "hits": 13.5,
+        "runs": 14.6,
+        "total_bases": 8.4,
+        "rbi": 10.8,
+        "hr": 6.8,
+        "sb": 19.1
+      }
+    },
+    {
+      "id": "MLB_4",
+      "name": "Player 5",
+      "team": "NYY",
+      "stats": {
+        "hits": 14.3,
+        "runs": 20.1,
+        "total_bases": 14.7,
+        "rbi": 7.2,
+        "hr": 5.2,
+        "sb": 13.4
+      }
+    },
+    {
+      "id": "MLB_5",
+      "name": "Player 6",
+      "team": "NYY",
+      "stats": {
+        "hits": 16.9,
+        "runs": 17.0,
+        "total_bases": 5.2,
+        "rbi": 14.6,
+        "hr": 11.6,
+        "sb": 10.2
+      }
+    },
+    {
+      "id": "MLB_6",
+      "name": "Player 7",
+      "team": "HOU",
+      "stats": {
+        "hits": 14.1,
+        "runs": 18.1,
+        "total_bases": 12.2,
+        "rbi": 9.5,
+        "hr": 21.6,
+        "sb": 13.9
+      }
+    },
+    {
+      "id": "MLB_7",
+      "name": "Player 8",
+      "team": "HOU",
+      "stats": {
+        "hits": 7.2,
+        "runs": 14.8,
+        "total_bases": 21.6,
+        "rbi": 20.4,
+        "hr": 14.3,
+        "sb": 21.4
+      }
+    },
+    {
+      "id": "MLB_8",
+      "name": "Player 9",
+      "team": "STL",
+      "stats": {
+        "hits": 17.3,
+        "runs": 11.1,
+        "total_bases": 9.8,
+        "rbi": 23.5,
+        "hr": 17.1,
+        "sb": 20.2
+      }
+    },
+    {
+      "id": "MLB_9",
+      "name": "Player 10",
+      "team": "PHI",
+      "stats": {
+        "hits": 12.8,
+        "runs": 15.6,
+        "total_bases": 15.3,
+        "rbi": 19.7,
+        "hr": 6.6,
+        "sb": 21.8
+      }
+    },
+    {
+      "id": "MLB_10",
+      "name": "Player 11",
+      "team": "LAD",
+      "stats": {
+        "hits": 9.4,
+        "runs": 17.7,
+        "total_bases": 22.9,
+        "rbi": 14.4,
+        "hr": 5.9,
+        "sb": 8.9
+      }
+    },
+    {
+      "id": "MLB_11",
+      "name": "Player 12",
+      "team": "BOS",
+      "stats": {
+        "hits": 7.5,
+        "runs": 17.2,
+        "total_bases": 11.3,
+        "rbi": 8.8,
+        "hr": 9.7,
+        "sb": 17.0
+      }
+    },
+    {
+      "id": "MLB_12",
+      "name": "Player 13",
+      "team": "STL",
+      "stats": {
+        "hits": 3.9,
+        "runs": 23.2,
+        "total_bases": 21.0,
+        "rbi": 7.9,
+        "hr": 15.2,
+        "sb": 12.8
+      }
+    },
+    {
+      "id": "MLB_13",
+      "name": "Player 14",
+      "team": "BOS",
+      "stats": {
+        "hits": 11.3,
+        "runs": 12.6,
+        "total_bases": 11.0,
+        "rbi": 15.7,
+        "hr": 14.9,
+        "sb": 17.5
+      }
+    },
+    {
+      "id": "MLB_14",
+      "name": "Player 15",
+      "team": "TOR",
+      "stats": {
+        "hits": 20.3,
+        "runs": 24.3,
+        "total_bases": 14.0,
+        "rbi": 12.0,
+        "hr": 21.0,
+        "sb": 13.0
+      }
+    },
+    {
+      "id": "MLB_15",
+      "name": "Player 16",
+      "team": "LAD",
+      "stats": {
+        "hits": 10.1,
+        "runs": 9.3,
+        "total_bases": 15.6,
+        "rbi": 7.9,
+        "hr": 9.1,
+        "sb": 10.6
+      }
+    },
+    {
+      "id": "MLB_16",
+      "name": "Player 17",
+      "team": "NYY",
+      "stats": {
+        "hits": 23.8,
+        "runs": 13.8,
+        "total_bases": 20.5,
+        "rbi": 8.3,
+        "hr": 13.4,
+        "sb": 16.1
+      }
+    },
+    {
+      "id": "MLB_17",
+      "name": "Player 18",
+      "team": "LAD",
+      "stats": {
+        "hits": 21.3,
+        "runs": 11.2,
+        "total_bases": 10.8,
+        "rbi": 14.3,
+        "hr": 18.4,
+        "sb": 19.0
+      }
+    },
+    {
+      "id": "MLB_18",
+      "name": "Player 19",
+      "team": "LAD",
+      "stats": {
+        "hits": 13.2,
+        "runs": 23.7,
+        "total_bases": 14.9,
+        "rbi": 23.0,
+        "hr": 13.8,
+        "sb": 10.8
+      }
+    },
+    {
+      "id": "MLB_19",
+      "name": "Player 20",
+      "team": "PHI",
+      "stats": {
+        "hits": 16.0,
+        "runs": 18.4,
+        "total_bases": 9.0,
+        "rbi": 12.9,
+        "hr": 8.4,
+        "sb": 15.2
+      }
+    },
+    {
+      "id": "MLB_20",
+      "name": "Player 21",
+      "team": "LAD",
+      "stats": {
+        "hits": 16.6,
+        "runs": 13.0,
+        "total_bases": 12.8,
+        "rbi": 17.8,
+        "hr": 12.3,
+        "sb": 11.5
+      }
+    },
+    {
+      "id": "MLB_21",
+      "name": "Player 22",
+      "team": "TOR",
+      "stats": {
+        "hits": 18.4,
+        "runs": 8.4,
+        "total_bases": 11.6,
+        "rbi": 17.7,
+        "hr": 12.3,
+        "sb": 12.0
+      }
+    },
+    {
+      "id": "MLB_22",
+      "name": "Player 23",
+      "team": "BOS",
+      "stats": {
+        "hits": 19.8,
+        "runs": 9.0,
+        "total_bases": 14.9,
+        "rbi": 19.2,
+        "hr": 12.7,
+        "sb": 10.1
+      }
+    },
+    {
+      "id": "MLB_23",
+      "name": "Player 24",
+      "team": "STL",
+      "stats": {
+        "hits": 14.2,
+        "runs": 18.2,
+        "total_bases": 13.1,
+        "rbi": 16.7,
+        "hr": 17.1,
+        "sb": 17.2
+      }
+    },
+    {
+      "id": "MLB_24",
+      "name": "Player 25",
+      "team": "ATL",
+      "stats": {
+        "hits": 11.3,
+        "runs": 6.8,
+        "total_bases": 18.9,
+        "rbi": 15.4,
+        "hr": 21.2,
+        "sb": 11.9
+      }
+    },
+    {
+      "id": "MLB_25",
+      "name": "Player 26",
+      "team": "ATL",
+      "stats": {
+        "hits": 11.3,
+        "runs": 15.7,
+        "total_bases": 12.5,
+        "rbi": 9.9,
+        "hr": 18.5,
+        "sb": 7.0
+      }
+    },
+    {
+      "id": "MLB_26",
+      "name": "Player 27",
+      "team": "PHI",
+      "stats": {
+        "hits": 12.1,
+        "runs": 16.6,
+        "total_bases": 16.1,
+        "rbi": 12.5,
+        "hr": 20.4,
+        "sb": 11.4
+      }
+    },
+    {
+      "id": "MLB_27",
+      "name": "Player 28",
+      "team": "HOU",
+      "stats": {
+        "hits": 11.3,
+        "runs": 7.6,
+        "total_bases": 14.8,
+        "rbi": 13.6,
+        "hr": 11.8,
+        "sb": 17.5
+      }
+    },
+    {
+      "id": "MLB_28",
+      "name": "Player 29",
+      "team": "LAD",
+      "stats": {
+        "hits": 20.5,
+        "runs": 14.9,
+        "total_bases": 20.6,
+        "rbi": 12.7,
+        "hr": 22.2,
+        "sb": 18.5
+      }
+    },
+    {
+      "id": "MLB_29",
+      "name": "Player 30",
+      "team": "BOS",
+      "stats": {
+        "hits": 7.8,
+        "runs": 15.5,
+        "total_bases": 9.4,
+        "rbi": 11.3,
+        "hr": 19.0,
+        "sb": 11.2
+      }
+    },
+    {
+      "id": "MLB_30",
+      "name": "Player 31",
+      "team": "STL",
+      "stats": {
+        "hits": 17.2,
+        "runs": 15.6,
+        "total_bases": 14.2,
+        "rbi": 12.1,
+        "hr": 14.1,
+        "sb": 16.8
+      }
+    },
+    {
+      "id": "MLB_31",
+      "name": "Player 32",
+      "team": "ATL",
+      "stats": {
+        "hits": 13.1,
+        "runs": 13.6,
+        "total_bases": 9.3,
+        "rbi": 7.1,
+        "hr": 2.2,
+        "sb": 11.1
+      }
+    },
+    {
+      "id": "MLB_32",
+      "name": "Player 33",
+      "team": "BOS",
+      "stats": {
+        "hits": 17.3,
+        "runs": 13.0,
+        "total_bases": 16.4,
+        "rbi": 5.7,
+        "hr": 9.5,
+        "sb": 19.4
+      }
+    },
+    {
+      "id": "MLB_33",
+      "name": "Player 34",
+      "team": "LAD",
+      "stats": {
+        "hits": 7.7,
+        "runs": 19.0,
+        "total_bases": 18.7,
+        "rbi": 15.9,
+        "hr": 16.5,
+        "sb": 21.3
+      }
+    },
+    {
+      "id": "MLB_34",
+      "name": "Player 35",
+      "team": "PHI",
+      "stats": {
+        "hits": 13.2,
+        "runs": 13.6,
+        "total_bases": 18.0,
+        "rbi": 13.5,
+        "hr": 16.8,
+        "sb": 12.8
+      }
+    },
+    {
+      "id": "MLB_35",
+      "name": "Player 36",
+      "team": "PHI",
+      "stats": {
+        "hits": 11.5,
+        "runs": 17.3,
+        "total_bases": 16.2,
+        "rbi": 16.5,
+        "hr": 11.6,
+        "sb": 19.4
+      }
+    },
+    {
+      "id": "MLB_36",
+      "name": "Player 37",
+      "team": "ATL",
+      "stats": {
+        "hits": 20.2,
+        "runs": 15.7,
+        "total_bases": 19.3,
+        "rbi": 12.5,
+        "hr": 18.6,
+        "sb": 13.6
+      }
+    },
+    {
+      "id": "MLB_37",
+      "name": "Player 38",
+      "team": "TOR",
+      "stats": {
+        "hits": 18.2,
+        "runs": 25.2,
+        "total_bases": 19.8,
+        "rbi": 12.8,
+        "hr": 25.4,
+        "sb": 12.2
+      }
+    },
+    {
+      "id": "MLB_38",
+      "name": "Player 39",
+      "team": "PHI",
+      "stats": {
+        "hits": 15.7,
+        "runs": 20.2,
+        "total_bases": 13.7,
+        "rbi": 18.6,
+        "hr": 16.7,
+        "sb": 21.2
+      }
+    },
+    {
+      "id": "MLB_39",
+      "name": "Player 40",
+      "team": "ATL",
+      "stats": {
+        "hits": 18.6,
+        "runs": 17.8,
+        "total_bases": 13.9,
+        "rbi": 7.2,
+        "hr": 15.3,
+        "sb": 23.5
+      }
+    },
+    {
+      "id": "MLB_40",
+      "name": "Player 41",
+      "team": "ATL",
+      "stats": {
+        "hits": 12.1,
+        "runs": 9.6,
+        "total_bases": 17.7,
+        "rbi": 16.4,
+        "hr": 17.9,
+        "sb": 12.8
+      }
+    },
+    {
+      "id": "MLB_41",
+      "name": "Player 42",
+      "team": "LAD",
+      "stats": {
+        "hits": 14.7,
+        "runs": 19.3,
+        "total_bases": 4.6,
+        "rbi": 16.3,
+        "hr": 18.7,
+        "sb": 19.6
+      }
+    },
+    {
+      "id": "MLB_42",
+      "name": "Player 43",
+      "team": "NYY",
+      "stats": {
+        "hits": 24.0,
+        "runs": 2.2,
+        "total_bases": 17.8,
+        "rbi": 11.9,
+        "hr": 18.0,
+        "sb": 15.0
+      }
+    },
+    {
+      "id": "MLB_43",
+      "name": "Player 44",
+      "team": "TOR",
+      "stats": {
+        "hits": 16.9,
+        "runs": 8.0,
+        "total_bases": 13.4,
+        "rbi": 11.9,
+        "hr": 13.3,
+        "sb": 20.1
+      }
+    },
+    {
+      "id": "MLB_44",
+      "name": "Player 45",
+      "team": "ATL",
+      "stats": {
+        "hits": 21.7,
+        "runs": 16.0,
+        "total_bases": 20.3,
+        "rbi": 25.0,
+        "hr": 14.7,
+        "sb": 13.9
+      }
+    },
+    {
+      "id": "MLB_45",
+      "name": "Player 46",
+      "team": "PHI",
+      "stats": {
+        "hits": 14.8,
+        "runs": 27.7,
+        "total_bases": 16.6,
+        "rbi": 5.5,
+        "hr": 10.2,
+        "sb": 20.2
+      }
+    },
+    {
+      "id": "MLB_46",
+      "name": "Player 47",
+      "team": "HOU",
+      "stats": {
+        "hits": 11.6,
+        "runs": 14.7,
+        "total_bases": 5.6,
+        "rbi": 6.8,
+        "hr": 23.1,
+        "sb": 13.3
+      }
+    },
+    {
+      "id": "MLB_47",
+      "name": "Player 48",
+      "team": "TOR",
+      "stats": {
+        "hits": 10.8,
+        "runs": 10.1,
+        "total_bases": 17.4,
+        "rbi": 17.8,
+        "hr": 17.0,
+        "sb": 13.7
+      }
+    },
+    {
+      "id": "MLB_48",
+      "name": "Player 49",
+      "team": "PHI",
+      "stats": {
+        "hits": 3.1,
+        "runs": 19.1,
+        "total_bases": 24.7,
+        "rbi": 29.8,
+        "hr": 10.6,
+        "sb": 14.6
+      }
+    },
+    {
+      "id": "MLB_49",
+      "name": "Player 50",
+      "team": "BOS",
+      "stats": {
+        "hits": 18.4,
+        "runs": 15.6,
+        "total_bases": 14.9,
+        "rbi": 16.6,
+        "hr": 16.7,
+        "sb": 5.5
+      }
+    }
+  ]
+}
