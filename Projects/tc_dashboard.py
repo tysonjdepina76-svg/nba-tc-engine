@@ -56,15 +56,39 @@ def load_graded(date_str, sport_filter):
     return df
 
 @st.cache_data
-def load_combos(date_str):
-    """Load combos from Daily_Log."""
-    combos_file = Path(f"/home/workspace/Daily_Log/{date_str}/combos.json")
-    if not combos_file.exists():
+def load_combos(date_str, sport_filter="All"):
+    """Load all per-game combos for the date. Each combos_*.json has
+    {matchup, sport, legs, qualified, ...}. We merge into rows so the
+    'Game by game' tab and the Combo Build sub-tabs work correctly."""
+    combos_dir = Path(f"/home/workspace/Daily_Log/{date_str}")
+    combo_files = list(combos_dir.glob("combos_*.json"))
+    if not combo_files:
+        log_root = Path("/home/workspace/Daily_Log")
+        if log_root.exists():
+            for d in sorted([x for x in log_root.iterdir() if x.is_dir()], reverse=True):
+                combo_files = list(d.glob("combos_*.json"))
+                if combo_files:
+                    break
+    if not combo_files:
         return pd.DataFrame()
-
-    with open(combos_file) as f:
-        data = json.load(f)
-    return pd.DataFrame(data)
+    rows = []
+    for cf in combo_files:
+        try:
+            with open(cf) as f:
+                d = json.load(f)
+        except Exception:
+            continue
+        matchup = d.get("matchup", cf.stem.replace("combos_", "").replace("_", "@"))
+        sport = d.get("sport", "MLB")
+        if sport_filter != "All" and sport != sport_filter:
+            continue
+        qualified = d.get("qualified", []) or d.get("legs", [])
+        for q in qualified:
+            row = {"matchup": matchup, "sport": sport, "file": cf.name, **q}
+            rows.append(row)
+    if not rows:
+        return pd.DataFrame()
+    return pd.DataFrame(rows)
 
 @st.cache_data
 def load_projections(date_str, sport):
@@ -189,16 +213,19 @@ with tab4:
     st.info("DraftKings combo lines — coming soon (API integration in progress)")
     st.code("DK API endpoint: https://api.draftkings.com/combos/v1/{sport}")
 
-# ─── TAB 5: LIVE COMBOS ───
+# ─── TAB 5: LIVE COMBOS (Game by Game) ───
 with tab5:
-    st.header("🔗 Live Combos")
-
-    combos_df = load_combos(date_str)
+    st.header("🔗 Live Combos — Game by Game")
+    combos_df = load_combos(date_str, sport_filter)
     if combos_df.empty:
-        st.info(f"No combos for {date_str}")
+        st.info(f"No combos for {date_str} — Odds API + SGO both blocked. Use TC self-edge projections as fallback.")
     else:
-        st.metric("Total Combos", len(combos_df))
-        st.dataframe(combos_df, use_container_width=True)
+        games = combos_df["matchup"].unique().tolist()
+        st.metric("Total Games w/ Combos", len(games))
+        st.metric("Total Legs", len(combos_df))
+        sel = st.selectbox("Game", ["All"] + games)
+        view = combos_df if sel == "All" else combos_df[combos_df["matchup"] == sel]
+        st.dataframe(view, use_container_width=True)
 
 # ─── TAB 6: PROJECT GAME ───
 with tab6:
@@ -254,22 +281,15 @@ with tab9:
 # ─── COMBO SUB-TABS ───
 st.header("🔗 Combo Builds 1-4")
 combo_tabs = st.tabs(["Combo Build 1", "Combo Build 2", "Combo Build 3", "Combo Build 4"])
-
 for i, tab in enumerate(combo_tabs, 1):
     with tab:
         st.subheader(f"Combo Build {i}")
-
-        combos_df = load_combos(date_str)
+        combos_df = load_combos(date_str, sport_filter)
         if combos_df.empty:
-            st.info(f"No combos for {date_str}")
+            st.info("No combos available — book lines are offline. Try TC self-edge projections.")
         else:
-            # Filter by combo type (if exists)
-            if f'combo_{i}' in combos_df.columns:
-                filtered = combos_df[combos_df[f'combo_{i}'] == True]
-                st.metric(f"Combos in Build {i}", len(filtered))
-                st.dataframe(filtered, use_container_width=True)
-            else:
-                st.dataframe(combos_df.head(50), use_container_width=True)
+            st.metric("Total Legs", len(combos_df))
+            st.dataframe(combos_df, use_container_width=True)
 
 # ─── FOOTER ───
 st.sidebar.markdown("---")

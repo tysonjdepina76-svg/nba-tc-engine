@@ -3,7 +3,7 @@
   "matchup": "ARI@LAD",
   "home_team": "LAD",
   "away_team": "ARI",
-  "dk_total": 8.5,
+  "dk_total": 6.5,
   "source": "ESPN + SGO DK Props + SDIO",
   "valid_props": [
     {
@@ -71,6 +71,21 @@
       "team": "LAD",
       "pos": "1B",
       "stat": "hits",
+      "market_line": 1.6,
+      "tc_projection": 0.7,
+      "tc_raw": 0.7,
+      "edge": -0.9,
+      "edge_pct": 0.9,
+      "direction": "UNDER",
+      "signal": "UNDER",
+      "status": "ACTIVE",
+      "source": "OVER_UNDER"
+    },
+    {
+      "player": "Miguel Rojas",
+      "team": "LAD",
+      "pos": "SS",
+      "stat": "total_bases",
       "market_line": 1.6,
       "tc_projection": 0.7,
       "tc_raw": 0.7,
@@ -337,6 +352,36 @@
       "source": "OVER_UNDER"
     },
     {
+      "player": "Miguel Rojas",
+      "team": "LAD",
+      "pos": "SS",
+      "stat": "hits",
+      "market_line": 0.5,
+      "tc_projection": 0.8,
+      "tc_raw": 0.8,
+      "edge": 0.3,
+      "edge_pct": 0,
+      "direction": "FLAT",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "OVER_UNDER"
+    },
+    {
+      "player": "Miguel Rojas",
+      "team": "LAD",
+      "pos": "SS",
+      "stat": "rbi",
+      "market_line": 0.5,
+      "tc_projection": 0.2,
+      "tc_raw": 0.2,
+      "edge": -0.3,
+      "edge_pct": 0,
+      "direction": "FLAT",
+      "signal": "PASS",
+      "status": "ACTIVE",
+      "source": "OVER_UNDER"
+    },
+    {
       "player": "Gabriel Moreno",
       "team": "ARI",
       "pos": "C",
@@ -757,14 +802,14 @@
       "source": "OVER_UNDER"
     },
     {
-      "player": "Zac Gallen",
-      "team": "ARI",
-      "pos": "SP",
-      "stat": "strikeouts",
-      "market_line": 4.8,
-      "tc_projection": 4.723809523809524,
-      "tc_raw": 3.2,
-      "edge": -0.08,
+      "player": "Miguel Rojas",
+      "team": "LAD",
+      "pos": "SS",
+      "stat": "runs",
+      "market_line": 0.5,
+      "tc_projection": 0.4,
+      "tc_raw": 0.4,
+      "edge": -0.1,
       "edge_pct": 0,
       "direction": "FLAT",
       "signal": "PASS",
@@ -780,21 +825,6 @@
       "tc_projection": 4.876190476190476,
       "tc_raw": 6.4,
       "edge": 0.08,
-      "edge_pct": 0,
-      "direction": "FLAT",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "OVER_UNDER"
-    },
-    {
-      "player": "Zac Gallen",
-      "team": "ARI",
-      "pos": "SP",
-      "stat": "hits_allowed",
-      "market_line": 5.8,
-      "tc_projection": 5.752380952380952,
-      "tc_raw": 4.8,
-      "edge": -0.05,
       "edge_pct": 0,
       "direction": "FLAT",
       "signal": "PASS",
@@ -825,21 +855,6 @@
       "tc_projection": 3.676190476190476,
       "tc_raw": 3.2,
       "edge": -0.02,
-      "edge_pct": 0,
-      "direction": "FLAT",
-      "signal": "PASS",
-      "status": "ACTIVE",
-      "source": "OVER_UNDER"
-    },
-    {
-      "player": "Zac Gallen",
-      "team": "ARI",
-      "pos": "SP",
-      "stat": "earned_runs",
-      "market_line": 2.6,
-      "tc_projection": 2.5904761904761906,
-      "tc_raw": 2.4,
-      "edge": -0.01,
       "edge_pct": 0,
       "direction": "FLAT",
       "signal": "PASS",
@@ -2661,16 +2676,8 @@
             "earned_runs": 2.4,
             "outs": 14.4
           },
-          "lines_raw": {
-            "hits_allowed": 5.8,
-            "earned_runs": 2.6,
-            "strikeouts": 4.8
-          },
-          "edges_raw": {
-            "hits_allowed": -1,
-            "earned_runs": -0.2,
-            "strikeouts": -1.6
-          }
+          "lines_raw": {},
+          "edges_raw": {}
         },
         {
           "name": "Merrill Kelly",
@@ -4517,16 +4524,8 @@
             "earned_runs": 2.4,
             "outs": 14.4
           },
-          "lines_raw": {
-            "hits_allowed": 5.8,
-            "earned_runs": 2.6,
-            "strikeouts": 4.8
-          },
-          "edges_raw": {
-            "hits_allowed": -1,
-            "earned_runs": -0.2,
-            "strikeouts": -1.6
-          }
+          "lines_raw": {},
+          "edges_raw": {}
         },
         {
           "name": "Merrill Kelly",
@@ -5256,10 +5255,10 @@
           "tc_r": 0,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 0.5,
+          "line_h": 0,
           "line_hr": 0,
-          "line_rbi": 0.5,
-          "line_r": 0.5,
+          "line_rbi": 0,
+          "line_r": 0,
           "line_sb": 0,
           "edge_h": 0,
           "edge_hr": 0,
@@ -5305,13 +5304,7 @@
             "earned_runs": 0,
             "outs": 0
           },
-          "lines_raw": {
-            "strikeouts": 0.5,
-            "hits": 0.5,
-            "rbi": 0.5,
-            "total_bases": 1.6,
-            "runs": 0.5
-          },
+          "lines_raw": {},
           "edges_raw": {}
         },
         {
@@ -5544,15 +5537,15 @@
           "tc_r": 0.4,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 0,
+          "line_h": 0.5,
           "line_hr": 0,
-          "line_rbi": 0,
-          "line_r": 0,
+          "line_rbi": 0.5,
+          "line_r": 0.5,
           "line_sb": 0,
-          "edge_h": 0,
+          "edge_h": 0.3,
           "edge_hr": 0,
-          "edge_rbi": 0,
-          "edge_r": 0,
+          "edge_rbi": -0.3,
+          "edge_r": -0.1,
           "edge_sb": 0,
           "edge_avg": 0,
           "batting": {
@@ -5593,8 +5586,19 @@
             "earned_runs": 0,
             "outs": 0
           },
-          "lines_raw": {},
-          "edges_raw": {}
+          "lines_raw": {
+            "strikeouts": 0.5,
+            "hits": 0.5,
+            "rbi": 0.5,
+            "total_bases": 1.6,
+            "runs": 0.5
+          },
+          "edges_raw": {
+            "hits": 0.3,
+            "rbi": -0.3,
+            "total_bases": -0.9,
+            "runs": -0.1
+          }
         },
         {
           "name": "Jack Dreyer",
@@ -7114,10 +7118,10 @@
           "tc_r": 0,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 0.5,
+          "line_h": 0,
           "line_hr": 0,
-          "line_rbi": 0.5,
-          "line_r": 0.5,
+          "line_rbi": 0,
+          "line_r": 0,
           "line_sb": 0,
           "edge_h": 0,
           "edge_hr": 0,
@@ -7163,13 +7167,7 @@
             "earned_runs": 0,
             "outs": 0
           },
-          "lines_raw": {
-            "strikeouts": 0.5,
-            "hits": 0.5,
-            "rbi": 0.5,
-            "total_bases": 1.6,
-            "runs": 0.5
-          },
+          "lines_raw": {},
           "edges_raw": {}
         },
         {
@@ -7402,15 +7400,15 @@
           "tc_r": 0.4,
           "tc_sb": 0,
           "tc_avg": 0,
-          "line_h": 0,
+          "line_h": 0.5,
           "line_hr": 0,
-          "line_rbi": 0,
-          "line_r": 0,
+          "line_rbi": 0.5,
+          "line_r": 0.5,
           "line_sb": 0,
-          "edge_h": 0,
+          "edge_h": 0.3,
           "edge_hr": 0,
-          "edge_rbi": 0,
-          "edge_r": 0,
+          "edge_rbi": -0.3,
+          "edge_r": -0.1,
           "edge_sb": 0,
           "edge_avg": 0,
           "batting": {
@@ -7451,8 +7449,19 @@
             "earned_runs": 0,
             "outs": 0
           },
-          "lines_raw": {},
-          "edges_raw": {}
+          "lines_raw": {
+            "strikeouts": 0.5,
+            "hits": 0.5,
+            "rbi": 0.5,
+            "total_bases": 1.6,
+            "runs": 0.5
+          },
+          "edges_raw": {
+            "hits": 0.3,
+            "rbi": -0.3,
+            "total_bases": -0.9,
+            "runs": -0.1
+          }
         },
         {
           "name": "Jack Dreyer",
@@ -8316,7 +8325,7 @@
   "edge": null,
   "signal": null,
   "odds": {
-    "total": 8.5,
+    "total": 6.5,
     "ml_source": "DraftKings via SportsDataIO"
   },
   "team_to_win": "LAD",
