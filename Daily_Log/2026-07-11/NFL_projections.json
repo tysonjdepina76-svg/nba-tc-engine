@@ -1,0 +1,13 @@
+{
+  "_note": "NFL off-season — engine auto-enables 2026-08-06 (preseason), regular season Sep 4. Schema ready, sample data below for format validation only.",
+  "schema": "NFL",
+  "stat_keys": ["pass_yds","rush_yds","rec_yds","td","int","sacks"],
+  "stat_labels": ["PASS YDS","RUSH YDS","REC YDS","TD","INT","SACKS"],
+  "players": [
+    {"name": "Patrick Mahomes", "team": "KC", "pos": "QB", "tc_pass_yds": 280.5, "dk_pass_yds": 275.5, "edge": 5.0, "direction": "OVER"},
+    {"name": "Travis Kelce", "team": "KC", "pos": "TE", "tc_rec_yds": 75.0, "dk_rec_yds": 71.5, "edge": 3.5, "direction": "OVER"}
+  ],
+  "games": [
+    {"away": "KC", "home": "BAL", "total": 47.5, "spread": -3.0}
+  ]
+}
