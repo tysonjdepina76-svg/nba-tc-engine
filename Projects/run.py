@@ -27,6 +27,17 @@ def main() -> int:
         cmd = ["python3", "daily_picks.py", "--sport", s, "--date", date]
         subprocess.run(cmd, cwd=Path(__file__).parent)
 
+    # After all daily_picks run, build pregame combos
+    print(f"\n{'='*60}\nBUILDING COMBOS {date}\n{'='*60}")
+    try:
+        subprocess.run(
+            ["python3", "combo_builder.py", date, "--sports", ",".join(sports)],
+            cwd=Path(__file__).parent,
+            check=False,
+        )
+    except Exception as e:
+        print(f"  combo build skipped: {e}")
+
     if args.settle:
         from datetime import timedelta
         yest = (datetime.now(ZoneInfo("America/New_York")) - timedelta(days=1)).strftime("%Y-%m-%d")

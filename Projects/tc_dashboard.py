@@ -227,18 +227,65 @@ def _espn_dk_lines(espn_path: str, away: str, home: str) -> dict:
         if a_team != away.upper() and h_team != home.upper():
             continue
         odds_list = comp.get("odds", []) or []
-        dk_odds = next((o for o in odds_list if (o.get("provider", {}) or {}).get("id") == "100" or (o.get("provider", {}) or {}).get("name") == "DraftKings"), None)
-        if not dk_odds and odds_list:
-            dk_odds = odds_list[0]
-        if dk_odds:
-            out["total"] = dk_odds.get("overUnder")
-            out["spread"] = dk_odds.get("spread")
-            ml = dk_odds.get("moneyline", {}) or {}
-            out["ml_home"] = ml.get("home", {}).get("close", {}).get("odds")
-            out["ml_away"] = ml.get("away", {}).get("close", {}).get("odds")
+        # Try multi-book first, fall back to DraftKings
+        multi = get_multi_book_odds_from_event(comp)
+        if multi:
+            out.update(multi)
+        else:
+            dk_odds = next((o for o in odds_list if (o.get("provider", {}) or {}).get("id") == "100" or (o.get("provider", {}) or {}).get("name") == "DraftKings"), None)
+            if not dk_odds and odds_list:
+                dk_odds = odds_list[0]
+            if dk_odds:
+                out["total"] = dk_odds.get("overUnder")
+                out["spread"] = dk_odds.get("spread")
+                ml = dk_odds.get("moneyline", {}) or {}
+                out["ml_home"] = ml.get("home", {}).get("close", {}).get("odds")
+                out["ml_away"] = ml.get("away", {}).get("close", {}).get("odds")
         out["event_id"] = ev.get("id")
         break
     return out
+
+
+BOOK_PROVIDER_IDS = {
+    "DraftKings": ["100", "DraftKings"],
+    "FanDuel": ["15", "FanDuel"],
+    "BetMGM": ["150", "BetMGM", "mgm"],
+    "Caesars": ["20", "Caesars", "williamhill"],
+}
+
+
+def get_multi_book_odds_from_event(comp: dict) -> dict:
+    """Pull consensus spread/total across DraftKings/FanDuel/BetMGM/Caesars from an ESPN event competition.
+    Returns dict with keys: spread, total, ml_home, ml_away, books (list of books seen).
+    """
+    odds_list = comp.get("odds", []) or []
+    if not odds_list:
+        return {}
+    spreads, totals, ml_h, ml_a, books = [], [], [], [], []
+    for book_name, ids in BOOK_PROVIDER_IDS.items():
+        for o in odds_list:
+            prov = (o.get("provider", {}) or {})
+            if prov.get("id") in ids or prov.get("name") == book_name:
+                if o.get("spread") is not None:
+                    spreads.append(float(o["spread"]))
+                if o.get("overUnder") is not None:
+                    totals.append(float(o["overUnder"]))
+                ml = o.get("moneyline", {}) or {}
+                if ml.get("home", {}).get("close", {}).get("odds"):
+                    ml_h.append(float(ml["home"]["close"]["odds"]))
+                if ml.get("away", {}).get("close", {}).get("odds"):
+                    ml_a.append(float(ml["away"]["close"]["odds"]))
+                books.append(book_name)
+                break
+    if not spreads and not totals and not ml_h and not ml_a:
+        return {}
+    return {
+        "spread": sum(spreads) / len(spreads) if spreads else None,
+        "total": sum(totals) / len(totals) if totals else None,
+        "ml_home": sum(ml_h) / len(ml_h) if ml_h else None,
+        "ml_away": sum(ml_a) / len(ml_a) if ml_a else None,
+        "books": books,
+    }
 
 
 # ─── Render: Roster (from proj JSON, not ESPN boxscore) ──

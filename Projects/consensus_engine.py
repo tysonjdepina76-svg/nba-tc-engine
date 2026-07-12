@@ -162,20 +162,46 @@ CONSENSUS_SPORT_MAP = ODDS_SPORT_MAP  # re-export
 ODDS_BASE = "https://api.theoddsapi.com"
 
 # ── SGO fallback helpers (for MLB, World Cup when Odds API is dead) ──
+import time as _time
+
+# In-memory cache to avoid 429 hammering on WNBA SGO rate-limited endpoints
+_SGO_EVENTS_CACHE: dict[str, tuple[float, list]] = {}
+_SGO_CACHE_TTL_SEC = 300  # 5 min cache per league
+_SGO_RETRY_BACKOFF = (1.0, 2.5, 5.0)  # 3 retries on 429
+
 def _sgo_fetch_events(league: str) -> list:
-    """Fetch live/upcoming events from SGO."""
+    """Fetch live/upcoming events from SGO with cache + 429 retry fallback."""
     if not SGO_KEY:
         return []
-    try:
-        r = requests.get(
-            "https://api.sportsgameodds.com/v2/events",
-            params={"leagueID": league, "oddsAvailable": "true", "limit": "100"},
-            headers={"x-api-key": SGO_KEY}, timeout=30)
-        r.raise_for_status()
-        return r.json().get("data", [])
-    except Exception as e:
-        print(f"  [SGO] {league} events err: {e}")
-        return []
+    # Cache hit?
+    cached = _SGO_EVENTS_CACHE.get(league)
+    if cached and (_time.time() - cached[0]) < _SGO_CACHE_TTL_SEC:
+        return cached[1]
+    last_err: Exception | None = None
+    for attempt, delay in enumerate((0.0,) + _SGO_RETRY_BACKOFF):
+        if delay:
+            _time.sleep(delay)
+        try:
+            r = requests.get(
+                "https://api.sportsgameodds.com/v2/events",
+                params={"leagueID": league, "oddsAvailable": "true", "limit": "100"},
+                headers={"x-api-key": SGO_KEY}, timeout=30)
+            if r.status_code == 429:
+                last_err = Exception(f"429 rate-limited (attempt {attempt+1})")
+                continue
+            r.raise_for_status()
+            data = r.json().get("data", [])
+            _SGO_EVENTS_CACHE[league] = (_time.time(), data)
+            return data
+        except Exception as e:
+            last_err = e
+            print(f"  [SGO] {league} events err: {e}")
+    # All retries exhausted — return stale cache if we have one
+    if cached:
+        print(f"  [SGO] {league} returning stale cache after retries")
+        return cached[1]
+    print(f"  [SGO] {league} events failed: {last_err}")
+    return []
 
 def _sgo_normalize_to_bookmakers(event: dict, league: str) -> list:
     """Convert SGO event.odds into the bookmakers list shape _build_consensus_from_bookmakers expects.
