@@ -21,11 +21,62 @@ def get_api_key() -> str:
 
 
 class WNBAOddsScraper:
-    def __init__(self, api_key: Optional[str] = None):
+    DAILY_CAP = 10
+
+    def __init__(self, api_key: Optional[str] = None, sport: str = "WNBA"):
         self.api_key = api_key or get_api_key()
         self.session = requests.Session()
         self.session.headers.update({"User-Agent": "wnba-tc-scraper/1.0"})
         self.cache: Dict[str, list] = {}
+        self.sport = sport
+        self._usage = self._load_usage()
+
+    def _usage_path(self) -> Path:
+        return Path(f"/home/workspace/Daily_Log/{self._today()}/odds/usage.json")
+
+    def _today(self) -> str:
+        return datetime.now().strftime("%Y-%m-%d")
+
+    def _load_usage(self) -> Dict:
+        p = self._usage_path()
+        if p.exists():
+            try:
+                return json.loads(p.read_text())
+            except Exception:
+                pass
+        return {"date": self._today(), "calls": {}}
+
+    def _save_usage(self):
+        p = self._usage_path()
+        p.parent.mkdir(parents=True, exist_ok=True)
+        p.write_text(json.dumps(self._usage, indent=2))
+
+    def calls_used(self) -> int:
+        if self._usage.get("date") != self._today():
+            self._usage = {"date": self._today(), "calls": {}}
+            self._save_usage()
+        return self._usage.get("calls", {}).get(self.sport, 0)
+
+    def calls_remaining(self) -> int:
+        return max(0, self.DAILY_CAP - self.calls_used())
+
+    def _bump_call(self):
+        calls = self._usage.setdefault("calls", {})
+        calls[self.sport] = calls.get(self.sport, 0) + 1
+        self._save_usage()
+
+    def _get_cached_odds(self, sport_key: str) -> Optional[list]:
+        if sport_key in self.cache:
+            return self.cache[sport_key]
+        today = self._today()
+        for ext in ("csv", "json"):
+            p = Path(f"/home/workspace/Daily_Log/{today}/odds/{self.sport.lower()}_odds.{ext}")
+            if p.exists():
+                logger.info(f"📦 Using cached odds: {p}")
+                if ext == "csv":
+                    return pd.read_csv(p).to_dict("records")
+                return json.loads(p.read_text())
+        return None
 
     def get_odds(self, sport_key="basketball_wnba", regions="us",
                  markets="h2h,spreads,totals", odds_format="american",
@@ -135,13 +186,32 @@ class WNBAOddsScraper:
 
 
 def main():
-    import sys
-    date = sys.argv[1] if len(sys.argv) > 1 else None
-    df = WNBAOddsScraper().run_daily(date)
-    if df is not None and not df.empty:
-        sample = df.groupby(["home_team", "away_team", "book", "market"]).size().reset_index(name="n")
-        print("\n📊 Coverage by game × book × market:")
-        print(sample.head(20).to_string(index=False))
+    import argparse
+    p = argparse.ArgumentParser()
+    p.add_argument("date", nargs="?", default=None)
+    p.add_argument("--sport", default="basketball_wnba",
+                   help="Odds API sport key (e.g. basketball_wnba, baseball_mlb)")
+    args = p.parse_args()
+    scraper = WNBAOddsScraper()
+    # When a different sport is requested, reuse get_odds directly and save under sport-tagged name.
+    odds = scraper.get_odds(sport_key=args.sport, date=args.date)
+    if not odds:
+        print(f"No odds for {args.sport} on {args.date or 'today'}")
+        return
+    df = scraper.parse_odds(odds)
+    if df.empty:
+        print(f"Parsed 0 rows for {args.sport}")
+        return
+    date = args.date or datetime.now().strftime("%Y-%m-%d")
+    out_dir = Path(f"/home/workspace/Daily_Log/{date}/odds")
+    out_dir.mkdir(parents=True, exist_ok=True)
+    sport_short = args.sport.split("_")[-1]  # wnba, mlb, nfl, nba, nhl
+    csv = out_dir / f"{sport_short}_odds.csv"
+    jsn = out_dir / f"{sport_short}_odds.json"
+    df.to_csv(csv, index=False)
+    df.to_json(jsn, orient="records", indent=2)
+    print(f"✅ Saved {len(df)} rows → {csv}")
+    print(f"Games: {df['game_id'].nunique()} | Books: {df['book'].nunique()}")
 
 
 if __name__ == "__main__":
