@@ -112,6 +112,8 @@ def load_hit_rates():
 # ─── SIDEBAR STATUS ───
 df_picks = load_picks(date_str, "All")
 st.sidebar.metric("📋 Total Picks", len(df_picks))
+show_quota_status()
+show_priority_status()
 
 df_graded = load_graded(date_str, "All")
 if not df_graded.empty:
