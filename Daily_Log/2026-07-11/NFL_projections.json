@@ -1,13 +1,53 @@
 {
-  "_note": "NFL off-season — engine auto-enables 2026-08-06 (preseason), regular season Sep 4. Schema ready, sample data below for format validation only.",
-  "schema": "NFL",
-  "stat_keys": ["pass_yds","rush_yds","rec_yds","td","int","sacks"],
-  "stat_labels": ["PASS YDS","RUSH YDS","REC YDS","TD","INT","SACKS"],
-  "players": [
-    {"name": "Patrick Mahomes", "team": "KC", "pos": "QB", "tc_pass_yds": 280.5, "dk_pass_yds": 275.5, "edge": 5.0, "direction": "OVER"},
-    {"name": "Travis Kelce", "team": "KC", "pos": "TE", "tc_rec_yds": 75.0, "dk_rec_yds": 71.5, "edge": 3.5, "direction": "OVER"}
-  ],
-  "games": [
-    {"away": "KC", "home": "BAL", "total": 47.5, "spread": -3.0}
+  "date": "2026-07-11",
+  "projections": [
+    {
+      "name": "Justin Herbert",
+      "team": "LAC",
+      "pos": "QB",
+      "pass_yds": 296.78,
+      "rush_yds": 9.31,
+      "rec_yds": 0.0,
+      "td": 2.14,
+      "int": 0.52,
+      "sacks": 1.71,
+      "fantasy_ppr": 22.04
+    },
+    {
+      "name": "Keenan Allen",
+      "team": "LAC",
+      "pos": "WR",
+      "pass_yds": 0.0,
+      "rush_yds": 0.0,
+      "rec_yds": 69.83,
+      "td": 0.54,
+      "int": 0.0,
+      "sacks": 0.0,
+      "fantasy_ppr": 17.2
+    },
+    {
+      "name": "Aaron Jones",
+      "team": "MIN",
+      "pos": "RB",
+      "pass_yds": 0.0,
+      "rush_yds": 79.33,
+      "rec_yds": 38.09,
+      "td": 0.62,
+      "int": 0.0,
+      "sacks": 0.0,
+      "fantasy_ppr": 23.27
+    },
+    {
+      "name": "Justin Jefferson",
+      "team": "MIN",
+      "pos": "WR",
+      "pass_yds": 0.0,
+      "rush_yds": 0.0,
+      "rec_yds": 95.09,
+      "td": 0.7,
+      "int": 0.0,
+      "sacks": 0.0,
+      "fantasy_ppr": 20.52
+    }
   ]
 }

@@ -201,8 +201,17 @@ class SportsRegistry:
             },
         )
 
-        # === OFF-SEASON (engines purged 2026-06-27) ===
-        for k, label in [('nba','NBA'), ('nfl','NFL'), ('nhl','NHL')]:
+        # === NFL PRESEASON ACTIVE 2026-07-11 ===
+        self._registry['nfl'] = SportConfig(
+            key='nfl', name='NFL',
+            source=DataSource.LIVE,
+            enabled=True,
+            color='#013369',
+            error_msg=None,
+        )
+
+        # === OFF-SEASON (NBA, NHL engines still gated) ===
+        for k, label in [('nba','NBA'), ('nhl','NHL')]:
             self._registry[k] = SportConfig(
                 key=k, name=label,
                 source=DataSource.OFF_SEASON,
