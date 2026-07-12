@@ -5,7 +5,7 @@ from pathlib import Path
 from collections import defaultdict
 
 def generate_hit_rate_report(date="2026-07-11"):
-    graded_file = Path(f"Daily_Log/{date}/graded_picks.csv")
+    graded_file = Path(f"/home/workspace/Daily_Log/{date}/graded_picks.csv")
 
     if not graded_file.exists():
         print(f"No graded file at {graded_file}")
