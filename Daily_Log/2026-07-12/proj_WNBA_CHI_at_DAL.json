@@ -1,0 +1,4437 @@
+{
+  "mode": "live",
+  "sport": "WNBA",
+  "matchup": "CHI@DAL",
+  "away_team": "CHI",
+  "home_team": "DAL",
+  "source": "ESPN + OddsAPI fallback (ESPN DraftKings embedded)",
+  "signal": "OVER",
+  "dk_total": 177.5,
+  "odds": {
+    "total": 177.5,
+    "spread": -9.5,
+    "ml_home": "-455",
+    "ml_away": "+350",
+    "ml_source": "ESPN DraftKings embedded"
+  },
+  "away": {
+    "all": {
+      "players": [
+        {
+          "player": "Skylar Diggins",
+          "team": "CHI",
+          "role": "START",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 12.2,
+              "line": 10.7,
+              "edge": 1.5,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 2.7,
+              "line": 2.4,
+              "edge": 0.3,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 4.2,
+              "line": 3.7,
+              "edge": 0.5,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "3PM": {
+              "tc_projection": 1.2,
+              "line": 1.1,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.8,
+              "line": 0.7,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.5,
+              "line": 0.5,
+              "edge": 0.0,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Kamilla Cardoso",
+          "team": "CHI",
+          "role": "START",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 13.4,
+              "line": 11.8,
+              "edge": 1.6,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 7.9,
+              "line": 7.0,
+              "edge": 0.9,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "AST": {
+              "tc_projection": 2.3,
+              "line": 2.0,
+              "edge": 0.3,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.0,
+              "line": 0.5,
+              "edge": -0.5,
+              "direction": "INVALID",
+              "dk_line": null,
+              "valid": true
+            },
+            "STL": {
+              "tc_projection": 0.5,
+              "line": 0.5,
+              "edge": 0.0,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 1.6,
+              "line": 1.4,
+              "edge": 0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Sydney Taylor",
+          "team": "CHI",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 16.9,
+              "line": 14.9,
+              "edge": 2.0,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 1.7,
+              "line": 1.5,
+              "edge": 0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 1.8,
+              "line": 1.6,
+              "edge": 0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 2.4,
+              "line": 2.1,
+              "edge": 0.3,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.9,
+              "line": 0.8,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.3,
+              "line": 0.5,
+              "edge": -0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Azura Stevens",
+          "team": "CHI",
+          "role": "START",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 11.1,
+              "line": 9.8,
+              "edge": 1.3,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 6.7,
+              "line": 5.9,
+              "edge": 0.8,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "AST": {
+              "tc_projection": 2.4,
+              "line": 2.1,
+              "edge": 0.3,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.9,
+              "line": 0.8,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.9,
+              "line": 0.8,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.4,
+              "line": 0.5,
+              "edge": -0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Natasha Cloud",
+          "team": "CHI",
+          "role": "START",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 8.6,
+              "line": 7.6,
+              "edge": 1.0,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 3.2,
+              "line": 2.8,
+              "edge": 0.4,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 4.0,
+              "line": 3.5,
+              "edge": 0.5,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "3PM": {
+              "tc_projection": 0.9,
+              "line": 0.8,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.9,
+              "line": 0.8,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.4,
+              "line": 0.5,
+              "edge": -0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Gabriela Jaquez",
+          "team": "CHI",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 9.5,
+              "line": 8.4,
+              "edge": 1.1,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 4.3,
+              "line": 3.8,
+              "edge": 0.5,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "AST": {
+              "tc_projection": 1.2,
+              "line": 1.1,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.7,
+              "line": 0.6,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 1.0,
+              "line": 0.9,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.0,
+              "line": 0.5,
+              "edge": -0.5,
+              "direction": "INVALID",
+              "dk_line": null,
+              "valid": true
+            }
+          }
+        },
+        {
+          "player": "Jacy Sheldon",
+          "team": "CHI",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 8.2,
+              "line": 7.2,
+              "edge": 1.0,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 1.6,
+              "line": 1.4,
+              "edge": 0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 2.1,
+              "line": 1.8,
+              "edge": 0.3,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 1.1,
+              "line": 1.0,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 1.1,
+              "line": 1.0,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.5,
+              "line": 0.5,
+              "edge": 0.0,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Elizabeth Williams",
+          "team": "CHI",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 7.5,
+              "line": 6.6,
+              "edge": 0.9,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 5.9,
+              "line": 5.2,
+              "edge": 0.7,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "AST": {
+              "tc_projection": 2.3,
+              "line": 2.0,
+              "edge": 0.3,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.0,
+              "line": 0.5,
+              "edge": -0.5,
+              "direction": "INVALID",
+              "dk_line": null,
+              "valid": true
+            },
+            "STL": {
+              "tc_projection": 0.7,
+              "line": 0.6,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 1.5,
+              "line": 1.3,
+              "edge": 0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Rachel Banham",
+          "team": "CHI",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 7.6,
+              "line": 6.7,
+              "edge": 0.9,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 1.8,
+              "line": 1.6,
+              "edge": 0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 1.6,
+              "line": 1.4,
+              "edge": 0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 1.7,
+              "line": 1.5,
+              "edge": 0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.4,
+              "line": 0.5,
+              "edge": -0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.5,
+              "line": 0.5,
+              "edge": 0.0,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Rickea Jackson",
+          "team": "CHI",
+          "role": "START",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 15.3,
+              "line": 13.5,
+              "edge": 1.8,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 4.0,
+              "line": 3.5,
+              "edge": 0.5,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "AST": {
+              "tc_projection": 1.7,
+              "line": 1.5,
+              "edge": 0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 1.3,
+              "line": 1.1,
+              "edge": 0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.2,
+              "line": 0.5,
+              "edge": -0.3,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 1.5,
+              "line": 1.3,
+              "edge": 0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Courtney Vandersloot",
+          "team": "CHI",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 11.6,
+              "line": 10.2,
+              "edge": 1.4,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 4.5,
+              "line": 4.0,
+              "edge": 0.5,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "AST": {
+              "tc_projection": 6.8,
+              "line": 6.0,
+              "edge": 0.8,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "3PM": {
+              "tc_projection": 0.9,
+              "line": 0.8,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 1.2,
+              "line": 1.1,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.0,
+              "line": 0.5,
+              "edge": -0.5,
+              "direction": "INVALID",
+              "dk_line": null,
+              "valid": true
+            }
+          }
+        },
+        {
+          "player": "Aicha Coulibaly",
+          "team": "CHI",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 8.9,
+              "line": 7.8,
+              "edge": 1.1,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 5.1,
+              "line": 4.5,
+              "edge": 0.6,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "AST": {
+              "tc_projection": 1.1,
+              "line": 1.0,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.0,
+              "line": 0.5,
+              "edge": -0.5,
+              "direction": "INVALID",
+              "dk_line": null,
+              "valid": true
+            },
+            "STL": {
+              "tc_projection": 1.6,
+              "line": 1.4,
+              "edge": 0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.3,
+              "line": 0.5,
+              "edge": -0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Maddy Westbeld",
+          "team": "CHI",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 3.6,
+              "line": 3.2,
+              "edge": 0.4,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 2.4,
+              "line": 2.1,
+              "edge": 0.3,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 1.2,
+              "line": 1.1,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 1.2,
+              "line": 1.1,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.0,
+              "line": 0.5,
+              "edge": -0.5,
+              "direction": "INVALID",
+              "dk_line": null,
+              "valid": true
+            },
+            "BLK": {
+              "tc_projection": 0.0,
+              "line": 0.5,
+              "edge": -0.5,
+              "direction": "INVALID",
+              "dk_line": null,
+              "valid": true
+            }
+          }
+        },
+        {
+          "player": "Saylor Poffenbarger",
+          "team": "CHI",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 0.0,
+              "line": 0.5,
+              "edge": -0.5,
+              "direction": "INVALID",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 5.8,
+              "line": 5.1,
+              "edge": 0.7,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "AST": {
+              "tc_projection": 1.0,
+              "line": 0.9,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.0,
+              "line": 0.5,
+              "edge": -0.5,
+              "direction": "INVALID",
+              "dk_line": null,
+              "valid": true
+            },
+            "STL": {
+              "tc_projection": 1.9,
+              "line": 1.7,
+              "edge": 0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.0,
+              "line": 0.5,
+              "edge": -0.5,
+              "direction": "INVALID",
+              "dk_line": null,
+              "valid": true
+            }
+          }
+        }
+      ]
+    },
+    "starters": {
+      "players": [
+        {
+          "player": "Skylar Diggins",
+          "team": "CHI",
+          "role": "START",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 12.2,
+              "line": 10.7,
+              "edge": 1.5,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 2.7,
+              "line": 2.4,
+              "edge": 0.3,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 4.2,
+              "line": 3.7,
+              "edge": 0.5,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "3PM": {
+              "tc_projection": 1.2,
+              "line": 1.1,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.8,
+              "line": 0.7,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.5,
+              "line": 0.5,
+              "edge": 0.0,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Kamilla Cardoso",
+          "team": "CHI",
+          "role": "START",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 13.4,
+              "line": 11.8,
+              "edge": 1.6,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 7.9,
+              "line": 7.0,
+              "edge": 0.9,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "AST": {
+              "tc_projection": 2.3,
+              "line": 2.0,
+              "edge": 0.3,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.0,
+              "line": 0.5,
+              "edge": -0.5,
+              "direction": "INVALID",
+              "dk_line": null,
+              "valid": true
+            },
+            "STL": {
+              "tc_projection": 0.5,
+              "line": 0.5,
+              "edge": 0.0,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 1.6,
+              "line": 1.4,
+              "edge": 0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Azura Stevens",
+          "team": "CHI",
+          "role": "START",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 11.1,
+              "line": 9.8,
+              "edge": 1.3,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 6.7,
+              "line": 5.9,
+              "edge": 0.8,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "AST": {
+              "tc_projection": 2.4,
+              "line": 2.1,
+              "edge": 0.3,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.9,
+              "line": 0.8,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.9,
+              "line": 0.8,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.4,
+              "line": 0.5,
+              "edge": -0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Natasha Cloud",
+          "team": "CHI",
+          "role": "START",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 8.6,
+              "line": 7.6,
+              "edge": 1.0,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 3.2,
+              "line": 2.8,
+              "edge": 0.4,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 4.0,
+              "line": 3.5,
+              "edge": 0.5,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "3PM": {
+              "tc_projection": 0.9,
+              "line": 0.8,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.9,
+              "line": 0.8,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.4,
+              "line": 0.5,
+              "edge": -0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Rickea Jackson",
+          "team": "CHI",
+          "role": "START",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 15.3,
+              "line": 13.5,
+              "edge": 1.8,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 4.0,
+              "line": 3.5,
+              "edge": 0.5,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "AST": {
+              "tc_projection": 1.7,
+              "line": 1.5,
+              "edge": 0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 1.3,
+              "line": 1.1,
+              "edge": 0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.2,
+              "line": 0.5,
+              "edge": -0.3,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 1.5,
+              "line": 1.3,
+              "edge": 0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        }
+      ]
+    },
+    "bench": {
+      "players": [
+        {
+          "player": "Sydney Taylor",
+          "team": "CHI",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 16.9,
+              "line": 14.9,
+              "edge": 2.0,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 1.7,
+              "line": 1.5,
+              "edge": 0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 1.8,
+              "line": 1.6,
+              "edge": 0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 2.4,
+              "line": 2.1,
+              "edge": 0.3,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.9,
+              "line": 0.8,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.3,
+              "line": 0.5,
+              "edge": -0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Gabriela Jaquez",
+          "team": "CHI",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 9.5,
+              "line": 8.4,
+              "edge": 1.1,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 4.3,
+              "line": 3.8,
+              "edge": 0.5,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "AST": {
+              "tc_projection": 1.2,
+              "line": 1.1,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.7,
+              "line": 0.6,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 1.0,
+              "line": 0.9,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.0,
+              "line": 0.5,
+              "edge": -0.5,
+              "direction": "INVALID",
+              "dk_line": null,
+              "valid": true
+            }
+          }
+        },
+        {
+          "player": "Jacy Sheldon",
+          "team": "CHI",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 8.2,
+              "line": 7.2,
+              "edge": 1.0,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 1.6,
+              "line": 1.4,
+              "edge": 0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 2.1,
+              "line": 1.8,
+              "edge": 0.3,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 1.1,
+              "line": 1.0,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 1.1,
+              "line": 1.0,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.5,
+              "line": 0.5,
+              "edge": 0.0,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Elizabeth Williams",
+          "team": "CHI",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 7.5,
+              "line": 6.6,
+              "edge": 0.9,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 5.9,
+              "line": 5.2,
+              "edge": 0.7,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "AST": {
+              "tc_projection": 2.3,
+              "line": 2.0,
+              "edge": 0.3,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.0,
+              "line": 0.5,
+              "edge": -0.5,
+              "direction": "INVALID",
+              "dk_line": null,
+              "valid": true
+            },
+            "STL": {
+              "tc_projection": 0.7,
+              "line": 0.6,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 1.5,
+              "line": 1.3,
+              "edge": 0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Rachel Banham",
+          "team": "CHI",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 7.6,
+              "line": 6.7,
+              "edge": 0.9,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 1.8,
+              "line": 1.6,
+              "edge": 0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 1.6,
+              "line": 1.4,
+              "edge": 0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 1.7,
+              "line": 1.5,
+              "edge": 0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.4,
+              "line": 0.5,
+              "edge": -0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.5,
+              "line": 0.5,
+              "edge": 0.0,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Courtney Vandersloot",
+          "team": "CHI",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 11.6,
+              "line": 10.2,
+              "edge": 1.4,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 4.5,
+              "line": 4.0,
+              "edge": 0.5,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "AST": {
+              "tc_projection": 6.8,
+              "line": 6.0,
+              "edge": 0.8,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "3PM": {
+              "tc_projection": 0.9,
+              "line": 0.8,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 1.2,
+              "line": 1.1,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.0,
+              "line": 0.5,
+              "edge": -0.5,
+              "direction": "INVALID",
+              "dk_line": null,
+              "valid": true
+            }
+          }
+        },
+        {
+          "player": "Aicha Coulibaly",
+          "team": "CHI",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 8.9,
+              "line": 7.8,
+              "edge": 1.1,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 5.1,
+              "line": 4.5,
+              "edge": 0.6,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "AST": {
+              "tc_projection": 1.1,
+              "line": 1.0,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.0,
+              "line": 0.5,
+              "edge": -0.5,
+              "direction": "INVALID",
+              "dk_line": null,
+              "valid": true
+            },
+            "STL": {
+              "tc_projection": 1.6,
+              "line": 1.4,
+              "edge": 0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.3,
+              "line": 0.5,
+              "edge": -0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Maddy Westbeld",
+          "team": "CHI",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 3.6,
+              "line": 3.2,
+              "edge": 0.4,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "REB": {
+              "tc_projection": 2.4,
+              "line": 2.1,
+              "edge": 0.3,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 1.2,
+              "line": 1.1,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 1.2,
+              "line": 1.1,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.0,
+              "line": 0.5,
+              "edge": -0.5,
+              "direction": "INVALID",
+              "dk_line": null,
+              "valid": true
+            },
+            "BLK": {
+              "tc_projection": 0.0,
+              "line": 0.5,
+              "edge": -0.5,
+              "direction": "INVALID",
+              "dk_line": null,
+              "valid": true
+            }
+          }
+        },
+        {
+          "player": "Saylor Poffenbarger",
+          "team": "CHI",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 0.0,
+              "line": 0.5,
+              "edge": -0.5,
+              "direction": "INVALID",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 5.8,
+              "line": 5.1,
+              "edge": 0.7,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "AST": {
+              "tc_projection": 1.0,
+              "line": 0.9,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.0,
+              "line": 0.5,
+              "edge": -0.5,
+              "direction": "INVALID",
+              "dk_line": null,
+              "valid": true
+            },
+            "STL": {
+              "tc_projection": 1.9,
+              "line": 1.7,
+              "edge": 0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.0,
+              "line": 0.5,
+              "edge": -0.5,
+              "direction": "INVALID",
+              "dk_line": null,
+              "valid": true
+            }
+          }
+        }
+      ]
+    }
+  },
+  "home": {
+    "all": {
+      "players": [
+        {
+          "player": "Paige Bueckers",
+          "team": "DAL",
+          "role": "START",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 15.5,
+              "line": 13.6,
+              "edge": 1.9,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 3.1,
+              "line": 2.7,
+              "edge": 0.4,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 4.5,
+              "line": 4.0,
+              "edge": 0.5,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "3PM": {
+              "tc_projection": 1.3,
+              "line": 1.1,
+              "edge": 0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.6,
+              "line": 0.5,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.3,
+              "line": 0.5,
+              "edge": -0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Jessica Shepard",
+          "team": "DAL",
+          "role": "START",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 11.3,
+              "line": 9.9,
+              "edge": 1.4,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 8.9,
+              "line": 7.8,
+              "edge": 1.1,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "AST": {
+              "tc_projection": 4.0,
+              "line": 3.5,
+              "edge": 0.5,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "3PM": {
+              "tc_projection": 0.0,
+              "line": 0.5,
+              "edge": -0.5,
+              "direction": "INVALID",
+              "dk_line": null,
+              "valid": true
+            },
+            "STL": {
+              "tc_projection": 0.6,
+              "line": 0.5,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.0,
+              "line": 0.5,
+              "edge": -0.5,
+              "direction": "INVALID",
+              "dk_line": null,
+              "valid": true
+            }
+          }
+        },
+        {
+          "player": "Azzi Fudd",
+          "team": "DAL",
+          "role": "START",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 10.7,
+              "line": 9.4,
+              "edge": 1.3,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 1.4,
+              "line": 1.2,
+              "edge": 0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 1.5,
+              "line": 1.3,
+              "edge": 0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 1.5,
+              "line": 1.3,
+              "edge": 0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 1.4,
+              "line": 1.2,
+              "edge": 0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.7,
+              "line": 0.6,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Arike Ogunbowale",
+          "team": "DAL",
+          "role": "START",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 11.4,
+              "line": 10.0,
+              "edge": 1.4,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 2.6,
+              "line": 2.3,
+              "edge": 0.3,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 2.5,
+              "line": 2.2,
+              "edge": 0.3,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 1.6,
+              "line": 1.4,
+              "edge": 0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.7,
+              "line": 0.6,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.0,
+              "line": 0.5,
+              "edge": -0.5,
+              "direction": "INVALID",
+              "dk_line": null,
+              "valid": true
+            }
+          }
+        },
+        {
+          "player": "Aziaha James",
+          "team": "DAL",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 13.2,
+              "line": 11.6,
+              "edge": 1.6,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 5.2,
+              "line": 4.6,
+              "edge": 0.6,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "AST": {
+              "tc_projection": 2.8,
+              "line": 2.5,
+              "edge": 0.3,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.9,
+              "line": 0.8,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 1.9,
+              "line": 1.7,
+              "edge": 0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.3,
+              "line": 0.5,
+              "edge": -0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Awak Kuier",
+          "team": "DAL",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 8.4,
+              "line": 7.4,
+              "edge": 1.0,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 4.7,
+              "line": 4.1,
+              "edge": 0.6,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "AST": {
+              "tc_projection": 1.5,
+              "line": 1.3,
+              "edge": 0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 1.1,
+              "line": 1.0,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.9,
+              "line": 0.8,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 1.7,
+              "line": 1.5,
+              "edge": 0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Maddy Siegrist",
+          "team": "DAL",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 10.6,
+              "line": 9.3,
+              "edge": 1.3,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 4.9,
+              "line": 4.3,
+              "edge": 0.6,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "AST": {
+              "tc_projection": 1.2,
+              "line": 1.1,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 1.2,
+              "line": 1.1,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.8,
+              "line": 0.7,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.6,
+              "line": 0.5,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Alanna Smith",
+          "team": "DAL",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 6.7,
+              "line": 5.9,
+              "edge": 0.8,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 5.0,
+              "line": 4.4,
+              "edge": 0.6,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "AST": {
+              "tc_projection": 1.9,
+              "line": 1.7,
+              "edge": 0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.6,
+              "line": 0.5,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 1.2,
+              "line": 1.1,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.6,
+              "line": 0.5,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Sug Sutton",
+          "team": "DAL",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 9.9,
+              "line": 8.7,
+              "edge": 1.2,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 1.7,
+              "line": 1.5,
+              "edge": 0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 4.6,
+              "line": 4.0,
+              "edge": 0.6,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "3PM": {
+              "tc_projection": 0.8,
+              "line": 0.7,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.8,
+              "line": 0.7,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.3,
+              "line": 0.5,
+              "edge": -0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Odyssey Sims",
+          "team": "DAL",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 9.3,
+              "line": 8.2,
+              "edge": 1.1,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 1.4,
+              "line": 1.2,
+              "edge": 0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 3.6,
+              "line": 3.2,
+              "edge": 0.4,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.8,
+              "line": 0.7,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.9,
+              "line": 0.8,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.2,
+              "line": 0.5,
+              "edge": -0.3,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Costanza Verona",
+          "team": "DAL",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 16.7,
+              "line": 14.7,
+              "edge": 2.0,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 0.0,
+              "line": 0.5,
+              "edge": -0.5,
+              "direction": "INVALID",
+              "dk_line": null,
+              "valid": true
+            },
+            "AST": {
+              "tc_projection": 8.3,
+              "line": 7.3,
+              "edge": 1.0,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "3PM": {
+              "tc_projection": 0.0,
+              "line": 0.5,
+              "edge": -0.5,
+              "direction": "INVALID",
+              "dk_line": null,
+              "valid": true
+            },
+            "STL": {
+              "tc_projection": 0.0,
+              "line": 0.5,
+              "edge": -0.5,
+              "direction": "INVALID",
+              "dk_line": null,
+              "valid": true
+            },
+            "BLK": {
+              "tc_projection": 0.0,
+              "line": 0.5,
+              "edge": -0.5,
+              "direction": "INVALID",
+              "dk_line": null,
+              "valid": true
+            }
+          }
+        },
+        {
+          "player": "Haley Jones",
+          "team": "DAL",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 11.4,
+              "line": 10.0,
+              "edge": 1.4,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 4.8,
+              "line": 4.2,
+              "edge": 0.6,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "AST": {
+              "tc_projection": 2.2,
+              "line": 1.9,
+              "edge": 0.3,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.0,
+              "line": 0.5,
+              "edge": -0.5,
+              "direction": "INVALID",
+              "dk_line": null,
+              "valid": true
+            },
+            "STL": {
+              "tc_projection": 0.9,
+              "line": 0.8,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.0,
+              "line": 0.5,
+              "edge": -0.5,
+              "direction": "INVALID",
+              "dk_line": null,
+              "valid": true
+            }
+          }
+        },
+        {
+          "player": "JJ Quinerly",
+          "team": "DAL",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 4.2,
+              "line": 3.7,
+              "edge": 0.5,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 2.1,
+              "line": 1.8,
+              "edge": 0.3,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 4.2,
+              "line": 3.7,
+              "edge": 0.5,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "3PM": {
+              "tc_projection": 0.0,
+              "line": 0.5,
+              "edge": -0.5,
+              "direction": "INVALID",
+              "dk_line": null,
+              "valid": true
+            },
+            "STL": {
+              "tc_projection": 0.0,
+              "line": 0.5,
+              "edge": -0.5,
+              "direction": "INVALID",
+              "dk_line": null,
+              "valid": true
+            },
+            "BLK": {
+              "tc_projection": 2.1,
+              "line": 1.8,
+              "edge": 0.3,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Li Yueru",
+          "team": "DAL",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 9.0,
+              "line": 7.9,
+              "edge": 1.1,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 8.2,
+              "line": 7.2,
+              "edge": 1.0,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "AST": {
+              "tc_projection": 1.7,
+              "line": 1.5,
+              "edge": 0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.8,
+              "line": 0.7,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.2,
+              "line": 0.5,
+              "edge": -0.3,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.0,
+              "line": 0.5,
+              "edge": -0.5,
+              "direction": "INVALID",
+              "dk_line": null,
+              "valid": true
+            }
+          }
+        },
+        {
+          "player": "Alysha Clark",
+          "team": "DAL",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 6.1,
+              "line": 5.4,
+              "edge": 0.7,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 2.9,
+              "line": 2.6,
+              "edge": 0.3,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 1.3,
+              "line": 1.1,
+              "edge": 0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 1.3,
+              "line": 1.1,
+              "edge": 0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.7,
+              "line": 0.6,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.4,
+              "line": 0.5,
+              "edge": -0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        }
+      ]
+    },
+    "starters": {
+      "players": [
+        {
+          "player": "Paige Bueckers",
+          "team": "DAL",
+          "role": "START",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 15.5,
+              "line": 13.6,
+              "edge": 1.9,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 3.1,
+              "line": 2.7,
+              "edge": 0.4,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 4.5,
+              "line": 4.0,
+              "edge": 0.5,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "3PM": {
+              "tc_projection": 1.3,
+              "line": 1.1,
+              "edge": 0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.6,
+              "line": 0.5,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.3,
+              "line": 0.5,
+              "edge": -0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Jessica Shepard",
+          "team": "DAL",
+          "role": "START",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 11.3,
+              "line": 9.9,
+              "edge": 1.4,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 8.9,
+              "line": 7.8,
+              "edge": 1.1,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "AST": {
+              "tc_projection": 4.0,
+              "line": 3.5,
+              "edge": 0.5,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "3PM": {
+              "tc_projection": 0.0,
+              "line": 0.5,
+              "edge": -0.5,
+              "direction": "INVALID",
+              "dk_line": null,
+              "valid": true
+            },
+            "STL": {
+              "tc_projection": 0.6,
+              "line": 0.5,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.0,
+              "line": 0.5,
+              "edge": -0.5,
+              "direction": "INVALID",
+              "dk_line": null,
+              "valid": true
+            }
+          }
+        },
+        {
+          "player": "Azzi Fudd",
+          "team": "DAL",
+          "role": "START",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 10.7,
+              "line": 9.4,
+              "edge": 1.3,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 1.4,
+              "line": 1.2,
+              "edge": 0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 1.5,
+              "line": 1.3,
+              "edge": 0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 1.5,
+              "line": 1.3,
+              "edge": 0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 1.4,
+              "line": 1.2,
+              "edge": 0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.7,
+              "line": 0.6,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Arike Ogunbowale",
+          "team": "DAL",
+          "role": "START",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 11.4,
+              "line": 10.0,
+              "edge": 1.4,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 2.6,
+              "line": 2.3,
+              "edge": 0.3,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 2.5,
+              "line": 2.2,
+              "edge": 0.3,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 1.6,
+              "line": 1.4,
+              "edge": 0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.7,
+              "line": 0.6,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.0,
+              "line": 0.5,
+              "edge": -0.5,
+              "direction": "INVALID",
+              "dk_line": null,
+              "valid": true
+            }
+          }
+        }
+      ]
+    },
+    "bench": {
+      "players": [
+        {
+          "player": "Aziaha James",
+          "team": "DAL",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 13.2,
+              "line": 11.6,
+              "edge": 1.6,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 5.2,
+              "line": 4.6,
+              "edge": 0.6,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "AST": {
+              "tc_projection": 2.8,
+              "line": 2.5,
+              "edge": 0.3,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.9,
+              "line": 0.8,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 1.9,
+              "line": 1.7,
+              "edge": 0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.3,
+              "line": 0.5,
+              "edge": -0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Awak Kuier",
+          "team": "DAL",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 8.4,
+              "line": 7.4,
+              "edge": 1.0,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 4.7,
+              "line": 4.1,
+              "edge": 0.6,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "AST": {
+              "tc_projection": 1.5,
+              "line": 1.3,
+              "edge": 0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 1.1,
+              "line": 1.0,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.9,
+              "line": 0.8,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 1.7,
+              "line": 1.5,
+              "edge": 0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Maddy Siegrist",
+          "team": "DAL",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 10.6,
+              "line": 9.3,
+              "edge": 1.3,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 4.9,
+              "line": 4.3,
+              "edge": 0.6,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "AST": {
+              "tc_projection": 1.2,
+              "line": 1.1,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 1.2,
+              "line": 1.1,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.8,
+              "line": 0.7,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.6,
+              "line": 0.5,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Alanna Smith",
+          "team": "DAL",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 6.7,
+              "line": 5.9,
+              "edge": 0.8,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 5.0,
+              "line": 4.4,
+              "edge": 0.6,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "AST": {
+              "tc_projection": 1.9,
+              "line": 1.7,
+              "edge": 0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.6,
+              "line": 0.5,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 1.2,
+              "line": 1.1,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.6,
+              "line": 0.5,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Sug Sutton",
+          "team": "DAL",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 9.9,
+              "line": 8.7,
+              "edge": 1.2,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 1.7,
+              "line": 1.5,
+              "edge": 0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 4.6,
+              "line": 4.0,
+              "edge": 0.6,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "3PM": {
+              "tc_projection": 0.8,
+              "line": 0.7,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.8,
+              "line": 0.7,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.3,
+              "line": 0.5,
+              "edge": -0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Odyssey Sims",
+          "team": "DAL",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 9.3,
+              "line": 8.2,
+              "edge": 1.1,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 1.4,
+              "line": 1.2,
+              "edge": 0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 3.6,
+              "line": 3.2,
+              "edge": 0.4,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.8,
+              "line": 0.7,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.9,
+              "line": 0.8,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.2,
+              "line": 0.5,
+              "edge": -0.3,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Costanza Verona",
+          "team": "DAL",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 16.7,
+              "line": 14.7,
+              "edge": 2.0,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 0.0,
+              "line": 0.5,
+              "edge": -0.5,
+              "direction": "INVALID",
+              "dk_line": null,
+              "valid": true
+            },
+            "AST": {
+              "tc_projection": 8.3,
+              "line": 7.3,
+              "edge": 1.0,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "3PM": {
+              "tc_projection": 0.0,
+              "line": 0.5,
+              "edge": -0.5,
+              "direction": "INVALID",
+              "dk_line": null,
+              "valid": true
+            },
+            "STL": {
+              "tc_projection": 0.0,
+              "line": 0.5,
+              "edge": -0.5,
+              "direction": "INVALID",
+              "dk_line": null,
+              "valid": true
+            },
+            "BLK": {
+              "tc_projection": 0.0,
+              "line": 0.5,
+              "edge": -0.5,
+              "direction": "INVALID",
+              "dk_line": null,
+              "valid": true
+            }
+          }
+        },
+        {
+          "player": "Haley Jones",
+          "team": "DAL",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 11.4,
+              "line": 10.0,
+              "edge": 1.4,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 4.8,
+              "line": 4.2,
+              "edge": 0.6,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "AST": {
+              "tc_projection": 2.2,
+              "line": 1.9,
+              "edge": 0.3,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.0,
+              "line": 0.5,
+              "edge": -0.5,
+              "direction": "INVALID",
+              "dk_line": null,
+              "valid": true
+            },
+            "STL": {
+              "tc_projection": 0.9,
+              "line": 0.8,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.0,
+              "line": 0.5,
+              "edge": -0.5,
+              "direction": "INVALID",
+              "dk_line": null,
+              "valid": true
+            }
+          }
+        },
+        {
+          "player": "JJ Quinerly",
+          "team": "DAL",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 4.2,
+              "line": 3.7,
+              "edge": 0.5,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 2.1,
+              "line": 1.8,
+              "edge": 0.3,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 4.2,
+              "line": 3.7,
+              "edge": 0.5,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "3PM": {
+              "tc_projection": 0.0,
+              "line": 0.5,
+              "edge": -0.5,
+              "direction": "INVALID",
+              "dk_line": null,
+              "valid": true
+            },
+            "STL": {
+              "tc_projection": 0.0,
+              "line": 0.5,
+              "edge": -0.5,
+              "direction": "INVALID",
+              "dk_line": null,
+              "valid": true
+            },
+            "BLK": {
+              "tc_projection": 2.1,
+              "line": 1.8,
+              "edge": 0.3,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Li Yueru",
+          "team": "DAL",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 9.0,
+              "line": 7.9,
+              "edge": 1.1,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 8.2,
+              "line": 7.2,
+              "edge": 1.0,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "AST": {
+              "tc_projection": 1.7,
+              "line": 1.5,
+              "edge": 0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.8,
+              "line": 0.7,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.2,
+              "line": 0.5,
+              "edge": -0.3,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.0,
+              "line": 0.5,
+              "edge": -0.5,
+              "direction": "INVALID",
+              "dk_line": null,
+              "valid": true
+            }
+          }
+        },
+        {
+          "player": "Alysha Clark",
+          "team": "DAL",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 6.1,
+              "line": 5.4,
+              "edge": 0.7,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 2.9,
+              "line": 2.6,
+              "edge": 0.3,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 1.3,
+              "line": 1.1,
+              "edge": 0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 1.3,
+              "line": 1.1,
+              "edge": 0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.7,
+              "line": 0.6,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.4,
+              "line": 0.5,
+              "edge": -0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        }
+      ]
+    }
+  },
+  "roster_counts": {
+    "away": 14,
+    "home": 15
+  },
+  "valid_props": [
+    {
+      "player": "Skylar Diggins",
+      "team": "CHI",
+      "stat": "PTS",
+      "direction": "OVER",
+      "market_line": 10.7,
+      "tc_projection": 12.2,
+      "tc_target": 10.7,
+      "edge": 1.5,
+      "threshold": 0.5,
+      "raw_average": 12.2,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "START"
+    },
+    {
+      "player": "Skylar Diggins",
+      "team": "CHI",
+      "stat": "AST",
+      "direction": "OVER",
+      "market_line": 3.7,
+      "tc_projection": 4.2,
+      "tc_target": 3.7,
+      "edge": 0.5,
+      "threshold": 0.5,
+      "raw_average": 4.2,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "START"
+    },
+    {
+      "player": "Kamilla Cardoso",
+      "team": "CHI",
+      "stat": "PTS",
+      "direction": "OVER",
+      "market_line": 11.8,
+      "tc_projection": 13.4,
+      "tc_target": 11.8,
+      "edge": 1.6,
+      "threshold": 0.5,
+      "raw_average": 13.4,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "START"
+    },
+    {
+      "player": "Kamilla Cardoso",
+      "team": "CHI",
+      "stat": "REB",
+      "direction": "OVER",
+      "market_line": 7.0,
+      "tc_projection": 7.9,
+      "tc_target": 7.0,
+      "edge": 0.9,
+      "threshold": 0.5,
+      "raw_average": 7.9,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "START"
+    },
+    {
+      "player": "Kamilla Cardoso",
+      "team": "CHI",
+      "stat": "3PM",
+      "direction": "INVALID",
+      "market_line": 0.5,
+      "tc_projection": 0.0,
+      "tc_target": 0.5,
+      "edge": -0.5,
+      "threshold": 0.5,
+      "raw_average": 0.0,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "START"
+    },
+    {
+      "player": "Sydney Taylor",
+      "team": "CHI",
+      "stat": "PTS",
+      "direction": "OVER",
+      "market_line": 14.9,
+      "tc_projection": 16.9,
+      "tc_target": 14.9,
+      "edge": 2.0,
+      "threshold": 0.5,
+      "raw_average": 16.9,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "BENCH"
+    },
+    {
+      "player": "Azura Stevens",
+      "team": "CHI",
+      "stat": "PTS",
+      "direction": "OVER",
+      "market_line": 9.8,
+      "tc_projection": 11.1,
+      "tc_target": 9.8,
+      "edge": 1.3,
+      "threshold": 0.5,
+      "raw_average": 11.1,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "START"
+    },
+    {
+      "player": "Azura Stevens",
+      "team": "CHI",
+      "stat": "REB",
+      "direction": "OVER",
+      "market_line": 5.9,
+      "tc_projection": 6.7,
+      "tc_target": 5.9,
+      "edge": 0.8,
+      "threshold": 0.5,
+      "raw_average": 6.7,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "START"
+    },
+    {
+      "player": "Natasha Cloud",
+      "team": "CHI",
+      "stat": "PTS",
+      "direction": "OVER",
+      "market_line": 7.6,
+      "tc_projection": 8.6,
+      "tc_target": 7.6,
+      "edge": 1.0,
+      "threshold": 0.5,
+      "raw_average": 8.6,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "START"
+    },
+    {
+      "player": "Natasha Cloud",
+      "team": "CHI",
+      "stat": "AST",
+      "direction": "OVER",
+      "market_line": 3.5,
+      "tc_projection": 4.0,
+      "tc_target": 3.5,
+      "edge": 0.5,
+      "threshold": 0.5,
+      "raw_average": 4.0,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "START"
+    },
+    {
+      "player": "Gabriela Jaquez",
+      "team": "CHI",
+      "stat": "PTS",
+      "direction": "OVER",
+      "market_line": 8.4,
+      "tc_projection": 9.5,
+      "tc_target": 8.4,
+      "edge": 1.1,
+      "threshold": 0.5,
+      "raw_average": 9.5,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "BENCH"
+    },
+    {
+      "player": "Gabriela Jaquez",
+      "team": "CHI",
+      "stat": "REB",
+      "direction": "OVER",
+      "market_line": 3.8,
+      "tc_projection": 4.3,
+      "tc_target": 3.8,
+      "edge": 0.5,
+      "threshold": 0.5,
+      "raw_average": 4.3,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "BENCH"
+    },
+    {
+      "player": "Gabriela Jaquez",
+      "team": "CHI",
+      "stat": "BLK",
+      "direction": "INVALID",
+      "market_line": 0.5,
+      "tc_projection": 0.0,
+      "tc_target": 0.5,
+      "edge": -0.5,
+      "threshold": 0.5,
+      "raw_average": 0.0,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "BENCH"
+    },
+    {
+      "player": "Jacy Sheldon",
+      "team": "CHI",
+      "stat": "PTS",
+      "direction": "OVER",
+      "market_line": 7.2,
+      "tc_projection": 8.2,
+      "tc_target": 7.2,
+      "edge": 1.0,
+      "threshold": 0.5,
+      "raw_average": 8.2,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "BENCH"
+    },
+    {
+      "player": "Elizabeth Williams",
+      "team": "CHI",
+      "stat": "PTS",
+      "direction": "OVER",
+      "market_line": 6.6,
+      "tc_projection": 7.5,
+      "tc_target": 6.6,
+      "edge": 0.9,
+      "threshold": 0.5,
+      "raw_average": 7.5,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "BENCH"
+    },
+    {
+      "player": "Elizabeth Williams",
+      "team": "CHI",
+      "stat": "REB",
+      "direction": "OVER",
+      "market_line": 5.2,
+      "tc_projection": 5.9,
+      "tc_target": 5.2,
+      "edge": 0.7,
+      "threshold": 0.5,
+      "raw_average": 5.9,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "BENCH"
+    },
+    {
+      "player": "Elizabeth Williams",
+      "team": "CHI",
+      "stat": "3PM",
+      "direction": "INVALID",
+      "market_line": 0.5,
+      "tc_projection": 0.0,
+      "tc_target": 0.5,
+      "edge": -0.5,
+      "threshold": 0.5,
+      "raw_average": 0.0,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "BENCH"
+    },
+    {
+      "player": "Rachel Banham",
+      "team": "CHI",
+      "stat": "PTS",
+      "direction": "OVER",
+      "market_line": 6.7,
+      "tc_projection": 7.6,
+      "tc_target": 6.7,
+      "edge": 0.9,
+      "threshold": 0.5,
+      "raw_average": 7.6,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "BENCH"
+    },
+    {
+      "player": "Rickea Jackson",
+      "team": "CHI",
+      "stat": "PTS",
+      "direction": "OVER",
+      "market_line": 13.5,
+      "tc_projection": 15.3,
+      "tc_target": 13.5,
+      "edge": 1.8,
+      "threshold": 0.5,
+      "raw_average": 15.3,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "START"
+    },
+    {
+      "player": "Rickea Jackson",
+      "team": "CHI",
+      "stat": "REB",
+      "direction": "OVER",
+      "market_line": 3.5,
+      "tc_projection": 4.0,
+      "tc_target": 3.5,
+      "edge": 0.5,
+      "threshold": 0.5,
+      "raw_average": 4.0,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "START"
+    },
+    {
+      "player": "Courtney Vandersloot",
+      "team": "CHI",
+      "stat": "PTS",
+      "direction": "OVER",
+      "market_line": 10.2,
+      "tc_projection": 11.6,
+      "tc_target": 10.2,
+      "edge": 1.4,
+      "threshold": 0.5,
+      "raw_average": 11.6,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "BENCH"
+    },
+    {
+      "player": "Courtney Vandersloot",
+      "team": "CHI",
+      "stat": "REB",
+      "direction": "OVER",
+      "market_line": 4.0,
+      "tc_projection": 4.5,
+      "tc_target": 4.0,
+      "edge": 0.5,
+      "threshold": 0.5,
+      "raw_average": 4.5,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "BENCH"
+    },
+    {
+      "player": "Courtney Vandersloot",
+      "team": "CHI",
+      "stat": "AST",
+      "direction": "OVER",
+      "market_line": 6.0,
+      "tc_projection": 6.8,
+      "tc_target": 6.0,
+      "edge": 0.8,
+      "threshold": 0.5,
+      "raw_average": 6.8,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "BENCH"
+    },
+    {
+      "player": "Courtney Vandersloot",
+      "team": "CHI",
+      "stat": "BLK",
+      "direction": "INVALID",
+      "market_line": 0.5,
+      "tc_projection": 0.0,
+      "tc_target": 0.5,
+      "edge": -0.5,
+      "threshold": 0.5,
+      "raw_average": 0.0,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "BENCH"
+    },
+    {
+      "player": "Aicha Coulibaly",
+      "team": "CHI",
+      "stat": "PTS",
+      "direction": "OVER",
+      "market_line": 7.8,
+      "tc_projection": 8.9,
+      "tc_target": 7.8,
+      "edge": 1.1,
+      "threshold": 0.5,
+      "raw_average": 8.9,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "BENCH"
+    },
+    {
+      "player": "Aicha Coulibaly",
+      "team": "CHI",
+      "stat": "REB",
+      "direction": "OVER",
+      "market_line": 4.5,
+      "tc_projection": 5.1,
+      "tc_target": 4.5,
+      "edge": 0.6,
+      "threshold": 0.5,
+      "raw_average": 5.1,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "BENCH"
+    },
+    {
+      "player": "Aicha Coulibaly",
+      "team": "CHI",
+      "stat": "3PM",
+      "direction": "INVALID",
+      "market_line": 0.5,
+      "tc_projection": 0.0,
+      "tc_target": 0.5,
+      "edge": -0.5,
+      "threshold": 0.5,
+      "raw_average": 0.0,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "BENCH"
+    },
+    {
+      "player": "Maddy Westbeld",
+      "team": "CHI",
+      "stat": "STL",
+      "direction": "INVALID",
+      "market_line": 0.5,
+      "tc_projection": 0.0,
+      "tc_target": 0.5,
+      "edge": -0.5,
+      "threshold": 0.5,
+      "raw_average": 0.0,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "BENCH"
+    },
+    {
+      "player": "Maddy Westbeld",
+      "team": "CHI",
+      "stat": "BLK",
+      "direction": "INVALID",
+      "market_line": 0.5,
+      "tc_projection": 0.0,
+      "tc_target": 0.5,
+      "edge": -0.5,
+      "threshold": 0.5,
+      "raw_average": 0.0,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "BENCH"
+    },
+    {
+      "player": "Saylor Poffenbarger",
+      "team": "CHI",
+      "stat": "PTS",
+      "direction": "INVALID",
+      "market_line": 0.5,
+      "tc_projection": 0.0,
+      "tc_target": 0.5,
+      "edge": -0.5,
+      "threshold": 0.5,
+      "raw_average": 0.0,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "BENCH"
+    },
+    {
+      "player": "Saylor Poffenbarger",
+      "team": "CHI",
+      "stat": "REB",
+      "direction": "OVER",
+      "market_line": 5.1,
+      "tc_projection": 5.8,
+      "tc_target": 5.1,
+      "edge": 0.7,
+      "threshold": 0.5,
+      "raw_average": 5.8,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "BENCH"
+    },
+    {
+      "player": "Saylor Poffenbarger",
+      "team": "CHI",
+      "stat": "3PM",
+      "direction": "INVALID",
+      "market_line": 0.5,
+      "tc_projection": 0.0,
+      "tc_target": 0.5,
+      "edge": -0.5,
+      "threshold": 0.5,
+      "raw_average": 0.0,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "BENCH"
+    },
+    {
+      "player": "Saylor Poffenbarger",
+      "team": "CHI",
+      "stat": "BLK",
+      "direction": "INVALID",
+      "market_line": 0.5,
+      "tc_projection": 0.0,
+      "tc_target": 0.5,
+      "edge": -0.5,
+      "threshold": 0.5,
+      "raw_average": 0.0,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "BENCH"
+    },
+    {
+      "player": "Paige Bueckers",
+      "team": "DAL",
+      "stat": "PTS",
+      "direction": "OVER",
+      "market_line": 13.6,
+      "tc_projection": 15.5,
+      "tc_target": 13.6,
+      "edge": 1.9,
+      "threshold": 0.5,
+      "raw_average": 15.5,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "START"
+    },
+    {
+      "player": "Paige Bueckers",
+      "team": "DAL",
+      "stat": "AST",
+      "direction": "OVER",
+      "market_line": 4.0,
+      "tc_projection": 4.5,
+      "tc_target": 4.0,
+      "edge": 0.5,
+      "threshold": 0.5,
+      "raw_average": 4.5,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "START"
+    },
+    {
+      "player": "Jessica Shepard",
+      "team": "DAL",
+      "stat": "PTS",
+      "direction": "OVER",
+      "market_line": 9.9,
+      "tc_projection": 11.3,
+      "tc_target": 9.9,
+      "edge": 1.4,
+      "threshold": 0.5,
+      "raw_average": 11.3,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "START"
+    },
+    {
+      "player": "Jessica Shepard",
+      "team": "DAL",
+      "stat": "REB",
+      "direction": "OVER",
+      "market_line": 7.8,
+      "tc_projection": 8.9,
+      "tc_target": 7.8,
+      "edge": 1.1,
+      "threshold": 0.5,
+      "raw_average": 8.9,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "START"
+    },
+    {
+      "player": "Jessica Shepard",
+      "team": "DAL",
+      "stat": "AST",
+      "direction": "OVER",
+      "market_line": 3.5,
+      "tc_projection": 4.0,
+      "tc_target": 3.5,
+      "edge": 0.5,
+      "threshold": 0.5,
+      "raw_average": 4.0,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "START"
+    },
+    {
+      "player": "Jessica Shepard",
+      "team": "DAL",
+      "stat": "3PM",
+      "direction": "INVALID",
+      "market_line": 0.5,
+      "tc_projection": 0.0,
+      "tc_target": 0.5,
+      "edge": -0.5,
+      "threshold": 0.5,
+      "raw_average": 0.0,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "START"
+    },
+    {
+      "player": "Jessica Shepard",
+      "team": "DAL",
+      "stat": "BLK",
+      "direction": "INVALID",
+      "market_line": 0.5,
+      "tc_projection": 0.0,
+      "tc_target": 0.5,
+      "edge": -0.5,
+      "threshold": 0.5,
+      "raw_average": 0.0,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "START"
+    },
+    {
+      "player": "Azzi Fudd",
+      "team": "DAL",
+      "stat": "PTS",
+      "direction": "OVER",
+      "market_line": 9.4,
+      "tc_projection": 10.7,
+      "tc_target": 9.4,
+      "edge": 1.3,
+      "threshold": 0.5,
+      "raw_average": 10.7,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "START"
+    },
+    {
+      "player": "Arike Ogunbowale",
+      "team": "DAL",
+      "stat": "PTS",
+      "direction": "OVER",
+      "market_line": 10.0,
+      "tc_projection": 11.4,
+      "tc_target": 10.0,
+      "edge": 1.4,
+      "threshold": 0.5,
+      "raw_average": 11.4,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "START"
+    },
+    {
+      "player": "Arike Ogunbowale",
+      "team": "DAL",
+      "stat": "BLK",
+      "direction": "INVALID",
+      "market_line": 0.5,
+      "tc_projection": 0.0,
+      "tc_target": 0.5,
+      "edge": -0.5,
+      "threshold": 0.5,
+      "raw_average": 0.0,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "START"
+    },
+    {
+      "player": "Aziaha James",
+      "team": "DAL",
+      "stat": "PTS",
+      "direction": "OVER",
+      "market_line": 11.6,
+      "tc_projection": 13.2,
+      "tc_target": 11.6,
+      "edge": 1.6,
+      "threshold": 0.5,
+      "raw_average": 13.2,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "BENCH"
+    },
+    {
+      "player": "Aziaha James",
+      "team": "DAL",
+      "stat": "REB",
+      "direction": "OVER",
+      "market_line": 4.6,
+      "tc_projection": 5.2,
+      "tc_target": 4.6,
+      "edge": 0.6,
+      "threshold": 0.5,
+      "raw_average": 5.2,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "BENCH"
+    },
+    {
+      "player": "Awak Kuier",
+      "team": "DAL",
+      "stat": "PTS",
+      "direction": "OVER",
+      "market_line": 7.4,
+      "tc_projection": 8.4,
+      "tc_target": 7.4,
+      "edge": 1.0,
+      "threshold": 0.5,
+      "raw_average": 8.4,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "BENCH"
+    },
+    {
+      "player": "Awak Kuier",
+      "team": "DAL",
+      "stat": "REB",
+      "direction": "OVER",
+      "market_line": 4.1,
+      "tc_projection": 4.7,
+      "tc_target": 4.1,
+      "edge": 0.6,
+      "threshold": 0.5,
+      "raw_average": 4.7,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "BENCH"
+    },
+    {
+      "player": "Maddy Siegrist",
+      "team": "DAL",
+      "stat": "PTS",
+      "direction": "OVER",
+      "market_line": 9.3,
+      "tc_projection": 10.6,
+      "tc_target": 9.3,
+      "edge": 1.3,
+      "threshold": 0.5,
+      "raw_average": 10.6,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "BENCH"
+    },
+    {
+      "player": "Maddy Siegrist",
+      "team": "DAL",
+      "stat": "REB",
+      "direction": "OVER",
+      "market_line": 4.3,
+      "tc_projection": 4.9,
+      "tc_target": 4.3,
+      "edge": 0.6,
+      "threshold": 0.5,
+      "raw_average": 4.9,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "BENCH"
+    },
+    {
+      "player": "Alanna Smith",
+      "team": "DAL",
+      "stat": "PTS",
+      "direction": "OVER",
+      "market_line": 5.9,
+      "tc_projection": 6.7,
+      "tc_target": 5.9,
+      "edge": 0.8,
+      "threshold": 0.5,
+      "raw_average": 6.7,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "BENCH"
+    },
+    {
+      "player": "Alanna Smith",
+      "team": "DAL",
+      "stat": "REB",
+      "direction": "OVER",
+      "market_line": 4.4,
+      "tc_projection": 5.0,
+      "tc_target": 4.4,
+      "edge": 0.6,
+      "threshold": 0.5,
+      "raw_average": 5.0,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "BENCH"
+    },
+    {
+      "player": "Sug Sutton",
+      "team": "DAL",
+      "stat": "PTS",
+      "direction": "OVER",
+      "market_line": 8.7,
+      "tc_projection": 9.9,
+      "tc_target": 8.7,
+      "edge": 1.2,
+      "threshold": 0.5,
+      "raw_average": 9.9,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "BENCH"
+    },
+    {
+      "player": "Sug Sutton",
+      "team": "DAL",
+      "stat": "AST",
+      "direction": "OVER",
+      "market_line": 4.0,
+      "tc_projection": 4.6,
+      "tc_target": 4.0,
+      "edge": 0.6,
+      "threshold": 0.5,
+      "raw_average": 4.6,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "BENCH"
+    },
+    {
+      "player": "Odyssey Sims",
+      "team": "DAL",
+      "stat": "PTS",
+      "direction": "OVER",
+      "market_line": 8.2,
+      "tc_projection": 9.3,
+      "tc_target": 8.2,
+      "edge": 1.1,
+      "threshold": 0.5,
+      "raw_average": 9.3,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "BENCH"
+    },
+    {
+      "player": "Costanza Verona",
+      "team": "DAL",
+      "stat": "PTS",
+      "direction": "OVER",
+      "market_line": 14.7,
+      "tc_projection": 16.7,
+      "tc_target": 14.7,
+      "edge": 2.0,
+      "threshold": 0.5,
+      "raw_average": 16.7,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "BENCH"
+    },
+    {
+      "player": "Costanza Verona",
+      "team": "DAL",
+      "stat": "REB",
+      "direction": "INVALID",
+      "market_line": 0.5,
+      "tc_projection": 0.0,
+      "tc_target": 0.5,
+      "edge": -0.5,
+      "threshold": 0.5,
+      "raw_average": 0.0,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "BENCH"
+    },
+    {
+      "player": "Costanza Verona",
+      "team": "DAL",
+      "stat": "AST",
+      "direction": "OVER",
+      "market_line": 7.3,
+      "tc_projection": 8.3,
+      "tc_target": 7.3,
+      "edge": 1.0,
+      "threshold": 0.5,
+      "raw_average": 8.3,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "BENCH"
+    },
+    {
+      "player": "Costanza Verona",
+      "team": "DAL",
+      "stat": "3PM",
+      "direction": "INVALID",
+      "market_line": 0.5,
+      "tc_projection": 0.0,
+      "tc_target": 0.5,
+      "edge": -0.5,
+      "threshold": 0.5,
+      "raw_average": 0.0,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "BENCH"
+    },
+    {
+      "player": "Costanza Verona",
+      "team": "DAL",
+      "stat": "STL",
+      "direction": "INVALID",
+      "market_line": 0.5,
+      "tc_projection": 0.0,
+      "tc_target": 0.5,
+      "edge": -0.5,
+      "threshold": 0.5,
+      "raw_average": 0.0,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "BENCH"
+    },
+    {
+      "player": "Costanza Verona",
+      "team": "DAL",
+      "stat": "BLK",
+      "direction": "INVALID",
+      "market_line": 0.5,
+      "tc_projection": 0.0,
+      "tc_target": 0.5,
+      "edge": -0.5,
+      "threshold": 0.5,
+      "raw_average": 0.0,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "BENCH"
+    },
+    {
+      "player": "Haley Jones",
+      "team": "DAL",
+      "stat": "PTS",
+      "direction": "OVER",
+      "market_line": 10.0,
+      "tc_projection": 11.4,
+      "tc_target": 10.0,
+      "edge": 1.4,
+      "threshold": 0.5,
+      "raw_average": 11.4,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "BENCH"
+    },
+    {
+      "player": "Haley Jones",
+      "team": "DAL",
+      "stat": "REB",
+      "direction": "OVER",
+      "market_line": 4.2,
+      "tc_projection": 4.8,
+      "tc_target": 4.2,
+      "edge": 0.6,
+      "threshold": 0.5,
+      "raw_average": 4.8,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "BENCH"
+    },
+    {
+      "player": "Haley Jones",
+      "team": "DAL",
+      "stat": "3PM",
+      "direction": "INVALID",
+      "market_line": 0.5,
+      "tc_projection": 0.0,
+      "tc_target": 0.5,
+      "edge": -0.5,
+      "threshold": 0.5,
+      "raw_average": 0.0,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "BENCH"
+    },
+    {
+      "player": "Haley Jones",
+      "team": "DAL",
+      "stat": "BLK",
+      "direction": "INVALID",
+      "market_line": 0.5,
+      "tc_projection": 0.0,
+      "tc_target": 0.5,
+      "edge": -0.5,
+      "threshold": 0.5,
+      "raw_average": 0.0,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "BENCH"
+    },
+    {
+      "player": "JJ Quinerly",
+      "team": "DAL",
+      "stat": "PTS",
+      "direction": "OVER",
+      "market_line": 3.7,
+      "tc_projection": 4.2,
+      "tc_target": 3.7,
+      "edge": 0.5,
+      "threshold": 0.5,
+      "raw_average": 4.2,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "BENCH"
+    },
+    {
+      "player": "JJ Quinerly",
+      "team": "DAL",
+      "stat": "AST",
+      "direction": "OVER",
+      "market_line": 3.7,
+      "tc_projection": 4.2,
+      "tc_target": 3.7,
+      "edge": 0.5,
+      "threshold": 0.5,
+      "raw_average": 4.2,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "BENCH"
+    },
+    {
+      "player": "JJ Quinerly",
+      "team": "DAL",
+      "stat": "3PM",
+      "direction": "INVALID",
+      "market_line": 0.5,
+      "tc_projection": 0.0,
+      "tc_target": 0.5,
+      "edge": -0.5,
+      "threshold": 0.5,
+      "raw_average": 0.0,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "BENCH"
+    },
+    {
+      "player": "JJ Quinerly",
+      "team": "DAL",
+      "stat": "STL",
+      "direction": "INVALID",
+      "market_line": 0.5,
+      "tc_projection": 0.0,
+      "tc_target": 0.5,
+      "edge": -0.5,
+      "threshold": 0.5,
+      "raw_average": 0.0,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "BENCH"
+    },
+    {
+      "player": "Li Yueru",
+      "team": "DAL",
+      "stat": "PTS",
+      "direction": "OVER",
+      "market_line": 7.9,
+      "tc_projection": 9.0,
+      "tc_target": 7.9,
+      "edge": 1.1,
+      "threshold": 0.5,
+      "raw_average": 9.0,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "BENCH"
+    },
+    {
+      "player": "Li Yueru",
+      "team": "DAL",
+      "stat": "REB",
+      "direction": "OVER",
+      "market_line": 7.2,
+      "tc_projection": 8.2,
+      "tc_target": 7.2,
+      "edge": 1.0,
+      "threshold": 0.5,
+      "raw_average": 8.2,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "BENCH"
+    },
+    {
+      "player": "Li Yueru",
+      "team": "DAL",
+      "stat": "BLK",
+      "direction": "INVALID",
+      "market_line": 0.5,
+      "tc_projection": 0.0,
+      "tc_target": 0.5,
+      "edge": -0.5,
+      "threshold": 0.5,
+      "raw_average": 0.0,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "BENCH"
+    },
+    {
+      "player": "Alysha Clark",
+      "team": "DAL",
+      "stat": "PTS",
+      "direction": "OVER",
+      "market_line": 5.4,
+      "tc_projection": 6.1,
+      "tc_target": 5.4,
+      "edge": 0.7,
+      "threshold": 0.5,
+      "raw_average": 6.1,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "BENCH"
+    }
+  ]
+}
