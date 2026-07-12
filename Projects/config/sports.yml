@@ -1,0 +1,41 @@
+# /home/workspace/Projects/config/sports.yml
+sports:
+  mlb:
+    enabled: true
+    season: "active"
+    odds_key: "baseball_mlb"
+    display_name: "MLB"
+    emoji: "⚾"
+  wnba:
+    enabled: true
+    season: "active"
+    odds_key: "basketball_wnba"
+    display_name: "WNBA"
+    emoji: "🏀"
+  nba:
+    enabled: false
+    season: "off"
+    reason: "June-September off-season"
+    odds_key: "basketball_nba"
+    display_name: "NBA"
+    emoji: "🏀"
+  nfl:
+    enabled: false
+    season: "off"
+    reason: "February-July off-season"
+    odds_key: "americanfootball_nfl"
+    display_name: "NFL"
+    emoji: "🏈"
+  nhl:
+    enabled: false
+    season: "off"
+    reason: "July-September off-season"
+    odds_key: "icehockey_nhl"
+    display_name: "NHL"
+    emoji: "🏒"
+  world_cup:
+    enabled: true
+    season: "active_or_qualifiers"
+    odds_key: "soccer_world_cup"
+    display_name: "World Cup"
+    emoji: "🌍"
