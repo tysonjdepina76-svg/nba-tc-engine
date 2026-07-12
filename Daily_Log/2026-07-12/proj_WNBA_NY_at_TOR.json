@@ -6,11 +6,11 @@
   "home_team": "TOR",
   "source": "ESPN + OddsAPI fallback (OddsAPI DraftKings)",
   "signal": "OVER",
-  "dk_total": 179.5,
+  "dk_total": 182.5,
   "odds": {
-    "total": 179.5,
-    "spread": -5.5,
-    "ml_home": -270,
+    "total": 182.5,
+    "spread": -6.5,
+    "ml_home": -410,
     "ml_away": null,
     "ml_source": "OddsAPI DraftKings"
   },
@@ -360,63 +360,6 @@
           }
         },
         {
-          "player": "Satou Sabally",
-          "team": "NY",
-          "role": "BENCH",
-          "status": "ACTIVE",
-          "pos": "",
-          "projections": {
-            "PTS": {
-              "tc_projection": 15.5,
-              "line": 13.6,
-              "edge": 1.9,
-              "direction": "OVER",
-              "dk_line": null,
-              "valid": true
-            },
-            "REB": {
-              "tc_projection": 4.1,
-              "line": 3.6,
-              "edge": 0.5,
-              "direction": "FLAT",
-              "dk_line": null,
-              "valid": true
-            },
-            "AST": {
-              "tc_projection": 2.9,
-              "line": 2.6,
-              "edge": 0.3,
-              "direction": "FLAT",
-              "dk_line": null,
-              "valid": false
-            },
-            "3PM": {
-              "tc_projection": 2.3,
-              "line": 2.0,
-              "edge": 0.3,
-              "direction": "FLAT",
-              "dk_line": null,
-              "valid": false
-            },
-            "STL": {
-              "tc_projection": 0.1,
-              "line": 0.5,
-              "edge": -0.4,
-              "direction": "FLAT",
-              "dk_line": null,
-              "valid": false
-            },
-            "BLK": {
-              "tc_projection": 0.2,
-              "line": 0.5,
-              "edge": -0.3,
-              "direction": "FLAT",
-              "dk_line": null,
-              "valid": false
-            }
-          }
-        },
-        {
           "player": "Sabrina Ionescu",
           "team": "NY",
           "role": "START",
@@ -459,6 +402,63 @@
               "tc_projection": 0.5,
               "line": 0.5,
               "edge": 0.0,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.2,
+              "line": 0.5,
+              "edge": -0.3,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Satou Sabally",
+          "team": "NY",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 15.5,
+              "line": 13.6,
+              "edge": 1.9,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 4.1,
+              "line": 3.6,
+              "edge": 0.5,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": true
+            },
+            "AST": {
+              "tc_projection": 2.9,
+              "line": 2.6,
+              "edge": 0.3,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 2.3,
+              "line": 2.0,
+              "edge": 0.3,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.1,
+              "line": 0.5,
+              "edge": -0.4,
               "direction": "FLAT",
               "dk_line": null,
               "valid": false
@@ -759,63 +759,6 @@
           }
         },
         {
-          "player": "Rebecca Allen",
-          "team": "NY",
-          "role": "BENCH",
-          "status": "ACTIVE",
-          "pos": "",
-          "projections": {
-            "PTS": {
-              "tc_projection": 4.1,
-              "line": 3.6,
-              "edge": 0.5,
-              "direction": "FLAT",
-              "dk_line": null,
-              "valid": true
-            },
-            "REB": {
-              "tc_projection": 3.0,
-              "line": 2.6,
-              "edge": 0.4,
-              "direction": "FLAT",
-              "dk_line": null,
-              "valid": false
-            },
-            "AST": {
-              "tc_projection": 1.6,
-              "line": 1.4,
-              "edge": 0.2,
-              "direction": "FLAT",
-              "dk_line": null,
-              "valid": false
-            },
-            "3PM": {
-              "tc_projection": 0.8,
-              "line": 0.7,
-              "edge": 0.1,
-              "direction": "FLAT",
-              "dk_line": null,
-              "valid": false
-            },
-            "STL": {
-              "tc_projection": 0.5,
-              "line": 0.5,
-              "edge": 0.0,
-              "direction": "FLAT",
-              "dk_line": null,
-              "valid": false
-            },
-            "BLK": {
-              "tc_projection": 0.8,
-              "line": 0.7,
-              "edge": 0.1,
-              "direction": "FLAT",
-              "dk_line": null,
-              "valid": false
-            }
-          }
-        },
-        {
           "player": "Anneli Maley",
           "team": "NY",
           "role": "BENCH",
@@ -869,6 +812,63 @@
               "direction": "INVALID",
               "dk_line": null,
               "valid": true
+            }
+          }
+        },
+        {
+          "player": "Rebecca Allen",
+          "team": "NY",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 4.1,
+              "line": 3.6,
+              "edge": 0.5,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 3.0,
+              "line": 2.6,
+              "edge": 0.4,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 1.6,
+              "line": 1.4,
+              "edge": 0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.8,
+              "line": 0.7,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.5,
+              "line": 0.5,
+              "edge": 0.0,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.8,
+              "line": 0.7,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
             }
           }
         },
@@ -1679,63 +1679,6 @@
           }
         },
         {
-          "player": "Rebecca Allen",
-          "team": "NY",
-          "role": "BENCH",
-          "status": "ACTIVE",
-          "pos": "",
-          "projections": {
-            "PTS": {
-              "tc_projection": 4.1,
-              "line": 3.6,
-              "edge": 0.5,
-              "direction": "FLAT",
-              "dk_line": null,
-              "valid": true
-            },
-            "REB": {
-              "tc_projection": 3.0,
-              "line": 2.6,
-              "edge": 0.4,
-              "direction": "FLAT",
-              "dk_line": null,
-              "valid": false
-            },
-            "AST": {
-              "tc_projection": 1.6,
-              "line": 1.4,
-              "edge": 0.2,
-              "direction": "FLAT",
-              "dk_line": null,
-              "valid": false
-            },
-            "3PM": {
-              "tc_projection": 0.8,
-              "line": 0.7,
-              "edge": 0.1,
-              "direction": "FLAT",
-              "dk_line": null,
-              "valid": false
-            },
-            "STL": {
-              "tc_projection": 0.5,
-              "line": 0.5,
-              "edge": 0.0,
-              "direction": "FLAT",
-              "dk_line": null,
-              "valid": false
-            },
-            "BLK": {
-              "tc_projection": 0.8,
-              "line": 0.7,
-              "edge": 0.1,
-              "direction": "FLAT",
-              "dk_line": null,
-              "valid": false
-            }
-          }
-        },
-        {
           "player": "Anneli Maley",
           "team": "NY",
           "role": "BENCH",
@@ -1789,6 +1732,63 @@
               "direction": "INVALID",
               "dk_line": null,
               "valid": true
+            }
+          }
+        },
+        {
+          "player": "Rebecca Allen",
+          "team": "NY",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 4.1,
+              "line": 3.6,
+              "edge": 0.5,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 3.0,
+              "line": 2.6,
+              "edge": 0.4,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 1.6,
+              "line": 1.4,
+              "edge": 0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.8,
+              "line": 0.7,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.5,
+              "line": 0.5,
+              "edge": 0.0,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.8,
+              "line": 0.7,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
             }
           }
         },
@@ -2141,63 +2141,6 @@
           }
         },
         {
-          "player": "Brittney Sykes",
-          "team": "TOR",
-          "role": "START",
-          "status": "ACTIVE",
-          "pos": "",
-          "projections": {
-            "PTS": {
-              "tc_projection": 15.8,
-              "line": 13.9,
-              "edge": 1.9,
-              "direction": "OVER",
-              "dk_line": null,
-              "valid": true
-            },
-            "REB": {
-              "tc_projection": 3.0,
-              "line": 2.6,
-              "edge": 0.4,
-              "direction": "FLAT",
-              "dk_line": null,
-              "valid": false
-            },
-            "AST": {
-              "tc_projection": 2.7,
-              "line": 2.4,
-              "edge": 0.3,
-              "direction": "FLAT",
-              "dk_line": null,
-              "valid": false
-            },
-            "3PM": {
-              "tc_projection": 0.8,
-              "line": 0.7,
-              "edge": 0.1,
-              "direction": "FLAT",
-              "dk_line": null,
-              "valid": false
-            },
-            "STL": {
-              "tc_projection": 1.0,
-              "line": 0.9,
-              "edge": 0.1,
-              "direction": "FLAT",
-              "dk_line": null,
-              "valid": false
-            },
-            "BLK": {
-              "tc_projection": 0.4,
-              "line": 0.5,
-              "edge": -0.1,
-              "direction": "FLAT",
-              "dk_line": null,
-              "valid": false
-            }
-          }
-        },
-        {
           "player": "Teonni Key",
           "team": "TOR",
           "role": "BENCH",
@@ -2255,31 +2198,31 @@
           }
         },
         {
-          "player": "Kiki Rice",
+          "player": "Brittney Sykes",
           "team": "TOR",
           "role": "START",
           "status": "ACTIVE",
           "pos": "",
           "projections": {
             "PTS": {
-              "tc_projection": 11.9,
-              "line": 10.5,
-              "edge": 1.4,
+              "tc_projection": 15.8,
+              "line": 13.9,
+              "edge": 1.9,
               "direction": "OVER",
               "dk_line": null,
               "valid": true
             },
             "REB": {
-              "tc_projection": 4.4,
-              "line": 3.9,
-              "edge": 0.5,
-              "direction": "OVER",
+              "tc_projection": 3.0,
+              "line": 2.6,
+              "edge": 0.4,
+              "direction": "FLAT",
               "dk_line": null,
-              "valid": true
+              "valid": false
             },
             "AST": {
-              "tc_projection": 2.4,
-              "line": 2.1,
+              "tc_projection": 2.7,
+              "line": 2.4,
               "edge": 0.3,
               "direction": "FLAT",
               "dk_line": null,
@@ -2294,17 +2237,17 @@
               "valid": false
             },
             "STL": {
-              "tc_projection": 0.9,
-              "line": 0.8,
+              "tc_projection": 1.0,
+              "line": 0.9,
               "edge": 0.1,
               "direction": "FLAT",
               "dk_line": null,
               "valid": false
             },
             "BLK": {
-              "tc_projection": 0.1,
+              "tc_projection": 0.4,
               "line": 0.5,
-              "edge": -0.4,
+              "edge": -0.1,
               "direction": "FLAT",
               "dk_line": null,
               "valid": false
@@ -2362,6 +2305,63 @@
               "tc_projection": 0.8,
               "line": 0.7,
               "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Kiki Rice",
+          "team": "TOR",
+          "role": "START",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 11.9,
+              "line": 10.5,
+              "edge": 1.4,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 4.4,
+              "line": 3.9,
+              "edge": 0.5,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "AST": {
+              "tc_projection": 2.4,
+              "line": 2.1,
+              "edge": 0.3,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.8,
+              "line": 0.7,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.9,
+              "line": 0.8,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.1,
+              "line": 0.5,
+              "edge": -0.4,
               "direction": "FLAT",
               "dk_line": null,
               "valid": false
@@ -3846,6 +3846,21 @@
       "role": "BENCH"
     },
     {
+      "player": "Sabrina Ionescu",
+      "team": "NY",
+      "stat": "PTS",
+      "direction": "OVER",
+      "market_line": 9.0,
+      "tc_projection": 10.2,
+      "tc_target": 9.0,
+      "edge": 1.2,
+      "threshold": 0.5,
+      "raw_average": 10.2,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "START"
+    },
+    {
       "player": "Satou Sabally",
       "team": "NY",
       "stat": "PTS",
@@ -3874,21 +3889,6 @@
       "source": "ESPN Core API (self-edge)",
       "status": "ACTIVE",
       "role": "BENCH"
-    },
-    {
-      "player": "Sabrina Ionescu",
-      "team": "NY",
-      "stat": "PTS",
-      "direction": "OVER",
-      "market_line": 9.0,
-      "tc_projection": 10.2,
-      "tc_target": 9.0,
-      "edge": 1.2,
-      "threshold": 0.5,
-      "raw_average": 10.2,
-      "source": "ESPN Core API (self-edge)",
-      "status": "ACTIVE",
-      "role": "START"
     },
     {
       "player": "Leonie Fiebich",
@@ -4101,21 +4101,6 @@
       "role": "BENCH"
     },
     {
-      "player": "Rebecca Allen",
-      "team": "NY",
-      "stat": "PTS",
-      "direction": "FLAT",
-      "market_line": 3.6,
-      "tc_projection": 4.1,
-      "tc_target": 3.6,
-      "edge": 0.5,
-      "threshold": 0.5,
-      "raw_average": 4.1,
-      "source": "ESPN Core API (self-edge)",
-      "status": "ACTIVE",
-      "role": "BENCH"
-    },
-    {
       "player": "Anneli Maley",
       "team": "NY",
       "stat": "REB",
@@ -4171,6 +4156,21 @@
       "edge": -0.5,
       "threshold": 0.5,
       "raw_average": 0.0,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "BENCH"
+    },
+    {
+      "player": "Rebecca Allen",
+      "team": "NY",
+      "stat": "PTS",
+      "direction": "FLAT",
+      "market_line": 3.6,
+      "tc_projection": 4.1,
+      "tc_target": 3.6,
+      "edge": 0.5,
+      "threshold": 0.5,
+      "raw_average": 4.1,
       "source": "ESPN Core API (self-edge)",
       "status": "ACTIVE",
       "role": "BENCH"
@@ -4326,21 +4326,6 @@
       "role": "BENCH"
     },
     {
-      "player": "Brittney Sykes",
-      "team": "TOR",
-      "stat": "PTS",
-      "direction": "OVER",
-      "market_line": 13.9,
-      "tc_projection": 15.8,
-      "tc_target": 13.9,
-      "edge": 1.9,
-      "threshold": 0.5,
-      "raw_average": 15.8,
-      "source": "ESPN Core API (self-edge)",
-      "status": "ACTIVE",
-      "role": "START"
-    },
-    {
       "player": "Teonni Key",
       "team": "TOR",
       "stat": "PTS",
@@ -4371,31 +4356,16 @@
       "role": "BENCH"
     },
     {
-      "player": "Kiki Rice",
+      "player": "Brittney Sykes",
       "team": "TOR",
       "stat": "PTS",
       "direction": "OVER",
-      "market_line": 10.5,
-      "tc_projection": 11.9,
-      "tc_target": 10.5,
-      "edge": 1.4,
+      "market_line": 13.9,
+      "tc_projection": 15.8,
+      "tc_target": 13.9,
+      "edge": 1.9,
       "threshold": 0.5,
-      "raw_average": 11.9,
-      "source": "ESPN Core API (self-edge)",
-      "status": "ACTIVE",
-      "role": "START"
-    },
-    {
-      "player": "Kiki Rice",
-      "team": "TOR",
-      "stat": "REB",
-      "direction": "OVER",
-      "market_line": 3.9,
-      "tc_projection": 4.4,
-      "tc_target": 3.9,
-      "edge": 0.5,
-      "threshold": 0.5,
-      "raw_average": 4.4,
+      "raw_average": 15.8,
       "source": "ESPN Core API (self-edge)",
       "status": "ACTIVE",
       "role": "START"
@@ -4429,6 +4399,36 @@
       "source": "ESPN Core API (self-edge)",
       "status": "ACTIVE",
       "role": "BENCH"
+    },
+    {
+      "player": "Kiki Rice",
+      "team": "TOR",
+      "stat": "PTS",
+      "direction": "OVER",
+      "market_line": 10.5,
+      "tc_projection": 11.9,
+      "tc_target": 10.5,
+      "edge": 1.4,
+      "threshold": 0.5,
+      "raw_average": 11.9,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "START"
+    },
+    {
+      "player": "Kiki Rice",
+      "team": "TOR",
+      "stat": "REB",
+      "direction": "OVER",
+      "market_line": 3.9,
+      "tc_projection": 4.4,
+      "tc_target": 3.9,
+      "edge": 0.5,
+      "threshold": 0.5,
+      "raw_average": 4.4,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "START"
     },
     {
       "player": "Nyara Sabally",
