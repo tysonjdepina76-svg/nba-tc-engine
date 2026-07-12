@@ -7,7 +7,7 @@ from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
-ALL_SPORTS = ["WNBA", "MLB", "WORLD_CUP"]  # off-season: NBA/NFL/NHL skipped
+ALL_SPORTS = ["WNBA", "MLB", "WORLD_CUP", "NFL"]  # NFL preseason live Aug 6 2026
 
 def main() -> int:
     p = argparse.ArgumentParser()
