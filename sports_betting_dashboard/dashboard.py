@@ -1,9 +1,8 @@
-"""
-TC Sports Dashboard — Multi-sport Streamlit UI
-Reads Daily_Log projection files for WNBA, MLB, World Cup.
-Serves on port 8510.
-"""
+"""TC Sports Dashboard — Multi-sport Streamlit UI.
+Reads clean picks from sports_betting_dashboard/data/picks/.
+Serves on port 8510."""
 import streamlit as st
+import csv
 import json
 import sys
 from pathlib import Path
@@ -15,11 +14,13 @@ ET = timezone(timedelta(hours=-4))
 WORKSPACE = Path("/home/workspace")
 LOG_DIR = WORKSPACE / "Daily_Log"
 TODAY = datetime.now(ET).strftime("%Y-%m-%d")
+PICKS_DIR = WORKSPACE / "sports_betting_dashboard" / "data" / "picks"
 
 SPORT_BADGES = {
     "WNBA": "#ff6b00",
     "MLB": "#1e88e5",
     "WORLD CUP": "#00897b",
+    "WORLD_CUP": "#00897b",
 }
 
 
@@ -34,14 +35,47 @@ def find_latest_data_dir():
     return dirs[0] if dirs else today_dir
 
 
-def load_picks(data_dir):
-    picks_path = data_dir / "picks.json"
-    if not picks_path.exists():
+def load_picks_from_csv(csv_path):
+    """Load picks from CSV file. Returns list of dicts."""
+    if not csv_path.exists():
         return []
     try:
-        return json.loads(picks_path.read_text())
+        rows = []
+        with open(csv_path, newline="") as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                if row.get("direction", "") == "INVALID":
+                    continue
+                try:
+                    row["edge"] = float(row.get("edge", 0) or 0)
+                except (ValueError, TypeError):
+                    row["edge"] = 0.0
+                try:
+                    row["tc_projection"] = float(row.get("tc_projection", 0) or 0)
+                except (ValueError, TypeError):
+                    row["tc_projection"] = 0.0
+                try:
+                    row["market_line"] = float(row.get("market_line", 0) or 0)
+                except (ValueError, TypeError):
+                    row["market_line"] = 0.0
+                rows.append(row)
+        return rows
     except Exception:
         return []
+
+
+def load_picks_for_dashboard():
+    """Load picks from actionable CSV first, fall back to clean, then today."""
+    paths = [
+        PICKS_DIR / "actionable_picks.csv",
+        PICKS_DIR / "clean_picks.csv",
+        PICKS_DIR / "today_picks.csv",
+    ]
+    for p in paths:
+        picks = load_picks_from_csv(p)
+        if picks:
+            return picks, p.name
+    return [], "none"
 
 
 def load_summaries(data_dir):
@@ -82,56 +116,46 @@ def render_summary_card(last_run):
                 st.write(f"- {e}")
 
 
-def render_sport_section(sport, picks, summaries):
+def render_sport_section(sport, picks, source_file):
     badge = SPORT_BADGES.get(sport, "#666")
     st.markdown(
         f"<h3 style='color:{badge};border-bottom:2px solid {badge};padding-bottom:4px;'>{sport}</h3>",
         unsafe_allow_html=True,
     )
 
-    sport_picks = [p for p in picks if p.get("league") == sport]
-    sport_summaries = [s for s in summaries if s.get("sport") == sport]
+    csv_league = sport.replace(" ", "_")
+    sport_picks = [p for p in picks if p.get("league", "") in (sport, csv_league)]
 
-    if not sport_picks and not sport_summaries:
-        st.caption(f"No picks or summaries for {sport} today.")
+    if not sport_picks:
+        st.caption(f"No picks for {sport} today.")
         return
 
     col1, col2 = st.columns([2, 1])
 
     with col1:
-        if sport_summaries:
-            st.write("**Game Summaries**")
-            summary_rows = []
-            for s in sport_summaries:
-                away = s.get("away_team", "?")
-                home = s.get("home_team", "?")
-                signal = s.get("signal", "N/A")
-                picks_count = s.get("picks", s.get("picks_with_dk", 0))
-                summary_rows.append({
-                    "Matchup": f"{away} @ {home}",
-                    "Signal": signal,
-                    "Picks": picks_count,
-                    "DK Picks": s.get("picks_with_dk", "N/A"),
-                    "Pending Props": s.get("pending_props_no_dk", "N/A"),
-                })
-            st.dataframe(summary_rows, use_container_width=True, hide_index=True)
+        over_picks = [p for p in sport_picks if p.get("direction") == "OVER"]
+        under_picks = [p for p in sport_picks if p.get("direction") == "UNDER"]
 
-        if sport_picks:
-            st.write("**Top Picks by Edge**")
-            valid = [p for p in sport_picks if p.get("result", "PENDING") == "PENDING"]
-            sorted_picks = sorted(valid, key=lambda x: abs(x.get("edge", 0) or 0), reverse=True)[:15]
-            pick_rows = []
-            for p in sorted_picks:
-                pick_rows.append({
-                    "Player": p.get("player", "?"),
-                    "Team": p.get("team", "?"),
-                    "Stat": p.get("stat", "?"),
-                    "Dir": p.get("direction", ""),
-                    "Line": p.get("market_line", ""),
-                    "TC Proj": p.get("tc_projection", ""),
-                    "Edge": f"{p.get('edge', 0):+.1f}" if p.get("edge") is not None else "",
-                })
-            st.dataframe(pick_rows, use_container_width=True, hide_index=True)
+        st.write(f"**{len(sport_picks)} picks** — {len(over_picks)} OVER · {len(under_picks)} UNDER")
+        st.caption(f"Source: {source_file} | Showing top 25 by edge")
+
+        sorted_picks = sorted(sport_picks, key=lambda x: abs(x.get("edge", 0)), reverse=True)[:25]
+        pick_rows = []
+        for p in sorted_picks:
+            edge_val = p.get("edge", 0)
+            direction = p.get("direction", "")
+            dir_icon = "▲" if direction == "OVER" else "▼" if direction == "UNDER" else "•"
+            pick_rows.append({
+                "Player": p.get("player", "?"),
+                "Team": p.get("team", "?"),
+                "Matchup": p.get("matchup", ""),
+                "Stat": p.get("stat", "?"),
+                "Dir": f"{dir_icon} {direction}",
+                "TC Proj": f"{p.get('tc_projection', 0):.1f}",
+                "Line": f"{p.get('market_line', 0):.1f}",
+                "Edge": f"{edge_val:+.2f}",
+            })
+        st.dataframe(pick_rows, use_container_width=True, hide_index=True)
 
     with col2:
         st.write("**Edge Distribution**")
@@ -193,49 +217,50 @@ def render_mlb_live():
 
 def main():
     st.title("🏀 TC Sports Dashboard")
-    st.caption("WNBA · MLB · World Cup — Triple Conservative Pipeline")
+    st.caption(f"Triple Conservative Projections — {datetime.now(ET).strftime('%Y-%m-%d %H:%M:%S ET')}")
 
-    data_dir = find_latest_data_dir()
-    picks = load_picks(data_dir)
-    summaries = load_summaries(data_dir)
-    last_run = load_last_run()
+    picks, source_file = load_picks_for_dashboard()
 
-    st.sidebar.metric("Data Date", str(data_dir).split("/")[-1])
-    st.sidebar.metric("Total Picks", len(picks))
-    st.sidebar.metric("Games", len(summaries))
+    total_picks = len(picks)
+    over_count = len([p for p in picks if p.get("direction") == "OVER"])
+    under_count = len([p for p in picks if p.get("direction") == "UNDER"])
+    sports_set = set(p.get("league", "?").replace("_", " ") for p in picks)
 
-    if st.sidebar.button("🔄 Refresh"):
-        st.rerun()
+    cols = st.columns(5)
+    cols[0].metric("📋 Total Picks", total_picks)
+    cols[1].metric("▲ OVER", over_count)
+    cols[2].metric("▼ UNDER", under_count)
+    cols[3].metric("🏟 Sports", len(sports_set))
+    cols[4].metric("📁 Source", source_file or "none")
 
-    st.sidebar.divider()
-    st.sidebar.caption(
-        f"Dashboard v2.0\n{datetime.now().strftime('%Y-%m-%d %H:%M:%S ET')}"
-    )
+    # Top edges
+    if picks:
+        top_by_edge = sorted(picks, key=lambda x: abs(x.get("edge", 0)), reverse=True)[:3]
+        with st.expander("🔥 Top 3 picks by edge"):
+            for p in top_by_edge:
+                dir_icon = "▲" if p.get("direction") == "OVER" else "▼"
+                st.write(
+                    f"**{p.get('player', '?')}** ({p.get('team', '?')}) — "
+                    f"{p.get('stat', '?')} {dir_icon} {p.get('direction', '?')} "
+                    f"| Proj {float(p.get('tc_projection', 0)):.1f} vs Line {float(p.get('market_line', 0)):.1f} "
+                    f"| Edge **{float(p.get('edge', 0)):+.2f}**"
+                )
 
-    render_summary_card(last_run)
-    st.divider()
+    if not picks:
+        st.warning("No picks found. Run: `python3 Projects/daily_picks.py --sport wnba && --sport mlb && --sport wc`")
+        return
 
-    tabs = st.tabs(["📊 All Picks", "🏀 WNBA", "⚾ MLB", "⚽ World Cup", "📺 Live MLB"])
+    sport_list = sorted(sports_set)
+    tabs = st.tabs(sport_list)
 
-    with tabs[0]:
-        render_sport_section("ALL", picks, summaries)
-
-    with tabs[1]:
-        render_sport_section("WNBA", picks, summaries)
-
-    with tabs[2]:
-        render_sport_section("MLB", picks, summaries)
-
-    with tabs[3]:
-        render_sport_section("WORLD CUP", picks, summaries)
-
-    with tabs[4]:
-        render_mlb_live()
+    for i, sport in enumerate(sport_list):
+        with tabs[i]:
+            render_sport_section(sport, picks, source_file)
 
     st.divider()
     st.caption(
         f"TC Sports Dashboard — {datetime.now().strftime('%Y-%m-%d %H:%M:%S ET')} | "
-        f"Source: {data_dir}"
+        f"Load from: {source_file or 'none'}"
     )
 
 

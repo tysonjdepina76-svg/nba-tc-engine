@@ -34,7 +34,7 @@ def fix_no_picks():
     if not picks_path.exists():
         print(f"  → No picks for {TODAY}, running pipeline...")
         code, out, err = run(
-            f"cd {WORKSPACE} && python3 Projects/daily_picks.py --sport WNBA --date {TODAY} 2>&1",
+            f"cd {WORKSPACE} && python3 Projects/daily_picks.py --sport wnba --date {TODAY} 2>&1",
             timeout=300,
         )
         if code == 0:
@@ -46,7 +46,7 @@ def fix_no_picks():
         if code2 == 0:
             print(f"  ✓ MLB complete: {out2.split(chr(10))[-3:]}")
         code3, out3, err3 = run(
-            f"cd {WORKSPACE} && python3 Projects/daily_picks.py --sport WORLD_CUP --date {TODAY} 2>&1",
+            f"cd {WORKSPACE} && python3 Projects/daily_picks.py --sport wc --date {TODAY} 2>&1",
             timeout=300,
         )
         if code3 == 0:

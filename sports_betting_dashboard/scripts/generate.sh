@@ -1,10 +1,21 @@
 #!/usr/bin/env bash
-# Generate today's picks
+# Generate today's picks for all active sports
 set -euo pipefail
-echo "→ Generating WNBA picks..."
-python3 /home/workspace/Projects/daily_picks.py --sport WNBA
-echo "→ Generating MLB picks..."
-python3 /home/workspace/Projects/daily_picks.py --sport MLB
-echo "→ Generating World Cup picks..."
-python3 /home/workspace/Projects/daily_picks.py --sport WORLD_CUP
-echo "✓ Done — check /home/workspace/Daily_Log/$(date +%Y-%m-%d)/picks.json"
+WORKSPACE="/home/workspace"
+TODAY=$(TZ='America/New_York' date +%Y-%m-%d)
+
+echo "=== TC Picks Generator — $(date '+%Y-%m-%d %H:%M:%S %Z') ==="
+
+echo "→ WNBA..."
+python3 "$WORKSPACE/Projects/daily_picks.py" --sport wnba
+echo "→ MLB..."
+python3 "$WORKSPACE/Projects/daily_picks.py" --sport mlb
+echo "→ World Cup..."
+python3 "$WORKSPACE/Projects/daily_picks.py" --sport wc
+
+PICKS_CSV="$WORKSPACE/Daily_Log/$TODAY/picks.csv"
+if [ -f "$PICKS_CSV" ]; then
+    echo "✓ Done — picks.csv ($(wc -l < "$PICKS_CSV") lines) at $PICKS_CSV"
+else
+    echo "⚠ No picks.csv found at $PICKS_CSV"
+fi

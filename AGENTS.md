@@ -1,4 +1,14 @@
 # Workspace Index — true.zo.computer
+## Current Status (2026-07-13 ~1:20 PM ET) — DASHBOARDS WIRED ✅
+- **sports_betting_dashboard/ complete**: picks.py (symlink), dashboard.py, scan.sh, fix_pipeline.py, setup.sh, README.md, requirements.txt, .env.template all present
+- **Scripts**: generate.sh, start.sh, stop.sh, status.sh, daily.sh all executable and verified
+- **Config**: algorithm_weights.json, parlay_rules.json, sports.json, thresholds.json in config/
+- **Data pipeline**: data/picks/today_picks.csv ← Daily_Log/2026-07-13/picks.csv (127 rows), data/today.json (126 WNBA picks), data/historical/ (10 backtest CSVs)
+- **Logs**: daily.log, api.log, picks.log + 6 scan logs in logs/
+- **Services**: tc-dashboard-streamlit on :8510 (managed, enabled), dk-combos/soccer-combos/mlb-cross paused (API cap)
+- **Routes**: 6/6 API routes 200 (tc, slate, scan, backtest, combos, dk-lines)
+- **API**: 2088/6667 today (Business tier), odds cache 3 files from today
+- **GitHub**: pushed
 
 ## Current Status (2026-07-13 ~9:50 AM ET) — ALL GAPS CLOSED ✅
 - **Structure audit**: Full comparison against user's target `sports_betting_dashboard/` layout — all 18 items verified
