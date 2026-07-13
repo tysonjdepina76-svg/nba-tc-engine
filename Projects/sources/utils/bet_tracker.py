@@ -21,7 +21,8 @@ class BetTracker:
                 with open(self.bets_file, "r") as f:
                     return json.load(f)
             except Exception:
-                pass
+                import logging as _log
+                _log.getLogger(__name__).debug("exception", exc_info=True)
         return []
 
     def _save_bets(self) -> None:

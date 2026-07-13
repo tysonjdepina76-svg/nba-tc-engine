@@ -33,7 +33,8 @@ def status():
         try:
             quota = json.loads(QUOTA_FILE.read_text())
         except Exception:
-            pass
+            import logging as _log
+            _log.getLogger(__name__).debug("exception", exc_info=True)
     exhausted = any(v.get("exhausted") for v in quota.values()) if isinstance(quota, dict) else False
     payload = {
         "today": str(today),

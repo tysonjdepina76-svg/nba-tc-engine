@@ -10,6 +10,14 @@
 - **API keys**: ALL CAPPED per user rule
 - **Folder structure**: sports_betting_dashboard/ complete — picks.py (symlink), dashboard.py, scan.sh, fix_pipeline.py, setup.sh, README.md, requirements.txt, .env.template, data/, logs/, config/, models/, scripts/ all present
 
+## Current Status (2026-07-13 ~12:42 PM ET) — FULL SYSTEM REFRESH ✅
+- **Pipeline run**: `--sport wnba` (5 picks) + `--sport mlb` (0, quiet day) + `--sport wc` (0, Odds API 401 quota max)
+- **Argparse rule fixed**: choices are strictly lowercase (`wnba`, `mlb`, `wc`, `all`) — rule TC-0 updated
+- **Scan**: 30/30 ✅ · 8/8 routes 200 · Picks today: 3,812 (WNBA=2,772 MLB=0 WC=1,040)
+- **World Cup slate**: Spain@France + Argentina@England — TC ready, NO DK LINES (Odds API quota maxed)
+- **Dashboard**: http://localhost:8510 ✅ · https://true.zo.space/nba-tc ✅
+- **GitHub + Drive**: push next
+
 ## Current Status (2026-07-09 ~7:10 PM ET) — ALL 12 ITEMS SHIPPED ✅
 - **System**: Fully wired and clean. User confirmed "The entire system is completely wired and clean."
 - **Items shipped (12)**: api_call_budget ✅, fantasy_images ✅, --date flag ✅, Player role fix ✅, RosterManager ✅, ProjectionService ✅, ComboOptimizer ✅, Dockerfile ✅, FastAPI projections endpoint ✅, Streamlit dashboard ✅, GitHub Actions CI ✅, Deploy script ✅ + DK/Soccer combo engines on 8515/8516 (item 12) ✅

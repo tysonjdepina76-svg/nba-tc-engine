@@ -149,7 +149,8 @@ def fetch_slate(sport: str, date_str: Optional[str] = None,
             if age_min < STALENESS_MIN.get(sport, 60):
                 return json.loads(cache.read_text())
         except Exception:
-            pass
+            import logging as _log
+            _log.getLogger(__name__).debug("exception", exc_info=True)
 
     yyyymmdd = date_str.replace("-", "")
     url = ESPN_HISTORICAL.format(sport=sport_path, league=league, dates=yyyymmdd)

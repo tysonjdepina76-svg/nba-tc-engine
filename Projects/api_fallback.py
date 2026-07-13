@@ -62,7 +62,8 @@ def _load_quota():
         try:
             return json.loads(QUOTA_FILE.read_text())
         except Exception:
-            pass
+            import logging as _log
+            _log.getLogger(__name__).debug("exception", exc_info=True)
     return {}
 
 def _save_quota(q):
@@ -81,7 +82,8 @@ def _is_quota_exhausted(key_label):
         if (now - mt).total_seconds() < 86400:  # 24h exhaustion window
             return True
     except Exception:
-        pass
+        import logging as _log
+        _log.getLogger(__name__).debug("exception", exc_info=True)
     return False
 
 def _mark_quota_exhausted(key_label):
@@ -119,7 +121,8 @@ class FallbackManager:
                     data["_from_cache"] = True
                     return data
             except Exception:
-                pass
+                import logging as _log
+                _log.getLogger(__name__).debug("exception", exc_info=True)
         return None
 
     def _cache_set(self, sport, away, home, data):

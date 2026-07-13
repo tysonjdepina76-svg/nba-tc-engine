@@ -36,7 +36,8 @@ def load_secret(name: str) -> str:
             if m:
                 return m.group(1)
     except Exception:
-        pass
+        import logging as _log
+        _log.getLogger(__name__).debug("exception", exc_info=True)
     return os.environ.get(name, "")
 
 SGO_BASE = "https://api.sportsgameodds.com/v2"

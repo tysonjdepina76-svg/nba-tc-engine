@@ -47,5 +47,6 @@ def load_cached_wnba() -> dict:
             with open(cache_file, "r") as f:
                 return json.load(f)
         except Exception:
-            pass
+            import logging as _log
+            _log.getLogger(__name__).debug("exception", exc_info=True)
     return {"source": "none", "players": []}

@@ -336,7 +336,8 @@ def purge_old_files() -> int:
                 cache_file.unlink()
                 purged += 1
         except Exception:
-            pass
+            import logging as _log
+            _log.getLogger(__name__).debug("exception", exc_info=True)
 
     # Purge old live_props CSVs (>7 days)
     live_dir = LOG_DIR / "live_props"
@@ -348,7 +349,8 @@ def purge_old_files() -> int:
                     f.unlink()
                     purged += 1
             except Exception:
-                pass
+                import logging as _log
+                _log.getLogger(__name__).debug("exception", exc_info=True)
 
     # Purge old halftime/final JSONs (>14 days)
     for subdir in ["halftime", "final"]:
@@ -361,7 +363,8 @@ def purge_old_files() -> int:
                         f.unlink()
                         purged += 1
                 except Exception:
-                    pass
+                    import logging as _log
+                    _log.getLogger(__name__).debug("exception", exc_info=True)
 
     # Purge root workspace stale .py/.md files (>60 days)
     for f in WORKSPACE.iterdir():
@@ -372,7 +375,8 @@ def purge_old_files() -> int:
                     f.unlink()
                     purged += 1
             except Exception:
-                pass
+                import logging as _log
+                _log.getLogger(__name__).debug("exception", exc_info=True)
 
     # Purge empty date dirs in Daily_Log
     for d in LOG_DIR.iterdir():
@@ -383,7 +387,8 @@ def purge_old_files() -> int:
                     d.rmdir()
                     purged += 1
             except Exception:
-                pass
+                import logging as _log
+                _log.getLogger(__name__).debug("exception", exc_info=True)
 
     if purged > 0:
         log("FIX", "Purge", f"Removed {purged} stale/empty files")

@@ -34,7 +34,8 @@ try:
                 _k, _v = _line.split("=", 1)
                 os.environ.setdefault(_k.strip(), _v.strip())
 except Exception:
-    pass
+    import logging as _log
+    _log.getLogger(__name__).debug("exception", exc_info=True)
 
 SPORT_KEY = "soccer_fifa_world_cup"
 ESPN_SCOREBOARD = "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard"
@@ -60,7 +61,8 @@ def _wc_cache_get(matchup_key, game_id):
                 data["_from_cache"] = True
                 return data
         except Exception:
-            pass
+            import logging as _log
+            _log.getLogger(__name__).debug("exception", exc_info=True)
     return None
 
 def _wc_cache_set(matchup_key, game_id, data):
@@ -298,7 +300,8 @@ def _quota_skip():
                 if k.get("exhausted"):
                     return True
     except Exception:
-        pass
+        import logging as _log
+        _log.getLogger(__name__).debug("exception", exc_info=True)
     return False
 
 def run(date_str=None):

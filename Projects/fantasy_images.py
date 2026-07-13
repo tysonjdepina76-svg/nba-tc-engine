@@ -75,7 +75,8 @@ def _latest_picks_df() -> pd.DataFrame | None:
                 frames.append(df)
                 used_today = True
         except Exception:
-            pass
+            import logging as _log
+            _log.getLogger(__name__).debug("exception", exc_info=True)
 
     # Fallback: if today's dir is empty, walk backward up to 7 days.
     # This matters during off-hours (WNBA off-day, MLB day game already
@@ -107,7 +108,8 @@ def _latest_picks_df() -> pd.DataFrame | None:
                 # WC rows: no team col
                 frames.append(df)
         except Exception:
-            pass
+            import logging as _log
+            _log.getLogger(__name__).debug("exception", exc_info=True)
 
     if not frames:
         return None

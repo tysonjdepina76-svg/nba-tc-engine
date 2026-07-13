@@ -112,7 +112,8 @@ def load_wc_cache_props():
             if player_props:
                 props[name] = player_props
         except Exception:
-            pass
+            import logging as _log
+            _log.getLogger(__name__).debug("exception", exc_info=True)
     print(f"  Cache props: {len(props)} games")
     return props
 

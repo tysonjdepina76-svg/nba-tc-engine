@@ -584,7 +584,8 @@ def compute_tc_projections(espn_actuals: List[dict],
                         if (cur_d - last_d).days == 1:
                             mean *= 0.95
                     except Exception:
-                        pass
+                        import logging as _log
+                        _log.getLogger(__name__).debug("exception", exc_info=True)
 
                 tc = round(mean * STAT_CONS[stat], 1)
                 actual = current[stat]

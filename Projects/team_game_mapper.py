@@ -34,7 +34,8 @@ try:
                 _k, _v = _line.split("=", 1)
                 os.environ.setdefault(_k.strip(), _v.strip())
 except Exception:
-    pass
+    import logging as _log
+    _log.getLogger(__name__).debug("exception", exc_info=True)
 
 # =====================================================================
 # CANONICAL WNBA TEAM MAP (ESPN abbr → full name + all known aliases)

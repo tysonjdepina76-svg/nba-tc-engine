@@ -18,63 +18,6 @@
     "all": {
       "players": [
         {
-          "player": "Kahleah Copper",
-          "team": "PHX",
-          "role": "START",
-          "status": "ACTIVE",
-          "pos": "",
-          "projections": {
-            "PTS": {
-              "tc_projection": 15.7,
-              "line": 13.8,
-              "edge": 1.9,
-              "direction": "OVER",
-              "dk_line": null,
-              "valid": true
-            },
-            "REB": {
-              "tc_projection": 3.0,
-              "line": 2.6,
-              "edge": 0.4,
-              "direction": "FLAT",
-              "dk_line": null,
-              "valid": false
-            },
-            "AST": {
-              "tc_projection": 1.3,
-              "line": 1.1,
-              "edge": 0.2,
-              "direction": "FLAT",
-              "dk_line": null,
-              "valid": false
-            },
-            "3PM": {
-              "tc_projection": 1.3,
-              "line": 1.1,
-              "edge": 0.2,
-              "direction": "FLAT",
-              "dk_line": null,
-              "valid": false
-            },
-            "STL": {
-              "tc_projection": 0.5,
-              "line": 0.5,
-              "edge": 0.0,
-              "direction": "FLAT",
-              "dk_line": null,
-              "valid": false
-            },
-            "BLK": {
-              "tc_projection": 0.1,
-              "line": 0.5,
-              "edge": -0.4,
-              "direction": "FLAT",
-              "dk_line": null,
-              "valid": false
-            }
-          }
-        },
-        {
           "player": "Alyssa Thomas",
           "team": "PHX",
           "role": "START",
@@ -182,6 +125,63 @@
               "tc_projection": 1.3,
               "line": 1.1,
               "edge": 0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Kahleah Copper",
+          "team": "PHX",
+          "role": "START",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 15.7,
+              "line": 13.8,
+              "edge": 1.9,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 3.0,
+              "line": 2.6,
+              "edge": 0.4,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 1.3,
+              "line": 1.1,
+              "edge": 0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 1.3,
+              "line": 1.1,
+              "edge": 0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.5,
+              "line": 0.5,
+              "edge": 0.0,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.1,
+              "line": 0.5,
+              "edge": -0.4,
               "direction": "FLAT",
               "dk_line": null,
               "valid": false
@@ -303,63 +303,6 @@
           }
         },
         {
-          "player": "Noemie Brochant",
-          "team": "PHX",
-          "role": "BENCH",
-          "status": "ACTIVE",
-          "pos": "",
-          "projections": {
-            "PTS": {
-              "tc_projection": 6.4,
-              "line": 5.6,
-              "edge": 0.8,
-              "direction": "OVER",
-              "dk_line": null,
-              "valid": true
-            },
-            "REB": {
-              "tc_projection": 2.7,
-              "line": 2.4,
-              "edge": 0.3,
-              "direction": "FLAT",
-              "dk_line": null,
-              "valid": false
-            },
-            "AST": {
-              "tc_projection": 2.1,
-              "line": 1.8,
-              "edge": 0.3,
-              "direction": "FLAT",
-              "dk_line": null,
-              "valid": false
-            },
-            "3PM": {
-              "tc_projection": 1.2,
-              "line": 1.1,
-              "edge": 0.1,
-              "direction": "FLAT",
-              "dk_line": null,
-              "valid": false
-            },
-            "STL": {
-              "tc_projection": 1.1,
-              "line": 1.0,
-              "edge": 0.1,
-              "direction": "FLAT",
-              "dk_line": null,
-              "valid": false
-            },
-            "BLK": {
-              "tc_projection": 0.3,
-              "line": 0.5,
-              "edge": -0.2,
-              "direction": "FLAT",
-              "dk_line": null,
-              "valid": false
-            }
-          }
-        },
-        {
           "player": "Lexi Held",
           "team": "PHX",
           "role": "BENCH",
@@ -410,6 +353,63 @@
               "tc_projection": 0.2,
               "line": 0.5,
               "edge": -0.3,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Noemie Brochant",
+          "team": "PHX",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 6.4,
+              "line": 5.6,
+              "edge": 0.8,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 2.7,
+              "line": 2.4,
+              "edge": 0.3,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 2.1,
+              "line": 1.8,
+              "edge": 0.3,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 1.2,
+              "line": 1.1,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 1.1,
+              "line": 1.0,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.3,
+              "line": 0.5,
+              "edge": -0.2,
               "direction": "FLAT",
               "dk_line": null,
               "valid": false
@@ -820,63 +820,6 @@
     "starters": {
       "players": [
         {
-          "player": "Kahleah Copper",
-          "team": "PHX",
-          "role": "START",
-          "status": "ACTIVE",
-          "pos": "",
-          "projections": {
-            "PTS": {
-              "tc_projection": 15.7,
-              "line": 13.8,
-              "edge": 1.9,
-              "direction": "OVER",
-              "dk_line": null,
-              "valid": true
-            },
-            "REB": {
-              "tc_projection": 3.0,
-              "line": 2.6,
-              "edge": 0.4,
-              "direction": "FLAT",
-              "dk_line": null,
-              "valid": false
-            },
-            "AST": {
-              "tc_projection": 1.3,
-              "line": 1.1,
-              "edge": 0.2,
-              "direction": "FLAT",
-              "dk_line": null,
-              "valid": false
-            },
-            "3PM": {
-              "tc_projection": 1.3,
-              "line": 1.1,
-              "edge": 0.2,
-              "direction": "FLAT",
-              "dk_line": null,
-              "valid": false
-            },
-            "STL": {
-              "tc_projection": 0.5,
-              "line": 0.5,
-              "edge": 0.0,
-              "direction": "FLAT",
-              "dk_line": null,
-              "valid": false
-            },
-            "BLK": {
-              "tc_projection": 0.1,
-              "line": 0.5,
-              "edge": -0.4,
-              "direction": "FLAT",
-              "dk_line": null,
-              "valid": false
-            }
-          }
-        },
-        {
           "player": "Alyssa Thomas",
           "team": "PHX",
           "role": "START",
@@ -984,6 +927,63 @@
               "tc_projection": 1.3,
               "line": 1.1,
               "edge": 0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Kahleah Copper",
+          "team": "PHX",
+          "role": "START",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 15.7,
+              "line": 13.8,
+              "edge": 1.9,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 3.0,
+              "line": 2.6,
+              "edge": 0.4,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 1.3,
+              "line": 1.1,
+              "edge": 0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 1.3,
+              "line": 1.1,
+              "edge": 0.2,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 0.5,
+              "line": 0.5,
+              "edge": 0.0,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.1,
+              "line": 0.5,
+              "edge": -0.4,
               "direction": "FLAT",
               "dk_line": null,
               "valid": false
@@ -1166,63 +1166,6 @@
           }
         },
         {
-          "player": "Noemie Brochant",
-          "team": "PHX",
-          "role": "BENCH",
-          "status": "ACTIVE",
-          "pos": "",
-          "projections": {
-            "PTS": {
-              "tc_projection": 6.4,
-              "line": 5.6,
-              "edge": 0.8,
-              "direction": "OVER",
-              "dk_line": null,
-              "valid": true
-            },
-            "REB": {
-              "tc_projection": 2.7,
-              "line": 2.4,
-              "edge": 0.3,
-              "direction": "FLAT",
-              "dk_line": null,
-              "valid": false
-            },
-            "AST": {
-              "tc_projection": 2.1,
-              "line": 1.8,
-              "edge": 0.3,
-              "direction": "FLAT",
-              "dk_line": null,
-              "valid": false
-            },
-            "3PM": {
-              "tc_projection": 1.2,
-              "line": 1.1,
-              "edge": 0.1,
-              "direction": "FLAT",
-              "dk_line": null,
-              "valid": false
-            },
-            "STL": {
-              "tc_projection": 1.1,
-              "line": 1.0,
-              "edge": 0.1,
-              "direction": "FLAT",
-              "dk_line": null,
-              "valid": false
-            },
-            "BLK": {
-              "tc_projection": 0.3,
-              "line": 0.5,
-              "edge": -0.2,
-              "direction": "FLAT",
-              "dk_line": null,
-              "valid": false
-            }
-          }
-        },
-        {
           "player": "Lexi Held",
           "team": "PHX",
           "role": "BENCH",
@@ -1273,6 +1216,63 @@
               "tc_projection": 0.2,
               "line": 0.5,
               "edge": -0.3,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            }
+          }
+        },
+        {
+          "player": "Noemie Brochant",
+          "team": "PHX",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 6.4,
+              "line": 5.6,
+              "edge": 0.8,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 2.7,
+              "line": 2.4,
+              "edge": 0.3,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "AST": {
+              "tc_projection": 2.1,
+              "line": 1.8,
+              "edge": 0.3,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 1.2,
+              "line": 1.1,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "STL": {
+              "tc_projection": 1.1,
+              "line": 1.0,
+              "edge": 0.1,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "BLK": {
+              "tc_projection": 0.3,
+              "line": 0.5,
+              "edge": -0.2,
               "direction": "FLAT",
               "dk_line": null,
               "valid": false
@@ -2198,63 +2198,6 @@
           }
         },
         {
-          "player": "Emese Hof",
-          "team": "MIN",
-          "role": "BENCH",
-          "status": "ACTIVE",
-          "pos": "",
-          "projections": {
-            "PTS": {
-              "tc_projection": 8.3,
-              "line": 7.3,
-              "edge": 1.0,
-              "direction": "OVER",
-              "dk_line": null,
-              "valid": true
-            },
-            "REB": {
-              "tc_projection": 6.0,
-              "line": 5.3,
-              "edge": 0.7,
-              "direction": "OVER",
-              "dk_line": null,
-              "valid": true
-            },
-            "AST": {
-              "tc_projection": 2.4,
-              "line": 2.1,
-              "edge": 0.3,
-              "direction": "FLAT",
-              "dk_line": null,
-              "valid": false
-            },
-            "3PM": {
-              "tc_projection": 0.0,
-              "line": 0.5,
-              "edge": -0.5,
-              "direction": "INVALID",
-              "dk_line": null,
-              "valid": true
-            },
-            "STL": {
-              "tc_projection": 0.0,
-              "line": 0.5,
-              "edge": -0.5,
-              "direction": "INVALID",
-              "dk_line": null,
-              "valid": true
-            },
-            "BLK": {
-              "tc_projection": 0.0,
-              "line": 0.5,
-              "edge": -0.5,
-              "direction": "INVALID",
-              "dk_line": null,
-              "valid": true
-            }
-          }
-        },
-        {
           "player": "Teaira McCowan",
           "team": "MIN",
           "role": "BENCH",
@@ -2308,6 +2251,63 @@
               "direction": "FLAT",
               "dk_line": null,
               "valid": false
+            }
+          }
+        },
+        {
+          "player": "Emese Hof",
+          "team": "MIN",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 8.3,
+              "line": 7.3,
+              "edge": 1.0,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 6.0,
+              "line": 5.3,
+              "edge": 0.7,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "AST": {
+              "tc_projection": 2.4,
+              "line": 2.1,
+              "edge": 0.3,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.0,
+              "line": 0.5,
+              "edge": -0.5,
+              "direction": "INVALID",
+              "dk_line": null,
+              "valid": true
+            },
+            "STL": {
+              "tc_projection": 0.0,
+              "line": 0.5,
+              "edge": -0.5,
+              "direction": "INVALID",
+              "dk_line": null,
+              "valid": true
+            },
+            "BLK": {
+              "tc_projection": 0.0,
+              "line": 0.5,
+              "edge": -0.5,
+              "direction": "INVALID",
+              "dk_line": null,
+              "valid": true
             }
           }
         },
@@ -3004,63 +3004,6 @@
           }
         },
         {
-          "player": "Emese Hof",
-          "team": "MIN",
-          "role": "BENCH",
-          "status": "ACTIVE",
-          "pos": "",
-          "projections": {
-            "PTS": {
-              "tc_projection": 8.3,
-              "line": 7.3,
-              "edge": 1.0,
-              "direction": "OVER",
-              "dk_line": null,
-              "valid": true
-            },
-            "REB": {
-              "tc_projection": 6.0,
-              "line": 5.3,
-              "edge": 0.7,
-              "direction": "OVER",
-              "dk_line": null,
-              "valid": true
-            },
-            "AST": {
-              "tc_projection": 2.4,
-              "line": 2.1,
-              "edge": 0.3,
-              "direction": "FLAT",
-              "dk_line": null,
-              "valid": false
-            },
-            "3PM": {
-              "tc_projection": 0.0,
-              "line": 0.5,
-              "edge": -0.5,
-              "direction": "INVALID",
-              "dk_line": null,
-              "valid": true
-            },
-            "STL": {
-              "tc_projection": 0.0,
-              "line": 0.5,
-              "edge": -0.5,
-              "direction": "INVALID",
-              "dk_line": null,
-              "valid": true
-            },
-            "BLK": {
-              "tc_projection": 0.0,
-              "line": 0.5,
-              "edge": -0.5,
-              "direction": "INVALID",
-              "dk_line": null,
-              "valid": true
-            }
-          }
-        },
-        {
           "player": "Teaira McCowan",
           "team": "MIN",
           "role": "BENCH",
@@ -3114,6 +3057,63 @@
               "direction": "FLAT",
               "dk_line": null,
               "valid": false
+            }
+          }
+        },
+        {
+          "player": "Emese Hof",
+          "team": "MIN",
+          "role": "BENCH",
+          "status": "ACTIVE",
+          "pos": "",
+          "projections": {
+            "PTS": {
+              "tc_projection": 8.3,
+              "line": 7.3,
+              "edge": 1.0,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "REB": {
+              "tc_projection": 6.0,
+              "line": 5.3,
+              "edge": 0.7,
+              "direction": "OVER",
+              "dk_line": null,
+              "valid": true
+            },
+            "AST": {
+              "tc_projection": 2.4,
+              "line": 2.1,
+              "edge": 0.3,
+              "direction": "FLAT",
+              "dk_line": null,
+              "valid": false
+            },
+            "3PM": {
+              "tc_projection": 0.0,
+              "line": 0.5,
+              "edge": -0.5,
+              "direction": "INVALID",
+              "dk_line": null,
+              "valid": true
+            },
+            "STL": {
+              "tc_projection": 0.0,
+              "line": 0.5,
+              "edge": -0.5,
+              "direction": "INVALID",
+              "dk_line": null,
+              "valid": true
+            },
+            "BLK": {
+              "tc_projection": 0.0,
+              "line": 0.5,
+              "edge": -0.5,
+              "direction": "INVALID",
+              "dk_line": null,
+              "valid": true
             }
           }
         },
@@ -3240,21 +3240,6 @@
   },
   "valid_props": [
     {
-      "player": "Kahleah Copper",
-      "team": "PHX",
-      "stat": "PTS",
-      "direction": "OVER",
-      "market_line": 13.8,
-      "tc_projection": 15.7,
-      "tc_target": 13.8,
-      "edge": 1.9,
-      "threshold": 0.5,
-      "raw_average": 15.7,
-      "source": "ESPN Core API (self-edge)",
-      "status": "ACTIVE",
-      "role": "START"
-    },
-    {
       "player": "Alyssa Thomas",
       "team": "PHX",
       "stat": "PTS",
@@ -3345,6 +3330,21 @@
       "role": "START"
     },
     {
+      "player": "Kahleah Copper",
+      "team": "PHX",
+      "stat": "PTS",
+      "direction": "OVER",
+      "market_line": 13.8,
+      "tc_projection": 15.7,
+      "tc_target": 13.8,
+      "edge": 1.9,
+      "threshold": 0.5,
+      "raw_average": 15.7,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "START"
+    },
+    {
       "player": "DeWanna Bonner",
       "team": "PHX",
       "stat": "PTS",
@@ -3405,21 +3405,6 @@
       "role": "BENCH"
     },
     {
-      "player": "Noemie Brochant",
-      "team": "PHX",
-      "stat": "PTS",
-      "direction": "OVER",
-      "market_line": 5.6,
-      "tc_projection": 6.4,
-      "tc_target": 5.6,
-      "edge": 0.8,
-      "threshold": 0.5,
-      "raw_average": 6.4,
-      "source": "ESPN Core API (self-edge)",
-      "status": "ACTIVE",
-      "role": "BENCH"
-    },
-    {
       "player": "Lexi Held",
       "team": "PHX",
       "stat": "PTS",
@@ -3430,6 +3415,21 @@
       "edge": 1.0,
       "threshold": 0.5,
       "raw_average": 8.2,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "BENCH"
+    },
+    {
+      "player": "Noemie Brochant",
+      "team": "PHX",
+      "stat": "PTS",
+      "direction": "OVER",
+      "market_line": 5.6,
+      "tc_projection": 6.4,
+      "tc_target": 5.6,
+      "edge": 0.8,
+      "threshold": 0.5,
+      "raw_average": 6.4,
       "source": "ESPN Core API (self-edge)",
       "status": "ACTIVE",
       "role": "BENCH"
@@ -4080,6 +4080,51 @@
       "role": "BENCH"
     },
     {
+      "player": "Teaira McCowan",
+      "team": "MIN",
+      "stat": "PTS",
+      "direction": "OVER",
+      "market_line": 4.5,
+      "tc_projection": 5.1,
+      "tc_target": 4.5,
+      "edge": 0.6,
+      "threshold": 0.5,
+      "raw_average": 5.1,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "BENCH"
+    },
+    {
+      "player": "Teaira McCowan",
+      "team": "MIN",
+      "stat": "REB",
+      "direction": "OVER",
+      "market_line": 7.7,
+      "tc_projection": 8.8,
+      "tc_target": 7.7,
+      "edge": 1.1,
+      "threshold": 0.5,
+      "raw_average": 8.8,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "BENCH"
+    },
+    {
+      "player": "Teaira McCowan",
+      "team": "MIN",
+      "stat": "3PM",
+      "direction": "INVALID",
+      "market_line": 0.5,
+      "tc_projection": 0.0,
+      "tc_target": 0.5,
+      "edge": -0.5,
+      "threshold": 0.5,
+      "raw_average": 0.0,
+      "source": "ESPN Core API (self-edge)",
+      "status": "ACTIVE",
+      "role": "BENCH"
+    },
+    {
       "player": "Emese Hof",
       "team": "MIN",
       "stat": "PTS",
@@ -4143,51 +4188,6 @@
       "player": "Emese Hof",
       "team": "MIN",
       "stat": "BLK",
-      "direction": "INVALID",
-      "market_line": 0.5,
-      "tc_projection": 0.0,
-      "tc_target": 0.5,
-      "edge": -0.5,
-      "threshold": 0.5,
-      "raw_average": 0.0,
-      "source": "ESPN Core API (self-edge)",
-      "status": "ACTIVE",
-      "role": "BENCH"
-    },
-    {
-      "player": "Teaira McCowan",
-      "team": "MIN",
-      "stat": "PTS",
-      "direction": "OVER",
-      "market_line": 4.5,
-      "tc_projection": 5.1,
-      "tc_target": 4.5,
-      "edge": 0.6,
-      "threshold": 0.5,
-      "raw_average": 5.1,
-      "source": "ESPN Core API (self-edge)",
-      "status": "ACTIVE",
-      "role": "BENCH"
-    },
-    {
-      "player": "Teaira McCowan",
-      "team": "MIN",
-      "stat": "REB",
-      "direction": "OVER",
-      "market_line": 7.7,
-      "tc_projection": 8.8,
-      "tc_target": 7.7,
-      "edge": 1.1,
-      "threshold": 0.5,
-      "raw_average": 8.8,
-      "source": "ESPN Core API (self-edge)",
-      "status": "ACTIVE",
-      "role": "BENCH"
-    },
-    {
-      "player": "Teaira McCowan",
-      "team": "MIN",
-      "stat": "3PM",
       "direction": "INVALID",
       "market_line": 0.5,
       "tc_projection": 0.0,

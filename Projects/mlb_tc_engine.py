@@ -602,7 +602,8 @@ def _save_sgo_cache(data: Dict[str, Any]) -> None:
         with open(SGO_CACHE_FILE, "w") as f:
             json.dump(data, f)
     except Exception:
-        pass
+        import logging as _log
+        _log.getLogger(__name__).debug("exception", exc_info=True)
 
 
 def fetch_sgo_player_lines(away_abbr: str, home_abbr: str) -> Dict[str, Dict[str, float]]:

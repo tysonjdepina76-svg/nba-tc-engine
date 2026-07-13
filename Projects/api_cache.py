@@ -56,7 +56,8 @@ def cached_get(url: str, params: Optional[dict] = None, ttl_seconds: int = DEFAU
                 _MEM[key] = (now, data)
                 return data
         except Exception:
-            pass
+            import logging as _log
+            _log.getLogger(__name__).debug("exception", exc_info=True)
 
     try:
         qs = urllib.parse.urlencode(params) if params else ""
@@ -84,7 +85,8 @@ def log_call(provider: str, endpoint: str) -> None:
         with CALL_LOG_PATH.open("a") as f:
             f.write(json.dumps({"ts": time.time(), "provider": provider, "endpoint": endpoint}) + "\n")
     except Exception:
-        pass
+        import logging as _log
+        _log.getLogger(__name__).debug("exception", exc_info=True)
 
 
 def cache_stats(today_only: bool = True) -> Dict[str, Any]:
@@ -109,7 +111,8 @@ def cache_stats(today_only: bool = True) -> Dict[str, Any]:
             except Exception:
                 continue
     except Exception:
-        pass
+        import logging as _log
+        _log.getLogger(__name__).debug("exception", exc_info=True)
     return stats
 
 
@@ -117,4 +120,5 @@ def reset_call_log() -> None:
     try:
         CALL_LOG_PATH.unlink()
     except Exception:
-        pass
+        import logging as _log
+        _log.getLogger(__name__).debug("exception", exc_info=True)

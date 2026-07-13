@@ -164,7 +164,8 @@ def _fetch_espn_dk_lines(espn_path: str, away_abbr: str, home_abbr: str):
                 result["ml_away"] = _parse_ml(ml.get("away", {}).get("close", {}).get("odds"))
             break
     except Exception:
-        pass
+        import logging as _log
+        _log.getLogger(__name__).debug("exception", exc_info=True)
     return result
 
 
@@ -242,10 +243,12 @@ def _fetch_espn_game_roster(espn_path, away_abbr, home_abbr):
                             elif team_abbr == h_team:
                                 result["home_players"].append(player)
                 except Exception:
-                    pass
+                    import logging as _log
+                    _log.getLogger(__name__).debug("exception", exc_info=True)
             break
     except Exception:
-        pass
+        import logging as _log
+        _log.getLogger(__name__).debug("exception", exc_info=True)
     return result
 
 
@@ -330,7 +333,8 @@ def _fetch_odds_api_game_lines(espn_path, away_abbr, home_abbr):
             if result["total"]:
                 break
     except Exception:
-        pass
+        import logging as _log
+        _log.getLogger(__name__).debug("exception", exc_info=True)
     return result
 
 
@@ -529,7 +533,8 @@ def main():
                                 "actual": actual,
                             })
             except Exception:
-                pass
+                import logging as _log
+                _log.getLogger(__name__).debug("exception", exc_info=True)
             return players_list
 
         try:
@@ -573,7 +578,8 @@ def main():
                         try:
                             game_ref["players"] = future.result(timeout=10)
                         except Exception:
-                            pass
+                            import logging as _log
+                            _log.getLogger(__name__).debug("exception", exc_info=True)
 
             print(json.dumps({"mode": "live_stats", "sport": sport, "games": games, "timestamp": datetime.now().isoformat()}))
         except Exception as e:
@@ -857,7 +863,8 @@ def main():
                     if d.is_dir() and (d.name.startswith("20")):
                         dirs.append(d.name)
             except Exception:
-                pass
+                import logging as _log
+                _log.getLogger(__name__).debug("exception", exc_info=True)
             return dirs
 
         all_dirs = sorted(

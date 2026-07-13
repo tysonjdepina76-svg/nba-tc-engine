@@ -416,7 +416,8 @@ def fetch_sport_batch(sport: str, markets: Optional[List[str]] = None, force: bo
         try:
             return json.loads(batch_cache.read_text())
         except Exception:
-            pass
+            import logging as _log
+            _log.getLogger(__name__).debug("exception", exc_info=True)
 
     # Step 1: Get all events with odds (one API call)
     try:

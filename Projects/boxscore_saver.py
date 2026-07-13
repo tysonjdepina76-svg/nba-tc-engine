@@ -269,7 +269,8 @@ def purge_duplicates():
                     old.rename(dst)
                     removed += 1
                 except Exception:
-                    pass
+                    import logging as _log
+                    _log.getLogger(__name__).debug("exception", exc_info=True)
 
     print(f"  🧹 Dupes moved to _dupes/: {removed} files")
     # rebuild registry from remaining files

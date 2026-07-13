@@ -85,7 +85,8 @@ class OddsScraperBase:
                 if data.get("date") == self._today():
                     return data
             except Exception:
-                pass
+                import logging as _log
+                _log.getLogger(__name__).debug("exception", exc_info=True)
         return {"date": self._today(), "calls": 0}
 
     def _save_usage(self) -> None:

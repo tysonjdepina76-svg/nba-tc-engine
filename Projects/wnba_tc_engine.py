@@ -114,7 +114,8 @@ def load_injury_report(date_str: str = None, force: bool = False) -> dict:
                 INJURY_CACHE[date_str] = merged
                 return merged
             except Exception:
-                pass
+                import logging as _log
+                _log.getLogger(__name__).debug("exception", exc_info=True)
 
     merged = {}
     for abbr in WNBA_TEAMS.keys():
@@ -130,12 +131,14 @@ def load_injury_report(date_str: str = None, force: bool = False) -> dict:
             for name, status in json.loads(override_file.read_text()).items():
                 merged[name.lower()] = status
         except Exception:
-            pass
+            import logging as _log
+            _log.getLogger(__name__).debug("exception", exc_info=True)
 
     try:
         cache_file.write_text(json.dumps(merged, indent=2, sort_keys=True))
     except Exception:
-        pass
+        import logging as _log
+        _log.getLogger(__name__).debug("exception", exc_info=True)
     INJURY_CACHE[date_str] = merged
     return merged
 
@@ -315,7 +318,8 @@ def _fetch_dk_lines_with_fallback(away: str, home: str) -> tuple:
                         "ESPN DraftKings embedded",
                     )
     except Exception:
-        pass
+        import logging as _log
+        _log.getLogger(__name__).debug("exception", exc_info=True)
 
     # 2. OddsAPI fallback (events with book=draftkings)
     try:
@@ -364,7 +368,8 @@ def _fetch_dk_lines_with_fallback(away: str, home: str) -> tuple:
                             dk_ml_away = price
             return (dk_total, dk_spread, dk_ml_home, dk_ml_away, "OddsAPI DraftKings")
     except Exception:
-        pass
+        import logging as _log
+        _log.getLogger(__name__).debug("exception", exc_info=True)
 
     return (None, None, None, None, "ESPN Core API (self-edge)")
 

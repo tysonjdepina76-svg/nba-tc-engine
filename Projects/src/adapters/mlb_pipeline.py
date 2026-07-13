@@ -153,7 +153,8 @@ class MLBPipeline:
         try:
             self.adapter.close()
         except Exception:
-            pass
+            import logging as _log
+            _log.getLogger(__name__).debug("exception", exc_info=True)
 
 
 if __name__ == "__main__":

@@ -43,7 +43,8 @@ class WNBAOddsScraper:
             try:
                 return json.loads(p.read_text())
             except Exception:
-                pass
+                import logging as _log
+                _log.getLogger(__name__).debug("exception", exc_info=True)
         return {"date": self._today(), "calls": {}}
 
     def _save_usage(self):
