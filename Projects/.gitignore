@@ -1,0 +1,51 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Virtual envs
+.venv/
+venv/
+env/
+
+# Secrets / env
+.env
+.env.local
+.env.*.local
+secrets.env
+
+# Logs
+logs/*.log
+*.log
+
+# Data (local-only)
+data/*.json
+data/*.db
+data/*.csv
+data/*.duckdb
+data/*.parquet
+!data/.gitkeep
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Cache
+/tmp/tc_cache/
+.cache/

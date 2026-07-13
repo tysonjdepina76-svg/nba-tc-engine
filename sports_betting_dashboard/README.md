@@ -20,7 +20,7 @@ python3 sports_betting_dashboard/fix_pipeline.py
 ```
 sports_betting_dashboard/
 ├── picks.py                 → Projects/daily_picks.py (symlink)
-├── dashboard.py             → Projects/tc_dashboard.py (symlink)
+├── dashboard.py             → Projects/tc_dashboard.py (real file)
 ├── scan.sh                  # Health scan — check every subsystem
 ├── fix_pipeline.py          # Auto-repair broken states (+ API budget monitor)
 ├── setup.sh                 # One-time install

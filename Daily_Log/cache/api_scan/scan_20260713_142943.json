@@ -1,0 +1,94 @@
+{
+  "scanned_at": "2026-07-13T14:29:43.687776+00:00",
+  "endpoints": [
+    {
+      "name": "Odds sports",
+      "url": "https://api.theoddsapi.com/sports/",
+      "key_label": "ODDS_API_KEY",
+      "free_tier": true,
+      "scanned_at": "2026-07-13T14:29:43.687776+00:00",
+      "latency_ms": 251.1,
+      "status_code": 200,
+      "ok": true
+    },
+    {
+      "name": "Odds WNBA odds",
+      "url": "https://api.theoddsapi.com/odds/",
+      "key_label": "ODDS_API_KEY",
+      "free_tier": true,
+      "scanned_at": "2026-07-13T14:29:43.687776+00:00",
+      "latency_ms": 121.8,
+      "status_code": 200,
+      "ok": true
+    },
+    {
+      "name": "Odds MLB odds",
+      "url": "https://api.theoddsapi.com/odds/",
+      "key_label": "ODDS_API_KEY",
+      "free_tier": true,
+      "scanned_at": "2026-07-13T14:29:43.687776+00:00",
+      "latency_ms": 111.1,
+      "status_code": 200,
+      "ok": true
+    },
+    {
+      "name": "SGO basketball_wnba",
+      "url": "https://api.sportsgameodds.com/v2/events",
+      "key_label": null,
+      "free_tier": false,
+      "scanned_at": "2026-07-13T14:29:43.687776+00:00",
+      "latency_ms": 79.7,
+      "status_code": 429,
+      "ok": false,
+      "rate_limited": true
+    },
+    {
+      "name": "ESPN WNBA sb",
+      "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/wnba/scoreboard",
+      "key_label": null,
+      "free_tier": true,
+      "scanned_at": "2026-07-13T14:29:43.687776+00:00",
+      "latency_ms": 47.2,
+      "status_code": 200,
+      "ok": true
+    },
+    {
+      "name": "ESPN MLB sb",
+      "url": "https://site.api.espn.com/apis/site/v2/sports/baseball/mlb/scoreboard",
+      "key_label": null,
+      "free_tier": true,
+      "scanned_at": "2026-07-13T14:29:43.687776+00:00",
+      "latency_ms": 44.8,
+      "status_code": 200,
+      "ok": true
+    },
+    {
+      "name": "ESPN WC sb",
+      "url": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard",
+      "key_label": null,
+      "free_tier": true,
+      "scanned_at": "2026-07-13T14:29:43.687776+00:00",
+      "latency_ms": 38.5,
+      "status_code": 200,
+      "ok": true
+    },
+    {
+      "name": "SDIO MLB props",
+      "url": "https://api.sportsdata.io/v3/mlb/odds/json/PlayerPropsByDate/2026-06-22",
+      "key_label": null,
+      "free_tier": false,
+      "scanned_at": "2026-07-13T14:29:43.687776+00:00",
+      "latency_ms": 56.0,
+      "status_code": 200,
+      "ok": true
+    }
+  ],
+  "summary": {
+    "total": 8,
+    "ok": 7,
+    "failed": 1,
+    "failed_names": [
+      "SGO basketball_wnba"
+    ]
+  }
+}

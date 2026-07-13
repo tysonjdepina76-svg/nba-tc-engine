@@ -72,6 +72,34 @@ def generate_ou_picks(projection, sport, matchup, date_str):
     return picks
 
 from mock_lines import get_mock_market_line
+
+SELF_EDGE_THRESHOLDS = {
+    "WNBA": 0.030,
+    "MLB": 0.025,
+    "WC": 0.120,
+    "NBA": 0.030,
+    "NHL": 0.030,
+    "NFL": 0.030,
+}
+
+SELF_EDGE_MIN_PROJ = {
+    "WC": 0.5,
+}
+
+def self_edge_signal(projection: float, market_line: float, sport: str = "WC", stat: str = "default") -> tuple:
+    """Compare TC projection to a market line; return (direction, edge).
+    direction: 'OVER', 'UNDER', or 'FLAT'. edge: signed magnitude in probability units.
+    """
+    if market_line is None or market_line <= 0 or projection is None:
+        return ("FLAT", 0.0)
+    diff = (projection - market_line) / market_line
+    thr = SELF_EDGE_THRESHOLDS.get(sport.upper(), 0.03)
+    if diff > thr:
+        return ("OVER", diff)
+    if diff < -thr:
+        return ("UNDER", abs(diff))
+    return ("FLAT", abs(diff))
+
 MLB_SPORTS = {"MLB"}  # sports with
 
 ET = timezone(timedelta(hours=-5))
@@ -456,7 +484,8 @@ def run_daily_log(sports=ALL_SPORTS):
         if sport == "WNBA":
             from wnba_tc_engine import project_game, get_today_slate
             
-            raw_games = get_today_slate()  # returns list of {away, home, status, completed, event_id}
+            _wnba_date = globals().get("_run_date_str") or os.environ.get("TC_RUN_DATE")
+            raw_games = get_today_slate(_wnba_date)  # returns list of {away, home, status, completed, event_id}
             if not raw_games:
                 print(f"  No games on slate for {sport} — skipping")
                 (today_dir / f"slate_{sport}.json").write_text(json.dumps([], indent=2))
@@ -630,6 +659,13 @@ def run_daily_log(sports=ALL_SPORTS):
                 # Save raw projection
                 safe = matchup.replace("@", "_at_")
                 (today_dir / f"proj_{sport}_{safe}.json").write_text(json.dumps(proj, indent=2))
+
+                # Build summary for WC/MLB/NHL/etc (added 2026-07-13 to fix wc_games count=0)
+                picks = extract_picks(proj, sport, matchup)
+                summary = extract_game_summary(proj, sport, matchup)
+                all_picks.extend(picks)
+                all_summaries.append(summary)
+                print(f"    -> {len(picks)} game-level entries, signal={summary.get('signal', '?')}")
 
         else:
             slate = fetch_live_slate(sport)

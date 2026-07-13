@@ -123,6 +123,7 @@ LEAGUE_AVG_PER_90 = {
 
 EDGE_THRESHOLD = 0.5   # edge threshold for OVER/UNDER signal (goals are low-volume)
 EDGE_STRONG = 1.0      # strong signal (wider edge)
+MIN_PROJECTION = 0.5  # below this, don't generate picks (noise floor)
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # ODDS API — FETCH WORLD CUP EVENTS + GAME ODDS
@@ -744,6 +745,8 @@ def run_soccer_pipeline(target_matchup: Optional[str] = None) -> dict:
                     is_home=is_home,
                 )
                 for p in projs:
+                    if p.get("tc_projection", 0) < MIN_PROJECTION:
+                        continue
                     p["date"] = now.strftime("%Y-%m-%d")
                     p["matchup"] = matchup
                     p["source"] = p.get("source", "SELF_EDGE" if not dk_h2h else "DK")

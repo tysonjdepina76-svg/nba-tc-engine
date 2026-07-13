@@ -1,0 +1,127 @@
+{
+  "version": "2.1.0",
+  "updated": "2026-07-13",
+  "description": "Edge thresholds per sport — derived from algorithm_weights.json globals + daily_picks.py SELF_EDGE_THRESHOLDS. Referenced by scan.sh, pipeline health, and backtest engine.",
+  "global": {
+    "edge_threshold": 1.5,
+    "strong_edge_threshold": 3.0,
+    "minimum_confidence": 0.55,
+    "max_picks_per_game": 15,
+    "max_picks_per_slate": 500
+  },
+  "self_edge_thresholds": {
+    "WNBA": 0.030,
+    "MLB": 0.025,
+    "WORLD_CUP": 0.035,
+    "NBA": 0.030,
+    "NHL": 0.030,
+    "NFL": 0.030
+  },
+  "sports": {
+    "WNBA": {
+      "signal_min_edge": 1.5,
+      "signal_strong_edge": 3.0,
+      "blowout_margin": 15,
+      "garbage_time_start_q4_minutes": 5,
+      "min_players_active_for_projection": 8,
+      "starter_minutes_threshold": 15,
+      "bench_minutes_threshold": 8,
+      "q_status_penalty": 0.55,
+      "out_status_penalty": 0.0,
+      "rookie_volatility": 1.15,
+      "back_to_back_penalty": 0.92,
+      "home_court_boost": 1.03
+    },
+    "MLB": {
+      "signal_min_edge": 1.0,
+      "signal_strong_edge": 2.5,
+      "blowout_margin": 5,
+      "min_players_active_for_projection": 9,
+      "starter_ip_threshold": 4,
+      "reliever_ip_threshold": 1,
+      "q_status_penalty": 0.55,
+      "out_status_penalty": 0.0,
+      "rookie_volatility": 1.20,
+      "pitcher_handedness_split": 0.05,
+      "ballpark_factor": 0.03,
+      "day_game_boost": 1.02
+    },
+    "WORLD_CUP": {
+      "signal_min_edge": 1.0,
+      "signal_strong_edge": 2.5,
+      "blowout_margin": 2,
+      "min_players_active_for_projection": 11,
+      "starter_minutes_threshold": 60,
+      "sub_minutes_threshold": 15,
+      "q_status_penalty": 0.50,
+      "out_status_penalty": 0.0,
+      "tournament_stage_weight": {
+        "group_stage": 1.0,
+        "round_of_16": 1.05,
+        "quarterfinal": 1.10,
+        "semifinal": 1.12,
+        "final": 1.15
+      },
+      "home_advantage": 1.04,
+      "neutral_venue": 1.0
+    },
+    "NBA": {
+      "signal_min_edge": 1.5,
+      "signal_strong_edge": 3.0,
+      "blowout_margin": 15,
+      "garbage_time_start_q4_minutes": 5,
+      "min_players_active_for_projection": 8,
+      "starter_minutes_threshold": 20,
+      "bench_minutes_threshold": 10,
+      "q_status_penalty": 0.55,
+      "out_status_penalty": 0.0,
+      "back_to_back_penalty": 0.90,
+      "home_court_boost": 1.04,
+      "note": "Off-season"
+    },
+    "NFL": {
+      "signal_min_edge": 1.5,
+      "signal_strong_edge": 3.0,
+      "blowout_margin": 17,
+      "min_players_active_for_projection": 22,
+      "starter_snap_threshold": 40,
+      "q_status_penalty": 0.55,
+      "out_status_penalty": 0.0,
+      "weather_impact": {
+        "snow": 0.85,
+        "heavy_rain": 0.90,
+        "high_wind": 0.88,
+        "dome": 1.02,
+        "clear": 1.0
+      },
+      "note": "Off-season — book lines only"
+    },
+    "NHL": {
+      "signal_min_edge": 1.0,
+      "signal_strong_edge": 2.5,
+      "blowout_margin": 3,
+      "min_players_active_for_projection": 18,
+      "starter_toi_threshold": 12,
+      "q_status_penalty": 0.55,
+      "out_status_penalty": 0.0,
+      "back_to_back_penalty": 0.88,
+      "home_ice_boost": 1.03,
+      "note": "Off-season"
+    }
+  },
+  "backtest": {
+    "min_sample_size": 30,
+    "confidence_interval": 0.95,
+    "rolling_window_days": 30,
+    "stale_data_days": 60,
+    "hit_rate_target": 0.55,
+    "sharpe_target": 1.5
+  },
+  "scan_checks": {
+    "min_coverage": 0.70,
+    "max_error_rate": 0.10,
+    "max_api_latency_ms": 5000,
+    "min_routes_ok": 0.90,
+    "min_services_ok": 2
+  }
+}

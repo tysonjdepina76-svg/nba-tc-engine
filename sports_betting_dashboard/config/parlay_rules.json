@@ -1,0 +1,144 @@
+{
+  "version": "2.1.0",
+  "updated": "2026-07-13",
+  "description": "Parlay builder rules — max legs, correlation factors, combo types per sport. Referenced by scan.sh, parlay_builder, and combo engines.",
+  "global": {
+    "max_legs": 6,
+    "min_edge_per_leg": 1.0,
+    "strong_edge_threshold": 3.0,
+    "correlated_legs_penalty": 1.15,
+    "same_team_penalty": 1.08,
+    "same_stat_penalty": 1.12
+  },
+  "sports": {
+    "WNBA": {
+      "max_legs": 6,
+      "min_edge_per_leg": 1.5,
+      "combo_types": ["pts+reb", "pts+ast", "pts+reb+ast", "reb+ast", "pts+stl+blk"],
+      "favorite_legs": ["PTS OVER", "REB OVER", "AST OVER", "3PM UNDER"],
+      "correlation": {
+        "PTS+AST": "high",
+        "PTS+3PM": "high",
+        "REB+BLK": "medium",
+        "STL+BLK": "low"
+      },
+      "avoid_combos": ["STL OVER + BLK OVER"],
+      "hit_rate_by_legs": {
+        "2": 0.35,
+        "3": 0.18,
+        "4": 0.08,
+        "5": 0.035,
+        "6": 0.015
+      }
+    },
+    "MLB": {
+      "max_legs": 5,
+      "min_edge_per_leg": 1.0,
+      "batting_combo_types": ["h+hr", "h+rbi", "hr+rbi", "h+r+sb", "hr+r+sb", "avg+hr"],
+      "pitching_combo_types": ["era+whip", "so+ip", "w+sv", "so+w", "era+so"],
+      "favorite_legs": ["H OVER", "HR UNDER", "SO OVER", "ERA UNDER"],
+      "correlation": {
+        "H+HR": "medium",
+        "HR+RBI": "high",
+        "ERA+WHIP": "high",
+        "SO+IP": "high",
+        "W+SV": "low"
+      },
+      "avoid_combos": ["ERA OVER + WHIP OVER"],
+      "hit_rate_by_legs": {
+        "2": 0.30,
+        "3": 0.14,
+        "4": 0.06,
+        "5": 0.025
+      }
+    },
+    "WORLD_CUP": {
+      "max_legs": 5,
+      "min_edge_per_leg": 1.0,
+      "combo_types": ["goals+ast", "shots+sot", "tackles+fouls", "goals+shots", "ast+tackles"],
+      "favorite_legs": ["Goals UNDER", "Shots OVER", "Tackles OVER", "Cards UNDER"],
+      "correlation": {
+        "goals+ast": "high",
+        "shots+sot": "very_high",
+        "tackles+fouls": "medium",
+        "goals+shots": "medium"
+      },
+      "avoid_combos": ["Goals OVER + Shots OVER"],
+      "hit_rate_by_legs": {
+        "2": 0.28,
+        "3": 0.13,
+        "4": 0.055,
+        "5": 0.022
+      }
+    },
+    "NBA": {
+      "max_legs": 6,
+      "min_edge_per_leg": 1.5,
+      "combo_types": ["pts+reb", "pts+ast", "pts+reb+ast", "reb+ast", "pts+stl+blk"],
+      "favorite_legs": ["PTS OVER", "REB OVER", "AST OVER", "3PM UNDER"],
+      "correlation": {
+        "PTS+AST": "high",
+        "PTS+3PM": "high",
+        "REB+BLK": "medium",
+        "STL+BLK": "low"
+      },
+      "avoid_combos": ["STL OVER + BLK OVER"],
+      "hit_rate_by_legs": {
+        "2": 0.35,
+        "3": 0.18,
+        "4": 0.08,
+        "5": 0.035,
+        "6": 0.015
+      },
+      "note": "Off-season — disabled"
+    },
+    "NFL": {
+      "max_legs": 5,
+      "min_edge_per_leg": 1.5,
+      "combo_types": ["pass_yds+pass_td", "rush_yds+rush_td", "rec_yds+rec_td", "pass_yds+rush_yds"],
+      "favorite_legs": ["PASS YDS OVER", "RUSH YDS OVER", "REC YDS OVER"],
+      "correlation": {
+        "pass_yds+pass_td": "very_high",
+        "rush_yds+rush_td": "high",
+        "rec_yds+rec_td": "very_high"
+      },
+      "avoid_combos": ["RUSH YDS OVER + PASS YDS OVER"],
+      "hit_rate_by_legs": {
+        "2": 0.32,
+        "3": 0.15,
+        "4": 0.07,
+        "5": 0.03
+      },
+      "note": "Off-season — book lines only"
+    },
+    "NHL": {
+      "max_legs": 5,
+      "min_edge_per_leg": 1.0,
+      "combo_types": ["goals+assists", "goals+points", "shots+hits", "assists+points"],
+      "favorite_legs": ["Goals OVER", "Shots OVER", "Points OVER"],
+      "correlation": {
+        "goals+assists": "medium",
+        "goals+points": "high",
+        "assists+points": "very_high",
+        "shots+hits": "low"
+      },
+      "avoid_combos": ["Goals OVER + Points OVER"],
+      "hit_rate_by_legs": {
+        "2": 0.30,
+        "3": 0.14,
+        "4": 0.06,
+        "5": 0.025
+      },
+      "note": "Off-season — disabled"
+    }
+  },
+  "parlay_strategy": {
+    "sweet_spot_legs": 3,
+    "max_correlated_legs": 2,
+    "prefer_unders": true,
+    "unders_edge_boost": 1.08,
+    "same_game_bonus": 1.05,
+    "cross_sport_allowed": true,
+    "cross_sport_penalty": 1.10
+  }
+}

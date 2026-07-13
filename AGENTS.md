@@ -1,17 +1,14 @@
 # Workspace Index — true.zo.computer
 
-## Current Status (2026-07-11 ~6:25 PM ET) — SYSTEM GAP CLOSURE ✅
-
-- **7 gaps filled**:
-  1. `data/historical/mlb_historical.csv` — created with header row
-  2. `Daily_Log/archive/` — directory created
-  3. `/nba-tc` — NBA set to OFF_SEASON in REGISTRY (season over)
-  4. `/nba-tc` — old positional `daily_picks.py NBA WNBA` syntax replaced with `--sport WNBA --date` in 3 places (DailyLogPanel, LiveStatsPanel, ComboDashboard)
-  5. `/nba-tc` — Backtest tab KEPT hardcoded NBA_BACKTEST (52 playoff games, 58.5% hit rate) — `/api/backtest` endpoint exists but NBA data is static; live backtest data available via `/api/backtest` but frontend not yet wired (non-blocking, noted)
-  6. `data/picks/today_picks.csv` — symlink updated from 7/7 to 7/11
-  7. Pipeline health — `picks_json`/`slate_nba`/game O/U warnings are expected (NBA off-season + picks in CSV not JSON format)
-
-- **Next**: Backtest tab live-wire when multi-sport backtest data is available
+## Current Status (2026-07-13 ~9:50 AM ET) — ALL GAPS CLOSED ✅
+- **Structure audit**: Full comparison against user's target `sports_betting_dashboard/` layout — all 18 items verified
+- **Gaps fixed (8/8)**: requirements.txt created, .env.template enriched (8 vars), models/algorithm_weights.json deduplicated (symlink→config/), historical.csv triplication cleaned, 7 empty cache dirs purged, README corrected, GAP_ANALYSIS.md rewritten
+- **Scan**: 30/30 checks pass. Only 2 yellow flags expected: consensus runs separately, odds cache empty (APIs capped)
+- **Picks**: 2,628 today (1,848 WNBA + 0 MLB + 780 WC)
+- **Dashboard**: http://localhost:8510 ✅ · https://true.zo.space/nba-tc ✅ · 8/8 routes return 200
+- **Services**: tc-dashboard-streamlit ✅ (enabled). dk-combos-engine, soccer-combos-engine, mlb-cross-dashboard paused (API cap)
+- **API keys**: ALL CAPPED per user rule
+- **Folder structure**: sports_betting_dashboard/ complete — picks.py (symlink), dashboard.py, scan.sh, fix_pipeline.py, setup.sh, README.md, requirements.txt, .env.template, data/, logs/, config/, models/, scripts/ all present
 
 ## Current Status (2026-07-09 ~7:10 PM ET) — ALL 12 ITEMS SHIPPED ✅
 - **System**: Fully wired and clean. User confirmed "The entire system is completely wired and clean."
@@ -328,6 +325,22 @@
 - **SelfEdge adapter** audit: all in-season sports return self_edge status
 - **Odds API**: quota maxed, all calls falling back to SGO then self-edge
 - **Next**: real-data WNBA + MLB re-run
+
+## TC Pipeline Status — 2026-07-13 11:56 ET
+
+**APIs UNCAPPED** — All external API calls re-enabled permanently.
+
+**Current picks**: 132 WNBA + 26 World Cup self-edge + 0 MLB (lines unavailable)
+**Routes**: all 10 verified 200 — `/api/tc`, `/api/slate`, `/nba-tc`, `/wnba-tc`, `/worldcup-tc`, `/nfl-tc`, `/nhl-tc`, `/api/backtest`, `/api/combos`, `/api/dk-lines`
+**Dashboard**: :8510 alive — `sports_betting_dashboard/dashboard.py`
+
+**API bottlenecks remaining**:
+- Odds API Business: 2088/6667 quota, 401 on /odds/ (quota maxed). /events/ works.
+- SGO: HTTP 429 rate-limited
+- SportsData.io: rate-limited
+
+**Purge complete**: 22 empty dirs removed, 8 orphan root files purged, 1.2MB duplicate axed.
+**Scan**: 0 errors, 0 gaps — `bash sports_betting_dashboard/scan.sh`
 
 ## Key Paths
 

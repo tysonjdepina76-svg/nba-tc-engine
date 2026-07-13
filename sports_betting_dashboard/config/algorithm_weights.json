@@ -1,0 +1,114 @@
+{
+  "version": "2.1.0",
+  "updated": "2026-07-13",
+  "description": "Ensemble weights for Triple Conservative projection engine across 6 sports",
+  "sports": {
+    "WNBA": {
+      "active": true,
+      "weights": {
+        "self_edge": 0.35,
+        "historical_avg": 0.30,
+        "opponent_adjustment": 0.20,
+        "recency_bias": 0.10,
+        "venue_factor": 0.05
+      },
+      "tc_factor": 0.85,
+      "line_factor": 0.88,
+      "blowout_threshold": 15,
+      "garbage_time_bench_penalty": 0.40,
+      "confidence_window": 5,
+      "min_games_for_projection": 3
+    },
+    "MLB": {
+      "active": true,
+      "weights": {
+        "self_edge": 0.30,
+        "historical_avg": 0.25,
+        "opponent_adjustment": 0.20,
+        "recency_bias": 0.15,
+        "pitcher_matchup": 0.10
+      },
+      "tc_factor": 0.82,
+      "line_factor": 0.90,
+      "blowout_threshold": 5,
+      "garbage_time_bench_penalty": 0.25,
+      "confidence_window": 7,
+      "min_games_for_projection": 5
+    },
+    "WORLD_CUP": {
+      "active": true,
+      "weights": {
+        "self_edge": 0.30,
+        "historical_avg": 0.25,
+        "opponent_adjustment": 0.20,
+        "recency_bias": 0.15,
+        "tournament_stage": 0.10
+      },
+      "tc_factor": 0.80,
+      "line_factor": 0.85,
+      "blowout_threshold": 2,
+      "confidence_window": 3,
+      "min_games_for_projection": 2
+    },
+    "NBA": {
+      "active": false,
+      "note": "Off-season",
+      "weights": {
+        "self_edge": 0.35,
+        "historical_avg": 0.30,
+        "opponent_adjustment": 0.20,
+        "recency_bias": 0.10,
+        "venue_factor": 0.05
+      },
+      "tc_factor": 0.85,
+      "line_factor": 0.88,
+      "blowout_threshold": 15,
+      "garbage_time_bench_penalty": 0.40,
+      "confidence_window": 5,
+      "min_games_for_projection": 3
+    },
+    "NFL": {
+      "active": false,
+      "note": "Off-season — book lines only",
+      "weights": {
+        "self_edge": 0.25,
+        "historical_avg": 0.30,
+        "opponent_adjustment": 0.20,
+        "recency_bias": 0.15,
+        "weather_factor": 0.10
+      },
+      "tc_factor": 0.80,
+      "line_factor": 0.85,
+      "blowout_threshold": 17,
+      "confidence_window": 4,
+      "min_games_for_projection": 4
+    },
+    "NHL": {
+      "active": false,
+      "note": "Off-season",
+      "weights": {
+        "self_edge": 0.30,
+        "historical_avg": 0.25,
+        "opponent_adjustment": 0.20,
+        "recency_bias": 0.15,
+        "back_to_back": 0.10
+      },
+      "tc_factor": 0.83,
+      "line_factor": 0.87,
+      "blowout_threshold": 3,
+      "confidence_window": 5,
+      "min_games_for_projection": 3
+    }
+  },
+  "global": {
+    "edge_threshold": 1.5,
+    "strong_edge_threshold": 3.0,
+    "parlay_max_legs": 6,
+    "parlay_min_edge_per_leg": 1.0,
+    "combo_types": ["pts+reb", "pts+ast", "pts+reb+ast", "reb+ast", "pts+stl+blk"],
+    "mlb_combo_types": ["h+hr", "h+rbi", "hr+rbi", "h+r+sb"],
+    "mlb_pitching_combos": ["era+whip", "so+ip", "w+sv"],
+    "world_cup_combos": ["goals+ast", "shots+sot", "tackles+fouls"],
+    "refresh_interval_seconds": 300
+  }
+}

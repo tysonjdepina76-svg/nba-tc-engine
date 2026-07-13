@@ -26,16 +26,16 @@ Skipped: {'no_boxscore': 11, 'no_player_box': 6}
 | MIL@PIT | 30 | 93.3% |
 
 ## Top 10 Edges - Hits
+- Willy Adames total_bases UNDER 3.5 (TC 1.4, actual 0, edge -2.10) ✓
+- Jung Hoo Lee total_bases UNDER 3.5 (TC 1.4, actual 0, edge -2.10) ✓
+- Christian Yelich total_bases UNDER 3.5 (TC 1.4, actual 0, edge -2.10) ✓
+- Vaughn Grissom total_bases UNDER 3.5 (TC 1.4, actual 0, edge -2.10) ✓
 - Tyler Soderstrom total_bases UNDER 3.5 (TC 1.4, actual 0, edge -2.10) ✓
 - Randal Grichuk total_bases UNDER 3.5 (TC 1.4, actual 0, edge -2.10) ✓
 - Colson Montgomery total_bases UNDER 3.5 (TC 1.4, actual 0, edge -2.10) ✓
-- Christian Yelich total_bases UNDER 3.5 (TC 1.4, actual 0, edge -2.10) ✓
-- Vaughn Grissom total_bases UNDER 3.5 (TC 1.4, actual 0, edge -2.10) ✓
-- Willy Adames total_bases UNDER 3.5 (TC 1.4, actual 0, edge -2.10) ✓
-- Jung Hoo Lee total_bases UNDER 3.5 (TC 1.4, actual 0, edge -2.10) ✓
-- Jonah Heim total_bases UNDER 3.5 (TC 1.5, actual 0, edge -2.00) ✓
-- Braden Montgomery total_bases UNDER 3.5 (TC 1.5, actual 0, edge -2.00) ✓
+- TJ Rumfield total_bases UNDER 3.5 (TC 1.5, actual 0, edge -2.00) ✓
 - Jake Bauers total_bases UNDER 3.5 (TC 1.5, actual 0, edge -2.00) ✓
+- Bryan Reynolds hits UNDER 3.5 (TC 1.5, actual 0, edge -2.00) ✓
 
 ## Top 10 Edges - Misses
 - Jake Bauers rbi UNDER 1.2 (TC 0.5, actual 2, edge -0.70) ✗
@@ -45,6 +45,6 @@ Skipped: {'no_boxscore': 11, 'no_player_box': 6}
 - Royce Lewis rbi UNDER 1.2 (TC 0.7, actual 2, edge -0.50) ✗
 - Cooper Pratt hits FLAT 1.2 (TC 0.8, actual 2, edge -0.40) ✗
 - Zach Neto hits FLAT 1.2 (TC 0.8, actual 2, edge -0.40) ✗
-- Chase Meidroth hits FLAT 1.2 (TC 1, actual 2, edge -0.20) ✗
 - Royce Lewis hits FLAT 1.2 (TC 1, actual 2, edge -0.20) ✗
+- Chase Meidroth hits FLAT 1.2 (TC 1, actual 2, edge -0.20) ✗
 - Mike Trout hits FLAT 1.2 (TC 1.1, actual 2, edge -0.10) ✗

@@ -1,2634 +1,611 @@
-[
-  {
-    "event_id": "1456eb2d3d5295f1aebe9883f2b15604",
-    "sport": "basketball",
-    "league": "WNBA",
-    "home_team": "Chicago Sky",
-    "away_team": "Portland Fire",
-    "start_time": "2026-06-26T23:33:08Z",
-    "books": [
-      {
-        "book": "fanduel",
-        "market": "h2h",
-        "updated_at": "2026-06-27T00:06:25Z",
-        "outcomes": [
-          {
-            "name": "Chicago Sky",
-            "price": -900
+{
+  "fetched": "2026-07-13T10:05:56.372612-04:00",
+  "source": "ESPN v2",
+  "games": [
+    {
+      "id": "401857064",
+      "name": "Los Angeles Sparks at Atlanta Dream",
+      "status": "STATUS_SCHEDULED",
+      "odds": {
+        "provider": {
+          "id": "100",
+          "name": "DraftKings",
+          "priority": 1,
+          "logos": [
+            {
+              "href": "https://a.espncdn.com/i/betting/Draftkings_Light.svg",
+              "rel": [
+                "light"
+              ]
+            },
+            {
+              "href": "https://a.espncdn.com/i/betting/Draftkings_Dark.svg",
+              "rel": [
+                "dark"
+              ]
+            }
+          ],
+          "displayName": "DraftKings"
+        },
+        "details": "ATL -8.5",
+        "overUnder": 180.5,
+        "spread": -8.5,
+        "awayTeamOdds": {
+          "favorite": false,
+          "underdog": true,
+          "team": {
+            "id": "6",
+            "uid": "s:40~l:59~t:6",
+            "abbreviation": "LA",
+            "name": "Sparks",
+            "displayName": "Los Angeles Sparks",
+            "logo": "https://a.espncdn.com/i/teamlogos/wnba/500/la.png"
           },
-          {
-            "name": "Portland Fire",
-            "price": 520
-          }
-        ]
-      },
-      {
-        "book": "fanduel",
-        "market": "spreads",
-        "updated_at": "2026-06-27T00:06:25Z",
-        "outcomes": [
-          {
-            "name": "Chicago Sky",
-            "price": -108,
-            "point": -11.5
+          "favoriteAtOpen": false
+        },
+        "homeTeamOdds": {
+          "favorite": true,
+          "underdog": false,
+          "team": {
+            "id": "20",
+            "uid": "s:40~l:59~t:20",
+            "abbreviation": "ATL",
+            "name": "Dream",
+            "displayName": "Atlanta Dream",
+            "logo": "https://a.espncdn.com/i/teamlogos/wnba/500/atl.png"
           },
-          {
-            "name": "Portland Fire",
-            "price": -122,
-            "point": 11.5
-          }
-        ]
-      },
-      {
-        "book": "fanduel",
-        "market": "totals",
-        "updated_at": "2026-06-27T00:06:25Z",
-        "outcomes": [
-          {
-            "name": "Over",
-            "price": -146,
-            "point": 173.5
+          "favoriteAtOpen": true
+        },
+        "moneyline": {
+          "displayName": "Moneyline",
+          "shortDisplayName": "ML",
+          "home": {
+            "close": {
+              "odds": "-355",
+              "link": {
+                "language": "en-US",
+                "rel": [
+                  "home",
+                  "desktop",
+                  "bets",
+                  "draftkings"
+                ],
+                "href": "https://sportsbook.draftkings.com/gateway?s=__s__&wpcid=__wpcid__&wpsrc=413&wpcn=ESPN&wpscn=Widget&wpcrn=BetSlipDeepLink&wpscid=__wpscid__&wpcrid=xx&preurl=https%3A%2F%2Fsportsbook.draftkings.com%2Fevent%2F34379874%3Foutcomes%3D0ML85454105_1",
+                "text": "Home Bet",
+                "shortText": "Home Bet",
+                "isExternal": true,
+                "isPremium": false,
+                "tracking": {
+                  "campaign": "betting-integrations",
+                  "tags": {
+                    "league": "wnba",
+                    "sport": "basketball",
+                    "gameId": 401857064,
+                    "betSide": "home",
+                    "betType": "straight"
+                  }
+                }
+              }
+            },
+            "open": {
+              "odds": "-325"
+            }
           },
-          {
-            "name": "Under",
-            "price": 110,
-            "point": 173.5
+          "away": {
+            "close": {
+              "odds": "+280",
+              "link": {
+                "language": "en-US",
+                "rel": [
+                  "away",
+                  "desktop",
+                  "bets",
+                  "draftkings"
+                ],
+                "href": "https://sportsbook.draftkings.com/gateway?s=__s__&wpcid=__wpcid__&wpsrc=413&wpcn=ESPN&wpscn=Widget&wpcrn=BetSlipDeepLink&wpscid=__wpscid__&wpcrid=xx&preurl=https%3A%2F%2Fsportsbook.draftkings.com%2Fevent%2F34379874%3Foutcomes%3D0ML85454105_3",
+                "text": "Away Bet",
+                "shortText": "Away Bet",
+                "isExternal": true,
+                "isPremium": false,
+                "tracking": {
+                  "campaign": "betting-integrations",
+                  "tags": {
+                    "league": "wnba",
+                    "sport": "basketball",
+                    "gameId": 401857064,
+                    "betSide": "away",
+                    "betType": "straight"
+                  }
+                }
+              }
+            },
+            "open": {
+              "odds": "+260"
+            }
           }
-        ]
-      },
-      {
-        "book": "fanatics",
-        "market": "h2h",
-        "updated_at": "2026-06-27T00:06:14Z",
-        "outcomes": [
-          {
-            "name": "Chicago Sky",
-            "price": -800
+        },
+        "pointSpread": {
+          "displayName": "Spread",
+          "shortDisplayName": "Spread",
+          "home": {
+            "close": {
+              "line": "-8.5",
+              "odds": "-102",
+              "link": {
+                "language": "en-US",
+                "rel": [
+                  "homeSpread",
+                  "desktop",
+                  "bets"
+                ],
+                "href": "https://sportsbook.draftkings.com/gateway?s=__s__&wpcid=__wpcid__&wpsrc=413&wpcn=ESPN&wpscn=Widget&wpcrn=BetSlipDeepLink&wpscid=__wpscid__&wpcrid=xx&preurl=https%3A%2F%2Fsportsbook.draftkings.com%2Fevent%2F34379874%3Foutcomes%3D0HC85454105N850_1",
+                "text": "Home Point Spread",
+                "shortText": "Home Point Spread",
+                "isExternal": true,
+                "isPremium": false,
+                "tracking": {
+                  "campaign": "betting-integrations",
+                  "tags": {
+                    "league": "wnba",
+                    "sport": "basketball",
+                    "gameId": 401857064,
+                    "betSide": "none",
+                    "betType": "straight",
+                    "betDetails": "Spread:ATL-8.5"
+                  }
+                }
+              }
+            },
+            "open": {
+              "line": "-7.5",
+              "odds": "-110"
+            }
           },
-          {
-            "name": "Portland Fire",
-            "price": 500
+          "away": {
+            "close": {
+              "line": "+8.5",
+              "odds": "-118",
+              "link": {
+                "language": "en-US",
+                "rel": [
+                  "awaySpread",
+                  "desktop",
+                  "bets"
+                ],
+                "href": "https://sportsbook.draftkings.com/gateway?s=__s__&wpcid=__wpcid__&wpsrc=413&wpcn=ESPN&wpscn=Widget&wpcrn=BetSlipDeepLink&wpscid=__wpscid__&wpcrid=xx&preurl=https%3A%2F%2Fsportsbook.draftkings.com%2Fevent%2F34379874%3Foutcomes%3D0HC85454105P850_3",
+                "text": "Away Point Spread",
+                "shortText": "Away Point Spread",
+                "isExternal": true,
+                "isPremium": false,
+                "tracking": {
+                  "campaign": "betting-integrations",
+                  "tags": {
+                    "league": "wnba",
+                    "sport": "basketball",
+                    "gameId": 401857064,
+                    "betSide": "none",
+                    "betType": "straight",
+                    "betDetails": "Spread:LA+8.5"
+                  }
+                }
+              }
+            },
+            "open": {
+              "line": "+7.5",
+              "odds": "-110"
+            }
           }
-        ]
-      },
-      {
-        "book": "fanatics",
-        "market": "spreads",
-        "updated_at": "2026-06-27T00:06:14Z",
-        "outcomes": [
-          {
-            "name": "Chicago Sky",
-            "price": -120,
-            "point": -11.5
+        },
+        "total": {
+          "displayName": "Total",
+          "shortDisplayName": "Total",
+          "over": {
+            "close": {
+              "line": "o180.5",
+              "odds": "-108",
+              "link": {
+                "language": "en-US",
+                "rel": [
+                  "over",
+                  "desktop",
+                  "bets"
+                ],
+                "href": "https://sportsbook.draftkings.com/gateway?s=__s__&wpcid=__wpcid__&wpsrc=413&wpcn=ESPN&wpscn=Widget&wpcrn=BetSlipDeepLink&wpscid=__wpscid__&wpcrid=xx&preurl=https%3A%2F%2Fsportsbook.draftkings.com%2Fevent%2F34379874%3Foutcomes%3D0OU85454105O18050_1",
+                "text": "Over Odds",
+                "shortText": "Over Odds",
+                "isExternal": true,
+                "isPremium": false,
+                "tracking": {
+                  "campaign": "betting-integrations",
+                  "tags": {
+                    "league": "wnba",
+                    "sport": "basketball",
+                    "gameId": 401857064,
+                    "betSide": "over",
+                    "betType": "straight",
+                    "betDetails": "Over:180.5"
+                  }
+                }
+              }
+            },
+            "open": {
+              "line": "o177.5",
+              "odds": "-110"
+            }
           },
-          {
-            "name": "Portland Fire",
-            "price": -110,
-            "point": 11.5
+          "under": {
+            "close": {
+              "line": "u180.5",
+              "odds": "-112",
+              "link": {
+                "language": "en-US",
+                "rel": [
+                  "under",
+                  "desktop",
+                  "bets"
+                ],
+                "href": "https://sportsbook.draftkings.com/gateway?s=__s__&wpcid=__wpcid__&wpsrc=413&wpcn=ESPN&wpscn=Widget&wpcrn=BetSlipDeepLink&wpscid=__wpscid__&wpcrid=xx&preurl=https%3A%2F%2Fsportsbook.draftkings.com%2Fevent%2F34379874%3Foutcomes%3D0OU85454105U18050_3",
+                "text": "Under Odds",
+                "shortText": "Under Odds",
+                "isExternal": true,
+                "isPremium": false,
+                "tracking": {
+                  "campaign": "betting-integrations",
+                  "tags": {
+                    "league": "wnba",
+                    "sport": "basketball",
+                    "gameId": 401857064,
+                    "betSide": "under",
+                    "betType": "straight",
+                    "betDetails": "Under:180.5"
+                  }
+                }
+              }
+            },
+            "open": {
+              "line": "u177.5",
+              "odds": "-110"
+            }
           }
-        ]
-      },
-      {
-        "book": "fanatics",
-        "market": "totals",
-        "updated_at": "2026-06-27T00:06:14Z",
-        "outcomes": [
-          {
-            "name": "Over",
-            "price": -110,
-            "point": 175.5
+        },
+        "link": {
+          "language": "en-US",
+          "rel": [
+            "game",
+            "desktop",
+            "bets"
+          ],
+          "href": "https://sportsbook.draftkings.com/gateway?s=__s__&wpcid=__wpcid__&wpsrc=413&wpcn=ESPN&wpscn=Widget&wpcrn=BetSlipDeepLink&wpscid=__wpscid__&wpcrid=xx&preurl=https%3A%2F%2Fsportsbook.draftkings.com%2Fevent%2F34379874",
+          "text": "See More Odds",
+          "shortText": "Game",
+          "isExternal": true,
+          "isPremium": false,
+          "tracking": {
+            "campaign": "betting-integrations",
+            "tags": {
+              "league": "wnba",
+              "sport": "basketball",
+              "gameId": 401857064,
+              "betSide": "none",
+              "betType": "straight"
+            }
+          }
+        },
+        "header": {
+          "logo": {
+            "dark": "https://a.espncdn.com/i/espnbet/dark/espn-bet-square-off.svg",
+            "light": "https://a.espncdn.com/i/espnbet/espn-bet-square-off.svg",
+            "exclusivesLogoDark": "https://a.espncdn.com/i/espnbet/espn-bet-square-mint.svg",
+            "exclusivesLogoLight": "https://a.espncdn.com/i/espnbet/espn-bet-square-mint.svg"
           },
-          {
-            "name": "Under",
-            "price": -120,
-            "point": 175.5
-          }
-        ]
-      },
-      {
-        "book": "mybookieag",
-        "market": "h2h",
-        "updated_at": "2026-06-27T00:06:13Z",
-        "outcomes": [
-          {
-            "name": "Chicago Sky",
-            "price": -1250
-          },
-          {
-            "name": "Portland Fire",
-            "price": 650
-          }
-        ]
-      },
-      {
-        "book": "mybookieag",
-        "market": "spreads",
-        "updated_at": "2026-06-27T00:06:13Z",
-        "outcomes": [
-          {
-            "name": "Chicago Sky",
-            "price": -125,
-            "point": -12.5
-          },
-          {
-            "name": "Portland Fire",
-            "price": -105,
-            "point": 12.5
-          }
-        ]
-      },
-      {
-        "book": "mybookieag",
-        "market": "totals",
-        "updated_at": "2026-06-27T00:06:13Z",
-        "outcomes": [
-          {
-            "name": "Over",
-            "price": -111,
-            "point": 175.5
-          },
-          {
-            "name": "Under",
-            "price": -118,
-            "point": 175.5
-          }
-        ]
-      },
-      {
-        "book": "draftkings",
-        "market": "h2h",
-        "updated_at": "2026-06-27T00:06:13Z",
-        "outcomes": [
-          {
-            "name": "Chicago Sky",
-            "price": -950
-          },
-          {
-            "name": "Portland Fire",
-            "price": 575
-          }
-        ]
-      },
-      {
-        "book": "draftkings",
-        "market": "spreads",
-        "updated_at": "2026-06-27T00:06:13Z",
-        "outcomes": [
-          {
-            "name": "Chicago Sky",
-            "price": -125,
-            "point": -11.5
-          },
-          {
-            "name": "Portland Fire",
-            "price": -105,
-            "point": 11.5
-          }
-        ]
-      },
-      {
-        "book": "draftkings",
-        "market": "totals",
-        "updated_at": "2026-06-27T00:06:13Z",
-        "outcomes": [
-          {
-            "name": "Over",
-            "price": -120,
-            "point": 175.5
-          },
-          {
-            "name": "Under",
-            "price": -110,
-            "point": 175.5
-          }
-        ]
-      },
-      {
-        "book": "williamhill_us",
-        "market": "h2h",
-        "updated_at": "2026-06-27T00:05:21Z",
-        "outcomes": [
-          {
-            "name": "Chicago Sky",
-            "price": -900
-          },
-          {
-            "name": "Portland Fire",
-            "price": 550
-          }
-        ]
-      },
-      {
-        "book": "williamhill_us",
-        "market": "spreads",
-        "updated_at": "2026-06-27T00:05:21Z",
-        "outcomes": [
-          {
-            "name": "Chicago Sky",
-            "price": -115,
-            "point": -12.5
-          },
-          {
-            "name": "Portland Fire",
-            "price": -115,
-            "point": 12.5
-          }
-        ]
-      },
-      {
-        "book": "williamhill_us",
-        "market": "totals",
-        "updated_at": "2026-06-27T00:05:21Z",
-        "outcomes": [
-          {
-            "name": "Over",
-            "price": -115,
-            "point": 173.5
-          },
-          {
-            "name": "Under",
-            "price": -115,
-            "point": 173.5
-          }
-        ]
-      },
-      {
-        "book": "betmgm",
-        "market": "h2h",
-        "updated_at": "2026-06-27T00:06:13Z",
-        "outcomes": [
-          {
-            "name": "Chicago Sky",
-            "price": -900
-          },
-          {
-            "name": "Portland Fire",
-            "price": 525
-          }
-        ]
-      },
-      {
-        "book": "betmgm",
-        "market": "spreads",
-        "updated_at": "2026-06-27T00:06:13Z",
-        "outcomes": [
-          {
-            "name": "Chicago Sky",
-            "price": -120,
-            "point": -12.5
-          },
-          {
-            "name": "Portland Fire",
-            "price": -105,
-            "point": 12.5
-          }
-        ]
-      },
-      {
-        "book": "betmgm",
-        "market": "totals",
-        "updated_at": "2026-06-27T00:06:13Z",
-        "outcomes": [
-          {
-            "name": "Over",
-            "price": -110,
-            "point": 175.5
-          },
-          {
-            "name": "Under",
-            "price": -115,
-            "point": 175.5
-          }
-        ]
-      },
-      {
-        "book": "betrivers",
-        "market": "h2h",
-        "updated_at": "2026-06-27T00:06:25Z",
-        "outcomes": [
-          {
-            "name": "Chicago Sky",
-            "price": -1000
-          },
-          {
-            "name": "Portland Fire",
-            "price": 460
-          }
-        ]
-      },
-      {
-        "book": "betrivers",
-        "market": "spreads",
-        "updated_at": "2026-06-27T00:06:25Z",
-        "outcomes": [
-          {
-            "name": "Chicago Sky",
-            "price": -124,
-            "point": -11.5
-          },
-          {
-            "name": "Portland Fire",
-            "price": -118,
-            "point": 11.5
-          }
-        ]
-      },
-      {
-        "book": "betrivers",
-        "market": "totals",
-        "updated_at": "2026-06-27T00:06:25Z",
-        "outcomes": [
-          {
-            "name": "Over",
-            "price": -114,
-            "point": 175.5
-          },
-          {
-            "name": "Under",
-            "price": -127,
-            "point": 175.5
-          }
-        ]
-      },
-      {
-        "book": "bovada",
-        "market": "h2h",
-        "updated_at": "2026-06-27T00:05:31Z",
-        "outcomes": [
-          {
-            "name": "Chicago Sky",
-            "price": -850
-          },
-          {
-            "name": "Portland Fire",
-            "price": 475
-          }
-        ]
-      },
-      {
-        "book": "bovada",
-        "market": "spreads",
-        "updated_at": "2026-06-27T00:05:31Z",
-        "outcomes": [
-          {
-            "name": "Chicago Sky",
-            "price": -115,
-            "point": -12.0
-          },
-          {
-            "name": "Portland Fire",
-            "price": -115,
-            "point": 12.0
-          }
-        ]
-      },
-      {
-        "book": "bovada",
-        "market": "totals",
-        "updated_at": "2026-06-27T00:05:31Z",
-        "outcomes": [
-          {
-            "name": "Over",
-            "price": -120,
-            "point": 174.5
-          },
-          {
-            "name": "Under",
-            "price": -110,
-            "point": 174.5
-          }
-        ]
+          "text": "Game Odds"
+        },
+        "footer": {
+          "disclaimer": "GAMBLING PROBLEM? CALL 1-800-GAMBLER or 1-800-MY-RESET, (800) 327-5050 or visit gamblinghelplinema.org (MA). Call 877-8-HOPENY/text HOPENY (467369) (NY). Call 888-789-7777/visit ccpg.org (CT), or visit www.mdgamblinghelp.org (MD), 1-800-981-0023 (PR). 21+ and present in most states. (18+ DC/KY/NH/PR/WY). Void in ONT. Eligibility restrictions apply. Terms: draftkings.com/sportsbook. On behalf of Boot Hill Casino (KS). Pass-thru of per wager tax may apply in IL."
+        }
       }
-    ]
-  },
-  {
-    "event_id": "72f392cc087c7a061b9939d13bd6ec6e",
-    "sport": "basketball",
-    "league": "WNBA",
-    "home_team": "Connecticut Sun",
-    "away_team": "Washington Mystics",
-    "start_time": "2026-06-26T23:35:22Z",
-    "books": [
-      {
-        "book": "fanduel",
-        "market": "h2h",
-        "updated_at": "2026-06-27T00:06:25Z",
-        "outcomes": [
-          {
-            "name": "Connecticut Sun",
-            "price": 152
+    },
+    {
+      "id": "401857065",
+      "name": "Phoenix Mercury at Minnesota Lynx",
+      "status": "STATUS_SCHEDULED",
+      "odds": {
+        "provider": {
+          "id": "100",
+          "name": "DraftKings",
+          "priority": 1,
+          "logos": [
+            {
+              "href": "https://a.espncdn.com/i/betting/Draftkings_Light.svg",
+              "rel": [
+                "light"
+              ]
+            },
+            {
+              "href": "https://a.espncdn.com/i/betting/Draftkings_Dark.svg",
+              "rel": [
+                "dark"
+              ]
+            }
+          ]
+        },
+        "details": "MIN -12.5",
+        "overUnder": 169.5,
+        "spread": -12.5,
+        "awayTeamOdds": {
+          "favorite": false,
+          "underdog": true,
+          "team": {
+            "id": "11",
+            "uid": "s:40~l:59~t:11",
+            "abbreviation": "PHX",
+            "name": "Mercury",
+            "displayName": "Phoenix Mercury",
+            "logo": "https://a.espncdn.com/i/teamlogos/wnba/500/scoreboard/phx.png"
           },
-          {
-            "name": "Washington Mystics",
-            "price": -196
-          }
-        ]
-      },
-      {
-        "book": "fanduel",
-        "market": "spreads",
-        "updated_at": "2026-06-27T00:06:25Z",
-        "outcomes": [
-          {
-            "name": "Connecticut Sun",
-            "price": -118,
-            "point": 4.5
+          "favoriteAtOpen": false
+        },
+        "homeTeamOdds": {
+          "favorite": true,
+          "underdog": false,
+          "team": {
+            "id": "8",
+            "uid": "s:40~l:59~t:8",
+            "abbreviation": "MIN",
+            "name": "Lynx",
+            "displayName": "Minnesota Lynx",
+            "logo": "https://a.espncdn.com/i/teamlogos/wnba/500/min.png"
           },
-          {
-            "name": "Washington Mystics",
-            "price": -112,
-            "point": -4.5
-          }
-        ]
-      },
-      {
-        "book": "fanduel",
-        "market": "totals",
-        "updated_at": "2026-06-27T00:06:25Z",
-        "outcomes": [
-          {
-            "name": "Over",
-            "price": -125,
-            "point": 148.5
+          "favoriteAtOpen": true
+        },
+        "moneyline": {
+          "displayName": "Moneyline",
+          "shortDisplayName": "ML",
+          "home": {
+            "close": {
+              "odds": "-800",
+              "link": {
+                "language": "en-US",
+                "rel": [
+                  "home",
+                  "desktop",
+                  "bets",
+                  "draftkings"
+                ],
+                "href": "https://sportsbook.draftkings.com/gateway?s=__s__&wpcid=__wpcid__&wpsrc=413&wpcn=ESPN&wpscn=Widget&wpcrn=BetSlipDeepLink&wpscid=__wpscid__&wpcrid=xx&preurl=https%3A%2F%2Fsportsbook.draftkings.com%2Fevent%2F34379875%3Foutcomes%3D0ML85454106_1",
+                "text": "Home Bet",
+                "shortText": "Home Bet",
+                "isExternal": true,
+                "isPremium": false,
+                "tracking": {
+                  "campaign": "betting-integrations",
+                  "tags": {
+                    "league": "wnba",
+                    "sport": "basketball",
+                    "gameId": 401857065,
+                    "betSide": "home",
+                    "betType": "straight"
+                  }
+                }
+              }
+            },
+            "open": {
+              "odds": "-550"
+            }
           },
-          {
-            "name": "Under",
-            "price": -106,
-            "point": 148.5
+          "away": {
+            "close": {
+              "odds": "+550",
+              "link": {
+                "language": "en-US",
+                "rel": [
+                  "away",
+                  "desktop",
+                  "bets",
+                  "draftkings"
+                ],
+                "href": "https://sportsbook.draftkings.com/gateway?s=__s__&wpcid=__wpcid__&wpsrc=413&wpcn=ESPN&wpscn=Widget&wpcrn=BetSlipDeepLink&wpscid=__wpscid__&wpcrid=xx&preurl=https%3A%2F%2Fsportsbook.draftkings.com%2Fevent%2F34379875%3Foutcomes%3D0ML85454106_3",
+                "text": "Away Bet",
+                "shortText": "Away Bet",
+                "isExternal": true,
+                "isPremium": false,
+                "tracking": {
+                  "campaign": "betting-integrations",
+                  "tags": {
+                    "league": "wnba",
+                    "sport": "basketball",
+                    "gameId": 401857065,
+                    "betSide": "away",
+                    "betType": "straight"
+                  }
+                }
+              }
+            },
+            "open": {
+              "odds": "+410"
+            }
           }
-        ]
-      },
-      {
-        "book": "fanatics",
-        "market": "h2h",
-        "updated_at": "2026-06-26T23:54:59Z",
-        "outcomes": [
-          {
-            "name": "Connecticut Sun",
-            "price": 150
+        },
+        "pointSpread": {
+          "displayName": "Spread",
+          "shortDisplayName": "Spread",
+          "home": {
+            "close": {
+              "line": "-12.5",
+              "odds": "-118",
+              "link": {
+                "language": "en-US",
+                "rel": [
+                  "homeSpread",
+                  "desktop",
+                  "bets"
+                ],
+                "href": "https://sportsbook.draftkings.com/gateway?s=__s__&wpcid=__wpcid__&wpsrc=413&wpcn=ESPN&wpscn=Widget&wpcrn=BetSlipDeepLink&wpscid=__wpscid__&wpcrid=xx&preurl=https%3A%2F%2Fsportsbook.draftkings.com%2Fevent%2F34379875%3Foutcomes%3D0HC85454106N1250_1",
+                "text": "Home Point Spread",
+                "shortText": "Home Point Spread",
+                "isExternal": true,
+                "isPremium": false,
+                "tracking": {
+                  "campaign": "betting-integrations",
+                  "tags": {
+                    "league": "wnba",
+                    "sport": "basketball",
+                    "gameId": 401857065,
+                    "betSide": "none",
+                    "betType": "straight",
+                    "betDetails": "Spread:MIN-12.5"
+                  }
+                }
+              }
+            },
+            "open": {
+              "line": "-10.5",
+              "odds": "-110"
+            }
           },
-          {
-            "name": "Washington Mystics",
-            "price": -200
+          "away": {
+            "close": {
+              "line": "+12.5",
+              "odds": "-102",
+              "link": {
+                "language": "en-US",
+                "rel": [
+                  "awaySpread",
+                  "desktop",
+                  "bets"
+                ],
+                "href": "https://sportsbook.draftkings.com/gateway?s=__s__&wpcid=__wpcid__&wpsrc=413&wpcn=ESPN&wpscn=Widget&wpcrn=BetSlipDeepLink&wpscid=__wpscid__&wpcrid=xx&preurl=https%3A%2F%2Fsportsbook.draftkings.com%2Fevent%2F34379875%3Foutcomes%3D0HC85454106P1250_3",
+                "text": "Away Point Spread",
+                "shortText": "Away Point Spread",
+                "isExternal": true,
+                "isPremium": false,
+                "tracking": {
+                  "campaign": "betting-integrations",
+                  "tags": {
+                    "league": "wnba",
+                    "sport": "basketball",
+                    "gameId": 401857065,
+                    "betSide": "none",
+                    "betType": "straight",
+                    "betDetails": "Spread:PHX+12.5"
+                  }
+                }
+              }
+            },
+            "open": {
+              "line": "+10.5",
+              "odds": "-110"
+            }
           }
-        ]
-      },
-      {
-        "book": "fanatics",
-        "market": "spreads",
-        "updated_at": "2026-06-26T23:54:59Z",
-        "outcomes": [
-          {
-            "name": "Connecticut Sun",
-            "price": -110,
-            "point": 4.5
+        },
+        "total": {
+          "displayName": "Total",
+          "shortDisplayName": "Total",
+          "over": {
+            "close": {
+              "line": "o169.5",
+              "odds": "-115",
+              "link": {
+                "language": "en-US",
+                "rel": [
+                  "over",
+                  "desktop",
+                  "bets"
+                ],
+                "href": "https://sportsbook.draftkings.com/gateway?s=__s__&wpcid=__wpcid__&wpsrc=413&wpcn=ESPN&wpscn=Widget&wpcrn=BetSlipDeepLink&wpscid=__wpscid__&wpcrid=xx&preurl=https%3A%2F%2Fsportsbook.draftkings.com%2Fevent%2F34379875%3Foutcomes%3D0OU85454106O16950_1",
+                "text": "Over Odds",
+                "shortText": "Over Odds",
+                "isExternal": true,
+                "isPremium": false,
+                "tracking": {
+                  "campaign": "betting-integrations",
+                  "tags": {
+                    "league": "wnba",
+                    "sport": "basketball",
+                    "gameId": 401857065,
+                    "betSide": "over",
+                    "betType": "straight",
+                    "betDetails": "Over:169.5"
+                  }
+                }
+              }
+            },
+            "open": {
+              "line": "o170.5",
+              "odds": "-110"
+            }
           },
-          {
-            "name": "Washington Mystics",
-            "price": -120,
-            "point": -4.5
+          "under": {
+            "close": {
+              "line": "u169.5",
+              "odds": "-105",
+              "link": {
+                "language": "en-US",
+                "rel": [
+                  "under",
+                  "desktop",
+                  "bets"
+                ],
+                "href": "https://sportsbook.draftkings.com/gateway?s=__s__&wpcid=__wpcid__&wpsrc=413&wpcn=ESPN&wpscn=Widget&wpcrn=BetSlipDeepLink&wpscid=__wpscid__&wpcrid=xx&preurl=https%3A%2F%2Fsportsbook.draftkings.com%2Fevent%2F34379875%3Foutcomes%3D0OU85454106U16950_3",
+                "text": "Under Odds",
+                "shortText": "Under Odds",
+                "isExternal": true,
+                "isPremium": false,
+                "tracking": {
+                  "campaign": "betting-integrations",
+                  "tags": {
+                    "league": "wnba",
+                    "sport": "basketball",
+                    "gameId": 401857065,
+                    "betSide": "under",
+                    "betType": "straight",
+                    "betDetails": "Under:169.5"
+                  }
+                }
+              }
+            },
+            "open": {
+              "line": "u170.5",
+              "odds": "-110"
+            }
           }
-        ]
-      },
-      {
-        "book": "draftkings",
-        "market": "h2h",
-        "updated_at": "2026-06-27T00:06:13Z",
-        "outcomes": [
-          {
-            "name": "Connecticut Sun",
-            "price": 160
+        },
+        "link": {
+          "language": "en-US",
+          "rel": [
+            "game",
+            "desktop",
+            "bets"
+          ],
+          "href": "https://sportsbook.draftkings.com/gateway?s=__s__&wpcid=__wpcid__&wpsrc=413&wpcn=ESPN&wpscn=Widget&wpcrn=BetSlipDeepLink&wpscid=__wpscid__&wpcrid=xx&preurl=https%3A%2F%2Fsportsbook.draftkings.com%2Fevent%2F34379875",
+          "text": "See More Odds",
+          "shortText": "Game",
+          "isExternal": true,
+          "isPremium": false,
+          "tracking": {
+            "campaign": "betting-integrations",
+            "tags": {
+              "league": "wnba",
+              "sport": "basketball",
+              "gameId": 401857065,
+              "betSide": "none",
+              "betType": "straight"
+            }
+          }
+        },
+        "header": {
+          "logo": {
+            "dark": "https://a.espncdn.com/i/espnbet/dark/espn-bet-square-off.svg",
+            "light": "https://a.espncdn.com/i/espnbet/espn-bet-square-off.svg",
+            "exclusivesLogoDark": "https://a.espncdn.com/i/espnbet/espn-bet-square-mint.svg",
+            "exclusivesLogoLight": "https://a.espncdn.com/i/espnbet/espn-bet-square-mint.svg"
           },
-          {
-            "name": "Washington Mystics",
-            "price": -210
-          }
-        ]
-      },
-      {
-        "book": "draftkings",
-        "market": "spreads",
-        "updated_at": "2026-06-27T00:06:13Z",
-        "outcomes": [
-          {
-            "name": "Connecticut Sun",
-            "price": -115,
-            "point": 4.5
-          },
-          {
-            "name": "Washington Mystics",
-            "price": -115,
-            "point": -4.5
-          }
-        ]
-      },
-      {
-        "book": "draftkings",
-        "market": "totals",
-        "updated_at": "2026-06-27T00:06:13Z",
-        "outcomes": [
-          {
-            "name": "Over",
-            "price": -120,
-            "point": 148.5
-          },
-          {
-            "name": "Under",
-            "price": -110,
-            "point": 148.5
-          }
-        ]
-      },
-      {
-        "book": "williamhill_us",
-        "market": "h2h",
-        "updated_at": "2026-06-27T00:05:21Z",
-        "outcomes": [
-          {
-            "name": "Connecticut Sun",
-            "price": 145
-          },
-          {
-            "name": "Washington Mystics",
-            "price": -180
-          }
-        ]
-      },
-      {
-        "book": "williamhill_us",
-        "market": "spreads",
-        "updated_at": "2026-06-27T00:05:21Z",
-        "outcomes": [
-          {
-            "name": "Connecticut Sun",
-            "price": -105,
-            "point": 3.5
-          },
-          {
-            "name": "Washington Mystics",
-            "price": -125,
-            "point": -3.5
-          }
-        ]
-      },
-      {
-        "book": "williamhill_us",
-        "market": "totals",
-        "updated_at": "2026-06-27T00:05:21Z",
-        "outcomes": [
-          {
-            "name": "Over",
-            "price": -115,
-            "point": 150.5
-          },
-          {
-            "name": "Under",
-            "price": -115,
-            "point": 150.5
-          }
-        ]
-      },
-      {
-        "book": "betmgm",
-        "market": "h2h",
-        "updated_at": "2026-06-27T00:06:13Z",
-        "outcomes": [
-          {
-            "name": "Connecticut Sun",
-            "price": 150
-          },
-          {
-            "name": "Washington Mystics",
-            "price": -200
-          }
-        ]
-      },
-      {
-        "book": "betmgm",
-        "market": "spreads",
-        "updated_at": "2026-06-27T00:06:13Z",
-        "outcomes": [
-          {
-            "name": "Connecticut Sun",
-            "price": -120,
-            "point": 4.5
-          },
-          {
-            "name": "Washington Mystics",
-            "price": -105,
-            "point": -4.5
-          }
-        ]
-      },
-      {
-        "book": "betmgm",
-        "market": "totals",
-        "updated_at": "2026-06-27T00:06:13Z",
-        "outcomes": [
-          {
-            "name": "Over",
-            "price": 1350,
-            "point": 177.5
-          },
-          {
-            "name": "Under",
-            "price": -10000,
-            "point": 177.5
-          }
-        ]
-      },
-      {
-        "book": "bovada",
-        "market": "h2h",
-        "updated_at": "2026-06-27T00:05:31Z",
-        "outcomes": [
-          {
-            "name": "Connecticut Sun",
-            "price": 150
-          },
-          {
-            "name": "Washington Mystics",
-            "price": -200
-          }
-        ]
-      },
-      {
-        "book": "bovada",
-        "market": "spreads",
-        "updated_at": "2026-06-27T00:05:31Z",
-        "outcomes": [
-          {
-            "name": "Connecticut Sun",
-            "price": -115,
-            "point": 4.0
-          },
-          {
-            "name": "Washington Mystics",
-            "price": -115,
-            "point": -4.0
-          }
-        ]
-      },
-      {
-        "book": "bovada",
-        "market": "totals",
-        "updated_at": "2026-06-27T00:05:31Z",
-        "outcomes": [
-          {
-            "name": "Over",
-            "price": -115,
-            "point": 148.5
-          },
-          {
-            "name": "Under",
-            "price": -115,
-            "point": 148.5
-          }
-        ]
+          "text": "Game Odds"
+        },
+        "footer": {
+          "disclaimer": "GAMBLING PROBLEM? CALL 1-800-GAMBLER or 1-800-MY-RESET, (800) 327-5050 or visit gamblinghelplinema.org (MA). Call 877-8-HOPENY/text HOPENY (467369) (NY). Call 888-789-7777/visit ccpg.org (CT), or visit www.mdgamblinghelp.org (MD), 1-800-981-0023 (PR). 21+ and present in most states. (18+ DC/KY/NH/PR/WY). Void in ONT. Eligibility restrictions apply. Terms: draftkings.com/sportsbook. On behalf of Boot Hill Casino (KS). Pass-thru of per wager tax may apply in IL."
+        }
       }
-    ]
-  },
-  {
-    "event_id": "2aa029b6f16580a4239f7e91f62f69fa",
-    "sport": "basketball",
-    "league": "WNBA",
-    "home_team": "Golden State Valkyries",
-    "away_team": "Atlanta Dream",
-    "start_time": "2026-06-27T02:10:00Z",
-    "books": [
-      {
-        "book": "draftkings",
-        "market": "h2h",
-        "updated_at": "2026-06-27T00:06:13Z",
-        "outcomes": [
-          {
-            "name": "Atlanta Dream",
-            "price": -125
-          },
-          {
-            "name": "Golden State Valkyries",
-            "price": 105
-          }
-        ]
-      },
-      {
-        "book": "draftkings",
-        "market": "spreads",
-        "updated_at": "2026-06-27T00:06:13Z",
-        "outcomes": [
-          {
-            "name": "Atlanta Dream",
-            "price": -112,
-            "point": -1.5
-          },
-          {
-            "name": "Golden State Valkyries",
-            "price": -108,
-            "point": 1.5
-          }
-        ]
-      },
-      {
-        "book": "draftkings",
-        "market": "totals",
-        "updated_at": "2026-06-27T00:06:13Z",
-        "outcomes": [
-          {
-            "name": "Over",
-            "price": -105,
-            "point": 164.5
-          },
-          {
-            "name": "Under",
-            "price": -115,
-            "point": 164.5
-          }
-        ]
-      },
-      {
-        "book": "fanatics",
-        "market": "h2h",
-        "updated_at": "2026-06-27T00:06:14Z",
-        "outcomes": [
-          {
-            "name": "Atlanta Dream",
-            "price": -125
-          },
-          {
-            "name": "Golden State Valkyries",
-            "price": 105
-          }
-        ]
-      },
-      {
-        "book": "fanatics",
-        "market": "spreads",
-        "updated_at": "2026-06-27T00:06:14Z",
-        "outcomes": [
-          {
-            "name": "Atlanta Dream",
-            "price": -115,
-            "point": -1.5
-          },
-          {
-            "name": "Golden State Valkyries",
-            "price": -105,
-            "point": 1.5
-          }
-        ]
-      },
-      {
-        "book": "fanatics",
-        "market": "totals",
-        "updated_at": "2026-06-27T00:06:14Z",
-        "outcomes": [
-          {
-            "name": "Over",
-            "price": -110,
-            "point": 164.0
-          },
-          {
-            "name": "Under",
-            "price": -110,
-            "point": 164.0
-          }
-        ]
-      },
-      {
-        "book": "mybookieag",
-        "market": "h2h",
-        "updated_at": "2026-06-27T00:06:13Z",
-        "outcomes": [
-          {
-            "name": "Atlanta Dream",
-            "price": -123
-          },
-          {
-            "name": "Golden State Valkyries",
-            "price": 101
-          }
-        ]
-      },
-      {
-        "book": "mybookieag",
-        "market": "spreads",
-        "updated_at": "2026-06-27T00:06:13Z",
-        "outcomes": [
-          {
-            "name": "Atlanta Dream",
-            "price": -110,
-            "point": -1.5
-          },
-          {
-            "name": "Golden State Valkyries",
-            "price": -110,
-            "point": 1.5
-          }
-        ]
-      },
-      {
-        "book": "mybookieag",
-        "market": "totals",
-        "updated_at": "2026-06-27T00:06:13Z",
-        "outcomes": [
-          {
-            "name": "Over",
-            "price": -110,
-            "point": 164.0
-          },
-          {
-            "name": "Under",
-            "price": -110,
-            "point": 164.0
-          }
-        ]
-      },
-      {
-        "book": "betmgm",
-        "market": "h2h",
-        "updated_at": "2026-06-27T00:06:13Z",
-        "outcomes": [
-          {
-            "name": "Atlanta Dream",
-            "price": -120
-          },
-          {
-            "name": "Golden State Valkyries",
-            "price": 100
-          }
-        ]
-      },
-      {
-        "book": "betmgm",
-        "market": "spreads",
-        "updated_at": "2026-06-27T00:06:13Z",
-        "outcomes": [
-          {
-            "name": "Atlanta Dream",
-            "price": -105,
-            "point": -1.5
-          },
-          {
-            "name": "Golden State Valkyries",
-            "price": -115,
-            "point": 1.5
-          }
-        ]
-      },
-      {
-        "book": "betmgm",
-        "market": "totals",
-        "updated_at": "2026-06-27T00:06:13Z",
-        "outcomes": [
-          {
-            "name": "Over",
-            "price": -110,
-            "point": 164.5
-          },
-          {
-            "name": "Under",
-            "price": -110,
-            "point": 164.5
-          }
-        ]
-      },
-      {
-        "book": "williamhill_us",
-        "market": "h2h",
-        "updated_at": "2026-06-27T00:05:21Z",
-        "outcomes": [
-          {
-            "name": "Atlanta Dream",
-            "price": -130
-          },
-          {
-            "name": "Golden State Valkyries",
-            "price": 110
-          }
-        ]
-      },
-      {
-        "book": "williamhill_us",
-        "market": "spreads",
-        "updated_at": "2026-06-27T00:05:21Z",
-        "outcomes": [
-          {
-            "name": "Atlanta Dream",
-            "price": -115,
-            "point": -2.0
-          },
-          {
-            "name": "Golden State Valkyries",
-            "price": -105,
-            "point": 2.0
-          }
-        ]
-      },
-      {
-        "book": "williamhill_us",
-        "market": "totals",
-        "updated_at": "2026-06-27T00:05:21Z",
-        "outcomes": [
-          {
-            "name": "Over",
-            "price": -110,
-            "point": 163.5
-          },
-          {
-            "name": "Under",
-            "price": -110,
-            "point": 163.5
-          }
-        ]
-      },
-      {
-        "book": "fanduel",
-        "market": "h2h",
-        "updated_at": "2026-06-27T00:06:25Z",
-        "outcomes": [
-          {
-            "name": "Atlanta Dream",
-            "price": -118
-          },
-          {
-            "name": "Golden State Valkyries",
-            "price": -104
-          }
-        ]
-      },
-      {
-        "book": "fanduel",
-        "market": "spreads",
-        "updated_at": "2026-06-27T00:06:25Z",
-        "outcomes": [
-          {
-            "name": "Atlanta Dream",
-            "price": -106,
-            "point": -1.5
-          },
-          {
-            "name": "Golden State Valkyries",
-            "price": -114,
-            "point": 1.5
-          }
-        ]
-      },
-      {
-        "book": "fanduel",
-        "market": "totals",
-        "updated_at": "2026-06-27T00:06:25Z",
-        "outcomes": [
-          {
-            "name": "Over",
-            "price": -105,
-            "point": 164.5
-          },
-          {
-            "name": "Under",
-            "price": -115,
-            "point": 164.5
-          }
-        ]
-      },
-      {
-        "book": "betrivers",
-        "market": "h2h",
-        "updated_at": "2026-06-27T00:06:25Z",
-        "outcomes": [
-          {
-            "name": "Atlanta Dream",
-            "price": -124
-          },
-          {
-            "name": "Golden State Valkyries",
-            "price": 100
-          }
-        ]
-      },
-      {
-        "book": "betrivers",
-        "market": "spreads",
-        "updated_at": "2026-06-27T00:06:25Z",
-        "outcomes": [
-          {
-            "name": "Atlanta Dream",
-            "price": -109,
-            "point": -1.5
-          },
-          {
-            "name": "Golden State Valkyries",
-            "price": -114,
-            "point": 1.5
-          }
-        ]
-      },
-      {
-        "book": "betrivers",
-        "market": "totals",
-        "updated_at": "2026-06-27T00:06:25Z",
-        "outcomes": [
-          {
-            "name": "Over",
-            "price": -113,
-            "point": 163.5
-          },
-          {
-            "name": "Under",
-            "price": -110,
-            "point": 163.5
-          }
-        ]
-      },
-      {
-        "book": "betonlineag",
-        "market": "h2h",
-        "updated_at": "2026-06-27T00:06:36Z",
-        "outcomes": [
-          {
-            "name": "Atlanta Dream",
-            "price": -125
-          },
-          {
-            "name": "Golden State Valkyries",
-            "price": 105
-          }
-        ]
-      },
-      {
-        "book": "betonlineag",
-        "market": "spreads",
-        "updated_at": "2026-06-27T00:06:36Z",
-        "outcomes": [
-          {
-            "name": "Atlanta Dream",
-            "price": -115,
-            "point": -1.5
-          },
-          {
-            "name": "Golden State Valkyries",
-            "price": -105,
-            "point": 1.5
-          }
-        ]
-      },
-      {
-        "book": "betonlineag",
-        "market": "totals",
-        "updated_at": "2026-06-27T00:06:36Z",
-        "outcomes": [
-          {
-            "name": "Over",
-            "price": -110,
-            "point": 163.5
-          },
-          {
-            "name": "Under",
-            "price": -110,
-            "point": 163.5
-          }
-        ]
-      },
-      {
-        "book": "lowvig",
-        "market": "h2h",
-        "updated_at": "2026-06-27T00:06:05Z",
-        "outcomes": [
-          {
-            "name": "Atlanta Dream",
-            "price": -125
-          },
-          {
-            "name": "Golden State Valkyries",
-            "price": 105
-          }
-        ]
-      },
-      {
-        "book": "lowvig",
-        "market": "spreads",
-        "updated_at": "2026-06-27T00:06:05Z",
-        "outcomes": [
-          {
-            "name": "Atlanta Dream",
-            "price": -113,
-            "point": -1.5
-          },
-          {
-            "name": "Golden State Valkyries",
-            "price": -103,
-            "point": 1.5
-          }
-        ]
-      },
-      {
-        "book": "lowvig",
-        "market": "totals",
-        "updated_at": "2026-06-27T00:06:05Z",
-        "outcomes": [
-          {
-            "name": "Over",
-            "price": -108,
-            "point": 163.5
-          },
-          {
-            "name": "Under",
-            "price": -108,
-            "point": 163.5
-          }
-        ]
-      },
-      {
-        "book": "bovada",
-        "market": "h2h",
-        "updated_at": "2026-06-27T00:05:31Z",
-        "outcomes": [
-          {
-            "name": "Atlanta Dream",
-            "price": -125
-          },
-          {
-            "name": "Golden State Valkyries",
-            "price": 105
-          }
-        ]
-      },
-      {
-        "book": "bovada",
-        "market": "spreads",
-        "updated_at": "2026-06-27T00:05:31Z",
-        "outcomes": [
-          {
-            "name": "Atlanta Dream",
-            "price": -110,
-            "point": -1.5
-          },
-          {
-            "name": "Golden State Valkyries",
-            "price": -110,
-            "point": 1.5
-          }
-        ]
-      },
-      {
-        "book": "bovada",
-        "market": "totals",
-        "updated_at": "2026-06-27T00:05:31Z",
-        "outcomes": [
-          {
-            "name": "Over",
-            "price": -115,
-            "point": 162.5
-          },
-          {
-            "name": "Under",
-            "price": -105,
-            "point": 162.5
-          }
-        ]
-      },
-      {
-        "book": "betus",
-        "market": "h2h",
-        "updated_at": "2026-06-27T00:06:25Z",
-        "outcomes": [
-          {
-            "name": "Atlanta Dream",
-            "price": -125
-          },
-          {
-            "name": "Golden State Valkyries",
-            "price": 105
-          }
-        ]
-      },
-      {
-        "book": "betus",
-        "market": "spreads",
-        "updated_at": "2026-06-27T00:06:25Z",
-        "outcomes": [
-          {
-            "name": "Atlanta Dream",
-            "price": -115,
-            "point": -1.5
-          },
-          {
-            "name": "Golden State Valkyries",
-            "price": -105,
-            "point": 1.5
-          }
-        ]
-      },
-      {
-        "book": "betus",
-        "market": "totals",
-        "updated_at": "2026-06-27T00:06:25Z",
-        "outcomes": [
-          {
-            "name": "Over",
-            "price": -110,
-            "point": 163.0
-          },
-          {
-            "name": "Under",
-            "price": -110,
-            "point": 163.0
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "event_id": "a165b90e332745018d845c613a964600",
-    "sport": "basketball",
-    "league": "WNBA",
-    "home_team": "Toronto Tempo",
-    "away_team": "Phoenix Mercury",
-    "start_time": "2026-06-27T18:00:00Z",
-    "books": [
-      {
-        "book": "fanduel",
-        "market": "h2h",
-        "updated_at": "2026-06-27T00:06:25Z",
-        "outcomes": [
-          {
-            "name": "Phoenix Mercury",
-            "price": 140
-          },
-          {
-            "name": "Toronto Tempo",
-            "price": -172
-          }
-        ]
-      },
-      {
-        "book": "fanduel",
-        "market": "spreads",
-        "updated_at": "2026-06-27T00:06:25Z",
-        "outcomes": [
-          {
-            "name": "Phoenix Mercury",
-            "price": -118,
-            "point": 4.5
-          },
-          {
-            "name": "Toronto Tempo",
-            "price": -104,
-            "point": -4.5
-          }
-        ]
-      },
-      {
-        "book": "fanduel",
-        "market": "totals",
-        "updated_at": "2026-06-27T00:06:25Z",
-        "outcomes": [
-          {
-            "name": "Over",
-            "price": -108,
-            "point": 177.5
-          },
-          {
-            "name": "Under",
-            "price": -112,
-            "point": 177.5
-          }
-        ]
-      },
-      {
-        "book": "fanatics",
-        "market": "h2h",
-        "updated_at": "2026-06-27T00:06:14Z",
-        "outcomes": [
-          {
-            "name": "Phoenix Mercury",
-            "price": 145
-          },
-          {
-            "name": "Toronto Tempo",
-            "price": -175
-          }
-        ]
-      },
-      {
-        "book": "fanatics",
-        "market": "spreads",
-        "updated_at": "2026-06-27T00:06:14Z",
-        "outcomes": [
-          {
-            "name": "Phoenix Mercury",
-            "price": -110,
-            "point": 4.0
-          },
-          {
-            "name": "Toronto Tempo",
-            "price": -110,
-            "point": -4.0
-          }
-        ]
-      },
-      {
-        "book": "fanatics",
-        "market": "totals",
-        "updated_at": "2026-06-27T00:06:14Z",
-        "outcomes": [
-          {
-            "name": "Over",
-            "price": -110,
-            "point": 177.5
-          },
-          {
-            "name": "Under",
-            "price": -110,
-            "point": 177.5
-          }
-        ]
-      },
-      {
-        "book": "betrivers",
-        "market": "h2h",
-        "updated_at": "2026-06-27T00:06:25Z",
-        "outcomes": [
-          {
-            "name": "Phoenix Mercury",
-            "price": 135
-          },
-          {
-            "name": "Toronto Tempo",
-            "price": -167
-          }
-        ]
-      },
-      {
-        "book": "betrivers",
-        "market": "spreads",
-        "updated_at": "2026-06-27T00:06:25Z",
-        "outcomes": [
-          {
-            "name": "Phoenix Mercury",
-            "price": -113,
-            "point": 3.5
-          },
-          {
-            "name": "Toronto Tempo",
-            "price": -109,
-            "point": -3.5
-          }
-        ]
-      },
-      {
-        "book": "betrivers",
-        "market": "totals",
-        "updated_at": "2026-06-27T00:06:25Z",
-        "outcomes": [
-          {
-            "name": "Over",
-            "price": -114,
-            "point": 177.5
-          },
-          {
-            "name": "Under",
-            "price": -109,
-            "point": 177.5
-          }
-        ]
-      },
-      {
-        "book": "draftkings",
-        "market": "h2h",
-        "updated_at": "2026-06-27T00:06:13Z",
-        "outcomes": [
-          {
-            "name": "Phoenix Mercury",
-            "price": 150
-          },
-          {
-            "name": "Toronto Tempo",
-            "price": -180
-          }
-        ]
-      },
-      {
-        "book": "draftkings",
-        "market": "spreads",
-        "updated_at": "2026-06-27T00:06:13Z",
-        "outcomes": [
-          {
-            "name": "Phoenix Mercury",
-            "price": -115,
-            "point": 4.5
-          },
-          {
-            "name": "Toronto Tempo",
-            "price": -105,
-            "point": -4.5
-          }
-        ]
-      },
-      {
-        "book": "draftkings",
-        "market": "totals",
-        "updated_at": "2026-06-27T00:06:13Z",
-        "outcomes": [
-          {
-            "name": "Over",
-            "price": -110,
-            "point": 177.5
-          },
-          {
-            "name": "Under",
-            "price": -110,
-            "point": 177.5
-          }
-        ]
-      },
-      {
-        "book": "williamhill_us",
-        "market": "h2h",
-        "updated_at": "2026-06-27T00:05:21Z",
-        "outcomes": [
-          {
-            "name": "Phoenix Mercury",
-            "price": 140
-          },
-          {
-            "name": "Toronto Tempo",
-            "price": -165
-          }
-        ]
-      },
-      {
-        "book": "williamhill_us",
-        "market": "spreads",
-        "updated_at": "2026-06-27T00:05:21Z",
-        "outcomes": [
-          {
-            "name": "Phoenix Mercury",
-            "price": -110,
-            "point": 4.0
-          },
-          {
-            "name": "Toronto Tempo",
-            "price": -110,
-            "point": -4.0
-          }
-        ]
-      },
-      {
-        "book": "williamhill_us",
-        "market": "totals",
-        "updated_at": "2026-06-27T00:05:21Z",
-        "outcomes": [
-          {
-            "name": "Over",
-            "price": -110,
-            "point": 177.5
-          },
-          {
-            "name": "Under",
-            "price": -110,
-            "point": 177.5
-          }
-        ]
-      },
-      {
-        "book": "betonlineag",
-        "market": "spreads",
-        "updated_at": "2026-06-27T00:06:36Z",
-        "outcomes": [
-          {
-            "name": "Phoenix Mercury",
-            "price": -110,
-            "point": 4.5
-          },
-          {
-            "name": "Toronto Tempo",
-            "price": -110,
-            "point": -4.5
-          }
-        ]
-      },
-      {
-        "book": "betonlineag",
-        "market": "totals",
-        "updated_at": "2026-06-27T00:06:36Z",
-        "outcomes": [
-          {
-            "name": "Over",
-            "price": -110,
-            "point": 177.5
-          },
-          {
-            "name": "Under",
-            "price": -110,
-            "point": 177.5
-          }
-        ]
-      },
-      {
-        "book": "lowvig",
-        "market": "spreads",
-        "updated_at": "2026-06-27T00:06:05Z",
-        "outcomes": [
-          {
-            "name": "Phoenix Mercury",
-            "price": -108,
-            "point": 4.5
-          },
-          {
-            "name": "Toronto Tempo",
-            "price": -108,
-            "point": -4.5
-          }
-        ]
-      },
-      {
-        "book": "lowvig",
-        "market": "totals",
-        "updated_at": "2026-06-27T00:06:05Z",
-        "outcomes": [
-          {
-            "name": "Over",
-            "price": -108,
-            "point": 177.5
-          },
-          {
-            "name": "Under",
-            "price": -108,
-            "point": 177.5
-          }
-        ]
-      },
-      {
-        "book": "bovada",
-        "market": "spreads",
-        "updated_at": "2026-06-27T00:05:31Z",
-        "outcomes": [
-          {
-            "name": "Phoenix Mercury",
-            "price": -110,
-            "point": 4.5
-          },
-          {
-            "name": "Toronto Tempo",
-            "price": -110,
-            "point": -4.5
-          }
-        ]
-      },
-      {
-        "book": "bovada",
-        "market": "totals",
-        "updated_at": "2026-06-27T00:05:31Z",
-        "outcomes": [
-          {
-            "name": "Over",
-            "price": -110,
-            "point": 177.5
-          },
-          {
-            "name": "Under",
-            "price": -110,
-            "point": 177.5
-          }
-        ]
-      },
-      {
-        "book": "betus",
-        "market": "spreads",
-        "updated_at": "2026-06-27T00:06:25Z",
-        "outcomes": [
-          {
-            "name": "Phoenix Mercury",
-            "price": -110,
-            "point": 4.5
-          },
-          {
-            "name": "Toronto Tempo",
-            "price": -110,
-            "point": -4.5
-          }
-        ]
-      },
-      {
-        "book": "betus",
-        "market": "totals",
-        "updated_at": "2026-06-27T00:06:25Z",
-        "outcomes": [
-          {
-            "name": "Over",
-            "price": -110,
-            "point": 177.5
-          },
-          {
-            "name": "Under",
-            "price": -110,
-            "point": 177.5
-          }
-        ]
-      },
-      {
-        "book": "betmgm",
-        "market": "h2h",
-        "updated_at": "2026-06-27T00:06:13Z",
-        "outcomes": [
-          {
-            "name": "Phoenix Mercury",
-            "price": 140
-          },
-          {
-            "name": "Toronto Tempo",
-            "price": -165
-          }
-        ]
-      },
-      {
-        "book": "betmgm",
-        "market": "spreads",
-        "updated_at": "2026-06-27T00:06:13Z",
-        "outcomes": [
-          {
-            "name": "Phoenix Mercury",
-            "price": -110,
-            "point": 3.5
-          },
-          {
-            "name": "Toronto Tempo",
-            "price": -110,
-            "point": -3.5
-          }
-        ]
-      },
-      {
-        "book": "betmgm",
-        "market": "totals",
-        "updated_at": "2026-06-27T00:06:13Z",
-        "outcomes": [
-          {
-            "name": "Over",
-            "price": -110,
-            "point": 177.5
-          },
-          {
-            "name": "Under",
-            "price": -110,
-            "point": 177.5
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "event_id": "2976904bb157e89760ef6add768dbb97",
-    "sport": "basketball",
-    "league": "WNBA",
-    "home_team": "Indiana Fever",
-    "away_team": "Los Angeles Sparks",
-    "start_time": "2026-06-28T00:00:00Z",
-    "books": [
-      {
-        "book": "fanduel",
-        "market": "h2h",
-        "updated_at": "2026-06-27T00:06:25Z",
-        "outcomes": [
-          {
-            "name": "Indiana Fever",
-            "price": -250
-          },
-          {
-            "name": "Los Angeles Sparks",
-            "price": 198
-          }
-        ]
-      },
-      {
-        "book": "fanduel",
-        "market": "spreads",
-        "updated_at": "2026-06-27T00:06:25Z",
-        "outcomes": [
-          {
-            "name": "Indiana Fever",
-            "price": -105,
-            "point": -6.5
-          },
-          {
-            "name": "Los Angeles Sparks",
-            "price": -115,
-            "point": 6.5
-          }
-        ]
-      },
-      {
-        "book": "fanduel",
-        "market": "totals",
-        "updated_at": "2026-06-27T00:06:25Z",
-        "outcomes": [
-          {
-            "name": "Over",
-            "price": -105,
-            "point": 178.5
-          },
-          {
-            "name": "Under",
-            "price": -115,
-            "point": 178.5
-          }
-        ]
-      },
-      {
-        "book": "fanatics",
-        "market": "h2h",
-        "updated_at": "2026-06-27T00:06:14Z",
-        "outcomes": [
-          {
-            "name": "Indiana Fever",
-            "price": -275
-          },
-          {
-            "name": "Los Angeles Sparks",
-            "price": 220
-          }
-        ]
-      },
-      {
-        "book": "fanatics",
-        "market": "spreads",
-        "updated_at": "2026-06-27T00:06:14Z",
-        "outcomes": [
-          {
-            "name": "Indiana Fever",
-            "price": -105,
-            "point": -6.5
-          },
-          {
-            "name": "Los Angeles Sparks",
-            "price": -115,
-            "point": 6.5
-          }
-        ]
-      },
-      {
-        "book": "fanatics",
-        "market": "totals",
-        "updated_at": "2026-06-27T00:06:14Z",
-        "outcomes": [
-          {
-            "name": "Over",
-            "price": -110,
-            "point": 178.5
-          },
-          {
-            "name": "Under",
-            "price": -110,
-            "point": 178.5
-          }
-        ]
-      },
-      {
-        "book": "draftkings",
-        "market": "h2h",
-        "updated_at": "2026-06-27T00:06:13Z",
-        "outcomes": [
-          {
-            "name": "Indiana Fever",
-            "price": -278
-          },
-          {
-            "name": "Los Angeles Sparks",
-            "price": 225
-          }
-        ]
-      },
-      {
-        "book": "draftkings",
-        "market": "spreads",
-        "updated_at": "2026-06-27T00:06:13Z",
-        "outcomes": [
-          {
-            "name": "Indiana Fever",
-            "price": -105,
-            "point": -6.5
-          },
-          {
-            "name": "Los Angeles Sparks",
-            "price": -115,
-            "point": 6.5
-          }
-        ]
-      },
-      {
-        "book": "draftkings",
-        "market": "totals",
-        "updated_at": "2026-06-27T00:06:13Z",
-        "outcomes": [
-          {
-            "name": "Over",
-            "price": -112,
-            "point": 178.5
-          },
-          {
-            "name": "Under",
-            "price": -108,
-            "point": 178.5
-          }
-        ]
-      },
-      {
-        "book": "williamhill_us",
-        "market": "h2h",
-        "updated_at": "2026-06-27T00:05:21Z",
-        "outcomes": [
-          {
-            "name": "Indiana Fever",
-            "price": -278
-          },
-          {
-            "name": "Los Angeles Sparks",
-            "price": 222
-          }
-        ]
-      },
-      {
-        "book": "williamhill_us",
-        "market": "spreads",
-        "updated_at": "2026-06-27T00:05:21Z",
-        "outcomes": [
-          {
-            "name": "Indiana Fever",
-            "price": -105,
-            "point": -6.5
-          },
-          {
-            "name": "Los Angeles Sparks",
-            "price": -115,
-            "point": 6.5
-          }
-        ]
-      },
-      {
-        "book": "williamhill_us",
-        "market": "totals",
-        "updated_at": "2026-06-27T00:05:21Z",
-        "outcomes": [
-          {
-            "name": "Over",
-            "price": -115,
-            "point": 178.5
-          },
-          {
-            "name": "Under",
-            "price": -105,
-            "point": 178.5
-          }
-        ]
-      },
-      {
-        "book": "betrivers",
-        "market": "h2h",
-        "updated_at": "2026-06-27T00:06:25Z",
-        "outcomes": [
-          {
-            "name": "Indiana Fever",
-            "price": -265
-          },
-          {
-            "name": "Los Angeles Sparks",
-            "price": 205
-          }
-        ]
-      },
-      {
-        "book": "betrivers",
-        "market": "spreads",
-        "updated_at": "2026-06-27T00:06:25Z",
-        "outcomes": [
-          {
-            "name": "Indiana Fever",
-            "price": -107,
-            "point": -6.5
-          },
-          {
-            "name": "Los Angeles Sparks",
-            "price": -117,
-            "point": 6.5
-          }
-        ]
-      },
-      {
-        "book": "betrivers",
-        "market": "totals",
-        "updated_at": "2026-06-27T00:06:25Z",
-        "outcomes": [
-          {
-            "name": "Over",
-            "price": -107,
-            "point": 177.5
-          },
-          {
-            "name": "Under",
-            "price": -115,
-            "point": 177.5
-          }
-        ]
-      },
-      {
-        "book": "betonlineag",
-        "market": "spreads",
-        "updated_at": "2026-06-27T00:06:36Z",
-        "outcomes": [
-          {
-            "name": "Indiana Fever",
-            "price": -105,
-            "point": -6.5
-          },
-          {
-            "name": "Los Angeles Sparks",
-            "price": -115,
-            "point": 6.5
-          }
-        ]
-      },
-      {
-        "book": "betonlineag",
-        "market": "totals",
-        "updated_at": "2026-06-27T00:06:36Z",
-        "outcomes": [
-          {
-            "name": "Over",
-            "price": -110,
-            "point": 179.0
-          },
-          {
-            "name": "Under",
-            "price": -110,
-            "point": 179.0
-          }
-        ]
-      },
-      {
-        "book": "lowvig",
-        "market": "spreads",
-        "updated_at": "2026-06-27T00:06:05Z",
-        "outcomes": [
-          {
-            "name": "Indiana Fever",
-            "price": -103,
-            "point": -6.5
-          },
-          {
-            "name": "Los Angeles Sparks",
-            "price": -113,
-            "point": 6.5
-          }
-        ]
-      },
-      {
-        "book": "lowvig",
-        "market": "totals",
-        "updated_at": "2026-06-27T00:06:05Z",
-        "outcomes": [
-          {
-            "name": "Over",
-            "price": -108,
-            "point": 179.0
-          },
-          {
-            "name": "Under",
-            "price": -108,
-            "point": 179.0
-          }
-        ]
-      },
-      {
-        "book": "bovada",
-        "market": "spreads",
-        "updated_at": "2026-06-27T00:05:31Z",
-        "outcomes": [
-          {
-            "name": "Indiana Fever",
-            "price": -105,
-            "point": -6.5
-          },
-          {
-            "name": "Los Angeles Sparks",
-            "price": -115,
-            "point": 6.5
-          }
-        ]
-      },
-      {
-        "book": "bovada",
-        "market": "totals",
-        "updated_at": "2026-06-27T00:05:31Z",
-        "outcomes": [
-          {
-            "name": "Over",
-            "price": -110,
-            "point": 179.0
-          },
-          {
-            "name": "Under",
-            "price": -110,
-            "point": 179.0
-          }
-        ]
-      },
-      {
-        "book": "betus",
-        "market": "spreads",
-        "updated_at": "2026-06-27T00:06:25Z",
-        "outcomes": [
-          {
-            "name": "Indiana Fever",
-            "price": -105,
-            "point": -6.5
-          },
-          {
-            "name": "Los Angeles Sparks",
-            "price": -115,
-            "point": 6.5
-          }
-        ]
-      },
-      {
-        "book": "betus",
-        "market": "totals",
-        "updated_at": "2026-06-27T00:06:25Z",
-        "outcomes": [
-          {
-            "name": "Over",
-            "price": -110,
-            "point": 179.0
-          },
-          {
-            "name": "Under",
-            "price": -110,
-            "point": 179.0
-          }
-        ]
-      },
-      {
-        "book": "betmgm",
-        "market": "h2h",
-        "updated_at": "2026-06-27T00:06:13Z",
-        "outcomes": [
-          {
-            "name": "Indiana Fever",
-            "price": -285
-          },
-          {
-            "name": "Los Angeles Sparks",
-            "price": 230
-          }
-        ]
-      },
-      {
-        "book": "betmgm",
-        "market": "spreads",
-        "updated_at": "2026-06-27T00:06:13Z",
-        "outcomes": [
-          {
-            "name": "Indiana Fever",
-            "price": -105,
-            "point": -6.5
-          },
-          {
-            "name": "Los Angeles Sparks",
-            "price": -115,
-            "point": 6.5
-          }
-        ]
-      },
-      {
-        "book": "betmgm",
-        "market": "totals",
-        "updated_at": "2026-06-27T00:06:13Z",
-        "outcomes": [
-          {
-            "name": "Over",
-            "price": -110,
-            "point": 178.5
-          },
-          {
-            "name": "Under",
-            "price": -110,
-            "point": 178.5
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "event_id": "fd3f57e3db87c4c1fa74f6bcdaed649d",
-    "sport": "basketball",
-    "league": "WNBA",
-    "home_team": "Dallas Wings",
-    "away_team": "Minnesota Lynx",
-    "start_time": "2026-06-28T18:00:00Z",
-    "books": [
-      {
-        "book": "fanduel",
-        "market": "h2h",
-        "updated_at": "2026-06-27T00:06:25Z",
-        "outcomes": [
-          {
-            "name": "Dallas Wings",
-            "price": 118
-          },
-          {
-            "name": "Minnesota Lynx",
-            "price": -144
-          }
-        ]
-      },
-      {
-        "book": "fanduel",
-        "market": "spreads",
-        "updated_at": "2026-06-27T00:06:25Z",
-        "outcomes": [
-          {
-            "name": "Dallas Wings",
-            "price": -105,
-            "point": 2.5
-          },
-          {
-            "name": "Minnesota Lynx",
-            "price": -115,
-            "point": -2.5
-          }
-        ]
-      },
-      {
-        "book": "fanduel",
-        "market": "totals",
-        "updated_at": "2026-06-27T00:06:25Z",
-        "outcomes": [
-          {
-            "name": "Over",
-            "price": -110,
-            "point": 178.5
-          },
-          {
-            "name": "Under",
-            "price": -110,
-            "point": 178.5
-          }
-        ]
-      },
-      {
-        "book": "fanatics",
-        "market": "h2h",
-        "updated_at": "2026-06-27T00:06:14Z",
-        "outcomes": [
-          {
-            "name": "Dallas Wings",
-            "price": 130
-          },
-          {
-            "name": "Minnesota Lynx",
-            "price": -155
-          }
-        ]
-      },
-      {
-        "book": "fanatics",
-        "market": "spreads",
-        "updated_at": "2026-06-27T00:06:14Z",
-        "outcomes": [
-          {
-            "name": "Dallas Wings",
-            "price": -115,
-            "point": 3.5
-          },
-          {
-            "name": "Minnesota Lynx",
-            "price": -105,
-            "point": -3.5
-          }
-        ]
-      },
-      {
-        "book": "fanatics",
-        "market": "totals",
-        "updated_at": "2026-06-27T00:06:14Z",
-        "outcomes": [
-          {
-            "name": "Over",
-            "price": -110,
-            "point": 179.5
-          },
-          {
-            "name": "Under",
-            "price": -110,
-            "point": 179.5
-          }
-        ]
-      },
-      {
-        "book": "draftkings",
-        "market": "h2h",
-        "updated_at": "2026-06-27T00:06:13Z",
-        "outcomes": [
-          {
-            "name": "Dallas Wings",
-            "price": 136
-          },
-          {
-            "name": "Minnesota Lynx",
-            "price": -162
-          }
-        ]
-      },
-      {
-        "book": "draftkings",
-        "market": "spreads",
-        "updated_at": "2026-06-27T00:06:13Z",
-        "outcomes": [
-          {
-            "name": "Dallas Wings",
-            "price": -112,
-            "point": 3.5
-          },
-          {
-            "name": "Minnesota Lynx",
-            "price": -108,
-            "point": -3.5
-          }
-        ]
-      },
-      {
-        "book": "draftkings",
-        "market": "totals",
-        "updated_at": "2026-06-27T00:06:13Z",
-        "outcomes": [
-          {
-            "name": "Over",
-            "price": -110,
-            "point": 179.5
-          },
-          {
-            "name": "Under",
-            "price": -110,
-            "point": 179.5
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "event_id": "c72d086a53d7b9b49f1daaf8754bd4e9",
-    "sport": "basketball",
-    "league": "WNBA",
-    "home_team": "New York Liberty",
-    "away_team": "Las Vegas Aces",
-    "start_time": "2026-07-01T00:00:00Z",
-    "books": [
-      {
-        "book": "fanduel",
-        "market": "h2h",
-        "updated_at": "2026-06-27T00:06:25Z",
-        "outcomes": [
-          {
-            "name": "Las Vegas Aces",
-            "price": 128
-          },
-          {
-            "name": "New York Liberty",
-            "price": -158
-          }
-        ]
-      },
-      {
-        "book": "fanduel",
-        "market": "spreads",
-        "updated_at": "2026-06-27T00:06:25Z",
-        "outcomes": [
-          {
-            "name": "Las Vegas Aces",
-            "price": -114,
-            "point": 3.5
-          },
-          {
-            "name": "New York Liberty",
-            "price": -106,
-            "point": -3.5
-          }
-        ]
-      },
-      {
-        "book": "fanduel",
-        "market": "totals",
-        "updated_at": "2026-06-27T00:06:25Z",
-        "outcomes": [
-          {
-            "name": "Over",
-            "price": -114,
-            "point": 174.5
-          },
-          {
-            "name": "Under",
-            "price": -106,
-            "point": 174.5
-          }
-        ]
-      },
-      {
-        "book": "draftkings",
-        "market": "h2h",
-        "updated_at": "2026-06-27T00:06:13Z",
-        "outcomes": [
-          {
-            "name": "Las Vegas Aces",
-            "price": 130
-          },
-          {
-            "name": "New York Liberty",
-            "price": -155
-          }
-        ]
-      },
-      {
-        "book": "draftkings",
-        "market": "spreads",
-        "updated_at": "2026-06-27T00:06:13Z",
-        "outcomes": [
-          {
-            "name": "Las Vegas Aces",
-            "price": -115,
-            "point": 3.5
-          },
-          {
-            "name": "New York Liberty",
-            "price": -105,
-            "point": -3.5
-          }
-        ]
-      },
-      {
-        "book": "draftkings",
-        "market": "totals",
-        "updated_at": "2026-06-27T00:06:13Z",
-        "outcomes": [
-          {
-            "name": "Over",
-            "price": -115,
-            "point": 173.5
-          },
-          {
-            "name": "Under",
-            "price": -105,
-            "point": 173.5
-          }
-        ]
-      },
-      {
-        "book": "betrivers",
-        "market": "h2h",
-        "updated_at": "2026-06-27T00:06:25Z",
-        "outcomes": [
-          {
-            "name": "Las Vegas Aces",
-            "price": 125
-          },
-          {
-            "name": "New York Liberty",
-            "price": -157
-          }
-        ]
-      },
-      {
-        "book": "betrivers",
-        "market": "spreads",
-        "updated_at": "2026-06-27T00:06:25Z",
-        "outcomes": [
-          {
-            "name": "Las Vegas Aces",
-            "price": -118,
-            "point": 3.5
-          },
-          {
-            "name": "New York Liberty",
-            "price": -106,
-            "point": -3.5
-          }
-        ]
-      },
-      {
-        "book": "betrivers",
-        "market": "totals",
-        "updated_at": "2026-06-27T00:06:25Z",
-        "outcomes": [
-          {
-            "name": "Over",
-            "price": -109,
-            "point": 173.5
-          },
-          {
-            "name": "Under",
-            "price": -114,
-            "point": 173.5
-          }
-        ]
-      },
-      {
-        "book": "williamhill_us",
-        "market": "h2h",
-        "updated_at": "2026-06-27T00:05:21Z",
-        "outcomes": [
-          {
-            "name": "Las Vegas Aces",
-            "price": 126
-          },
-          {
-            "name": "New York Liberty",
-            "price": -150
-          }
-        ]
-      },
-      {
-        "book": "williamhill_us",
-        "market": "spreads",
-        "updated_at": "2026-06-27T00:05:21Z",
-        "outcomes": [
-          {
-            "name": "Las Vegas Aces",
-            "price": -105,
-            "point": 2.5
-          },
-          {
-            "name": "New York Liberty",
-            "price": -115,
-            "point": -2.5
-          }
-        ]
-      },
-      {
-        "book": "williamhill_us",
-        "market": "totals",
-        "updated_at": "2026-06-27T00:05:21Z",
-        "outcomes": [
-          {
-            "name": "Over",
-            "price": -110,
-            "point": 173.5
-          },
-          {
-            "name": "Under",
-            "price": -110,
-            "point": 173.5
-          }
-        ]
-      },
-      {
-        "book": "betonlineag",
-        "market": "spreads",
-        "updated_at": "2026-06-27T00:06:36Z",
-        "outcomes": [
-          {
-            "name": "Las Vegas Aces",
-            "price": -105,
-            "point": 2.5
-          },
-          {
-            "name": "New York Liberty",
-            "price": -115,
-            "point": -2.5
-          }
-        ]
-      },
-      {
-        "book": "betonlineag",
-        "market": "totals",
-        "updated_at": "2026-06-27T00:06:36Z",
-        "outcomes": [
-          {
-            "name": "Over",
-            "price": -117,
-            "point": 174.0
-          },
-          {
-            "name": "Under",
-            "price": -103,
-            "point": 174.0
-          }
-        ]
-      },
-      {
-        "book": "lowvig",
-        "market": "spreads",
-        "updated_at": "2026-06-27T00:06:05Z",
-        "outcomes": [
-          {
-            "name": "Las Vegas Aces",
-            "price": -103,
-            "point": 2.5
-          },
-          {
-            "name": "New York Liberty",
-            "price": -113,
-            "point": -2.5
-          }
-        ]
-      },
-      {
-        "book": "lowvig",
-        "market": "totals",
-        "updated_at": "2026-06-27T00:06:05Z",
-        "outcomes": [
-          {
-            "name": "Over",
-            "price": -115,
-            "point": 174.0
-          },
-          {
-            "name": "Under",
-            "price": -101,
-            "point": 174.0
-          }
-        ]
-      },
-      {
-        "book": "bovada",
-        "market": "h2h",
-        "updated_at": "2026-06-27T00:05:31Z",
-        "outcomes": [
-          {
-            "name": "Las Vegas Aces",
-            "price": 125
-          },
-          {
-            "name": "New York Liberty",
-            "price": -145
-          }
-        ]
-      },
-      {
-        "book": "bovada",
-        "market": "spreads",
-        "updated_at": "2026-06-27T00:05:31Z",
-        "outcomes": [
-          {
-            "name": "Las Vegas Aces",
-            "price": -115,
-            "point": 3.5
-          },
-          {
-            "name": "New York Liberty",
-            "price": -105,
-            "point": -3.5
-          }
-        ]
-      },
-      {
-        "book": "bovada",
-        "market": "totals",
-        "updated_at": "2026-06-27T00:05:31Z",
-        "outcomes": [
-          {
-            "name": "Over",
-            "price": -115,
-            "point": 174.0
-          },
-          {
-            "name": "Under",
-            "price": -105,
-            "point": 174.0
-          }
-        ]
-      },
-      {
-        "book": "betmgm",
-        "market": "spreads",
-        "updated_at": "2026-06-27T00:06:13Z",
-        "outcomes": [
-          {
-            "name": "Las Vegas Aces",
-            "price": -105,
-            "point": 2.5
-          },
-          {
-            "name": "New York Liberty",
-            "price": -115,
-            "point": -2.5
-          }
-        ]
-      },
-      {
-        "book": "betmgm",
-        "market": "totals",
-        "updated_at": "2026-06-27T00:06:13Z",
-        "outcomes": [
-          {
-            "name": "Over",
-            "price": -115,
-            "point": 173.5
-          },
-          {
-            "name": "Under",
-            "price": -105,
-            "point": 173.5
-          }
-        ]
-      }
-    ]
-  }
-]
+    }
+  ]
+}

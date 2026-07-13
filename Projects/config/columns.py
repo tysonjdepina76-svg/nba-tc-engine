@@ -1,71 +1,42 @@
-"""Sport-specific stat column configuration.
-
-Single source of truth for which columns the dashboard renders per sport.
-get_stat_columns() returns:
-  {
-    'stats':   ['pts', 'reb', 'ast', ...],   # canonical snake_case keys
-    'labels':  ['PTS', 'REB', 'AST', ...],   # display labels (same order)
-    'aliases': {'pts': ['Pts', 'Points', ...], ...},  # field name aliases
-  }
 """
-from typing import Dict, List
+Sport stat configurations.
+"""
 
-SPORT_CONFIG: Dict[str, Dict[str, List]] = {
+SPORT_COLUMNS = {
+    "mlb": {
+        "stats": ["avg", "hr", "rbi", "r", "sb", "ops", "era", "whip", "so"],
+        "labels": ["AVG", "HR", "RBI", "R", "SB", "OPS", "ERA", "WHIP", "SO"],
+        "aliases": {"avg": "AVG", "hr": "HR", "rbi": "RBI", "r": "R", "sb": "SB", "ops": "OPS", "era": "ERA", "whip": "WHIP", "so": "SO"}
+    },
     "wnba": {
-        "stats":  ["pts", "reb", "ast", "stl", "blk", "3pm", "fg_pct", "3p_pct", "ft_pct", "minutes"],
-        "labels": ["PTS", "REB", "AST", "STL", "BLK", "3PM", "FG%", "3P%", "FT%", "Minutes"],
+        "stats": ["pts", "reb", "ast", "fg_pct", "fg3", "stl", "blk"],
+        "labels": ["PTS", "REB", "AST", "FG%", "3PM", "STL", "BLK"],
+        "aliases": {"pts": "PTS", "reb": "REB", "ast": "AST", "fg_pct": "FG%", "fg3": "3PM", "stl": "STL", "blk": "BLK"}
     },
     "nba": {
-        "stats":  ["pts", "reb", "ast", "stl", "blk", "3pm", "fg_pct", "3p_pct", "ft_pct", "minutes"],
-        "labels": ["PTS", "REB", "AST", "STL", "BLK", "3PM", "FG%", "3P%", "FT%", "Minutes"],
-    },
-    "mlb": {
-        "stats":  ["hits", "hr", "rbi", "runs", "sb", "avg", "obp", "slg", "ops", "ip", "era", "whip", "strikeouts"],
-        "labels": ["Hits", "HR", "RBI", "Runs", "SB", "Avg", "OBP", "SLG", "OPS", "IP", "ERA", "WHIP", "K"],
-    },
-    "nhl": {
-        "stats":  ["goals", "assists", "points", "plus_minus", "sog", "hits", "blocks", "pim", "toi"],
-        "labels": ["Goals", "Assists", "Points", "+/-", "SOG", "Hits", "Blocks", "PIM", "TOI"],
+        "stats": ["pts", "reb", "ast", "fg_pct", "fg3", "stl", "blk"],
+        "labels": ["PTS", "REB", "AST", "FG%", "3PM", "STL", "BLK"],
+        "aliases": {"pts": "PTS", "reb": "REB", "ast": "AST", "fg_pct": "FG%", "fg3": "3PM", "stl": "STL", "blk": "BLK"}
     },
     "nfl": {
-        "stats":  ["pass_yds", "rush_yds", "rec_yds", "pass_td", "rush_td", "rec_td", "receptions", "ints", "cmp", "att"],
-        "labels": ["Pass Yds", "Rush Yds", "Rec Yds", "Pass TD", "Rush TD", "Rec TD", "Receptions", "INT", "CMP", "ATT"],
+        "stats": ["pass_yds", "rush_yds", "rec_yds", "td", "int", "sacks"],
+        "labels": ["PASS YDS", "RUSH YDS", "REC YDS", "TD", "INT", "SACKS"],
+        "aliases": {"pass_yds": "PASS YDS", "rush_yds": "RUSH YDS", "rec_yds": "REC YDS", "td": "TD", "int": "INT", "sacks": "SACKS"}
+    },
+    "nhl": {
+        "stats": ["goals", "assists", "points", "sog", "pim"],
+        "labels": ["Goals", "Assists", "Points", "SOG", "PIM"],
+        "aliases": {"goals": "Goals", "assists": "Assists", "points": "Points", "sog": "SOG", "pim": "PIM"}
     },
     "wc": {
-        "stats":  ["goals", "assists", "shots", "sot", "passes", "tackles", "minutes", "yellow_cards", "red_cards"],
-        "labels": ["Goals", "Assists", "Shots", "SOT", "Passes", "Tackles", "Minutes", "Yellow", "Red"],
-    },
-    "soccer": {
-        "stats":  ["goals", "assists", "shots", "sot", "passes", "tackles", "minutes", "yellow_cards", "red_cards"],
-        "labels": ["Goals", "Assists", "Shots", "SOT", "Passes", "Tackles", "Minutes", "Yellow", "Red"],
-    },
+        "stats": ["goals", "assists", "shots", "shots_on_target", "pass_pct", "tackles", "fouls"],
+        "labels": ["Goals", "Assists", "Shots", "SOT", "Pass%", "Tackles", "Fouls"],
+        "aliases": {"goals": "Goals", "assists": "Assists", "shots": "Shots", "shots_on_target": "SOT", "pass_pct": "Pass%", "tackles": "Tackles", "fouls": "Fouls"}
+    }
 }
 
-DEFAULT_CONFIG = {
-    "stats":  ["stat", "value"],
-    "labels": ["Stat", "Value"],
-}
+def get_stat_columns(sport):
+    return SPORT_COLUMNS.get(sport, SPORT_COLUMNS.get("mlb"))
 
-FIELD_ALIASES: Dict[str, Dict[str, List[str]]] = {
-    "wnba": {"pts": ["Pts", "Points", "PTS"], "reb": ["Reb", "Rebounds", "REB"],
-             "ast": ["Ast", "Assists", "AST"], "3pm": ["3PM", "3pm", "3P Made"]},
-    "mlb":  {"hits": ["Hits", "H"], "hr": ["HR", "Home Runs", "HomeRuns"],
-             "rbi": ["RBI", "Runs Batted In"], "avg": ["Avg", "Batting Average", "BA"]},
-    "nhl":  {"goals": ["Goals", "G"], "assists": ["Assists", "A"], "points": ["Points", "Pts", "PTS"]},
-    "nfl":  {"pass_yds": ["Pass Yds", "PassYds", "Passing Yards"],
-             "rush_yds": ["Rush Yds", "RushYds", "Rushing Yards"]},
-    "wc":   {"goals": ["Goals", "G"], "assists": ["Assists", "A"], "shots": ["Shots", "SH"]},
-}
-
-
-def get_stat_columns(sport: str) -> Dict[str, object]:
-    """Return {'stats': [...], 'labels': [...], 'aliases': {stat: [alias,...]}}."""
-    key = (sport or "").lower()
-    cfg = SPORT_CONFIG.get(key, DEFAULT_CONFIG)
-    aliases = FIELD_ALIASES.get(key, {})
-    return {"stats": cfg["stats"], "labels": cfg["labels"], "aliases": aliases}
-
-
-# Backward compat: list-returning helper for callers that want just stats
-def get_stat_list(sport: str) -> List[str]:
-    return get_stat_columns(sport)["stats"]
+def get_stat_aliases(sport):
+    return get_stat_columns(sport).get("aliases", {})

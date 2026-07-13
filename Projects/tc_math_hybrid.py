@@ -77,6 +77,13 @@ SPORT_CONFIGS: Dict[str, SportConfig] = {
         correction_factors={"goals": 1.08, "assists": 1.05, "shots": 1.03, "sot": 1.02},
         ensemble_weights={"tc": 0.35, "xgb": 0.35, "rf": 0.20, "lr": 0.10}
     ),
+    # Alias: WORLD_CUP → same config as WC
+    "WORLD_CUP": SportConfig(
+        min_edge=0.005, use_pct=True, max_edge=0.50, min_market_line=0.5,
+        shrinkage_factor=0.35,
+        correction_factors={"goals": 1.08, "assists": 1.05, "shots": 1.03, "sot": 1.02},
+        ensemble_weights={"tc": 0.35, "xgb": 0.35, "rf": 0.20, "lr": 0.10}
+    ),
 }
 
 

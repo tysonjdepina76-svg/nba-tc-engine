@@ -1,15 +1,48 @@
 {
-  "timestamp": "2026-07-12T17:05:03.243713-05:00",
+  "timestamp": "2026-07-13T10:56:24.627873-05:00",
   "sports": [
     "MLB"
   ],
-  "games_logged": 0,
+  "games_logged": 2,
   "picks_logged": 0,
-  "completed_games_skipped": 12,
-  "errors": [
-    "MLB COL@SF: No data for MLB COL@SF",
-    "MLB ARI@LAD: No data for MLB ARI@LAD",
-    "MLB TOR@SD: No data for MLB TOR@SD"
-  ],
-  "summaries": []
+  "completed_games_skipped": 0,
+  "errors": [],
+  "summaries": [
+    {
+      "date": "2026-07-13",
+      "sport": "MLB",
+      "matchup": "AL@NL",
+      "away_team": "AL",
+      "home_team": "NL",
+      "tc_combined": null,
+      "tc_line": null,
+      "market_total": null,
+      "dk_total": null,
+      "edge": null,
+      "signal": null,
+      "source": "DraftKings via SportsDataIO",
+      "valid_prop_count": 0,
+      "roster_size": 0,
+      "pending_props_no_dk": 0,
+      "picks_with_dk": 0
+    },
+    {
+      "date": "2026-07-13",
+      "sport": "MLB",
+      "matchup": "AL@NL",
+      "away_team": "AL",
+      "home_team": "NL",
+      "tc_combined": null,
+      "tc_line": null,
+      "market_total": null,
+      "dk_total": null,
+      "edge": null,
+      "signal": null,
+      "source": "DraftKings via SportsDataIO",
+      "valid_prop_count": 0,
+      "roster_size": 0,
+      "pending_props_no_dk": 0,
+      "picks_with_dk": 0
+    }
+  ]
 }

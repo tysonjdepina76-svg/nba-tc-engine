@@ -137,6 +137,7 @@ class SportConfig:
     error_msg: Optional[str] = None
     display_name: str = ""
     schema: Optional[Dict] = None
+    color: str = "#888888"
 
 
 class SportsRegistry:
@@ -204,7 +205,7 @@ class SportsRegistry:
         # === NFL PRESEASON ACTIVE 2026-07-11 ===
         self._registry['nfl'] = SportConfig(
             key='nfl', name='NFL',
-            source=DataSource.LIVE,
+            source=DataSource.TC_ENGINE,
             enabled=True,
             color='#013369',
             error_msg=None,

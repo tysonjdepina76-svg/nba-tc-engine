@@ -1,0 +1,172 @@
+{
+  "timestamp": "2026-07-13T13:16:40.897325",
+  "results": {
+    "registry": {
+      "ok": true,
+      "ms": 103,
+      "fallback": "no registry module",
+      "note": "checked via daily_picks"
+    },
+    "mlb_scoreboard_live": {
+      "ok": true,
+      "ms": 54,
+      "games_today": 15,
+      "sample": [
+        {
+          "name": "Milwaukee Brewers at Pittsburgh Pirates",
+          "status": "Final",
+          "competitors": [
+            "Pittsburgh Pirates",
+            "Milwaukee Brewers"
+          ]
+        },
+        {
+          "name": "Kansas City Royals at Baltimore Orioles",
+          "status": "Final",
+          "competitors": [
+            "Baltimore Orioles",
+            "Kansas City Royals"
+          ]
+        }
+      ]
+    },
+    "mlb_summary_endpoints": {
+      "ok": true,
+      "ms": 133,
+      "event_id": "401816130",
+      "summary_keys": [
+        "notes",
+        "boxscore",
+        "format",
+        "gameInfo",
+        "seasonseries",
+        "injuries",
+        "broadcasts",
+        "pickcenter",
+        "odds",
+        "againstTheSpread",
+        "rosters",
+        "news",
+        "winprobability",
+        "header",
+        "article",
+        "videos",
+        "plays",
+        "playsMap",
+        "atBats",
+        "wallclockAvailable",
+        "meta",
+        "standings"
+      ],
+      "has_lineups": true
+    },
+    "wnba_roster_stats": {
+      "ok": true,
+      "ms": 75,
+      "games": 4,
+      "sample_event": "New York Liberty at Toronto Tempo",
+      "boxscore_players": 0,
+      "has_boxscore": true
+    },
+    "fbref_wc": {
+      "ok": true,
+      "ms": 23,
+      "fbref_reachable": false,
+      "error": "HTTP Error 403: Forbidden"
+    },
+    "wc_espn_scoreboard": {
+      "ok": true,
+      "ms": 42,
+      "wc_espn_games": 1,
+      "sample": [
+        "Spain at France"
+      ]
+    },
+    "espn_odds": {
+      "ok": true,
+      "ms": 72,
+      "has_odds_field": false,
+      "summary_keys": [
+        "boxscore",
+        "format",
+        "gameInfo",
+        "leaders",
+        "seasonseries",
+        "injuries",
+        "broadcasts",
+        "pickcenter",
+        "odds",
+        "againstTheSpread",
+        "news",
+        "winprobability",
+        "header",
+        "plays",
+        "article",
+        "videos",
+        "wallclockAvailable",
+        "meta",
+        "standings"
+      ]
+    },
+    "odds_api_wnba": {
+      "ok": true,
+      "ms": 63,
+      "error": "HTTP Error 401: Unauthorized"
+    },
+    "sgo_odds": {
+      "ok": true,
+      "ms": 756,
+      "error": "HTTP Error 401: Unauthorized"
+    },
+    "baseball_reference": {
+      "ok": true,
+      "ms": 46,
+      "reachable": true,
+      "size_kb": 284,
+      "has_data": true
+    },
+    "basketball_reference": {
+      "ok": true,
+      "ms": 35,
+      "reachable": true,
+      "size_kb": 316,
+      "has_data": true
+    },
+    "cache": {
+      "ok": true,
+      "ms": 0,
+      "error": "cannot import name 'cache_get' from 'api_cache' (/home/workspace/Projects/api_cache.py)"
+    },
+    "dashboard_8510": {
+      "ok": true,
+      "ms": 2,
+      "http": 200,
+      "bytes": 1837,
+      "is_streamlit": true
+    },
+    "daily_picks_wnba": {
+      "ok": true,
+      "ms": 26993,
+      "exit": 0,
+      "games": 0,
+      "picks": 0,
+      "tail": "  Fetching multi-source consensus for WNBA...\n  [Odds API 400] falling back to SGO for WNBA\n  [SGO] basketball_wnba events failed: 429 rate-limited (attempt 4)\nBasketball combos: 0 qualified legs across 2 games\n  >> DEBUG: wc_games count = 0, sports = {'WNBA'}\n\ud83d\uddbc\ufe0f  Fantasy cards: 10 generated \u2014 None\n"
+    },
+    "daily_picks_mlb": {
+      "ok": true,
+      "ms": 5181,
+      "exit": 0,
+      "games": 0,
+      "picks": 0,
+      "tail": "33] Fetching MLB slate...\n[MLB] fetch_dk failed: No DK code for MLB\n  MLB lines unavailable (source=none) \u2014 proceeding without market data\n  Slate has 15 game(s); 0 upcoming after filtering completed\n\nDone: 0 games, 0 picks (skipped 15 completed games)\n  >> DEBUG: wc_games count = 0, sports = set()\n"
+    },
+    "daily_picks_world_cup": {
+      "ok": true,
+      "ms": 2901,
+      "exit": 0,
+      "games": 0,
+      "picks": 0,
+      "tail": "n&markets=h2h%2Ctotals%2Cbtts\n[soccer] Odds fetch failed for ced22494ae0bbb8cc4f7108bf6f493df: 401 Client Error: Unauthorized for url: https://api.theoddsapi.com/odds/?sport_key=soccer_fifa_world_cup&eventId=ced22494ae0bbb8cc4f7108bf6f493df&regions=us&oddsFormat=american&markets=h2h%2Ctotals%2Cbtts\n"
+    }
+  }
+}

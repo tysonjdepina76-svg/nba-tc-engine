@@ -80,7 +80,7 @@ def fetch_espn_event(espn_path: str, event_id: str) -> dict:
     return data or {}
 
 WORKSPACE = Path("/home/workspace")
-SPORTS = {"WNBA", "MLB", "WORLD CUP", "SOCCER"}
+SPORTS = {"WNBA", "MLB", "WORLD CUP", "WORLD_CUP", "SOCCER"}
 
 
 def compute_team_pick(away_score, home_score, away_abbr, home_abbr, dk_ml_away, dk_ml_home, spread, is_home_court):
@@ -401,6 +401,7 @@ def main():
     away = sys.argv[3] if len(sys.argv) > 3 else ""
     home = sys.argv[4] if len(sys.argv) > 4 else ""
     sport = sport.upper().replace("%20", " ").strip()
+    sport = sport.replace("_", " ")  # normalize WORLD_CUP → WORLD CUP
 
     if sport in ("NBA", "NHL"):
         print(json.dumps({"error": f"{sport} disabled", "disabled": True}))

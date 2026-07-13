@@ -1,174 +1,79 @@
-"""Baseball-Reference scraper for MLB batting/pitching leaderboards.
-
-Used as a tier-3 fallback for player stats when paid APIs are down.
-
-BR's leaderboard structure: each stat has its own div (e.g. #leaderboard_batting_WAR)
-containing ranked rows with .rank / .who / .value spans. We scrape multiple
-stat divs and join them by player name to reconstruct a season profile.
-
-Note: BR's HTML is wrapped inside comments and uses divs, not standard <table><tr><td>.
-We follow redirects and parse the div grid structure.
 """
-import os
-import sys
-
-PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-if PROJECT_ROOT not in sys.path:
-    sys.path.insert(0, PROJECT_ROOT)
+Baseball-Reference scraper for MLB stats fallback.
+"""
 
 import requests
 from bs4 import BeautifulSoup
-import re
 import unicodedata
-from typing import List, Dict, Optional
-
-
-def clean_name(name: str) -> str:
-    """Normalize and fix common mojibake (e.g. 'SÃ¡nchez' -> 'Sánchez').
-
-    BR serves UTF-8 but the default BS4 html.parser sometimes double-encodes
-    accented characters. NFKC normalization + latin1->utf-8 round-trip
-    recovers the original glyphs.
-    """
-    if not name:
-        return name
-    try:
-        return unicodedata.normalize("NFKC", name).encode("latin1").decode("utf-8")
-    except (UnicodeEncodeError, UnicodeDecodeError):
-        # Already clean or unfixable — return as-is
-        return name
-
+from typing import List, Dict
 
 class BaseballReferenceScraper:
     BASE_URL = "https://www.baseball-reference.com"
-
     def __init__(self, season: int = 2026):
         self.season = season
-        self.headers = {
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
-            "Accept-Language": "en-US,en;q=0.5",
-        }
-
-    def _fetch(self, path: str) -> Optional[BeautifulSoup]:
-        url = f"{self.BASE_URL}{path}"
+        self.headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"}
+    def _clean_name(self, name: str) -> str:
+        if not name:
+            return name
+        return unicodedata.normalize('NFKC', name).strip()
+    def _safe_float(self, val: str) -> float:
         try:
-            resp = requests.get(url, headers=self.headers, timeout=15, allow_redirects=True)
-            resp.raise_for_status()
-            resp.encoding = "utf-8"  # force UTF-8 to prevent mojibake on accented names
-            return BeautifulSoup(resp.text, "html.parser")
-        except requests.RequestException as e:
-            print(f"BR fetch failed ({path}): {e}")
-            return None
-
-    def _parse_leaderboard_div(self, div_id: str, stat_key: str) -> Dict[str, float]:
-        """Parse a single BR leaderboard div. Returns {player_name: value}."""
-        soup = self._fetch(f"/leagues/majors/{self.season}-batting-leaders.shtml")
-        if not soup:
-            return {}
-        div = soup.find("div", {"id": div_id})
-        if not div:
-            return {}
-        out: Dict[str, float] = {}
-        for row in div.find_all("div", class_="first_place"):
-            who = row.find("span", class_="who")
-            val = row.find("span", class_="value")
-            if who and val:
-                name = who.get_text(strip=True).split(" • ")[0]
-                try:
-                    out[name] = float(val.get_text(strip=True))
-                except (ValueError, TypeError):
-                    pass
-        # Also dig into further rank rows (BR limits first-place visible by default)
-        for row in div.find_all("div", class_=re.compile(r"rank|player")):
-            pass
-        return out
-
-    def fetch_batting(self) -> List[Dict]:
-        """Scrape batting WAR leaderboard and join with rate stats."""
-        # BR's batting leaders page is at /leagues/majors/YYYY-batting-leaders.shtml
-        # Pull WAR, AVG, HR, RBI, R, SB, OPS in one pass
-        soup = self._fetch(f"/leagues/majors/{self.season}-batting-leaders.shtml")
-        if not soup:
-            return []
-        # Each stat is a div with id like 'leaderboard_batting_WAR'
-        stat_divs = soup.find_all("div", id=re.compile(r"^leaderboard_batting_[A-Z]"))
-        players: Dict[str, Dict] = {}
-        for div in stat_divs:
-            stat_name = div.get("id", "").replace("leaderboard_batting_", "")
-            for row in div.find_all("div"):
-                classes = row.get("class", [])
-                if "first_place" not in classes and "other" not in classes:
-                    continue
-                who = row.find("span", class_="who")
-                val = row.find("span", class_="value")
-                if not (who and val):
-                    continue
-                raw = who.get_text(" ", strip=True)
-                # Format: "LastName • TEAM"
-                parts = raw.split("•")
-                if len(parts) < 2:
-                    continue
-                name = parts[0].strip()
-                team = parts[1].strip()
-                try:
-                    v = float(val.get_text(strip=True))
-                except (ValueError, TypeError):
-                    continue
-                p = players.setdefault(name, {"name": name, "team": team})
-                p[stat_name.lower()] = v
-        return list(players.values())
-
-    def fetch_pitching(self) -> List[Dict]:
-        """Scrape pitching leaderboard."""
-        soup = self._fetch(f"/leagues/majors/{self.season}-pitching-leaders.shtml")
-        if not soup:
-            return []
-        stat_divs = soup.find_all("div", id=re.compile(r"^leaderboard_pitching_[A-Z]"))
-        players: Dict[str, Dict] = {}
-        for div in stat_divs:
-            stat_name = div.get("id", "").replace("leaderboard_pitching_", "")
-            for row in div.find_all("div"):
-                classes = row.get("class", [])
-                if "first_place" not in classes and "other" not in classes:
-                    continue
-                who = row.find("span", class_="who")
-                val = row.find("span", class_="value")
-                if not (who and val):
-                    continue
-                raw = who.get_text(" ", strip=True)
-                parts = raw.split("•")
-                if len(parts) < 2:
-                    continue
-                name = clean_name(parts[0].strip())
-                team = parts[1].strip()
-                try:
-                    v = float(val.get_text(strip=True))
-                except (ValueError, TypeError):
-                    continue
-                p = players.setdefault(name, {"name": name, "team": team})
-                p[stat_name.lower()] = v
-        return list(players.values())
-
-    @staticmethod
-    def _safe_float(val) -> float:
-        try:
-            return float(str(val).strip())
-        except (ValueError, AttributeError, TypeError):
+            return float(val.strip()) if val and val.strip() else 0.0
+        except (ValueError, AttributeError):
             return 0.0
-
-    @staticmethod
-    def _safe_int(val) -> int:
+    def _safe_int(self, val: str) -> int:
         try:
-            return int(str(val).strip())
-        except (ValueError, AttributeError, TypeError):
+            return int(val.strip()) if val and val.strip() else 0
+        except (ValueError, AttributeError):
             return 0
-
-
-if __name__ == "__main__":
-    scraper = BaseballReferenceScraper(2026)
-    print("Batting leaders (top 5):")
-    for p in scraper.fetch_batting()[:5]:
-        print(f"  {p.get('name')} ({p.get('team')}): {p}")
-    print("Pitching leaders (top 5):")
-    for p in scraper.fetch_pitching()[:5]:
-        print(f"  {p.get('name')} ({p.get('team')}): {p}")
+    def fetch_batting(self) -> List[Dict]:
+        url = f"{self.BASE_URL}/leagues/MLB/{self.season}-batting.shtml"
+        resp = requests.get(url, headers=self.headers, timeout=10)
+        resp.raise_for_status()
+        resp.encoding = 'utf-8'
+        soup = BeautifulSoup(resp.text, "html.parser")
+        table = soup.find("table", {"id": "batting"})
+        if not table:
+            return []
+        rows = table.find("tbody").find_all("tr") if table.find("tbody") else table.find_all("tr")
+        players = []
+        for row in rows:
+            cells = row.find_all("td")
+            if len(cells) < 8:
+                continue
+            player = {
+                "name": self._clean_name(cells[0].text),
+                "team": cells[1].text.strip() if len(cells) > 1 else "",
+                "avg": self._safe_float(cells[2].text),
+                "hr": self._safe_int(cells[4].text) if len(cells) > 4 else 0,
+                "rbi": self._safe_int(cells[5].text) if len(cells) > 5 else 0,
+                "r": self._safe_int(cells[6].text) if len(cells) > 6 else 0,
+                "sb": self._safe_int(cells[7].text) if len(cells) > 7 else 0,
+                "ops": self._safe_float(cells[8].text) if len(cells) > 8 else 0.0,
+            }
+            players.append(player)
+        return players
+    def fetch_pitching(self) -> List[Dict]:
+        url = f"{self.BASE_URL}/leagues/MLB/{self.season}-pitching.shtml"
+        resp = requests.get(url, headers=self.headers, timeout=10)
+        resp.raise_for_status()
+        resp.encoding = 'utf-8'
+        soup = BeautifulSoup(resp.text, "html.parser")
+        table = soup.find("table", {"id": "pitching"})
+        if not table:
+            return []
+        rows = table.find("tbody").find_all("tr") if table.find("tbody") else table.find_all("tr")
+        pitchers = []
+        for row in rows:
+            cells = row.find_all("td")
+            if len(cells) < 7:
+                continue
+            pitcher = {
+                "name": self._clean_name(cells[0].text),
+                "team": cells[1].text.strip() if len(cells) > 1 else "",
+                "era": self._safe_float(cells[3].text) if len(cells) > 3 else 0.0,
+                "whip": self._safe_float(cells[4].text) if len(cells) > 4 else 0.0,
+                "so": self._safe_int(cells[5].text) if len(cells) > 5 else 0,
+            }
+            pitchers.append(pitcher)
+        return pitchers

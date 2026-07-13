@@ -1,93 +1,152 @@
-"""Unified line fetcher: DraftKings -> SportsDataIO -> Odds API -> cache -> empty.
-
-Imports `fetch_odds_api_lines` from the new sources/odds_api_client wrapper.
-The Odds API is on Business tier and quota is MAXED — the wrapper handles
-401s gracefully and returns empty games so we fall through to cache.
 """
-import os
-import sys
-import requests
-import json
+Central line fetcher — dispatches to per-sport fetchers.
+
+Sport → fetcher mapping:
+- mlb     → mlb_book_fetcher.fetch_mlb_book_lines
+- wnba    → wnba_data_fetcher.fetch_wnba_lines
+- soccer  → soccer_lines_fetcher.fetch_soccer_lines
+- worldcup → soccer_lines_fetcher.fetch_soccer_lines (alias)
+- nba     → espn_odds_fetcher (off-season aware)
+- nfl     → espn_odds_fetcher (off-season aware)
+- nhl     → espn_odds_fetcher (off-season aware)
+"""
+
+from __future__ import annotations
+import logging
 from datetime import datetime
+from typing import Any, Dict, Optional
 
-# Path bootstrap: allow `from sources.line_fetcher import ...` from any cwd.
-_THIS = os.path.abspath(__file__)
-_PROJ_ROOT = os.path.dirname(os.path.dirname(_THIS))
-if _PROJ_ROOT not in sys.path:
-    sys.path.insert(0, _PROJ_ROOT)
-
-from sources.odds_api_client import fetch_odds_api_lines
-
-DK_SPORTS = {"mlb": "MLB", "wnba": "WNBA", "wc": "WORLD_CUP"}
+log = logging.getLogger(__name__)
 
 
-def fetch_dk(sport):
-    code = DK_SPORTS.get(sport)
-    if not code:
-        raise ValueError("No DK code for " + sport)
-    url = "https://api.draftkings.com/scores/json/" + code
-    headers = {"User-Agent": "Mozilla/5.0", "Referer": "https://www.draftkings.com/"}
-    r = requests.get(url, headers=headers, timeout=10)
-    r.raise_for_status()
-    games = []
-    for event in r.json().get("events", []):
-        comps = event.get("competitors", [])
-        away = next((c.get("name", "") for c in comps if str(c.get("homeTeam", "")).lower() == "false"), "")
-        home = next((c.get("name", "") for c in comps if str(c.get("homeTeam", "")).lower() == "true"), "")
-        spread = moneyline = total = None
-        for offer in event.get("offers", []):
-            market = str(offer.get("marketType", "")).lower()
-            outs = offer.get("outcomes", [])
-            if not outs:
-                continue
-            if "spread" in market:
-                spread = outs[0].get("point")
-            elif "moneyline" in market:
-                moneyline = outs[0].get("price")
-            elif "total" in market:
-                total = outs[0].get("point")
-        games.append({"away": away, "home": home, "spread": spread, "moneyline": moneyline, "total": total})
-    return {"source": "DraftKings", "games": games}
+SPORT_FETCHERS: Dict[str, str] = {
+    "mlb": "sources.mlb_book_fetcher:fetch_mlb_book_lines",
+    "wnba": "sources.wnba_data_fetcher:fetch_wnba_lines",
+    "soccer": "sources.soccer_lines_fetcher:fetch_soccer_lines",
+    "worldcup": "sources.soccer_lines_fetcher:fetch_soccer_lines",
+}
+
+OFF_SEASON_SPORTS = {"nba", "nfl", "nhl", "ncaa"}
 
 
-def fetch_odds_api_wrapped(sport):
-    """Calls the new odds_api_client wrapper. Returns {source, games} shape.
+class LineFetchError(Exception):
+    pass
 
-    The wrapper handles 401/429 (Business tier quota) and returns empty games
-    with quota_exhausted=True so the chain falls through to cache / self-edge.
+
+def _import_fetcher(path: str):
+    """Import a fetcher function from 'module:function' path."""
+    module_name, func_name = path.split(":")
+    import importlib
+    try:
+        mod = importlib.import_module(module_name)
+    except ImportError as e:
+        raise LineFetchError(f"module {module_name} not importable: {e}")
+    fn = getattr(mod, func_name, None)
+    if fn is None:
+        raise LineFetchError(f"function {func_name} not found in {module_name}")
+    return fn
+
+
+def _is_in_season(sport: str) -> bool:
+    """Return True if sport is currently in season. Off-season sports return False."""
+    if sport not in OFF_SEASON_SPORTS:
+        return True
+    from sources.sports_registry import REGISTRY
+    cfg = REGISTRY.get(sport) if hasattr(REGISTRY, "get") else None
+    if cfg is None:
+        return True
+    enabled = getattr(cfg, "enabled", True)
+    if not enabled:
+        return False
+    return True
+
+
+def fetch_lines(sport: str,
+                matchup: Optional[str] = None,
+                date: Optional[str] = None,
+                dry_run: bool = False,
+                **_extra: Any) -> Dict[str, Any]:
     """
-    data = fetch_odds_api_lines(sport)
-    return {
-        "source": data.get("source", "Odds API"),
-        "games": data.get("games", []),
-        "quota_exhausted": data.get("quota_exhausted", False),
-        "error": data.get("error"),
-    }
+    Fetch lines for a sport. Returns dict with at least:
+    {source, sport, timestamp, games, players/odds, error?}
 
+    Args:
+        sport: mlb, wnba, soccer, worldcup, nba, nfl, nhl, ncaa
+        matchup: optional 'AWAY@HOME' filter
+        date: optional YYYY-MM-DD
+        dry_run: bypass cache + network
+    """
+    sport = sport.lower().strip()
+    ts = datetime.now().isoformat()
+    base = {"source": "line_fetcher", "sport": sport, "timestamp": ts,
+            "games": [], "players": [], "odds": []}
 
-def fetch_lines(sport):
-    # 1. DraftKings
+    if not sport:
+        base["error"] = "sport required"
+        return base
+
+    if sport in OFF_SEASON_SPORTS and not _is_in_season(sport):
+        base["status"] = "off_season"
+        log.info("line_fetcher: %s off-season, skipping", sport)
+        return base
+
+    fetcher_path = SPORT_FETCHERS.get(sport)
+    if not fetcher_path:
+        try:
+            from sources.espn_odds_fetcher import fetch_espn_odds
+            result = fetch_espn_odds(sport=sport, date=date)
+            base["source"] = "espn_odds_fetcher"
+            base["odds"] = result.get("odds", [])
+            base["games"] = result.get("games", [])
+            return base
+        except Exception as e:
+            base["error"] = f"no fetcher registered for sport={sport}: {e}"
+            return base
+
     try:
-        dk_data = fetch_dk(sport)
-        if dk_data and dk_data.get("games"):
-            return dk_data
-    except Exception as e:
-        print("[" + sport + "] fetch_dk failed: " + str(e))
+        fn = _import_fetcher(fetcher_path)
+    except LineFetchError as e:
+        base["error"] = str(e)
+        return base
 
-    # 2. Odds API (via wrapper)
     try:
-        odds_data = fetch_odds_api_wrapped(sport)
-        if odds_data and odds_data.get("games"):
-            return odds_data
+        if sport == "mlb":
+            result = fn(matchup=matchup, dry_run=dry_run)
+        elif sport == "wnba":
+            result = fn(matchup=matchup, dry_run=dry_run)
+        elif sport in ("soccer", "worldcup"):
+            result = fn(date=date)
+        else:
+            result = fn()
+    except TypeError as e:
+        try:
+            result = fn()
+        except Exception as e2:
+            base["error"] = f"fetcher {fetcher_path} failed: {e2}"
+            return base
     except Exception as e:
-        print("[" + sport + "] fetch_odds_api_wrapped failed: " + str(e))
+        log.warning("line_fetcher: %s failed: %s", sport, e)
+        base["error"] = str(e)
+        return base
 
-    # 3. Empty (triggers self-edge fallback in caller)
-    return {"source": "none", "games": [], "error": "All sources failed"}
+    if not isinstance(result, dict):
+        result = {"raw": result}
+    base.update({k: v for k, v in result.items() if k not in base})
+    return base
+
+
+def list_sports() -> list:
+    """Return all sports this fetcher can route."""
+    return list(SPORT_FETCHERS.keys()) + list(OFF_SEASON_SPORTS)
 
 
 if __name__ == "__main__":
-    for sport in ("mlb", "wnba", "wc"):
-        result = fetch_lines(sport)
-        print(f"[{sport}] source={result.get('source')} games={len(result.get('games', []))} "
-              f"quota_exhausted={result.get('quota_exhausted', False)}")
+    logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
+    print("=== Supported sports ===")
+    print(list_sports())
+    print()
+    for s in ("wnba", "mlb", "worldcup"):
+        print(f"=== {s} ===")
+        r = fetch_lines(s)
+        print(f"  source={r.get('source')} status={r.get('status', 'ok')} "
+              f"error={r.get('error', 'none')}")

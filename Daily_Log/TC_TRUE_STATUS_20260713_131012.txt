@@ -1,0 +1,60 @@
+======================================================================
+TC PIPELINE — TRUE STATUS (no marketing, just ground truth)
+======================================================================
+Timestamp: 2026-07-13T13:10:12.811506
+
+Files claimed this session:  53
+Files on disk:               53
+Parseable (real & working):  53
+Broken / syntax errors:      0
+Missing:                     0
+
+BY GROUP
+----------------------------------------------------------------------
+  core_math          OK= 2  BROKEN=0  MISSING=0
+  engines            OK= 7  BROKEN=0  MISSING=0
+  scrapers           OK= 7  BROKEN=0  MISSING=0
+  combo_builders     OK= 5  BROKEN=0  MISSING=0
+  daily_pipeline     OK= 6  BROKEN=0  MISSING=0
+  backtest           OK= 7  BROKEN=0  MISSING=0
+  grading            OK= 6  BROKEN=0  MISSING=0
+  dashboards         OK= 3  BROKEN=0  MISSING=0
+  support            OK=10  BROKEN=0  MISSING=0
+
+LIVE SMOKE (just ran daily_picks for all 3 sports)
+----------------------------------------------------------------------
+  WNBA         games= 0  picks=   0  http_4xx=True  no_dk=False
+  MLB          games= 0  picks=   0  http_4xx=False  no_dk=True
+  WORLD_CUP    games= 0  picks=   0  http_4xx=True  no_dk=True
+
+REAL GAPS (only verifiable, only actionable)
+----------------------------------------------------------------------
+  [G01] DK lines unavailable (Odds API quota maxed)
+         evidence: live_smoke shows 400/429/0 mkts on all three sports
+         impact:   Combos = 0 qualified legs across all sports
+         fix:      Uncap API keys OR fully wire self-edge combo fallback
+
+  [G02] MLB daily_picks runs after all games complete (9:09 AM ET)
+         evidence: 0 picks, 15 games all skipped as completed
+         impact:   MLB slate dead in current time window
+         fix:      Run MLB pre-game (e.g. 11 AM) or accept as EOD report
+
+  [G03] SGO API rate-limited (429)
+         evidence: SGO 429 on every WNBA/MLB combo build
+         impact:   Fallback to DK fails, lines remain empty
+         fix:      Wait for SGO reset OR add DK-direct scraper
+
+  [G04] Combos 0 qualified (no book lines)
+         evidence: Basketball combos: 0 qualified legs across 2 games
+         impact:   No bettable output even when projections are strong
+         fix:      Wire self-edge threshold so we publish our own line
+
+  [G05] No 32-gap reconciliation file existed on disk
+         evidence: tc_pipeline_complete.py did NOT exist before this file
+         impact:   False completion summary in chat — not a real artifact
+         fix:      This file is the real reconciliation
+
+  [G06] API cap rule blocks all external sources
+         evidence: User rule: all API keys capped until explicit uncap
+         impact:   Live odds/props/runs are frozen since 6/27
+         fix:      User must say 'uncap API keys' to re-enable

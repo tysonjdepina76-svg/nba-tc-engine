@@ -14,14 +14,19 @@ ESPN_URL = "https://site.api.espn.com/apis/site/v2/sports/basketball/wnba/scoreb
 USER_AGENT = "Mozilla/5.0"
 
 
-def fetch_wnba_lines(game_id: Optional[str] = None) -> List[Dict[str, Any]]:
-    """Fetch moneyline, spread, and total for today's WNBA games.
-
-    Returns a list of dicts: {id, home, away, spread, moneyline, total}.
+def fetch_wnba_lines(game_id: Optional[str] = None, date_str: Optional[str] = None) -> List[Dict[str, Any]]:
+    """Fetch moneyline, spread, and total for WNBA games on date_str (YYYY-MM-DD).
+    Defaults to today ET. Returns list of dicts: {id, home, away, spread, moneyline, total, completed}.
     Empty list on failure. If game_id is given, filters to that event.
     """
+    from datetime import datetime, timezone, timedelta
+    if date_str is None:
+        date_str = (datetime.now(timezone.utc) - timedelta(hours=4)).strftime("%Y-%m-%d")
     try:
-        resp = requests.get(ESPN_URL, headers={"User-Agent": USER_AGENT}, timeout=10)
+        # ESPN expects dates=YYYYMMDD
+        dates_param = date_str.replace("-", "")
+        url = ESPN_URL + f"?dates={dates_param}"
+        resp = requests.get(url, headers={"User-Agent": USER_AGENT}, timeout=10)
         resp.raise_for_status()
         data = resp.json()
     except Exception as e:

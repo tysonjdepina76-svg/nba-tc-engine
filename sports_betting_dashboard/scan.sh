@@ -57,11 +57,24 @@ check_pipeline_run() {
 }
 
 check_todays_picks() {
-    if [ -f "${LOG_DIR}/${TODAY}/picks.json" ]; then
+    if [ -f "${LOG_DIR}/${TODAY}/picks.csv" ]; then
+        COUNT=$(tail -n +2 "${LOG_DIR}/${TODAY}/picks.csv" 2>/dev/null | wc -l)
+        # ── FIX: Count picks by sport from CSV, not picks.json ──
+        WNBA=$(python3 -c "
+import csv; f=open('${LOG_DIR}/${TODAY}/picks.csv'); r=csv.DictReader(f);
+print(sum(1 for row in r if row.get('league','') in ('WNBA',)))" 2>/dev/null)
+        MLB=$(python3 -c "
+import csv; f=open('${LOG_DIR}/${TODAY}/picks.csv'); r=csv.DictReader(f);
+print(sum(1 for row in r if row.get('league','') in ('MLB',)))" 2>/dev/null)
+        WC=$(python3 -c "
+import csv; f=open('${LOG_DIR}/${TODAY}/picks.csv'); r=csv.DictReader(f);
+print(sum(1 for row in r if row.get('league','') in ('WORLD CUP','WORLD_CUP',)))" 2>/dev/null)
+        [ "$COUNT" -gt 0 ] && echo "✓ PICKS_TODAY: ${COUNT} picks (WNBA=${WNBA} MLB=${MLB} WC=${WC})" || echo "✗ PICKS_TODAY: 0 picks in CSV"
+    elif [ -f "${LOG_DIR}/${TODAY}/picks.json" ]; then
         COUNT=$(python3 -c "import json; d=json.load(open('${LOG_DIR}/${TODAY}/picks.json')); print(len(d) if isinstance(d,list) else 0)" 2>/dev/null)
-        [ "$COUNT" -gt 0 ] && echo "✓ PICKS_TODAY: ${COUNT} picks" || echo "✗ PICKS_TODAY: 0 picks"
+        [ "$COUNT" -gt 0 ] && echo "✓ PICKS_TODAY: ${COUNT} picks (from JSON fallback)" || echo "✗ PICKS_TODAY: 0 picks"
     else
-        echo "✗ PICKS_TODAY: no picks.json for ${TODAY}"
+        echo "✗ PICKS_TODAY: no picks.csv or picks.json for ${TODAY}"
     fi
 }
 
@@ -151,7 +164,7 @@ check_routes() {
 
 check_consensus() {
     CONSENSUS="${LOG_DIR}/${TODAY}/consensus.json"
-    CONSENSUS_FILES=$(ls "${LOG_DIR}/${TODAY}"/consensus_*.json 2>/dev/null | wc -l)
+    CONSENSUS_FILES=$(shopt -s nullglob; set -- "${LOG_DIR}/${TODAY}"/consensus_*.json; echo $#)
     if [ -f "$CONSENSUS" ]; then
         COUNT=$(python3 -c "import json; d=json.load(open('${CONSENSUS}')); print(len(d) if isinstance(d,list) else d.get('total',0))" 2>/dev/null)
         echo "✓ CONSENSUS: ${COUNT} entries"
@@ -272,6 +285,43 @@ check_empty_dirs() {
     [ "$total_empty" -gt 0 ] && echo "⚠ EMPTY_DIRS: ${total_empty} empty dirs to purge" || echo "✓ EMPTY_DIRS: none"
 }
 
+check_historical() {
+    local HIST="${DASH_DIR}/data/historical.csv"
+    if [ -f "$HIST" ]; then
+        LINES=$(wc -l < "$HIST" 2>/dev/null)
+        SIZE=$(wc -c < "$HIST" 2>/dev/null)
+        [ "$LINES" -gt 100 ] && echo "✓ HISTORICAL: ${LINES} lines (${SIZE} bytes)" || echo "⚠ HISTORICAL: ${LINES} lines — needs more data"
+    else
+        echo "✗ HISTORICAL: missing"
+    fi
+}
+
+check_weights() {
+    local W="${DASH_DIR}/config/algorithm_weights.json"
+    if [ -f "$W" ]; then
+        echo "✓ ALGO_WEIGHTS: configured"
+    else
+        echo "✗ ALGO_WEIGHTS: missing — ensemble won't run"
+    fi
+}
+
+check_config_files() {
+    local missing=()
+    [ -f "${DASH_DIR}/data/historical.csv" ] || missing+=("data/historical.csv")
+    [ -f "${DASH_DIR}/config/algorithm_weights.json" ] || missing+=("config/algorithm_weights.json")
+    [ -f "${DASH_DIR}/.env.template" ] || missing+=(".env.template")
+    [ -f "${DASH_DIR}/logs/daily.log" ] || missing+=("logs/daily.log")
+    [ -f "${DASH_DIR}/logs/api.log" ] || missing+=("logs/api.log")
+    [ -f "${DASH_DIR}/setup.sh" ] || missing+=("setup.sh")
+    [ -f "${DASH_DIR}/fix_pipeline.py" ] || missing+=("fix_pipeline.py")
+    [ -f "${DASH_DIR}/README.md" ] || missing+=("README.md")
+    if [ ${#missing[@]} -eq 0 ]; then
+        echo "✓ CONFIG_FILES: all 8 core files present"
+    else
+        echo "⚠ CONFIG_FILES: missing ${#missing[@]}: ${missing[*]}"
+    fi
+}
+
 # ─── Run Scan ──────────────────────────────────────────────────────────
 
 if [ "$MODE" = "--service" ]; then
@@ -290,13 +340,15 @@ if [ "$MODE" = "--fix" ]; then
     # Fix: run pipeline if no picks today
     if [ ! -f "${LOG_DIR}/${TODAY}/picks.json" ]; then
         echo "→ Running daily_picks.py..."
-        cd "$WORKSPACE" && python3 Projects/daily_picks.py WNBA MLB 'WORLD CUP' 2>&1 | tail -3
+        cd "$WORKSPACE" && python3 Projects/daily_picks.py --sport WNBA --date "${TODAY}" 2>&1 | tail -3
+        cd "$WORKSPACE" && python3 Projects/daily_picks.py --sport MLB --date "${TODAY}" 2>&1 | tail -3
+        cd "$WORKSPACE" && python3 Projects/daily_picks.py --sport WORLD_CUP --date "${TODAY}" 2>&1 | tail -3
     fi
 
-    # Fix: restart Streamlit if down
+    # Fix: restart Streamlit if down (correct dashboard path)
     if ! curl -sf --max-time 3 http://localhost:8510 >/dev/null 2>&1; then
         echo "→ Restarting Streamlit..."
-        cd "$WORKSPACE" && nohup streamlit run Projects/tc_dashboard.py --server.port 8510 --server.headless true > /dev/shm/streamlit_8510.log 2>&1 &
+        cd "$WORKSPACE" && nohup streamlit run sports_betting_dashboard/dashboard.py --server.port 8510 --server.headless true > /dev/shm/streamlit_8510.log 2>&1 &
         sleep 3
     fi
 
@@ -352,6 +404,9 @@ fi
     check_events
     check_symlinks
     check_empty_dirs
+    check_historical
+    check_weights
+    check_config_files
     echo "---"
     check_routes
     echo "=============================================="

@@ -21,8 +21,10 @@ fi
 
 # 2. Sync today's picks CSV → dashboard data dir
 PICKS_CSV="$WORKSPACE/Daily_Log/$TODAY/picks.csv"
+DEST_CSV="$DASH_DIR/data/picks/today_picks.csv"
 if [ -f "$PICKS_CSV" ]; then
-    cp "$PICKS_CSV" "$DASH_DIR/data/picks/today_picks.csv"
+    # handle case where dest is a symlink to source — use cp --remove-destination
+    cp --remove-destination "$PICKS_CSV" "$DEST_CSV"
     echo "✓ picks.csv synced ($(wc -l < "$PICKS_CSV") lines)"
 else
     echo "✗ No picks.csv for $TODAY"

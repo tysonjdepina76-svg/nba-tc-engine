@@ -566,9 +566,13 @@ def _fetch_espn_odds_for_event(event_id: str) -> dict:
     return out
 
 
-def get_today_slate() -> list:
-    """Get today's WNBA slate. Uses Core API if site API times out."""
-    data = _fetch("https://site.api.espn.com/apis/site/v2/sports/basketball/wnba/scoreboard", timeout=4)
+def get_today_slate(date_str=None) -> list:
+    """Get WNBA slate for date_str (YYYY-MM-DD). Defaults to today ET."""
+    from datetime import datetime, timezone, timedelta
+    if date_str is None:
+        date_str = (datetime.now(timezone.utc) - timedelta(hours=4)).strftime("%Y-%m-%d")
+    dates_param = date_str.replace("-", "")
+    data = _fetch(f"https://site.api.espn.com/apis/site/v2/sports/basketball/wnba/scoreboard?dates={dates_param}", timeout=4)
     if data.get("_error"):
         return []
     games = []
