@@ -43,6 +43,8 @@ def _fetch_espn_odds(sport: str) -> Dict:
             "id": event.get("id"),
             "home": comp.get("competitors", [{}, {}])[1].get("team", {}).get("displayName"),
             "away": comp.get("competitors", [{}, {}])[0].get("team", {}).get("displayName"),
+            "start_time": event.get("date"),
+            "status": event.get("status", {}).get("type", {}).get("description"),
             "odds": [
                 {
                     "provider": o.get("provider", {}).get("name"),

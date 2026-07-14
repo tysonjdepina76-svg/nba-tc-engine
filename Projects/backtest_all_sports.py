@@ -31,6 +31,12 @@ LEAGUE_FROM_SPORT = {
 
 @dataclass
 class BacktestResult:
+    """One (sport, strategy) summary row — wins, losses, hit rate, ROI, drawdown.
+
+    Output of HistoricalBacktest.run(). Aggregates every pick from one strategy
+    applied to one sport across a date range. Fields are derived from graded
+    picks.csv, not from raw projections, so hit_rate is the real historical record.
+    """
     sport: str
     strategy: str
     total_picks: int
@@ -47,6 +53,13 @@ class BacktestResult:
 
 
 class HistoricalBacktest:
+    """Multi-sport, multi-strategy historical backtester.
+
+    Reads /home/workspace/Daily_Log/YYYY-MM-DD/{picks.csv, graded_picks.csv}
+    and replays v1, v2, hybrid, and ensemble strategies against graded
+    results to compute hit rate, ROI, drawdown, and streak metrics.
+    Backbone of /home/workspace/docs/BACKTEST_COMPONENT_INDEX.md.
+    """
     def __init__(self, data_dir: str = "/home/workspace/Daily_Log"):
         self.data_dir = Path(data_dir)
         self.results: List[BacktestResult] = []

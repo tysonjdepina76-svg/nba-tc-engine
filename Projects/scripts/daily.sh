@@ -1,15 +1,11 @@
-#!/usr/bin/env bash
-# Daily run: WNBA + MLB + World Cup for today (offline, self-edge projections)
+#!/bin/bash
+# daily.sh — full daily run: scan + picks + combos + push
 set -euo pipefail
-TODAY=$(TZ='America/New_York' date +%Y-%m-%d)
-cd /home/workspace
+PROJECT_ROOT="/home/workspace/Projects"
+cd "$PROJECT_ROOT"
+TODAY="$(date +%F)"
 
-echo "=== TC Daily Run — $TODAY ==="
-for sport in WNBA MLB WORLD_CUP; do
-    echo ""
-    echo "--- $sport ---"
-    python3 Projects/daily_picks.py --sport "$sport" --date "$TODAY" 2>&1 | grep -E "Done:|self-edge picks written|valid picks|games count" | head -8
-done
-
-echo ""
-echo "=== Done. picks.csv at Daily_Log/$TODAY/ ==="
+echo "📅 daily run for $TODAY"
+python3 orchestrator.py --date "$TODAY"
+python3 build_pregame_combos.py --date "$TODAY" || echo "  (combos step skipped/failed)"
+echo "✅ daily run done"

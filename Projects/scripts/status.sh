@@ -1,38 +1,23 @@
-#!/usr/bin/env bash
-# TC Pipeline status (offline — no API calls)
+#!/bin/bash
+# status.sh — pipeline + dashboard status
 set -euo pipefail
-WORKSPACE="/home/workspace"
-DASH_DIR="${WORKSPACE}/sports_betting_dashboard"
-TODAY=$(TZ='America/New_York' date +%Y-%m-%d)
+PORT="${TC_PORT:-8510}"
+PROJECT_ROOT="/home/workspace/Projects"
+TODAY="$(date +%F)"
 
-echo "═══════════════════════════════════════════"
-echo " TC Pipeline Status — $(date '+%H:%M:%S %Z')"
-echo "═══════════════════════════════════════════"
-
-# Pipeline
-LAST=$(python3 -c "import json; d=json.load(open('${WORKSPACE}/Daily_Log/last_run.json')); print(d.get('timestamp','?'))" 2>/dev/null || echo "N/A")
-echo "  Pipeline:    last run $LAST"
-echo "  Picks today: $(wc -l < "${WORKSPACE}/Daily_Log/${TODAY}/picks.csv" 2>/dev/null || echo 0) rows"
-
-# Dashboard
-for port in 8510; do
-    if curl -sf --max-time 3 "http://localhost:${port}" >/dev/null 2>&1; then
-        echo "  Dashboard:   UP (:$port)"
-    else
-        echo "  Dashboard:   DOWN (:$port)"
-    fi
-done
-
-# Backtest summary
-if [ -f "${WORKSPACE}/Daily_Log/backtest_results.csv" ]; then
-    TOTAL=$(wc -l < "${WORKSPACE}/Daily_Log/backtest_results.csv" 2>/dev/null || echo 0)
-    echo "  Backtest:    $TOTAL rows in results"
-fi
-
-# Crontab
-if command -v crontab >/dev/null; then
-    CT=$(crontab -l 2>/dev/null | grep -v '^#' | grep -v '^$' | wc -l || echo 0)
-    echo "  Crontab:     $CT active jobs"
+echo "=== TC status @ $TODAY ==="
+if lsof -ti:"$PORT" >/dev/null 2>&1; then
+  echo "✅ dashboard  : running on port $PORT"
 else
-    echo "  Crontab:     not installed"
+  echo "❌ dashboard  : not running on port $PORT"
 fi
+
+if [ -d "/home/workspace/Daily_Log/$TODAY" ]; then
+  PROJ="$(ls /home/workspace/Daily_Log/$TODAY/proj_*.json 2>/dev/null | wc -l)"
+  PICK="$( [ -f /home/workspace/Daily_Log/$TODAY/picks.csv ] && echo 1 || echo 0 )"
+  echo "📂 daily log  : $PROJ projection file(s), picks.csv=$PICK"
+else
+  echo "⚠️  daily log  : no directory for $TODAY"
+fi
+
+python3 "$PROJECT_ROOT/scan.py" --report 2>&1 | tail -3

@@ -38,51 +38,41 @@ class SportConfig:
     shrinkage_factor: float
     correction_factors: Dict[str, float]
     ensemble_weights: Dict[str, float]
+    signal_moderate: float = 0.05
+    signal_strong: float = 0.10
 
 
 SPORT_CONFIGS: Dict[str, SportConfig] = {
     "WNBA": SportConfig(
-        min_edge=0.5, use_pct=False, max_edge=15.0, min_market_line=0.5,
+        min_edge=0.5, use_pct=False, max_edge=5.0, min_market_line=0.5,
         shrinkage_factor=0.30,
-        correction_factors={"PTS": 1.08, "REB": 1.05, "AST": 1.03, "STL": 1.02, "BLK": 1.00, "3PM": 1.02},
-        ensemble_weights={"tc": 0.40, "xgb": 0.30, "rf": 0.20, "lr": 0.10}
-    ),
-    "MLB": SportConfig(
-        min_edge=0.5, use_pct=False, max_edge=8.0, min_market_line=0.5,
-        shrinkage_factor=0.25,
-        correction_factors={"hits": 1.02, "hr": 1.02, "rbi": 1.06, "runs": 1.04, "sb": 1.02, "avg": 1.01},
-        ensemble_weights={"tc": 0.50, "xgb": 0.25, "rf": 0.15, "lr": 0.10}
-    ),
-    "NFL": SportConfig(
-        min_edge=0.5, use_pct=False, max_edge=15.0, min_market_line=0.5,
-        shrinkage_factor=0.35,
-        correction_factors={"pass_yds": 1.06, "rush_yds": 1.04, "rec_yds": 1.05, "td": 1.03, "int": 1.02, "sacks": 1.02},
-        ensemble_weights={"tc": 0.35, "xgb": 0.35, "rf": 0.20, "lr": 0.10}
+        correction_factors={"PTS": 1.05, "REB": 1.03, "AST": 1.03,
+                           "STL": 1.02, "BLK": 1.02, "3PM": 0.98},
+        ensemble_weights={"tc": 0.40, "xgb": 0.30, "rf": 0.20, "lr": 0.10},
+        signal_moderate=0.06, signal_strong=0.12,
     ),
     "NBA": SportConfig(
+        min_edge=0.5, use_pct=False, max_edge=8.0, min_market_line=0.5,
+        shrinkage_factor=0.25,
+        correction_factors={"PTS": 1.04, "REB": 1.02, "AST": 1.02,
+                           "STL": 1.02, "BLK": 1.02, "3PM": 0.98},
+        ensemble_weights={"tc": 0.40, "xgb": 0.30, "rf": 0.20, "lr": 0.10},
+        signal_moderate=0.06, signal_strong=0.12,
+    ),
+    "MLB": SportConfig(
         min_edge=0.5, use_pct=False, max_edge=15.0, min_market_line=0.5,
-        shrinkage_factor=0.30,
-        correction_factors={"PTS": 1.05, "REB": 1.03, "AST": 1.03, "STL": 1.02, "BLK": 1.01, "3PM": 1.02},
-        ensemble_weights={"tc": 0.40, "xgb": 0.30, "rf": 0.20, "lr": 0.10}
+        shrinkage_factor=0.35,
+        correction_factors={"H": 1.05, "RBI": 1.05, "HR": 1.10, "TB": 1.03,
+                           "K": 0.97, "ER": 0.95, "IP": 1.02},
+        ensemble_weights={"tc": 0.35, "xgb": 0.35, "rf": 0.20, "lr": 0.10},
+        signal_moderate=0.06, signal_strong=0.12,
     ),
     "NHL": SportConfig(
-        min_edge=0.2, use_pct=False, max_edge=5.0, min_market_line=0.5,
+        min_edge=0.5, use_pct=False, max_edge=15.0, min_market_line=0.5,
         shrinkage_factor=0.30,
-        correction_factors={"goals": 1.05, "assists": 1.03, "shots": 1.02, "saves": 1.02},
-        ensemble_weights={"tc": 0.40, "xgb": 0.30, "rf": 0.20, "lr": 0.10}
-    ),
-    "WC": SportConfig(
-        min_edge=0.10, use_pct=True, max_edge=0.50, min_market_line=0.5,
-        shrinkage_factor=0.35,
-        correction_factors={"goals": 1.08, "assists": 1.05, "shots": 1.03, "sot": 1.02, "fouls": 1.02, "yellow_cards": 1.02, "saves": 1.02, "passes": 1.02},
-        ensemble_weights={"tc": 0.35, "xgb": 0.35, "rf": 0.20, "lr": 0.10}
-    ),
-    # Alias: WORLD_CUP → same config as WC
-    "WORLD_CUP": SportConfig(
-        min_edge=0.10, use_pct=True, max_edge=0.50, min_market_line=0.5,
-        shrinkage_factor=0.35,
-        correction_factors={"goals": 1.08, "assists": 1.05, "shots": 1.03, "sot": 1.02, "fouls": 1.02, "yellow_cards": 1.02, "saves": 1.02, "passes": 1.02},
-        ensemble_weights={"tc": 0.35, "xgb": 0.35, "rf": 0.20, "lr": 0.10}
+        correction_factors={"SOG": 1.03, "G": 1.10, "A": 1.05},
+        ensemble_weights={"tc": 0.40, "xgb": 0.30, "rf": 0.20, "lr": 0.10},
+        signal_moderate=0.06, signal_strong=0.12,
     ),
 }
 
@@ -173,7 +163,6 @@ def hybrid_projection(tc_proj: float, sport: str, stat: str, model_projs: Option
 # ============= MOCK LINE GENERATION =============
 def get_mock_market_line(projection: float, sport: str, stat: str = "default") -> float:
     factors = {
-        "WC": {"goals": 0.92, "assists": 0.95, "default": 0.90},
         "MLB": {"default": 0.89},
         "WNBA": {"default": 0.91},
         "NBA": {"default": 0.90},
@@ -263,7 +252,7 @@ def backtest_hybrid(
         for _, row in picks_df.iterrows():
             proj = float(row.get("projection", 0))
             line = row.get("market_line", None)
-            sport = row.get("sport", "WC")
+            sport = row.get("sport", "WNBA")
             stat = row.get("stat", "default")
             model_projs = row.get("model_projs", {}) if isinstance(row.get("model_projs", None), dict) else {}
 

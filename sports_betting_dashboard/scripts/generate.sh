@@ -10,8 +10,6 @@ echo "→ WNBA..."
 python3 "$WORKSPACE/Projects/daily_picks.py" --sport wnba
 echo "→ MLB..."
 python3 "$WORKSPACE/Projects/daily_picks.py" --sport mlb
-echo "→ World Cup..."
-python3 "$WORKSPACE/Projects/daily_picks.py" --sport wc
 
 PICKS_CSV="$WORKSPACE/Daily_Log/$TODAY/picks.csv"
 if [ -f "$PICKS_CSV" ]; then

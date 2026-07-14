@@ -2,6 +2,12 @@
 Domain entities and registry for TC Sports App.
 """
 
+import sys
+from pathlib import Path
+_PROJECTS = Path("/home/workspace/Projects")
+if str(_PROJECTS) not in sys.path:
+    sys.path.insert(0, str(_PROJECTS))
+
 from enum import Enum
 from dataclasses import dataclass, field
 from typing import Callable, Optional, Dict, Any
@@ -44,6 +50,7 @@ class Registry:
             return
         self._initialized = True
         self._registry: Dict[str, SportConfig] = {}
+        self._predictor = None
         self._register_all()
 
     def _register_all(self):
@@ -111,6 +118,21 @@ class Registry:
 
     def list_enabled(self) -> Dict[str, SportConfig]:
         return {k: v for k, v in self._registry.items() if v.enabled}
+
+    def get_predictor(self):
+        """Get or create hybrid WNBA predictor."""
+        if self._predictor is not None:
+            return self._predictor
+        try:
+            from src.predictors import HybridWNBAPropPredictor
+            class _MockEngine:
+                def predict(self, player, features, target="pts"):
+                    return 15.0
+            self._predictor = HybridWNBAPropPredictor(tc_engine=_MockEngine())
+        except Exception as e:
+            print(f"Predictor init failed: {e}")
+            return None
+        return self._predictor
 
 
 REGISTRY = Registry()

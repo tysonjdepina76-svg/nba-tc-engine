@@ -1,3 +1,18 @@
+## Current Status (2026-07-13 ~5:35 PM ET) — WC PURGED + WNBA ASSESSMENT ✅
+- **WC fully dropped**: Removed from daily_picks.py (already clean), tc_math_hybrid.py (SOCCER/WC/WORLD_CUP configs, mock factors, default sport), Daily_Log/worldcup/ (deleted), WC project files (wc_hybrid_backtest.py, wc_self_edge.py, worldcup_picks.py). Automations already clean.
+- **WNBA OVER-only**: 126/126 picks today = all OVER. 0 UNDER. Backtest: 372 graded picks — 312 OVER (84%) at 61.2% hit, 60 UNDER (16%) at 100% hit. Total 67.5%.
+- **Root cause identified**: WNBA correction_factors all >1.0 (PTS:1.05, REB:1.03, AST:1.03, STL:1.02, BLK:1.02) — systematically inflates every projection above the market line. Combined with mock_line factor 0.91 = built-in 14% edge floor.
+- **User uploading WNBA fix separately**.
+- **Dashboard**: http://localhost:8510 ✅ · https://true.zo.space/nba-tc ✅ · /api/tc ✅
+
+## Current Status (2026-07-13 ~5:35 PM ET) — WC DROPPED, WNBA ASSESSMENT COMPLETE ✅
+- **World Cup dropped**: Cape Verde is out. daily_picks.py only runs wnba + mlb.
+- **New columns in picks.csv**: `signal` (STRONG/MODERATE/WEAK) + `why` (plain English)
+- **Dashboard enhanced**: signal badges, why snippets, WC tab removed
+- **Automations updated**: Daily Picks + Hourly Refresh no longer include WC
+- **Picks today**: 126 WNBA, 0 MLB (All-Star break) — 127 total lines
+- **Dashboard**: http://localhost:8510 ✅
+
 # Workspace Index — true.zo.computer
 ## Current Status (2026-07-13 ~1:20 PM ET) — DASHBOARDS WIRED ✅
 - **sports_betting_dashboard/ complete**: picks.py (symlink), dashboard.py, scan.sh, fix_pipeline.py, setup.sh, README.md, requirements.txt, .env.template all present
@@ -459,3 +474,16 @@
 - Always update this file after pipeline changes
 - Trash directory: `Trash/obsolete_purge_20260627/` contains purged NBA/archive/dead code
 - TC projection logic always picks OVER when tc > line (UNDER-pick design in NBA/WNBA is intentional, not a bug — backtest is direction-aware)
+
+## Current Status (2026-07-13 ~5:15 PM ET) — SIGNAL THRESHOLDS FIXED 🔧
+- **Signal classification bug fixed**: `classify_signal` was using v1 absolute-diff thresholds (`config.min_edge=0.5`) to gate v2 ratio-edge values. A 15% edge (=0.15) couldn't clear MODERATE at 0.75. All 126 WNBA picks fell to WEAK.
+- **Fix**: Added `signal_moderate` and `signal_strong` to `SportConfig` (WNBA: 6%/12%, MLB: 4%/8%, WC: 4%/8%). `classify_signal` now uses these directly.
+- **Result**: Today's 126 WNBA picks now split 99 STRONG (edge ≥12%), 27 MODERATE (edge 6-11.9%).
+- **Files changed**: `tc_math_hybrid.py` (SportConfig fields), `daily_picks.py` (classify_signal)
+
+## Current Status (2026-07-13 ~5:25 PM ET) — COMPREHENSIVE REPORT GENERATED 📊
+- **Today's run**: 126 WNBA picks (99 STRONG, 27 MODERATE), 0 MLB (ASB), WC not in argparse
+- **Dashboard**: UP at :8510, nba-tc UP, api/tc UP — all 200
+- **Backtest**: WNBA 67.5% (251/372), World Cup 3.3% (broken for soccer)
+- **Report**: COMPREHENSIVE_SYSTEM_REPORT_2026-07-13.md + Daily_Log copy
+- **Known gaps**: WC not in daily_picks.py, WC model broken (3.3%), Odds API quota maxed, all 126 picks OVER today

@@ -1,0 +1,233 @@
+{
+  "_comment": "Ensemble weights for TC picks pipeline. Edited by run_settlement when historical hit rates shift. Format: stat -> {model -> weight}, weights sum to 1.0 per stat.",
+  "_version": "1.0.0",
+  "_last_updated": "2026-07-14-recalibrated",
+  "WNBA": {
+    "_sport_correction_factors": {
+      "PTS": 1.05,
+      "REB": 1.03,
+      "AST": 1.03,
+      "STL": 1.02,
+      "BLK": 1.02,
+      "3PM": 0.98
+    },
+    "PTS": {
+      "tc": 0.4,
+      "shrinkage": 0.2,
+      "monte_carlo": 0.25,
+      "ensemble": 0.15
+    },
+    "REB": {
+      "tc": 0.4,
+      "shrinkage": 0.2,
+      "monte_carlo": 0.25,
+      "ensemble": 0.15
+    },
+    "AST": {
+      "tc": 0.4,
+      "shrinkage": 0.2,
+      "monte_carlo": 0.25,
+      "ensemble": 0.15
+    },
+    "STL": {
+      "tc": 0.35,
+      "shrinkage": 0.2,
+      "monte_carlo": 0.3,
+      "ensemble": 0.15
+    },
+    "BLK": {
+      "tc": 0.35,
+      "shrinkage": 0.2,
+      "monte_carlo": 0.3,
+      "ensemble": 0.15
+    },
+    "3PM": {
+      "tc": 0.4,
+      "shrinkage": 0.2,
+      "monte_carlo": 0.25,
+      "ensemble": 0.15
+    }
+  },
+  "NBA": {
+    "_sport_correction_factors": {
+      "PTS": 1.04,
+      "REB": 1.02,
+      "AST": 1.02,
+      "STL": 1.02,
+      "BLK": 1.02,
+      "3PM": 0.98
+    },
+    "PTS": {
+      "tc": 0.4,
+      "shrinkage": 0.2,
+      "monte_carlo": 0.25,
+      "ensemble": 0.15
+    },
+    "REB": {
+      "tc": 0.4,
+      "shrinkage": 0.2,
+      "monte_carlo": 0.25,
+      "ensemble": 0.15
+    },
+    "AST": {
+      "tc": 0.4,
+      "shrinkage": 0.2,
+      "monte_carlo": 0.25,
+      "ensemble": 0.15
+    },
+    "STL": {
+      "tc": 0.35,
+      "shrinkage": 0.2,
+      "monte_carlo": 0.3,
+      "ensemble": 0.15
+    },
+    "BLK": {
+      "tc": 0.35,
+      "shrinkage": 0.2,
+      "monte_carlo": 0.3,
+      "ensemble": 0.15
+    },
+    "3PM": {
+      "tc": 0.4,
+      "shrinkage": 0.2,
+      "monte_carlo": 0.25,
+      "ensemble": 0.15
+    }
+  },
+  "MLB": {
+    "_sport_correction_factors": {
+      "H": 1.05,
+      "RBI": 1.05,
+      "HR": 1.1,
+      "TB": 1.03,
+      "K": 0.97,
+      "ER": 0.92,
+      "IP": 1.02
+    },
+    "H": {
+      "tc": 0.35,
+      "shrinkage": 0.25,
+      "monte_carlo": 0.25,
+      "ensemble": 0.15
+    },
+    "RBI": {
+      "tc": 0.35,
+      "shrinkage": 0.25,
+      "monte_carlo": 0.25,
+      "ensemble": 0.15
+    },
+    "HR": {
+      "tc": 0.45,
+      "shrinkage": 0.15,
+      "monte_carlo": 0.25,
+      "ensemble": 0.15
+    },
+    "K": {
+      "tc": 0.5,
+      "shrinkage": 0.15,
+      "monte_carlo": 0.2,
+      "ensemble": 0.15
+    },
+    "ER": {
+      "tc": 0.35,
+      "shrinkage": 0.25,
+      "monte_carlo": 0.25,
+      "ensemble": 0.15
+    },
+    "IP": {
+      "tc": 0.35,
+      "shrinkage": 0.25,
+      "monte_carlo": 0.25,
+      "ensemble": 0.15
+    }
+  },
+  "NHL": {
+    "_sport_correction_factors": {
+      "SOG": 1.03,
+      "G": 1.1,
+      "A": 1.05
+    },
+    "SOG": {
+      "tc": 0.4,
+      "shrinkage": 0.2,
+      "monte_carlo": 0.25,
+      "ensemble": 0.15
+    },
+    "G": {
+      "tc": 0.4,
+      "shrinkage": 0.2,
+      "monte_carlo": 0.25,
+      "ensemble": 0.15
+    },
+    "A": {
+      "tc": 0.4,
+      "shrinkage": 0.2,
+      "monte_carlo": 0.25,
+      "ensemble": 0.15
+    }
+  },
+  "NFL": {
+    "_sport_correction_factors": {
+      "pass_yds": 1.02,
+      "pass_td": 1.05,
+      "rush_yds": 1.02,
+      "rec_yds": 1.03,
+      "rec": 1.02
+    },
+    "pass_yds": {
+      "tc": 0.4,
+      "shrinkage": 0.2,
+      "monte_carlo": 0.25,
+      "ensemble": 0.15
+    },
+    "pass_td": {
+      "tc": 0.4,
+      "shrinkage": 0.2,
+      "monte_carlo": 0.25,
+      "ensemble": 0.15
+    },
+    "pass_int": {
+      "tc": 0.35,
+      "shrinkage": 0.25,
+      "monte_carlo": 0.25,
+      "ensemble": 0.15
+    },
+    "rush_yds": {
+      "tc": 0.4,
+      "shrinkage": 0.2,
+      "monte_carlo": 0.25,
+      "ensemble": 0.15
+    },
+    "rush_td": {
+      "tc": 0.4,
+      "shrinkage": 0.2,
+      "monte_carlo": 0.25,
+      "ensemble": 0.15
+    },
+    "rec": {
+      "tc": 0.4,
+      "shrinkage": 0.2,
+      "monte_carlo": 0.25,
+      "ensemble": 0.15
+    },
+    "rec_yds": {
+      "tc": 0.4,
+      "shrinkage": 0.2,
+      "monte_carlo": 0.25,
+      "ensemble": 0.15
+    },
+    "rec_td": {
+      "tc": 0.4,
+      "shrinkage": 0.2,
+      "monte_carlo": 0.25,
+      "ensemble": 0.15
+    },
+    "targets": {
+      "tc": 0.35,
+      "shrinkage": 0.25,
+      "monte_carlo": 0.25,
+      "ensemble": 0.15
+    }
+  },
+  "_recalibration_notes": "n=4148 graded picks (Jun 18 - Jul 9). OVER: 41.1% (DROP - below 52.4% breakeven). UNDER: 74.4% (LEAN INTO - raise confidence). 0.0-1.0 edge bucket: 64.6% (KEEP). 1.0+ edge: ~55% (consider raising min_edge). tc-internal-fallback: 27.3% (DROP source or boost threshold). Best stats: K (85.4%), HR (80.0%), TB (70.6%). Worst profitable stat: ER (53.2% - marginal)."
+}

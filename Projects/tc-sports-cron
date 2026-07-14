@@ -1,0 +1,15 @@
+# /home/workspace/Projects/tc-sports-cron
+# TC Sports App Cron Jobs
+# Install: crontab /home/workspace/Projects/tc-sports-cron
+
+# Staggered hourly picks
+13,26,39,52 * * * * cd /home/workspace/Projects && bash scripts/run_with_lock.sh python3 daily_picks.py --sport all >> logs/cron.log 2>&1
+
+# Daily maintenance at 3:17 AM
+17 3 * * * cd /home/workspace/Projects && bash scripts/maintenance.sh >> logs/cron.log 2>&1
+
+# Health check every 6 hours
+17 0,6,12,18 * * * cd /home/workspace/Projects && python3 runtime_health_check.py >> logs/health.log 2>&1
+
+# Train hybrid predictor weekly on Sunday at 9:17 AM
+17 9 * * 0 cd /home/workspace/Projects && bash scripts/train_hybrid.sh >> logs/train.log 2>&1

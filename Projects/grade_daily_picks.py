@@ -40,7 +40,7 @@ TEAM_ABBREV = {
         "Washington Mystics": "WSH", "Mystics": "WSH",
         "Dallas Wings": "DAL", "Wings": "DAL",
         "Los Angeles Sparks": "LA", "Sparks": "LA",
-        "Golden State Valkyries": "GSV", "Valkyries": "GSV",
+        "Golden State Valkyries": "GSV", "Valkyries": "GSV", "Golden State": "GSV",
         "Toronto Tempo": "TOR", "Tempo": "TOR",
         "Portland Fire": "POR", "Fire": "POR",
     },
@@ -126,11 +126,12 @@ def load_boxscores():
                         ab = a
                         break
                 abbrevs.append(ab or t)
-            key = (sport, "@".join(abbrevs))
-            idx[key] = bs
-            idx[(sport, f"{abbrevs[1]}@{abbrevs[0]}")] = bs
+            for sport_k in [sport, sport.upper(), sport.lower()]:
+                for ab_pair in [abbrevs, abbrevs[::-1]]:
+                    idx[(sport_k, "@".join(ab_pair))] = bs
             if ev:
                 idx[(sport, f"ev:{ev}")] = bs
+                idx[(sport.upper(), f"ev:{ev}")] = bs
     return idx
 
 
@@ -271,7 +272,7 @@ def grade_date(date_str, box_idx):
             continue
         league = p.get("league", "")
         matchup = p.get("matchup", "")
-        bs = box_idx.get((league, matchup))
+        bs = box_idx.get((league, matchup)) or box_idx.get((league.upper(), matchup)) or box_idx.get((league.lower(), matchup))
         if not bs:
             pending += 1
             graded.append(p)

@@ -14,8 +14,6 @@ if [ "$MODE" != "--quick" ]; then
     cd "$WORKSPACE" && python3 Projects/daily_picks.py --sport wnba
     echo "→ MLB..."
     cd "$WORKSPACE" && python3 Projects/daily_picks.py --sport mlb
-    echo "→ World Cup..."
-    cd "$WORKSPACE" && python3 Projects/daily_picks.py --sport wc
 fi
 
 PICKS_CSV="$WORKSPACE/Daily_Log/$TODAY/picks.csv"

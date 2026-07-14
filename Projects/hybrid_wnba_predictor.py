@@ -146,11 +146,61 @@ def run(target_date: Optional[str] = None) -> Dict:
     # Placeholder roster (in real run, load from ESPN)
     roster = {"Caitlin Clark": [], "Aja Wilson": [], "Breanna Stewart": []}
     rows = project_roster(roster, target_date)
+    if rows:
+        # attach lines from new uncapped sources (priority: BBRef > FBref > ESPN v2 > DK)
+        source_used = None
+        flat_lines = {}
+        try:
+            from src.scrapers.basketball_reference import fetch_basketball_reference_lines
+            br_map = fetch_basketball_reference_lines(target_date, league="wnba")
+            if br_map:
+                for player, stats in br_map.items():
+                    for stat, line in stats.items():
+                        if line is not None: flat_lines[(player, stat)] = float(line)
+                source_used = "Basketball-Reference"
+                log.info(f"Lines attached from Basketball-Reference: {len(flat_lines)} props (UNCAPPED)")
+        except Exception as e:
+            log.warning(f"BBRef line fetch skipped: {e}")
+        if not flat_lines:
+            try:
+                from src.adapters.espn_odds_fetcher import fetch_espn_odds_cached
+                espn_map = fetch_espn_odds_cached("wnba", target_date)
+                if espn_map:
+                    if isinstance(espn_map, dict):
+                        for player, stats in espn_map.items():
+                            if isinstance(stats, dict):
+                                for stat, line in stats.items():
+                                    if line is not None: flat_lines[(player, stat)] = float(line)
+                    source_used = "ESPN v2"; log.info(f"ESPN v2 attached {len(flat_lines)} props")
+                    log.info(f"Lines attached from ESPN v2: {len(flat_lines)} props (UNCAPPED)")
+            except Exception as e:
+                log.warning(f"ESPN v2 line fetch skipped: {e}")
+        if flat_lines:
+            for r in rows:
+                r["source"] = source_used
+            rows = attach_lines(rows, flat_lines)
+            log.info(f"Lines attached from {source_used}: {len(flat_lines)} props")
+        else:
+            try:
+                from src.adapters.wnba_data_fetcher import fetch_wnba_lines
+                line_map = fetch_wnba_lines(target_date)
+                if line_map:
+                    for player, stats in (line_map or {}).items():
+                        for stat, line in stats.items():
+                            if line is not None: flat_lines[(player, stat)] = float(line)
+                    source_used = "ESPN (legacy)"
+                    for r in rows:
+                        r["source"] = source_used
+                    rows = attach_lines(rows, flat_lines)
+                    log.info(f"Lines attached from ESPN (legacy): {len(flat_lines)} props")
+            except Exception as e:
+                log.warning(f"ESPN legacy line fetch skipped: {e}")
     save_projections(rows)
     bt = backtest(target_date)
     return {
         "date": target_date,
         "rows": len(rows),
+        "lines_attached": sum(1 for r in rows if r.get("line") is not None),
         "backtest_hit_rates": bt,
         "source": rows[0]["source"] if rows else "MOCK",
     }

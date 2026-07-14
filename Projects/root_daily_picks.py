@@ -1,28 +1,13 @@
 #!/usr/bin/env python3
+"""root_daily_picks.py — Convenience wrapper to run daily_picks from /.
+Usage: python3 root_daily_picks.py [sport]
 """
-Daily picks runner for TC Sports App.
-"""
-
+import os
 import sys
-from pathlib import Path
+import subprocess
 
-PROJECT_ROOT = Path(__file__).parent
-sys.path.insert(0, str(PROJECT_ROOT))
-
-from pipeline.daily_picks import generate_daily_picks
-from sources.utils.logging import setup_logging
-
-logger = setup_logging()
-
-def main():
-    sports = ["mlb", "wnba", "wc", "nfl", "nhl", "ncaa"]
-    for sport in sports:
-        try:
-            logger.info(f"Generating picks for {sport}...")
-            result = generate_daily_picks(sport)
-            logger.info(f"{sport}: {result.get('count', 0)} picks")
-        except Exception as e:
-            logger.error(f"{sport} failed: {e}")
-
-if __name__ == "__main__":
-    main()
+os.chdir("/home/workspace/Projects")
+sport = sys.argv[1] if len(sys.argv) > 1 else "all"
+cmd = ["python3", "daily_picks.py", "--sport", sport]
+print(f"$ {' '.join(cmd)}")
+sys.exit(subprocess.call(cmd))

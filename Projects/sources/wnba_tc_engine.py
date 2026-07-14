@@ -54,3 +54,52 @@ def project_player(name: str, opponent: str = "LV") -> Optional[Dict]:
     if not base:
         return None
     return _project_one({"name": name, **base}, opponent)
+
+# ============= PICK GENERATION =============
+
+MARKET_LINES = {
+    "A'ja Wilson":      {"pts": 27.5, "reb": 11.5, "ast": 3.5, "stl": 1.5, "blk": 1.5, "fg3": 0.5},
+    "Caitlin Clark":    {"pts": 19.5, "reb": 5.5,  "ast": 8.5, "stl": 1.0, "blk": 0.5, "fg3": 3.0},
+    "Breanna Stewart":  {"pts": 21.0, "reb": 7.5,  "ast": 3.5, "stl": 1.0, "blk": 1.0, "fg3": 1.5},
+    "Sabrina Ionescu":  {"pts": 18.5, "reb": 4.5,  "ast": 5.5, "stl": 1.0, "blk": 0.5, "fg3": 2.5},
+    "Alyssa Thompson":  {"pts": 14.0, "reb": 3.5,  "ast": 2.0, "stl": 0.5, "blk": 0.5, "fg3": 1.5},
+}
+
+MIN_EDGE = 2.0
+
+
+def generate_wnba_picks(matchup=None):
+    """Project WNBA game, then grade every (player, stat) vs market line."""
+    game = project_game(matchup)
+    picks = []
+    for player in game["players"]:
+        name = player["name"]
+        lines = MARKET_LINES.get(name, {})
+        for stat, proj in player.items():
+            if stat in ("name", "team", "count", "source", "timestamp", "matchup", "opponent"):
+                continue
+            line = lines.get(stat)
+            if line is None or proj is None:
+                continue
+            edge = proj - line
+            if abs(edge) < MIN_EDGE:
+                continue
+            direction = "OVER" if edge > 0 else "UNDER"
+            edge_pct = round((edge / line) * 100.0, 1) if line else 0.0
+            confidence = "HIGH" if abs(edge_pct) >= 8 else "MEDIUM" if abs(edge_pct) >= 4 else "LOW"
+            picks.append({
+                "sport": "wnba", "player": name, "team": player.get("team"),
+                "stat": stat, "projection": proj, "market_line": line,
+                "direction": direction, "edge": round(edge, 2), "edge_pct": edge_pct,
+                "confidence": confidence, "opponent": game.get("opponent"),
+            })
+    picks.sort(key=lambda p: abs(p["edge_pct"]), reverse=True)
+    logger.info("wnba picks: %d qualified (min_edge=%.1f%%)", len(picks), MIN_EDGE)
+    return picks
+
+
+if __name__ == "__main__":
+    import json, sys
+    matchup = sys.argv[1] if len(sys.argv) > 1 else None
+    out = generate_wnba_picks(matchup)
+    print(json.dumps(out, indent=2, default=str))

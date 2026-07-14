@@ -1,6 +1,5 @@
-"""TC Sports App adapters package."""
-from src.adapters.cache_adapter import CacheAdapter
-from src.adapters.odds_api_adapter import OddsAPIAdapter
-from src.adapters.fantasy_combo_generator import FantasyComboGenerator
-
-__all__ = ["CacheAdapter", "OddsAPIAdapter", "FantasyComboGenerator"]
+"""adapters — Odds API, ESPN v2, MLB, WNBA, NFL data fetchers."""
+from .odds_api_adapter import *
+from .mlb_book_fetcher import *
+from .wnba_data_fetcher import *
+from .espn_odds_fetcher import *
