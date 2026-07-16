@@ -1,209 +1,177 @@
-"""TC Sports App — Main Streamlit Dashboard."""
-
+#!/usr/bin/env python3
+"""TC Sports Dashboard — Investor-grade picks viewer with signal + why columns."""
 import streamlit as st
 import pandas as pd
+import plotly.graph_objects as go
+import os, sys, json
 from datetime import datetime
-import sys
-import os
+from pathlib import Path
 
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+WORKSPACE = Path("/home/workspace")
+CSV_PATH = WORKSPACE / "Daily_Log" / datetime.now().strftime("%Y-%m-%d") / "picks.csv"
+FALLBACK_CSV = WORKSPACE / "sports_betting_dashboard" / "data" / "picks" / "today_picks.csv"
+st.set_page_config(page_title="TC Sports App", page_icon="🏆", layout="wide")
 
-from src.domain.entities import SportConfig, REGISTRY
-from src.adapters.odds_api_adapter import OddsAPIAdapter
-from src.adapters.cache_adapter import CacheAdapter
-from src.adapters.fantasy_combo_generator import FantasyComboGenerator
+SIGNAL_COLORS = {"STRONG": "#3fb950", "MODERATE": "#d29922", "WEAK": "#8b949e", "": "#484f58"}
+SPORT_ICONS = {"WNBA": "🏀", "MLB": "⚾", "WC": "⚽", "WNBA_INTL": "🏀", "MLB_INTL": "⚾"}
+LEAGUE_LABEL = {"WNBA": "WNBA", "MLB": "MLB", "WC": "World Cup", "WNBA_INTL": "WNBA", "MLB_INTL": "MLB"}
 
-st.set_page_config(page_title="TC Sports App", page_icon="🏆", layout="wide", initial_sidebar_state="expanded")
+@st.cache_data(ttl=60)
+def load_picks():
+    paths = [CSV_PATH, FALLBACK_CSV]
+    for p in paths:
+        if os.path.exists(str(p)):
+            try:
+                df = pd.read_csv(p)
+                if len(df) > 0:
+                    return df
+            except Exception:
+                continue
+    return pd.DataFrame()
 
-cache = CacheAdapter()
-odds_api = OddsAPIAdapter(cache=cache)
+def load_last_run():
+    p = WORKSPACE / "Daily_Log" / "last_run.json"
+    if p.exists():
+        with open(p) as f:
+            return json.load(f)
+    return {}
 
+def load_graded():
+    p = WORKSPACE / "Projects" / "all_graded_picks.csv"
+    if p.exists():
+        return pd.read_csv(p)
+    return pd.DataFrame()
 
-def color_edge(val, good=0.06, bad=-0.04, inverse=False):
-    if val is None or val == 0:
-        return ""
-    if inverse:
-        if val < good:
-            return "background-color: #90EE90"
-        if val < 0:
-            return "background-color: #F5F5A0"
-        if val < bad:
-            return "background-color: #FFCCCB"
-        return "background-color: #FF6B6B"
+@st.cache_data(ttl=3600)
+def load_investor_metrics():
+    g = load_graded()
+    if g.empty:
+        return {}
+    g.columns = [c.strip().lower() for c in g.columns]
+    result_col = next((c for c in g.columns if c in ("result", "hit", "win")), None)
+    if not result_col:
+        return {}
+    g["_hit"] = g[result_col].astype(str).str.upper().isin(["WIN", "TRUE", "HIT", "1", "YES"])
+    total = len(g)
+    wins = g["_hit"].sum()
+    wr = round(wins / total * 100, 1) if total else 0
+    if "edge" in g.columns:
+        g["_edge"] = pd.to_numeric(g["edge"], errors="coerce").abs()
+        avg_edge = round(g["_edge"].mean(), 1)
+    elif "edge_pct" in g.columns:
+        g["_edge"] = pd.to_numeric(g["edge_pct"], errors="coerce").abs()
+        avg_edge = round(g["_edge"].mean(), 1)
     else:
-        if val > good:
-            return "background-color: #90EE90"
-        if val > 0:
-            return "background-color: #F5F5A0"
-        if val > bad:
-            return "background-color: #FFDAB9"
-        return "background-color: #FF6B6B"
+        avg_edge = 0
+    roi = round((wr / 100) * avg_edge - ((100 - wr) / 100), 2) if total else 0
+    return {"total_bets": total, "win_rate": wr, "avg_edge": avg_edge, "est_roi": roi}
 
+def render_metric_row(m1, m2, m3, m4):
+    c1, c2, c3, c4 = st.columns(4)
+    c1.metric("Total Graded", m1)
+    c2.metric("Win Rate", f"{m2}%")
+    c3.metric("Avg Edge", f"{m3}%")
+    c4.metric("Est. ROI", f"{m4} Units", delta_color="normal")
 
-def render_player_table(df: pd.DataFrame, sport: str, title: str = "Players"):
+def render_picks_table(df, sport_filter=None):
+    if sport_filter and sport_filter != "All":
+        df = df[df["league"].str.upper() == sport_filter.upper()]
     if df.empty:
-        st.info(f"No {title.lower()} available.")
-        return
-    config = REGISTRY.get(sport)
-    if not config:
-        st.error(f"Unknown sport: {sport}")
-        return
-    schema = config.schema or {}
-    stat_keys = schema.get("stat_labels", [])
-    aliases = schema.get("aliases", {})
-    display_cols = ["name", "team"] + [k for k in stat_keys if k in df.columns]
-    df_display = df[display_cols].copy()
-    if "edge" in df.columns or "Edge" in df.columns:
-        edge_col = "edge" if "edge" in df.columns else "Edge"
-        df_display["Edge"] = df[edge_col]
-    df_display.rename(columns=aliases, inplace=True)
-    if "Edge" in df_display.columns:
-        styled = df_display.style.applymap(lambda x: color_edge(x, good=0.06, bad=-0.04), subset=["Edge"])
-    else:
-        styled = df_display
-    st.subheader(title)
-    st.dataframe(styled, use_container_width=True)
+        st.info(f"No picks for {sport_filter or 'any sport'}.")
+        return df
 
+    st.caption(f"**{len(df)} picks** — last updated {datetime.now().strftime('%H:%M:%S ET')}")
 
-def render_lineup(lineup: list):
-    if not lineup:
-        return
-    st.write("**Starting Lineup:**")
-    df = pd.DataFrame(lineup)
-    if "batting_order" in df.columns:
-        df = df.sort_values("batting_order")
-    cols = ["batting_order", "name", "position"]
-    display_cols = [c for c in cols if c in df.columns]
-    st.dataframe(df[display_cols], use_container_width=True)
+    style_cols = {}
+    idx = df.index
+    for col in ["signal", "league", "direction"]:
+        if col in df.columns:
+            style_cols[col] = idx
 
+    styled = df.style
+    if "signal" in df.columns:
+        def _signal_cmap(v):
+            return f"background-color: {SIGNAL_COLORS.get(str(v).upper().strip(), '#484f58')}; color: #fff; font-weight: 600"
+        styled = styled.map(_signal_cmap, subset=["signal"])
+    if "direction" in df.columns:
+        def _dir_cmap(v):
+            c = "#3fb950" if str(v).upper() == "OVER" else "#f85149" if str(v).upper() == "UNDER" else "#484f58"
+            return f"background-color: {c}; color: #fff"
+        styled = styled.map(_dir_cmap, subset=["direction"])
+    if "edge" in df.columns:
+        def _edge_bar(v):
+            try:
+                ev = float(v)
+                if pd.isna(ev):
+                    return ""
+                bars = "█" * min(int(abs(ev) * 5), 20)
+                return f"{ev:+.1f}% {bars}"
+            except (ValueError, TypeError):
+                return str(v)
+        if "edge_display" not in df.columns:
+            df["edge_display"] = df["edge"].apply(_edge_bar)
 
-def render_game_header(game: dict):
-    col1, col2, col3 = st.columns([2, 1, 2])
-    with col1:
-        st.metric(game.get("away", "Away"), game.get("away_score", "-"))
-    with col2:
-        period = game.get("inning") or game.get("period") or game.get("minute", 0)
-        label = "Inning" if "inning" in game else "Period"
-        st.write(f"{label} {period}")
-    with col3:
-        st.metric(game.get("home", "Home"), game.get("home_score", "-"))
-    if game.get("away_pitcher"):
-        st.write(f"**Pitchers:** {game['away_pitcher']} (away) vs {game['home_pitcher']} (home)")
-
-
-def render_edge_distribution(df: pd.DataFrame):
-    if df.empty or "Edge" not in df.columns:
-        return
-    import plotly.express as px
-    fig = px.histogram(df, x="Edge", title="Edge Distribution", labels={"Edge": "Edge Value", "count": "Number of Players"}, color_discrete_sequence=["#00A3FF"], nbins=20)
-    fig.add_vline(x=0, line_dash="dash", line_color="red")
-    fig.update_layout(height=350)
-    st.plotly_chart(fig, use_container_width=True)
-
-
-def render_top_performers(df: pd.DataFrame, stat: str, n: int = 10):
-    if df.empty or stat not in df.columns:
-        return
-    import plotly.express as px
-    top = df.nlargest(n, stat)
-    fig = px.bar(top, x="name", y=stat, title=f"Top {n} by {stat.upper()}", labels={"name": "Player", stat: stat.upper()}, color_discrete_sequence=["#FF6B6B"])
-    fig.update_layout(height=350)
-    st.plotly_chart(fig, use_container_width=True)
-
-
-def render_mlb_live():
-    data = cache.get("mlb_live_summary")
-    if not data:
-        data = {
-            "source": "sample",
-            "games": [
-                {"away": "NY Yankees", "home": "Boston Red Sox", "away_score": 3, "home_score": 2, "inning": 7, "away_pitcher": "Cole", "home_pitcher": "Sale", "lineup": [{"batting_order": 1, "name": "Judge", "position": "RF"}, {"batting_order": 2, "name": "Soto", "position": "LF"}], "players": [{"name": "Judge", "team": "NYY", "avg": 0.312, "hr": 1, "rbi": 2}]}
-            ]
-        }
-    if not data.get("games"):
-        st.info("No live MLB games at the moment.")
-        return
-    for game in data["games"]:
-        with st.container():
-            render_game_header(game)
-            if game.get("lineup"):
-                render_lineup(game["lineup"])
-            if game.get("players"):
-                df = pd.DataFrame(game["players"])
-                render_player_table(df, "mlb", "Batting Stats")
-
+    st.dataframe(styled, use_container_width=True, height=600)
+    return df
 
 def main():
-    st.title("🏆 TC Sports App")
-    with st.sidebar:
-        st.header("Controls")
-        sport = st.selectbox("Select Sport", ["mlb", "wnba", "wc"], format_func=lambda x: REGISTRY.get(x, SportConfig(name=x)).display_name if x else x.upper())
-        view = st.radio("View", ["Projections", "Live", "Combos"])
-        st.divider()
-        st.caption(f"v2.0 • {datetime.now().strftime('%Y-%m-%d %H:%M')}")
-    config = REGISTRY.get(sport)
-    if not config or not config.enabled:
-        st.warning(f"{sport.upper()} is currently {config.error_msg or 'disabled' if config else 'unknown'}")
-        return
-    st.header(f"{config.display_name}")
-    with st.spinner(f"Loading {sport.upper()} data..."):
-        cache_key = f"{sport}_{view.lower()}"
-        data = cache.get(cache_key)
-        if not data:
-            if sport == "wnba":
-                data = {
-                    "players": [
-                        {"name": "A'ja Wilson", "team": "LV", "pts": 25.7, "reb": 11.2, "ast": 3.8, "fg_pct": 0.512, "fg3": 0.8, "stl": 1.6, "blk": 2.0, "edge": 1.2},
-                        {"name": "Aliyah Boston", "team": "IND", "pts": 17.0, "reb": 8.6, "ast": 2.4, "fg_pct": 0.498, "fg3": 0.4, "stl": 1.1, "blk": 1.2, "edge": 0.8},
-                        {"name": "Breanna Stewart", "team": "NY", "pts": 22.3, "reb": 9.2, "ast": 4.1, "fg_pct": 0.487, "fg3": 1.2, "stl": 1.8, "blk": 1.5, "edge": 1.5},
-                    ]
-                }
-            elif sport == "mlb":
-                data = {
-                    "players": [
-                        {"name": "Shohei Ohtani", "team": "LAD", "avg": 0.312, "hr": 38, "rbi": 95, "r": 85, "sb": 12, "ops": 1.024, "era": 2.85, "whip": 1.02, "so": 180},
-                        {"name": "Aaron Judge", "team": "NYY", "avg": 0.298, "hr": 42, "rbi": 100, "r": 90, "sb": 8, "ops": 0.986, "era": 0.0, "whip": 0.0, "so": 0},
-                    ]
-                }
-            elif sport == "wc":
-                data = {
-                    "players": [
-                        {"name": "Lionel Messi", "team": "ARG", "goals": 0.8, "assists": 0.4, "shots": 3.2, "shots_on_target": 1.8, "pass_pct": 85.0, "tackles": 1.2, "fouls": 0.8},
-                    ]
-                }
-            cache.set(cache_key, data, ttl_seconds=300)
-    if view == "Live":
-        if sport == "mlb":
-            render_mlb_live()
-        else:
-            st.info(f"Live view for {sport.upper()} coming soon.")
-    elif view == "Combos":
-        st.subheader("🎯 Combo Generator")
-        generator = FantasyComboGenerator()
-        combos = generator.generate_combos(sport, data.get("players", []))
-        if combos:
-            st.write(f"Generated {len(combos)} combos")
-            for combo in combos[:10]:
-                st.write(f"  • {combo}")
-        else:
-            st.info("No combos generated for this sport.")
+    st.title("🏆 TC Sports Dashboard")
+    st.caption(f"🔄 Live | {datetime.now().strftime('%H:%M:%S ET')} | Simulator Edition")
+
+    im = load_investor_metrics()
+    if im:
+        render_metric_row(im["total_bets"], im["win_rate"], im["avg_edge"], im["est_roi"])
     else:
-        players = data.get("players", [])
-        if not players:
-            st.info(f"No projections available for {sport.upper()}.")
-            return
-        df = pd.DataFrame(players)
-        render_player_table(df, sport, "Player Projections")
-        st.subheader("📊 Analysis")
-        col1, col2 = st.columns(2)
-        with col1:
-            render_edge_distribution(df)
-        with col2:
-            if "pts" in df.columns or "avg" in df.columns:
-                stat = "pts" if "pts" in df.columns else "avg"
-                render_top_performers(df, stat, 10)
-        csv_data = df.to_csv(index=False).encode('utf-8')
-        st.download_button(label="📥 Download CSV", data=csv_data, file_name=f"{sport}_{datetime.now().strftime('%Y%m%d')}.csv", mime="text/csv")
+        st.info("No graded picks yet — run `grade_picks.py` to populate investor metrics.")
+    st.divider()
+
+    df = load_picks()
+    if df.empty:
+        st.warning("No picks CSV found today. Run `daily_picks.py --sport wnba` to generate.")
+        return
+
+    leagues = sorted(df["league"].dropna().unique()) if "league" in df.columns else []
+    league_labels = ["All"] + [LEAGUE_LABEL.get(l, l) for l in leagues]
+    tabs = st.tabs(league_labels)
+
+    display_cols = []
+    for col in ["player", "team", "stat", "direction", "tc_projection", "market_line", "edge", "signal", "why", "reason", "league", "matchup", "game_time", "line_source", "alert_eligible"]:
+        if col in df.columns:
+            display_cols.append(col)
+
+    for i, tab in enumerate(tabs):
+        with tab:
+            if i == 0:
+                render_picks_table(df[display_cols])
+            else:
+                sport = leagues[i - 1]
+                render_picks_table(df[display_cols], sport_filter=sport)
+
+    st.divider()
+    st.subheader("📊 Edge Distribution")
+    if "edge" in df.columns:
+        edges = pd.to_numeric(df["edge"], errors="coerce").dropna()
+        if len(edges) > 0:
+            fig = go.Figure()
+            fig.add_trace(go.Histogram(x=edges, nbinsx=40, marker_color="#d29922", name="Edge %"))
+            fig.update_layout(height=300, xaxis_title="Edge %", yaxis_title="Count", margin=dict(l=0, r=0, t=0, b=0))
+            st.plotly_chart(fig, use_container_width=True)
+
+    st.subheader("📈 Signal Breakdown")
+    if "signal" in df.columns:
+        sig_counts = df["signal"].value_counts()
+        cols = st.columns(len(sig_counts))
+        for j, (sig, cnt) in enumerate(sig_counts.items()):
+            color = SIGNAL_COLORS.get(str(sig).upper(), "#484f58")
+            cols[j].metric(sig, cnt, delta_color="off")
+
+    st.divider()
+    lr = load_last_run()
+    if lr:
+        st.caption(f"Last pipeline run: {lr.get('timestamp', 'unknown')} | Sports: {lr.get('sports', [])} | Total picks: {lr.get('total_picks', 0)}")
+
+    csv_out = df.to_csv(index=False).encode("utf-8")
+    st.download_button("📥 Download Picks CSV", csv_out, f"tc_picks_{datetime.now().strftime('%Y%m%d')}.csv", "text/csv")
 
 
 if __name__ == "__main__":

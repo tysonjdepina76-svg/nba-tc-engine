@@ -1,0 +1,158 @@
+{
+  "_comment": "Complete WNBA 2026 team rosters with key players, positions, and injury status. Expansion: POR Portland Fire, TOR Toronto Tempo, GSV Golden State Valkyries.",
+  "season": 2026,
+  "ATL": {
+    "name": "Atlanta Dream",
+    "city": "Atlanta",
+    "conference": "Eastern",
+    "key_players": [
+      {"name": "Rhyne Howard",      "pos": "G", "status": "Active"},
+      {"name": "Allisha Gray",      "pos": "G", "status": "Active"},
+      {"name": "Naz Hillmon",       "pos": "F", "status": "Active"}
+    ]
+  },
+  "CHI": {
+    "name": "Chicago Sky",
+    "city": "Chicago",
+    "conference": "Eastern",
+    "key_players": [
+      {"name": "Angel Reese",       "pos": "F", "status": "Active"},
+      {"name": "Chennedy Carter",   "pos": "G", "status": "Active"},
+      {"name": "Kamilla Cardoso",   "pos": "C", "status": "Active"}
+    ]
+  },
+  "CONN": {
+    "name": "Connecticut Sun",
+    "city": "Uncasville",
+    "conference": "Eastern",
+    "key_players": [
+      {"name": "Alyssa Thomas",     "pos": "F", "status": "Active"},
+      {"name": "DeWanna Bonner",    "pos": "G", "status": "Active"},
+      {"name": "Brionna Jones",     "pos": "C", "status": "Active"}
+    ]
+  },
+  "DAL": {
+    "name": "Dallas Wings",
+    "city": "Arlington",
+    "conference": "Western",
+    "key_players": [
+      {"name": "Arike Ogunbowale",  "pos": "G", "status": "Active"},
+      {"name": "Satou Sabally",     "pos": "F", "status": "Active"},
+      {"name": "Teaira McCowan",    "pos": "C", "status": "Active"}
+    ]
+  },
+  "GSV": {
+    "name": "Golden State Valkyries",
+    "city": "San Francisco",
+    "conference": "Western",
+    "expansion": true,
+    "key_players": [
+      {"name": "Kate Martin",       "pos": "G", "status": "Active"},
+      {"name": "Carla Leite",       "pos": "G", "status": "Active"},
+      {"name": "Stephanie Talbot",  "pos": "F", "status": "Active"}
+    ]
+  },
+  "IND": {
+    "name": "Indiana Fever",
+    "city": "Indianapolis",
+    "conference": "Eastern",
+    "key_players": [
+      {"name": "Caitlin Clark",     "pos": "G", "status": "Active"},
+      {"name": "Kelsey Mitchell",   "pos": "G", "status": "Active"},
+      {"name": "Aliyah Boston",     "pos": "C", "status": "Active"}
+    ]
+  },
+  "LA": {
+    "name": "Los Angeles Sparks",
+    "city": "Los Angeles",
+    "conference": "Western",
+    "key_players": [
+      {"name": "Dearica Hamby",     "pos": "F", "status": "Active"},
+      {"name": "Cameron Brink",     "pos": "F", "status": "Active"},
+      {"name": "Rickea Jackson",    "pos": "F", "status": "Active"}
+    ]
+  },
+  "LV": {
+    "name": "Las Vegas Aces",
+    "city": "Las Vegas",
+    "conference": "Western",
+    "key_players": [
+      {"name": "A'ja Wilson",       "pos": "F", "status": "Active"},
+      {"name": "Kelsey Plum",       "pos": "G", "status": "Active"},
+      {"name": "Jackie Young",      "pos": "G", "status": "Active"}
+    ]
+  },
+  "MIN": {
+    "name": "Minnesota Lynx",
+    "city": "Minneapolis",
+    "conference": "Western",
+    "key_players": [
+      {"name": "Napheesa Collier",  "pos": "F", "status": "Out",     "injury_note": "Out for season"},
+      {"name": "Kayla McBride",     "pos": "G", "status": "Active"},
+      {"name": "Courtney Williams", "pos": "G", "status": "Active"}
+    ],
+    "injury_impact": "Collier out — minutes redistribution to McBride, Williams, +12% usage bump on remaining core."
+  },
+  "NY": {
+    "name": "New York Liberty",
+    "city": "Brooklyn",
+    "conference": "Eastern",
+    "key_players": [
+      {"name": "Sabrina Ionescu",   "pos": "G", "status": "Active"},
+      {"name": "Breanna Stewart",   "pos": "F", "status": "Active"},
+      {"name": "Jonquel Jones",     "pos": "C", "status": "Active"}
+    ]
+  },
+  "PHX": {
+    "name": "Phoenix Mercury",
+    "city": "Phoenix",
+    "conference": "Western",
+    "key_players": [
+      {"name": "Diana Taurasi",     "pos": "G", "status": "Active"},
+      {"name": "Brittney Griner",   "pos": "C", "status": "Active"},
+      {"name": "Kahleah Copper",    "pos": "G", "status": "Active"}
+    ]
+  },
+  "POR": {
+    "name": "Portland Fire",
+    "city": "Portland",
+    "conference": "Western",
+    "expansion": true,
+    "key_players": [
+      {"name": "Skylar Diggins",   "pos": "G", "status": "Active"},
+      {"name": "Ezi Magbegor",      "pos": "C", "status": "Active"},
+      {"name": "Lexie Hull",        "pos": "G", "status": "Active"}
+    ]
+  },
+  "SEA": {
+    "name": "Seattle Storm",
+    "city": "Seattle",
+    "conference": "Western",
+    "key_players": [
+      {"name": "Jewell Loyd",       "pos": "G", "status": "Active"},
+      {"name": "Nneka Ogwumike",    "pos": "F", "status": "Active"},
+      {"name": "Erica Wheeler",     "pos": "G", "status": "Active"}
+    ]
+  },
+  "TOR": {
+    "name": "Toronto Tempo",
+    "city": "Toronto",
+    "conference": "Eastern",
+    "expansion": true,
+    "key_players": [
+      {"name": "Kia Nurse",         "pos": "G", "status": "Active"},
+      {"name": "Bridget Carleton",  "pos": "G", "status": "Active"},
+      {"name": "Laeticia Amihere",  "pos": "F", "status": "Active"}
+    ]
+  },
+  "WAS": {
+    "name": "Washington Mystics",
+    "city": "Washington",
+    "conference": "Eastern",
+    "key_players": [
+      {"name": "Ariel Atkins",      "pos": "G", "status": "Active"},
+      {"name": "Shakira Austin",    "pos": "C", "status": "Active"},
+      {"name": "Stefanie Dolson",   "pos": "C", "status": "Active"}
+    ]
+  }
+}

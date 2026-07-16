@@ -11,6 +11,15 @@ import sqlite3
 import os
 
 app = FastAPI(title="TC Sports API", version="1.0.0")
+import sys, os as _os
+sys.path.insert(0, _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))))
+try:
+    from api.routes import accuracy, combos
+    app.include_router(accuracy.router, prefix="/api/v1")
+    app.include_router(combos.router, prefix="/api/v1")
+except ImportError:
+    pass
+
 
 app.add_middleware(
     CORSMiddleware,
@@ -211,3 +220,37 @@ def benchmark_comparison():
         "draftedge": {"mae": 4.0, "rmse": 5.3, "hit_rate": 0.55},
         "timestamp": datetime.now().isoformat()
     }
+
+# ==================== PICKS ENDPOINT ====================
+
+@app.get("/api/picks/top")
+def picks_top(sport: str = None, limit: int = 50):
+    picks_db = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "picks.db")
+    if not os.path.exists(picks_db):
+        return []
+    try:
+        conn = sqlite3.connect(picks_db)
+        conn.row_factory = sqlite3.Row
+        query = "SELECT player, team, stat, tc_projection as projection, edge, reason, league as sport, direction, market_line as line, signal FROM picks WHERE 1=1"
+        params = []
+        if sport:
+            query += " AND league = ?"
+            params.append(sport.upper())
+        query += " ORDER BY ABS(edge) DESC LIMIT ?"
+        params.append(limit)
+        cursor = conn.execute(query, params)
+        rows = [dict(r) for r in cursor.fetchall()]
+        conn.close()
+        return rows
+    except Exception as e:
+        return []
+
+@app.get("/api/v1/lines/{sport}")
+def get_lines(sport: str):
+    return {"sport": sport, "data": {"games": []}}
+
+
+if __name__ == "__main__":
+    import uvicorn
+
+    uvicorn.run(app, host="0.0.0.0", port=8000)
