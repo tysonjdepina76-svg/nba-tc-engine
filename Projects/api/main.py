@@ -58,7 +58,7 @@ def get_top_picks(limit: int = 20):
         conn = get_db_connection()
         c = conn.cursor()
         c.execute("""
-            SELECT player, sport, stat, projection, line, edge, direction, reason
+            SELECT player, league as sport, stat, tc_projection as projection, market_line as line, edge, direction, reason
             FROM picks
             ORDER BY edge DESC
             LIMIT ?
