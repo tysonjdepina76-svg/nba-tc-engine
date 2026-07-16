@@ -1,48 +1,21 @@
 {
-  "timestamp": "2026-07-13T11:15:42.996511-05:00",
+  "date": "2026-07-16",
   "sports": [
-    "WORLD_CUP"
+    "WNBA",
+    "MLB",
+    "WC"
   ],
-  "games_logged": 2,
-  "picks_logged": 0,
-  "completed_games_skipped": 0,
-  "errors": [],
-  "summaries": [
-    {
-      "date": "2026-07-13",
-      "sport": "WORLD_CUP",
-      "matchup": "Spain@France",
-      "away_team": "Spain",
-      "home_team": "France",
-      "tc_combined": null,
-      "tc_line": null,
-      "market_total": null,
-      "dk_total": null,
-      "edge": null,
-      "signal": "NO DK LINES",
-      "source": "",
-      "valid_prop_count": 0,
-      "roster_size": 0,
-      "pending_props_no_dk": 0,
-      "picks_with_dk": 0
-    },
-    {
-      "date": "2026-07-13",
-      "sport": "WORLD_CUP",
-      "matchup": "Argentina@England",
-      "away_team": "Argentina",
-      "home_team": "England",
-      "tc_combined": null,
-      "tc_line": null,
-      "market_total": null,
-      "dk_total": null,
-      "edge": null,
-      "signal": "NO DK LINES",
-      "source": "",
-      "valid_prop_count": 0,
-      "roster_size": 0,
-      "pending_props_no_dk": 0,
-      "picks_with_dk": 0
-    }
-  ]
+  "total_picks": 18,
+  "sport_picks": {
+    "WNBA": 10,
+    "MLB": 3,
+    "WC": 5
+  },
+  "files_written": [
+    "proj_WNBA_2026-07-16.json",
+    "proj_MLB_2026-07-16.json",
+    "proj_WC_2026-07-16.json",
+    "picks.csv"
+  ],
+  "timestamp": "2026-07-16T18:42:51.322205"
 }

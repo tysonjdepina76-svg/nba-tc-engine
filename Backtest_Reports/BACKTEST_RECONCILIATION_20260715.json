@@ -1,0 +1,1026 @@
+{
+  "generated": "2026-07-15",
+  "source_files": [
+    "Daily_Log/2026-06-13/graded_picks.csv",
+    "Daily_Log/2026-06-16/graded_picks.csv",
+    "Daily_Log/2026-06-17/graded_picks.csv",
+    "Daily_Log/2026-06-18/graded_picks.csv",
+    "Daily_Log/2026-06-19/graded_picks.csv",
+    "Daily_Log/2026-06-20/graded_picks.csv",
+    "Daily_Log/2026-06-22/graded_picks.csv",
+    "Daily_Log/2026-06-23/graded_picks.csv",
+    "Daily_Log/2026-06-24/graded_picks.csv",
+    "Daily_Log/2026-06-25/graded_picks.csv",
+    "Daily_Log/2026-06-26/graded_picks.csv",
+    "Daily_Log/2026-06-27/graded_picks.csv",
+    "Daily_Log/2026-06-28/graded_picks.csv",
+    "Daily_Log/2026-07-02/graded_picks.csv",
+    "Daily_Log/2026-07-03/graded_picks.csv",
+    "Daily_Log/2026-07-04/graded_picks.csv",
+    "Daily_Log/2026-07-07/graded_picks.csv",
+    "Daily_Log/2026-07-08/graded_picks.csv",
+    "Daily_Log/2026-07-09/graded_picks.csv",
+    "Daily_Log/2026-07-11/graded_picks.csv",
+    "Daily_Log/2026-07-12/graded_picks.csv",
+    "Daily_Log/2026-07-13/graded_picks.csv"
+  ],
+  "raw_rows": 16294,
+  "valid_graded_rows": 4148,
+  "date_range": [
+    "2026-06-18",
+    "2026-07-09"
+  ],
+  "result_counts": {
+    "BLANK": 1326,
+    "PENDING": 10820,
+    "H": 2665,
+    "M": 1483
+  },
+  "raw_rows_by_sport": {
+    "NBA": 27,
+    "WNBA": 2362,
+    "MLB": 10663,
+    "WORLD CUP": 2722,
+    "WORLD_CUP": 520
+  },
+  "overall": [
+    {
+      "value": "MLB",
+      "n": 4146,
+      "hits": 2664,
+      "misses": 1482,
+      "pushes": 0,
+      "hit_rate": 64.25
+    },
+    {
+      "value": "WNBA",
+      "n": 2,
+      "hits": 1,
+      "misses": 1,
+      "pushes": 0,
+      "hit_rate": 50.0
+    }
+  ],
+  "by_sport": [
+    {
+      "value": "MLB",
+      "n": 4146,
+      "hits": 2664,
+      "misses": 1482,
+      "pushes": 0,
+      "hit_rate": 64.25
+    },
+    {
+      "value": "WNBA",
+      "n": 2,
+      "hits": 1,
+      "misses": 1,
+      "pushes": 0,
+      "hit_rate": 50.0
+    }
+  ],
+  "by_stat": [
+    {
+      "value": "total_bases",
+      "n": 1018,
+      "hits": 719,
+      "misses": 299,
+      "pushes": 0,
+      "hit_rate": 70.63
+    },
+    {
+      "value": "hits",
+      "n": 991,
+      "hits": 632,
+      "misses": 359,
+      "pushes": 0,
+      "hit_rate": 63.77
+    },
+    {
+      "value": "rbi",
+      "n": 977,
+      "hits": 607,
+      "misses": 370,
+      "pushes": 0,
+      "hit_rate": 62.13
+    },
+    {
+      "value": "runs",
+      "n": 977,
+      "hits": 577,
+      "misses": 400,
+      "pushes": 0,
+      "hit_rate": 59.06
+    },
+    {
+      "value": "hits_allowed",
+      "n": 58,
+      "hits": 39,
+      "misses": 19,
+      "pushes": 0,
+      "hit_rate": 67.24
+    },
+    {
+      "value": "strikeouts",
+      "n": 48,
+      "hits": 41,
+      "misses": 7,
+      "pushes": 0,
+      "hit_rate": 85.42
+    },
+    {
+      "value": "earned_runs",
+      "n": 47,
+      "hits": 25,
+      "misses": 22,
+      "pushes": 0,
+      "hit_rate": 53.19
+    },
+    {
+      "value": "hr",
+      "n": 30,
+      "hits": 24,
+      "misses": 6,
+      "pushes": 0,
+      "hit_rate": 80.0
+    },
+    {
+      "value": "PTS",
+      "n": 2,
+      "hits": 1,
+      "misses": 1,
+      "pushes": 0,
+      "hit_rate": 50.0
+    }
+  ],
+  "by_direction": [
+    {
+      "value": "UNDER",
+      "n": 2881,
+      "hits": 2144,
+      "misses": 737,
+      "pushes": 0,
+      "hit_rate": 74.42
+    },
+    {
+      "value": "OVER",
+      "n": 1267,
+      "hits": 521,
+      "misses": 746,
+      "pushes": 0,
+      "hit_rate": 41.12
+    }
+  ],
+  "by_team": [
+    {
+      "value": "CHC",
+      "n": 240,
+      "hits": 145,
+      "misses": 95,
+      "pushes": 0,
+      "hit_rate": 60.42
+    },
+    {
+      "value": "MIN",
+      "n": 221,
+      "hits": 150,
+      "misses": 71,
+      "pushes": 0,
+      "hit_rate": 67.87
+    },
+    {
+      "value": "BAL",
+      "n": 215,
+      "hits": 136,
+      "misses": 79,
+      "pushes": 0,
+      "hit_rate": 63.26
+    },
+    {
+      "value": "CHW",
+      "n": 208,
+      "hits": 115,
+      "misses": 93,
+      "pushes": 0,
+      "hit_rate": 55.29
+    },
+    {
+      "value": "MIL",
+      "n": 200,
+      "hits": 125,
+      "misses": 75,
+      "pushes": 0,
+      "hit_rate": 62.5
+    },
+    {
+      "value": "LAD",
+      "n": 194,
+      "hits": 130,
+      "misses": 64,
+      "pushes": 0,
+      "hit_rate": 67.01
+    },
+    {
+      "value": "COL",
+      "n": 187,
+      "hits": 129,
+      "misses": 58,
+      "pushes": 0,
+      "hit_rate": 68.98
+    },
+    {
+      "value": "NYM",
+      "n": 186,
+      "hits": 132,
+      "misses": 54,
+      "pushes": 0,
+      "hit_rate": 70.97
+    },
+    {
+      "value": "TOR",
+      "n": 186,
+      "hits": 119,
+      "misses": 67,
+      "pushes": 0,
+      "hit_rate": 63.98
+    },
+    {
+      "value": "SF",
+      "n": 183,
+      "hits": 109,
+      "misses": 74,
+      "pushes": 0,
+      "hit_rate": 59.56
+    },
+    {
+      "value": "CLE",
+      "n": 175,
+      "hits": 123,
+      "misses": 52,
+      "pushes": 0,
+      "hit_rate": 70.29
+    },
+    {
+      "value": "KC",
+      "n": 168,
+      "hits": 113,
+      "misses": 55,
+      "pushes": 0,
+      "hit_rate": 67.26
+    },
+    {
+      "value": "STL",
+      "n": 156,
+      "hits": 94,
+      "misses": 62,
+      "pushes": 0,
+      "hit_rate": 60.26
+    },
+    {
+      "value": "BOS",
+      "n": 151,
+      "hits": 91,
+      "misses": 60,
+      "pushes": 0,
+      "hit_rate": 60.26
+    },
+    {
+      "value": "SD",
+      "n": 150,
+      "hits": 100,
+      "misses": 50,
+      "pushes": 0,
+      "hit_rate": 66.67
+    },
+    {
+      "value": "SEA",
+      "n": 149,
+      "hits": 98,
+      "misses": 51,
+      "pushes": 0,
+      "hit_rate": 65.77
+    },
+    {
+      "value": "ATL",
+      "n": 133,
+      "hits": 73,
+      "misses": 60,
+      "pushes": 0,
+      "hit_rate": 54.89
+    },
+    {
+      "value": "PIT",
+      "n": 131,
+      "hits": 88,
+      "misses": 43,
+      "pushes": 0,
+      "hit_rate": 67.18
+    },
+    {
+      "value": "MIA",
+      "n": 127,
+      "hits": 93,
+      "misses": 34,
+      "pushes": 0,
+      "hit_rate": 73.23
+    },
+    {
+      "value": "NYY",
+      "n": 110,
+      "hits": 77,
+      "misses": 33,
+      "pushes": 0,
+      "hit_rate": 70.0
+    },
+    {
+      "value": "TB",
+      "n": 109,
+      "hits": 65,
+      "misses": 44,
+      "pushes": 0,
+      "hit_rate": 59.63
+    },
+    {
+      "value": "PHI",
+      "n": 106,
+      "hits": 51,
+      "misses": 55,
+      "pushes": 0,
+      "hit_rate": 48.11
+    },
+    {
+      "value": "TEX",
+      "n": 101,
+      "hits": 59,
+      "misses": 42,
+      "pushes": 0,
+      "hit_rate": 58.42
+    },
+    {
+      "value": "CIN",
+      "n": 92,
+      "hits": 71,
+      "misses": 21,
+      "pushes": 0,
+      "hit_rate": 77.17
+    },
+    {
+      "value": "HOU",
+      "n": 81,
+      "hits": 44,
+      "misses": 37,
+      "pushes": 0,
+      "hit_rate": 54.32
+    },
+    {
+      "value": "DET",
+      "n": 75,
+      "hits": 50,
+      "misses": 25,
+      "pushes": 0,
+      "hit_rate": 66.67
+    },
+    {
+      "value": "ARI",
+      "n": 68,
+      "hits": 55,
+      "misses": 13,
+      "pushes": 0,
+      "hit_rate": 80.88
+    },
+    {
+      "value": "LAA",
+      "n": 44,
+      "hits": 29,
+      "misses": 15,
+      "pushes": 0,
+      "hit_rate": 65.91
+    },
+    {
+      "value": "LV",
+      "n": 2,
+      "hits": 1,
+      "misses": 1,
+      "pushes": 0,
+      "hit_rate": 50.0
+    }
+  ],
+  "by_matchup": [
+    {
+      "value": "CHC@BAL",
+      "n": 207,
+      "hits": 120,
+      "misses": 87,
+      "pushes": 0,
+      "hit_rate": 57.97
+    },
+    {
+      "value": "SD@LAD",
+      "n": 171,
+      "hits": 110,
+      "misses": 61,
+      "pushes": 0,
+      "hit_rate": 64.33
+    },
+    {
+      "value": "CHC@NYM",
+      "n": 167,
+      "hits": 122,
+      "misses": 45,
+      "pushes": 0,
+      "hit_rate": 73.05
+    },
+    {
+      "value": "MIL@STL",
+      "n": 164,
+      "hits": 76,
+      "misses": 88,
+      "pushes": 0,
+      "hit_rate": 46.34
+    },
+    {
+      "value": "PHI@CIN",
+      "n": 162,
+      "hits": 90,
+      "misses": 72,
+      "pushes": 0,
+      "hit_rate": 55.56
+    },
+    {
+      "value": "BOS@CHW",
+      "n": 157,
+      "hits": 83,
+      "misses": 74,
+      "pushes": 0,
+      "hit_rate": 52.87
+    },
+    {
+      "value": "KC@NYM",
+      "n": 131,
+      "hits": 74,
+      "misses": 57,
+      "pushes": 0,
+      "hit_rate": 56.49
+    },
+    {
+      "value": "LAD@MIN",
+      "n": 121,
+      "hits": 86,
+      "misses": 35,
+      "pushes": 0,
+      "hit_rate": 71.07
+    },
+    {
+      "value": "ATL@PIT",
+      "n": 120,
+      "hits": 78,
+      "misses": 42,
+      "pushes": 0,
+      "hit_rate": 65.0
+    },
+    {
+      "value": "COL@MIN",
+      "n": 120,
+      "hits": 89,
+      "misses": 31,
+      "pushes": 0,
+      "hit_rate": 74.17
+    },
+    {
+      "value": "LAD@SD",
+      "n": 120,
+      "hits": 84,
+      "misses": 36,
+      "pushes": 0,
+      "hit_rate": 70.0
+    },
+    {
+      "value": "SEA@PIT",
+      "n": 119,
+      "hits": 94,
+      "misses": 25,
+      "pushes": 0,
+      "hit_rate": 78.99
+    },
+    {
+      "value": "CHW@CLE",
+      "n": 118,
+      "hits": 84,
+      "misses": 34,
+      "pushes": 0,
+      "hit_rate": 71.19
+    },
+    {
+      "value": "CLE@MIN",
+      "n": 117,
+      "hits": 62,
+      "misses": 55,
+      "pushes": 0,
+      "hit_rate": 52.99
+    },
+    {
+      "value": "SEA@MIA",
+      "n": 114,
+      "hits": 63,
+      "misses": 51,
+      "pushes": 0,
+      "hit_rate": 55.26
+    },
+    {
+      "value": "BAL@LAA",
+      "n": 112,
+      "hits": 71,
+      "misses": 41,
+      "pushes": 0,
+      "hit_rate": 63.39
+    },
+    {
+      "value": "TOR@SF",
+      "n": 112,
+      "hits": 63,
+      "misses": 49,
+      "pushes": 0,
+      "hit_rate": 56.25
+    },
+    {
+      "value": "ATL@SF",
+      "n": 108,
+      "hits": 58,
+      "misses": 50,
+      "pushes": 0,
+      "hit_rate": 53.7
+    },
+    {
+      "value": "ARI@STL",
+      "n": 104,
+      "hits": 89,
+      "misses": 15,
+      "pushes": 0,
+      "hit_rate": 85.58
+    },
+    {
+      "value": "TEX@TOR",
+      "n": 104,
+      "hits": 65,
+      "misses": 39,
+      "pushes": 0,
+      "hit_rate": 62.5
+    },
+    {
+      "value": "KC@TB",
+      "n": 103,
+      "hits": 77,
+      "misses": 26,
+      "pushes": 0,
+      "hit_rate": 74.76
+    },
+    {
+      "value": "BOS@COL",
+      "n": 102,
+      "hits": 78,
+      "misses": 24,
+      "pushes": 0,
+      "hit_rate": 76.47
+    },
+    {
+      "value": "HOU@TOR",
+      "n": 96,
+      "hits": 62,
+      "misses": 34,
+      "pushes": 0,
+      "hit_rate": 64.58
+    },
+    {
+      "value": "TEX@MIA",
+      "n": 92,
+      "hits": 66,
+      "misses": 26,
+      "pushes": 0,
+      "hit_rate": 71.74
+    },
+    {
+      "value": "CLE@CHW",
+      "n": 91,
+      "hits": 63,
+      "misses": 28,
+      "pushes": 0,
+      "hit_rate": 69.23
+    },
+    {
+      "value": "MIL@CIN",
+      "n": 88,
+      "hits": 76,
+      "misses": 12,
+      "pushes": 0,
+      "hit_rate": 86.36
+    },
+    {
+      "value": "NYY@BOS",
+      "n": 74,
+      "hits": 40,
+      "misses": 34,
+      "pushes": 0,
+      "hit_rate": 54.05
+    },
+    {
+      "value": "CHC@MIL",
+      "n": 68,
+      "hits": 50,
+      "misses": 18,
+      "pushes": 0,
+      "hit_rate": 73.53
+    },
+    {
+      "value": "MIN@NYY",
+      "n": 65,
+      "hits": 43,
+      "misses": 22,
+      "pushes": 0,
+      "hit_rate": 66.15
+    },
+    {
+      "value": "COL@SF",
+      "n": 64,
+      "hits": 38,
+      "misses": 26,
+      "pushes": 0,
+      "hit_rate": 59.38
+    },
+    {
+      "value": "SF@COL",
+      "n": 64,
+      "hits": 46,
+      "misses": 18,
+      "pushes": 0,
+      "hit_rate": 71.88
+    },
+    {
+      "value": "KC@CHW",
+      "n": 62,
+      "hits": 42,
+      "misses": 20,
+      "pushes": 0,
+      "hit_rate": 67.74
+    },
+    {
+      "value": "NYY@DET",
+      "n": 56,
+      "hits": 48,
+      "misses": 8,
+      "pushes": 0,
+      "hit_rate": 85.71
+    },
+    {
+      "value": "STL@CHC",
+      "n": 56,
+      "hits": 41,
+      "misses": 15,
+      "pushes": 0,
+      "hit_rate": 73.21
+    },
+    {
+      "value": "TOR@SEA",
+      "n": 55,
+      "hits": 36,
+      "misses": 19,
+      "pushes": 0,
+      "hit_rate": 65.45
+    },
+    {
+      "value": "BAL@CIN",
+      "n": 48,
+      "hits": 33,
+      "misses": 15,
+      "pushes": 0,
+      "hit_rate": 68.75
+    },
+    {
+      "value": "HOU@DET",
+      "n": 48,
+      "hits": 24,
+      "misses": 24,
+      "pushes": 0,
+      "hit_rate": 50.0
+    },
+    {
+      "value": "TB@HOU",
+      "n": 48,
+      "hits": 25,
+      "misses": 23,
+      "pushes": 0,
+      "hit_rate": 52.08
+    },
+    {
+      "value": "NYY@TB",
+      "n": 45,
+      "hits": 29,
+      "misses": 16,
+      "pushes": 0,
+      "hit_rate": 64.44
+    },
+    {
+      "value": "MIA@STL",
+      "n": 40,
+      "hits": 31,
+      "misses": 9,
+      "pushes": 0,
+      "hit_rate": 77.5
+    },
+    {
+      "value": "NYM@ATL",
+      "n": 36,
+      "hits": 16,
+      "misses": 20,
+      "pushes": 0,
+      "hit_rate": 44.44
+    },
+    {
+      "value": "STL@ATL",
+      "n": 30,
+      "hits": 7,
+      "misses": 23,
+      "pushes": 0,
+      "hit_rate": 23.33
+    },
+    {
+      "value": "TB@KC",
+      "n": 19,
+      "hits": 8,
+      "misses": 11,
+      "pushes": 0,
+      "hit_rate": 42.11
+    },
+    {
+      "value": "DET@TEX",
+      "n": 16,
+      "hits": 2,
+      "misses": 14,
+      "pushes": 0,
+      "hit_rate": 12.5
+    },
+    {
+      "value": "NYM@PHI",
+      "n": 16,
+      "hits": 14,
+      "misses": 2,
+      "pushes": 0,
+      "hit_rate": 87.5
+    },
+    {
+      "value": "SF@ATL",
+      "n": 16,
+      "hits": 8,
+      "misses": 8,
+      "pushes": 0,
+      "hit_rate": 50.0
+    },
+    {
+      "value": "CHI@LV",
+      "n": 2,
+      "hits": 1,
+      "misses": 1,
+      "pushes": 0,
+      "hit_rate": 50.0
+    }
+  ],
+  "by_source": [
+    {
+      "value": "sdio_lines",
+      "n": 4047,
+      "hits": 2637,
+      "misses": 1410,
+      "pushes": 0,
+      "hit_rate": 65.16
+    },
+    {
+      "value": "tc-internal-fallback",
+      "n": 99,
+      "hits": 27,
+      "misses": 72,
+      "pushes": 0,
+      "hit_rate": 27.27
+    },
+    {
+      "value": "ESPN Core API (self-edge)",
+      "n": 2,
+      "hits": 1,
+      "misses": 1,
+      "pushes": 0,
+      "hit_rate": 50.0
+    }
+  ],
+  "by_edge_bucket": [
+    {
+      "value": "<0.5",
+      "n": 2149,
+      "hits": 1239,
+      "misses": 910,
+      "pushes": 0,
+      "hit_rate": 57.65
+    },
+    {
+      "value": "0.5-1",
+      "n": 1193,
+      "hits": 752,
+      "misses": 441,
+      "pushes": 0,
+      "hit_rate": 63.03
+    },
+    {
+      "value": "1-2",
+      "n": 441,
+      "hits": 341,
+      "misses": 100,
+      "pushes": 0,
+      "hit_rate": 77.32
+    },
+    {
+      "value": "2-3",
+      "n": 277,
+      "hits": 249,
+      "misses": 28,
+      "pushes": 0,
+      "hit_rate": 89.89
+    },
+    {
+      "value": "3-5",
+      "n": 62,
+      "hits": 58,
+      "misses": 4,
+      "pushes": 0,
+      "hit_rate": 93.55
+    },
+    {
+      "value": "5+",
+      "n": 26,
+      "hits": 26,
+      "misses": 0,
+      "pushes": 0,
+      "hit_rate": 100.0
+    }
+  ],
+  "by_gap_bucket": [
+    {
+      "value": "<0.5",
+      "n": 1966,
+      "hits": 1105,
+      "misses": 861,
+      "pushes": 0,
+      "hit_rate": 56.21
+    },
+    {
+      "value": "0.5-1",
+      "n": 1308,
+      "hits": 830,
+      "misses": 478,
+      "pushes": 0,
+      "hit_rate": 63.46
+    },
+    {
+      "value": "1-2",
+      "n": 508,
+      "hits": 396,
+      "misses": 112,
+      "pushes": 0,
+      "hit_rate": 77.95
+    },
+    {
+      "value": "2-3",
+      "n": 277,
+      "hits": 249,
+      "misses": 28,
+      "pushes": 0,
+      "hit_rate": 89.89
+    },
+    {
+      "value": "3-5",
+      "n": 63,
+      "hits": 59,
+      "misses": 4,
+      "pushes": 0,
+      "hit_rate": 93.65
+    },
+    {
+      "value": "5+",
+      "n": 26,
+      "hits": 26,
+      "misses": 0,
+      "pushes": 0,
+      "hit_rate": 100.0
+    }
+  ],
+  "by_date": [
+    {
+      "value": "2026-06-24",
+      "n": 682,
+      "hits": 601,
+      "misses": 81,
+      "pushes": 0,
+      "hit_rate": 88.12
+    },
+    {
+      "value": "2026-07-08",
+      "n": 606,
+      "hits": 372,
+      "misses": 234,
+      "pushes": 0,
+      "hit_rate": 61.39
+    },
+    {
+      "value": "2026-07-09",
+      "n": 443,
+      "hits": 207,
+      "misses": 236,
+      "pushes": 0,
+      "hit_rate": 46.73
+    },
+    {
+      "value": "2026-07-03",
+      "n": 434,
+      "hits": 278,
+      "misses": 156,
+      "pushes": 0,
+      "hit_rate": 64.06
+    },
+    {
+      "value": "2026-06-26",
+      "n": 384,
+      "hits": 254,
+      "misses": 130,
+      "pushes": 0,
+      "hit_rate": 66.15
+    },
+    {
+      "value": "2026-06-22",
+      "n": 373,
+      "hits": 196,
+      "misses": 177,
+      "pushes": 0,
+      "hit_rate": 52.55
+    },
+    {
+      "value": "2026-06-25",
+      "n": 356,
+      "hits": 234,
+      "misses": 122,
+      "pushes": 0,
+      "hit_rate": 65.73
+    },
+    {
+      "value": "2026-07-07",
+      "n": 344,
+      "hits": 197,
+      "misses": 147,
+      "pushes": 0,
+      "hit_rate": 57.27
+    },
+    {
+      "value": "2026-06-27",
+      "n": 182,
+      "hits": 128,
+      "misses": 54,
+      "pushes": 0,
+      "hit_rate": 70.33
+    },
+    {
+      "value": "2026-07-02",
+      "n": 176,
+      "hits": 90,
+      "misses": 86,
+      "pushes": 0,
+      "hit_rate": 51.14
+    },
+    {
+      "value": "2026-07-04",
+      "n": 118,
+      "hits": 84,
+      "misses": 34,
+      "pushes": 0,
+      "hit_rate": 71.19
+    },
+    {
+      "value": "2026-06-28",
+      "n": 18,
+      "hits": 2,
+      "misses": 16,
+      "pushes": 0,
+      "hit_rate": 11.11
+    },
+    {
+      "value": "2026-06-18",
+      "n": 16,
+      "hits": 8,
+      "misses": 8,
+      "pushes": 0,
+      "hit_rate": 50.0
+    },
+    {
+      "value": "2026-06-20",
+      "n": 16,
+      "hits": 14,
+      "misses": 2,
+      "pushes": 0,
+      "hit_rate": 87.5
+    }
+  ]
+}

@@ -1,4 +1,24 @@
-## Current Status (2026-07-13 ~5:35 PM ET) — WC PURGED + WNBA ASSESSMENT ✅
+## Current Status (2026-07-15 ~12:25 AM ET) — RECONCILIATION COMPLETE 🔧
+- Required daily runs executed for `wnba`, `mlb`, and `wc` with explicit Eastern date `2026-07-15`; all returned cleanly but generated 0 picks because `/home/workspace/Daily_Log/2026-07-15/` contains no projection files.
+- Fixed timezone drift in `Projects/daily_picks.py`: omitted `--date` now resolves in `America/New_York`, not server UTC.
+- Fixed sequential sport-run overwrite risk: `daily_picks.py` now preserves existing leagues and replaces only the league being regenerated; scheduled scripts now pass the ET date and include WC.
+- Dashboard remains alive on `:8510`; all checked API routes returned 200; Zo.Space reports no errors.
+- Real open gaps: upstream same-day projection generation is absent, `Daily_Log/last_run.json` is stale (2026-07-13), today’s combos/consensus/odds cache are absent, and `today_picks.csv` was stale/non-symlinked. Odds cache is expected to remain unavailable until a current slate is generated; World Cup player lines remain quota-limited/self-edge only.
+
+## Current Status (2026-07-15 ~4:05 PM ET) — PERIOD MARKET LAYER + TRUTH GATING ✅
+- Added `Projects/market_catalog.py` as the cross-sport market catalog: NBA/WNBA game, Q1-Q4, halves; MLB game, innings, F5/F9; NFL game, quarters, halves; NHL periods; soccer/WC halves and time bands.
+- Added period normalization and explicit market-family metadata to `Projects/daily_picks.py`, including support for nested period projections and valid-prop inputs.
+- Added sportsbook-line provenance gating: only recognized book/odds sources are eligible for +EV alerts. Self-edge/reference lines are retained as projection-only and cannot be labeled sportsbook +EV.
+- Required ET-date checks: WNBA, MLB, WC on 2026-07-15 returned cleanly with zero picks because no same-day projection files exist. Project regression tests: 6 passed. Market-layer verification passed.
+- Truth limitation: the catalog defines and normalizes markets; it does not invent Q1/innings/halves projections or sportsbook lines. Those require period-specific source data and a book line.
+
+## Current Status (2026-07-13 ~5:35 PM ET) — WC PURGED + WNBA ASSESSMENT ✅## Current Status (2026-07-14 ~11:24 PM ET) — PRE-GAME SCAN ✅
+- `sports_betting_dashboard/scan.sh --fix` repaired its daily-picks calls to use the required lowercase `--sport` choices (`wnba`, `mlb`, `wc`).
+- Auto-repair completed successfully, but no 2026-07-14 projection files were available, so it generated 0 picks for WNBA, MLB, and WC.
+- Full scan passed service/API route checks; dashboard :8510 is alive and all 8 API routes returned 200.
+- Health exceptions: no picks or combos for 2026-07-14, no consensus, no same-day odds cache, and `data/picks/today_picks.csv` is not currently a symlink.
+
+
 - **WC fully dropped**: Removed from daily_picks.py (already clean), tc_math_hybrid.py (SOCCER/WC/WORLD_CUP configs, mock factors, default sport), Daily_Log/worldcup/ (deleted), WC project files (wc_hybrid_backtest.py, wc_self_edge.py, worldcup_picks.py). Automations already clean.
 - **WNBA OVER-only**: 126/126 picks today = all OVER. 0 UNDER. Backtest: 372 graded picks — 312 OVER (84%) at 61.2% hit, 60 UNDER (16%) at 100% hit. Total 67.5%.
 - **Root cause identified**: WNBA correction_factors all >1.0 (PTS:1.05, REB:1.03, AST:1.03, STL:1.02, BLK:1.02) — systematically inflates every projection above the market line. Combined with mock_line factor 0.91 = built-in 14% edge floor.
@@ -487,3 +507,17 @@
 - **Backtest**: WNBA 67.5% (251/372), World Cup 3.3% (broken for soccer)
 - **Report**: COMPREHENSIVE_SYSTEM_REPORT_2026-07-13.md + Daily_Log copy
 - **Known gaps**: WC not in daily_picks.py, WC model broken (3.3%), Odds API quota maxed, all 126 picks OVER today
+
+## Current Status (2026-07-15 ~12:45 AM ET) — THREAD RECONCILED ✅
+- Single source of truth: the active pipeline supports WNBA, MLB, and WC; all three are run separately with lowercase sport names and an explicit America/New_York date.
+- The earlier “WC fully dropped” note is historical/stale and is superseded: WC remains enabled for event/self-edge coverage, but World Cup player lines remain unavailable under the exhausted Business-tier quota.
+- July 15 verification: event feeds exist, but no `proj_WNBA_*.json`, `proj_MLB_*.json`, or `proj_WC_*.json` files exist under `Daily_Log/2026-07-15`; each required run therefore correctly generated 0 picks.
+- Dashboard/API health is green, but it is serving prior data until upstream projection generation runs. No current-day picks, combos, consensus, or odds cache can be claimed.
+- Automations were reconciled: daily and hourly refreshes now include WNBA, MLB, and WC, use ET dates, and explicitly report missing projections as an upstream gap.
+
+## Current Status (2026-07-15 ~01:50 AM ET) — LATE-NIGHT BACKTEST-ONLY MODE ✅
+- Automations are intentionally killed; no live refreshes, scans, or projection generation should run late.
+- Canonical report: `Backtest_Reports/BACKTEST_RECALIBRATION_REPORT_20260715.md` with machine-readable companion JSON.
+- Reconciled 16,294 raw rows from 22 graded files; 4,148 valid graded rows from 2026-06-18 through 2026-07-09.
+- Main recalibration findings: OVER 41.12% vs UNDER 74.42%; tc-internal-fallback 27.27%; edge/gap buckets rise from 56.21% below 0.5 to 100% at 5+.
+- Do not use WNBA conclusions as a production calibration sample yet (n=2); separate self-edge/fallback cohorts from sportsbook-line calibration.

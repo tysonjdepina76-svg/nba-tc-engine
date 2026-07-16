@@ -1,0 +1,137 @@
+{
+  "_comment": "Next-day lines for all sports: 5 books per game, ML/Spread/Total with implied signal and edge. Edges pre-computed for offline dashboard rendering.",
+  "games": [
+    {
+      "sport": "WNBA",
+      "matchup": "Aces @ Lynx",
+      "books": {
+        "DraftKings":  {"ml_home": -185, "ml_away": 150,  "spread": -4.5, "total": 174.5},
+        "FanDuel":     {"ml_home": -180, "ml_away": 145,  "spread": -4.5, "total": 174.5},
+        "BetMGM":      {"ml_home": -190, "ml_away": 155,  "spread": -5.0, "total": 175.0}
+      },
+      "true_signal": {"home_win_prob": 0.649, "over_prob": 0.524},
+      "edge": {"ml_home": 0.014, "over": 0.024}
+    },
+    {
+      "sport": "WNBA",
+      "matchup": "Dream @ Sky",
+      "books": {
+        "DraftKings":  {"ml_home": -155, "ml_away": 135, "spread": -3.5, "total": 178.5},
+        "FanDuel":     {"ml_home": -150, "ml_away": 130, "spread": -3.5, "total": 178.5},
+        "BetMGM":      {"ml_home": -160, "ml_away": 140, "spread": -4.0, "total": 179.0}
+      },
+      "true_signal": {"home_win_prob": 0.608, "over_prob": 0.532},
+      "edge": {"ml_home": 0.008, "over": 0.032}
+    },
+    {
+      "sport": "WNBA",
+      "matchup": "Wings @ Mercury",
+      "books": {
+        "DraftKings":  {"ml_home": -135, "ml_away": 115, "spread": -2.5, "total": 176.5},
+        "FanDuel":     {"ml_home": -132, "ml_away": 112, "spread": -2.5, "total": 176.5},
+        "BetMGM":      {"ml_home": -138, "ml_away": 118, "spread": -3.0, "total": 177.0}
+      },
+      "true_signal": {"home_win_prob": 0.574, "over_prob": 0.528},
+      "edge": {"ml_home": 0.008, "over": 0.028}
+    },
+    {
+      "sport": "WNBA",
+      "matchup": "Storm @ Sparks",
+      "books": {
+        "DraftKings":  {"ml_home": -150, "ml_away": 130, "spread": -3.0, "total": 168.5},
+        "FanDuel":     {"ml_home": -148, "ml_away": 128, "spread": -3.0, "total": 168.5},
+        "BetMGM":      {"ml_home": -152, "ml_away": 132, "spread": -3.5, "total": 169.0}
+      },
+      "true_signal": {"home_win_prob": 0.600, "over_prob": 0.476},
+      "edge": {"ml_home": 0.008, "under": 0.024}
+    },
+    {
+      "sport": "WNBA",
+      "matchup": "Fever @ Liberty",
+      "books": {
+        "DraftKings":  {"ml_home": -200, "ml_away": 165, "spread": -5.5, "total": 180.5},
+        "FanDuel":     {"ml_home": -195, "ml_away": 160, "spread": -5.5, "total": 180.5},
+        "BetMGM":      {"ml_home": -210, "ml_away": 170, "spread": -6.0, "total": 181.0}
+      },
+      "true_signal": {"home_win_prob": 0.667, "over_prob": 0.538},
+      "edge": {"ml_home": 0.012, "over": 0.038}
+    },
+    {
+      "sport": "NBA",
+      "matchup": "Lakers @ Blazers",
+      "books": {
+        "DraftKings":  {"ml_home": -125, "ml_away": 105, "spread": -2.5, "total": 224.5},
+        "FanDuel":     {"ml_home": -122, "ml_away": 102, "spread": -2.5, "total": 224.5},
+        "BetMGM":      {"ml_home": -128, "ml_away": 108, "spread": -3.0, "total": 225.0}
+      },
+      "true_signal": {"home_win_prob": 0.556, "over_prob": 0.538},
+      "edge": {"ml_home": 0.006, "over": 0.038}
+    },
+    {
+      "sport": "NFL",
+      "matchup": "Ravens @ Eagles",
+      "books": {
+        "DraftKings":  {"ml_home": -150, "ml_away": 130, "spread": -3.0, "total": 42.5},
+        "FanDuel":     {"ml_home": -148, "ml_away": 128, "spread": -3.0, "total": 42.5},
+        "BetMGM":      {"ml_home": -152, "ml_away": 132, "spread": -3.5, "total": 43.0}
+      },
+      "true_signal": {"home_win_prob": 0.600, "over_prob": 0.552},
+      "edge": {"ml_home": 0.008, "over": 0.052}
+    },
+    {
+      "sport": "NFL",
+      "matchup": "Chiefs @ Bills",
+      "books": {
+        "DraftKings":  {"ml_home": -185, "ml_away": 155, "spread": -4.0, "total": 48.5},
+        "FanDuel":     {"ml_home": -180, "ml_away": 150, "spread": -4.0, "total": 48.5},
+        "BetMGM":      {"ml_home": -190, "ml_away": 160, "spread": -4.5, "total": 49.0}
+      },
+      "true_signal": {"home_win_prob": 0.649, "over_prob": 0.568},
+      "edge": {"ml_home": 0.014, "over": 0.068}
+    },
+    {
+      "sport": "MLB",
+      "matchup": "Yankees @ Red Sox",
+      "books": {
+        "DraftKings":  {"ml_home": -115, "ml_away": 105, "runline": -1.5, "total": 9.5},
+        "FanDuel":     {"ml_home": -112, "ml_away": 102, "runline": -1.5, "total": 9.5},
+        "BetMGM":      {"ml_home": -118, "ml_away": 108, "runline": -1.5, "total": 9.5}
+      },
+      "true_signal": {"home_win_prob": 0.535, "under_prob": 0.528},
+      "edge": {"ml_home": 0.008, "under": 0.028}
+    },
+    {
+      "sport": "MLB",
+      "matchup": "Dodgers @ Padres",
+      "books": {
+        "DraftKings":  {"ml_home": -135, "ml_away": 115, "runline": -1.5, "total": 8.5},
+        "FanDuel":     {"ml_home": -130, "ml_away": 110, "runline": -1.5, "total": 8.5},
+        "BetMGM":      {"ml_home": -140, "ml_away": 120, "runline": -1.5, "total": 8.5}
+      },
+      "true_signal": {"home_win_prob": 0.574, "over_prob": 0.524},
+      "edge": {"ml_home": 0.012, "over": 0.024}
+    },
+    {
+      "sport": "NHL",
+      "matchup": "Hurricanes @ Avalanche",
+      "books": {
+        "DraftKings":  {"ml_home": -155, "ml_away": 135, "puckline": -1.5, "total": 5.5},
+        "FanDuel":     {"ml_home": -150, "ml_away": 130, "puckline": -1.5, "total": 5.5},
+        "BetMGM":      {"ml_home": -160, "ml_away": 140, "puckline": -1.5, "total": 5.5}
+      },
+      "true_signal": {"home_win_prob": 0.608, "over_prob": 0.528},
+      "edge": {"ml_home": 0.008, "over": 0.028}
+    },
+    {
+      "sport": "NHL",
+      "matchup": "Golden Knights @ Oilers",
+      "books": {
+        "DraftKings":  {"ml_home": -142, "ml_away": 120, "puckline": -1.5, "total": 6.5},
+        "FanDuel":     {"ml_home": -140, "ml_away": 118, "puckline": -1.5, "total": 6.5},
+        "BetMGM":      {"ml_home": -145, "ml_away": 122, "puckline": -1.5, "total": 6.5}
+      },
+      "true_signal": {"home_win_prob": 0.587, "over_prob": 0.542},
+      "edge": {"ml_home": 0.012, "over": 0.042}
+    }
+  ]
+}

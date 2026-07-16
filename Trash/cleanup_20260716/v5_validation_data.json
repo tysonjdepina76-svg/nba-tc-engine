@@ -1,0 +1,34 @@
+{
+  "regression": {
+    "player_true_shooting": {"beta": 0.34, "p": 0.001, "stars": 5},
+    "defensive_rating": {"beta": 0.28, "p": 0.001, "stars": 5},
+    "star_usage_rate": {"beta": 0.22, "p": 0.001, "stars": 4},
+    "team_ast_to": {"beta": 0.18, "p": 0.002, "stars": 4},
+    "rebound_differential": {"beta": 0.15, "p": 0.008, "stars": 3}
+  },
+  "gravity_score": {
+    "90+": {"label": "Bending the floor", "impact": "+8% win prob"},
+    "80-89": {"label": "Defenses terrified", "impact": "+5% win prob"},
+    "70-79": {"label": "Significant pull", "impact": "+3% win prob"},
+    "0-69": {"label": "League average", "impact": "Neutral"}
+  },
+  "tree_models": {
+    "LightGBM": {"r2": 0.342, "rmse": 0.28, "mae": 0.22},
+    "XGBoost": {"r2": 0.328, "rmse": 0.29, "mae": 0.23},
+    "Random Forest": {"r2": 0.314, "rmse": 0.30, "mae": 0.24},
+    "Stacking": {"r2": 0.338, "rmse": 0.28, "mae": 0.22}
+  },
+  "linear_models": {
+    "Ridge": {"r2": 0.318, "rmse": 0.29, "aic": -142.3},
+    "LASSO": {"r2": 0.312, "rmse": 0.30, "aic": -138.7},
+    "ElasticNet": {"r2": 0.320, "rmse": 0.29, "aic": -141.2},
+    "OLS": {"r2": 0.298, "rmse": 0.31, "aic": -135.4}
+  },
+  "calibration": {
+    "90-100%": {"model": 87.2, "expected": 95, "error": -7.8},
+    "80-89%": {"model": 82.4, "expected": 85, "error": -2.6},
+    "70-79%": {"model": 71.8, "expected": 75, "error": -3.2},
+    "60-69%": {"model": 64.2, "expected": 65, "error": -0.8},
+    "50-59%": {"model": 53.8, "expected": 55, "error": -1.2}
+  }
+}

@@ -270,6 +270,8 @@ check_symlinks() {
         else
             echo "⚠ SYMLINKS: today_picks.csv → ${target} (not today: ${TODAY})"
         fi
+    elif [ ! -e "$picks_link" ] && [ ! -f "${LOG_DIR}/${TODAY}/picks.csv" ]; then
+        echo "ℹ SYMLINKS: no today_picks.csv because no current-day picks exist"
     else
         echo "✗ SYMLINKS: today_picks.csv not a symlink"
     fi
@@ -338,11 +340,11 @@ if [ "$MODE" = "--fix" ]; then
     echo "=== AUTO-REPAIR ==="
 
     # Fix: run pipeline if no picks today
-    if [ ! -f "${LOG_DIR}/${TODAY}/picks.json" ]; then
+    if [ ! -f "${LOG_DIR}/${TODAY}/picks.csv" ] && [ ! -f "${LOG_DIR}/${TODAY}/picks.json" ]; then
         echo "→ Running daily_picks.py..."
-        cd "$WORKSPACE" && python3 Projects/daily_picks.py --sport WNBA --date "${TODAY}" 2>&1 | tail -3
-        cd "$WORKSPACE" && python3 Projects/daily_picks.py --sport MLB --date "${TODAY}" 2>&1 | tail -3
-        cd "$WORKSPACE" && python3 Projects/daily_picks.py --sport WORLD_CUP --date "${TODAY}" 2>&1 | tail -3
+        cd "$WORKSPACE" && python3 Projects/daily_picks.py --sport wnba --date "${TODAY}" 2>&1 | tail -3
+        cd "$WORKSPACE" && python3 Projects/daily_picks.py --sport mlb --date "${TODAY}" 2>&1 | tail -3
+        cd "$WORKSPACE" && python3 Projects/daily_picks.py --sport wc --date "${TODAY}" 2>&1 | tail -3
     fi
 
     # Fix: restart Streamlit if down (correct dashboard path)
@@ -368,11 +370,16 @@ if [ "$MODE" = "--fix" ]; then
     find "${LOG_DIR}/cache/odds" -maxdepth 1 -type d -empty -delete 2>/dev/null || true
     [ -d "${LOG_DIR}/_dupes" ] && [ -z "$(ls -A "${LOG_DIR}/_dupes" 2>/dev/null)" ] && rmdir "${LOG_DIR}/_dupes" 2>/dev/null || true
 
-    # Fix: stale today_picks.csv symlink
+    # Fix: stale today_picks.csv pointer
     picks_link="${DASH_DIR}/data/picks/today_picks.csv"
-    if [ -L "$picks_link" ]; then
+    today_picks="${LOG_DIR}/${TODAY}/picks.csv"
+    if [ -f "$today_picks" ]; then
         rm -f "$picks_link"
-        ln -sf "${LOG_DIR}/${TODAY}/picks.csv" "$picks_link"
+        ln -s "${today_picks}" "$picks_link"
+        echo "✓ Repointed today_picks.csv → ${TODAY}"
+    else
+        rm -f "$picks_link"
+        echo "ℹ No current picks file to link for ${TODAY}"
     fi
 
     echo "Done."

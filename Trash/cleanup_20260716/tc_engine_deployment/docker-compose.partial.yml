@@ -1,0 +1,8 @@
+    env_file:
+      - .env
+    volumes:
+      - ./data:/app/data
+      - ./models:/app/models
+      - ./logs:/app/logs
+      - /home/workspace/Daily_Log:/app/Daily_Log:ro
+    restart: unless-stopped

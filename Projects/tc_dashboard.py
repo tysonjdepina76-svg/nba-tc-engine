@@ -1,177 +1,302 @@
-#!/usr/bin/env python3
-"""TC Sports Dashboard — Investor-grade picks viewer with signal + why columns."""
 import streamlit as st
+import sqlite3
 import pandas as pd
-import plotly.graph_objects as go
-import os, sys, json
-from datetime import datetime
+import csv
+import json
 from pathlib import Path
+from datetime import datetime
 
-WORKSPACE = Path("/home/workspace")
-CSV_PATH = WORKSPACE / "Daily_Log" / datetime.now().strftime("%Y-%m-%d") / "picks.csv"
-FALLBACK_CSV = WORKSPACE / "sports_betting_dashboard" / "data" / "picks" / "today_picks.csv"
+try:
+    from fantasy_images import FantasyImages
+    img_fetcher = FantasyImages()
+except ImportError:
+    img_fetcher = None
+
+DB_PATH = Path(__file__).parent / "data" / "picks.db"
+DAILY_LOG = Path("/home/workspace/Daily_Log")
+HISTORICAL = Path("/home/workspace/sports_betting_dashboard/data/historical")
+
 st.set_page_config(page_title="TC Sports App", page_icon="🏆", layout="wide")
 
-SIGNAL_COLORS = {"STRONG": "#3fb950", "MODERATE": "#d29922", "WEAK": "#8b949e", "": "#484f58"}
-SPORT_ICONS = {"WNBA": "🏀", "MLB": "⚾", "WC": "⚽", "WNBA_INTL": "🏀", "MLB_INTL": "⚾"}
-LEAGUE_LABEL = {"WNBA": "WNBA", "MLB": "MLB", "WC": "World Cup", "WNBA_INTL": "WNBA", "MLB_INTL": "MLB"}
+def get_team_logo_html(team_name, league=None):
+    if img_fetcher:
+        try:
+            url = img_fetcher.get_team_logo(team_name)
+            if url:
+                return f'<img src="{url}" width="30" style="border-radius:4px;vertical-align:middle;margin-right:6px;">'
+        except:
+            pass
+    fallback = {"mlb": "⚾", "wnba": "🏀", "wc": "⚽", "MLB": "⚾", "WNBA": "🏀", "WC": "⚽"}
+    return fallback.get(league, "")
 
-@st.cache_data(ttl=60)
-def load_picks():
-    paths = [CSV_PATH, FALLBACK_CSV]
-    for p in paths:
-        if os.path.exists(str(p)):
-            try:
-                df = pd.read_csv(p)
-                if len(df) > 0:
-                    return df
-            except Exception:
-                continue
-    return pd.DataFrame()
-
-def load_last_run():
-    p = WORKSPACE / "Daily_Log" / "last_run.json"
-    if p.exists():
-        with open(p) as f:
-            return json.load(f)
-    return {}
-
-def load_graded():
-    p = WORKSPACE / "Projects" / "all_graded_picks.csv"
-    if p.exists():
-        return pd.read_csv(p)
-    return pd.DataFrame()
-
-@st.cache_data(ttl=3600)
-def load_investor_metrics():
-    g = load_graded()
-    if g.empty:
-        return {}
-    g.columns = [c.strip().lower() for c in g.columns]
-    result_col = next((c for c in g.columns if c in ("result", "hit", "win")), None)
-    if not result_col:
-        return {}
-    g["_hit"] = g[result_col].astype(str).str.upper().isin(["WIN", "TRUE", "HIT", "1", "YES"])
-    total = len(g)
-    wins = g["_hit"].sum()
-    wr = round(wins / total * 100, 1) if total else 0
-    if "edge" in g.columns:
-        g["_edge"] = pd.to_numeric(g["edge"], errors="coerce").abs()
-        avg_edge = round(g["_edge"].mean(), 1)
-    elif "edge_pct" in g.columns:
-        g["_edge"] = pd.to_numeric(g["edge_pct"], errors="coerce").abs()
-        avg_edge = round(g["_edge"].mean(), 1)
-    else:
-        avg_edge = 0
-    roi = round((wr / 100) * avg_edge - ((100 - wr) / 100), 2) if total else 0
-    return {"total_bets": total, "win_rate": wr, "avg_edge": avg_edge, "est_roi": roi}
-
-def render_metric_row(m1, m2, m3, m4):
-    c1, c2, c3, c4 = st.columns(4)
-    c1.metric("Total Graded", m1)
-    c2.metric("Win Rate", f"{m2}%")
-    c3.metric("Avg Edge", f"{m3}%")
-    c4.metric("Est. ROI", f"{m4} Units", delta_color="normal")
-
-def render_picks_table(df, sport_filter=None):
-    if sport_filter and sport_filter != "All":
-        df = df[df["league"].str.upper() == sport_filter.upper()]
-    if df.empty:
-        st.info(f"No picks for {sport_filter or 'any sport'}.")
-        return df
-
-    st.caption(f"**{len(df)} picks** — last updated {datetime.now().strftime('%H:%M:%S ET')}")
-
-    style_cols = {}
-    idx = df.index
-    for col in ["signal", "league", "direction"]:
-        if col in df.columns:
-            style_cols[col] = idx
-
-    styled = df.style
-    if "signal" in df.columns:
-        def _signal_cmap(v):
-            return f"background-color: {SIGNAL_COLORS.get(str(v).upper().strip(), '#484f58')}; color: #fff; font-weight: 600"
-        styled = styled.map(_signal_cmap, subset=["signal"])
-    if "direction" in df.columns:
-        def _dir_cmap(v):
-            c = "#3fb950" if str(v).upper() == "OVER" else "#f85149" if str(v).upper() == "UNDER" else "#484f58"
-            return f"background-color: {c}; color: #fff"
-        styled = styled.map(_dir_cmap, subset=["direction"])
-    if "edge" in df.columns:
-        def _edge_bar(v):
-            try:
-                ev = float(v)
-                if pd.isna(ev):
-                    return ""
-                bars = "█" * min(int(abs(ev) * 5), 20)
-                return f"{ev:+.1f}% {bars}"
-            except (ValueError, TypeError):
-                return str(v)
-        if "edge_display" not in df.columns:
-            df["edge_display"] = df["edge"].apply(_edge_bar)
-
-    st.dataframe(styled, use_container_width=True, height=600)
+def load_picks_from_db():
+    conn = sqlite3.connect(str(DB_PATH))
+    df = pd.read_sql_query("""
+        SELECT player, team, league, stat, tc_projection as projection,
+               market_line as line, edge, direction, reason, signal, matchup, period
+        FROM picks ORDER BY edge DESC
+    """, conn)
+    conn.close()
     return df
 
-def main():
-    st.title("🏆 TC Sports Dashboard")
-    st.caption(f"🔄 Live | {datetime.now().strftime('%H:%M:%S ET')} | Simulator Edition")
+def load_recent_picks_csv():
+    today = datetime.now().strftime("%Y-%m-%d")
+    csv_path = DAILY_LOG / today / "picks.csv"
+    if csv_path.exists():
+        return pd.read_csv(csv_path)
+    return pd.DataFrame()
 
-    im = load_investor_metrics()
-    if im:
-        render_metric_row(im["total_bets"], im["win_rate"], im["avg_edge"], im["est_roi"])
-    else:
-        st.info("No graded picks yet — run `grade_picks.py` to populate investor metrics.")
-    st.divider()
+def load_graded_picks():
+    today = datetime.now().strftime("%Y-%m-%d")
+    gp = DAILY_LOG / today / "graded_picks.csv"
+    if gp.exists():
+        return pd.read_csv(gp)
+    return pd.DataFrame()
 
-    df = load_picks()
+def load_historical_backtest(sport):
+    sport_map = {"WNBA": "wnba", "MLB": "mlb", "WC": "world_cup"}
+    key = sport_map.get(sport, sport.lower())
+    bt_files = list(HISTORICAL.glob(f"{key}_backtest*.csv"))
+    if not bt_files:
+        bt_files = list(HISTORICAL.glob(f"{key}_historical*.csv"))
+    if bt_files:
+        return pd.read_csv(bt_files[0])
+    return pd.DataFrame()
+
+def picks_tab():
+    st.subheader("📋 Live +EV Picks — July 16, 2026")
+
+    df = load_picks_from_db()
     if df.empty:
-        st.warning("No picks CSV found today. Run `daily_picks.py --sport wnba` to generate.")
+        st.warning("No picks. Run: python3 daily_picks.py --sport all")
         return
 
-    leagues = sorted(df["league"].dropna().unique()) if "league" in df.columns else []
-    league_labels = ["All"] + [LEAGUE_LABEL.get(l, l) for l in leagues]
-    tabs = st.tabs(league_labels)
+    sport_filter = st.selectbox("Sport", ["ALL", "WNBA", "MLB", "WC"], index=0)
+    signal_filter = st.selectbox("Signal", ["ALL", "STRONG", "MODERATE", "WEAK", "PROJECTION ONLY", "HEADLINE"], index=0)
 
-    display_cols = []
-    for col in ["player", "team", "stat", "direction", "tc_projection", "market_line", "edge", "signal", "why", "reason", "league", "matchup", "game_time", "line_source", "alert_eligible"]:
-        if col in df.columns:
-            display_cols.append(col)
+    if sport_filter != "ALL":
+        df = df[df["league"] == sport_filter]
 
-    for i, tab in enumerate(tabs):
-        with tab:
-            if i == 0:
-                render_picks_table(df[display_cols])
-            else:
-                sport = leagues[i - 1]
-                render_picks_table(df[display_cols], sport_filter=sport)
+    if signal_filter == "HEADLINE":
+        df = df[df["signal"].isna() | (df["signal"] == "")]
+    elif signal_filter != "ALL":
+        df = df[df["signal"] == signal_filter]
+
+    headline = df[df["signal"].isna() | (df["signal"] == "")]
+    proj = df[df["signal"] == "PROJECTION ONLY"]
+
+    col_a, col_b = st.columns(2)
+    with col_a:
+        st.metric("Headline Picks", len(headline))
+    with col_b:
+        st.metric("Projection Picks", len(proj))
+
+    st.divider()
+    st.caption(f"Showing {min(50, len(df))} of {len(df)} picks")
+
+    for _, row in df.head(50).iterrows():
+        logo_html = get_team_logo_html(row["team"], row["league"])
+        signal = row.get("signal", "") or ""
+
+        col1, col2, col3, col4 = st.columns([0.5, 4, 1.5, 1.5])
+        with col1:
+            st.markdown(logo_html, unsafe_allow_html=True)
+        with col2:
+            matchup_str = f" · {row['matchup']}" if pd.notna(row.get("matchup")) and row.get("matchup") else ""
+            stat_str = f" · {row['stat']}" if pd.notna(row.get("stat")) and row.get("stat") else ""
+            st.markdown(f"**{row['player']}** ({row['team']}){matchup_str}{stat_str}")
+
+            why = row.get("reason", "")
+            if pd.notna(why) and why:
+                st.caption(f"💡 {why[:200]}")
+        with col3:
+            direction = row.get("direction", "OVER")
+            color = "#3fb950" if str(direction).upper() == "OVER" else "#f85149"
+            st.markdown(
+                f"<span style='color:{color};font-weight:bold'>{direction}</span>"
+                f"<br><span style='font-size:0.75em;opacity:0.7'>line {row.get('line',0):.1f} → proj {row.get('projection',0):.1f}</span>",
+                unsafe_allow_html=True,
+            )
+        with col4:
+            st.metric("Edge", f"{row['edge']:.1f}%")
+            if signal:
+                badge_colors = {
+                    "STRONG": "#3fb950",
+                    "MODERATE": "#d29922",
+                    "WEAK": "#8b949e",
+                    "PROJECTION ONLY": "#8b949e",
+                }
+                bg = badge_colors.get(signal, "#21262d")
+                st.markdown(
+                    f"<span style='background:{bg};color:white;padding:2px 6px;border-radius:4px;font-size:0.7em'>{signal}</span>",
+                    unsafe_allow_html=True,
+                )
+
+
+def edge_analysis_tab():
+    st.header("🧠 Edge Analysis")
+
+    df = load_picks_from_db()
+    if df.empty:
+        st.info("No explained picks yet.")
+        return
+
+    sport = st.selectbox("Sport", ["ALL", "WNBA", "MLB", "WC"], key="edge_sport")
+    if sport != "ALL":
+        df = df[df["league"] == sport]
+
+    headline = df[df["signal"].isna() | (df["signal"] == "")].head(20)
+    st.subheader("🔥 Top Headline Picks")
+    for _, row in headline.iterrows():
+        logo_html = get_team_logo_html(row["team"], row["league"])
+        stat_str = f" {row['stat']}" if pd.notna(row.get("stat")) and row.get("stat") else ""
+        st.markdown(
+            f"{logo_html} **{row['player']}** ({row['league']}{stat_str}) "
+            f"— proj `{row['projection']:.1f}` vs line `{row.get('line',0):.1f}` → Edge: `{row['edge']:.1f}%`  \n"
+            f"📝 *{row.get('reason','')}*",
+            unsafe_allow_html=True,
+        )
 
     st.divider()
     st.subheader("📊 Edge Distribution")
-    if "edge" in df.columns:
-        edges = pd.to_numeric(df["edge"], errors="coerce").dropna()
-        if len(edges) > 0:
-            fig = go.Figure()
-            fig.add_trace(go.Histogram(x=edges, nbinsx=40, marker_color="#d29922", name="Edge %"))
-            fig.update_layout(height=300, xaxis_title="Edge %", yaxis_title="Count", margin=dict(l=0, r=0, t=0, b=0))
-            st.plotly_chart(fig, use_container_width=True)
+    chart_data = df[df["edge"].notna()].copy()
+    chart_data["edge_bucket"] = pd.cut(chart_data["edge"], bins=[-10, -5, -2, 0, 2, 5, 10, 20], labels=["<-5", "-5 to -2", "-2 to 0", "0-2", "2-5", "5-10", "10+"])
+    st.bar_chart(chart_data["edge_bucket"].value_counts().sort_index())
 
-    st.subheader("📈 Signal Breakdown")
-    if "signal" in df.columns:
-        sig_counts = df["signal"].value_counts()
-        cols = st.columns(len(sig_counts))
-        for j, (sig, cnt) in enumerate(sig_counts.items()):
-            color = SIGNAL_COLORS.get(str(sig).upper(), "#484f58")
-            cols[j].metric(sig, cnt, delta_color="off")
 
-    st.divider()
-    lr = load_last_run()
-    if lr:
-        st.caption(f"Last pipeline run: {lr.get('timestamp', 'unknown')} | Sports: {lr.get('sports', [])} | Total picks: {lr.get('total_picks', 0)}")
+def investor_tab():
+    st.header("📈 Investor Dashboard")
+    graded = load_graded_picks()
 
-    csv_out = df.to_csv(index=False).encode("utf-8")
-    st.download_button("📥 Download Picks CSV", csv_out, f"tc_picks_{datetime.now().strftime('%Y%m%d')}.csv", "text/csv")
+    if graded.empty:
+        st.info("No graded picks yet today — games still in progress or backtest not yet run.")
+        return
+
+    total = len(graded)
+    if "actual" in graded.columns and "result" in graded.columns:
+        wins = len(graded[graded["result"] == "WIN"])
+        hit_rate = (wins / total * 100) if total > 0 else 0
+    else:
+        wins = 0
+        hit_rate = 0
+
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        st.metric("Total Picks", total)
+    with col2:
+        st.metric("Won", wins)
+    with col3:
+        st.metric("Hit Rate", f"{hit_rate:.1f}%")
+
+    if "sport" in graded.columns:
+        st.divider()
+        st.subheader("By Sport")
+        for sport_name in graded["sport"].dropna().unique():
+            sdf = graded[graded["sport"] == sport_name]
+            stot = len(sdf)
+            if stot == 0:
+                continue
+            swin = len(sdf[sdf["result"] == "WIN"]) if "result" in sdf.columns else 0
+            sr = (swin / stot * 100) if stot > 0 else 0
+            st.markdown(f"**{sport_name}**: {stot} picks · {swin} wins · **{sr:.1f}%** hit  \n"
+                        f"`{'█' * int(sr/5)}{'░' * (20 - int(sr/5))}`")
+
+
+def accuracy_tab():
+    st.header("🎯 Projection Accuracy")
+
+    sport = st.selectbox("Sport", ["WNBA", "MLB", "WC"], key="acc_sport")
+    hist = load_historical_backtest(sport)
+
+    if hist.empty:
+        st.info(f"No historical backtest data found for {sport}.")
+        return
+
+    st.metric("Backtest Rows", len(hist))
+
+    cols = hist.columns.tolist()
+    st.caption(f"Columns: {', '.join(cols[:12])}")
+
+    if "edge" in hist.columns:
+        st.subheader("Edge Distribution (Historical)")
+        st.bar_chart(hist["edge"].describe())
+
+    st.dataframe(hist.head(100), use_container_width=True, height=400)
+
+
+def live_tab():
+    st.header("⚡ Live Games — July 16, 2026")
+
+    csv_df = load_recent_picks_csv()
+    if csv_df.empty:
+        st.info("No live slate data available.")
+        return
+
+    matchups = csv_df["matchup"].dropna().unique() if "matchup" in csv_df.columns else []
+
+    if len(matchups) == 0:
+        st.info("No matchups found in today's slate.")
+        return
+
+    for m in sorted(matchups)[:15]:
+        with st.expander(f"🏟️ {m}"):
+            game_df = csv_df[csv_df["matchup"] == m]
+            st.caption(f"{len(game_df)} players projected")
+
+            status = game_df["status"].iloc[0] if "status" in game_df.columns else "Scheduled"
+            game_time = game_df["game_time"].iloc[0] if "game_time" in game_df.columns else ""
+            st.markdown(f"**Status**: {status}  ·  **Game Time**: {game_time}")
+
+            if "role" in game_df.columns:
+                starters = game_df[game_df["role"] == "STARTER"]
+                bench = game_df[game_df["role"] == "BENCH"]
+                st.caption(f"Starters: {len(starters)} · Bench: {len(bench)}")
+
+            st.dataframe(
+                game_df[["player", "team", "stat", "projection", "dk_line", "edge", "direction", "role"]].head(12),
+                use_container_width=True,
+            )
+
+
+def combo_tab():
+    st.header("🔗 Combo Builder")
+    st.info("Combos require real DK lines across multiple props. Currently: WNBA/WC self-edge only — no DK player props available. MLB using SportsDataIO DK lines.")
+
+    df = load_picks_from_db()
+    if df.empty:
+        return
+
+    headline_mlb = df[(df["league"] == "MLB") & ((df["signal"].isna()) | (df["signal"] == ""))]
+    if not headline_mlb.empty:
+        st.subheader("⚾ MLB Headline Picks (Combo Candidates)")
+        for _, row in headline_mlb.iterrows():
+            st.markdown(
+                f"**{row['player']}** ({row['team']}) {row.get('stat','')} "
+                f"— proj `{row['projection']:.1f}` vs line `{row.get('line',0):.1f}` → `{row['edge']:.1f}%` [{row.get('direction','OVER')}]",
+            )
+    else:
+        st.info("No MLB headline picks today.")
+
+
+def main():
+    st.title("🏆 TC Sports App")
+    st.caption(f"Updated: {datetime.now().strftime('%Y-%m-%d %I:%M %p ET')} · "
+               f"Source: picks.db ({len(load_picks_from_db())} picks) · "
+               f"Dashboard: :8510 · API: :8000")
+
+    tabs = st.tabs(["📋 Picks", "📈 Investor", "🎯 Accuracy", "⚡ Live", "🔗 Combos", "🧠 Edge Analysis"])
+    with tabs[0]:
+        picks_tab()
+    with tabs[1]:
+        investor_tab()
+    with tabs[2]:
+        accuracy_tab()
+    with tabs[3]:
+        live_tab()
+    with tabs[4]:
+        combo_tab()
+    with tabs[5]:
+        edge_analysis_tab()
 
 
 if __name__ == "__main__":

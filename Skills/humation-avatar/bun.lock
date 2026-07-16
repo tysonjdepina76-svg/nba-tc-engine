@@ -1,0 +1,18 @@
+{
+  "lockfileVersion": 1,
+  "configVersion": 1,
+  "workspaces": {
+    "": {
+      "name": "zo-skill-humation-avatar",
+      "dependencies": {
+        "@humation/assets-humation-1": "^1.0.1",
+        "@humation/core": "^1.0.1",
+      },
+    },
+  },
+  "packages": {
+    "@humation/assets-humation-1": ["@humation/assets-humation-1@1.0.1", "", { "dependencies": { "@humation/core": "1.0.1" } }, "sha512-ucLZMrsRPKLX0Stu6LzX/9eqoWmRPhyDKvKQsy6nQyXhR4ynK1ySQ2tYNnMCJ0BpT/SteZXHxjYAIH6ccuZfCg=="],
+
+    "@humation/core": ["@humation/core@1.0.1", "", {}, "sha512-gpt6qnXDZY3MUqVxx2Q70xM4S+qrcWuxT+bvWA8nsFOvObf7kLiO4KIXxExARroq56HtywYsoJ9ftgzwW2b1oA=="],
+  }
+}

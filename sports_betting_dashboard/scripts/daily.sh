@@ -11,9 +11,11 @@ echo "=== TC Daily Runner — $(date '+%Y-%m-%d %H:%M:%S %Z') ==="
 
 if [ "$MODE" != "--quick" ]; then
     echo "→ WNBA..."
-    cd "$WORKSPACE" && python3 Projects/daily_picks.py --sport wnba
+    cd "$WORKSPACE" && python3 Projects/daily_picks.py --sport wnba --date "$TODAY"
     echo "→ MLB..."
-    cd "$WORKSPACE" && python3 Projects/daily_picks.py --sport mlb
+    cd "$WORKSPACE" && python3 Projects/daily_picks.py --sport mlb --date "$TODAY"
+    echo "→ WC..."
+    cd "$WORKSPACE" && python3 Projects/daily_picks.py --sport wc --date "$TODAY"
 fi
 
 PICKS_CSV="$WORKSPACE/Daily_Log/$TODAY/picks.csv"

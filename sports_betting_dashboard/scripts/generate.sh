@@ -7,9 +7,11 @@ TODAY=$(TZ='America/New_York' date +%Y-%m-%d)
 echo "=== TC Picks Generator — $(date '+%Y-%m-%d %H:%M:%S %Z') ==="
 
 echo "→ WNBA..."
-python3 "$WORKSPACE/Projects/daily_picks.py" --sport wnba
+python3 "$WORKSPACE/Projects/daily_picks.py" --sport wnba --date "$TODAY"
 echo "→ MLB..."
-python3 "$WORKSPACE/Projects/daily_picks.py" --sport mlb
+python3 "$WORKSPACE/Projects/daily_picks.py" --sport mlb --date "$TODAY"
+echo "→ WC..."
+python3 "$WORKSPACE/Projects/daily_picks.py" --sport wc --date "$TODAY"
 
 PICKS_CSV="$WORKSPACE/Daily_Log/$TODAY/picks.csv"
 if [ -f "$PICKS_CSV" ]; then
