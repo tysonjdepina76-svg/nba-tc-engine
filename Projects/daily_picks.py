@@ -13,13 +13,14 @@ from typing import Dict, List, Any, Optional
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from tc_math_hybrid import determine_pick, SPORT_CONFIGS
+from combo_generator import generate_combos
 from db_writer import write_picks_to_db
 from market_catalog import normalize_period, truth_metadata, is_real_book_source, catalog_for
 
 ET_TZ = __import__("zoneinfo").ZoneInfo("America/New_York")
 
 SPORT_PROJ_GLOB = {
-    "wnba": "proj_WNBA_*.json",
+    "wnba": "proj_WNBA_*@*.json",
     "mlb": "proj_MLB_*.json",
     "wc": "proj_WC_*.json",
 }
@@ -205,7 +206,7 @@ def _read_wc_players(proj: dict) -> List[dict]:
 
 
 _READERS = {
-    "wnba": _read_wnba_players,
+    "wnba": _read_valid_props,
     "mlb": _read_mlb_players,
     "wc": _read_wc_players,
 }
@@ -378,6 +379,32 @@ def main():
         shutil.copy2(csv_file, dashboard_csv)
         print(f"Synced to {dashboard_csv}")
         write_picks_to_db(all_picks, log_date)
+
+        # --- POST-GENERATION: Combos + Email ---
+        print("\n📊 POST-GENERATION PIPELINE")
+        try:
+            import subprocess
+            for sp in sports:
+                sp_key = SPORT_KEY[sp]
+                subprocess.run(
+                    ["python3", os.path.join(os.path.dirname(__file__), "combo_generator.py"),
+                     "--sport", sp_key, "--date", log_date, "--output", log_dir],
+                    capture_output=True, text=True, timeout=120
+                )
+                print(f"  Combos {sp_key}: done")
+        except Exception as e:
+            print(f"Combos: SKIPPED ({e})")
+
+        try:
+            from generate_email import send_report
+            report_path, sms_body, images = send_report(log_date)
+            print(f"Email report: {report_path}")
+            if sms_body:
+                print(f"  SMS: {len(sms_body)} chars")
+            if images:
+                print(f"  Images: {len(images)} generated")
+        except Exception as e:
+            print(f"Email report: SKIPPED ({e})")
     elif existing:
         print(f"No new picks; preserved {len(existing)} existing picks in {csv_file}")
     else:

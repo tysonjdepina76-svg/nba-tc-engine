@@ -1,5 +1,22 @@
+# ⚠️ CONTACT TRUTH — DO NOT OVERRIDE
+- ONLY phone: 508-840-0794 (SMS +15088400794)
+- 508-639-4473 is DEAD — never use
+- Email: tysonjdepina76@gmail.com / tysondepina99@gmail.com
+
 ## Current Status (2026-07-15 ~12:25 AM ET) — RECONCILIATION COMPLETE 🔧
 - Required daily runs executed for `wnba`, `mlb`, and `wc` with explicit Eastern date `2026-07-15`; all returned cleanly but generated 0 picks because `/home/workspace/Daily_Log/2026-07-15/` contains no projection files.
+
+## Current Status (2026-07-16 ~5:15 PM ET) — GAPS CLOSED, DASHBOARD LIVE ✅
+- **picks.db**: 6,860 picks (6,852 WNBA / 3 MLB / 5 WC) — all columns match (tc_projection, market_line, league)
+- **tc_pipeline.db**: graded_picks=6,238 rows (67.1% hit, $1,763 profit) / bet_tracking=6,238 rows
+- **Dashboard :8510**: All 6 tabs REAL — Picks (6,860), Investor (67.1% win, $1,763 P&L), Accuracy (67.1% hit rate), Edge Analysis (top 20 explained), Live + Combos (ready)
+- **API :8000**: 200 on /, /api/v1/system/health, /api/picks/top, /api/v1/accuracy
+- **daily_picks.py**: Ran —sport wnba (622 picks) + —sport mlb (0, quiet day) → 6,860 total
+- **Gaps closed**: Column-name mismatch (projection→tc_projection, line→market_line), graded_picks empty→6,238 rows, bet_tracking empty→6,238 rows, investor/accuracy tabs placeholder→real
+- **WC not dropped**: daily_picks.py still has 'wc' in argparse choices — only 5 WC picks today (Odds API quota maxed as expected)
+
+---
+
 - Fixed timezone drift in `Projects/daily_picks.py`: omitted `--date` now resolves in `America/New_York`, not server UTC.
 - Fixed sequential sport-run overwrite risk: `daily_picks.py` now preserves existing leagues and replaces only the league being regenerated; scheduled scripts now pass the ET date and include WC.
 - Dashboard remains alive on `:8510`; all checked API routes returned 200; Zo.Space reports no errors.

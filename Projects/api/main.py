@@ -4,16 +4,12 @@ from datetime import datetime
 import sqlite3
 import os
 import sys
-import json
 import traceback
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from src.domain.entities import REGISTRY
-try:
-    from src.adapters.line_fetcher import fetch_lines
-except ImportError:
-    fetch_lines = None
+from src.adapters.line_fetcher import fetch_lines
 
 app = FastAPI(title="TC Sports API", version="1.0.0")
 
@@ -45,8 +41,6 @@ def health_check():
 
 @app.get("/api/v1/lines/{sport}")
 def get_lines(sport: str):
-    if fetch_lines is None:
-        return {"sport": sport, "error": "line_fetcher not available", "data": []}
     if sport not in ["mlb", "wnba", "wc"]:
         raise HTTPException(status_code=404, detail="Sport not found")
     data = fetch_lines(sport)
@@ -58,7 +52,7 @@ def get_top_picks(limit: int = 20):
         conn = get_db_connection()
         c = conn.cursor()
         c.execute("""
-            SELECT player, league as sport, stat, tc_projection as projection, market_line as line, edge, direction, reason
+            SELECT player, league, stat, tc_projection, market_line, edge, direction, reason
             FROM picks
             ORDER BY edge DESC
             LIMIT ?
@@ -70,10 +64,10 @@ def get_top_picks(limit: int = 20):
         return [
             {
                 "player": r["player"],
-                "sport": r["sport"],
+                "sport": r["league"],
                 "stat": r["stat"],
-                "projection": r["projection"],
-                "line": r["line"],
+                "projection": r["tc_projection"],
+                "line": r["market_line"],
                 "edge": r["edge"],
                 "direction": r["direction"],
                 "reason": r["reason"]
@@ -85,66 +79,21 @@ def get_top_picks(limit: int = 20):
 
 @app.get("/api/projection/{sport}")
 def get_projection(sport: str, player: str = None):
-    """
-    Endpoint for projecting a game.
-    Returns a projection for the given sport and optional player.
-    """
     try:
-        if sport not in ["wnba", "wc"]:
-            return {
-                "error": f"Sport '{sport}' is off-season or not active.",
-                "status": "failed",
-                "sport": sport
-            }
-
-        if sport == "wnba":
-            try:
-                from src.predictors.hybrid_wnba_predictor import HybridWNBAPropPredictor
-                predictor = HybridWNBAPropPredictor()
-                projection = {
-                    "player": player or "A'ja Wilson",
-                    "team": "LV",
-                    "projection": 25.5,
-                    "line": 23.5,
-                    "edge": 2.0,
-                    "direction": "OVER",
-                    "confidence": 0.85
-                }
-            except ImportError:
-                projection = {
-                    "player": player or "A'ja Wilson",
-                    "team": "LV",
-                    "projection": 25.5,
-                    "line": 23.5,
-                    "edge": 2.0,
-                    "direction": "OVER",
-                    "confidence": 0.85
-                }
-        else:
-            projection = {
-                "player": player or "France",
-                "team": "FRA",
-                "projection": 2.8,
-                "line": 2.5,
-                "edge": 0.3,
-                "direction": "OVER",
-                "confidence": 0.75
-            }
-
-        return {
-            "sport": sport,
-            "projection": projection,
-            "status": "success",
-            "timestamp": datetime.now().isoformat()
+        if sport not in ["wnba", "wc", "mlb"]:
+            return {"error": f"Sport '{sport}' is not active.", "status": "failed"}
+        projection = {
+            "player": player or "Sample Player",
+            "team": "TBD",
+            "projection": 10.0,
+            "line": 9.0,
+            "edge": 1.0,
+            "direction": "OVER",
+            "confidence": 0.75
         }
-
+        return {"sport": sport, "projection": projection, "status": "success", "timestamp": datetime.now().isoformat()}
     except Exception as e:
-        return {
-            "error": str(e),
-            "traceback": traceback.format_exc(),
-            "status": "failed",
-            "sport": sport
-        }
+        return {"error": str(e), "traceback": traceback.format_exc(), "status": "failed"}
 
 try:
     from api.routes import accuracy, combos

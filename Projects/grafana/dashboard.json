@@ -1,0 +1,73 @@
+{
+  "title": "TC Sports App - Investor Dashboard",
+  "uid": "tc-sports",
+  "version": 1,
+  "panels": [
+    {
+      "id": 1,
+      "title": "Win Rate by Sport",
+      "type": "barchart",
+      "datasource": "Prometheus",
+      "targets": [
+        {
+          "expr": "tc_win_rate{sport=~\"$sport\"}",
+          "legendFormat": "{{sport}}"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent"
+        }
+      }
+    },
+    {
+      "id": 2,
+      "title": "P&L (Last 30 Days)",
+      "type": "timeseries",
+      "datasource": "Prometheus",
+      "targets": [
+        {
+          "expr": "tc_daily_profit",
+          "legendFormat": "Profit"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Sharpe Ratio",
+      "type": "stat",
+      "datasource": "Prometheus",
+      "targets": [
+        {
+          "expr": "tc_sharpe_ratio"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Max Drawdown",
+      "type": "stat",
+      "datasource": "Prometheus",
+      "targets": [
+        {
+          "expr": "tc_max_drawdown"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "currencyUSD"
+        }
+      }
+    }
+  ],
+  "templating": {
+    "list": [
+      {
+        "name": "sport",
+        "type": "query",
+        "query": "label_values(tc_win_rate, sport)",
+        "includeAll": true
+      }
+    ]
+  }
+}

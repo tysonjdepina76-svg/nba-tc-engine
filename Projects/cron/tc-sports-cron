@@ -1,0 +1,12 @@
+#!/bin/bash
+set -e
+SPORTS="wnba mlb wc"
+DATE=$(date +%Y-%m-%d)
+LOGDIR="/home/workspace/Daily_Log/${DATE}"
+mkdir -p "$LOGDIR"
+
+for SPORT in $SPORTS; do
+    python3 /home/workspace/Projects/daily_picks.py --sport "$SPORT"
+done
+
+echo "[$(date -Iseconds)] Daily TC picks completed for: $SPORTS" >> /home/workspace/logs/cron.log

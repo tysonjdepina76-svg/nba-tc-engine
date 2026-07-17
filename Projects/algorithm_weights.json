@@ -1,0 +1,37 @@
+{
+  "wnba": {
+    "PTS": 1.05,
+    "REB": 1.03,
+    "AST": 1.03,
+    "STL": 1.02,
+    "BLK": 1.02,
+    "3PM": 1.02
+  },
+  "mlb": {
+    "hits_allowed": 0.95,
+    "earned_runs": 0.95,
+    "strikeouts": 0.97,
+    "total_bases": 0.95,
+    "home_runs": 0.98,
+    "runs_scored": 0.97,
+    "rbi": 0.97,
+    "stolen_bases": 0.98,
+    "batting_avg": 0.98
+  },
+  "wc": {
+    "goals": 1.0,
+    "shots": 1.0,
+    "shots_on_target": 1.0,
+    "assists": 1.0,
+    "passes": 1.0,
+    "tackles": 1.0,
+    "saves": 1.0
+  },
+  "thresholds": {
+    "min_edge": 0.5,
+    "strong_edge": 3.0,
+    "moderate_edge": 1.5,
+    "max_picks_per_game": 25,
+    "min_sample_size": 5
+  }
+}
