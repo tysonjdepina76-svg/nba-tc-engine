@@ -1,14 +1,14 @@
-## Current Status (2026-07-18 ~1:00 AM ET) — PIPELINE CALIBRATED ✅
+## Current Status (2026-07-18 ~2:00 AM ET) — CLEAN PIPELINE, ALL LIVE ✅
 
-- **Correction factors zeroed**: tc_math_hybrid.py — all sports now use 1.0 (was 1.02-1.10, causing 100% OVER bias)
-- **Mock line bias removed**: generate_projections.py — line=projection (was adj*0.91, guaranteeing ~9% fake edge)
-- **Projections regenerated**: MLB 15 games/90 players + WC 1 game/8 players for 2026-07-18
-- **Picks today**: 108 MLB + 64 WC = 172 total (0.0 edge — neutral baseline until real DK lines return)
-- **WNBA**: No games today
-- **DBs**: tc_pipeline.db + picks.db → symlink to Projects/data/ (zero-byte duplicates removed)
-- **Symlinks**: data/picks/today_picks.csv → Daily_Log/2026-07-18/picks.csv (173 lines)
-- **Services**: tc-api :8000 ✅ · Streamlit :8510 ✅ · Zo.space 0 errors · Odds API quota maxed
-- **Email**: SMTP configured; needs Gmail app password for send
+- **Pipeline refreshed**: generate_projections.py --sport all + daily_picks.py (MLB + WC), WNBA no games
+- **Slate**: 15 MLB games (90 players) + 1 WC (ENG@FRA, 8 players) = 172 picks (picks.csv 173 lines)
+- **Projections**: All regenerated — proj_MLB_2026-07-18.json + proj_WC_2026-07-18.json
+- **Correction factors**: 1.0 (zeroed), mock line bias removed (line=projection)
+- **Services**: tc-api :8000 ✅ · Streamlit :8510 ✅ · Zo.space 0 errors
+- **Public URLs**: Streamlit https://tc-streamlit-dashboard-true.zocomputer.io · Zo.space https://true.zo.space/nba-tc · API https://tc-api-true.zocomputer.io
+- **GitHub**: pushed (master, nba-tc-engine)
+- **Google Drive**: TC_Picks + TC_Projections_MLB + TC_Projections_WC + TC_LiveDashboard uploaded (tysondepina99@)
+- **Odds API**: quota maxed (expected)
 # ⚠️ CONTACT TRUTH — DO NOT OVERRIDE
 - ONLY phone: 508-840-0794 (SMS +15088400794)
 - 508-639-4473 is DEAD — never use
