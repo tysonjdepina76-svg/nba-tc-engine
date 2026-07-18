@@ -1,3 +1,14 @@
+## Current Status (2026-07-18 ~1:00 AM ET) — PIPELINE CALIBRATED ✅
+
+- **Correction factors zeroed**: tc_math_hybrid.py — all sports now use 1.0 (was 1.02-1.10, causing 100% OVER bias)
+- **Mock line bias removed**: generate_projections.py — line=projection (was adj*0.91, guaranteeing ~9% fake edge)
+- **Projections regenerated**: MLB 15 games/90 players + WC 1 game/8 players for 2026-07-18
+- **Picks today**: 108 MLB + 64 WC = 172 total (0.0 edge — neutral baseline until real DK lines return)
+- **WNBA**: No games today
+- **DBs**: tc_pipeline.db + picks.db → symlink to Projects/data/ (zero-byte duplicates removed)
+- **Symlinks**: data/picks/today_picks.csv → Daily_Log/2026-07-18/picks.csv (173 lines)
+- **Services**: tc-api :8000 ✅ · Streamlit :8510 ✅ · Zo.space 0 errors · Odds API quota maxed
+- **Email**: SMTP configured; needs Gmail app password for send
 # ⚠️ CONTACT TRUTH — DO NOT OVERRIDE
 - ONLY phone: 508-840-0794 (SMS +15088400794)
 - 508-639-4473 is DEAD — never use

@@ -1,0 +1,56 @@
+{
+  "timestamp": "2026-07-18T05:11:02.216924",
+  "status": "OK",
+  "checks": {
+    "file_age": {
+      "status": "PASS",
+      "message": "Fresh (0s old)"
+    },
+    "schema": {
+      "status": "PASS",
+      "message": "Schema valid."
+    },
+    "dependencies": {
+      "status": "PASS",
+      "message": "All packages installed."
+    },
+    "network": {
+      "status": "PASS",
+      "message": "All endpoints reachable."
+    },
+    "cache": {
+      "status": "PASS",
+      "message": "Cache writable."
+    }
+  },
+  "summary": {
+    "total": 5,
+    "passed": 5,
+    "failed": 0
+  },
+  "repair_attempted": true,
+  "repair_report": {
+    "timestamp": "2026-07-18T05:11:01.993622",
+    "actions": [
+      {
+        "check": "file_age",
+        "repair_attempted": true,
+        "success": true,
+        "message": "Created fresh /home/workspace/Projects/pipeline_output.json"
+      },
+      {
+        "check": "schema",
+        "repair_attempted": true,
+        "success": true,
+        "message": "Output file is valid."
+      },
+      {
+        "check": "cache",
+        "repair_attempted": true,
+        "success": true,
+        "message": "Cache dir /home/workspace/Projects/cache ensured."
+      }
+    ],
+    "success": true
+  }
+}

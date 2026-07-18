@@ -1,5 +1,5 @@
-TC DAILY — 2026-07-16 07:45 PM ET
-92 picks | 36 combos
+TC DAILY — 2026-07-16 09:25 PM ET
+244 picks | 36 combos
 
 🔥 TOP COMBOS
 1. Jessica Shepard Pts+Reb+Ast OVER 21.2 | TC:24.2 | +14% | NY@DAL
@@ -45,6 +45,30 @@ TC DAILY — 2026-07-16 07:45 PM ET
    Why: Betnijah Laney-Hamilton projected 7.0 points (full game) vs. line of 6.7 — 7% edge to the OVER
 
 ---
+⚾ MLB — 152 picks
+
+• A.J. Ewing Hits OVER 0.9 | TC: 1.0 | 8% | PHI@NYM
+   Why: A.J. Ewing projected 1.0 hits (full game) vs. line of 0.9 — 8% edge to the OVER
+• A.J. Ewing Home Runs OVER 1.0 | TC: 1.0 | 8% | PHI@NYM
+   Why: A.J. Ewing projected 1.0 home runs (full game) vs. line of 1.0 — 8% edge to the OVER
+• A.J. Ewing RBI OVER 0.9 | TC: 1.0 | 8% | PHI@NYM
+   Why: A.J. Ewing projected 1.0 RBI (full game) vs. line of 0.9 — 8% edge to the OVER
+• A.J. Ewing R OVER 0.9 | TC: 1.0 | 8% | PHI@NYM
+   Why: A.J. Ewing projected 1.0 runs (full game) vs. line of 0.9 — 8% edge to the OVER
+• A.J. Ewing SB OVER 0.9 | TC: 1.0 | 8% | PHI@NYM
+   Why: A.J. Ewing projected 1.0 SB (full game) vs. line of 0.9 — 8% edge to the OVER
+• A.J. Ewing TB OVER 0.9 | TC: 1.0 | 8% | PHI@NYM
+   Why: A.J. Ewing projected 1.0 total bases (full game) vs. line of 0.9 — 8% edge to the OVER
+• A.J. Ewing Strikeouts OVER 0.9 | TC: 1.0 | 8% | PHI@NYM
+   Why: A.J. Ewing projected 1.0 strikeouts (full game) vs. line of 0.9 — 8% edge to the OVER
+• A.J. Ewing BB OVER 0.9 | TC: 1.0 | 8% | PHI@NYM
+   Why: A.J. Ewing projected 1.0 walks (full game) vs. line of 0.9 — 8% edge to the OVER
+• Juan Soto Hits OVER 0.9 | TC: 1.0 | 8% | PHI@NYM
+   Why: Juan Soto projected 1.0 hits (full game) vs. line of 0.9 — 8% edge to the OVER
+• Juan Soto Home Runs OVER 1.0 | TC: 1.0 | 8% | PHI@NYM
+   Why: Juan Soto projected 1.0 home runs (full game) vs. line of 1.0 — 8% edge to the OVER
+
+---
 ⚠️ ALL SELF-EDGE PROJECTIONS — no sportsbook lines available.
 WC: Odds API quota maxed. WNBA: DK posts late. MLB: quiet day.
-Generated 07:45 PM ET
+Generated 09:25 PM ET

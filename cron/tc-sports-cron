@@ -1,0 +1,15 @@
+# /etc/cron.d/tc-sports-cron
+# All times in Eastern Time (UTC-4 / UTC-5 depending on DST)
+# Cron runs in server UTC — adjust: ET+4 during EDT (Mar-Nov), ET+5 during EST (Nov-Mar)
+
+# Staggered hourly picks (at 13, 26, 39, 52 minutes past the hour)
+17,30,43,56 * * * * root cd /home/workspace/Projects && /usr/bin/bash scripts/run_with_lock.sh python3 daily_picks.py --sport all >> /home/workspace/Projects/logs/cron.log 2>&1
+
+# Daily maintenance at 7:17 AM UTC (3:17 AM ET during EDT)
+17 7 * * * root cd /home/workspace/Projects && /usr/bin/bash scripts/maintenance.sh >> /home/workspace/Projects/logs/cron.log 2>&1
+
+# Health check every 6 hours
+17 4,10,16,22 * * * root cd /home/workspace/Projects && /usr/bin/python3 runtime_health_check.py >> /home/workspace/Projects/logs/health.log 2>&1
+
+# Train hybrid predictor weekly on Sunday at 13:17 UTC (9:17 AM ET)
+17 13 * * 0 root cd /home/workspace/Projects && /usr/bin/bash scripts/train_hybrid.sh >> /home/workspace/Projects/logs/train.log 2>&1
