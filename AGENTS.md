@@ -46,3 +46,49 @@
 - ONLY phone: 508-840-0794 (SMS +15088400794)
 - 508-639-4473 is DEAD — never use
 - Email: tysonjdepina76@gmail.com / tysondepina99@gmail.com
+
+## FIXES APPLIED (2026-07-19 ~4:00 PM ET)
+
+### 1. Combos Tab Rendering — ALL Dashboards
+- **root cause**: `/dashboard` was fetching combos from old `/api/combos/precomputed` endpoint (WNBA-only), and rendering `c.label` which doesn't exist in the combo API response
+- **fix**: `/dashboard` now fetches from `/api/v1/combos` across all 3 leagues (WNBA, MLB, WC) with `min_edge=0`, and renders `c.combo_label || c.combo`
+- **/nba-tc**: combos tab already had correct endpoint, confirmed working
+
+### 2. WC Box Scores — Live Games Tab
+- **root cause**: BoxScoreView in `/nba-tc` had no WC column definitions or rendering blocks — only WNBA and MLB
+- **fix**: Added WC_COLS = ["G", "A", "SH", "SOT", "PAS", "TKL", "YC"] and WC rendering blocks for away/home teams
+
+### 3. Combo Banner Cleanup — /nba-tc Game Cards
+- **root cause**: Combo detection banners were visually intrusive (glow effects, overflowing the card)
+- **fix**: Reduced to compact inline pill-style: smaller padding, no glow/shadow, muted border, smaller text. Still shows sport emoji + combo types + count.
+
+### 4. Workspace Cleanup
+- Removed empty directories, .bak files, stale node_modules
+- Git pushed commit 36ef71f
+
+### Verify
+- Combos API: `curl https://tc-api-true.zocomputer.io/api/v1/combos?league=mlb&min_edge=0`
+- Dashboard: https://true.zo.space/nba-tc → Combos tab
+- Main dashboard: https://true.zo.space/dashboard → COMBOS buttonEND
+echo "AGENTS.md updated"
+
+## FIXES APPLIED (2026-07-19 ~4:00 PM ET)
+
+### 1. Combos Tab - ALL Dashboards
+- /dashboard combos: switched from old /api/combos/precomputed (WNBA-only) to /api/v1/combos across all 3 leagues
+- Fixed c.label -> c.combo_label field mismatch
+
+### 2. WC Box Scores - Live Games Tab
+- Added WC_COLS (G,A,SH,SOT,PAS,TKL,YC) and rendering blocks for soccer in /nba-tc
+
+### 3. Combo Banner Cleanup
+- Reduced visual footprint on game cards: compact pills, no glow, muted border
+
+### 4. Workspace Cleanup
+- Removed empty dirs, .bak files, stale node_modules
+- Git pushed commit 36ef71f
+
+### Verify
+- API: curl https://tc-api-true.zocomputer.io/api/v1/combos?league=mlb
+- /nba-tc: https://true.zo.space/nba-tc -> Combos tab
+- /dashboard: https://true.zo.space/dashboard -> COMBOS button
