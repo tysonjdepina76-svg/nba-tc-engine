@@ -421,6 +421,100 @@ def injuries(sport: str = "all"):
     return {"injuries": [], "message": "No injury data yet today"}
 
 
+# Combo definitions
+COMBO_DEFS = {
+    "WNBA": {
+        "PRA":  {"label": "Pts+Reb+Ast", "stats": ["PTS", "REB", "AST"]},
+        "PR":   {"label": "Pts+Reb",     "stats": ["PTS", "REB"]},
+        "PA":   {"label": "Pts+Ast",     "stats": ["PTS", "AST"]},
+        "RA":   {"label": "Reb+Ast",     "stats": ["REB", "AST"]},
+        "3S":   {"label": "3PM+STL",     "stats": ["3PM", "STL"]},
+        "SB":   {"label": "STL+BLK",     "stats": ["STL", "BLK"]},
+    },
+    "MLB": {
+        "HR":   {"label": "H+R",         "stats": ["H", "R"]},
+        "HRBI": {"label": "H+RBI",       "stats": ["H", "RBI"]},
+        "RRBI": {"label": "R+RBI",       "stats": ["R", "RBI"]},
+        "HRR":  {"label": "H+R+RBI",     "stats": ["H", "R", "RBI"]},
+        "HRRBI2": {"label": "HR+RBI",    "stats": ["HR", "RBI"]},
+        "KB":   {"label": "K+BB",         "stats": ["K", "BB"]},
+    },
+    "WC": {
+        "GA":   {"label": "G+A",          "stats": ["goals", "assists"]},
+        "SPS":  {"label": "S+PS",         "stats": ["shots", "passes"]},
+        "SSOT": {"label": "S+SOT",        "stats": ["shots", "shots_on_target"]},
+        "TS":   {"label": "T+S",          "stats": ["tackles", "shots"]},
+        "TP":   {"label": "T+P",          "stats": ["tackles", "passes"]},
+        "ST":   {"label": "S+T",          "stats": ["shots", "tackles"]},
+    },
+}
+
+
+def _build_combos_from_db(league=None, matchup=None, min_edge=0.5):
+    """Read picks.db and compute combo projections by player."""
+    db_path = PICKS_DB
+    if not db_path.exists():
+        return []
+    conn = sqlite3.connect(str(db_path))
+    conn.row_factory = sqlite3.Row
+    today = datetime.now().strftime("%Y-%m-%d")
+    where_clauses = ["1=1", "date = ?"]
+    params = [today]
+    if league:
+        where_clauses.append("LOWER(league) = LOWER(?)")
+        params.append(league)
+    if matchup:
+        where_clauses.append("matchup = ?")
+        params.append(matchup)
+    query = f"SELECT player, team, league, stat, tc_projection, market_line, edge, direction, matchup, date FROM picks WHERE {' AND '.join(where_clauses)} ORDER BY league, matchup, player"
+    rows = conn.execute(query, params).fetchall()
+    conn.close()
+    player_stats = {}
+    for r in rows:
+        key = (r["league"], r["matchup"], r["player"])
+        if key not in player_stats:
+            player_stats[key] = {"team": r["team"], "stats": {}, "matchup": r["matchup"], "league": r["league"]}
+        player_stats[key]["stats"][r["stat"].upper()] = {
+            "tc_projection": r["tc_projection"] or 0,
+            "market_line": r["market_line"] or 0,
+            "edge": r["edge"] or 0,
+            "direction": r["direction"] or "OVER",
+        }
+    results = []
+    for (league_name, m, player), pdata in player_stats.items():
+        sport_defs = COMBO_DEFS.get(league_name.upper(), {})
+        if not sport_defs:
+            continue
+        stats = pdata["stats"]
+        for combo_key, cdef in sport_defs.items():
+            req = cdef["stats"]
+            if not all(s in stats for s in req):
+                continue
+            tc_sum = sum(stats[s]["tc_projection"] for s in req)
+            line_sum = sum(stats[s]["market_line"] for s in req)
+            edge = round(tc_sum - line_sum, 2)
+            edge_pct = round((edge / line_sum * 100), 1) if line_sum > 0 else 0.0
+            direction = "OVER" if edge > 0 else "UNDER"
+            if abs(edge) < min_edge:
+                continue
+            results.append({
+                "player": player,
+                "team": pdata["team"],
+                "league": league_name,
+                "matchup": m,
+                "combo": combo_key,
+                "combo_label": cdef["label"],
+                "component_stats": req,
+                "direction": direction,
+                "tc_projection": round(tc_sum, 1),
+                "market_line": round(line_sum, 1),
+                "edge": edge,
+                "edge_pct": edge_pct,
+                "component_details": {s: stats[s] for s in req},
+            })
+    results.sort(key=lambda c: abs(c["edge"]), reverse=True)
+    return results
+
 @app.get("/api/v1/combos")
 def combos(request: Request):
     league = request.query_params.get("league", "").upper() or None
