@@ -28,6 +28,10 @@ from serp_odds_scraper import search_odds
 
 PROJ_DIR = Path(__file__).parent.parent / "Daily_Log"
 DATA_DIR = Path(__file__).parent.parent / "data"
+
+SERPAPI_DAILY_MAX = 250
+SERPAPI_PER_RUN = 8
+SERPAPI_TRACKER = DATA_DIR / "serpapi_usage.json"
 PICKS_DIR = DATA_DIR / "picks"
 DB_PATH = Path(__file__).parent / "data" / "picks.db"
 
@@ -113,8 +117,26 @@ def load_projections(sport):
         players_out = enrich_lines_via_serpapi(sport, players_out)
     return players_out
 
+def _serpapi_daily_count():
+    if SERPAPI_TRACKER.exists():
+        try:
+            d = json.loads(SERPAPI_TRACKER.read_text())
+            return d.get(datetime.now(ET).strftime("%Y-%m-%d"), 0)
+        except: return 0
+    return 0
+
+def _serpapi_increment(n):
+    d = {}
+    if SERPAPI_TRACKER.exists():
+        try: d = json.loads(SERPAPI_TRACKER.read_text())
+        except: pass
+    today = datetime.now(ET).strftime("%Y-%m-%d")
+    d[today] = d.get(today, 0) + n
+    SERPAPI_TRACKER.write_text(json.dumps(d))
+
 def enrich_lines_via_serpapi(sport, projections):
-    """For picks with missing or generic lines, try SerpAPI for real market lines."""
+    """For picks with missing or generic lines, try SerpAPI for real market lines.
+    Capped at SERPAPI_PER_RUN searches per sport, SERPAPI_DAILY_MAX total per day."""
     import re
     
     STAT_SYNONYMS = {
@@ -185,6 +207,7 @@ def enrich_lines_via_serpapi(sport, projections):
         
         try:
             results = search_odds(query, num_results=3)
+            _serpapi_increment(1)
             for r in results:
                 snippet = r.get("snippet", "") + " " + r.get("title", "")
                 snippet_lower = snippet.lower()
@@ -216,7 +239,7 @@ def enrich_lines_via_serpapi(sport, projections):
         except Exception:
             pass
     
-    logger.info(f"[SerpAPI] Enriched {enriched}/{len(enrich_picks)} picks for {sport}")
+    logger.info(f"[SerpAPI] Enriched {enriched}/{len(enrich_picks)} picks for {sport} (daily: {_serpapi_daily_count()}/{SERPAPI_DAILY_MAX})")
     return projections
 
 
