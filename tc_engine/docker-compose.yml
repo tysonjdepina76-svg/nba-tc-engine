@@ -1,0 +1,45 @@
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+      - "8510:8510"
+    environment:
+      - DATABASE_URL=postgresql://tc_user:tc_pass@postgres:5432/tc_engine
+      - THEODDSAPI_KEY=${THEODDSAPI_KEY}
+      - SPORTRADAR_KEY=${SPORTRADAR_KEY}
+      - SGO_API_KEY=${SGO_API_KEY}
+      - SMTP_SERVER=${SMTP_SERVER:-smtp.gmail.com}
+      - SMTP_PORT=${SMTP_PORT:-587}
+      - SMTP_USER=${SMTP_USER}
+      - SMTP_PASS=${SMTP_PASS}
+      - EMAIL_TO=${EMAIL_TO}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./models:/app/models
+      - ./plots:/app/plots
+      - ./logs:/app/logs
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/v1/system/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: tc_user
+      POSTGRES_PASSWORD: tc_pass
+      POSTGRES_DB: tc_engine
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U tc_user -d tc_engine"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  pgdata:

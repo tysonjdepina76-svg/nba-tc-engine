@@ -162,16 +162,7 @@ def hybrid_projection(tc_proj: float, sport: str, stat: str, model_projs: Option
 
 # ============= MOCK LINE GENERATION =============
 def get_mock_market_line(projection: float, sport: str, stat: str = "default") -> float:
-    factors = {
-        "MLB": {"default": 0.89},
-        "WNBA": {"default": 0.91},
-        "NBA": {"default": 0.90},
-        "NFL": {"default": 0.90},
-        "NHL": {"default": 0.89},
-    }
-    f = factors.get(sport.upper(), {"default": 0.90})
-    factor = f.get(stat, f["default"])
-    return max(0.1, projection * factor)
+    return projection
 
 
 # ============= DETERMINE PICK =============
@@ -199,8 +190,8 @@ def determine_pick(
         min_edge = 0.5
     else:
         line = get_mock_market_line(proj, sport, stat)
-        actual_source = "MOCK"
-        min_edge = self_edge_threshold
+        actual_source = "SELF"
+        min_edge = 999.0
 
     config = SPORT_CONFIGS.get(sport)
     shrink = config.shrinkage_factor if config else 0.30

@@ -67,3 +67,52 @@ def get_accuracy_details(
         return df.to_dict(orient="records")
     except Exception as e:
         return {"error": str(e)}
+
+
+@router.get("/profit")
+def get_profit(sport: str = Query(None)):
+    """Return cumulative profit from bet_tracking."""
+    try:
+        conn = sqlite3.connect("/home/workspace/Projects/data/tc_pipeline.db")
+        if sport:
+            row = conn.execute(
+                "SELECT SUM(profit) as total, COUNT(*) as bets FROM bet_tracking WHERE sport = ?",
+                (sport,),
+            ).fetchone()
+        else:
+            row = conn.execute(
+                "SELECT SUM(profit) as total, COUNT(*) as bets FROM bet_tracking"
+            ).fetchone()
+        conn.close()
+        return {
+            "profit": round(row[0], 2) if row and row[0] else 0.0,
+            "bets": row[1] if row else 0,
+            "sport": sport or "all",
+        }
+    except Exception as e:
+        return {"error": str(e), "profit": 0}
+
+
+@router.get("/profit/history")
+def get_profit_history(days: int = Query(30)):
+    """Return daily profit history."""
+    try:
+        conn = sqlite3.connect("/home/workspace/Projects/data/tc_pipeline.db")
+        query = f"""
+            SELECT DATE(timestamp) as day, SUM(profit) as daily_profit, COUNT(*) as bets
+            FROM bet_tracking
+            WHERE timestamp >= DATE('now', '-{days} days')
+            GROUP BY DATE(timestamp)
+            ORDER BY day
+        """
+        rows = conn.execute(query).fetchall()
+        conn.close()
+        return {
+            "history": [
+                {"date": r[0], "profit": round(r[1], 2), "bets": r[2]}
+                for r in rows
+            ],
+            "days": days,
+        }
+    except Exception as e:
+        return {"error": str(e), "history": []}

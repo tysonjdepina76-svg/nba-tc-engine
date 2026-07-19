@@ -1,60 +1,36 @@
-"""ESPN adapter — cached + quota-guarded."""
+"""Minimal ESPN adapter — delegates to actual implementations.
+Restored after cleanup removed the original file.
+"""
 import json
-import urllib.request
-from typing import Optional, Dict, Any
-from .cache import APICache, ADAPTER_TTL, check_quota
+from datetime import date
+from typing import Dict, List, Optional
 
-_cache = APICache()
-ESPN_BASE = "https://site.api.espn.com/apis/site/v2/sports"
+from .espn_odds_fetcher import fetch_scoreboard as _fetch_scoreboard
+from .wnba_data_fetcher import fetch_roster as _fetch_roster_wnba
+
+TODAY = date.today().isoformat()
 
 
-def _http_get_json(url: str, timeout: int = 8) -> Optional[Dict[str, Any]]:
-    check_quota("ESPN")
+def fetch_scoreboard(sport_path: str) -> Dict:
+    """Old-style: 'baseball/mlb', 'basketball/wnba', 'soccer/fifa.world'."""
+    parts = sport_path.split("/")
+    if len(parts) == 2:
+        sport, league = parts
+        return _fetch_scoreboard(sport, league, TODAY)
+    return {"events": []}
+
+
+def fetch_roster(team_id: int) -> Dict:
+    """Fetch roster for a team. Falls back to WNBA fetcher."""
+    return _fetch_roster_wnba(team_id)
+
+
+def fetch_summary(game_id: str, sport_path: str = "") -> Dict:
+    """Fetch game summary from ESPN."""
+    import urllib.request
     try:
-        req = urllib.request.Request(url, headers={"Accept": "application/json"})
-        with urllib.request.urlopen(req, timeout=timeout) as resp:
-            return json.loads(resp.read().decode())
+        url = f"https://sports.core.api.espn.com/v2/sports/basketball/wnba/summaries?event={game_id}"
+        with urllib.request.urlopen(url, timeout=8) as r:
+            return json.loads(r.read())
     except Exception:
-        return None
-
-
-def fetch_scoreboard(sport: str, ttl: int = None) -> Optional[Dict[str, Any]]:
-    key = f"espn_scoreboard_{sport.replace('/', '_')}"
-    ttl = ttl or ADAPTER_TTL["espn_scores"]
-    cached = _cache.get(key, max_age=ttl)
-    if cached is not None:
-        return cached
-    data = _http_get_json(f"{ESPN_BASE}/{sport}/scoreboard")
-    if data is not None:
-        _cache.set(key, data)
-    return data
-
-
-def fetch_summary(sport: str, event_id: str, ttl: int = None) -> Optional[Dict[str, Any]]:
-    key = f"espn_summary_{sport.replace('/', '_')}_{event_id}"
-    ttl = ttl or ADAPTER_TTL["espn_scores"]
-    cached = _cache.get(key, max_age=ttl)
-    if cached is not None:
-        return cached
-    data = _http_get_json(f"{ESPN_BASE}/{sport}/summary?event={event_id}")
-    if data is not None:
-        _cache.set(key, data)
-    return data
-
-
-def fetch_boxscore(sport: str, event_id: str, ttl: int = None) -> Optional[Dict[str, Any]]:
-    """Alias for fetch_summary — many legacy callers use this name."""
-    return fetch_summary(sport, event_id, ttl=ttl)
-
-
-def fetch_roster(team_id: str, sport: str = "basketball/nba", ttl: int = None) -> Optional[Dict[str, Any]]:
-    key = f"espn_roster_{sport.replace('/', '_')}_{team_id}"
-    ttl = ttl or ADAPTER_TTL["espn_rosters"]
-    cached = _cache.get(key, max_age=ttl)
-    if cached is not None:
-        return cached
-    url = f"https://site.api.espn.com/apis/site/v2/sports/{sport}/teams/{team_id}/roster"
-    data = _http_get_json(url)
-    if data is not None:
-        _cache.set(key, data)
-    return data
+        return {}

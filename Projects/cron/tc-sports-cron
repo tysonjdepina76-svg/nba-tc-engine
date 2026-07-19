@@ -1,12 +1,9 @@
-#!/bin/bash
-set -e
-SPORTS="wnba mlb wc"
-DATE=$(date +%Y-%m-%d)
-LOGDIR="/home/workspace/Daily_Log/${DATE}"
-mkdir -p "$LOGDIR"
+# TC Sports Pipeline — Daily Run
+# Runs WNBA, MLB, World Cup picks at 1:20 AM ET daily
+20 1 * * * root /bin/bash -c 'SPORTS="wnba mlb wc"; DATE=$(date +\%Y-\%m-\%d); LOGDIR="/home/workspace/Daily_Log/${DATE}"; mkdir -p "$LOGDIR"; for SPORT in $SPORTS; do python3 /home/workspace/Projects/daily_picks.py --sport "$SPORT"; done; echo "[$(date -Iseconds)] Daily TC picks completed for: $SPORTS" >> /home/workspace/logs/cron.log'
 
-for SPORT in $SPORTS; do
-    python3 /home/workspace/Projects/daily_picks.py --sport "$SPORT"
-done
+# Generate alerts after picks
+23 1 * * * root cd /home/workspace/Projects && python3 generate_alerts.py >> logs/alerts.log 2>&1
 
-echo "[$(date -Iseconds)] Daily TC picks completed for: $SPORTS" >> /home/workspace/logs/cron.log
+# Fetch injuries after alerts
+24 1 * * * root cd /home/workspace/Projects && python3 fetch_injuries.py >> logs/injuries.log 2>&1

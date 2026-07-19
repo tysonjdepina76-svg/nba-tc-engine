@@ -79,7 +79,6 @@
 | SGO_API_KEY | ✅ Set |
 | ODDS_API_KEY | ❌ Not set (Odds API quota maxed on Business tier) |
 | SPORTS_DATA_API_KEY | ✅ Set (in sdio service env) |
-| DEEPSEEK_API_KEY | ❌ Not set — running via Vercel provider |
 | SMTP vars | ❌ Not set — using Zo native email |
 
 ---
@@ -90,7 +89,6 @@
 2. **League name duplication** — picks.db has `MLB`/`mlb`, `WC`/`wc` — needs normalization
 3. **sdio-lines-service disabled** since July 10
 4. **Odds API quota maxed** — no DK/BetMGM lines for WC, all self-edge
-5. **No DeepSeek API key** — you're on Vercel provider, not direct DeepSeek
 6. **SMTP not configured** — email works through Zo native, not SMTP
 
 ---
@@ -114,7 +112,6 @@
 - League name normalization (MLB/mlb duplication)
 - SMTP email pipeline (not configured)
 - sdio-lines-service (disabled)
-- DeepSeek direct API key (using Vercel provider instead)
 - Odds API key (quota maxed on Business tier)
 - Real DK/BetMGM lines for WC (self-edge only)
 
@@ -125,4 +122,3 @@
 1. **Fix WNBA projections**: Run `generate_projections.py --sport wnba` with ET date
 2. **Normalize league names**: One-line fix in daily_picks.py to uppercase all leagues
 3. **Re-enable sdio-lines**: `update_user_service` to set enabled=true
-4. **Add DeepSeek key**: Add `DEEPSEEK_API_KEY` to Settings → Advanced → Secrets
