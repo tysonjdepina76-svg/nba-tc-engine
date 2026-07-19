@@ -10,6 +10,10 @@ from datetime import datetime
 from pathlib import Path
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+try:
+    from mlb_team_lookup import MLB_PLAYER_TEAM_MAP
+except ImportError:
+    MLB_PLAYER_TEAM_MAP = {}
 
 DAILY_LOG = Path("/home/workspace/Daily_Log")
 
@@ -118,11 +122,15 @@ def build_mlb_player_proj(player_name, team, role):
             adj = round(adj, 1)
         else:
             adj = round(adj, 3)
+        # No fake lines — let SerpAPI/daily_picks enrich with real lines
+        line = 0.0
+        edge = 0.0
+
         proj[stat] = {
             "tc_projection": adj,
-            "line": adj,
-            "edge": max(adj - adj, 0),
-            "direction": "OVER" if adj > adj else "UNDER",
+            "line": line,
+            "edge": edge,
+            "direction": "OVER" if edge > 0 else "UNDER",
             "dk_line": None,
             "valid": True,
         }
@@ -144,11 +152,14 @@ def build_wc_player_proj(player_name, team, position):
         adj = round(adj, 2)
         if stat == "passes":
             adj = round(adj, 0)
+        # No fake lines — let SerpAPI/daily_picks enrich with real lines
+        line = 0.0
+        edge = 0.0
         proj[stat] = {
             "tc_projection": adj,
-            "line": adj if stat != "passes" else round(adj * 0.91, 0),
-            "edge": 0.0,
-            "direction": "OVER" if adj > adj else "UNDER",
+            "line": line,
+            "edge": edge,
+            "direction": "OVER" if edge > 0 else "UNDER",
             "dk_line": None,
             "valid": True,
         }
@@ -214,7 +225,8 @@ def generate_mlb(today: str):
             for name in r.sample(default_names, min(6, len(default_names))):
                 if name not in seen:
                     seen.add(name)
-                    proj = build_mlb_player_proj(name, away if len(away_players) < 4 else home,
+                    player_team = MLB_PLAYER_TEAM_MAP.get(name, away if len(away_players) < 4 else home)
+                    proj = build_mlb_player_proj(name, player_team,
                                                  "BAT")
                     if len(away_players) < 4:
                         away_players.append(proj)

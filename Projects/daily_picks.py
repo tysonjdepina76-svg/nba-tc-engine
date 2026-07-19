@@ -23,7 +23,8 @@ from src.utils.logging import get_logger
 logger = get_logger(__name__)
 from wnba_team_lookup import correct_team
 from mlb_team_lookup import correct_mlb_team
-from wc_team_lookup import correct_wc_teamfrom serp_odds_scraper import search_odds
+from wc_team_lookup import correct_wc_team
+from serp_odds_scraper import search_odds
 
 PROJ_DIR = Path(__file__).parent.parent / "Daily_Log"
 DATA_DIR = Path(__file__).parent.parent / "data"
@@ -107,54 +108,115 @@ def load_projections(sport):
                     "direction": direction,
                 })
 
-    logger.info(f"Loaded {len(players_out)} stat-lines from {len(files)} files for {sport}")    if sport.lower() in ("wnba", "wc"):
+    logger.info(f"Loaded {len(players_out)} stat-lines from {len(files)} files for {sport}")
+    if sport.lower() in ("wnba", "wc"):
         players_out = enrich_lines_via_serpapi(sport, players_out)
     return players_out
 
 def enrich_lines_via_serpapi(sport, projections):
-    """For picks where market_line == 0 (SELF_EDGE), try SerpAPI to find real lines.
-    Searches Google for player+stat prop odds and parses snippets for numeric lines.
-    Returns projections list with updated market_line values where found."""
+    """For picks with missing or generic lines, try SerpAPI for real market lines."""
     import re
+    
+    STAT_SYNONYMS = {
+        "AST": ["assists", "assist", "asts", "ast"],
+        "STL": ["steals", "steal", "stls", "stl"],
+        "BLK": ["blocks", "block", "blks", "blk"],
+        "3PM": ["three pointers", "3-pointers", "threes", "3pm", "3s"],
+        "TO": ["turnovers", "turnover", "tos", "to"],
+        "PRA": ["points rebounds assists", "pts rebs asts", "pra", "points + rebounds + assists"],
+        "PR": ["points rebounds", "pts rebs", "pr"],
+        "RA": ["rebounds assists", "rebs asts", "ra"],
+        "TB": ["total bases", "total base", "bases", "tb"],
+        "H": ["hits", "hit", "h"],
+        "K": ["strikeouts", "strikeout", "so", "k"],
+        "RBI": ["rbis", "runs batted in", "rbi"],
+        "HR": ["home runs", "home run", "homer", "hr"],
+        "SB": ["stolen bases", "steals", "sb"],
+        "SHOTS": ["shots", "shot", "attempts"],
+        "SOT": ["shots on target", "sot", "on target"],
+        "PASSES": ["passes", "pass", "completed passes"],
+        "TACKLES": ["tackles", "tck", "tackle"],
+        "FOULS": ["fouls", "foul", "fl"],
+        "SAVES": ["saves", "save", "sv"],
+        "CARDS": ["cards", "yellows"],
+    }
+    
+    # Trigger for: line=0 picks OR generic/fake-line picks (all same line per sport)
     zero_line_picks = [p for p in projections if p.get("line", 0) == 0]
-    if not zero_line_picks:
+    
+    # Also check for generic lines: if all picks for same stat have identical line, likely fake
+    generic_picks = []
+    stats_lines = {}
+    for p in projections:
+        st = p.get("stat", "")
+        ln = p.get("line", 0)
+        if ln > 0 and st:
+            if st not in stats_lines:
+                stats_lines[st] = set()
+            stats_lines[st].add(ln)
+    
+    for p in projections:
+        st = p.get("stat", "")
+        ln = p.get("line", 0)
+        if ln > 0 and st in stats_lines and len(stats_lines[st]) <= 1:
+            generic_picks.append(p)
+    
+    enrich_picks = zero_line_picks + generic_picks
+    seen = set()
+    enrich_picks = [p for p in enrich_picks if id(p) not in seen and not seen.add(id(p))]
+    
+    if not enrich_picks:
+        logger.info(f"[SerpAPI] No picks to enrich for {sport}")
         return projections
-    logger.info(f"[SerpAPI] {len(zero_line_picks)} SELF_EDGE picks to enrich for {sport}")
+    
+    logger.info(f"[SerpAPI] {len(zero_line_picks)} zero-line + {len(generic_picks)} generic picks to enrich for {sport}")
+    
     sport_label = {"wnba": "WNBA", "mlb": "MLB", "wc": "World Cup"}.get(sport, sport)
     enriched = 0
-    for pick in zero_line_picks:
+    
+    for pick in enrich_picks:
         player = pick.get("name", pick.get("player", ""))
         stat = pick.get("stat", "")
         if not player or not stat:
             continue
+        
+        synonyms = STAT_SYNONYMS.get(stat.upper(), [stat.lower().replace("_", " ")])
         query = f"{player} {stat} over under prop odds {sport_label} today"
+        
         try:
             results = search_odds(query, num_results=3)
             for r in results:
                 snippet = r.get("snippet", "") + " " + r.get("title", "")
-                patterns = [
-                    rf'{re.escape(str(stat))}.{{0,10}}(over|under).{{0,10}}([\d.]+)',
-                    rf'(over|under).{{0,10}}([\d.]+).{{0,10}}{re.escape(str(stat))}',
-                    rf'([\d.]+).{{0,5}}{re.escape(str(stat))}',
-                ]
-                found = False
-                for pat in patterns:
-                    m = re.search(pat, snippet, re.IGNORECASE)
-                    if m:
-                        try:
-                            val = float(m.group(2) if len(m.groups()) >= 2 else m.group(1))
-                            if 0.1 < val < 100:
-                                pick["line"] = val
-                                enriched += 1
-                                found = True
-                                break
-                        except (ValueError, IndexError):
-                            continue
+                snippet_lower = snippet.lower()
+                
+                for syn in synonyms:
+                    patterns = [
+                        rf'{re.escape(syn)}[\s\n\r.{{0,20}}(over|under)[\s\n\r.{{0,15}}([\d.]+)',
+                        rf'(over|under)[\s\n\r.{{0,15}}([\d.]+)[\s\n\r.{{0,20}}{re.escape(syn)}',
+                        rf'({re.escape(syn)})[\s\n\r.{{0,10}}([\d.]+)',
+                    ]
+                    found = False
+                    for pat in patterns:
+                        m = re.search(pat, snippet_lower, re.IGNORECASE)
+                        if m:
+                            try:
+                                val = float(m.group(2) if len(m.groups()) >= 2 else m.group(1))
+                                if 0.1 < val < 100:
+                                    pick["line"] = val
+                                    pick["signal"] = "SERPAPI"
+                                    enriched += 1
+                                    found = True
+                                    break
+                            except (ValueError, IndexError):
+                                continue
+                    if found:
+                        break
                 if found:
                     break
-        except Exception as e:
+        except Exception:
             pass
-    logger.info(f"[SerpAPI] Enriched {enriched}/{len(zero_line_picks)} SELF_EDGE picks for {sport}")
+    
+    logger.info(f"[SerpAPI] Enriched {enriched}/{len(enrich_picks)} picks for {sport}")
     return projections
 
 
@@ -456,7 +518,7 @@ def generate_picks(sport: str):
             (
                 date_str, p["sport"], p["name"], p["team"], p["stat"],
                 p["projection"], p["line"], p["edge"], p["direction"],
-                p.get("reason", ""), p.get("matchup", ""), "GAME", "SELF_EDGE",
+                p.get("reason", ""), p.get("matchup", ""), "GAME", p.get("signal", "SELF_EDGE"),
             ),
         )
     conn.commit()
