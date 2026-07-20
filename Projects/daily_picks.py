@@ -34,7 +34,7 @@ PROJ_DIR = Path(__file__).parent.parent / "Daily_Log"
 DATA_DIR = Path(__file__).parent.parent / "data"
 
 SERPAPI_DAILY_MAX = 250
-SERPAPI_PER_RUN = 8
+SERPAPI_PER_RUN = 20
 SERPAPI_TRACKER = DATA_DIR / "serpapi_usage.json"
 PICKS_DIR = DATA_DIR / "picks"
 DB_PATH = Path(__file__).parent / "data" / "picks.db"
