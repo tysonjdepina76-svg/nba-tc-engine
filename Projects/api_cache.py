@@ -1,124 +1,227 @@
-"""Unified API cache + batch layer.
-
-Goal: cut total API calls/day from ~4,000 to <500.
-
-Strategy:
-  - SGO: fetch ONCE per (sport, day) — full odds dump, cache to JSON
-  - OddsAPI: fetch ONCE per game (event_id), cache
-  - ESPN: fetch ONCE per event_id (scoreboard/boxscore/summary), cache
-  - In-memory + disk cache keyed by URL+params
-  - TTL: 6h live / 30d final
+#!/usr/bin/env python3
+"""Smart API Cache + Rate-Limit Governor
+Unified caching layer for all external API sources.
+Prevents quota burns by caching responses and tracking daily call counts.
 """
+
 import json
 import os
 import time
 import hashlib
-import urllib.request
-import urllib.parse
+import logging
+from datetime import datetime, timedelta
 from pathlib import Path
-from typing import Optional, Dict, Any, Tuple
+from typing import Any, Optional, Dict, Callable
+from functools import wraps
 
-CACHE_DIR = Path("/home/workspace/Daily_Log/.api_cache")
-CACHE_DIR.mkdir(parents=True, exist_ok=True)
+from src.adapters.cache_adapter import CacheAdapter
 
-CALL_LOG_PATH = CACHE_DIR / "calls.jsonl"
-_MEM: Dict[str, Tuple[float, Any]] = {}
+logger = logging.getLogger(__name__)
 
-DEFAULT_TTL_LIVE = 6 * 3600
-DEFAULT_TTL_FINAL = 30 * 24 * 3600
+DATA_DIR = Path(__file__).parent / "data"
+CACHE_DIR = DATA_DIR / "api_cache"
+USAGE_FILE = DATA_DIR / "api_usage.json"
 
+SOURCE_CONFIGS = {
+    "discovery_lab": {
+        "daily_limit": 1000,
+        "reset_at": "00:00",
+        "cache_ttl_hours": {"game_odds": 1, "player_props": 2, "schedule": 6, "default": 4},
+    },
+    "serpapi": {
+        "daily_limit": 250,
+        "reset_at": "00:00",
+        "cache_ttl_hours": {"odds_search": 2, "default": 6},
+    },
+    "balldontlie": {
+        "daily_limit": 300,  # per minute
+        "rate_limit_seconds": 1.0,
+        "cache_ttl_hours": {"stats": 2, "odds": 1, "default": 4},
+    },
+    "odds_api": {
+        "daily_limit": 1000,
+        "reset_at": "00:00",
+        "cache_ttl_hours": {"odds": 2, "props": 2, "default": 4},
+    },
+    "espn": {
+        "daily_limit": float("inf"),
+        "cache_ttl_hours": {"roster": 4, "boxscore": 0.25, "schedule": 6, "default": 2},
+    },
+}
 
-def _key(url: str, params: Optional[dict] = None) -> str:
-    raw = url + "?" + json.dumps(params or {}, sort_keys=True)
-    return hashlib.md5(raw.encode()).hexdigest()
-
-
-def _disk_path(key: str) -> Path:
-    return CACHE_DIR / f"{key}.json"
-
-
-def cached_get(url: str, params: Optional[dict] = None, ttl_seconds: int = DEFAULT_TTL_LIVE, headers: Optional[dict] = None, timeout: int = 8) -> Optional[Any]:
-    """Fetch URL with disk+memory cache. Returns parsed JSON or None on failure."""
-    key = _key(url, params)
-    now = time.time()
-
-    if key in _MEM:
-        ts, data = _MEM[key]
-        if now - ts < ttl_seconds:
-            return data
-
-    p = _disk_path(key)
-    if p.exists():
-        try:
-            blob = json.loads(p.read_text())
-            if now - blob.get("ts", 0) < ttl_seconds:
-                data = blob.get("data")
-                _MEM[key] = (now, data)
-                return data
-        except Exception:
-            import logging as _log
-            _log.getLogger(__name__).debug("exception", exc_info=True)
-
-    try:
-        qs = urllib.parse.urlencode(params) if params else ""
-        full = f"{url}?{qs}" if qs else url
-        hdrs = {"Accept": "application/json", "User-Agent": "Mozilla/5.0"}
-        if headers:
-            hdrs.update(headers)
-        req = urllib.request.Request(full, headers=hdrs)
-        with urllib.request.urlopen(req, timeout=timeout) as resp:
-            body = resp.read().decode("utf-8", errors="replace")
-        try:
-            data = json.loads(body)
-        except Exception:
-            data = {"_raw": body}
-        _MEM[key] = (now, data)
-        p.write_text(json.dumps({"ts": now, "url": url, "params": params, "data": data}))
-        return data
-    except Exception as e:
-        return None
+os.makedirs(CACHE_DIR, exist_ok=True)
+os.makedirs(DATA_DIR, exist_ok=True)
 
 
-def log_call(provider: str, endpoint: str) -> None:
-    """Append a single network call to the daily call log."""
-    try:
-        with CALL_LOG_PATH.open("a") as f:
-            f.write(json.dumps({"ts": time.time(), "provider": provider, "endpoint": endpoint}) + "\n")
-    except Exception:
-        import logging as _log
-        _log.getLogger(__name__).debug("exception", exc_info=True)
+class APIGovernor:
+    """Rate-limits + caches all external API calls."""
 
+    def __init__(self):
+        self._cache = CacheAdapter(str(CACHE_DIR), ttl_hours=4)
+        self._usage = self._load_usage()
+        self._last_call = {}  # source → timestamp
 
-def cache_stats(today_only: bool = True) -> Dict[str, Any]:
-    """Return {provider: count} for today (UTC)."""
-    stats = {"ESPN": 0, "SGO": 0, "OddsAPI": 0, "OTHER": 0, "total": 0, "date": time.strftime("%Y-%m-%d", time.gmtime())}
-    if not CALL_LOG_PATH.exists():
-        return stats
-    today = time.strftime("%Y-%m-%d", time.gmtime())
-    try:
-        for line in CALL_LOG_PATH.read_text().splitlines()[-5000:]:
+    def _load_usage(self) -> Dict:
+        if USAGE_FILE.exists():
             try:
-                rec = json.loads(line)
-                ts = rec.get("ts", 0)
-                day = time.strftime("%Y-%m-%d", time.gmtime(ts))
-                if today_only and day != today:
-                    continue
-                prov = rec.get("provider", "OTHER").upper()
-                if prov not in ("ESPN", "SGO", "ODDSAPI"):
-                    prov = "OTHER"
-                stats[prov] = stats.get(prov, 0) + 1
-                stats["total"] += 1
-            except Exception:
-                continue
-    except Exception:
-        import logging as _log
-        _log.getLogger(__name__).debug("exception", exc_info=True)
-    return stats
+                with open(USAGE_FILE) as f:
+                    return json.load(f)
+            except (json.JSONDecodeError, KeyError):
+                pass
+        return {}
+
+    def _save_usage(self):
+        with open(USAGE_FILE, "w") as f:
+            json.dump(self._usage, f, indent=2)
+
+    def _daily_key(self) -> str:
+        return datetime.now().strftime("%Y-%m-%d")
+
+    def _reset_daily_if_stale(self, source: str):
+        today = self._daily_key()
+        if source not in self._usage or self._usage[source].get("date") != today:
+            self._usage[source] = {"date": today, "calls": 0}
+
+    def _cache_key(self, source: str, endpoint: str, params: Dict = None) -> str:
+        raw = f"{source}|{endpoint}|{json.dumps(params or {}, sort_keys=True)}"
+        return hashlib.md5(raw.encode()).hexdigest()
+
+    def _ttl_for(self, source: str, endpoint: str) -> float:
+        config = SOURCE_CONFIGS.get(source, {})
+        ttls = config.get("cache_ttl_hours", {"default": 4})
+        for pattern, hours in ttls.items():
+            if pattern in endpoint:
+                return hours
+        return ttls.get("default", 4)
+
+    def remaining_calls(self, source: str) -> int:
+        config = SOURCE_CONFIGS.get(source, {})
+        limit = config.get("daily_limit", float("inf"))
+        self._reset_daily_if_stale(source)
+        used = self._usage.get(source, {}).get("calls", 0)
+        return max(0, int(limit) - used)
+
+    def get(self, source: str, endpoint: str, params: Dict = None) -> Optional[Any]:
+        """Check cache. Returns cached data or None."""
+        key = self._cache_key(source, endpoint, params)
+        return self._cache.get(key)
+
+    def set(self, source: str, endpoint: str, params: Dict, data: Any):
+        """Cache an API response."""
+        key = self._cache_key(source, endpoint, params)
+        ttl = self._ttl_for(source, endpoint)
+        self._cache.set(key, data, ttl_seconds=int(ttl * 3600))
+
+    def can_call(self, source: str) -> bool:
+        """Check if we have budget for another call."""
+        config = SOURCE_CONFIGS.get(source, {})
+        limit = config.get("daily_limit", float("inf"))
+        if limit == float("inf"):
+            return True
+        self._reset_daily_if_stale(source)
+        return self._usage[source]["calls"] < limit
+
+    def record_call(self, source: str):
+        """Mark one call against daily budget."""
+        self._reset_daily_if_stale(source)
+        self._usage[source]["calls"] += 1
+        self._save_usage()
+
+    def fetch(self, source: str, endpoint: str, params: Dict = None,
+              fetcher: Callable = None, force: bool = False) -> Optional[Any]:
+        """Main entry: fetch from cache if fresh, else call API with rate-limit check.
+
+        Returns (data, source_str) where source_str is 'cache' or 'api'.
+        """
+        key = self._cache_key(source, endpoint, params)
+
+        if not force:
+            cached = self._cache.get(key)
+            if cached is not None:
+                logger.debug(f"[CACHE HIT] {source}/{endpoint}")
+                return cached, "cache"
+
+        if not self.can_call(source):
+            logger.warning(f"[QUOTA EXHAUSTED] {source} — {self.remaining_calls(source)} remaining")
+            stale = self._cache.get(key)
+            if stale is not None:
+                logger.warning(f"[FALLBACK] Returning stale cache for {source}/{endpoint}")
+                return stale, "stale_cache"
+            return None, "quota_exhausted"
+
+        if fetcher is None:
+            logger.error(f"No fetcher provided for {source}/{endpoint}")
+            return None, "no_fetcher"
+
+        logger.info(f"[API CALL] {source}/{endpoint} ({self.remaining_calls(source)} remaining)")
+        self.record_call(source)
+        try:
+            data = fetcher(params or {})
+        except Exception as e:
+            logger.error(f"[FETCH ERROR] {source}/{endpoint}: {e}")
+            stale = self._cache.get(key)
+            if stale is not None:
+                return stale, "stale_cache_error"
+            return None, "fetch_error"
+
+        self._cache.set(key, data)
+        return data, "api"
+
+    def status(self) -> Dict:
+        """Return usage report for all sources."""
+        status = {}
+        for source in SOURCE_CONFIGS:
+            self._reset_daily_if_stale(source)
+            used = self._usage.get(source, {}).get("calls", 0)
+            limit = SOURCE_CONFIGS[source]["daily_limit"]
+            status[source] = {
+                "used": used,
+                "limit": "unlimited" if limit == float("inf") else int(limit),
+                "remaining": "unlimited" if limit == float("inf") else max(0, int(limit) - used),
+            }
+        return status
 
 
-def reset_call_log() -> None:
-    try:
-        CALL_LOG_PATH.unlink()
-    except Exception:
-        import logging as _log
-        _log.getLogger(__name__).debug("exception", exc_info=True)
+_governor = None
+
+
+def get_governor() -> APIGovernor:
+    global _governor
+    if _governor is None:
+        _governor = APIGovernor()
+    return _governor
+
+
+def cached_api(source: str, endpoint: str, cache_ttl_hours: float = None):
+    """Decorator for API functions — auto-cache + rate-limit."""
+    def decorator(func: Callable):
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            gov = get_governor()
+            params = kwargs.get("params", {})
+            if args:
+                params["_args"] = str(args)
+
+            key = gov._cache_key(source, endpoint, params)
+            cached = gov._cache.get(key)
+            if cached is not None:
+                return cached
+
+            if not gov.can_call(source):
+                logger.warning(f"[BLOCKED] {source}: daily quota exhausted")
+                return gov._cache.get(key)
+
+            gov.record_call(source)
+            result = func(*args, **kwargs)
+
+            ttl = cache_ttl_hours or gov._ttl_for(source, endpoint)
+            gov._cache.set(key, result, ttl_seconds=int(ttl * 3600))
+            return result
+        return wrapper
+    return decorator
+
+
+if __name__ == "__main__":
+    gov = get_governor()
+    print("=== API Cache Governor ===")
+    print(json.dumps(gov.status(), indent=2))

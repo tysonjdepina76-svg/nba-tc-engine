@@ -31,7 +31,21 @@
 - **Combo API**: https://tc-api-true.zocomputer.io/api/v1/combos?league=mlb
 
 ### Key Paths
-- **Picks engine**: Projects/daily_picks.py (line 26 import fixed, line 111 split)
+- **Picks engine**: Projects/daily_picks.py
+### ⚡ API Cache Governor (NEW — 2026-07-19 8:25 PM ET)
+- **Module**: `Projects/api_cache.py` — unified caching + rate-limit layer
+- **Cache DB**: `Projects/data/api_cache.db` (SQLite, persists across runs)
+- **Per-source rate limits**:
+  - Discovery Lab: 1,000 calls/day (Fantasy+Odds) | 100/day (Odds tier)
+  - SerpAPI: 250 calls/day (Google Search quota)
+  - Balldontlie: 300 req/min (All-Star)| 60 req/min (Free)
+  - Odds API: 1,000 calls/month (Business tier)
+  - ESPN: unlimited (public scraper, throttled)
+- **Cache TTLs**: Odds=30min, Stats=6hrs, Rosters=24hrs
+- **Integration points**: `daily_picks.py`, `generate_projections.py`, all adapters
+- **Usage**: `from api_cache import cached_fetch; data = cached_fetch("serpapi", endpoint, params)`
+- **Status check**: `python3 Projects/api_cache.py` prints usage report for all sources
+ (line 26 import fixed, line 111 split)
 - **SerpAPI enrichment**: Projects/daily_picks.py → enrich_lines_via_serpapi() — calls Projects/serp_odds_scraper.py
 - **Projection generators**: Projects/generate_projections.py (now produces line=0 across all sports)
 - **API**: Projects/api/main.py (port 8000, combo date filter at line 725)
