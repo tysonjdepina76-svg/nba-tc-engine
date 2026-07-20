@@ -5,8 +5,11 @@ import time
 from typing import Dict, Any, Optional
 
 from src.adapters.mlb_book_fetcher import fetch_mlb_moneyline, fetch_mlb_totals
-from src.adapters.odds_api import fetch_event_odds, fetch_events_list
-from src.adapters.sgo import fetch_events as sgo_fetch_events
+from src.adapters.odds_api_adapter import OddsAPIAdapter
+from src.adapters.sgo import SGOAdapter
+
+_odds = OddsAPIAdapter()
+_sgo = SGOAdapter()
 
 
 def fetch_lines(sport: str, date_str: Optional[str] = None) -> Dict[str, Any]:
@@ -25,7 +28,7 @@ def fetch_lines(sport: str, date_str: Optional[str] = None) -> Dict[str, Any]:
         }
 
     if sport == "wnba":
-        events = sgo_fetch_events("wnba")
+        events = _sgo.fetch_events("wnba")
         return {
             "source": "sgo",
             "events": events or [],
@@ -33,7 +36,7 @@ def fetch_lines(sport: str, date_str: Optional[str] = None) -> Dict[str, Any]:
         }
 
     if sport == "wc":
-        events = fetch_events_list("soccer_world_cup")
+        events = _odds.fetch_events_list("soccer_world_cup")
         return {
             "source": "odds_api",
             "events": events or [],

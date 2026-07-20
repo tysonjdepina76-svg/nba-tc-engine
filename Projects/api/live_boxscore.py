@@ -218,15 +218,21 @@ def _clean_mlb_stats(raw_stats: dict) -> dict:
 
 
 def _parse_wnba_player(entry: dict) -> dict:
-    """Parse a WNBA roster entry into {name, pos, jersey, starter, stats}."""
+    """Parse a WNBA roster entry into {name, pos, jersey, starter, stats, injury_status, alt_lines}."""
+    status_type = (entry.get("status", {}) or {}).get("type", {})
+    injury_detail = status_type.get("description", "") or ""
+    is_injured = bool(injury_detail) and "healthy" not in injury_detail.lower()
+    
     player = {
         "name": "Unknown",
         "pos": "N/A",
-        "jersey": entry.get("jersey", "—"),
+        "jersey": entry.get("jersey", "\u2014"),
         "starter": entry.get("starter", False),
         "dnp": not entry.get("active", True),
+        "injury_status": injury_detail if is_injured else ("DNP" if not entry.get("active", True) else ""),
         "stats": {},
         "display": {},
+        "alt_lines": {},
     }
 
     athlete_ref = entry.get("athlete", {}).get("$ref", "")
@@ -258,11 +264,15 @@ def _parse_mlb_player(entry: dict) -> dict:
     if stats_ref:
         stats = _player_stats(stats_ref)
 
+    status_info = entry.get("status", {}) or {}
+    injury = status_info.get("type", {}).get("name") if isinstance(status_info, dict) else None
     result = {
         "name": name_info.get("displayName", name_info.get("shortName", "Unknown")),
         "pos": pos,
         "jersey": entry.get("jersey", "—"),
         "starter": entry.get("starter", False),
+        "dnp": not entry.get("active", True),
+        "injury": injury,
         "battingOrder": entry.get("battingOrder", 99),
         "stats": stats,
         "display": {},
@@ -535,6 +545,17 @@ def merge_tc_picks(boxscore: dict, picks_db: str) -> dict:
         for player in boxscore.get(side_key, {}).get("players", []):
             pname = player.get("name", "")
             player["tc_picks"] = picks_by_player.get(pname, [])
+            alt_lines = {}
+            for pick in player["tc_picks"]:
+                proj = pick.get("projection", 0) or 0
+                base_line = proj * 0.85 if proj else 0
+                alt_lines[pick["stat"]] = [
+                    {"label": "LOW", "line": round(base_line * 0.85, 1)},
+                    {"label": "BASE", "line": round(base_line, 1)},
+                    {"label": "HIGH", "line": round(base_line * 1.15, 1)},
+                    {"label": "MAX", "line": round(base_line * 1.30, 1)},
+                ]
+            player["alt_lines"] = alt_lines
 
     return boxscore
 

@@ -17,6 +17,9 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from src.explanation_engine import generate_explanation
 from src.adapters.schedule_fetcher import has_games_today
+from src.adapters.mlb_api_adapter import get_todays_games, get_live_boxscore
+from src.adapters.wnba_api_adapter import get_todays_games, get_boxscore
+from src.adapters.world_cup_adapter import WorldCupAdapter
 from src.enhancer import apply_enhancements
 from src.utils.logging import get_logger
 
@@ -25,6 +28,7 @@ from wnba_team_lookup import correct_team
 from mlb_team_lookup import correct_mlb_team
 from wc_team_lookup import correct_wc_team
 from serp_odds_scraper import search_odds
+from src.adapters.espn_odds_fetcher import fetch_espn_odds_cached
 
 PROJ_DIR = Path(__file__).parent.parent / "Daily_Log"
 DATA_DIR = Path(__file__).parent.parent / "data"
@@ -113,7 +117,8 @@ def load_projections(sport):
                 })
 
     logger.info(f"Loaded {len(players_out)} stat-lines from {len(files)} files for {sport}")
-    if sport.lower() in ("wnba", "wc"):
+    if sport.lower() in ("wnba", "mlb", "wc"):
+        players_out = enrich_lines_via_espn(sport, players_out)
         players_out = enrich_lines_via_serpapi(sport, players_out)
     return players_out
 
@@ -133,6 +138,63 @@ def _serpapi_increment(n):
     today = datetime.now(ET).strftime("%Y-%m-%d")
     d[today] = d.get(today, 0) + n
     SERPAPI_TRACKER.write_text(json.dumps(d))
+
+def enrich_lines_via_espn(sport, projections):
+    """Enrich projections with game-level odds from ESPN v2 API (FREE, no auth).
+    
+    ESPN provides spread/O/U/ML per game from DraftKings (provider 100).
+    This adds real market context to every projection entry for the matchup.
+    Does NOT provide individual player milestone props — those require a sportsbook scraper.
+    
+    Sets projection['espn_spread'] and projection['espn_total'] for game-context enrichment.
+    Tags signal as 'ESPN' when game-level odds data was found for the matchup.
+    """
+    import datetime as dt
+    today_str = dt.date.today().isoformat()
+    
+    try:
+        odds_data = fetch_espn_odds_cached(sport, today_str)
+    except Exception as e:
+        logger.warning(f"ESPN odds fetch failed for {sport}: {e}")
+        return projections
+    
+    if not odds_data:
+        logger.info(f"No ESPN odds data for {sport} on {today_str}")
+        return projections
+    
+    enriched = 0
+    for p in projections:
+        matchup = p.get('matchup', '')
+        team = p.get('team', '')
+        
+        # Try to find the game in ESPN odds by matching team abbreviation or matchup name
+        found = None
+        for event_name, odds in odds_data.items():
+            if not event_name:
+                continue
+            # Match team abbreviation in event name or matchup string
+            name_upper = event_name.upper()
+            team_upper = team.upper()
+            matchup_upper = matchup.upper().replace('@', ' AT ')
+            
+            if team_upper and team_upper in name_upper:
+                found = odds
+                break
+            if matchup_upper and any(part.strip() in name_upper for part in matchup_upper.split(' AT ')):
+                found = odds
+                break
+        
+        if found:
+            p['espn_spread'] = found.get('spread')
+            p['espn_total'] = found.get('over_under')
+            p['espn_favorite'] = found.get('favorite')
+            if p.get('signal', 'SELF_EDGE') == 'SELF_EDGE':
+                p['signal'] = 'ESPN'
+            enriched += 1
+    
+    logger.info(f"ESPN enriched {enriched}/{len(projections)} projections for {sport}")
+    return projections
+
 
 def enrich_lines_via_serpapi(sport, projections):
     """For picks with missing or generic lines, try SerpAPI for real market lines.
