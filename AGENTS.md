@@ -1,6 +1,6 @@
 # Workspace Index — true.zo.computer
 
-## Current Status (2026-07-21 5:58 AM ET) — HEALTHY
+## Current Status (2026-07-21 6:10 AM ET) — HEALTHY
 
 ### Today's Pipeline
 - **810 picks**: MLB 810 (15 games), WNBA 0, WC 0
@@ -10,8 +10,10 @@
 
 ### FIXES APPLIED (2026-07-21)
 1. **Free API aggregator wired** — `src/adapters/free_api_aggregator.py` integrated into `daily_picks.py` import chain. `health_check()` and `get_live_stats()` imported. Runs every pipeline execution.
-2. **Combos banner removed** — `/nba-tc` dashboard combos tab deleted
-3. **Gap list generated** — `Daily_Log/2026-07-21/GAP_LIST.md` — 9 gaps with explanations
+2. **GitHub sources fully wired** — `enrich_from_github_sources.py` + `github_line_sources.py` imported in `daily_picks.py`. Pipelines now enrich with live game-specific stats (not just season leaders). Source report runs every execution.
+3. **Combos banner removed** — `/nba-tc` dashboard combos tab deleted
+4. **Gap list generated** — `Daily_Log/2026-07-21/GAP_LIST.md` — 9 gaps with explanations
+5. **Pushed to GitHub** — tysonjdepina76-svg/nba-tc-engine master branch updated.
 
 ### ⚠️ Known Gaps (see GAP_LIST.md for full details)
 - SerpAPI: monthly quota maxed. Resets ~8/1.
