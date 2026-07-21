@@ -21,20 +21,24 @@ from src.adapters.mlb_api_adapter import get_todays_games, get_live_boxscore
 from src.adapters.wnba_api_adapter import get_todays_games, get_boxscore
 from src.adapters.world_cup_adapter import WorldCupAdapter
 from src.enhancer import apply_enhancements
-from src.utils.logging import get_logger
+from src.utils.logging import setup_logging, get_logger
 
-logger = get_logger(__name__)
+setup_logging("tc_pipeline")
+logger = get_logger("tc_pipeline")
 from wnba_team_lookup import correct_team
 from mlb_team_lookup import correct_mlb_team
 from wc_team_lookup import correct_wc_team
 from serp_odds_scraper import search_odds
 from src.adapters.espn_odds_fetcher import fetch_espn_odds_cached
+from src.adapters.free_api_aggregator import health_check as free_api_health, get_live_stats
+from enrich_from_github_sources import enrich_from_github
+from github_line_sources import get_available_sources, source_report
 
 PROJ_DIR = Path(__file__).parent.parent / "Daily_Log"
 DATA_DIR = Path(__file__).parent.parent / "data"
 
-SERPAPI_DAILY_MAX = 250
-SERPAPI_PER_RUN = 20
+SERPAPI_DAILY_MAX = 253
+SERPAPI_PER_RUN = 80
 SERPAPI_TRACKER = DATA_DIR / "serpapi_usage.json"
 PICKS_DIR = DATA_DIR / "picks"
 DB_PATH = Path(__file__).parent / "data" / "picks.db"
@@ -120,6 +124,8 @@ def load_projections(sport):
     if sport.lower() in ("wnba", "mlb", "wc"):
         players_out = enrich_lines_via_espn(sport, players_out)
         players_out = enrich_lines_via_serpapi(sport, players_out)
+        players_out = enrich_via_free_apis(sport, players_out)
+        players_out = enrich_from_github(sport, players_out)
     return players_out
 
 def _serpapi_daily_count():
@@ -138,6 +144,73 @@ def _serpapi_increment(n):
     today = datetime.now(ET).strftime("%Y-%m-%d")
     d[today] = d.get(today, 0) + n
     SERPAPI_TRACKER.write_text(json.dumps(d))
+
+def enrich_via_free_apis(sport, projections):
+    """Enrich projections with live stats from free public APIs (statsapi, pybaseball, nba_api).
+    Updates projection['live_batting_avg'], ['live_ops'], ['live_era'], ['live_whip'], etc.
+    Returns projections unchanged if APIs are unavailable."""
+    import re
+    enriched = 0
+    try:
+        live = get_live_stats(sport)
+    except Exception as e:
+        logger.warning(f"[FREE-APIS] get_live_stats failed: {e}")
+        return projections
+
+    if not live or not any(live.values()):
+        return projections
+
+    def normalize_name(name):
+        return re.sub(r'[^a-zA-Z ]', '', name).lower().strip()
+
+    # Build lookup dict from live stats
+    lookup = {}
+    for source, stats in live.items():
+        for player_name, metrics in stats.items():
+            key = normalize_name(player_name)
+            if key not in lookup:
+                lookup[key] = {}
+            lookup[key].update(metrics)
+
+    for proj in projections:
+        pname = normalize_name(proj.get('espn_name', proj.get('name', '')))
+        stat_type = (proj.get('stat') or '').lower()
+
+        if not pname or pname not in lookup:
+            continue
+
+        live_stats = lookup[pname]
+
+        if sport == 'mlb':
+            if stat_type in ('hits', 'home runs', 'runs', 'rbi', 'stolen bases'):
+                if 'batting_avg' in live_stats and live_stats['batting_avg']:
+                    proj['live_batting_avg'] = live_stats['batting_avg']
+                if 'ops' in live_stats and live_stats['ops']:
+                    proj['live_ops'] = live_stats['ops']
+                if 'home_runs' in live_stats:
+                    proj['live_hr'] = live_stats['home_runs']
+            elif stat_type in ('strikeouts', 'earned runs', 'hits allowed'):
+                if 'era' in live_stats and live_stats['era']:
+                    proj['live_era'] = live_stats['era']
+                if 'k_per_9' in live_stats:
+                    proj['live_k9'] = live_stats['k_per_9']
+                if 'whip' in live_stats:
+                    proj['live_whip'] = live_stats['whip']
+
+        elif sport == 'wnba':
+            if stat_type == 'points':
+                proj['live_pts'] = live_stats.get('pts')
+            elif stat_type == 'rebounds':
+                proj['live_reb'] = live_stats.get('reb')
+            elif stat_type == 'assists':
+                proj['live_ast'] = live_stats.get('ast')
+            elif stat_type == 'three pointers':
+                proj['live_3pct'] = live_stats.get('fg3_pct')
+
+        enriched += 1
+
+    logger.info(f"[FREE-APIS] Enriched {enriched}/{len(projections)} projections for {sport}")
+    return projections
 
 def enrich_lines_via_espn(sport, projections):
     """Enrich projections with game-level odds from ESPN v2 API (FREE, no auth).
@@ -257,6 +330,14 @@ def enrich_lines_via_serpapi(sport, projections):
     
     sport_label = {"wnba": "WNBA", "mlb": "MLB", "wc": "World Cup"}.get(sport, sport)
     enriched = 0
+    
+    
+    # SerpAPI quota guard
+    from serp_odds_scraper import check_quota as _serp_check
+    can_search, rem_daily, rem_run = _serp_check()
+    if not can_search:
+        logger.info(f"[SerpAPI] Quota exhausted ({rem_run} run). Skipping enrichment.")
+        return projections
     
     for pick in enrich_picks:
         player = pick.get("name", pick.get("player", ""))
@@ -651,6 +732,13 @@ def main():
     }
     (Path(__file__).parent.parent / "Daily_Log" / "last_run.json").write_text(json.dumps(last_run, indent=2))
     logger.info(f"Pipeline complete. last_run.json updated: {total_picks} picks ({counts['mlb']} MLB, {counts['wnba']} WNBA, {counts['wc']} WC)")
+
+    try:
+        sources = get_available_sources()
+        report = source_report()
+        logger.info(f"[SOURCES] {json.dumps(sources, default=str)}\n{report}")
+    except Exception as e:
+        logger.warning(f"[SOURCES] report failed: {e}")
 
 
 if __name__ == "__main__":

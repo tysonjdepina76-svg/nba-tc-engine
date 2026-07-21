@@ -1,108 +1,43 @@
 # Workspace Index — true.zo.computer
 
-## Current Status (2026-07-19 ~12:55 PM ET) — PIPELINE GAPS FIXED
+## Current Status (2026-07-21 5:58 AM ET) — HEALTHY
 
-### Today's Data
-- **picks.db**: 486 picks (WNBA: 210, MLB: 212, WC: 64) — SELF_EDGE signal (external APIs down)
-- **combos**: API returns date-filtered combos; ~147 WNBA, 115 MLB, 96 WC
-- **tc_pipeline.db**: 6,238+ graded picks
-- **last_run.json**: MLB=212, WNBA=210, WC=64
+### Today's Pipeline
+- **810 picks**: MLB 810 (15 games), WNBA 0, WC 0
+- **25 combos**: MLB 25
+- **Signal**: All SELF_EDGE — SerpAPI key depleted (no real market lines)
+- **Free API aggregator WIRED**: statsapi + nba_api + pybaseball live in daily_picks.py
 
-### Gaps Fixed (2026-07-19 12:55 PM)
-1. **Import bug** — `daily_picks.py` line 26 had merged `correct_wc_teamfrom serp_odds_scraper` (fixed)
-2. **Combo API date filter** — `/api/v1/combos` now filters by today's date (was returning mixed dates)
-3. **Zero-line projections** — `generate_projections.py` no longer generates fake book lines (line=0 across sports, letting SerpAPI enrich with real lines)
-4. **Signal propagation** — SerpAPI-enriched picks now carry `signal=SERPAPI` through to DB
-5. **WC combo defs** — 6 combo types: G+A, S+PS, S+SOT, T+S, T+P, S+T
-6. **Combo Tab wired** — /nba-tc dashboard has "🔥 Combos" tab fetching from API
+### FIXES APPLIED (2026-07-21)
+1. **Free API aggregator wired** — `src/adapters/free_api_aggregator.py` integrated into `daily_picks.py` import chain. `health_check()` and `get_live_stats()` imported. Runs every pipeline execution.
+2. **Combos banner removed** — `/nba-tc` dashboard combos tab deleted
+3. **Gap list generated** — `Daily_Log/2026-07-21/GAP_LIST.md` — 9 gaps with explanations
 
-### ⚠️ ACTIVE BLOCKER: External APIs Down
-- **SDIO** (SportsDataIo key): 401/404 on all odds endpoints — key invalid or tier doesn't include odds. WNBA get 401 "invalid subscription", MLB get 401, WC endpoint was producing 404.
-- **SerpAPI**: queries return 0 results — SerpAPI key may be exhausted or search params need tuning
-- **Odds API**: Business tier quota maxed (known)
-- **SGO API**: Does NOT support WNBA (NBA-only tier)
-- **RESULT**: All 486 picks are self-edge (no real market lines). Pipeline infrastructure is correct — needs working API keys to populate.
+### ⚠️ Known Gaps (see GAP_LIST.md for full details)
+- SerpAPI: monthly quota maxed. Resets ~8/1.
+- Odds API: Business tier quota maxed
+- SDIO: dead key
+- Fangraphs: 403 IP-blocked (statsapi still works)
+- WNBA: 0 games today
+- ESPN: game lines only, no player props (free tier)
+- WC: 0 matches
+- Email: SMTP not configured (Gmail OAuth works for manual)
+- WC odds: depends on gap 2
 
-### Infrastructure (working)
-- **Zo.space /nba-tc**: https://true.zo.space/nba-tc (combos tab wired, 4 tabs)
-- **Zo.space /dashboard**: https://true.zo.space/dashboard
-- **Streamlit**: https://tc-streamlit-dashboard-true.zocomputer.io (port 8510)
-- **API**: https://tc-api-true.zocomputer.io (:8000, 28 endpoints)
-- **Combo API**: https://tc-api-true.zocomputer.io/api/v1/combos?league=mlb
+### Active Automations (all zo:deepseek/deepseek-v4-pro)
+- MLB Morning (9 AM), WNBA+WC (11 AM), Combo Refresh (1:30 PM), Evening Summary (6 PM)
+
+### Infrastructure
+- Streamlit: :8510 (UP) | API: :8000 (UP) | /nba-tc + /dashboard (UP)
+- Proj files: Daily_Log/2026-07-21/proj_*.json · Picks: data/picks/*.csv
 
 ### Key Paths
-- **Picks engine**: Projects/daily_picks.py
-### ⚡ API Cache Governor (NEW — 2026-07-19 8:25 PM ET)
-- **Module**: `Projects/api_cache.py` — unified caching + rate-limit layer
-- **Cache DB**: `Projects/data/api_cache.db` (SQLite, persists across runs)
-- **Per-source rate limits**:
-  - Discovery Lab: 1,000 calls/day (Fantasy+Odds) | 100/day (Odds tier)
-  - SerpAPI: 250 calls/day (Google Search quota)
-  - Balldontlie: 300 req/min (All-Star)| 60 req/min (Free)
-  - Odds API: 1,000 calls/month (Business tier)
-  - ESPN: unlimited (public scraper, throttled)
-- **Cache TTLs**: Odds=30min, Stats=6hrs, Rosters=24hrs
-- **Integration points**: `daily_picks.py`, `generate_projections.py`, all adapters
-- **Usage**: `from api_cache import cached_fetch; data = cached_fetch("serpapi", endpoint, params)`
-- **Status check**: `python3 Projects/api_cache.py` prints usage report for all sources
- (line 26 import fixed, line 111 split)
-- **SerpAPI enrichment**: Projects/daily_picks.py → enrich_lines_via_serpapi() — calls Projects/serp_odds_scraper.py
-- **Projection generators**: Projects/generate_projections.py (now produces line=0 across all sports)
-- **API**: Projects/api/main.py (port 8000, combo date filter at line 725)
-- **Streamlit dashboard**: tc_engine/dashboard/tc_dashboard.py (port 8510)
-- **Data**: Daily_Log/YYYY-MM-DD/ · Projects/data/ (picks.db + tc_pipeline.db)
-- **Combo builder**: Projects/build_pregame_combos.py
-
-### Automation
-- **Daily Sports Picks Update**: Runs 1:30 PM ET — `generate_projections.py --sport all` then `daily_picks.py --sport wnba/mlb/wc`
+- Picks: Projects/daily_picks.py | Projections: Projects/generate_projections.py
+- WNBA gen: Projects/gen_wnba_today.py
+- Free APIs: Projects/src/adapters/free_api_aggregator.py
+- Quota: Daily_Log/serpapi_quota.json
+- Gap list: Daily_Log/2026-07-21/GAP_LIST.md
 
 ### ⚠️ CONTACT TRUTH
-- ONLY phone: 508-840-0794 (SMS +15088400794)
-- 508-639-4473 is DEAD — never use
+- ONLY phone: 508-840-0794 (SMS +15088400794). 508-639-4473 is DEAD.
 - Email: tysonjdepina76@gmail.com / tysondepina99@gmail.com
-
-## FIXES APPLIED (2026-07-19 ~4:00 PM ET)
-
-### 1. Combos Tab Rendering — ALL Dashboards
-- **root cause**: `/dashboard` was fetching combos from old `/api/combos/precomputed` endpoint (WNBA-only), and rendering `c.label` which doesn't exist in the combo API response
-- **fix**: `/dashboard` now fetches from `/api/v1/combos` across all 3 leagues (WNBA, MLB, WC) with `min_edge=0`, and renders `c.combo_label || c.combo`
-- **/nba-tc**: combos tab already had correct endpoint, confirmed working
-
-### 2. WC Box Scores — Live Games Tab
-- **root cause**: BoxScoreView in `/nba-tc` had no WC column definitions or rendering blocks — only WNBA and MLB
-- **fix**: Added WC_COLS = ["G", "A", "SH", "SOT", "PAS", "TKL", "YC"] and WC rendering blocks for away/home teams
-
-### 3. Combo Banner Cleanup — /nba-tc Game Cards
-- **root cause**: Combo detection banners were visually intrusive (glow effects, overflowing the card)
-- **fix**: Reduced to compact inline pill-style: smaller padding, no glow/shadow, muted border, smaller text. Still shows sport emoji + combo types + count.
-
-### 4. Workspace Cleanup
-- Removed empty directories, .bak files, stale node_modules
-- Git pushed commit 36ef71f
-
-### Verify
-- Combos API: `curl https://tc-api-true.zocomputer.io/api/v1/combos?league=mlb&min_edge=0`
-- Dashboard: https://true.zo.space/nba-tc → Combos tab
-- Main dashboard: https://true.zo.space/dashboard → COMBOS buttonEND
-echo "AGENTS.md updated"
-
-## FIXES APPLIED (2026-07-19 ~4:00 PM ET)
-
-### 1. Combos Tab - ALL Dashboards
-- /dashboard combos: switched from old /api/combos/precomputed (WNBA-only) to /api/v1/combos across all 3 leagues
-- Fixed c.label -> c.combo_label field mismatch
-
-### 2. WC Box Scores - Live Games Tab
-- Added WC_COLS (G,A,SH,SOT,PAS,TKL,YC) and rendering blocks for soccer in /nba-tc
-
-### 3. Combo Banner Cleanup
-- Reduced visual footprint on game cards: compact pills, no glow, muted border
-
-### 4. Workspace Cleanup
-- Removed empty dirs, .bak files, stale node_modules
-- Git pushed commit 36ef71f
-
-### Verify
-- API: curl https://tc-api-true.zocomputer.io/api/v1/combos?league=mlb
-- /nba-tc: https://true.zo.space/nba-tc -> Combos tab
-- /dashboard: https://true.zo.space/dashboard -> COMBOS button
