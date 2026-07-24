@@ -12,6 +12,7 @@ from datetime import datetime
 from typing import Dict, List, Any, Optional
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
+from src.api_cap_tracker import cap_check
 sys.path.insert(0, "/home/workspace/Projects")
 sys.path.insert(0, "/home/workspace/Projects/src")
 
@@ -50,6 +51,9 @@ session.headers.update({"User-Agent": "Mozilla/5.0"})
 
 def _get(url: str, ttl: int = 60) -> Optional[dict]:
     """Fetch JSON from ESPN with simple in-memory TTL cache."""
+    domain = url.split('/')[2] if '://' in url else url
+    if not cap_check(domain):
+        return None
     try:
         r = session.get(url, timeout=10)
         r.raise_for_status()
@@ -232,6 +236,7 @@ def _parse_wnba_player(entry: dict) -> dict:
         "injury_status": injury_detail if is_injured else ("DNP" if not entry.get("active", True) else ""),
         "stats": {},
         "display": {},
+        "display_stats": {},
         "alt_lines": {},
     }
 
@@ -248,6 +253,7 @@ def _parse_wnba_player(entry: dict) -> dict:
     if stats_ref:
         player["stats"] = _player_stats(stats_ref)
         player["display"] = _clean_wnba_stats(player["stats"])
+        player["display_stats"] = player["display"]
 
     return player
 
@@ -280,6 +286,8 @@ def _parse_mlb_player(entry: dict) -> dict:
 
     if stats:
         result["display"] = _clean_mlb_stats(stats)
+        result["display_stats"] = dict(result["display"])
+        result["display_stats"] = result["display"]
     return result
 
 

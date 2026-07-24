@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
 WNBA Team Lookup — corrects team assignments that get scrambled in projection files.
-The projection files assign team='CHI' or team='ATL' based on away/home side,
-NOT the player's actual team. This module provides the canonical mapping.
+ESPN boxscore data is ground truth. Only override when team clearly conflicts
+with matchup context. Hardcoded roster lookup is last resort.
 """
 
 WNBA_ROSTERS = {
@@ -15,7 +15,9 @@ WNBA_ROSTERS = {
         "Angel Reese", "Kamilla Cardoso", "Chennedy Carter", "Dana Evans",
         "Michaela Onyenwere", "Diamond DeShields", "Isabelle Harrison",
         "Brianna Turner", "Lindsay Allen", "Rachel Banham", "Moriah Jefferson",
-        "Elizabeth Williams",
+        "Elizabeth Williams", "Natasha Cloud", "Azura Stevens",
+        "Courtney Vandersloot", "Sydney Taylor",
+        "Gabriela Jaquez", "Jacy Sheldon", "Aicha Coulibaly",
     ],
     "CON": [  
         "Alyssa Thomas", "DeWanna Bonner", "Marina Mabrey", "DiJonai Carrington",
@@ -34,7 +36,7 @@ WNBA_ROSTERS = {
     ],
     "LA": [  
         "Dearica Hamby", "Rickea Jackson", "Cameron Brink", "Lexie Brown",
-        "Layshia Clarendon", "Kia Nurse", "Azura Stevens", "Li Yueru",
+        "Layshia Clarendon", "Kia Nurse", "Li Yueru",
         "Kelsey Plum",
         "Zia Cooke", "Rae Burrell", "Aaliyah Gayles",
     ],
@@ -45,17 +47,19 @@ WNBA_ROSTERS = {
     ],
     "MIN": [  
         "Napheesa Collier", "Kayla McBride", "Diamond Miller", "Jessica Shepard",
-        "Bridget Carleton", "Dorka Juhasz", "Natisha Hiedeman", "Alanna Smith",
+        "Bridget Carleton", "Dorka Juhasz", "Alanna Smith",
         "Courtney Williams", "Cecilia Zandalasini", "Sika Kone",
     ],
     "NY": [  
         "Breanna Stewart", "Sabrina Ionescu", "Jonquel Jones", "Betnijah Laney-Hamilton",
-        "Courtney Vandersloot", "Kayla Thornton", "Nyara Sabally", "Leonie Fiebich",
+        "Kayla Thornton", "Nyara Sabally", "Leonie Fiebich",
         "Marine Johannes", "Han Xu", "Kennedy Burke", "Ivana Dojkic",
+        "Rebecca Allen", "Pauline Astier", "Raquel Carrera", "Rebekah Gardner",
+        "Marine Fauthoux",
     ],
     "PHX": [  
         "Diana Taurasi", "Brittney Griner", "Kahleah Copper", "Sophie Cunningham",
-        "Natasha Cloud", "Rebecca Allen", "Megan Walker", "Sug Sutton",
+        "Megan Walker", "Sug Sutton",
         "Mikiah Herbert Harrigan", "Liz Dixon", "Charisma Osborne",
     ],
     "SEA": [  
@@ -63,16 +67,23 @@ WNBA_ROSTERS = {
         "Sami Whitcomb", "Jordan Horston", "Mercedes Russell", "Joyner Holmes",
         "Kaila Charles", "Dulcy Fankam Mendjiadeu", "Jade Melbourne",
     ],
-    "WAS": [  
+    "WSH": [  
         "Ariel Atkins", "Shakira Austin", "Brittney Sykes", "Shatori Walker-Kimbrough",
-        "Myisha Hines-Allen", "Karlie Samuelson", "Queen Egbo", "Li Meng",
+        "Myisha Hines-Allen", "Karlie Samuelson",
         "Kristi Toliver", "Abby Meyers", "Elena Tsineke",
     ],
 }
 
+TEAM_ABBREV_MAP = {
+    "atlanta dream": "ATL", "chicago sky": "CHI", "connecticut sun": "CON",
+    "dallas wings": "DAL", "indiana fever": "IND", "las vegas aces": "LV",
+    "los angeles sparks": "LA", "minnesota lynx": "MIN", "new york liberty": "NY",
+    "phoenix mercury": "PHX", "seattle storm": "SEA", "washington mystics": "WSH",
+}
+
 
 def get_team_for_player(player_name):
-    """Return the correct WNBA team abbreviation for a player."""
+    """Return the correct WNBA team abbreviation for a player from hardcoded roster."""
     for team, players in WNBA_ROSTERS.items():
         if player_name in players:
             return team
@@ -85,31 +96,54 @@ def get_team_for_player(player_name):
 
 def correct_team(player_name, current_team, league="wnba", matchup=""):
     """
-    Correct the team assignment. Falls back to original if lookup fails.
-    Also checks matchup context — if the player's actual team appears in the matchup,
-    that's the right assignment.
+    ESPN boxscore is ground truth. Only override when team clearly conflicts
+    with matchup context. Roster lookup is last resort.
     """
     if league.lower() != "wnba":
         return current_team
 
-    actual_team = get_team_for_player(player_name)
-    if actual_team:
-        return actual_team
+    current_lower = (current_team or "").strip().lower()
 
-    return current_team
+    matchup_teams = []
+    if "_at_" in matchup:
+        parts = matchup.split("_at_")
+        matchup_teams = [p.strip() for p in parts]
+    elif "@" in matchup:
+        parts = matchup.split("@")
+        matchup_teams = [p.strip() for p in parts]
+
+    # ESPN-sourced team is ground truth
+    current_abbrev = TEAM_ABBREV_MAP.get(current_lower, None)
+    if not current_abbrev and len(current_team) <= 3 and current_team.isalpha():
+        current_abbrev = current_team.upper()
+
+    if current_abbrev:
+        if not matchup_teams or current_abbrev in matchup_teams:
+            return current_abbrev
+
+    if current_lower in TEAM_ABBREV_MAP:
+        abbrev = TEAM_ABBREV_MAP[current_lower]
+        if matchup_teams and abbrev in matchup_teams:
+            return abbrev
+        return abbrev
+
+    roster_team = get_team_for_player(player_name)
+    if roster_team:
+        if not matchup_teams or roster_team in matchup_teams:
+            return roster_team
+
+    return current_abbrev or current_team or roster_team or "???"
 
 
 if __name__ == "__main__":
     tests = [
-        ("Brittney Griner", "CHI", "CHI@ATL"),
-        ("Arike Ogunbowale", "ATL", "CHI@ATL"),
-        ("Sabrina Ionescu", "CHI", "NY@IND"),
-        ("Caitlin Clark", "CHI", "NY@IND"),
-        ("Breanna Stewart", "IND", "NY@IND"),
-                ("A'ja Wilson", "PHX", "CON@PHX"),
-        ("Diana Taurasi", "PHX", "CON@PHX"),
+        ("Brittney Griner", "Atlanta Dream", "PHX_at_LA"),
+        ("Natasha Cloud", "Chicago Sky", "CHI_at_NY"),
+        ("Azura Stevens", "Chicago Sky", "CHI_at_NY"),
+        ("Breanna Stewart", "New York Liberty", "CHI_at_NY"),
+        ("Caitlin Clark", "Indiana Fever", "CON_at_IND"),
+        ("A'ja Wilson", "Las Vegas Aces", "LV_at_WSH"),
     ]
     for name, team, matchup in tests:
         correct = correct_team(name, team, "wnba", matchup)
-        status = "✅" if correct != team or correct == team else "⚠️"
-        print(f"{status} {name}: {team} → {correct}  (game: {matchup})")
+        print(f"{name}: {team} → {correct}  (matchup: {matchup})")

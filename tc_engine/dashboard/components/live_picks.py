@@ -6,6 +6,8 @@ import streamlit as st
 import pandas as pd
 import sqlite3
 from pathlib import Path
+import sys
+sys.path.insert(0, "/home/workspace/Projects")
 
 
 PICKS_DB = Path("/home/workspace/Projects/data/picks.db")
@@ -31,6 +33,19 @@ def load_picks(limit: int = 200) -> pd.DataFrame:
 
 def render():
     st.header("Live +EV Picks")
+
+    with st.expander("🔌 Free API Source Status", expanded=False):
+        try:
+            from github_line_sources import get_available_sources
+            srcs = get_available_sources()
+            c1, c2, c3, c4 = st.columns(4)
+            c1.metric("statsapi (MLB)", "✅" if srcs.get("statsapi") else "❌")
+            c2.metric("nba_api (WNBA)", "✅" if srcs.get("nba_api") else "❌")
+            c3.metric("pybaseball", "✅" if srcs.get("pybaseball") else "❌")
+            c4.metric("ESPN v2", "✅" if srcs.get("espn_v2") else "❌")
+            st.caption(f"Free sources available: {sum(1 for v in srcs.values() if v)}/{len(srcs)}")
+        except Exception as e:
+            st.caption(f"API status unavailable: {e}")
 
     df = load_picks()
     if df.empty:

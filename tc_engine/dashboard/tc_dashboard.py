@@ -8,6 +8,7 @@ import sys
 import streamlit as st
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, "/home/workspace/Projects")
 
 from components.live_picks import render as render_live_picks
 from components.performance import render as render_performance
@@ -26,6 +27,20 @@ st.markdown("""
 
 st.title("🏆 TC Sports Engine")
 st.caption("Triple Conservative (TC) — Live +EV picks, backtested performance, and explainable edge detection")
+
+with st.sidebar:
+    st.header("🔌 API Sources")
+    st.caption("Live status of free data sources wired into daily_picks.py")
+    try:
+        from github_line_sources import get_available_sources
+        srcs = get_available_sources()
+        for src, status in srcs.items():
+            icon = "🟢" if status else "🔴"
+            st.write(f"{icon} {src}")
+        st.divider()
+        st.caption("🟢 = available  🔴 = offline")
+    except Exception:
+        st.warning("Could not load source status")
 
 tabs = st.tabs([
     "📊 Live Picks",

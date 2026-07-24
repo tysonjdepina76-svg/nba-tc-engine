@@ -175,7 +175,7 @@ def convert_projections_for_daily_picks(proj_data):
 
 
 def main():
-    dates = ["2026-07-14", "2026-07-15"]
+    dates = [datetime.now().strftime("%Y-%m-%d")]
     
     for date_str in dates:
         print(f"\n{'='*60}")

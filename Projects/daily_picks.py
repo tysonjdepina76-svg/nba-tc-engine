@@ -17,22 +17,18 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from src.explanation_engine import generate_explanation
 from src.adapters.schedule_fetcher import has_games_today
-from src.adapters.mlb_api_adapter import get_todays_games, get_live_boxscore
-from src.adapters.wnba_api_adapter import get_todays_games, get_boxscore
-from src.adapters.world_cup_adapter import WorldCupAdapter
+from src.adapters.mlb_api_adapter import get_todays_games as get_mlb_games, get_live_boxscore as get_mlb_boxscore
+from src.adapters.wnba_api_adapter import get_todays_games as get_wnba_games, get_boxscore as get_wnba_boxscore
+from src.adapters.espn_odds_fetcher import fetch_espn_odds_cached
+from src.adapters.theoddsapi_adapter import get_odds_comparison as fetch_live_odds
+from src.adapters.free_api_aggregator import get_live_stats, health_check as free_api_health
 from src.enhancer import apply_enhancements
-from src.utils.logging import setup_logging, get_logger
-
-setup_logging("tc_pipeline")
-logger = get_logger("tc_pipeline")
+from src.roster_loader import get_loader as get_roster_loader
+import logging
+logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(name)s - %(message)s")
+logger = logging.getLogger("tc_pipeline")
 from wnba_team_lookup import correct_team
 from mlb_team_lookup import correct_mlb_team
-from wc_team_lookup import correct_wc_team
-from serp_odds_scraper import search_odds
-from src.adapters.espn_odds_fetcher import fetch_espn_odds_cached
-from src.adapters.free_api_aggregator import health_check as free_api_health, get_live_stats
-from enrich_from_github_sources import enrich_from_github
-from github_line_sources import get_available_sources, source_report
 
 PROJ_DIR = Path(__file__).parent.parent / "Daily_Log"
 DATA_DIR = Path(__file__).parent.parent / "data"
@@ -72,7 +68,8 @@ def load_projections(sport):
         # Skip the all-in-one dated file (e.g. proj_MLB_2026-07-18.json)
         if len(raw_suffix) == 10 and raw_suffix[4] == '-' and raw_suffix[7] == '-':
             continue
-        if raw_suffix.lower() in ('merged',):
+        # Skip merged files and WNBA combined file (per-game files have all players)
+        if raw_suffix.lower() in ("merged",) or raw_suffix == "":
             continue
         matchup = raw_suffix
 
@@ -85,20 +82,27 @@ def load_projections(sport):
             top_projs = data.get("projections", [])
             if isinstance(top_projs, list):
                 player_list = top_projs
-        # Per-game files have away/home sections with nested players
+        # Per-game files have away/home sections with nested players (all/starters)
         if not player_list:
             for side in [data.get("away", {}), data.get("home", {})]:
-                player_list.extend(side.get("players", []))
+                for group_key in ("players", "all", "starters"):
+                    group = side.get(group_key, {})
+                    if isinstance(group, dict):
+                        player_list.extend(group.get("players", []))
+                    elif isinstance(group, list):
+                        player_list.extend(group)
         for p in player_list:
             player_name = p.get("player", p.get("name", ""))
             team = p.get("team", "")
+            player_matchup = p.get("matchup") or matchup
             if sport.lower() == "mlb":
                 team = correct_mlb_team(player_name, team)
-            elif sport.lower() == "wc":
-                team = correct_wc_team(player_name, team)
             else:
-                team = correct_team(player_name, team, sport, matchup)
+                team = correct_team(player_name, team, sport, player_matchup)
             proj_dict = p.get("projections", {})
+            # WNBA combined files use list format [{stat, projection, line}, ...] — convert to dict
+            if isinstance(proj_dict, list):
+                proj_dict = {e["stat"]: e for e in proj_dict if "stat" in e}
             if not proj_dict:
                 entries = p.get("entries", [])
                 proj_dict = {e["stat"]: e for e in entries if "stat" in e}
@@ -112,7 +116,7 @@ def load_projections(sport):
                 players_out.append({
                     "name": player_name,
                     "team": team,
-                    "matchup": matchup,
+                    "matchup": player_matchup,
                     "stat": stat.upper() if sport.upper() == "MLB" else stat,
                     "projection": tc_proj,
                     "line": line,
@@ -121,11 +125,12 @@ def load_projections(sport):
                 })
 
     logger.info(f"Loaded {len(players_out)} stat-lines from {len(files)} files for {sport}")
-    if sport.lower() in ("wnba", "mlb", "wc"):
+    if sport.lower() in ("wnba", "mlb"):
         players_out = enrich_lines_via_espn(sport, players_out)
         players_out = enrich_lines_via_serpapi(sport, players_out)
         players_out = enrich_via_free_apis(sport, players_out)
-        players_out = enrich_from_github(sport, players_out)
+        # enrich_from_github removed — module missing
+        players_out = enrich_via_rosters(sport, players_out)
     return players_out
 
 def _serpapi_daily_count():
@@ -212,6 +217,28 @@ def enrich_via_free_apis(sport, projections):
     logger.info(f"[FREE-APIS] Enriched {enriched}/{len(projections)} projections for {sport}")
     return projections
 
+def enrich_via_rosters(sport, projections):
+    """Enrich projections with player roster data (position, full team name, jersey)."""
+    loader = get_roster_loader()
+    enriched = 0
+    for p in projections:
+        name = p.get("name", "")
+        team = p.get("team", "")
+        if not name:
+            continue
+        info = loader.enrich_player(name, sport, team)
+        if info:
+            p.update({
+                "roster_position": info.get("roster_position", ""),
+                "roster_team_full": info.get("roster_team_full", ""),
+                "roster_team_abbr": info.get("roster_team_abbr", ""),
+                "roster_jersey": info.get("roster_jersey", ""),
+                "roster_id": info.get("roster_id", ""),
+            })
+            enriched += 1
+    logger.info(f"[ROSTERS] Enriched {enriched}/{len(projections)} projections for {sport}")
+    return projections
+
 def enrich_lines_via_espn(sport, projections):
     """Enrich projections with game-level odds from ESPN v2 API (FREE, no auth).
     
@@ -265,7 +292,55 @@ def enrich_lines_via_espn(sport, projections):
                 p['signal'] = 'ESPN'
             enriched += 1
     
-    logger.info(f"ESPN enriched {enriched}/{len(projections)} projections for {sport}")
+    logger.info(f"[ESPN-ENRICH] Tagged {enriched} of {len(projections)} projection lines with ESPN context.")
+    return projections
+
+def enrich_projections_with_live_odds(projections, sport):
+    """Fetch live player prop lines from TheOddsAPI (DK + FD) and replace market_line with real odds.
+    
+    Falls back to ESPN lines if TheOddsAPI fails or has no data for a player.
+    Per-player: picks best available line across DraftKings and FanDuel.
+    Tags signal as 'LIVE' when real odds were found for the player.
+    """
+    try:
+        live = fetch_live_odds(sport)
+    except Exception as e:
+        logger.warning(f"TheOddsAPI fetch failed for {sport}: {e}")
+        return projections
+    
+    if not live:
+        logger.info(f"TheOddsAPI returned no player prop data for {sport}")
+        return projections
+    
+    updated = 0
+    for p in projections:
+        player = p.get('player', '')
+        stat = p.get('stat', '')
+        if not player:
+            continue
+        
+        # Look for player + stat in live odds
+        props = live.get(player.lower(), [])
+        match = None
+        for prop in props:
+            if prop.get('stat') and prop['stat'].lower() == stat.lower():
+                match = prop
+                break
+        
+        if match and match.get('line', 0) > 0:
+            old_line = p.get('market_line', 0)
+            new_line = match['line']
+            p['market_line'] = new_line
+            p['market_line_bk'] = match.get('book', 'TheOddsAPI')
+            p['signal'] = 'LIVE'
+            # Recalculate edge with new line
+            proj = p.get('tc_projection', 0)
+            if proj and new_line:
+                p['edge'] = round(abs(proj - new_line), 2)
+            updated += 1
+            logger.debug(f"[LIVE-ODDS] {player} {stat}: line {old_line} → {new_line} ({match['book']})")
+    
+    logger.info(f"[LIVE-ODDS] Updated {updated} of {len(projections)} projection lines with live DK/FD odds.")
     return projections
 
 
@@ -328,61 +403,12 @@ def enrich_lines_via_serpapi(sport, projections):
     
     logger.info(f"[SerpAPI] {len(zero_line_picks)} zero-line + {len(generic_picks)} generic picks to enrich for {sport}")
     
-    sport_label = {"wnba": "WNBA", "mlb": "MLB", "wc": "World Cup"}.get(sport, sport)
+    sport_label = {"wnba": "WNBA", "mlb": "MLB"}.get(sport, sport)
     enriched = 0
     
     
-    # SerpAPI quota guard
-    from serp_odds_scraper import check_quota as _serp_check
-    can_search, rem_daily, rem_run = _serp_check()
-    if not can_search:
-        logger.info(f"[SerpAPI] Quota exhausted ({rem_run} run). Skipping enrichment.")
-        return projections
-    
-    for pick in enrich_picks:
-        player = pick.get("name", pick.get("player", ""))
-        stat = pick.get("stat", "")
-        if not player or not stat:
-            continue
-        
-        synonyms = STAT_SYNONYMS.get(stat.upper(), [stat.lower().replace("_", " ")])
-        query = f"{player} {stat} over under prop odds {sport_label} today"
-        
-        try:
-            results = search_odds(query, num_results=3)
-            _serpapi_increment(1)
-            for r in results:
-                snippet = r.get("snippet", "") + " " + r.get("title", "")
-                snippet_lower = snippet.lower()
-                
-                for syn in synonyms:
-                    patterns = [
-                        rf'{re.escape(syn)}[\s\n\r.{{0,20}}(over|under)[\s\n\r.{{0,15}}([\d.]+)',
-                        rf'(over|under)[\s\n\r.{{0,15}}([\d.]+)[\s\n\r.{{0,20}}{re.escape(syn)}',
-                        rf'({re.escape(syn)})[\s\n\r.{{0,10}}([\d.]+)',
-                    ]
-                    found = False
-                    for pat in patterns:
-                        m = re.search(pat, snippet_lower, re.IGNORECASE)
-                        if m:
-                            try:
-                                val = float(m.group(2) if len(m.groups()) >= 2 else m.group(1))
-                                if 0.1 < val < 100:
-                                    pick["line"] = val
-                                    pick["signal"] = "SERPAPI"
-                                    enriched += 1
-                                    found = True
-                                    break
-                            except (ValueError, IndexError):
-                                continue
-                    if found:
-                        break
-                if found:
-                    break
-        except Exception:
-            pass
-    
-    logger.info(f"[SerpAPI] Enriched {enriched}/{len(enrich_picks)} picks for {sport} (daily: {_serpapi_daily_count()}/{SERPAPI_DAILY_MAX})")
+    # SerpAPI dead — quota maxed, module missing. Skip enrichment.
+    logger.info("[SerpAPI] Dead — skipping enrichment (quota maxed, module missing).")
     return projections
 
 
@@ -411,9 +437,9 @@ def send_professional_email(all_picks_by_sport, date_str, combos=None):
         logger.info("Email not configured. Skipping professional report.")
         return
 
-    sport_emoji = {"wnba": "🏀", "mlb": "⚾", "wc": "⚽"}
-    sport_colors = {"wnba": "#E94560", "mlb": "#00B4D8", "wc": "#FFD93D"}
-    sport_names = {"wnba": "WNBA", "mlb": "MLB", "wc": "WORLD CUP"}
+    sport_emoji = {"wnba": "🏀", "mlb": "⚾"}
+    sport_colors = {"wnba": "#E94560", "mlb": "#00B4D8"}
+    sport_names = {"wnba": "WNBA", "mlb": "MLB"}
 
     total_picks = sum(len(p) for p in all_picks_by_sport.values())
 
@@ -425,6 +451,15 @@ def send_professional_email(all_picks_by_sport, date_str, combos=None):
         ps = all_picks_by_sport.get(league, [])
         ps_sorted = sorted(ps, key=lambda x: abs(float(x.get("edge", 0))), reverse=True)
         return ps_sorted[:limit]
+
+    conn = sqlite3.connect(DB_PATH)
+    cursor = conn.cursor()
+    cursor.execute("SELECT COUNT(*) FROM graded_picks WHERE hit=1")
+    total_hits = cursor.fetchone()[0]
+    cursor.execute("SELECT COUNT(*) FROM graded_picks WHERE hit IS NOT NULL AND hit>=0")
+    total_graded = cursor.fetchone()[0]
+    all_time_hit_rate = round(total_hits / total_graded * 100, 1) if total_graded else 0.0
+    conn.close()
 
     html = f"""<!DOCTYPE html>
 <html><head><meta charset="utf-8">
@@ -458,14 +493,14 @@ def send_professional_email(all_picks_by_sport, date_str, combos=None):
     <p>EARLY BIRD SPECIAL · {date_str}</p>
   </div>
   <div class="kpi-row">
-    <div class="kpi"><div class="kpi-val" style="color:#3b82f6">{total_picks}</div><div class="kpi-lbl">TOTAL PICKS</div></div>
-    <div class="kpi"><div class="kpi-val" style="color:#22c55e">67.1%</div><div class="kpi-lbl">HIT RATE</div></div>
-    <div class="kpi"><div class="kpi-val" style="color:#f59e0b">$1,759</div><div class="kpi-lbl">PROFIT</div></div>
-    <div class="kpi"><div class="kpi-val" style="color:#a855f7">47</div><div class="kpi-lbl">COMBOS</div></div>
+    <div class="kpi"><div class="kpi-val" style="color:#3b82f6">{total_picks}</div><div class="kpi-lbl">TODAY'S PICKS</div></div>
+    <div class="kpi"><div class="kpi-val" style="color:#22c55e">{all_time_hit_rate}%</div><div class="kpi-lbl">ALL-TIME HIT RATE</div></div>
+    <div class="kpi"><div class="kpi-val" style="color:#f59e0b">{total_graded:,}</div><div class="kpi-lbl">GRADED</div></div>
+    <div class="kpi"><div class="kpi-val" style="color:#a855f7">{len(combos) if combos else 0}</div><div class="kpi-lbl">COMBOS</div></div>
   </div>
 """
 
-    leagues = ["wnba", "mlb", "wc"]
+    leagues = ["wnba", "mlb"]
     for league in leagues:
         top = get_top(league, 12)
         if not top:
@@ -521,7 +556,7 @@ def send_professional_email(all_picks_by_sport, date_str, combos=None):
   <div class="footer">
     TC Sports Pipeline · Generated {date_str}<br>
     Dashboard: <a href="https://true.zo.space/nba-tc">true.zo.space/nba-tc</a><br>
-    <span style="color:#4b5563">Triple Conservative System v7 · 67.1% all-time hit rate</span>
+    <span style="color:#4b5563">Triple Conservative System v7 · {all_time_hit_rate}% all-time hit rate ({total_hits}/{total_graded})</span>
   </div>
 </div></body></html>'''
 
@@ -677,6 +712,10 @@ def generate_picks(sport: str):
     conn = sqlite3.connect(str(DB_PATH))
     c = conn.cursor()
     for p in picks:
+        if p.get("line", 0) == 0:
+            continue
+        if abs(p.get("edge", 0)) <= 0.5:
+            continue
         c.execute(
             """INSERT OR IGNORE INTO picks (date, league, player, team, stat, tc_projection, market_line, edge,
                                   direction, reason, matchup, period, signal)
@@ -700,13 +739,13 @@ def generate_picks(sport: str):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--sport", choices=["mlb", "wnba", "wc", "all"], default="all")
+    parser.add_argument("--sport", choices=["mlb", "wnba", "all"], default="all")
     args = parser.parse_args()
 
-    sports = ["mlb", "wnba", "wc"] if args.sport == "all" else [args.sport]
+    sports = ["mlb", "wnba"] if args.sport == "all" else [args.sport]
 
-    counts = {"mlb": 0, "wnba": 0, "wc": 0}
-    all_picks = {"mlb": [], "wnba": [], "wc": []}
+    counts = {"mlb": 0, "wnba": 0}
+    all_picks = {"mlb": [], "wnba": []}
     for s in sports:
         try:
             result = generate_picks(s)
@@ -728,17 +767,13 @@ def main():
     last_run = {
         "last_run": datetime.now(ET).isoformat(),
         "picks_count": total_picks,
-        "sports": {"mlb": counts["mlb"], "wnba": counts["wnba"], "wc": counts["wc"]}
+        "sports": {"mlb": counts["mlb"], "wnba": counts["wnba"]}
     }
     (Path(__file__).parent.parent / "Daily_Log" / "last_run.json").write_text(json.dumps(last_run, indent=2))
-    logger.info(f"Pipeline complete. last_run.json updated: {total_picks} picks ({counts['mlb']} MLB, {counts['wnba']} WNBA, {counts['wc']} WC)")
+    logger.info(f"Pipeline complete. last_run.json updated: {total_picks} picks ({counts['mlb']} MLB, {counts['wnba']} WNBA, {counts.get('wc', 0)} WC)")
 
-    try:
-        sources = get_available_sources()
-        report = source_report()
-        logger.info(f"[SOURCES] {json.dumps(sources, default=str)}\n{report}")
-    except Exception as e:
-        logger.warning(f"[SOURCES] report failed: {e}")
+    # source_report removed — github_line_sources module missing
+    logger.info("[SOURCES] github_line_sources module missing — skipped.")
 
 
 if __name__ == "__main__":

@@ -1,0 +1,785 @@
+{
+  "away": {
+    "id": "3",
+    "uid": "s:40~l:59~t:3",
+    "type": "team",
+    "order": 1,
+    "homeAway": "away",
+    "team": {
+      "id": "3",
+      "uid": "s:40~l:59~t:3",
+      "location": "Dallas",
+      "name": "Wings",
+      "abbreviation": "DAL",
+      "displayName": "Dallas Wings",
+      "shortDisplayName": "Wings",
+      "color": "002b5c",
+      "alternateColor": "c4d600",
+      "isActive": true,
+      "venue": {
+        "id": "3416"
+      },
+      "links": [
+        {
+          "rel": [
+            "clubhouse",
+            "desktop",
+            "team"
+          ],
+          "href": "https://www.espn.com/wnba/team/_/name/dal/dallas-wings",
+          "text": "Clubhouse",
+          "isExternal": false,
+          "isPremium": false
+        },
+        {
+          "rel": [
+            "clubhouse",
+            "mobile",
+            "team"
+          ],
+          "href": "https://m.espn.com/wnba/clubhouse?teamId=3",
+          "text": "Clubhouse",
+          "isExternal": false,
+          "isPremium": false
+        },
+        {
+          "rel": [
+            "roster",
+            "desktop",
+            "team"
+          ],
+          "href": "https://www.espn.com/wnba/team/roster/_/name/dal/dallas-wings",
+          "text": "Roster",
+          "isExternal": false,
+          "isPremium": false
+        },
+        {
+          "rel": [
+            "roster",
+            "sportscenter",
+            "app",
+            "team"
+          ],
+          "href": "sportscenter://x-callback-url/showClubhouse?uid=s:40~l:59~t:3&section=roster",
+          "text": "Roster",
+          "isExternal": false,
+          "isPremium": false
+        },
+        {
+          "rel": [
+            "stats",
+            "desktop",
+            "team"
+          ],
+          "href": "https://www.espn.com/wnba/team/stats/_/name/dal/dallas-wings",
+          "text": "Statistics",
+          "isExternal": false,
+          "isPremium": false
+        },
+        {
+          "rel": [
+            "stats",
+            "sportscenter",
+            "app",
+            "team"
+          ],
+          "href": "sportscenter://x-callback-url/showClubhouse?uid=s:40~l:59~t:3&section=stats",
+          "text": "Statistics",
+          "isExternal": false,
+          "isPremium": false
+        },
+        {
+          "rel": [
+            "schedule",
+            "desktop",
+            "team"
+          ],
+          "href": "https://www.espn.com/wnba/team/schedule/_/name/dal",
+          "text": "Schedule",
+          "isExternal": false,
+          "isPremium": false
+        },
+        {
+          "rel": [
+            "schedule",
+            "sportscenter",
+            "app",
+            "team"
+          ],
+          "href": "sportscenter://x-callback-url/showClubhouse?uid=s:40~l:59~t:3&section=scores",
+          "text": "Schedule",
+          "isExternal": false,
+          "isPremium": false
+        }
+      ],
+      "logo": "https://a.espncdn.com/i/teamlogos/wnba/500/dal.png"
+    },
+    "score": "24",
+    "linescores": [
+      {
+        "value": 18.0,
+        "displayValue": "18",
+        "period": 1
+      },
+      {
+        "value": 6.0,
+        "displayValue": "6",
+        "period": 2
+      }
+    ],
+    "statistics": [
+      {
+        "name": "rebounds",
+        "abbreviation": "REB",
+        "displayValue": "12"
+      },
+      {
+        "name": "avgRebounds",
+        "abbreviation": "REB",
+        "displayValue": "0.0"
+      },
+      {
+        "name": "assists",
+        "abbreviation": "AST",
+        "displayValue": "7"
+      },
+      {
+        "name": "fieldGoalsAttempted",
+        "abbreviation": "FGA",
+        "displayValue": "20"
+      },
+      {
+        "name": "fieldGoalsMade",
+        "abbreviation": "FGM",
+        "displayValue": "8"
+      },
+      {
+        "name": "fieldGoalPct",
+        "abbreviation": "FG%",
+        "displayValue": "40.0"
+      },
+      {
+        "name": "freeThrowPct",
+        "abbreviation": "FT%",
+        "displayValue": "80.0"
+      },
+      {
+        "name": "freeThrowsAttempted",
+        "abbreviation": "FTA",
+        "displayValue": "5"
+      },
+      {
+        "name": "freeThrowsMade",
+        "abbreviation": "FTM",
+        "displayValue": "4"
+      },
+      {
+        "name": "points",
+        "abbreviation": "PTS",
+        "displayValue": "24"
+      },
+      {
+        "name": "threePointPct",
+        "abbreviation": "3P%",
+        "displayValue": "36.4"
+      },
+      {
+        "name": "threePointFieldGoalsAttempted",
+        "abbreviation": "3PA",
+        "displayValue": "11"
+      },
+      {
+        "name": "threePointFieldGoalsMade",
+        "abbreviation": "3PM",
+        "displayValue": "4"
+      },
+      {
+        "name": "avgPoints",
+        "abbreviation": "PTS",
+        "displayValue": "0.0"
+      },
+      {
+        "name": "avgAssists",
+        "abbreviation": "AST",
+        "displayValue": "0.0"
+      },
+      {
+        "name": "threePointFieldGoalPct",
+        "abbreviation": "3P%",
+        "displayValue": "36.4"
+      }
+    ],
+    "leaders": [
+      {
+        "name": "points",
+        "displayName": "Points",
+        "shortDisplayName": "Pts",
+        "abbreviation": "Pts",
+        "leaders": [
+          {
+            "displayValue": "8",
+            "value": 8.0,
+            "athlete": {
+              "id": "4399415",
+              "fullName": "Maddy Siegrist",
+              "displayName": "Maddy Siegrist",
+              "shortName": "M. Siegrist",
+              "links": [
+                {
+                  "rel": [
+                    "playercard",
+                    "desktop",
+                    "athlete"
+                  ],
+                  "href": "https://www.espn.com/wnba/player/_/id/4399415/maddy-siegrist"
+                }
+              ],
+              "headshot": "https://a.espncdn.com/i/headshots/wnba/players/full/4399415.png",
+              "jersey": "20",
+              "position": {
+                "abbreviation": "F"
+              },
+              "team": {
+                "id": "3"
+              },
+              "active": true
+            },
+            "team": {
+              "id": "3"
+            }
+          }
+        ]
+      },
+      {
+        "name": "rebounds",
+        "displayName": "Rebounds",
+        "shortDisplayName": "Reb",
+        "abbreviation": "Reb",
+        "leaders": [
+          {
+            "displayValue": "3",
+            "value": 3.0,
+            "athlete": {
+              "id": "3906949",
+              "fullName": "Jessica Shepard",
+              "displayName": "Jessica Shepard",
+              "shortName": "J. Shepard",
+              "links": [
+                {
+                  "rel": [
+                    "playercard",
+                    "desktop",
+                    "athlete"
+                  ],
+                  "href": "https://www.espn.com/wnba/player/_/id/3906949/jessica-shepard"
+                }
+              ],
+              "headshot": "https://a.espncdn.com/i/headshots/wnba/players/full/3906949.png",
+              "jersey": "32",
+              "position": {
+                "abbreviation": "F"
+              },
+              "team": {
+                "id": "3"
+              },
+              "active": true
+            },
+            "team": {
+              "id": "3"
+            }
+          }
+        ]
+      },
+      {
+        "name": "assists",
+        "displayName": "Assists",
+        "shortDisplayName": "Ast",
+        "abbreviation": "Ast",
+        "leaders": [
+          {
+            "displayValue": "2",
+            "value": 2.0,
+            "athlete": {
+              "id": "4433730",
+              "fullName": "Paige Bueckers",
+              "displayName": "Paige Bueckers",
+              "shortName": "P. Bueckers",
+              "links": [
+                {
+                  "rel": [
+                    "playercard",
+                    "desktop",
+                    "athlete"
+                  ],
+                  "href": "https://www.espn.com/wnba/player/_/id/4433730/paige-bueckers"
+                }
+              ],
+              "headshot": "https://a.espncdn.com/i/headshots/wnba/players/full/4433730.png",
+              "jersey": "5",
+              "position": {
+                "abbreviation": "G"
+              },
+              "team": {
+                "id": "3"
+              },
+              "active": true
+            },
+            "team": {
+              "id": "3"
+            }
+          }
+        ]
+      },
+      {
+        "name": "rating",
+        "displayName": "Rating",
+        "shortDisplayName": "RAT",
+        "abbreviation": "RAT",
+        "leaders": [
+          {
+            "displayValue": "8 PTS",
+            "value": 12.0,
+            "athlete": {
+              "id": "4399415",
+              "fullName": "Maddy Siegrist",
+              "displayName": "Maddy Siegrist",
+              "shortName": "M. Siegrist",
+              "links": [
+                {
+                  "rel": [
+                    "playercard",
+                    "desktop",
+                    "athlete"
+                  ],
+                  "href": "https://www.espn.com/wnba/player/_/id/4399415/maddy-siegrist"
+                }
+              ],
+              "headshot": "https://a.espncdn.com/i/headshots/wnba/players/full/4399415.png",
+              "jersey": "20",
+              "position": {
+                "abbreviation": "F"
+              },
+              "team": {
+                "id": "3"
+              },
+              "active": true
+            },
+            "team": {
+              "id": "3"
+            }
+          }
+        ]
+      }
+    ],
+    "records": [
+      {
+        "name": "overall",
+        "abbreviation": "Total",
+        "type": "total",
+        "summary": "17-9"
+      },
+      {
+        "name": "Home",
+        "type": "home",
+        "summary": "8-4"
+      },
+      {
+        "name": "Road",
+        "type": "road",
+        "summary": "9-5"
+      }
+    ]
+  },
+  "home": {
+    "id": "132052",
+    "uid": "s:40~l:59~t:132052",
+    "type": "team",
+    "order": 0,
+    "homeAway": "home",
+    "team": {
+      "id": "132052",
+      "uid": "s:40~l:59~t:132052",
+      "location": "Portland",
+      "name": "Fire",
+      "abbreviation": "POR",
+      "displayName": "Portland Fire",
+      "shortDisplayName": "Fire",
+      "color": "cee5eb",
+      "alternateColor": "000000",
+      "isActive": true,
+      "venue": {
+        "id": "3423"
+      },
+      "links": [
+        {
+          "rel": [
+            "clubhouse",
+            "desktop",
+            "team"
+          ],
+          "href": "https://www.espn.com/wnba/team/_/name/por/portland-fire",
+          "text": "Clubhouse",
+          "isExternal": false,
+          "isPremium": false
+        },
+        {
+          "rel": [
+            "clubhouse",
+            "mobile",
+            "team"
+          ],
+          "href": "https://m.espn.com/wnba/clubhouse?teamId=132052",
+          "text": "Clubhouse",
+          "isExternal": false,
+          "isPremium": false
+        },
+        {
+          "rel": [
+            "roster",
+            "desktop",
+            "team"
+          ],
+          "href": "https://www.espn.com/wnba/team/roster/_/name/por/portland-fire",
+          "text": "Roster",
+          "isExternal": false,
+          "isPremium": false
+        },
+        {
+          "rel": [
+            "roster",
+            "sportscenter",
+            "app",
+            "team"
+          ],
+          "href": "sportscenter://x-callback-url/showClubhouse?uid=s:40~l:59~t:132052&section=roster",
+          "text": "Roster",
+          "isExternal": false,
+          "isPremium": false
+        },
+        {
+          "rel": [
+            "stats",
+            "desktop",
+            "team"
+          ],
+          "href": "https://www.espn.com/wnba/team/stats/_/name/por/portland-fire",
+          "text": "Statistics",
+          "isExternal": false,
+          "isPremium": false
+        },
+        {
+          "rel": [
+            "stats",
+            "sportscenter",
+            "app",
+            "team"
+          ],
+          "href": "sportscenter://x-callback-url/showClubhouse?uid=s:40~l:59~t:132052&section=stats",
+          "text": "Statistics",
+          "isExternal": false,
+          "isPremium": false
+        },
+        {
+          "rel": [
+            "schedule",
+            "desktop",
+            "team"
+          ],
+          "href": "https://www.espn.com/wnba/team/schedule/_/name/por",
+          "text": "Schedule",
+          "isExternal": false,
+          "isPremium": false
+        },
+        {
+          "rel": [
+            "schedule",
+            "sportscenter",
+            "app",
+            "team"
+          ],
+          "href": "sportscenter://x-callback-url/showClubhouse?uid=s:40~l:59~t:132052&section=scores",
+          "text": "Schedule",
+          "isExternal": false,
+          "isPremium": false
+        }
+      ],
+      "logo": "https://a.espncdn.com/i/teamlogos/wnba/500/scoreboard/por.png"
+    },
+    "score": "20",
+    "linescores": [
+      {
+        "value": 17.0,
+        "displayValue": "17",
+        "period": 1
+      },
+      {
+        "value": 3.0,
+        "displayValue": "3",
+        "period": 2
+      }
+    ],
+    "statistics": [
+      {
+        "name": "rebounds",
+        "abbreviation": "REB",
+        "displayValue": "9"
+      },
+      {
+        "name": "avgRebounds",
+        "abbreviation": "REB",
+        "displayValue": "0.0"
+      },
+      {
+        "name": "assists",
+        "abbreviation": "AST",
+        "displayValue": "5"
+      },
+      {
+        "name": "fieldGoalsAttempted",
+        "abbreviation": "FGA",
+        "displayValue": "18"
+      },
+      {
+        "name": "fieldGoalsMade",
+        "abbreviation": "FGM",
+        "displayValue": "7"
+      },
+      {
+        "name": "fieldGoalPct",
+        "abbreviation": "FG%",
+        "displayValue": "38.9"
+      },
+      {
+        "name": "freeThrowPct",
+        "abbreviation": "FT%",
+        "displayValue": "83.3"
+      },
+      {
+        "name": "freeThrowsAttempted",
+        "abbreviation": "FTA",
+        "displayValue": "6"
+      },
+      {
+        "name": "freeThrowsMade",
+        "abbreviation": "FTM",
+        "displayValue": "5"
+      },
+      {
+        "name": "points",
+        "abbreviation": "PTS",
+        "displayValue": "20"
+      },
+      {
+        "name": "threePointPct",
+        "abbreviation": "3P%",
+        "displayValue": "14.3"
+      },
+      {
+        "name": "threePointFieldGoalsAttempted",
+        "abbreviation": "3PA",
+        "displayValue": "7"
+      },
+      {
+        "name": "threePointFieldGoalsMade",
+        "abbreviation": "3PM",
+        "displayValue": "1"
+      },
+      {
+        "name": "avgPoints",
+        "abbreviation": "PTS",
+        "displayValue": "0.0"
+      },
+      {
+        "name": "avgAssists",
+        "abbreviation": "AST",
+        "displayValue": "0.0"
+      },
+      {
+        "name": "threePointFieldGoalPct",
+        "abbreviation": "3P%",
+        "displayValue": "14.3"
+      }
+    ],
+    "leaders": [
+      {
+        "name": "points",
+        "displayName": "Points",
+        "shortDisplayName": "Pts",
+        "abbreviation": "Pts",
+        "leaders": [
+          {
+            "displayValue": "5",
+            "value": 5.0,
+            "athlete": {
+              "id": "5105406",
+              "fullName": "Frieda Buhner",
+              "displayName": "Frieda Buhner",
+              "shortName": "F. Buhner",
+              "links": [
+                {
+                  "rel": [
+                    "playercard",
+                    "desktop",
+                    "athlete"
+                  ],
+                  "href": "https://www.espn.com/wnba/player/_/id/5105406/frieda-buhner"
+                }
+              ],
+              "headshot": "https://a.espncdn.com/i/headshots/wnba/players/full/5105406.png",
+              "jersey": "20",
+              "position": {
+                "abbreviation": "F"
+              },
+              "team": {
+                "id": "132052"
+              },
+              "active": true
+            },
+            "team": {
+              "id": "132052"
+            }
+          }
+        ]
+      },
+      {
+        "name": "rebounds",
+        "displayName": "Rebounds",
+        "shortDisplayName": "Reb",
+        "abbreviation": "Reb",
+        "leaders": [
+          {
+            "displayValue": "3",
+            "value": 3.0,
+            "athlete": {
+              "id": "4703794",
+              "fullName": "Sarah Ashlee Barker",
+              "displayName": "Sarah Ashlee Barker",
+              "shortName": "S. Barker",
+              "links": [
+                {
+                  "rel": [
+                    "playercard",
+                    "desktop",
+                    "athlete"
+                  ],
+                  "href": "https://www.espn.com/wnba/player/_/id/4703794/sarah-ashlee-barker"
+                }
+              ],
+              "headshot": "https://a.espncdn.com/i/headshots/wnba/players/full/4703794.png",
+              "jersey": "3",
+              "position": {
+                "abbreviation": "G"
+              },
+              "team": {
+                "id": "132052"
+              },
+              "active": true
+            },
+            "team": {
+              "id": "132052"
+            }
+          }
+        ]
+      },
+      {
+        "name": "assists",
+        "displayName": "Assists",
+        "shortDisplayName": "Ast",
+        "abbreviation": "Ast",
+        "leaders": [
+          {
+            "displayValue": "2",
+            "value": 2.0,
+            "athlete": {
+              "id": "4703794",
+              "fullName": "Sarah Ashlee Barker",
+              "displayName": "Sarah Ashlee Barker",
+              "shortName": "S. Barker",
+              "links": [
+                {
+                  "rel": [
+                    "playercard",
+                    "desktop",
+                    "athlete"
+                  ],
+                  "href": "https://www.espn.com/wnba/player/_/id/4703794/sarah-ashlee-barker"
+                }
+              ],
+              "headshot": "https://a.espncdn.com/i/headshots/wnba/players/full/4703794.png",
+              "jersey": "3",
+              "position": {
+                "abbreviation": "G"
+              },
+              "team": {
+                "id": "132052"
+              },
+              "active": true
+            },
+            "team": {
+              "id": "132052"
+            }
+          }
+        ]
+      },
+      {
+        "name": "rating",
+        "displayName": "Rating",
+        "shortDisplayName": "RAT",
+        "abbreviation": "RAT",
+        "leaders": [
+          {
+            "displayValue": "5 PTS",
+            "value": 8.399999618530273,
+            "athlete": {
+              "id": "5105406",
+              "fullName": "Frieda Buhner",
+              "displayName": "Frieda Buhner",
+              "shortName": "F. Buhner",
+              "links": [
+                {
+                  "rel": [
+                    "playercard",
+                    "desktop",
+                    "athlete"
+                  ],
+                  "href": "https://www.espn.com/wnba/player/_/id/5105406/frieda-buhner"
+                }
+              ],
+              "headshot": "https://a.espncdn.com/i/headshots/wnba/players/full/5105406.png",
+              "jersey": "20",
+              "position": {
+                "abbreviation": "F"
+              },
+              "team": {
+                "id": "132052"
+              },
+              "active": true
+            },
+            "team": {
+              "id": "132052"
+            }
+          }
+        ]
+      }
+    ],
+    "records": [
+      {
+        "name": "overall",
+        "abbreviation": "Total",
+        "type": "total",
+        "summary": "11-15"
+      },
+      {
+        "name": "Home",
+        "type": "home",
+        "summary": "6-6"
+      },
+      {
+        "name": "Road",
+        "type": "road",
+        "summary": "5-9"
+      }
+    ]
+  },
+  "status": "STATUS_IN_PROGRESS"
+}
