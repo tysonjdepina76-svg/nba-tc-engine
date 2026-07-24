@@ -37,12 +37,6 @@ LEAGUE_CONFIG = {
         "core_league": "mlb",
         "use_summary": True,
     },
-    "wc": {
-        "site_path": "sports/soccer/fifa.world/scoreboard",
-        "core_sport": "soccer",
-        "core_league": "fifa.world",
-        "use_summary": True,
-    },
 }
 
 session = requests.Session()
@@ -80,44 +74,6 @@ def fetch_mlb_live_events() -> List[dict]:
     return data.get("events", [])
 
 
-def fetch_wc_live_events() -> List[dict]:
-    """Fetch live WC (FIFA World Cup) events from ESPN."""
-    cfg = LEAGUE_CONFIG["wc"]
-    url = f"{ESPN_SITE}/{cfg['site_path']}"
-    data = _get(url, ttl=30)
-    if not data:
-        return []
-    events = []
-    for evt in data.get("events", []):
-        status = evt.get("status", {}).get("type", {}).get("name", "pre")
-        if status in ("STATUS_IN_PROGRESS", "STATUS_FINAL", "STATUS_SCHEDULED"):
-            competitions = evt.get("competitions", [])
-            if not competitions:
-                continue
-            comp = competitions[0]
-            competitors = comp.get("competitors", [])
-            if len(competitors) < 2:
-                continue
-            home = None
-            away = None
-            for c in competitors:
-                if c.get("homeAway") == "home":
-                    home = c
-                else:
-                    away = c
-            if not home or not away:
-                home, away = competitors[0], competitors[1]
-            events.append({
-                "event_id": evt["id"],
-                "status": status,
-                "shortName": f"{away['team']['abbreviation']} @ {home['team']['abbreviation']}",
-                "away": {"name": away["team"]["displayName"], "abbrev": away["team"]["abbreviation"], "score": away.get("score", "0")},
-                "home": {"name": home["team"]["displayName"], "abbrev": home["team"]["abbreviation"], "score": home.get("score", "0")},
-                "period": comp.get("period", 0),
-                "clock": comp.get("status", {}).get("displayClock", ""),
-                "raw_data": evt,
-            })
-    return events
 
 
 def _athlete_name(athlete_ref: str) -> dict:
@@ -291,35 +247,6 @@ def _parse_mlb_player(entry: dict) -> dict:
     return result
 
 
-def _parse_wc_player(player_json: dict, team_name: str) -> dict:
-    """Parse WC player stats from ESPN summary endpoint."""
-    stats_list = player_json.get("statistics", [])
-    ds: Dict[str, float] = {}
-    stat_map = {
-        "goals": "goals", "assists": "assists",
-        "totalShots": "shots", "shotsOnTarget": "shots_on_target",
-        "totalPasses": "passes", "totalTackles": "tackles",
-        "saves": "saves", "yellowCards": "yellow_cards",
-        "minutesPlayed": "minutes",
-    }
-    for s in stats_list:
-        for k, v in (s.items() if isinstance(s, dict) else []):
-            if k in stat_map:
-                try:
-                    ds[stat_map[k]] = float(v) if v else 0.0
-                except (ValueError, TypeError):
-                    ds[stat_map[k]] = 0.0
-    jersey = str(player_json.get("jersey", "")) or ""
-    pos = str(player_json.get("position", {}).get("abbreviation", "")) or ""
-    return {
-        "name": player_json.get("athlete", {}).get("displayName", "Unknown"),
-        "pos": pos,
-        "jersey": jersey,
-        "starter": player_json.get("starter", False),
-        "stats": ds,
-        "display_stats": ds,
-        "tc_picks": [],
-    }
 
 
 def fetch_wnba_boxscore(event: dict) -> dict:
@@ -475,14 +402,6 @@ def fetch_mlb_boxscore(event: dict) -> dict:
     }
 
 
-def fetch_wc_boxscore(event: dict) -> dict:
-    """Fetch full WC box score for a single event."""
-    event_id = event["event_id"]
-    cfg = LEAGUE_CONFIG["wc"]
-    # Use ESPN summary endpoint for rosters
-    summary_url = f"{ESPN_SITE}/sports/{cfg['core_sport']}/{cfg['core_league']}/summary"
-    params = {"event": event_id}
-    summary_resp = _get(f"{summary_url}?event={event_id}", ttl=30)
     
     players_by_team: Dict[str, List[dict]] = {"away": [], "home": []}
     
@@ -600,21 +519,4 @@ def fetch_all_boxscores(sport: str = "all") -> dict:
             mlb_boxes.append(box)
         result["sports"]["MLB"] = {"game_count": len(mlb_boxes), "games": mlb_boxes}
 
-    if sport in ("all", "wc"):
-        wc_events = fetch_wc_live_events()
-        wc_boxes = []
-        for event in wc_events:
-            box = fetch_wc_boxscore(event)
-            wc_boxes.append(box)
-        result["sports"]["WC"] = {"game_count": len(wc_boxes), "games": wc_boxes}
-
-    # Cache
-    with open(cache_path, "w") as f:
-        json.dump(result, f, default=str)
-
-    return result
-
-
-if __name__ == "__main__":
-    data = fetch_all_boxscores("all")
-    print(json.dumps(data, indent=2, default=str)[:5000])
+    

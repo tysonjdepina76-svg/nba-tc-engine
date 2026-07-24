@@ -140,7 +140,7 @@ def system_health_check():
 
 @app.get("/api/picks/top")
 def get_top_picks(limit: int = 50, sport: str = None, min_edge: float = -100.0):
-    """Get top picks. Pass sport=mlb/wnba/wc to filter. min_edge filter removed by default."""
+    """Get top picks. Pass sport=mlb/wnba to filter. min_edge filter removed by default."""
     try:
         conn = get_db_connection()
         c = conn.cursor()

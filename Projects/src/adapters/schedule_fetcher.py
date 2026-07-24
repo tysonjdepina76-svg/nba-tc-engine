@@ -4,7 +4,6 @@ from datetime import datetime
 LEAGUE_MAP = {
     "mlb": "baseball/mlb",
     "wnba": "basketball/wnba",
-    "wc": "soccer/usa.1",
 }
 
 def has_games_today(sport):

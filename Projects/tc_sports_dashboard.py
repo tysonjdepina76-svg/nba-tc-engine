@@ -86,7 +86,7 @@ def top_stat(picks):
 def sport_breakdown(graded):
     """Hit rate and count by sport from graded picks."""
     out = {}
-    for sport in ['wnba', 'mlb', 'wc', 'nfl']:
+    for sport in ['wnba', 'mlb']:
         sub = graded[graded['sport'] == sport] if 'sport' in graded.columns else pd.DataFrame()
         total = len(sub)
         hits = int(sub['hit'].sum()) if not sub.empty and 'hit' in sub.columns else 0
@@ -182,7 +182,7 @@ st.divider()
 # ── SPORT CARDS ───────────────────────────────────────────────
 
 s1, s2, s3, s4 = st.columns(4)
-emoji_map = {'wnba': '🏀', 'mlb': '⚾', 'wc': '⚽', 'nfl': '🏈'}
+emoji_map = {'wnba': '🏀', 'mlb': '⚾'}
 for col, (sport, emoji) in zip([s1, s2, s3, s4], emoji_map.items()):
     s = sports.get(sport, {'rate': 0, 'hits': 0, 'total': 0})
     with col:
@@ -416,7 +416,6 @@ sc1, sc2, sc3, sc4 = st.columns(4)
 sports_data = {
     "WNBA": {"picks": 0, "hits": 0, "hit_rate": 0},
     "MLB": {"picks": 0, "hits": 0, "hit_rate": 0},
-    "WC": {"picks": 0, "hits": 0, "hit_rate": 0},
     "NFL": {"picks": 0, "hits": 0, "hit_rate": 0},
 }
 
@@ -448,14 +447,14 @@ st.markdown("---")
 
 # ── SPORT SELECT TABS ──
 tab_labels = []
-tab_icons = {"MLB": "⚾", "WNBA": "🏀", "WC": "⚽", "NFL": "🏈"}
+tab_icons = {"MLB": "⚾", "WNBA": "🏀"}
 
 conn = sqlite3.connect(str(PICKS_DB))
 all_picks = pd.read_sql_query("SELECT * FROM picks ORDER BY date DESC, ABS(edge) DESC", conn)
 conn.close()
 
 if not all_picks.empty:
-    for league in ["MLB", "WNBA", "WC", "NFL"]:
+    for league in ["MLB", "WNBA"]:
         league_data = all_picks[all_picks['league'].str.upper() == league]
         if not league_data.empty:
             picks_count = len(league_data)
@@ -465,7 +464,7 @@ if not all_picks.empty:
 
     tabs = st.tabs(tab_labels)
 
-    tab_leagues = ["MLB", "WNBA", "WC", "NFL"]
+    tab_leagues = ["MLB", "WNBA"]
     for idx, tab in enumerate(tabs):
         league = tab_leagues[idx]
         if idx >= len(tab_labels):

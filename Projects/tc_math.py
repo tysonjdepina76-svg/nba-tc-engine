@@ -7,7 +7,7 @@ from enum import Enum
 
 # ============= Types =============
 Direction = Literal["OVER", "UNDER", "FLAT", "INVALID"]
-Sport = Literal["NBA", "WNBA", "NFL", "MLB", "NHL", "WC", "NCAAB", "NCAAF", "UFC", "EPL"]
+Sport = Literal["NBA", "WNBA", "NFL", "MLB", "NHL", "NCAAB", "NCAAF", "UFC", "EPL"]
 
 # ============= Sport Configurations =============
 @dataclass
@@ -37,7 +37,6 @@ SPORT_CONFIGS: Dict[Sport, SportConfig] = {
     "NHL": SportConfig(min_edge=0.2, use_pct=False, max_edge=5.0, min_market_line=0.5, name="NHL"),
 
     # Soccer
-    "WC": SportConfig(min_edge=0.005, use_pct=True, max_edge=0.50, min_market_line=0.5, name="WC/Soccer"),
     "EPL": SportConfig(min_edge=0.005, use_pct=True, max_edge=0.50, min_market_line=0.5, name="EPL"),
 
     # MMA
@@ -297,7 +296,7 @@ def validate_projection(projection: float, sport: Sport) -> bool:
         "NBA": (5, 60), "WNBA": (5, 50), "NCAAB": (5, 60),
         "NFL": (0, 600), "NCAAF": (0, 700),
         "MLB": (0, 12), "NHL": (0, 8),
-        "WC": (0, 8), "EPL": (0, 8), "UFC": (0, 30),
+        "EPL": (0, 8), "UFC": (0, 30),
     }
     lo, hi = ranges.get(sport, (0, 1000))
     return lo <= projection <= hi
