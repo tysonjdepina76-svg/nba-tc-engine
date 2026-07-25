@@ -1,8 +1,8 @@
 import smtplib
-import os
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from datetime import datetime
+import os
 
 try:
     from email_config import EMAIL_CONFIG
@@ -17,9 +17,7 @@ except ImportError:
 
 def send_email(subject, body, html_body=None):
     if not EMAIL_CONFIG.get("password"):
-        path = save_report_locally(body)
-        print(f"No Gmail app password set. Report saved to {path}")
-        return False
+        return save_report_locally(body)
 
     try:
         msg = MIMEMultipart('alternative')
@@ -44,8 +42,7 @@ def send_email(subject, body, html_body=None):
 
     except Exception as e:
         print(f"Email failed: {e}")
-        path = save_report_locally(body)
-        return False
+        return save_report_locally(body)
 
 def save_report_locally(body, filename=None):
     os.makedirs("reports", exist_ok=True)
@@ -54,4 +51,4 @@ def save_report_locally(body, filename=None):
     with open(filename, 'w') as f:
         f.write(body)
     print(f"Report saved to {filename}")
-    return filename
+    return False

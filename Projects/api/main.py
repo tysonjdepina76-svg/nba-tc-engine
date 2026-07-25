@@ -35,10 +35,17 @@ def get_db_connection(db_path=None):
     return conn
 
 
+ESPN_SB = {
+    "mlb": "baseball/mlb",
+    "wnba": "basketball/wnba",
+    "nba": "basketball/nba",
+    "nfl": "football/nfl",
+    "nhl": "hockey/nhl",
+}
+
 def fetch_live_games(sport):
-    url = f"https://site.api.espn.com/apis/site/v2/sports/baseball/mlb/scoreboard"
-    if sport == "wnba":
-        url = "https://site.api.espn.com/apis/site/v2/sports/basketball/wnba/scoreboard"
+    path = ESPN_SB.get(sport.lower(), ESPN_SB["mlb"])
+    url = f"https://site.api.espn.com/apis/site/v2/sports/{path}/scoreboard"
     try:
         r = requests.get(url, timeout=10)
         data = r.json()
@@ -129,7 +136,7 @@ def health_check():
 
 @app.get("/api/v1/system/health")
 def system_health_check():
-    sports = ["mlb", "wnba"]
+    sports = ["mlb", "wnba", "nba", "nfl", "nhl"]
     enabled = sum(1 for s in sports if (DAILY_LOG / datetime.now(ET).strftime("%Y-%m-%d") / f"proj_{s.upper()}_{datetime.now(ET).strftime('%Y-%m-%d')}.json").exists())
     return {"status": "healthy", "sports_enabled": enabled, "timestamp": datetime.now().isoformat()}
 
@@ -463,6 +470,38 @@ def injuries(sport: str = "all"):
         return {"injuries": data}
     return {"injuries": [], "message": "No injury data yet today"}
 
+@app.get("/api/mlb-situation")
+def mlb_situation():
+    """Live MLB game situations: bases, count, outs, batter/pitcher."""
+    try:
+        today = datetime.now(ET).strftime("%Y%m%d")
+        url = f"http://site.api.espn.com/apis/site/v2/sports/baseball/mlb/scoreboard?dates={today}"
+        r = requests.get(url, timeout=10)
+        r.raise_for_status()
+        data = r.json()
+        situations = {}
+        for evt in data.get("events", []):
+            eid = evt.get("id")
+            comp = evt.get("competitions", [{}])[0]
+            sit = comp.get("situation", {})
+            if not sit:
+                continue
+            situations[eid] = {
+                "balls": sit.get("balls", 0),
+                "strikes": sit.get("strikes", 0),
+                "outs": sit.get("outs", 0),
+                "onFirst": bool(sit.get("onFirst")),
+                "onSecond": bool(sit.get("onSecond")),
+                "onThird": bool(sit.get("onThird")),
+                "batter": sit.get("batter", {}).get("athlete", {}).get("shortName", "") or sit.get("batter", {}).get("athlete", {}).get("fullName", ""),
+                "pitcher": sit.get("pitcher", {}).get("athlete", {}).get("shortName", "") or sit.get("pitcher", {}).get("athlete", {}).get("fullName", ""),
+                "dueUp": [a.get("athlete", {}).get("shortName", "") for a in (sit.get("dueUp") or [])],
+                "count": {"balls": sit.get("balls", 0), "strikes": sit.get("strikes", 0), "outs": sit.get("outs", 0)},
+            }
+        return {"situations": situations, "count": len(situations)}
+    except Exception as e:
+        return {"situations": {}, "count": 0, "error": str(e)}
+
 
 # Combo definitions
 COMBO_DEFS = {
@@ -564,6 +603,28 @@ def _build_combos_from_db(league=None, matchup=None, min_edge=0.5):
             "created_at": r["created_at"],
         })
     return results
+
+@app.get("/api/game-lines")
+def game_lines(sport: str = "all"):
+    """Live game lines from Action Network — moneyline, spread, totals."""
+    try:
+        from src.adapters.action_network import get_live_odds_export
+        data = get_live_odds_export()
+        return {"games": data, "updated": datetime.utcnow().isoformat() + "Z"}
+    except Exception as e:
+        return {"games": {}, "error": str(e)}
+
+
+@app.get("/api/live-picks")
+def live_picks(sport: str = "all", limit: int = 100):
+    """Latest picks from picks table with edge > threshold."""
+    rows = _execute_sql(
+        "SELECT * FROM picks WHERE abs(edge) > 0.5 ORDER BY abs(edge) DESC LIMIT ?",
+        (limit,),
+        fetch="all"
+    )
+    return {"picks": rows or [], "count": len(rows) if rows else 0}
+
 
 @app.get("/api/v1/combos")
 def combos(request: Request):

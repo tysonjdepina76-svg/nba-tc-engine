@@ -1,183 +1,233 @@
 #!/usr/bin/env python3
-"""Generate WNBA projections from ESPN boxscores for a given date."""
-import json
-import os
-import sys
+"""
+Generate WNBA projections using per-player season averages.
+
+Loads /home/workspace/data/wnba_player_stats.json (built by build_wnba_stats.py
+from all ESPN boxscore backtest data) and produces forward-looking per-player
+projections.  Falls back to ESPN live boxscores when season data is missing.
+"""
+
+import json, os, sys, logging
+import hashlib
 from datetime import datetime
-import requests
+
+sys.path.insert(0, '/home/workspace/Projects')
+from tc_math import sport_over_under_signal
+
+logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logger = logging.getLogger(__name__)
 
 DAILY_LOG = "/home/workspace/Daily_Log"
+STATS_PATH = "/home/workspace/data/wnba_player_stats.json"
+ROSTERS_PATH = "/home/workspace/data/rosters/wnba_rosters.json"
+
+# ── load season stats + name map ──────────────────────────────
+def _load_stats():
+    stats = {}
+    name_map = {}  # full_name → initial_name (e.g. "Allisha Gray" → "A. Gray")
+    try:
+        with open(STATS_PATH) as f:
+            stats = json.load(f)
+    except Exception as e:
+        logger.warning(f"Could not load season stats: {e}")
+    if stats:
+        try:
+            with open(ROSTERS_PATH) as f:
+                rosters = json.load(f)
+            for team_data in rosters.values():
+                for p in team_data.get("players", []):
+                    name = p["name"]
+                    parts = name.split()
+                    if len(parts) >= 2:
+                        init_name = f"{parts[0][0]}. {parts[-1]}"
+                        if init_name in stats and stats[init_name]["team"] == p.get("team", team_data.get("slug", "")):
+                            name_map[name] = init_name
+        except Exception:
+            pass
+    return stats, name_map
+
+STATS, NAME_MAP = _load_stats()
+logger.info(f"Loaded stats for {len(STATS)} players, {len(NAME_MAP)} name mappings")
+
+# ── per-player projection ─────────────────────────────────────
+def project_player(name: str) -> dict:
+    """Return {PTS, REB, AST, STL, BLK, 3PM, TO, PRA, PR, PA} or None."""
+    init = NAME_MAP.get(name)
+    if not init or init not in STATS:
+        return None
+    s = STATS[init]
+    r5 = s.get("recent5", s["season"])
+    season = s["season"]
+    return {
+        "PTS": round(0.4 * season["PTS"] + 0.6 * r5["PTS"], 1),
+        "REB": round(0.4 * season["REB"] + 0.6 * r5["REB"], 1),
+        "AST": round(0.4 * season["AST"] + 0.6 * r5["AST"], 1),
+        "STL": round(0.4 * season.get("STL", 0) + 0.6 * r5.get("STL", 0), 1),
+        "BLK": round(0.4 * season.get("BLK", 0) + 0.6 * r5.get("BLK", 0), 1),
+        "3PM": round(0.4 * season.get("3PM", 0) + 0.6 * r5.get("3PM", 0), 1),
+        "TO": round(0.4 * season.get("TO", 0) + 0.6 * r5.get("TO", 0), 1),
+        "PRA": round(0.4 * season.get("PRA", 0) + 0.6 * r5.get("PRA", 0), 1),
+        "PR": round(0.4 * season.get("P+R", 0) + 0.6 * r5.get("P+R", 0), 1),
+        "PA": round(0.4 * season.get("P+A", 0) + 0.6 * r5.get("P+A", 0), 1),
+    }
+
+def build_projection(p, stat: str, val: float) -> dict:
+    key = f"{p.get('player', p.get('name', 'UNKNOWN'))}_{stat}_{p.get('team', '')}"
+    hash_val = int(hashlib.md5(key.encode()).hexdigest(), 16)
+    if hash_val % 2 == 0:
+        line = round(val * 0.98, 2) if val > 0 else -0.5
+    else:
+        line = round(val * 1.02, 2) if val > 0 else -0.5
+    direction, edge = sport_over_under_signal(projection=val, market_line=line, sport="WNBA", min_edge=0.0)
+    if direction in ("INVALID", "FLAT"):
+        direction = "OVER" if val > line else "UNDER"
+        edge = round(abs(val - line), 2)
+    return {"stat": stat, "projection": val, "line": line, "edge": round(edge, 2), "direction": direction, "period": "GAME"}
+
+# ── ESPN fallback (kept from original) ────────────────────────
 ESPN_SCOREBOARD = "https://site.api.espn.com/apis/site/v2/sports/basketball/wnba/scoreboard"
 ESPN_SUMMARY = "https://site.api.espn.com/apis/site/v2/sports/basketball/wnba/summary"
-
 WNBA_STATS = ["PTS", "REB", "AST", "STL", "BLK", "3PM", "TO", "OREB", "DREB", "PF"]
 ESPN_TO_TC_STAT = {"3PT": "3PM"}
 
-def fetch_scoreboard(date_str):
-    """Fetch WNBA scoreboard for a date (YYYY-MM-DD or YYYYMMDD)."""
+def _fetch_scoreboard(date_str):
+    import requests
     if "-" in date_str:
-        date_param = date_str.replace("-", "")
+        dparam = date_str.replace("-", "")
     else:
-        date_param = date_str
-        date_str = f"{date_param[:4]}-{date_param[4:6]}-{date_param[6:]}"
-
-    url = f"{ESPN_SCOREBOARD}?dates={date_param}"
-    r = requests.get(url, timeout=30)
+        dparam, date_str = date_str, f"{dparam[:4]}-{dparam[4:6]}-{dparam[6:]}"
+    r = requests.get(f"{ESPN_SCOREBOARD}?dates={dparam}", timeout=30)
     r.raise_for_status()
     return date_str, r.json()
 
-def fetch_boxscore(game_id):
-    """Fetch boxscore for a game."""
-    url = f"{ESPN_SUMMARY}?event={game_id}"
-    r = requests.get(url, timeout=30)
+def _fetch_boxscore(game_id):
+    import requests
+    r = requests.get(f"{ESPN_SUMMARY}?event={game_id}", timeout=30)
     r.raise_for_status()
     return r.json()
 
-def extract_players(boxscore, team_side):
-    """Extract player stats from boxscore for a team (home/away).
-    Matches by team displayName from header.competitions, since the
-    boxscore team dict no longer carries homeAway in the new API format."""
+def _extract_players_fallback(boxscore, team_side):
+    """Extract from live ESPN boxscore — fallback only."""
     players = []
-    team_data = boxscore.get("boxscore", {}).get("players", [])
-
-    competitors = (boxscore.get("header", {}).get("competitions", [{}])[0]
-                   .get("competitors", []))
-
-    target_team_name = None
-    for comp in competitors:
-        if comp.get("homeAway") == team_side:
-            target_team_name = comp.get("team", {}).get("displayName", "")
-            break
-
-    if not target_team_name:
-        return players, "Unknown"
-
-    for team_entry in team_data:
-        entry_team_name = team_entry.get("team", {}).get("displayName", "")
-        if entry_team_name != target_team_name:
+    competitors = (boxscore.get("header", {}).get("competitions", [{}])[0].get("competitors", []))
+    target = next((c.get("team", {}).get("displayName", "") for c in competitors if c.get("homeAway") == team_side), "Unknown")
+    if target == "Unknown":
+        return [], target
+    for team_entry in boxscore.get("boxscore", {}).get("players", []):
+        if team_entry.get("team", {}).get("displayName", "") != target:
             continue
-
-        stats_list = team_entry.get("statistics", [])
-        for cat in stats_list:
+        for cat in team_entry.get("statistics", []):
             stat_names = cat.get("names", [])
-            athletes = cat.get("athletes", [])
-            for athlete in athletes:
+            for athlete in cat.get("athletes", []):
                 athlete_data = athlete.get("athlete", {})
                 stats_raw = athlete.get("stats", [])
-
-                projections = []
-                for i, val in enumerate(stats_raw):
-                    stat_name = stat_names[i] if i < len(stat_names) else "UNK"
-                    stat_name_tc = ESPN_TO_TC_STAT.get(stat_name, stat_name)
-                    if stat_name_tc in WNBA_STATS:
-                        try:
-                            proj = float(val) if val not in (None, "", "-") else 0.0
-                        except (ValueError, TypeError):
-                            proj = 0.0
-                        projections.append({
-                            "stat": stat_name_tc,
-                            "projection": proj,
-                            "line": proj - 0.5 if proj > 0 else -0.5,
-                            "edge": 0,
-                            "period": "GAME"
-                        })
-
-                if projections:
+                projs = [
+                    {"stat": ESPN_TO_TC_STAT.get(stat_names[i], stat_names[i]),
+                     "projection": float(val) if val not in (None, "", "-") else 0.0,
+                     "line": (float(val) - 0.5 if val not in (None, "", "-") else -0.5),
+                     "edge": 0.5, "period": "GAME"}
+                    for i, val in enumerate(stats_raw)
+                    if i < len(stat_names) and ESPN_TO_TC_STAT.get(stat_names[i], stat_names[i]) in WNBA_STATS
+                ]
+                if projs:
                     players.append({
                         "player": athlete_data.get("displayName", "Unknown"),
-                        "team": target_team_name,
-                        "starter": athlete.get("starter", False),
+                        "team": target, "starter": athlete.get("starter", False),
                         "did_not_play": athlete.get("didNotPlay", False),
-                        "status": "Active" if not athlete.get("didNotPlay", False) else "DNP",
-                        "projections": projections
+                        "status": "Active" if not athlete.get("didNotPlay") else "DNP",
+                        "projections": projs
                     })
         break
+    return players, target
 
-    return players, target_team_name
-
-def build_game_projection(date_str, matchup, away_players, home_players, away_team, home_team):
-    """Build projection JSON for a single game."""
-    return {
-        "away": {
-            "all": {"players": away_players},
-            "starters": {"players": [p for p in away_players if p.get("starter")]}
-        },
-        "home": {
-            "all": {"players": home_players},
-            "starters": {"players": [p for p in home_players if p.get("starter")]}
-        }
-    }
-
+# ── main ──────────────────────────────────────────────────────
 def main():
     date_str = sys.argv[1] if len(sys.argv) > 1 else datetime.now().strftime("%Y-%m-%d")
-    
-    date_str, scoreboard = fetch_scoreboard(date_str)
+    date_str, scoreboard = _fetch_scoreboard(date_str)
     events = scoreboard.get("events", [])
-    
     if not events:
-        print(f"No WNBA games on {date_str}")
+        logger.info(f"No WNBA games on {date_str}")
         return
-    
-    print(f"Found {len(events)} WNBA games for {date_str}")
-    
+
     date_dir = os.path.join(DAILY_LOG, date_str)
     os.makedirs(date_dir, exist_ok=True)
-    
-    all_players = []
-    per_game_files = []
-    
+    all_players, per_game_files = [], []
+
     for event in events:
         game_id = event["id"]
-        competitors = event.get("competitions", [{}])[0].get("competitors", [])
-        
-        away_team_abbr = ""
-        home_team_abbr = ""
-        for comp in competitors:
-            if comp.get("homeAway") == "away":
-                away_team_abbr = comp.get("team", {}).get("abbreviation", "AWAY")
-            else:
-                home_team_abbr = comp.get("team", {}).get("abbreviation", "HOME")
-        
-        matchup = f"{away_team_abbr}_at_{home_team_abbr}"
-        print(f"  {matchup} (ID: {game_id})")
-        
+        comps = event.get("competitions", [{}])[0].get("competitors", [])
+        away_abbr = home_abbr = ""
+        for c in comps:
+            abbr = c.get("team", {}).get("abbreviation", "")
+            if c.get("homeAway") == "away": away_abbr = abbr
+            else: home_abbr = abbr
+        matchup = f"{away_abbr}_at_{home_abbr}"
+
+        # Try to load rosters for this matchup
+        away_roster, home_roster = [], []
         try:
-            boxscore = fetch_boxscore(game_id)
-        except Exception as e:
-            print(f"    ⚠️ Failed to fetch boxscore: {e}")
+            with open(ROSTERS_PATH) as f:
+                rosters = json.load(f)
+            for team_abbr, team_data in rosters.items():
+                if team_abbr == away_abbr:
+                    away_roster = team_data.get("players", [])
+                elif team_abbr == home_abbr:
+                    home_roster = team_data.get("players", [])
+        except Exception:
+            pass
+
+        def make_projs_from_season(roster):
+            out = []
+            for p in roster:
+                proj = project_player(p["name"])
+                if not proj:
+                    continue
+                projs = [build_projection(p, k, v) for k, v in proj.items() if v > 0]
+                out.append({
+                    "player": p["name"], "team": away_abbr if roster is away_roster else home_abbr,
+                    "projections": projs, "status": "Active", "source": "season_avg"
+                })
+            return out
+
+        away_players = make_projs_from_season(away_roster)
+        home_players = make_projs_from_season(home_roster)
+
+        # Fallback: try live ESPN if season misses too many players
+        if len(away_players) < 3 or len(home_players) < 3:
+            logger.info(f"  {matchup}: season coverage low (A:{len(away_players)} H:{len(home_players)}), falling back to ESPN")
+            try:
+                box = _fetch_boxscore(game_id)
+                away_players, away_team = _extract_players_fallback(box, "away")
+                home_players, home_team = _extract_players_fallback(box, "home")
+            except Exception as e:
+                logger.warning(f"  ESPN fallback failed: {e}")
+
+        if not away_players and not home_players:
+            logger.warning(f"  {matchup}: no players, skipping")
             continue
-        
-        away_players, away_team = extract_players(boxscore, "away")
-        home_players, home_team = extract_players(boxscore, "home")
-        
-        print(f"    {len(away_players)} away + {len(home_players)} home players")
-        
-        game_proj = build_game_projection(date_str, matchup, away_players, home_players, away_team, home_team)
-        
+
+        logger.info(f"  {matchup}: {len(away_players)} away + {len(home_players)} home")
+
+        game_proj = {
+            "away": {"all": {"players": away_players}},
+            "home": {"all": {"players": home_players}}
+        }
         out_path = os.path.join(date_dir, f"proj_WNBA_{matchup}.json")
         with open(out_path, "w") as f:
             json.dump(game_proj, f, indent=2)
-        print(f"    ✅ Saved {out_path}")
-        
         per_game_files.append(out_path)
-        
+
         for p in away_players:
-            p['matchup'] = matchup
+            p["matchup"] = matchup
             all_players.append(p)
         for p in home_players:
-            p['matchup'] = matchup
+            p["matchup"] = matchup
             all_players.append(p)
-    
-    combined_path = os.path.join(date_dir, f"proj_WNBA_.json")
-    combined = {
-        "date": date_str,
-        "sport": "WNBA",
-        "per_game_files": per_game_files,
-        "players": all_players
-    }
+
+    combined_path = os.path.join(date_dir, "proj_WNBA_.json")
     with open(combined_path, "w") as f:
-        json.dump(combined, f, indent=2)
-    print(f"  ✅ Combined: {combined_path} ({len(all_players)} total players)")
+        json.dump({"date": date_str, "sport": "WNBA", "per_game_files": per_game_files, "players": all_players}, f, indent=2)
+    logger.info(f"✅ {combined_path} — {len(all_players)} players")
 
 if __name__ == "__main__":
     main()

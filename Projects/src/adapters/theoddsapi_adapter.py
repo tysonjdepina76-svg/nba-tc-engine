@@ -3,6 +3,10 @@ from __future__ import annotations
 import os, json, time, logging
 from pathlib import Path
 from typing import Dict, List, Optional, Any
+import sys
+from pathlib import Path as _Path
+sys.path.insert(0, str(_Path(__file__).parent.parent))
+from api_cap_tracker import cap_check as _cap_check
 
 logger = logging.getLogger("theoddsapi")
 
@@ -60,6 +64,10 @@ def fetch_live_odds(sport: str, bookmakers: str = "draftkings,fanduel") -> Dict[
     cached = _read_cache(sport_key)
     if cached:
         return cached
+
+    if not _cap_check("theoddsapi"):
+        logger.warning("theoddsapi cap exhausted — returning empty")
+        return {"error": "cap_exhausted", "games": []}
 
     import urllib.request
     url = f"{BASE_URL}/odds/?sport_key={sport_key}&bookmakers={bookmakers}&regions=us"
@@ -140,6 +148,9 @@ def fetch_events(sport: str) -> List[Dict]:
     if not api_key:
         return []
     sport_key = SPORT_KEY_MAP.get(sport.lower(), sport.lower())
+    if not _cap_check("theoddsapi"):
+        logger.warning("theoddsapi cap exhausted — returning empty events")
+        return []
     import urllib.request
     url = f"{BASE_URL}/events/?sport_key={sport_key}"
     req = urllib.request.Request(url, headers={"x-api-key": api_key})
@@ -167,6 +178,10 @@ def get_odds_comparison(sport: str, bookmakers: str = "draftkings,fanduel") -> D
 
     sport_key = SPORT_KEY_MAP.get(sport.lower(), sport.lower())
     timestamp = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
+
+    if not _cap_check("theoddsapi"):
+        logger.warning("theoddsapi cap exhausted — returning empty")
+        return {"comparisons": [], "timestamp": timestamp}
 
     import urllib.request
     props_url = f"{BASE_URL}/props/?sport_key={sport_key}&bookmakers={bookmakers}&regions=us"

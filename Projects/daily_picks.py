@@ -19,14 +19,19 @@ from src.explanation_engine import generate_explanation
 from src.adapters.schedule_fetcher import has_games_today
 from src.adapters.mlb_api_adapter import get_todays_games as get_mlb_games, get_live_boxscore as get_mlb_boxscore
 from src.adapters.wnba_api_adapter import get_todays_games as get_wnba_games, get_boxscore as get_wnba_boxscore
-from src.adapters.espn_odds_fetcher import fetch_espn_odds_cached
-from src.adapters.theoddsapi_adapter import get_odds_comparison as fetch_live_odds
-from src.adapters.free_api_aggregator import get_live_stats, health_check as free_api_health
-from src.enhancer import apply_enhancements
-from src.roster_loader import get_loader as get_roster_loader
 import logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(name)s - %(message)s")
 logger = logging.getLogger("tc_pipeline")
+from src.adapters.espn_odds_fetcher import fetch_espn_odds_cached
+try:
+    from src.adapters.action_network import get_odds_for_pipeline as fetch_live_odds
+    logger.info("[ODDS] Using Action Network adapter (free)")
+except ImportError:
+    from src.adapters.theoddsapi_adapter import get_odds_comparison as fetch_live_odds
+    logger.warning("[ODDS] Action Network not available, falling back to TheOddsAPI")
+from src.adapters.free_api_aggregator import get_live_stats, health_check as free_api_health
+from src.enhancer import apply_enhancements
+from src.roster_loader import get_loader as get_roster_loader
 from wnba_team_lookup import correct_team
 from mlb_team_lookup import correct_mlb_team
 
@@ -44,6 +49,42 @@ SMTP_PORT = int(os.getenv("SMTP_PORT", "587"))
 SMTP_USER = os.getenv("SMTP_USER", "")
 SMTP_PASS = os.getenv("SMTP_PASS", "")
 EMAIL_TO = os.getenv("EMAIL_TO", "")
+
+
+# ═══════════════════════════════════════════════════════════════
+# SPORT CONFIG — single source of truth. Add/edit a sport here.
+# Each sport runs independently; one failing never kills the others.
+# ═══════════════════════════════════════════════════════════════
+SPORT_CONFIG = {
+    "mlb":  {"module": "mlb_recalibration",  "calibrate": "calibrate_mlb_picks",  "active": True},
+    "wnba": {"module": "wnba_recalibration", "calibrate": "calibrate_wnba_picks", "active": True},
+    "nba":  {"module": "nba_recalibration",  "calibrate": "calibrate_nba_picks",  "active": False},
+    "nfl":  {"module": "nfl_recalibration",  "calibrate": "calibrate_nfl_picks",  "active": False},
+    "nhl":  {"module": "nhl_recalibration",  "calibrate": "calibrate_nhl_picks",  "active": False},
+}
+SPORT_NAMES = list(SPORT_CONFIG.keys())  # ["mlb","wnba","nba","nfl","nhl"]
+ALL_SPORTS = SPORT_NAMES
+
+
+def _apply_recalibration(sport, items, stage="pre"):
+    """Run recalibration module for a sport. Returns items (possibly filtered/reordered)."""
+    cfg = SPORT_CONFIG.get(sport.lower())
+    if not cfg or not cfg["active"]:
+        return items
+    try:
+        mod = __import__(cfg["module"], fromlist=[cfg["calibrate"]])
+        fn = getattr(mod, cfg["calibrate"])
+        tag = "[RECAL]" if stage == "pre" else "[RECALIBRATE]"
+        before = len(items)
+        result = fn(items)
+        logger.info(f"{tag} {sport.upper()} ({stage}): {before} -> {len(result)}")
+        return result
+    except ImportError:
+        logger.warning(f"{cfg['module']}.py not found — skipping {sport} {stage}-calibration")
+        return items
+    except Exception as exc:
+        logger.error(f"[{sport.upper()}] recalibration failed ({stage}): {exc} — continuing without it")
+        return items
 
 
 def load_projections(sport):
@@ -107,11 +148,21 @@ def load_projections(sport):
                 entries = p.get("entries", [])
                 proj_dict = {e["stat"]: e for e in entries if "stat" in e}
 
+            # Detect MLB vs WNBA format: WNBA = dict of dicts, MLB = dict of floats
+            first_val = next(iter(proj_dict.values()), None) if proj_dict else None
+            is_float_format = isinstance(first_val, (int, float))
+
             for stat, vals in proj_dict.items():
-                tc_proj = vals.get("tc_projection", vals.get("projection", 0))
-                line = vals.get("line", vals.get("market_line", 0))
-                edge_val = vals.get("edge", tc_proj - line)
-                direction = vals.get("direction", "OVER" if edge_val > 0 else "UNDER")
+                if is_float_format:
+                    tc_proj = float(vals)
+                    line = 0.0
+                    edge_val = 0.0
+                    direction = "UNDER"
+                else:
+                    tc_proj = vals.get("tc_projection", vals.get("projection", 0))
+                    line = vals.get("line", vals.get("market_line", 0))
+                    edge_val = vals.get("edge", tc_proj - line)
+                    direction = vals.get("direction", "OVER" if edge_val > 0 else "UNDER")
 
                 players_out.append({
                     "name": player_name,
@@ -125,11 +176,10 @@ def load_projections(sport):
                 })
 
     logger.info(f"Loaded {len(players_out)} stat-lines from {len(files)} files for {sport}")
-    if sport.lower() in ("wnba", "mlb"):
+    if sport.lower() in ("wnba", "mlb", "nba", "nfl", "nhl"):
         players_out = enrich_lines_via_espn(sport, players_out)
         players_out = enrich_lines_via_serpapi(sport, players_out)
         players_out = enrich_via_free_apis(sport, players_out)
-        # enrich_from_github removed — module missing
         players_out = enrich_via_rosters(sport, players_out)
     return players_out
 
@@ -437,9 +487,9 @@ def send_professional_email(all_picks_by_sport, date_str, combos=None):
         logger.info("Email not configured. Skipping professional report.")
         return
 
-    sport_emoji = {"wnba": "🏀", "mlb": "⚾"}
-    sport_colors = {"wnba": "#E94560", "mlb": "#00B4D8"}
-    sport_names = {"wnba": "WNBA", "mlb": "MLB"}
+    sport_emoji = {"wnba": "🏀", "mlb": "⚾", "nba": "🏀", "nfl": "🏈", "nhl": "🏒"}
+    sport_colors = {"wnba": "#E94560", "mlb": "#00B4D8", "nba": "#FF6B00", "nfl": "#013369", "nhl": "#CC0000"}
+    sport_names = {"wnba": "WNBA", "mlb": "MLB", "nba": "NBA", "nfl": "NFL", "nhl": "NHL"}
 
     total_picks = sum(len(p) for p in all_picks_by_sport.values())
 
@@ -672,6 +722,10 @@ def generate_picks(sport: str):
         return []
 
     picks = []
+    
+    # ── PRE-RECALIBRATION (data-driven, per-sport) ──
+    players = _apply_recalibration(sport, players, "pre")
+
     for p in players:
         proj = float(p["projection"])
         line = float(p["line"])
@@ -696,6 +750,9 @@ def generate_picks(sport: str):
     picks = deduplicate(picks)
     picks = apply_enhancements(picks, sport)
 
+    # ── POST-RECALIBRATION (data-driven, per-sport) ──
+    picks = _apply_recalibration(sport, picks, "post")
+
     date_str = datetime.now(ET).strftime("%Y-%m-%d")
 
     # Save CSV
@@ -714,7 +771,7 @@ def generate_picks(sport: str):
     for p in picks:
         if p.get("line", 0) == 0:
             continue
-        if abs(p.get("edge", 0)) <= 0.5:
+        if abs(p.get("edge", 0)) < 0.01:
             continue
         c.execute(
             """INSERT OR IGNORE INTO picks (date, league, player, team, stat, tc_projection, market_line, edge,
@@ -739,13 +796,13 @@ def generate_picks(sport: str):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--sport", choices=["mlb", "wnba", "all"], default="all")
+    parser.add_argument("--sport", choices=["mlb", "wnba", "nba", "nfl", "nhl", "all"], default="all")
     args = parser.parse_args()
 
-    sports = ["mlb", "wnba"] if args.sport == "all" else [args.sport]
+    sports = ["mlb", "wnba", "nba", "nfl", "nhl"] if args.sport == "all" else [args.sport]
 
-    counts = {"mlb": 0, "wnba": 0}
-    all_picks = {"mlb": [], "wnba": []}
+    counts = {"mlb": 0, "wnba": 0, "nba": 0, "nfl": 0, "nhl": 0}
+    all_picks = {"mlb": [], "wnba": [], "nba": [], "nfl": [], "nhl": []}
     for s in sports:
         try:
             result = generate_picks(s)
@@ -767,10 +824,16 @@ def main():
     last_run = {
         "last_run": datetime.now(ET).isoformat(),
         "picks_count": total_picks,
-        "sports": {"mlb": counts["mlb"], "wnba": counts["wnba"]}
+        "sports": {
+            "mlb": counts["mlb"],
+            "wnba": counts["wnba"],
+            "nba": counts["nba"],
+            "nfl": counts["nfl"],
+            "nhl": counts["nhl"],
+        }
     }
     (Path(__file__).parent.parent / "Daily_Log" / "last_run.json").write_text(json.dumps(last_run, indent=2))
-    logger.info(f"Pipeline complete. last_run.json updated: {total_picks} picks ({counts['mlb']} MLB, {counts['wnba']} WNBA, {counts.get('wc', 0)} WC)")
+    logger.info(f"Pipeline complete. last_run.json updated: {total_picks} picks (MLB:{counts['mlb']} WNBA:{counts['wnba']} NBA:{counts['nba']} NFL:{counts['nfl']} NHL:{counts['nhl']})")
 
     # source_report removed — github_line_sources module missing
     logger.info("[SOURCES] github_line_sources module missing — skipped.")
