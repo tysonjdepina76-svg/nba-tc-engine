@@ -518,5 +518,6 @@ def fetch_all_boxscores(sport: str = "all") -> dict:
             box = merge_tc_picks(box, str(Path("/home/workspace/Projects/data/picks.db")))
             mlb_boxes.append(box)
         result["sports"]["MLB"] = {"game_count": len(mlb_boxes), "games": mlb_boxes}
-
-    
+    with open(cache_path, "w") as f:
+        json.dump(result, f)
+    return result

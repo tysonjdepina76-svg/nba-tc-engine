@@ -15,6 +15,12 @@ from typing import Dict, List, Optional, Any
 
 ET_TZ = __import__("zoneinfo").ZoneInfo("America/New_York")
 
+try:
+    from correlation_model import parlay_hit_probability
+    HAS_CORR_MODEL = True
+except ImportError:
+    HAS_CORR_MODEL = False
+
 COMBO_DEFS = {
     "PRA":  {"stats": ["PTS", "REB", "AST"], "label": "Pts+Reb+Ast"},
     "PR":   {"stats": ["PTS", "REB"],       "label": "Pts+Reb"},
@@ -46,7 +52,8 @@ def build_player_stat_map(props: List[Dict]) -> Dict[str, Dict[str, dict]]:
     return pmap
 
 def compute_combos(player_map: Dict[str, Dict[str, dict]],
-                   combo_defs: Dict = None) -> List[Dict[str, Any]]:
+                   combo_defs: Dict = None,
+                   sport: str = "NBA") -> List[Dict[str, Any]]:
     """Compute combo projections for all players who have all required stats."""
     if combo_defs is None:
         combo_defs = COMBO_DEFS
@@ -77,6 +84,41 @@ def compute_combos(player_map: Dict[str, Dict[str, dict]],
 
             raw_edge = sum(float(stats[s].get("raw_average", stats[s].get("edge", 0))) for s in req_stats)
 
+            leg_probs = []
+            for s in req_stats:
+                sp = stats[s]
+                ind_edge_pct = float(sp.get("edge", 0))
+                ind_line = float(sp.get("market_line", 0))
+                ind_dir = sp.get("direction", direction)
+                base_hit = 0.60 if ind_dir == "OVER" else 0.65
+                if ind_line > 0:
+                    edge_boost = min(abs(ind_edge_pct) / ind_line, 0.25) if ind_line > 0 else 0
+                    base_hit = min(base_hit + edge_boost, 0.85) if abs(ind_edge_pct) > 0 else base_hit
+                leg_probs.append(base_hit)
+
+            parlay_hp = None
+            parlay_edge_val = None
+            if HAS_CORR_MODEL and len(leg_probs) >= 2:
+                try:
+                    parlay_result = parlay_hit_probability(
+                        probs=leg_probs,
+                        sport=sport,
+                        combo_type=combo_key,
+                        same_player=True
+                    )
+                    if isinstance(parlay_result, dict):
+                        parlay_hp = round(parlay_result.get("correlated_prob", 0), 4)
+                        parlay_hp_label = round(parlay_result.get("independent_prob", 0), 4)
+                        parlay_edge_val = round(parlay_hp - 0.50, 4) if parlay_hp else None
+                        parlay_method = parlay_result.get("method", "")
+                    else:
+                        parlay_hp = round(parlay_result, 4)
+                        parlay_hp_label = None
+                        parlay_edge_val = round(parlay_hp - 0.50, 4) if parlay_hp else None
+                        parlay_method = ""
+                except Exception:
+                    pass
+
             results.append({
                 "player": player,
                 "team": team,
@@ -94,6 +136,11 @@ def compute_combos(player_map: Dict[str, Dict[str, dict]],
                 "edge_pct": round(edge_pct, 1),
                 "raw_average": round(raw_edge, 2),
                 "source": stats.get(req_stats[0], {}).get("source", "SELF_EDGE"),
+                "parlay_hit_prob": parlay_hp,
+                "parlay_independent_prob": parlay_hp_label,
+                "parlay_edge": parlay_edge_val,
+                "parlay_method": parlay_method,
+                "leg_probs": [round(p, 3) for p in leg_probs],
             })
     return results
 

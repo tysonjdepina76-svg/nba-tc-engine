@@ -9,6 +9,8 @@ Data Sources:
 import sqlite3
 import streamlit as st
 import pandas as pd
+import json
+import glob as _glob
 from pathlib import Path
 from datetime import datetime
 from collections import defaultdict
@@ -64,6 +66,16 @@ def load_picks_today():
     df = pd.read_sql_query("SELECT * FROM picks WHERE date = ? ORDER BY ABS(edge) DESC", conn, params=(today,))
     conn.close()
     return df
+
+@st.cache_data(ttl=600)
+def load_schedules():
+    """Load master schedule from data/schedules/schedules_master.json"""
+    import json
+    master_path = Path("/home/workspace/data/schedules/schedules_master.json")
+    if master_path.exists():
+        with open(master_path) as f:
+            return json.load(f)
+    return {"sports": {}, "active_sports": [], "offseason_sports": []}
 
 def compute_stats(graded):
     total = len(graded)
@@ -501,6 +513,54 @@ if not all_picks.empty:
             if st.button(f"📥 Export {league} CSV", key=f"export_{league}"):
                 csv = league_picks.to_csv(index=False)
                 st.download_button("Download", csv, f"{league.lower()}_picks.csv", "text/csv")
+
+# ── 📅 SPORTS SCHEDULES ─────────────────────────────────────────
+
+st.markdown("---")
+st.subheader("📅 SPORTS SCHEDULES — ALL LEAGUES")
+master = load_schedules()
+
+SPORT_EMOJI = {"mlb": "⚾", "wnba": "🏀", "nba": "🏀", "nfl": "🏈", "nhl": "🏒", "wc": "⚽"}
+SPORT_ORDER = ["mlb", "wnba", "nfl", "nba", "nhl", "wc"]
+STATUS_COLORS = {"LIVE": "#00e676", "OFF-SEASON": "#ff9100", "PRE-SEASON": "#ffd740", "ENDED": "#757575"}
+
+st.info(f"**{master.get('total_games_today', 0)} GAMES TODAY** | Active: {', '.join(master.get('active_sports', [])).upper()} | Off-Season: {', '.join(master.get('offseason_sports', [])).upper()}")
+
+cols = st.columns(3)
+for idx, sport_key in enumerate(SPORT_ORDER):
+    sport_data = master.get("sports", {}).get(sport_key, {})
+    if not sport_data:
+        continue
+    status = sport_data.get("status", "UNKNOWN")
+    color = STATUS_COLORS.get(status, "#888")
+    emoji = SPORT_EMOJI.get(sport_key, "📅")
+    today_n = sport_data.get("today_game_count", 0)
+
+    with cols[idx % 3]:
+        st.markdown(f"### {emoji} {sport_key.upper()} <span style='color:{color};font-size:12px'>{status}</span>", unsafe_allow_html=True)
+        st.caption(f"📆 {sport_data.get('current_phase', '')} | 📊 {sport_data.get('today_game_count', 0)} today | 📅 {sport_data.get('total_scheduled_games', 0)} total")
+
+        key_dates = sport_data.get("key_dates", {})
+        if key_dates:
+            md_lines = []
+            for k, v in key_dates.items():
+                md_lines.append(f"- **{k}**: {v}")
+            st.markdown("
+".join(md_lines))
+
+        phases = sport_data.get("phases", {})
+        if isinstance(phases, dict):
+            for pname, pinfo in phases.items():
+                if isinstance(pinfo, dict):
+                    start = pinfo.get("start", "")
+                    end = pinfo.get("end", "")
+                    gc = pinfo.get("game_count", "")
+                    date_str = f"{start} → {end}" if start and end else ""
+                    title = f"{pname.replace('_', ' ').title()} ({date_str})" if date_str else pname.replace('_', ' ').title()
+                    with st.expander(title):
+                        if gc:
+                            st.caption(f"{gc} games")
+        st.markdown("---")
 
 st.markdown("---")
 

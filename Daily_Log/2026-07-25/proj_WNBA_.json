@@ -1,6 +1,1767 @@
 {
   "date": "2026-07-25",
   "sport": "WNBA",
-  "per_game_files": [],
-  "players": []
+  "per_game_files": [
+    "/home/workspace/Daily_Log/2026-07-25/proj_WNBA_SPO_at_COOP.json"
+  ],
+  "players": [
+    {
+      "player": "Caitlin Clark",
+      "team": "SPO",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 19.8,
+          "line": 19.4,
+          "edge": 0.4,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "REB",
+          "projection": 3.2,
+          "line": 3.26,
+          "edge": 0.06,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "AST",
+          "projection": 7.0,
+          "line": 6.86,
+          "edge": 0.14,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "STL",
+          "projection": 0.8,
+          "line": 0.78,
+          "edge": 0.02,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "BLK",
+          "projection": 0.1,
+          "line": 0.1,
+          "edge": 0.0,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "3PM",
+          "projection": 2.0,
+          "line": 1.96,
+          "edge": 0.04,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "PRA",
+          "projection": 29.9,
+          "line": 29.3,
+          "edge": 0.6,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "PR",
+          "projection": 22.9,
+          "line": 23.36,
+          "edge": 0.46,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "PA",
+          "projection": 26.8,
+          "line": 27.34,
+          "edge": 0.54,
+          "direction": "UNDER",
+          "period": "GAME"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "SPO_at_COOP"
+    },
+    {
+      "player": "A'ja Wilson",
+      "team": "SPO",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 26.8,
+          "line": 26.26,
+          "edge": 0.54,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "REB",
+          "projection": 9.4,
+          "line": 9.59,
+          "edge": 0.19,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "AST",
+          "projection": 3.2,
+          "line": 3.26,
+          "edge": 0.06,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "STL",
+          "projection": 2.9,
+          "line": 2.96,
+          "edge": 0.06,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "BLK",
+          "projection": 2.1,
+          "line": 2.14,
+          "edge": 0.04,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "3PM",
+          "projection": 1.0,
+          "line": 0.98,
+          "edge": 0.02,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "PRA",
+          "projection": 39.5,
+          "line": 40.29,
+          "edge": 0.79,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "PR",
+          "projection": 36.3,
+          "line": 35.57,
+          "edge": 0.73,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "PA",
+          "projection": 30.1,
+          "line": 30.7,
+          "edge": 0.6,
+          "direction": "UNDER",
+          "period": "GAME"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "SPO_at_COOP"
+    },
+    {
+      "player": "Olivia Miles",
+      "team": "SPO",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 18.1,
+          "line": 17.74,
+          "edge": 0.36,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "REB",
+          "projection": 4.0,
+          "line": 3.92,
+          "edge": 0.08,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "AST",
+          "projection": 5.1,
+          "line": 5.2,
+          "edge": 0.1,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "STL",
+          "projection": 1.0,
+          "line": 1.02,
+          "edge": 0.02,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "BLK",
+          "projection": 0.7,
+          "line": 0.71,
+          "edge": 0.01,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "3PM",
+          "projection": 1.9,
+          "line": 1.86,
+          "edge": 0.04,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "PRA",
+          "projection": 27.1,
+          "line": 26.56,
+          "edge": 0.54,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "PR",
+          "projection": 22.1,
+          "line": 21.66,
+          "edge": 0.44,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "PA",
+          "projection": 23.1,
+          "line": 23.56,
+          "edge": 0.46,
+          "direction": "UNDER",
+          "period": "GAME"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "SPO_at_COOP"
+    },
+    {
+      "player": "Aliyah Boston",
+      "team": "SPO",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 19.9,
+          "line": 19.5,
+          "edge": 0.4,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "REB",
+          "projection": 9.5,
+          "line": 9.69,
+          "edge": 0.19,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "AST",
+          "projection": 3.4,
+          "line": 3.47,
+          "edge": 0.07,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "STL",
+          "projection": 1.4,
+          "line": 1.37,
+          "edge": 0.03,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "BLK",
+          "projection": 1.7,
+          "line": 1.73,
+          "edge": 0.03,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "3PM",
+          "projection": 1.4,
+          "line": 1.43,
+          "edge": 0.03,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "PRA",
+          "projection": 32.9,
+          "line": 32.24,
+          "edge": 0.66,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "PR",
+          "projection": 29.4,
+          "line": 29.99,
+          "edge": 0.59,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "PA",
+          "projection": 23.4,
+          "line": 22.93,
+          "edge": 0.47,
+          "direction": "OVER",
+          "period": "GAME"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "SPO_at_COOP"
+    },
+    {
+      "player": "Jessica Shepard",
+      "team": "SPO",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 15.5,
+          "line": 15.81,
+          "edge": 0.31,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "REB",
+          "projection": 11.8,
+          "line": 11.56,
+          "edge": 0.24,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "AST",
+          "projection": 5.4,
+          "line": 5.51,
+          "edge": 0.11,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "STL",
+          "projection": 1.0,
+          "line": 0.98,
+          "edge": 0.02,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "PRA",
+          "projection": 32.6,
+          "line": 31.95,
+          "edge": 0.65,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "PR",
+          "projection": 27.2,
+          "line": 26.66,
+          "edge": 0.54,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "PA",
+          "projection": 20.9,
+          "line": 21.32,
+          "edge": 0.42,
+          "direction": "UNDER",
+          "period": "GAME"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "SPO_at_COOP"
+    },
+    {
+      "player": "Rhyne Howard",
+      "team": "SPO",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 17.3,
+          "line": 16.95,
+          "edge": 0.35,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "REB",
+          "projection": 4.3,
+          "line": 4.39,
+          "edge": 0.09,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "AST",
+          "projection": 2.8,
+          "line": 2.74,
+          "edge": 0.06,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "STL",
+          "projection": 3.0,
+          "line": 3.06,
+          "edge": 0.06,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "BLK",
+          "projection": 1.0,
+          "line": 1.02,
+          "edge": 0.02,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "3PM",
+          "projection": 3.1,
+          "line": 3.04,
+          "edge": 0.06,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "PRA",
+          "projection": 24.4,
+          "line": 24.89,
+          "edge": 0.49,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "PR",
+          "projection": 21.6,
+          "line": 21.17,
+          "edge": 0.43,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "PA",
+          "projection": 20.1,
+          "line": 20.5,
+          "edge": 0.4,
+          "direction": "UNDER",
+          "period": "GAME"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "SPO_at_COOP"
+    },
+    {
+      "player": "Allisha Gray",
+      "team": "SPO",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 16.7,
+          "line": 17.03,
+          "edge": 0.33,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "REB",
+          "projection": 2.7,
+          "line": 2.65,
+          "edge": 0.05,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "AST",
+          "projection": 2.9,
+          "line": 2.96,
+          "edge": 0.06,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "STL",
+          "projection": 1.6,
+          "line": 1.63,
+          "edge": 0.03,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "BLK",
+          "projection": 0.7,
+          "line": 0.69,
+          "edge": 0.01,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "3PM",
+          "projection": 0.9,
+          "line": 0.92,
+          "edge": 0.02,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "PRA",
+          "projection": 22.2,
+          "line": 22.64,
+          "edge": 0.44,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "PR",
+          "projection": 19.4,
+          "line": 19.01,
+          "edge": 0.39,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "PA",
+          "projection": 19.6,
+          "line": 19.99,
+          "edge": 0.39,
+          "direction": "UNDER",
+          "period": "GAME"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "SPO_at_COOP"
+    },
+    {
+      "player": "Jonquel Jones",
+      "team": "SPO",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 14.8,
+          "line": 15.1,
+          "edge": 0.3,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "REB",
+          "projection": 10.1,
+          "line": 10.3,
+          "edge": 0.2,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "AST",
+          "projection": 2.9,
+          "line": 2.96,
+          "edge": 0.06,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "STL",
+          "projection": 1.3,
+          "line": 1.33,
+          "edge": 0.03,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "BLK",
+          "projection": 1.5,
+          "line": 1.47,
+          "edge": 0.03,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "3PM",
+          "projection": 2.4,
+          "line": 2.45,
+          "edge": 0.05,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "PRA",
+          "projection": 27.8,
+          "line": 27.24,
+          "edge": 0.56,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "PR",
+          "projection": 24.9,
+          "line": 24.4,
+          "edge": 0.5,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "PA",
+          "projection": 17.6,
+          "line": 17.25,
+          "edge": 0.35,
+          "direction": "OVER",
+          "period": "GAME"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "SPO_at_COOP"
+    },
+    {
+      "player": "Courtney Williams",
+      "team": "SPO",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 14.6,
+          "line": 14.89,
+          "edge": 0.29,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "REB",
+          "projection": 6.5,
+          "line": 6.63,
+          "edge": 0.13,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "AST",
+          "projection": 4.1,
+          "line": 4.18,
+          "edge": 0.08,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "STL",
+          "projection": 1.8,
+          "line": 1.76,
+          "edge": 0.04,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "BLK",
+          "projection": 0.7,
+          "line": 0.69,
+          "edge": 0.01,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "3PM",
+          "projection": 1.7,
+          "line": 1.73,
+          "edge": 0.03,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "PRA",
+          "projection": 25.1,
+          "line": 24.6,
+          "edge": 0.5,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "PR",
+          "projection": 21.0,
+          "line": 21.42,
+          "edge": 0.42,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "PA",
+          "projection": 18.6,
+          "line": 18.23,
+          "edge": 0.37,
+          "direction": "OVER",
+          "period": "GAME"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "SPO_at_COOP"
+    },
+    {
+      "player": "Kiki Iriafen",
+      "team": "SPO",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 12.4,
+          "line": 12.15,
+          "edge": 0.25,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "REB",
+          "projection": 8.9,
+          "line": 9.08,
+          "edge": 0.18,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "AST",
+          "projection": 2.3,
+          "line": 2.25,
+          "edge": 0.05,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "STL",
+          "projection": 0.9,
+          "line": 0.88,
+          "edge": 0.02,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "BLK",
+          "projection": 0.6,
+          "line": 0.59,
+          "edge": 0.01,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "3PM",
+          "projection": 0.7,
+          "line": 0.69,
+          "edge": 0.01,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "PRA",
+          "projection": 23.6,
+          "line": 24.07,
+          "edge": 0.47,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "PR",
+          "projection": 21.3,
+          "line": 21.73,
+          "edge": 0.43,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "PA",
+          "projection": 14.7,
+          "line": 14.41,
+          "edge": 0.29,
+          "direction": "OVER",
+          "period": "GAME"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "SPO_at_COOP"
+    },
+    {
+      "player": "Nneka Ogwumike",
+      "team": "SPO",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 17.0,
+          "line": 17.34,
+          "edge": 0.34,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "REB",
+          "projection": 9.6,
+          "line": 9.79,
+          "edge": 0.19,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "AST",
+          "projection": 3.0,
+          "line": 3.06,
+          "edge": 0.06,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "STL",
+          "projection": 1.2,
+          "line": 1.18,
+          "edge": 0.02,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "BLK",
+          "projection": 0.6,
+          "line": 0.59,
+          "edge": 0.01,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "3PM",
+          "projection": 1.6,
+          "line": 1.57,
+          "edge": 0.03,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "PRA",
+          "projection": 29.7,
+          "line": 30.29,
+          "edge": 0.59,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "PR",
+          "projection": 26.7,
+          "line": 27.23,
+          "edge": 0.53,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "PA",
+          "projection": 20.0,
+          "line": 20.4,
+          "edge": 0.4,
+          "direction": "UNDER",
+          "period": "GAME"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "SPO_at_COOP"
+    },
+    {
+      "player": "Paige Bueckers",
+      "team": "COOP",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 24.6,
+          "line": 25.09,
+          "edge": 0.49,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "REB",
+          "projection": 5.3,
+          "line": 5.41,
+          "edge": 0.11,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "AST",
+          "projection": 5.6,
+          "line": 5.49,
+          "edge": 0.11,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "STL",
+          "projection": 1.1,
+          "line": 1.08,
+          "edge": 0.02,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "BLK",
+          "projection": 1.1,
+          "line": 1.12,
+          "edge": 0.02,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "3PM",
+          "projection": 2.1,
+          "line": 2.06,
+          "edge": 0.04,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "PRA",
+          "projection": 35.4,
+          "line": 34.69,
+          "edge": 0.71,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "PR",
+          "projection": 29.9,
+          "line": 30.5,
+          "edge": 0.6,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "PA",
+          "projection": 30.1,
+          "line": 30.7,
+          "edge": 0.6,
+          "direction": "UNDER",
+          "period": "GAME"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "SPO_at_COOP"
+    },
+    {
+      "player": "Breanna Stewart",
+      "team": "COOP",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 23.6,
+          "line": 24.07,
+          "edge": 0.47,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "REB",
+          "projection": 7.8,
+          "line": 7.64,
+          "edge": 0.16,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "AST",
+          "projection": 3.5,
+          "line": 3.57,
+          "edge": 0.07,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "STL",
+          "projection": 1.5,
+          "line": 1.47,
+          "edge": 0.03,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "BLK",
+          "projection": 1.5,
+          "line": 1.47,
+          "edge": 0.03,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "3PM",
+          "projection": 1.4,
+          "line": 1.37,
+          "edge": 0.03,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "PRA",
+          "projection": 34.9,
+          "line": 35.6,
+          "edge": 0.7,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "PR",
+          "projection": 31.4,
+          "line": 30.77,
+          "edge": 0.63,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "PA",
+          "projection": 27.1,
+          "line": 26.56,
+          "edge": 0.54,
+          "direction": "OVER",
+          "period": "GAME"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "SPO_at_COOP"
+    },
+    {
+      "player": "Kelsey Mitchell",
+      "team": "COOP",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 25.9,
+          "line": 25.38,
+          "edge": 0.52,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "REB",
+          "projection": 1.8,
+          "line": 1.76,
+          "edge": 0.04,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "AST",
+          "projection": 3.6,
+          "line": 3.53,
+          "edge": 0.07,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "STL",
+          "projection": 1.8,
+          "line": 1.76,
+          "edge": 0.04,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "BLK",
+          "projection": 0.7,
+          "line": 0.71,
+          "edge": 0.01,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "3PM",
+          "projection": 3.8,
+          "line": 3.88,
+          "edge": 0.08,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "PRA",
+          "projection": 31.3,
+          "line": 31.93,
+          "edge": 0.63,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "PR",
+          "projection": 27.7,
+          "line": 27.15,
+          "edge": 0.55,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "PA",
+          "projection": 29.5,
+          "line": 28.91,
+          "edge": 0.59,
+          "direction": "OVER",
+          "period": "GAME"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "SPO_at_COOP"
+    },
+    {
+      "player": "Natasha Howard",
+      "team": "COOP",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 15.5,
+          "line": 15.19,
+          "edge": 0.31,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "REB",
+          "projection": 8.9,
+          "line": 8.72,
+          "edge": 0.18,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "AST",
+          "projection": 2.4,
+          "line": 2.35,
+          "edge": 0.05,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "STL",
+          "projection": 1.8,
+          "line": 1.84,
+          "edge": 0.04,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "BLK",
+          "projection": 1.6,
+          "line": 1.57,
+          "edge": 0.03,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "3PM",
+          "projection": 0.7,
+          "line": 0.69,
+          "edge": 0.01,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "PRA",
+          "projection": 26.8,
+          "line": 26.26,
+          "edge": 0.54,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "PR",
+          "projection": 24.4,
+          "line": 23.91,
+          "edge": 0.49,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "PA",
+          "projection": 17.9,
+          "line": 18.26,
+          "edge": 0.36,
+          "direction": "UNDER",
+          "period": "GAME"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "SPO_at_COOP"
+    },
+    {
+      "player": "Gabby Williams",
+      "team": "COOP",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 11.4,
+          "line": 11.17,
+          "edge": 0.23,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "REB",
+          "projection": 2.0,
+          "line": 1.96,
+          "edge": 0.04,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "AST",
+          "projection": 1.9,
+          "line": 1.94,
+          "edge": 0.04,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "STL",
+          "projection": 1.7,
+          "line": 1.73,
+          "edge": 0.03,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "BLK",
+          "projection": 0.1,
+          "line": 0.1,
+          "edge": 0.0,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "3PM",
+          "projection": 1.8,
+          "line": 1.76,
+          "edge": 0.04,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "PRA",
+          "projection": 15.3,
+          "line": 14.99,
+          "edge": 0.31,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "PR",
+          "projection": 13.4,
+          "line": 13.13,
+          "edge": 0.27,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "PA",
+          "projection": 13.3,
+          "line": 13.03,
+          "edge": 0.27,
+          "direction": "OVER",
+          "period": "GAME"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "SPO_at_COOP"
+    },
+    {
+      "player": "Angel Reese",
+      "team": "COOP",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 15.6,
+          "line": 15.91,
+          "edge": 0.31,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "REB",
+          "projection": 12.0,
+          "line": 12.24,
+          "edge": 0.24,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "AST",
+          "projection": 2.8,
+          "line": 2.74,
+          "edge": 0.06,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "STL",
+          "projection": 2.5,
+          "line": 2.45,
+          "edge": 0.05,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "BLK",
+          "projection": 0.8,
+          "line": 0.78,
+          "edge": 0.02,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "3PM",
+          "projection": 0.1,
+          "line": 0.1,
+          "edge": 0.0,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "PRA",
+          "projection": 30.4,
+          "line": 29.79,
+          "edge": 0.61,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "PR",
+          "projection": 27.6,
+          "line": 27.05,
+          "edge": 0.55,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "PA",
+          "projection": 18.4,
+          "line": 18.77,
+          "edge": 0.37,
+          "direction": "UNDER",
+          "period": "GAME"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "SPO_at_COOP"
+    },
+    {
+      "player": "Marina Mabrey",
+      "team": "COOP",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 22.3,
+          "line": 22.75,
+          "edge": 0.45,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "REB",
+          "projection": 2.4,
+          "line": 2.35,
+          "edge": 0.05,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "AST",
+          "projection": 3.7,
+          "line": 3.63,
+          "edge": 0.07,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "STL",
+          "projection": 1.2,
+          "line": 1.18,
+          "edge": 0.02,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "BLK",
+          "projection": 0.7,
+          "line": 0.71,
+          "edge": 0.01,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "3PM",
+          "projection": 3.8,
+          "line": 3.88,
+          "edge": 0.08,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "PRA",
+          "projection": 28.5,
+          "line": 29.07,
+          "edge": 0.57,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "PR",
+          "projection": 24.8,
+          "line": 25.3,
+          "edge": 0.5,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "PA",
+          "projection": 26.0,
+          "line": 25.48,
+          "edge": 0.52,
+          "direction": "OVER",
+          "period": "GAME"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "SPO_at_COOP"
+    },
+    {
+      "player": "Dominique Malonga",
+      "team": "COOP",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 15.9,
+          "line": 15.58,
+          "edge": 0.32,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "REB",
+          "projection": 8.1,
+          "line": 7.94,
+          "edge": 0.16,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "AST",
+          "projection": 1.5,
+          "line": 1.47,
+          "edge": 0.03,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "STL",
+          "projection": 0.8,
+          "line": 0.82,
+          "edge": 0.02,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "BLK",
+          "projection": 1.1,
+          "line": 1.12,
+          "edge": 0.02,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "3PM",
+          "projection": 1.4,
+          "line": 1.43,
+          "edge": 0.03,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "PRA",
+          "projection": 25.5,
+          "line": 26.01,
+          "edge": 0.51,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "PR",
+          "projection": 24.0,
+          "line": 23.52,
+          "edge": 0.48,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "PA",
+          "projection": 17.4,
+          "line": 17.05,
+          "edge": 0.35,
+          "direction": "OVER",
+          "period": "GAME"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "SPO_at_COOP"
+    },
+    {
+      "player": "Kelsey Plum",
+      "team": "COOP",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 14.7,
+          "line": 14.99,
+          "edge": 0.29,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "REB",
+          "projection": 2.7,
+          "line": 2.75,
+          "edge": 0.05,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "AST",
+          "projection": 6.3,
+          "line": 6.17,
+          "edge": 0.13,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "STL",
+          "projection": 3.0,
+          "line": 2.94,
+          "edge": 0.06,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "3PM",
+          "projection": 1.3,
+          "line": 1.33,
+          "edge": 0.03,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "PRA",
+          "projection": 23.7,
+          "line": 24.17,
+          "edge": 0.47,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "PR",
+          "projection": 17.4,
+          "line": 17.05,
+          "edge": 0.35,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "PA",
+          "projection": 21.0,
+          "line": 21.42,
+          "edge": 0.42,
+          "direction": "UNDER",
+          "period": "GAME"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "SPO_at_COOP"
+    },
+    {
+      "player": "Jackie Young",
+      "team": "COOP",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 21.7,
+          "line": 21.27,
+          "edge": 0.43,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "REB",
+          "projection": 4.3,
+          "line": 4.21,
+          "edge": 0.09,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "AST",
+          "projection": 7.7,
+          "line": 7.85,
+          "edge": 0.15,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "STL",
+          "projection": 1.9,
+          "line": 1.94,
+          "edge": 0.04,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "BLK",
+          "projection": 0.8,
+          "line": 0.78,
+          "edge": 0.02,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "3PM",
+          "projection": 2.6,
+          "line": 2.65,
+          "edge": 0.05,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "PRA",
+          "projection": 33.7,
+          "line": 34.37,
+          "edge": 0.67,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "PR",
+          "projection": 26.0,
+          "line": 25.48,
+          "edge": 0.52,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "PA",
+          "projection": 29.4,
+          "line": 29.99,
+          "edge": 0.59,
+          "direction": "UNDER",
+          "period": "GAME"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "SPO_at_COOP"
+    },
+    {
+      "player": "Sonia Citron",
+      "team": "COOP",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 20.6,
+          "line": 20.19,
+          "edge": 0.41,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "REB",
+          "projection": 4.7,
+          "line": 4.79,
+          "edge": 0.09,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "AST",
+          "projection": 3.1,
+          "line": 3.04,
+          "edge": 0.06,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "STL",
+          "projection": 1.0,
+          "line": 1.02,
+          "edge": 0.02,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "BLK",
+          "projection": 0.8,
+          "line": 0.82,
+          "edge": 0.02,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "3PM",
+          "projection": 1.9,
+          "line": 1.94,
+          "edge": 0.04,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "PRA",
+          "projection": 28.4,
+          "line": 27.83,
+          "edge": 0.57,
+          "direction": "OVER",
+          "period": "GAME"
+        },
+        {
+          "stat": "PR",
+          "projection": 25.3,
+          "line": 25.81,
+          "edge": 0.51,
+          "direction": "UNDER",
+          "period": "GAME"
+        },
+        {
+          "stat": "PA",
+          "projection": 23.7,
+          "line": 23.23,
+          "edge": 0.47,
+          "direction": "OVER",
+          "period": "GAME"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "SPO_at_COOP"
+    }
+  ]
 }

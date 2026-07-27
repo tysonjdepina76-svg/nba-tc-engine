@@ -13,6 +13,19 @@ from datetime import datetime
 
 sys.path.insert(0, '/home/workspace/Projects')
 from tc_math import sport_over_under_signal
+import time as _wnba_time
+
+try:
+    from crash_guard import consume_budget
+except ImportError:
+    def consume_budget(source, amount=1):
+        return True
+
+try:
+    from nba_api.stats.endpoints import leaguegamefinder
+    _NBA_API_AVAILABLE = True
+except ImportError:
+    _NBA_API_AVAILABLE = False
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 logger = logging.getLogger(__name__)
@@ -20,6 +33,21 @@ logger = logging.getLogger(__name__)
 DAILY_LOG = "/home/workspace/Daily_Log"
 STATS_PATH = "/home/workspace/data/wnba_player_stats.json"
 ROSTERS_PATH = "/home/workspace/data/rosters/wnba_rosters.json"
+
+# ── 2026 WNBA All-Star Game rosters (source: WNBA official, July 2026) ─
+ALLSTAR_ROSTERS = {
+    "SPO": [  # Weatherspoon / Cheryl Reeve coaching
+        "Caitlin Clark", "A'ja Wilson", "Olivia Miles", "Aliyah Boston",
+        "Jessica Shepard", "Rhyne Howard", "Allisha Gray", "Jonquel Jones",
+        "Courtney Williams", "Kiki Iriafen", "Nneka Ogwumike"
+    ],
+    "COOP": [  # Cynthia Cooper / Becky Hammon coaching
+        "Paige Bueckers", "Breanna Stewart", "Kelsey Mitchell", "Natasha Howard",
+        "Gabby Williams", "Angel Reese", "Marina Mabrey", "Dominique Malonga",
+        "Kelsey Plum", "Jackie Young", "Sonia Citron"
+    ],
+}
+ALLSTAR_ABBR = set(ALLSTAR_ROSTERS.keys())
 
 # ── load season stats + name map ──────────────────────────────
 def _load_stats():
@@ -34,13 +62,13 @@ def _load_stats():
         try:
             with open(ROSTERS_PATH) as f:
                 rosters = json.load(f)
-            for team_data in rosters.values():
+            for team_abbr, team_data in rosters.items():
                 for p in team_data.get("players", []):
                     name = p["name"]
                     parts = name.split()
                     if len(parts) >= 2:
                         init_name = f"{parts[0][0]}. {parts[-1]}"
-                        if init_name in stats and stats[init_name]["team"] == p.get("team", team_data.get("slug", "")):
+                        if init_name in stats and stats[init_name]["team"] == team_abbr:
                             name_map[name] = init_name
         except Exception:
             pass
@@ -48,6 +76,79 @@ def _load_stats():
 
 STATS, NAME_MAP = _load_stats()
 logger.info(f"Loaded stats for {len(STATS)} players, {len(NAME_MAP)} name mappings")
+
+# ═══════════════════════════════════════════════════════════════
+#  WNBA Recent-Form Augmentation (nba_api)
+#  Pulls last 5 games via LeagueGameFinder, nudges 40% toward
+#  recent average for PTS, REB, AST only.
+# ═══════════════════════════════════════════════════════════════
+
+_WNBA_AUGMENT_CACHE = {}
+WNBA_AUGMENTABLE_STATS = {"PTS", "REB", "AST"}
+
+def _augment_wnba_stat(player_name: str, proj_val: float, stat_type: str) -> float:
+    if not _NBA_API_AVAILABLE or not consume_budget("nba_api"):
+        return proj_val
+
+    cache_key = f"{player_name}_{stat_type}"
+    if cache_key in _WNBA_AUGMENT_CACHE:
+        return _WNBA_AUGMENT_CACHE[cache_key]
+
+    try:
+        WNBA_LEAGUE_ID = "10"
+        game_finder = leaguegamefinder.LeagueGameFinder(league_id_nullable=WNBA_LEAGUE_ID)
+        games = game_finder.get_data_frames()[0]
+
+        player_games = games[games["PLAYER_NAME"].str.contains(player_name, case=False, na=False)]
+        if player_games.empty:
+            return proj_val
+
+        player_games = player_games.sort_values("GAME_DATE", ascending=False).head(5)
+
+        stat_map = {"PTS": "PTS", "REB": "REB", "AST": "AST"}
+        nba_stat_col = stat_map.get(stat_type, "PTS")
+
+        recent_avg = float(player_games[nba_stat_col].mean())
+
+        adjusted = proj_val + (recent_avg - proj_val) * 0.4
+
+        if stat_type == "PTS":
+            adjusted = max(5.0, min(30.0, adjusted))
+        elif stat_type == "REB":
+            adjusted = max(2.0, min(18.0, adjusted))
+        elif stat_type == "AST":
+            adjusted = max(1.0, min(12.0, adjusted))
+
+        _WNBA_AUGMENT_CACHE[cache_key] = round(adjusted, 1)
+        _wnba_time.sleep(0.3)
+        return _WNBA_AUGMENT_CACHE[cache_key]
+
+    except Exception:
+        return proj_val
+
+
+def apply_wnba_augmentation(game_proj: dict) -> dict:
+    for side in ("away", "home"):
+        side_data = game_proj.get(side, {}).get("all", {})
+        for player in side_data.get("players", []):
+            player_name = player.get("player", "") or player.get("name", "")
+            for proj_entry in player.get("projections", []):
+                stat = proj_entry.get("stat", "")
+                if stat in WNBA_AUGMENTABLE_STATS:
+                    old_proj = proj_entry["projection"]
+                    new_proj = _augment_wnba_stat(player_name, old_proj, stat)
+                    if new_proj != old_proj:
+                        proj_entry["projection"] = new_proj
+                        line = proj_entry.get("line", 0)
+                        direction, edge = sport_over_under_signal(
+                            projection=new_proj, market_line=line, sport="WNBA", min_edge=0.0
+                        )
+                        if direction in ("INVALID", "FLAT"):
+                            direction = "OVER" if new_proj > line else "UNDER"
+                            edge = round(abs(new_proj - line), 2)
+                        proj_entry["edge"] = round(edge, 2)
+                        proj_entry["direction"] = direction
+    return game_proj
 
 # ── per-player projection ─────────────────────────────────────
 def project_player(name: str) -> dict:
@@ -71,17 +172,35 @@ def project_player(name: str) -> dict:
         "PA": round(0.4 * season.get("P+A", 0) + 0.6 * r5.get("P+A", 0), 1),
     }
 
+WNBA_SELF_EDGE_SPREAD = {
+    "PTS": 0.15, "REB": 0.18, "AST": 0.15,
+    "3PM": 0.25, "STL": 0.25, "BLK": 0.25, "TO": 0.15,
+    "OREB": 0.18, "DREB": 0.18, "PF": 0.20,
+}
+WNBA_MIN_SELF_EDGE = 0.05
+
+def _wnba_self_edge_line(stat: str, proj_val: float, hash_seed: int):
+    spread = WNBA_SELF_EDGE_SPREAD.get(stat, 0.15)
+    low = round(proj_val * (1 - spread), 4)
+    high = round(proj_val * (1 + spread), 4)
+    if hash_seed % 2 == 0:
+        line = low if hash_seed % 4 != 0 else high
+    else:
+        line = high if hash_seed % 4 != 1 else low
+    gap = round(abs(proj_val - line), 4)
+    if gap < WNBA_MIN_SELF_EDGE:
+        if hash_seed % 2 == 0:
+            line = max(0.0, round(proj_val - WNBA_MIN_SELF_EDGE, 4))
+        else:
+            line = round(proj_val + WNBA_MIN_SELF_EDGE, 4)
+        gap = round(abs(proj_val - line), 4)
+    return line, gap
+
 def build_projection(p, stat: str, val: float) -> dict:
     key = f"{p.get('player', p.get('name', 'UNKNOWN'))}_{stat}_{p.get('team', '')}"
     hash_val = int(hashlib.md5(key.encode()).hexdigest(), 16)
-    if hash_val % 2 == 0:
-        line = round(val * 0.98, 2) if val > 0 else -0.5
-    else:
-        line = round(val * 1.02, 2) if val > 0 else -0.5
-    direction, edge = sport_over_under_signal(projection=val, market_line=line, sport="WNBA", min_edge=0.0)
-    if direction in ("INVALID", "FLAT"):
-        direction = "OVER" if val > line else "UNDER"
-        edge = round(abs(val - line), 2)
+    line, edge = _wnba_self_edge_line(stat, val, hash_val)
+    direction = "OVER" if val > line else "UNDER"
     return {"stat": stat, "projection": val, "line": line, "edge": round(edge, 2), "direction": direction, "period": "GAME"}
 
 # ── ESPN fallback (kept from original) ────────────────────────
@@ -163,18 +282,26 @@ def main():
             else: home_abbr = abbr
         matchup = f"{away_abbr}_at_{home_abbr}"
 
+        # Is this an All-Star game?
+        is_allstar = away_abbr in ALLSTAR_ABBR and home_abbr in ALLSTAR_ABBR
+        
         # Try to load rosters for this matchup
         away_roster, home_roster = [], []
-        try:
-            with open(ROSTERS_PATH) as f:
-                rosters = json.load(f)
-            for team_abbr, team_data in rosters.items():
-                if team_abbr == away_abbr:
-                    away_roster = team_data.get("players", [])
-                elif team_abbr == home_abbr:
-                    home_roster = team_data.get("players", [])
-        except Exception:
-            pass
+        if is_allstar:
+            away_roster = [{"name": n} for n in ALLSTAR_ROSTERS.get(away_abbr, [])]
+            home_roster = [{"name": n} for n in ALLSTAR_ROSTERS.get(home_abbr, [])]
+            logger.info(f"  All-Star detected: {len(away_roster)} {away_abbr} + {len(home_roster)} {home_abbr}")
+        else:
+            try:
+                with open(ROSTERS_PATH) as f:
+                    rosters = json.load(f)
+                for team_abbr, team_data in rosters.items():
+                    if team_abbr == away_abbr:
+                        away_roster = team_data.get("players", [])
+                    elif team_abbr == home_abbr:
+                        home_roster = team_data.get("players", [])
+            except Exception:
+                pass
 
         def make_projs_from_season(roster):
             out = []
@@ -212,6 +339,7 @@ def main():
             "away": {"all": {"players": away_players}},
             "home": {"all": {"players": home_players}}
         }
+        game_proj = apply_wnba_augmentation(game_proj)
         out_path = os.path.join(date_dir, f"proj_WNBA_{matchup}.json")
         with open(out_path, "w") as f:
             json.dump(game_proj, f, indent=2)

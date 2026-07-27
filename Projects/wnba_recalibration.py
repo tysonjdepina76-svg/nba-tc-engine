@@ -105,6 +105,18 @@ def calibrate_wnba_picks(picks: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         if name in PLAYER_BLACKLIST:
             logger.debug(f"[CALIBRATE] DROP {name} {stat}: blacklisted (0% hit rate)")
             continue
+
+        # Step 2b: PTS is broken — require 2x edge threshold (backtest: 36.8% hit rate)
+        if stat == "PTS":
+            if abs(edge) < 0.20:
+                logger.debug(f"[CALIBRATE] DROP {name} PTS: edge {abs(edge):.3f} < 0.20 PTS threshold")
+                continue
+
+        # Step 2c: OVERs are toxic — require 1.7x edge threshold (backtest: 25.6% hit rate)
+        if p.get("direction") == "OVER":
+            if abs(edge) < 0.12:
+                logger.debug(f"[CALIBRATE] DROP {name} {stat}: OVER edge {abs(edge):.3f} < 0.12 OVER threshold")
+                continue
         
         # Step 3: Apply stat weight
         weight = STAT_WEIGHTS.get(stat, 1.0)

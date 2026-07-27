@@ -1,0 +1,104 @@
+{
+  "date": "2026-07-26",
+  "total_picks": 104,
+  "matched": 104,
+  "unmatched": 0,
+  "hits": 93,
+  "misses": 11,
+  "hit_rate": 0.8942307692307693,
+  "edge_buckets": {
+    "0-0.50": {
+      "hits": 93,
+      "total": 104,
+      "hit_rate": 0.8942307692307693,
+      "roi": 0.7778846153846154
+    },
+    "0.50-1.00": {
+      "hits": 0,
+      "total": 0,
+      "hit_rate": 0,
+      "roi": 0
+    },
+    "1.00-2.00": {
+      "hits": 0,
+      "total": 0,
+      "hit_rate": 0,
+      "roi": 0
+    },
+    "2.00+": {
+      "hits": 0,
+      "total": 0,
+      "hit_rate": 0,
+      "roi": 0
+    }
+  },
+  "sport_breakdown": {
+    "mlb": {
+      "hits": 93,
+      "total": 104,
+      "hit_rate": 0.8942307692307693,
+      "profit": 80.9,
+      "roi": 0.7778846153846154
+    }
+  },
+  "stat_breakdown": {
+    "mlb": {
+      "2B": {
+        "hits": 14,
+        "total": 15,
+        "hit_rate": 0.9333333333333333,
+        "profit": 12.9,
+        "roi": 0.86
+      },
+      "BB": {
+        "hits": 12,
+        "total": 16,
+        "hit_rate": 0.75,
+        "profit": 7.6,
+        "roi": 0.475
+      },
+      "HR": {
+        "hits": 13,
+        "total": 14,
+        "hit_rate": 0.9285714285714286,
+        "profit": 11.9,
+        "roi": 0.85
+      },
+      "R": {
+        "hits": 13,
+        "total": 15,
+        "hit_rate": 0.8666666666666667,
+        "profit": 10.8,
+        "roi": 0.7200000000000001
+      },
+      "RBI": {
+        "hits": 13,
+        "total": 15,
+        "hit_rate": 0.8666666666666667,
+        "profit": 10.8,
+        "roi": 0.7200000000000001
+      },
+      "SB": {
+        "hits": 12,
+        "total": 12,
+        "hit_rate": 1.0,
+        "profit": 12.0,
+        "roi": 1.0
+      },
+      "3B": {
+        "hits": 8,
+        "total": 9,
+        "hit_rate": 0.8888888888888888,
+        "profit": 6.9,
+        "roi": 0.7666666666666667
+      },
+      "H": {
+        "hits": 8,
+        "total": 8,
+        "hit_rate": 1.0,
+        "profit": 8.0,
+        "roi": 1.0
+      }
+    }
+  }
+}

@@ -1,0 +1,281 @@
+#!/usr/bin/env python3
+"""Grade 2026-07-25 picks against actual boxscore data.
+MLB: pybaseball batting_stats_range + pitching_stats_range
+WNBA: ESPN summary endpoint
+NBA: stats.nba.com
+"""
+
+import sqlite3
+import json
+import re
+import unicodedata
+from datetime import datetime
+from collections import defaultdict
+
+# ---- NAME NORMALIZATION ----
+
+POS_PREFIXES = [
+    '1B ', '2B ', '3B ', 'SS ', 'C ', 'CF ', 'LF ', 'RF ', 'DH ',
+    'P ', 'SP ', 'RP ', 'CL ', 'PH ', 'PR ',
+    'OF ', 'IF ', 'UTIL ', 'UTL ',
+    'PG ', 'SG ', 'SF ', 'PF ', 'F ', 'G ',
+]
+POS_PREFIXES_LOWER = [p.lower() for p in POS_PREFIXES]
+
+def strip_position(name):
+    """Remove position prefix like '1B ', 'CF ', etc. Returns clean name."""
+    name = name.strip()
+    name_lower = name.lower()
+    for prefix in POS_PREFIXES_LOWER:
+        if name_lower.startswith(prefix):
+            return name[len(prefix):].strip()
+    return re.sub(r'^[a-zA-Z0-9]+\d?\s+', '', name).strip()
+
+def normalize(name):
+    """Normalize a name for matching: strip accented chars, lowercase, strip punctuation."""
+    name = strip_position(name)
+    name = unicodedata.normalize('NFKD', name).encode('ascii', 'ignore').decode('ascii')
+    name = name.lower()
+    name = re.sub(r"[.']", '', name)
+    name = re.sub(r'[\-]', ' ', name)
+    name = re.sub(r'\s+', ' ', name).strip()
+    return name
+
+def last_name(name):
+    """Return just the last token of a normalized name."""
+    tokens = normalize(name).split()
+    return tokens[-1] if tokens else ''
+
+def match_player(pick_name, boxscore_names):
+    """Match a pick player name against dict of boxscore names → stats.
+    Tries: full normalize → last-name-only → first+last initials """
+    p_key = normalize(pick_name)
+    if p_key in boxscore_names:
+        return p_key
+    p_last = last_name(pick_name)
+    if p_last:
+        for b_key in boxscore_names:
+            if last_name(b_key) == p_last:
+                return b_key
+    p_tokens = p_key.split()
+    if len(p_tokens) >= 3:
+        initials_key = f"{p_tokens[0]} {p_tokens[-1]}"
+        for b_key in boxscore_names:
+            b_tokens = b_key.split()
+            if len(b_tokens) >= 2 and b_tokens[0] == p_tokens[0] and b_tokens[-1] == p_tokens[-1]:
+                return b_key
+    return None
+
+# ---- STAT LOOKUP TABLES ----
+
+BAT_STATS_MAP = {
+    'H': 'H', 'R': 'R', 'RBI': 'RBI', 'HR': 'HR', 'SB': 'SB',
+    'BB': 'BB', 'SO': 'SO', '2B': '2B', '3B': '3B',
+    'AB': 'AB', 'PA': 'PA', 'HBP': 'HBP', 'SF': 'SF',
+    'TB': 'TB', 'AVG': 'AVG',
+}
+PITCH_STATS_MAP = {
+    'SO': 'SO', 'BB': 'BB', 'H': 'H', 'ER': 'ER',
+    'IP': 'IP', 'R': 'R', 'HR': 'HR',
+}
+
+# ---- GRADER ----
+
+def load_picks(db_path, date):
+    conn = sqlite3.connect(db_path)
+    conn.row_factory = sqlite3.Row
+    rows = conn.execute(
+        "SELECT * FROM picks WHERE date = ?",
+        (date,)
+    ).fetchall()
+    conn.close()
+    return rows
+
+def fetch_mlb_boxscores(date_str):
+    from pybaseball import batting_stats_range, pitching_stats_range
+    batters = defaultdict(dict)
+    pitchers = defaultdict(dict)
+    try:
+        df_b = batting_stats_range(date_str, date_str)
+        for _, r in df_b.iterrows():
+            name = r.get('Name', '')
+            team = r.get('Team', '')
+            k = normalize(name)
+            batters[k]['_team'] = team
+            for stat in BAT_STATS_MAP:
+                col = BAT_STATS_MAP[stat]
+                if col in df_b.columns:
+                    try:
+                        batters[k][stat] = float(r[col]) if r[col] else 0
+                    except (ValueError, TypeError):
+                        batters[k][stat] = 0
+    except Exception as e:
+        print(f"[MLB batters] Error: {e}")
+    try:
+        df_p = pitching_stats_range(date_str, date_str)
+        for _, r in df_p.iterrows():
+            name = r.get('Name', '')
+            team = r.get('Team', '')
+            k = normalize(name)
+            pitchers[k]['_team'] = team
+            for stat in PITCH_STATS_MAP:
+                col = PITCH_STATS_MAP[stat]
+                if col in df_p.columns:
+                    try:
+                        pitchers[k][stat] = float(r[col]) if r[col] else 0
+                    except (ValueError, TypeError):
+                        pitchers[k][stat] = 0
+    except Exception as e:
+        print(f"[MLB pitchers] Error: {e}")
+    print(f"[MLB] Loaded {len(batters)} batters + {len(pitchers)} pitchers")
+    return batters, pitchers
+
+def fetch_wnba_boxscores(date_str):
+    import requests
+    url = f"https://site.api.espn.com/apis/site/v2/sports/basketball/wnba/scoreboard?dates={date_str.replace('-','')}"
+    resp = requests.get(url, timeout=15)
+    data = resp.json()
+    players = defaultdict(dict)
+    for event in data.get('events', []):
+        eid = event.get('id')
+        summary_url = f"https://site.api.espn.com/apis/site/v2/sports/basketball/wnba/summary?event={eid}"
+        try:
+            sum_resp = requests.get(summary_url, timeout=15)
+            sum_data = sum_resp.json()
+        except Exception as e:
+            print(f"[WNBA] Skip event {eid}: {e}")
+            continue
+        for team_side in ['team', 'opponent']:
+            box = sum_data.get('boxscore', {}).get('players', [])
+            entries = sum_data.get(team_side, {}).get('athletes', []) if team_side == 'team' else sum_data.get('opponent', {}).get('athletes', [])
+            for athlete in entries:
+                stats_list = athlete.get('stats', [])
+                if not stats_list:
+                    stats_list = box.get(athlete.get('id'), {}).get('statistics', [])
+                name = athlete.get('athlete', {}).get('displayName', athlete.get('fullName', ''))
+                k = normalize(name)
+                for s in stats_list:
+                    for key in ['points', 'rebounds', 'assists', 'steals', 'blocks', 'turnovers', 'threePointFieldGoalsMade', 'fieldGoalsMade', 'freeThrowsMade', 'plusMinusPoints']:
+                        val = s.get(key)
+                        if val is not None:
+                            try:
+                                players[k][key] = float(val)
+                            except (ValueError, TypeError):
+                                pass
+    print(f"[WNBA] Loaded {len(players)} players from {len(data.get('events',[]))} events")
+    return players
+
+def grade_pick(pick, box_data, sport):
+    # Column is 'player' not 'player_name' — handle both
+    player_name = pick['player'] if 'player' in pick.keys() else pick.get('player_name', '')
+    if not player_name:
+        return {'pick_id': pick['id'], 'graded': False, 'reason': 'no_name'}
+    
+    stat = pick['stat']
+    direction = (pick.get('direction') or '').upper()
+    projection = pick['tc_projection'] if pick['tc_projection'] is not None else 0
+
+    matched_key = match_player(player_name, box_data)
+    if not matched_key:
+        return {'pick_id': pick['id'], 'graded': False, 'reason': f'no_match:{player_name}'}
+
+    stats = box_data[matched_key]
+    actual = None
+
+    if sport == 'MLB':
+        actual = stats.get(stat)
+    elif sport == 'WNBA':
+        stat_map = {
+            'PTS': 'points', 'REB': 'rebounds', 'AST': 'assists',
+            'STL': 'steals', 'BLK': 'blocks', 'TO': 'turnovers',
+            '3PM': 'threePointFieldGoalsMade', 'FGM': 'fieldGoalsMade',
+            'FTM': 'freeThrowsMade', '+/-': 'plusMinusPoints',
+        }
+        key = stat_map.get(stat.upper(), stat.lower())
+        actual = stats.get(key)
+
+    if actual is None:
+        return {'pick_id': pick['id'], 'graded': False, 'reason': f'no_stat:{stat}'}
+
+    won = (actual > projection and direction == 'OVER') or (actual < projection and direction == 'UNDER')
+    return {
+        'pick_id': pick['id'],
+        'graded': True,
+        'player': player_name,
+        'stat': stat,
+        'direction': direction,
+        'projection': projection,
+        'actual': actual,
+        'hit': won,
+        'sport': sport,
+    }
+
+def main():
+    DB = '/home/workspace/Projects/data/picks.db'
+    DATE = '2026-07-25'
+
+    picks = load_picks(DB, DATE)
+    print(f"\n[GRADER] {len(picks)} total picks for {DATE}\n")
+
+    mlb_batters, mlb_pitchers = fetch_mlb_boxscores(DATE)
+    wnba_players = fetch_wnba_boxscores(DATE)
+
+    results = []
+    for pick in picks:
+        try:
+            sport = (pick.get('league') or pick.get('sport') or '').upper()
+        except:
+            sport = ''
+        if sport == 'WNBA':
+            box = wnba_players
+        elif sport == 'MLB':
+            try:
+                player_type = pick.get('stat', '').upper()
+            except:
+                player_type = ''
+            if player_type in ('SO', 'BB', 'ER', 'IP', 'HR') and pick.get('player_type') != 'batter':
+                box = mlb_pitchers
+            else:
+                box = mlb_batters
+        else:
+            continue
+        result = grade_pick(pick, box, sport)
+        results.append(result)
+
+    graded = [r for r in results if r.get('graded')]
+    ungraded_reasons = defaultdict(int)
+    for r in results:
+        if not r.get('graded'):
+            ungraded_reasons[r.get('reason', 'unknown')] += 1
+
+    matched = len(graded)
+    hits = sum(1 for r in graded if r['hit'])
+    hit_rate = hits / matched * 100 if matched else 0
+
+    print(f"  Matched: {matched}/{len(picks)} = {matched/len(picks)*100:.1f}%")
+    print(f"  Graded:  {matched}/{len(picks)}")
+    print(f"  Hits:    {hits}/{matched} = {hit_rate:.1f}%")
+
+    reasons_str = ', '.join(f'{k}:{v}' for k, v in sorted(ungraded_reasons.items(), key=lambda x: -x[1])[:10])
+    print(f"  Ungraded reasons: {reasons_str}")
+
+    # Print sample of matched graded picks
+    print(f"\n  === SAMPLE MATCHED GRADES ===")
+    for r in graded[:15]:
+        print(f"  {r['player']} | {r['stat']} {r['direction']} | proj={r['projection']} actual={r['actual']} | {'HIT' if r['hit'] else 'MISS'}")
+
+    print(f"\n  ** TOTAL: {hits}/{matched} = {hit_rate:.1f}% **\n")
+
+    # Write graded_results.json
+    out_path = f"/home/workspace/Daily_Log/{DATE}/graded_results.json"
+    import os
+    os.makedirs(os.path.dirname(out_path), exist_ok=True)
+    with open(out_path, 'w') as f:
+        json.dump({'date': DATE, 'results': results, 'summary': {
+            'total_picks': len(picks), 'matched': matched, 'hits': hits,
+            'hit_rate': round(hit_rate, 1), 'ungraded_reasons': dict(ungraded_reasons)
+        }}, f, indent=2, default=str)
+    print(f"[GRADER] Wrote {out_path}")
+
+if __name__ == '__main__':
+    main()

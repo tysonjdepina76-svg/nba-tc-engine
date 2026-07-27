@@ -24,7 +24,7 @@ from api_cap_tracker import cap_check as _cap_check
 logger = logging.getLogger("therundown")
 
 BASE_URL = "https://therundown.io/api/v2"
-API_KEY = os.environ.get("THERUNDOWN_API_KEY", "")
+API_KEY = os.environ.get("TheRUNDOWN_API_KEY", "") or os.environ.get("THERUNDOWN_API_KEY", "")
 DEFAULT_MARKETS = "1,2,3"
 DEFAULT_AFFILIATES = "19,23,22"  # DraftKings, FanDuel, BetMGM
 SPORT_IDS = {"mlb": 3, "wnba": 8, "nba": 4, "nfl": 2, "ncaaf": 1, "ncaab": 5, "nhl": 6}
@@ -111,9 +111,11 @@ def get_today_events(sport: str, market_ids: str = DEFAULT_MARKETS,
     }
 
     cache_key = f"events_{sport}_{date_str}"
-    return _get(f"/sports/{sport_id}/events/{date_str}", params,
+    raw = _get(f"/sports/{sport_id}/events/{date_str}", params,
                 cache_ttl=120, cache_key=cache_key)
-
+    if isinstance(raw, dict) and "events" in raw:
+        return raw["events"]
+    return raw
 
 def get_event_details(event_id: str) -> Optional[Dict]:
     """Get a single event with all markets."""
@@ -207,7 +209,11 @@ def get_formatted_odds(sport: str, date_str: str = None) -> Dict:
     if not data:
         return {"error": "No data", "sport": sport, "events": []}
 
-    parsed = parse_all_events(data.get("events", []))
+    events = data if isinstance(data, list) else data.get("events", [])
+    if not data:
+        return {"error": "No data", "sport": sport, "events": []}
+
+    parsed = parse_all_events(events)
     return {
         "sport": sport,
         "sport_id": SPORT_IDS.get(sport.lower()),
@@ -219,7 +225,6 @@ def get_formatted_odds(sport: str, date_str: str = None) -> Dict:
     }
 
 
-if __name__ == "__main__":
     if not API_KEY:
         print("Set THERUNDOWN_API_KEY env var for live data")
         print("Adapter ready — call get_formatted_odds('mlb') or get_formatted_odds('wnba')")

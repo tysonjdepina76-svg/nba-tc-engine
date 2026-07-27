@@ -6,9 +6,11 @@ import requests
 from pathlib import Path
 from datetime import datetime
 from zoneinfo import ZoneInfo
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, Query
 from fastapi.middleware.cors import CORSMiddleware
 from src.api_cap_tracker import cap_check
+from streamer_engine import start_streamer, stop_streamer, get_status, get_latest_data
+import pandas as pd
 
 sys.path.insert(0, "/home/workspace/Projects")
 sys.path.insert(0, "/home/workspace/Projects/src")
@@ -153,7 +155,7 @@ def get_top_picks(limit: int = 50, sport: str = None, min_edge: float = -100.0):
         c = conn.cursor()
         today = datetime.now(ET).strftime("%Y-%m-%d")
         query = "SELECT player, league, stat, tc_projection, market_line, edge, direction, reason, matchup, team FROM picks WHERE date = ?"
-        params = []
+        params = [today]
         if sport:
             query += " AND LOWER(league) = ?"
             params.append(sport.lower())
@@ -290,7 +292,7 @@ def picks_by_game_structured(sport: str = None):
                    edge, direction, reason, matchup
             FROM picks WHERE date = ?
         """
-        params = []
+        params = [today]
         if sport and sport.lower() != "all":
             query += " AND LOWER(league) = ?"
             params.append(sport.lower())
@@ -472,7 +474,7 @@ def injuries(sport: str = "all"):
 
 @app.get("/api/mlb-situation")
 def mlb_situation():
-    """Live MLB game situations: bases, count, outs, batter/pitcher."""
+    """Live MLB game situations: bases, count, outs, batter/pitcher + pitch counts."""
     try:
         today = datetime.now(ET).strftime("%Y%m%d")
         url = f"http://site.api.espn.com/apis/site/v2/sports/baseball/mlb/scoreboard?dates={today}"
@@ -486,6 +488,8 @@ def mlb_situation():
             sit = comp.get("situation", {})
             if not sit:
                 continue
+            bat = sit.get("batter", {}).get("athlete", {}) or {}
+            pit = sit.get("pitcher", {}).get("athlete", {}) or {}
             situations[eid] = {
                 "balls": sit.get("balls", 0),
                 "strikes": sit.get("strikes", 0),
@@ -493,11 +497,34 @@ def mlb_situation():
                 "onFirst": bool(sit.get("onFirst")),
                 "onSecond": bool(sit.get("onSecond")),
                 "onThird": bool(sit.get("onThird")),
-                "batter": sit.get("batter", {}).get("athlete", {}).get("shortName", "") or sit.get("batter", {}).get("athlete", {}).get("fullName", ""),
-                "pitcher": sit.get("pitcher", {}).get("athlete", {}).get("shortName", "") or sit.get("pitcher", {}).get("athlete", {}).get("fullName", ""),
+                "batter": bat.get("shortName", "") or bat.get("fullName", ""),
+                "pitcher": pit.get("shortName", "") or pit.get("fullName", ""),
                 "dueUp": [a.get("athlete", {}).get("shortName", "") for a in (sit.get("dueUp") or [])],
                 "count": {"balls": sit.get("balls", 0), "strikes": sit.get("strikes", 0), "outs": sit.get("outs", 0)},
             }
+        # Enrich with pitch counts from summary boxscore
+        for eid in list(situations.keys()):
+            try:
+                sum_url = f"http://site.api.espn.com/apis/site/v2/sports/baseball/mlb/summary?event={eid}"
+                sr = requests.get(sum_url, timeout=8)
+                sr.raise_for_status()
+                sdata = sr.json()
+                bs_players = sdata.get("boxscore", {}).get("players", [])
+                for team in bs_players:
+                    for sg in team.get("statistics", []):
+                        if sg.get("name") != "pitching":
+                            continue
+                        for athlete in sg.get("athletes", []):
+                            pn = athlete.get("athlete", {}).get("shortName", "")
+                            if pn == situations[eid].get("pitcher", ""):
+                                for st in athlete.get("stats", []):
+                                    sn = st.get("name", "")
+                                    if sn == "PC":
+                                        situations[eid]["pitchCount"] = st.get("displayValue", "0")
+                                    elif sn == "PC-ST":
+                                        situations[eid]["pcSt"] = st.get("displayValue", "")
+            except Exception:
+                pass
         return {"situations": situations, "count": len(situations)}
     except Exception as e:
         return {"situations": {}, "count": 0, "error": str(e)}
@@ -533,7 +560,7 @@ def _fetch_combos_from_table(league=None, min_edge=0.5, limit=50):
     conn.row_factory = sqlite3.Row
     today = datetime.now().strftime("%Y-%m-%d")
     where_clauses = []
-    params = []
+    params = [today]
     if league:
         where_clauses.append("LOWER(league) = LOWER(?)")
         params.append(league)
@@ -571,7 +598,7 @@ def _build_combos_from_db(league=None, matchup=None, min_edge=0.5):
     conn.row_factory = sqlite3.Row
     today = datetime.now().strftime("%Y-%m-%d")
     where_clauses = ["1=1"]
-    params = []
+    params = [today]
     if league:
         where_clauses.append("LOWER(league) = LOWER(?)")
         params.append(league)
@@ -604,12 +631,32 @@ def _build_combos_from_db(league=None, matchup=None, min_edge=0.5):
         })
     return results
 
+MLB_ABBREV_MAP = {"KCR":"KC","SFG":"SF","WAS":"WSH","TBR":"TB","SDP":"SD","CHW":"CWS","ANA":"LAA"}
+NFL_ABBREV_MAP = {"LA":"LAR","JAC":"JAX"}
+WNBA_ABBREV_MAP = {"Team Spoon":"SPO","Team Coop":"COOP"}
+
+def _normalize_abbrevs(games_dict):
+    """Normalize Action Network abbreviations to ESPN standard for ALL sports."""
+    for league, games in games_dict.items():
+        for g in games:
+            if league == "mlb":
+                g["away"] = MLB_ABBREV_MAP.get(g["away"], g["away"])
+                g["home"] = MLB_ABBREV_MAP.get(g["home"], g["home"])
+            elif league == "nfl":
+                g["away"] = NFL_ABBREV_MAP.get(g["away"], g["away"])
+                g["home"] = NFL_ABBREV_MAP.get(g["home"], g["home"])
+            elif league == "wnba":
+                g["away"] = WNBA_ABBREV_MAP.get(g["away"], g["away"])
+                g["home"] = WNBA_ABBREV_MAP.get(g["home"], g["home"])
+    return games_dict
+
 @app.get("/api/game-lines")
 def game_lines(sport: str = "all"):
     """Live game lines from Action Network — moneyline, spread, totals."""
     try:
         from src.adapters.action_network import get_live_odds_export
         data = get_live_odds_export()
+        data = _normalize_abbrevs(data)
         return {"games": data, "updated": datetime.utcnow().isoformat() + "Z"}
     except Exception as e:
         return {"games": {}, "error": str(e)}
@@ -634,3 +681,137 @@ def combos(request: Request):
     result = _fetch_combos_from_table(league=league, min_edge=min_edge)
     return {"combos": result, "total": len(result), "filters": {"league": league, "matchup": matchup, "min_edge": min_edge}}
 
+
+
+@app.get("/api/schedules")
+def get_schedules(request: Request):
+    sport_param = request.query_params.get("sport", "all").lower()
+    import json
+    MASTER = "/home/workspace/data/schedules/schedules_master.json"
+    try:
+        with open(MASTER) as f:
+            master = json.load(f)
+    except Exception:
+        return {"sports": {}, "count": 0, "error": "master schedule not found"}
+    all_sports = master["sports"]
+    if sport_param == "all":
+        return {
+            "sports": all_sports,
+            "count": len(all_sports),
+            "generated": master["generated"],
+            "generated_et": master["generated_et"],
+            "today": master["today"],
+            "active_sports": master["active_sports"],
+            "offseason_sports": master["offseason_sports"],
+            "preseason_sports": master["preseason_sports"],
+            "ended_sports": master["ended_sports"],
+            "total_games_today": master["total_games_today"]
+        }
+    sport_data = all_sports.get(sport_param)
+    if not sport_data:
+        return {"sports": {}, "count": 0, "error": f"sport '{sport_param}' not found"}
+    return {"sports": {sport_param: sport_data}, "count": 1}
+
+# ── STREAMER CONTROL ──
+_streamer_running = False
+
+@app.post("/api/streamer/toggle")
+def streamer_toggle(sport: str = "all"):
+    global _streamer_running
+    if _streamer_running:
+        stop_streamer()
+        _streamer_running = False
+        return {"running": False, "message": "Streamer stopped"}
+    else:
+        start_streamer(sport)
+        _streamer_running = True
+        return {"running": True, "message": f"Streamer started for {sport}"}
+
+@app.get("/api/streamer/status")
+def streamer_status():
+    return {"running": _streamer_running, "status": get_status()}
+
+@app.get("/api/streamer/data")
+def streamer_data(sport: str = "all", limit: int = 20):
+    return {"data": get_latest_data(sport, limit)}
+
+# ── GRADING LOG ──
+
+@app.get("/api/grades")
+async def get_grades(d: str = Query(None, alias="date"), league: str = Query(None)):
+    """Return graded picks from CSV log, optionally filtered by date and league."""
+    csv_file = "/home/workspace/data/grades_log.csv"
+    if not os.path.exists(csv_file):
+        return {"message": "No grades logged yet."}
+    df = pd.read_csv(csv_file)
+    if d:
+        df = df[df['date'] == d]
+    if league:
+        df = df[df['league'].str.lower() == league.lower()]
+    return df.to_dict(orient='records')
+
+@app.get("/api/props")
+async def get_player_props(d: str = Query(None, alias="date"), league: str = Query(None)):
+    """Return graded player props from CSV log, optionally filtered by date and league."""
+    csv_file = "/home/workspace/data/player_props_log.csv"
+    if not os.path.exists(csv_file):
+        return {"message": "No player props logged yet."}
+    df = pd.read_csv(csv_file)
+    if d:
+        df = df[df['date'] == d]
+    if league:
+        df = df[df['league'].str.lower() == league.lower()]
+    return df.to_dict(orient='records')
+# ═══════════════════════════════════════════════
+# SPORTS GRADING ENGINE — LIVE / CARD ENDPOINTS
+# ═══════════════════════════════════════════════
+
+from sports_grading_engine import SportsGradingEngine
+
+
+@app.get('/api/live/{league}')
+async def live_scores(league: str):
+    engine = SportsGradingEngine()
+    try:
+        scores = engine.get_live_scores(league)
+        return {'league': league, 'scores': scores}
+    except ValueError as e:
+        return {'league': league, 'error': str(e), 'scores': []}
+
+
+@app.get('/api/live/all')
+async def live_all():
+    engine = SportsGradingEngine()
+    all_scores = {}
+    for lg in ['mlb', 'wnba', 'nba', 'nfl', 'nhl']:
+        try:
+            scores = engine.get_live_scores(lg)
+            if scores:
+                all_scores[lg] = scores
+        except Exception:
+            pass
+    return {'sports': all_scores, 'count': sum(len(v) for v in all_scores.values())}
+
+
+@app.get('/api/card/{league}')
+async def get_card(league: str):
+    engine = SportsGradingEngine()
+    try:
+        card = engine.generate_todays_card(league)
+        return {'league': league, 'card': card}
+    except Exception as e:
+        return {'league': league, 'error': str(e), 'card': {}}
+
+
+@app.get('/api/card/all')
+async def card_all():
+    engine = SportsGradingEngine()
+    all_cards = {}
+    for lg in ['mlb', 'wnba', 'nba', 'nfl', 'nhl']:
+        try:
+            card = engine.generate_todays_card(lg)
+            if card and (card.get('green') or card.get('yellow') or card.get('red')):
+                all_cards[lg] = card
+        except Exception:
+            pass
+    return {'leagues': all_cards, 'count': len(all_cards)}

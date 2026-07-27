@@ -63,6 +63,27 @@ def get_mlb_situation(game_id: str = None):
         on_second = bool(sit.get("onSecond"))
         on_third = bool(sit.get("onThird"))
         
+        # Extract pitch count from pitching statistics if available
+        pitch_count = ""
+        pc_st = ""
+        for comp_team in comp.get("competitors", []):
+            for stat_group in comp_team.get("statistics", []):
+                if stat_group.get("name") == "pitching":
+                    for s in stat_group.get("stats", []):
+                        if s.get("name") == "pitches":
+                            pitch_count = str(s.get("displayValue", "")) if s.get("displayValue") else pitch_count
+                        if "strike" in s.get("name", "").lower():
+                            pc_st = str(s.get("displayValue", "")) if s.get("displayValue") else pc_st
+        
+        # Extract due up batters from situation
+        due_up = []
+        due_up_refs = sit.get("dueUp", [])
+        for d in due_up_refs:
+            if isinstance(d, dict):
+                due_up.append(d.get("athlete", {}).get("fullName", "") or d.get("fullName", ""))
+            elif isinstance(d, str):
+                due_up.append(d)
+        
         situations[eid] = {
             "event_id": str(eid),
             "shortName": short,
@@ -74,6 +95,9 @@ def get_mlb_situation(game_id: str = None):
             "strikes": sit.get("strikes", 0),
             "batter": batter_name,
             "pitcher": pitcher_name,
+            "pitchCount": pitch_count,
+            "pcSt": pc_st,
+            "dueUp": due_up,
             "onFirst": on_first,
             "onSecond": on_second,
             "onThird": on_third,

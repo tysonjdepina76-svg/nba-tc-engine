@@ -1,0 +1,28 @@
+{
+  "mlb": {
+    "status": "OK",
+    "games": 15,
+    "players": 458,
+    "matchups": [
+      "Baltimore Orioles @ Detroit Tigers",
+      "Arizona Diamondbacks @ Pittsburgh Pirates",
+      "Texas Rangers @ Tampa Bay Rays",
+      "Philadelphia Phillies @ Miami Marlins",
+      "Toronto Blue Jays @ Washington Nationals",
+      "Cleveland Guardians @ Cincinnati Reds",
+      "Atlanta Braves @ New York Mets",
+      "Kansas City Royals @ Minnesota Twins",
+      "New York Yankees @ Chicago White Sox",
+      "Chicago Cubs @ St. Louis Cardinals",
+      "Houston Astros @ Los Angeles Angels",
+      "Boston Red Sox @ Athletics",
+      "Colorado Rockies @ San Diego Padres",
+      "Milwaukee Brewers @ San Francisco Giants",
+      "Seattle Mariners @ Los Angeles Dodgers"
+    ],
+    "output_dir": "/home/workspace/Daily_Log/2026-07-28/"
+  },
+  "wnba": {
+    "status": "FAIL: Command '['python3', '/home/workspace/Projects/gen_wnba_today.py', '2026-07-28']' timed out after 120 seconds"
+  }
+}

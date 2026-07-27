@@ -1,0 +1,99 @@
+{
+  "grading": {
+    "mlb": {
+      "date": "2026-07-25",
+      "sport": "MLB",
+      "total_picks": 1464,
+      "hits": 1259,
+      "misses": 205,
+      "hit_rate": 86.0,
+      "by_market": {
+        "2B": {
+          "hits": 156,
+          "total": 174,
+          "rate": 89.7
+        },
+        "3B": {
+          "hits": 212,
+          "total": 214,
+          "rate": 99.1
+        },
+        "BB": {
+          "hits": 142,
+          "total": 168,
+          "rate": 84.5
+        },
+        "H": {
+          "hits": 98,
+          "total": 162,
+          "rate": 60.5
+        },
+        "HR": {
+          "hits": 193,
+          "total": 203,
+          "rate": 95.1
+        },
+        "R": {
+          "hits": 122,
+          "total": 164,
+          "rate": 74.4
+        },
+        "RBI": {
+          "hits": 136,
+          "total": 169,
+          "rate": 80.5
+        },
+        "SB": {
+          "hits": 200,
+          "total": 210,
+          "rate": 95.2
+        }
+      },
+      "top_matchups": {
+        "Los_Angeles_Dodgers_at_New_York_Mets": {
+          "hits": 209,
+          "total": 240
+        },
+        "Los_Angeles_Angels_at_San_Francisco_Giants": {
+          "hits": 201,
+          "total": 239
+        },
+        "New_York_Yankees_at_Philadelphia_Phillies": {
+          "hits": 157,
+          "total": 171
+        },
+        "San_Diego_Padres_at_Miami_Marlins": {
+          "hits": 139,
+          "total": 163
+        },
+        "Kansas_City_Royals_at_Detroit_Tigers": {
+          "hits": 107,
+          "total": 119
+        }
+      },
+      "direction_split": {
+        "OVER": 0,
+        "UNDER": 1474
+      }
+    },
+    "wnba": {
+      "date": "2026-07-25",
+      "sport": "WNBA",
+      "total_picks": 77,
+      "direction_split": {
+        "OVER": 39,
+        "UNDER": 38
+      },
+      "games": [
+        "SPO_at_COOP"
+      ],
+      "schedule_games": "API N/A"
+    }
+  },
+  "schedule": {
+    "mlb_today": 12,
+    "wnba_today": 0,
+    "mlb_tomorrow": 15,
+    "wnba_tomorrow": 5
+  }
+}

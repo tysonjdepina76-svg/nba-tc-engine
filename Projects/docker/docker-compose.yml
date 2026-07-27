@@ -1,0 +1,19 @@
+version: "3.9"
+services:
+  tc-engine:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: tc-engine
+    environment:
+      - PYTHONPATH=/app/Projects:/app
+      - TOA_API_KEY=${TOA_API_KEY:-}
+      - THERUNDOWN_API_KEY=${THERUNDOWN_API_KEY:-}
+      - TZ=America/New_York
+    volumes:
+      - /home/workspace/data:/app/data
+      - /home/workspace/Daily_Log:/app/Daily_Log
+      - /home/workspace/Projects/models:/app/Projects/models
+      - /home/workspace/Projects/logs:/app/Projects/logs
+    command: ["python3", "-c", "while true; do python3 /app/Projects/daily_picks.py --sport mlb; sleep 3600; done"]
+    restart: unless-stopped

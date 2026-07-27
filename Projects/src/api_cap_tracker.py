@@ -23,12 +23,15 @@ CAP_FILE.parent.mkdir(parents=True, exist_ok=True)
 MONTHLY_FILE = Path("/home/workspace/data/api_caps_monthly.json")
 
 DEFAULT_CAPS = {
-    "espn": {"daily": 250, "hourly": 35, "monthly": 0},
+    "espn": {"daily": 50, "hourly": 10, "monthly": 0},
     "odds_api": {"daily": 0, "hourly": 0, "monthly": 0},
-    "api_fallback": {"daily": 100, "hourly": 15, "monthly": 0},
-    "wnba_gen": {"daily": 250, "hourly": 35, "monthly": 0},
-    "theoddsapi": {"daily": 200, "hourly": 30, "monthly": 200},
-    "therundown": {"daily": 20000, "hourly": 900, "monthly": 0},
+    "serpapi": {"daily": 0, "hourly": 0, "monthly": 0},
+    "sharp_api": {"daily": 250, "hourly": 35, "monthly": 0},
+    "statsapi_mlb": {"daily": 50, "hourly": 8, "monthly": 0},
+    "api_fallback": {"daily": 50, "hourly": 8, "monthly": 0},
+    "wnba_gen": {"daily": 50, "hourly": 8, "monthly": 0},
+    "theoddsapi": {"daily": 0, "hourly": 0, "monthly": 0},
+    "therundown": {"daily": 5, "hourly": 2, "monthly": 0},
 }
 
 

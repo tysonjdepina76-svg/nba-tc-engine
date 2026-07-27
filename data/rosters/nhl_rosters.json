@@ -1,6564 +1,969 @@
 {
-  "ANA": {
-    "abbreviation": "ANA",
-    "name": "Anaheim Ducks",
-    "slug": "anaheim-ducks",
-    "team_id": "25",
-    "players": [
-      {
-        "name": "Leo Carlsson",
-        "position": "Centers",
-        "jersey": "91",
-        "player_id": "5149153"
-      },
-      {
-        "name": "Nathan Gaucher",
-        "position": "Centers",
-        "jersey": "41",
-        "player_id": "5080170"
-      },
-      {
-        "name": "Mikael Granlund",
-        "position": "Centers",
-        "jersey": "64",
-        "player_id": "5831"
-      },
-      {
-        "name": "Nikita Nesterenko",
-        "position": "Centers",
-        "jersey": "13",
-        "player_id": "4755696"
-      },
-      {
-        "name": "Noah Philp",
-        "position": "Centers",
-        "jersey": "",
-        "player_id": "5103537"
-      },
-      {
-        "name": "Ryan Poehling",
-        "position": "Centers",
-        "jersey": "25",
-        "player_id": "4233668"
-      },
-      {
-        "name": "Anton Wahlberg",
-        "position": "Centers",
-        "jersey": "",
-        "player_id": "5149226"
-      },
-      {
-        "name": "Tim Washe",
-        "position": "Centers",
-        "jersey": "42",
-        "player_id": "4996085"
-      },
-      {
-        "name": "Cutter Gauthier",
-        "position": "Left Wings",
-        "jersey": "61",
-        "player_id": "5080145"
-      },
-      {
-        "name": "A.J. Greer",
-        "position": "Left Wings",
-        "jersey": "10",
-        "player_id": "3648015"
-      },
-      {
-        "name": "James Hamblin",
-        "position": "Left Wings",
-        "jersey": "",
-        "player_id": "4588749"
-      },
-      {
-        "name": "Alex Killorn",
-        "position": "Left Wings",
-        "jersey": "17",
-        "player_id": "4968"
-      },
-      {
-        "name": "Chris Kreider",
-        "position": "Left Wings",
-        "jersey": "20",
-        "player_id": "5833"
-      },
-      {
-        "name": "Jeff Malott",
-        "position": "Left Wings",
-        "jersey": "",
-        "player_id": "4895214"
-      },
-      {
-        "name": "Nico Myatovic",
-        "position": "Left Wings",
-        "jersey": "48",
-        "player_id": "5149221"
-      },
-      {
-        "name": "Judd Caulfield",
-        "position": "Right Wings",
-        "jersey": "75",
-        "player_id": "4755684"
-      },
-      {
-        "name": "Sam Colangelo",
-        "position": "Right Wings",
-        "jersey": "12",
-        "player_id": "4697441"
-      },
-      {
-        "name": "Beckett Sennecke",
-        "position": "Right Wings",
-        "jersey": "45",
-        "player_id": "5216858"
-      },
-      {
-        "name": "Troy Terry",
-        "position": "Right Wings",
-        "jersey": "19",
-        "player_id": "3942905"
-      },
-      {
-        "name": "Frank Vatrano",
-        "position": "Right Wings",
-        "jersey": "77",
-        "player_id": "3527554"
-      },
-      {
-        "name": "Drew Helleson",
-        "position": "Defense",
-        "jersey": "14",
-        "player_id": "4565270"
-      },
-      {
-        "name": "Tyson Hinds",
-        "position": "Defense",
-        "jersey": "60",
-        "player_id": "5103702"
-      },
-      {
-        "name": "Nick Jensen",
-        "position": "Defense",
-        "jersey": "",
-        "player_id": "3025608"
-      },
-      {
-        "name": "Jackson LaCombe",
-        "position": "Defense",
-        "jersey": "2",
-        "player_id": "4565262"
-      },
-      {
-        "name": "Tristan Luneau",
-        "position": "Defense",
-        "jersey": "67",
-        "player_id": "5080220"
-      },
-      {
-        "name": "Pavel Mintyukov",
-        "position": "Defense",
-        "jersey": "98",
-        "player_id": "5080154"
-      },
-      {
-        "name": "Ian Moore",
-        "position": "Defense",
-        "jersey": "3",
-        "player_id": "5188523"
-      },
-      {
-        "name": "Corey Schueneman",
-        "position": "Defense",
-        "jersey": "",
-        "player_id": "4196930"
-      },
-      {
-        "name": "Stian Solberg",
-        "position": "Defense",
-        "jersey": "50",
-        "player_id": "5302581"
-      },
-      {
-        "name": "Noah Warren",
-        "position": "Defense",
-        "jersey": "47",
-        "player_id": "5080210"
-      },
-      {
-        "name": "Jett Woo",
-        "position": "Defense",
-        "jersey": "",
-        "player_id": "4378666"
-      },
-      {
-        "name": "Laurent Brossoit",
-        "position": "Goalies",
-        "jersey": "",
-        "player_id": "3026526"
-      },
-      {
-        "name": "Vyacheslav Buteyets",
-        "position": "Goalies",
-        "jersey": "32",
-        "player_id": "5188570"
-      },
-      {
-        "name": "Damian Clara",
-        "position": "Goalies",
-        "jersey": "68",
-        "player_id": "5149247"
-      },
-      {
-        "name": "Lukas Dostal",
-        "position": "Goalies",
-        "jersey": "1",
-        "player_id": "4588165"
-      },
-      {
-        "name": "Ville Husso",
-        "position": "Goalies",
-        "jersey": "33",
-        "player_id": "3151137"
-      },
-      {
-        "name": "Petr Mrazek",
-        "position": "Goalies",
-        "jersey": "34",
-        "player_id": "5619"
-      }
-    ]
-  },
-  "BOS": {
-    "abbreviation": "BOS",
-    "name": "Boston Bruins",
-    "slug": "boston-bruins",
-    "team_id": "1",
-    "players": [
-      {
-        "name": "Attilio Biasca",
-        "position": "Centers",
-        "jersey": "",
-        "player_id": "5362407"
-      },
-      {
-        "name": "Michael Eyssimont",
-        "position": "Centers",
-        "jersey": "81",
-        "player_id": "4270247"
-      },
-      {
-        "name": "Brendan Gaunce",
-        "position": "Centers",
-        "jersey": "",
-        "player_id": "2976854"
-      },
-      {
-        "name": "Morgan Geekie",
-        "position": "Centers",
-        "jersey": "39",
-        "player_id": "4268466"
-      },
-      {
-        "name": "James Hagens",
-        "position": "Centers",
-        "jersey": "44",
-        "player_id": "5275337"
-      },
-      {
-        "name": "Ivan Ivan",
-        "position": "Centers",
-        "jersey": "82",
-        "player_id": "5103714"
-      },
-      {
-        "name": "Mark Kastelic",
-        "position": "Centers",
-        "jersey": "47",
-        "player_id": "4587985"
-      },
-      {
-        "name": "Marat Khusnutdinov",
-        "position": "Centers",
-        "jersey": "92",
-        "player_id": "4697442"
-      },
-      {
-        "name": "Sean Kuraly",
-        "position": "Centers",
-        "jersey": "52",
-        "player_id": "2564154"
-      },
-      {
-        "name": "Elias Lindholm",
-        "position": "Centers",
-        "jersey": "28",
-        "player_id": "3041994"
-      },
-      {
-        "name": "Fraser Minten",
-        "position": "Centers",
-        "jersey": "93",
-        "player_id": "5080207"
-      },
-      {
-        "name": "Casey Mittelstadt",
-        "position": "Centers",
-        "jersey": "11",
-        "player_id": "4233575"
-      },
-      {
-        "name": "Matthew Poitras",
-        "position": "Centers",
-        "jersey": "51",
-        "player_id": "5080221"
-      },
-      {
-        "name": "Alex Steeves",
-        "position": "Centers",
-        "jersey": "21",
-        "player_id": "4419815"
-      },
-      {
-        "name": "Pavel Zacha",
-        "position": "Centers",
-        "jersey": "18",
-        "player_id": "3899949"
-      },
-      {
-        "name": "Brian Halonen",
-        "position": "Left Wings",
-        "jersey": "",
-        "player_id": "4997092"
-      },
-      {
-        "name": "Tanner Jeannot",
-        "position": "Left Wings",
-        "jersey": "84",
-        "player_id": "4064780"
-      },
-      {
-        "name": "Kalle Vaisanen",
-        "position": "Left Wings",
-        "jersey": "",
-        "player_id": "5188351"
-      },
-      {
-        "name": "David Pastrnak",
-        "position": "Right Wings",
-        "jersey": "88",
-        "player_id": "3114778"
-      },
-      {
-        "name": "JJ Peterka",
-        "position": "Right Wings",
-        "jersey": "77",
-        "player_id": "4697438"
-      },
-      {
-        "name": "Jonathan Aspirot",
-        "position": "Defense",
-        "jersey": "45",
-        "player_id": "4392308"
-      },
-      {
-        "name": "Will Borgen",
-        "position": "Defense",
-        "jersey": "17",
-        "player_id": "3941946"
-      },
-      {
-        "name": "Connor Clifton",
-        "position": "Defense",
-        "jersey": "",
-        "player_id": "3042191"
-      },
-      {
-        "name": "Maxence Guenette",
-        "position": "Defense",
-        "jersey": "",
-        "player_id": "4587987"
-      },
-      {
-        "name": "Jordan Harris",
-        "position": "Defense",
-        "jersey": "43",
-        "player_id": "4419724"
-      },
-      {
-        "name": "Henri Jokiharju",
-        "position": "Defense",
-        "jersey": "20",
-        "player_id": "4233705"
-      },
-      {
-        "name": "Hampus Lindholm",
-        "position": "Defense",
-        "jersey": "27",
-        "player_id": "2968818"
-      },
-      {
-        "name": "Mason Lohrei",
-        "position": "Defense",
-        "jersey": "6",
-        "player_id": "4697461"
-      },
-      {
-        "name": "Charlie McAvoy",
-        "position": "Defense",
-        "jersey": "73",
-        "player_id": "3988803"
-      },
-      {
-        "name": "Victor Soderstrom",
-        "position": "Defense",
-        "jersey": "29",
-        "player_id": "4565232"
-      },
-      {
-        "name": "Nikita Zadorov",
-        "position": "Defense",
-        "jersey": "91",
-        "player_id": "3042021"
-      },
-      {
-        "name": "Luke Cavallin",
-        "position": "Goalies",
-        "jersey": "60",
-        "player_id": "5302547"
-      },
-      {
-        "name": "Jiri Patera",
-        "position": "Goalies",
-        "jersey": "",
-        "player_id": "4271212"
-      },
-      {
-        "name": "Jeremy Swayman",
-        "position": "Goalies",
-        "jersey": "1",
-        "player_id": "4712036"
-      },
-      {
-        "name": "Simon Zajicek",
-        "position": "Goalies",
-        "jersey": "85",
-        "player_id": "5302537"
-      }
-    ]
-  },
-  "BUF": {
-    "abbreviation": "BUF",
-    "name": "Buffalo Sabres",
-    "slug": "buffalo-sabres",
-    "team_id": "2",
-    "players": [
-      {
-        "name": "Sam Carrick",
-        "position": "Centers",
-        "jersey": "10",
-        "player_id": "5474"
-      },
-      {
-        "name": "Riley Fiddler-Schultz",
-        "position": "Centers",
-        "jersey": "45",
-        "player_id": "5238780"
-      },
-      {
-        "name": "Konsta Helenius",
-        "position": "Centers",
-        "jersey": "94",
-        "player_id": "5216882"
-      },
-      {
-        "name": "Tyson Kozak",
-        "position": "Centers",
-        "jersey": "48",
-        "player_id": "4895527"
-      },
-      {
-        "name": "Peyton Krebs",
-        "position": "Centers",
-        "jersey": "19",
-        "player_id": "4565238"
-      },
-      {
-        "name": "Jiri Kulich",
-        "position": "Centers",
-        "jersey": "20",
-        "player_id": "5080176"
-      },
-      {
-        "name": "Trevor Kuntar",
-        "position": "Centers",
-        "jersey": "61",
-        "player_id": "4697723"
-      },
-      {
-        "name": "Ryan McLeod",
-        "position": "Centers",
-        "jersey": "71",
-        "player_id": "4378669"
-      },
-      {
-        "name": "Josh Norris",
-        "position": "Centers",
-        "jersey": "9",
-        "player_id": "4233627"
-      },
-      {
-        "name": "Noah Ostlund",
-        "position": "Centers",
-        "jersey": "86",
-        "player_id": "5080160"
-      },
-      {
-        "name": "Tage Thompson",
-        "position": "Centers",
-        "jersey": "72",
-        "player_id": "4024988"
-      },
-      {
-        "name": "Zach Benson",
-        "position": "Left Wings",
-        "jersey": "6",
-        "player_id": "5149186"
-      },
-      {
-        "name": "Beck Malenstyn",
-        "position": "Left Wings",
-        "jersey": "29",
-        "player_id": "4063240"
-      },
-      {
-        "name": "Tanner Pearson",
-        "position": "Left Wings",
-        "jersey": "70",
-        "player_id": "2976860"
-      },
-      {
-        "name": "Conor Sheary",
-        "position": "Left Wings",
-        "jersey": "",
-        "player_id": "3149827"
-      },
-      {
-        "name": "Jason Zucker",
-        "position": "Left Wings",
-        "jersey": "17",
-        "player_id": "2593315"
-      },
-      {
-        "name": "Justin Danforth",
-        "position": "Right Wings",
-        "jersey": "15",
-        "player_id": "4894355"
-      },
-      {
-        "name": "Josh Doan",
-        "position": "Right Wings",
-        "jersey": "91",
-        "player_id": "4874870"
-      },
-      {
-        "name": "Jason Polin",
-        "position": "Right Wings",
-        "jersey": "",
-        "player_id": "4996083"
-      },
-      {
-        "name": "Jack Quinn",
-        "position": "Right Wings",
-        "jersey": "22",
-        "player_id": "4697389"
-      },
-      {
-        "name": "Louis Crevier",
-        "position": "Defense",
-        "jersey": "46",
-        "player_id": "4697681"
-      },
-      {
-        "name": "Rasmus Dahlin",
-        "position": "Defense",
-        "jersey": "26",
-        "player_id": "4294163"
-      },
-      {
-        "name": "Dennis Gilbert",
-        "position": "Defense",
-        "jersey": "",
-        "player_id": "3942030"
-      },
-      {
-        "name": "Ryan Johnson",
-        "position": "Defense",
-        "jersey": "33",
-        "player_id": "4565252"
-      },
-      {
-        "name": "Vsevolod Komarov",
-        "position": "Defense",
-        "jersey": "76",
-        "player_id": "5145784"
-      },
-      {
-        "name": "Artem Kriukov",
-        "position": "Defense",
-        "jersey": "",
-        "player_id": "2413"
-      },
-      {
-        "name": "Zach Metsa",
-        "position": "Defense",
-        "jersey": "73",
-        "player_id": "4419696"
-      },
-      {
-        "name": "Radim Mrtka",
-        "position": "Defense",
-        "jersey": "57",
-        "player_id": "5302545"
-      },
-      {
-        "name": "Owen Power",
-        "position": "Defense",
-        "jersey": "25",
-        "player_id": "4781556"
-      },
-      {
-        "name": "Mattias Samuelsson",
-        "position": "Defense",
-        "jersey": "23",
-        "player_id": "4378656"
-      },
-      {
-        "name": "Logan Stanley",
-        "position": "Defense",
-        "jersey": "64",
-        "player_id": "4024968"
-      },
-      {
-        "name": "Conor Timmins",
-        "position": "Defense",
-        "jersey": "21",
-        "player_id": "4233868"
-      },
-      {
-        "name": "Olen Zellweger",
-        "position": "Defense",
-        "jersey": "",
-        "player_id": "4874863"
-      },
-      {
-        "name": "Colten Ellis",
-        "position": "Goalies",
-        "jersey": "92",
-        "player_id": "4736758"
-      },
-      {
-        "name": "Ukko-Pekka Luukkonen",
-        "position": "Goalies",
-        "jersey": "1",
-        "player_id": "4233889"
-      },
-      {
-        "name": "Alex Lyon",
-        "position": "Goalies",
-        "jersey": "34",
-        "player_id": "3654006"
-      }
-    ]
-  },
-  "CGY": {
-    "abbreviation": "CGY",
-    "name": "Calgary Flames",
-    "slug": "calgary-flames",
-    "team_id": "3",
-    "players": [
-      {
-        "name": "Mikael Backlund",
-        "position": "Centers",
-        "jersey": "11",
-        "player_id": "3797"
-      },
-      {
-        "name": "Morgan Frost",
-        "position": "Centers",
-        "jersey": "16",
-        "player_id": "4233685"
-      },
-      {
-        "name": "Tyson Gross",
-        "position": "Centers",
-        "jersey": "39",
-        "player_id": "5206895"
-      },
-      {
-        "name": "Ben Jones",
-        "position": "Centers",
-        "jersey": "64",
-        "player_id": "4270546"
-      },
-      {
-        "name": "Sam Morton",
-        "position": "Centers",
-        "jersey": "45",
-        "player_id": "4755753"
-      },
-      {
-        "name": "Martin Pospisil",
-        "position": "Centers",
-        "jersey": "76",
-        "player_id": "4392883"
-      },
-      {
-        "name": "Yegor Sharangovich",
-        "position": "Centers",
-        "jersey": "17",
-        "player_id": "4587843"
-      },
-      {
-        "name": "Ryan Strome",
-        "position": "Centers",
-        "jersey": "22",
-        "player_id": "2562636"
-      },
-      {
-        "name": "Connor Zary",
-        "position": "Centers",
-        "jersey": "47",
-        "player_id": "4697407"
-      },
-      {
-        "name": "Joel Farabee",
-        "position": "Left Wings",
-        "jersey": "86",
-        "player_id": "4352750"
-      },
-      {
-        "name": "Samuel Honzek",
-        "position": "Left Wings",
-        "jersey": "29",
-        "player_id": "5149191"
-      },
-      {
-        "name": "Jonathan Huberdeau",
-        "position": "Left Wings",
-        "jersey": "10",
-        "player_id": "2562606"
-      },
-      {
-        "name": "Matt Coronato",
-        "position": "Right Wings",
-        "jersey": "27",
-        "player_id": "4874730"
-      },
-      {
-        "name": "Matvei Gridin",
-        "position": "Right Wings",
-        "jersey": "92",
-        "player_id": "5216897"
-      },
-      {
-        "name": "Adam Klapka",
-        "position": "Right Wings",
-        "jersey": "43",
-        "player_id": "5073306"
-      },
-      {
-        "name": "Maxim Tsyplakov",
-        "position": "Right Wings",
-        "jersey": "",
-        "player_id": "5212753"
-      },
-      {
-        "name": "Kevin Bahl",
-        "position": "Defense",
-        "jersey": "7",
-        "player_id": "4378686"
-      },
-      {
-        "name": "Jake Bean",
-        "position": "Defense",
-        "jersey": "24",
-        "player_id": "4024916"
-      },
-      {
-        "name": "Michael Benning",
-        "position": "Defense",
-        "jersey": "",
-        "player_id": "4697652"
-      },
-      {
-        "name": "Hunter Brzustewicz",
-        "position": "Defense",
-        "jersey": "48",
-        "player_id": "5188554"
-      },
-      {
-        "name": "Joel Hanley",
-        "position": "Defense",
-        "jersey": "44",
-        "player_id": "3149612"
-      },
-      {
-        "name": "Yan Kuznetsov",
-        "position": "Defense",
-        "jersey": "37",
-        "player_id": "4697453"
-      },
-      {
-        "name": "Jake Middleton",
-        "position": "Defense",
-        "jersey": "5",
-        "player_id": "3149839"
-      },
-      {
-        "name": "Simon Nemec",
-        "position": "Defense",
-        "jersey": "",
-        "player_id": "4915344"
-      },
-      {
-        "name": "Brayden Pachal",
-        "position": "Defense",
-        "jersey": "94",
-        "player_id": "4392769"
-      },
-      {
-        "name": "Zayne Parekh",
-        "position": "Defense",
-        "jersey": "19",
-        "player_id": "5216878"
-      },
-      {
-        "name": "Zach Whitecloud",
-        "position": "Defense",
-        "jersey": "28",
-        "player_id": "4312877"
-      },
-      {
-        "name": "Abram Wiebe",
-        "position": "Defense",
-        "jersey": "52",
-        "player_id": "5104209"
-      },
-      {
-        "name": "Devin Cooley",
-        "position": "Goalies",
-        "jersey": "1",
-        "player_id": "4319911"
-      },
-      {
-        "name": "Dustin Wolf",
-        "position": "Goalies",
-        "jersey": "32",
-        "player_id": "4587952"
-      }
-    ]
-  },
-  "CAR": {
-    "abbreviation": "CAR",
-    "name": "Carolina Hurricanes",
-    "slug": "carolina-hurricanes",
-    "team_id": "7",
-    "players": [
-      {
-        "name": "Sebastian Aho",
-        "position": "Centers",
-        "jersey": "20",
-        "player_id": "3904173"
-      },
-      {
-        "name": "Charlie Cerrato",
-        "position": "Centers",
-        "jersey": "",
-        "player_id": "5275522"
-      },
-      {
-        "name": "Seth Jarvis",
-        "position": "Centers",
-        "jersey": "24",
-        "player_id": "4697396"
-      },
-      {
-        "name": "Jesperi Kotkaniemi",
-        "position": "Centers",
-        "jersey": "82",
-        "player_id": "4352692"
-      },
-      {
-        "name": "Jordan Staal",
-        "position": "Centers",
-        "jersey": "11",
-        "player_id": "3541"
-      },
-      {
-        "name": "Logan Stankoven",
-        "position": "Centers",
-        "jersey": "22",
-        "player_id": "4874899"
-      },
-      {
-        "name": "William Carrier",
-        "position": "Left Wings",
-        "jersey": "28",
-        "player_id": "3042054"
-      },
-      {
-        "name": "Nicolas Deslauriers",
-        "position": "Left Wings",
-        "jersey": "44",
-        "player_id": "5193"
-      },
-      {
-        "name": "Nikolaj Ehlers",
-        "position": "Left Wings",
-        "jersey": "27",
-        "player_id": "3114741"
-      },
-      {
-        "name": "Taylor Hall",
-        "position": "Left Wings",
-        "jersey": "71",
-        "player_id": "5428"
-      },
-      {
-        "name": "Mark Jankowski",
-        "position": "Left Wings",
-        "jersey": "77",
-        "player_id": "2976849"
-      },
-      {
-        "name": "Jordan Martinook",
-        "position": "Left Wings",
-        "jersey": "48",
-        "player_id": "2989376"
-      },
-      {
-        "name": "Eric Robinson",
-        "position": "Left Wings",
-        "jersey": "50",
-        "player_id": "4319879"
-      },
-      {
-        "name": "Jackson Blake",
-        "position": "Right Wings",
-        "jersey": "53",
-        "player_id": "5103645"
-      },
-      {
-        "name": "Andrei Svechnikov",
-        "position": "Right Wings",
-        "jersey": "37",
-        "player_id": "4352683"
-      },
-      {
-        "name": "Felix Unger Sorum",
-        "position": "Right Wings",
-        "jersey": "36",
-        "player_id": "5149249"
-      },
-      {
-        "name": "Jalen Chatfield",
-        "position": "Defense",
-        "jersey": "5",
-        "player_id": "4063449"
-      },
-      {
-        "name": "Shayne Gostisbehere",
-        "position": "Defense",
-        "jersey": "4",
-        "player_id": "3025662"
-      },
-      {
-        "name": "Kyle Masters",
-        "position": "Defense",
-        "jersey": "",
-        "player_id": "5173484"
-      },
-      {
-        "name": "K'Andre Miller",
-        "position": "Defense",
-        "jersey": "19",
-        "player_id": "4352770"
-      },
-      {
-        "name": "Alexander Nikishin",
-        "position": "Defense",
-        "jersey": "21",
-        "player_id": "5188393"
-      },
-      {
-        "name": "Mike Reilly",
-        "position": "Defense",
-        "jersey": "6",
-        "player_id": "2563077"
-      },
-      {
-        "name": "Jaccob Slavin",
-        "position": "Defense",
-        "jersey": "74",
-        "player_id": "3069836"
-      },
-      {
-        "name": "Sean Walker",
-        "position": "Defense",
-        "jersey": "26",
-        "player_id": "4272905"
-      },
-      {
-        "name": "Brandon Bussi",
-        "position": "Goalies",
-        "jersey": "32",
-        "player_id": "4996097"
-      },
-      {
-        "name": "Pyotr Kochetkov",
-        "position": "Goalies",
-        "jersey": "52",
-        "player_id": "4565259"
-      },
-      {
-        "name": "Amir Miftakhov",
-        "position": "Goalies",
-        "jersey": "35",
-        "player_id": "4894624"
-      }
-    ]
-  },
-  "CHI": {
-    "abbreviation": "CHI",
-    "name": "Chicago Blackhawks",
-    "slug": "chicago-blackhawks",
-    "team_id": "4",
-    "players": [
-      {
-        "name": "Connor Bedard",
-        "position": "Centers",
-        "jersey": "98",
-        "player_id": "5149125"
-      },
-      {
-        "name": "Sacha Boisvert",
-        "position": "Centers",
-        "jersey": "12",
-        "player_id": "5216886"
-      },
-      {
-        "name": "Ryan Donato",
-        "position": "Centers",
-        "jersey": "8",
-        "player_id": "3115033"
-      },
-      {
-        "name": "Anton Frondell",
-        "position": "Centers",
-        "jersey": "16",
-        "player_id": "5291935"
-      },
-      {
-        "name": "Ryan Greene",
-        "position": "Centers",
-        "jersey": "20",
-        "player_id": "5080227"
-      },
-      {
-        "name": "Oliver Moore",
-        "position": "Centers",
-        "jersey": "11",
-        "player_id": "5149194"
-      },
-      {
-        "name": "Frank Nazar",
-        "position": "Centers",
-        "jersey": "91",
-        "player_id": "5080157"
-      },
-      {
-        "name": "Teuvo Teravainen",
-        "position": "Centers",
-        "jersey": "86",
-        "player_id": "2592095"
-      },
-      {
-        "name": "Dominic Toninato",
-        "position": "Centers",
-        "jersey": "25",
-        "player_id": "3942809"
-      },
-      {
-        "name": "Tyler Bertuzzi",
-        "position": "Left Wings",
-        "jersey": "59",
-        "player_id": "3042056"
-      },
-      {
-        "name": "Jordan Greenway",
-        "position": "Left Wings",
-        "jersey": "12",
-        "player_id": "3900260"
-      },
-      {
-        "name": "Nick Lardis",
-        "position": "Left Wings",
-        "jersey": "76",
-        "player_id": "5173765"
-      },
-      {
-        "name": "Andrew Mangiapane",
-        "position": "Left Wings",
-        "jersey": "26",
-        "player_id": "3149619"
-      },
-      {
-        "name": "Brett Seney",
-        "position": "Left Wings",
-        "jersey": "62",
-        "player_id": "3942746"
-      },
-      {
-        "name": "Landon Slaggert",
-        "position": "Left Wings",
-        "jersey": "84",
-        "player_id": "4697787"
-      },
-      {
-        "name": "Cole Smith",
-        "position": "Right Wings",
-        "jersey": "",
-        "player_id": "4197130"
-      },
-      {
-        "name": "Dylan Anhorn",
-        "position": "Defense",
-        "jersey": "",
-        "player_id": "5238001"
-      },
-      {
-        "name": "Bowen Byram",
-        "position": "Defense",
-        "jersey": "24",
-        "player_id": "4565225"
-      },
-      {
-        "name": "Ian Cole",
-        "position": "Defense",
-        "jersey": "",
-        "player_id": "4991"
-      },
-      {
-        "name": "Ethan Del Mastro",
-        "position": "Defense",
-        "jersey": "38",
-        "player_id": "4894726"
-      },
-      {
-        "name": "Cavan Fitzgerald",
-        "position": "Defense",
-        "jersey": "79",
-        "player_id": "3944278"
-      },
-      {
-        "name": "Matt Grzelcyk",
-        "position": "Defense",
-        "jersey": "48",
-        "player_id": "3069448"
-      },
-      {
-        "name": "Wyatt Kaiser",
-        "position": "Defense",
-        "jersey": "44",
-        "player_id": "4697717"
-      },
-      {
-        "name": "Kevin Korchinski",
-        "position": "Defense",
-        "jersey": "14",
-        "player_id": "5080148"
-      },
-      {
-        "name": "Artyom Levshunov",
-        "position": "Defense",
-        "jersey": "55",
-        "player_id": "5206648"
-      },
-      {
-        "name": "Connor Mackey",
-        "position": "Defense",
-        "jersey": "",
-        "player_id": "4319927"
-      },
-      {
-        "name": "Sam Rinzel",
-        "position": "Defense",
-        "jersey": "6",
-        "player_id": "5080173"
-      },
-      {
-        "name": "Alex Vlasic",
-        "position": "Defense",
-        "jersey": "72",
-        "player_id": "4565266"
-      },
-      {
-        "name": "Spencer Knight",
-        "position": "Goalies",
-        "jersey": "30",
-        "player_id": "4565234"
-      },
-      {
-        "name": "Dave Nozzolillo",
-        "position": "Goalies",
-        "jersey": "40",
-        "player_id": "5331647"
-      },
-      {
-        "name": "Arvid Soderblom",
-        "position": "Goalies",
-        "jersey": "40",
-        "player_id": "4894729"
-      },
-      {
-        "name": "Mitchell Weeks",
-        "position": "Goalies",
-        "jersey": "",
-        "player_id": "5174104"
-      }
-    ]
-  },
-  "COL": {
-    "abbreviation": "COL",
-    "name": "Colorado Avalanche",
-    "slug": "colorado-avalanche",
-    "team_id": "17",
-    "players": [
-      {
-        "name": "Zakhar Bardakov",
-        "position": "Centers",
-        "jersey": "93",
-        "player_id": "5188343"
-      },
-      {
-        "name": "Alex Barre-Boulet",
-        "position": "Centers",
-        "jersey": "27",
-        "player_id": "4270820"
-      },
-      {
-        "name": "Gavin Brindley",
-        "position": "Centers",
-        "jersey": "54",
-        "player_id": "5136614"
-      },
-      {
-        "name": "Vinnie Hinostroza",
-        "position": "Centers",
-        "jersey": "",
-        "player_id": "3069613"
-      },
-      {
-        "name": "Nazem Kadri",
-        "position": "Centers",
-        "jersey": "91",
-        "player_id": "5349"
-      },
-      {
-        "name": "Parker Kelly",
-        "position": "Centers",
-        "jersey": "17",
-        "player_id": "4392309"
-      },
-      {
-        "name": "Nathan MacKinnon",
-        "position": "Centers",
-        "jersey": "29",
-        "player_id": "3041969"
-      },
-      {
-        "name": "Georgii Merkulov",
-        "position": "Centers",
-        "jersey": "",
-        "player_id": "5103687"
-      },
-      {
-        "name": "Martin Necas",
-        "position": "Centers",
-        "jersey": "88",
-        "player_id": "4233586"
-      },
-      {
-        "name": "Brock Nelson",
-        "position": "Centers",
-        "jersey": "11",
-        "player_id": "5798"
-      },
-      {
-        "name": "Nicolas Roy",
-        "position": "Centers",
-        "jersey": "10",
-        "player_id": "3943996"
-      },
-      {
-        "name": "Jaden Schwartz",
-        "position": "Centers",
-        "jersey": "",
-        "player_id": "5835"
-      },
-      {
-        "name": "Fedor Svechkov",
-        "position": "Centers",
-        "jersey": "",
-        "player_id": "4874736"
-      },
-      {
-        "name": "T.J. Tynan",
-        "position": "Centers",
-        "jersey": "9",
-        "player_id": "2563033"
-      },
-      {
-        "name": "Adam Beckman",
-        "position": "Left Wings",
-        "jersey": "",
-        "player_id": "4894056"
-      },
-      {
-        "name": "Danil Gushchin",
-        "position": "Left Wings",
-        "jersey": "75",
-        "player_id": "4697708"
-      },
-      {
-        "name": "Zachary L'Heureux",
-        "position": "Left Wings",
-        "jersey": "",
-        "player_id": "4874744"
-      },
-      {
-        "name": "Gabriel Landeskog",
-        "position": "Left Wings",
-        "jersey": "92",
-        "player_id": "2562609"
-      },
-      {
-        "name": "Artturi Lehkonen",
-        "position": "Left Wings",
-        "jersey": "62",
-        "player_id": "3042050"
-      },
-      {
-        "name": "Taylor Makar",
-        "position": "Left Wings",
-        "jersey": "16",
-        "player_id": "4997080"
-      },
-      {
-        "name": "Fabian Lysell",
-        "position": "Right Wings",
-        "jersey": "23",
-        "player_id": "4874738"
-      },
-      {
-        "name": "Logan O'Connor",
-        "position": "Right Wings",
-        "jersey": "25",
-        "player_id": "3988782"
-      },
-      {
-        "name": "Nick Blankenburg",
-        "position": "Defense",
-        "jersey": "37",
-        "player_id": "4781550"
-      },
-      {
-        "name": "Brent Burns",
-        "position": "Defense",
-        "jersey": "84",
-        "player_id": "2300"
-      },
-      {
-        "name": "Alex Gagne",
-        "position": "Defense",
-        "jersey": "45",
-        "player_id": "5188419"
-      },
-      {
-        "name": "Noah Juulsen",
-        "position": "Defense",
-        "jersey": "",
-        "player_id": "3900504"
-      },
-      {
-        "name": "Brett Kulak",
-        "position": "Defense",
-        "jersey": "27",
-        "player_id": "3068665"
-      },
-      {
-        "name": "Cale Makar",
-        "position": "Defense",
-        "jersey": "8",
-        "player_id": "4233563"
-      },
-      {
-        "name": "Sam Malinski",
-        "position": "Defense",
-        "jersey": "70",
-        "player_id": "5136735"
-      },
-      {
-        "name": "Josh Manson",
-        "position": "Defense",
-        "jersey": "42",
-        "player_id": "2590829"
-      },
-      {
-        "name": "Devon Toews",
-        "position": "Defense",
-        "jersey": "7",
-        "player_id": "3096249"
-      },
-      {
-        "name": "Mackenzie Blackwood",
-        "position": "Goalies",
-        "jersey": "39",
-        "player_id": "3904177"
-      },
-      {
-        "name": "Magnus Chrona",
-        "position": "Goalies",
-        "jersey": "",
-        "player_id": "4588038"
-      },
-      {
-        "name": "Scott Wedgewood",
-        "position": "Goalies",
-        "jersey": "41",
-        "player_id": "5622"
-      }
-    ]
-  },
-  "CBJ": {
-    "abbreviation": "CBJ",
-    "name": "Columbus Blue Jackets",
-    "slug": "columbus-blue-jackets",
-    "team_id": "29",
-    "players": [
-      {
-        "name": "Charlie Coyle",
-        "position": "Centers",
-        "jersey": "3",
-        "player_id": "2555315"
-      },
-      {
-        "name": "Adam Fantilli",
-        "position": "Centers",
-        "jersey": "19",
-        "player_id": "5136617"
-      },
-      {
-        "name": "Kent Johnson",
-        "position": "Centers",
-        "jersey": "91",
-        "player_id": "4781553"
-      },
-      {
-        "name": "Isac Lundestrom",
-        "position": "Centers",
-        "jersey": "21",
-        "player_id": "4352775"
-      },
-      {
-        "name": "Sean Monahan",
-        "position": "Centers",
-        "jersey": "23",
-        "player_id": "3041996"
-      },
-      {
-        "name": "Cole Sillinger",
-        "position": "Centers",
-        "jersey": "4",
-        "player_id": "4874725"
-      },
-      {
-        "name": "Owen Sillinger",
-        "position": "Centers",
-        "jersey": "",
-        "player_id": "4781578"
-      },
-      {
-        "name": "Danton Heinen",
-        "position": "Left Wings",
-        "jersey": "43",
-        "player_id": "3151741"
-      },
-      {
-        "name": "Ryan Lomberg",
-        "position": "Left Wings",
-        "jersey": "",
-        "player_id": "3942548"
-      },
-      {
-        "name": "Dmitri Voronkov",
-        "position": "Left Wings",
-        "jersey": "10",
-        "player_id": "4915856"
-      },
-      {
-        "name": "Miles Wood",
-        "position": "Left Wings",
-        "jersey": "11",
-        "player_id": "3042110"
-      },
-      {
-        "name": "Riley Bezeau",
-        "position": "Right Wings",
-        "jersey": "",
-        "player_id": "5174231"
-      },
-      {
-        "name": "Conor Garland",
-        "position": "Right Wings",
-        "jersey": "83",
-        "player_id": "3939718"
-      },
-      {
-        "name": "Kirill Marchenko",
-        "position": "Right Wings",
-        "jersey": "86",
-        "player_id": "4587996"
-      },
-      {
-        "name": "Valeri Nichushkin",
-        "position": "Right Wings",
-        "jersey": "",
-        "player_id": "3042003"
-      },
-      {
-        "name": "Mathieu Olivier",
-        "position": "Right Wings",
-        "jersey": "24",
-        "player_id": "4064781"
-      },
-      {
-        "name": "Jake Christiansen",
-        "position": "Defense",
-        "jersey": "2",
-        "player_id": "4392782"
-      },
-      {
-        "name": "Dante Fabbro",
-        "position": "Defense",
-        "jersey": "15",
-        "player_id": "4024959"
-      },
-      {
-        "name": "Erik Gudbranson",
-        "position": "Defense",
-        "jersey": "44",
-        "player_id": "5503"
-      },
-      {
-        "name": "Denton Mateychuk",
-        "position": "Defense",
-        "jersey": "5",
-        "player_id": "5080156"
-      },
-      {
-        "name": "Ivan Provorov",
-        "position": "Defense",
-        "jersey": "9",
-        "player_id": "3899939"
-      },
-      {
-        "name": "Damon Severson",
-        "position": "Defense",
-        "jersey": "78",
-        "player_id": "3068087"
-      },
-      {
-        "name": "Brendan Smith",
-        "position": "Defense",
-        "jersey": "7",
-        "player_id": "4973"
-      },
-      {
-        "name": "Zach Werenski",
-        "position": "Defense",
-        "jersey": "8",
-        "player_id": "3899972"
-      },
-      {
-        "name": "Egor Zamula",
-        "position": "Defense",
-        "jersey": "6",
-        "player_id": "4392268"
-      },
-      {
-        "name": "Pheonix Copley",
-        "position": "Goalies",
-        "jersey": "",
-        "player_id": "3095330"
-      },
-      {
-        "name": "Jet Greaves",
-        "position": "Goalies",
-        "jersey": "73",
-        "player_id": "4894366"
-      },
-      {
-        "name": "Elvis Merzlikins",
-        "position": "Goalies",
-        "jersey": "90",
-        "player_id": "3151038"
-      }
-    ]
-  },
-  "DAL": {
-    "abbreviation": "DAL",
-    "name": "Dallas Stars",
-    "slug": "dallas-stars",
-    "team_id": "9",
-    "players": [
-      {
-        "name": "Oskar Back",
-        "position": "Centers",
-        "jersey": "10",
-        "player_id": "4894398"
-      },
-      {
-        "name": "Colin Blackwell",
-        "position": "Centers",
-        "jersey": "15",
-        "player_id": "2590857"
-      },
-      {
-        "name": "Matt Duchene",
-        "position": "Centers",
-        "jersey": "95",
-        "player_id": "5161"
-      },
-      {
-        "name": "Radek Faksa",
-        "position": "Centers",
-        "jersey": "12",
-        "player_id": "2976842"
-      },
-      {
-        "name": "Roope Hintz",
-        "position": "Centers",
-        "jersey": "24",
-        "player_id": "3904183"
-      },
-      {
-        "name": "Justin Hryckowian",
-        "position": "Centers",
-        "jersey": "49",
-        "player_id": "5229176"
-      },
-      {
-        "name": "Wyatt Johnston",
-        "position": "Centers",
-        "jersey": "53",
-        "player_id": "4874740"
-      },
-      {
-        "name": "Tyler Seguin",
-        "position": "Centers",
-        "jersey": "91",
-        "player_id": "5430"
-      },
-      {
-        "name": "Artem Shlaine",
-        "position": "Centers",
-        "jersey": "",
-        "player_id": "5188326"
-      },
-      {
-        "name": "Sam Steel",
-        "position": "Centers",
-        "jersey": "18",
-        "player_id": "4024998"
-      },
-      {
-        "name": "Jamie Benn",
-        "position": "Left Wings",
-        "jersey": "14",
-        "player_id": "3998"
-      },
-      {
-        "name": "Michael Bunting",
-        "position": "Left Wings",
-        "jersey": "58",
-        "player_id": "3149603"
-      },
-      {
-        "name": "Adam Erne",
-        "position": "Left Wings",
-        "jersey": "73",
-        "player_id": "3041991"
-      },
-      {
-        "name": "Joel Kiviranta",
-        "position": "Left Wings",
-        "jersey": "",
-        "player_id": "4587910"
-      },
-      {
-        "name": "Jason Robertson",
-        "position": "Left Wings",
-        "jersey": "21",
-        "player_id": "4233875"
-      },
-      {
-        "name": "Nathan Bastian",
-        "position": "Right Wings",
-        "jersey": "11",
-        "player_id": "4063279"
-      },
-      {
-        "name": "Arttu Hyry",
-        "position": "Right Wings",
-        "jersey": "25",
-        "player_id": "5209793"
-      },
-      {
-        "name": "Mikko Rantanen",
-        "position": "Right Wings",
-        "jersey": "96",
-        "player_id": "3899938"
-      },
-      {
-        "name": "Lian Bichsel",
-        "position": "Defense",
-        "jersey": "6",
-        "player_id": "5080162"
-      },
-      {
-        "name": "Kyle Capobianco",
-        "position": "Defense",
-        "jersey": "20",
-        "player_id": "3939716"
-      },
-      {
-        "name": "Thomas Harley",
-        "position": "Defense",
-        "jersey": "55",
-        "player_id": "4565239"
-      },
-      {
-        "name": "Miro Heiskanen",
-        "position": "Defense",
-        "jersey": "4",
-        "player_id": "4233536"
-      },
-      {
-        "name": "Esa Lindell",
-        "position": "Defense",
-        "jersey": "23",
-        "player_id": "3069352"
-      },
-      {
-        "name": "Nils Lundkvist",
-        "position": "Defense",
-        "jersey": "5",
-        "player_id": "4352800"
-      },
-      {
-        "name": "Tyler Myers",
-        "position": "Defense",
-        "jersey": "57",
-        "player_id": "5052"
-      },
-      {
-        "name": "Casey DeSmith",
-        "position": "Goalies",
-        "jersey": "1",
-        "player_id": "3025540"
-      },
-      {
-        "name": "Brandon Halverson",
-        "position": "Goalies",
-        "jersey": "",
-        "player_id": "3115036"
-      },
-      {
-        "name": "Ben Kraws",
-        "position": "Goalies",
-        "jersey": "32",
-        "player_id": "5229183"
-      },
-      {
-        "name": "Jake Oettinger",
-        "position": "Goalies",
-        "jersey": "29",
-        "player_id": "4196914"
-      }
-    ]
-  },
-  "DET": {
-    "abbreviation": "DET",
-    "name": "Detroit Red Wings",
-    "slug": "detroit-red-wings",
-    "team_id": "5",
-    "players": [
-      {
-        "name": "Mason Appleton",
-        "position": "Centers",
-        "jersey": "22",
-        "player_id": "3942043"
-      },
-      {
-        "name": "Andrew Copp",
-        "position": "Centers",
-        "jersey": "18",
-        "player_id": "3042114"
-      },
-      {
-        "name": "Emmitt Finnie",
-        "position": "Centers",
-        "jersey": "58",
-        "player_id": "5188599"
-      },
-      {
-        "name": "Marco Kasper",
-        "position": "Centers",
-        "jersey": "92",
-        "player_id": "5080152"
-      },
-      {
-        "name": "Dylan Larkin",
-        "position": "Centers",
-        "jersey": "71",
-        "player_id": "3114755"
-      },
-      {
-        "name": "Michael Rasmussen",
-        "position": "Centers",
-        "jersey": "27",
-        "player_id": "4233576"
-      },
-      {
-        "name": "Wilmer Skoog",
-        "position": "Centers",
-        "jersey": "",
-        "player_id": "4781727"
-      },
-      {
-        "name": "Viktor Arvidsson",
-        "position": "Left Wings",
-        "jersey": "",
-        "player_id": "3120307"
-      },
-      {
-        "name": "J.T. Compher",
-        "position": "Left Wings",
-        "jersey": "37",
-        "player_id": "3041995"
-      },
-      {
-        "name": "Carter Mazur",
-        "position": "Left Wings",
-        "jersey": "34",
-        "player_id": "4997026"
-      },
-      {
-        "name": "David Perron",
-        "position": "Left Wings",
-        "jersey": "57",
-        "player_id": "3792"
-      },
-      {
-        "name": "Lucas Raymond",
-        "position": "Left Wings",
-        "jersey": "23",
-        "player_id": "4697385"
-      },
-      {
-        "name": "James van Riemsdyk",
-        "position": "Left Wings",
-        "jersey": "21",
-        "player_id": "3822"
-      },
-      {
-        "name": "Austin Watson",
-        "position": "Left Wings",
-        "jersey": "24",
-        "player_id": "2525761"
-      },
-      {
-        "name": "Cameron Butler",
-        "position": "Right Wings",
-        "jersey": "",
-        "player_id": "5136792"
-      },
-      {
-        "name": "Alex DeBrincat",
-        "position": "Right Wings",
-        "jersey": "93",
-        "player_id": "4063433"
-      },
-      {
-        "name": "Patrick Kane",
-        "position": "Right Wings",
-        "jersey": "88",
-        "player_id": "3735"
-      },
-      {
-        "name": "Keegan Kolesar",
-        "position": "Right Wings",
-        "jersey": "",
-        "player_id": "3941546"
-      },
-      {
-        "name": "Eduards Tralmaks",
-        "position": "Right Wings",
-        "jersey": "14",
-        "player_id": "5276295"
-      },
-      {
-        "name": "Ronnie Attard",
-        "position": "Defense",
-        "jersey": "",
-        "player_id": "4996077"
-      },
-      {
-        "name": "Jacob Bernard-Docker",
-        "position": "Defense",
-        "jersey": "25",
-        "player_id": "4352798"
-      },
-      {
-        "name": "Jacob Bryson",
-        "position": "Defense",
-        "jersey": "",
-        "player_id": "4197014"
-      },
-      {
-        "name": "Ben Chiarot",
-        "position": "Defense",
-        "jersey": "8",
-        "player_id": "5246"
-      },
-      {
-        "name": "Simon Edvinsson",
-        "position": "Defense",
-        "jersey": "77",
-        "player_id": "4874720"
-      },
-      {
-        "name": "Justin Faulk",
-        "position": "Defense",
-        "jersey": "72",
-        "player_id": "5746"
-      },
-      {
-        "name": "Travis Hamonic",
-        "position": "Defense",
-        "jersey": "52",
-        "player_id": "5073"
-      },
-      {
-        "name": "Albert Johansson",
-        "position": "Defense",
-        "jersey": "20",
-        "player_id": "4565282"
-      },
-      {
-        "name": "Moritz Seider",
-        "position": "Defense",
-        "jersey": "53",
-        "player_id": "4565227"
-      },
-      {
-        "name": "John Gibson",
-        "position": "Goalies",
-        "jersey": "36",
-        "player_id": "2590824"
-      },
-      {
-        "name": "Michal Postava",
-        "position": "Goalies",
-        "jersey": "35",
-        "player_id": "5302578"
-      },
-      {
-        "name": "Cam Talbot",
-        "position": "Goalies",
-        "jersey": "39",
-        "player_id": "5734"
-      },
-      {
-        "name": "Daniil Tarasov",
-        "position": "Goalies",
-        "jersey": "",
-        "player_id": "4587994"
-      }
-    ]
-  },
-  "EDM": {
-    "abbreviation": "EDM",
-    "name": "Edmonton Oilers",
-    "slug": "edmonton-oilers",
-    "team_id": "6",
-    "players": [
-      {
-        "name": "Colton Dach",
-        "position": "Centers",
-        "jersey": "34",
-        "player_id": "4874940"
-      },
-      {
-        "name": "Jason Dickinson",
-        "position": "Centers",
-        "jersey": "16",
-        "player_id": "3042062"
-      },
-      {
-        "name": "Leon Draisaitl",
-        "position": "Centers",
-        "jersey": "29",
-        "player_id": "3114727"
-      },
-      {
-        "name": "Trent Frederic",
-        "position": "Centers",
-        "jersey": "10",
-        "player_id": "4024997"
-      },
-      {
-        "name": "Adam Henrique",
-        "position": "Centers",
-        "jersey": "19",
-        "player_id": "5074"
-      },
-      {
-        "name": "Mattias Janmark",
-        "position": "Centers",
-        "jersey": "13",
-        "player_id": "3042085"
-      },
-      {
-        "name": "Curtis Lazar",
-        "position": "Centers",
-        "jersey": "20",
-        "player_id": "3042023"
-      },
-      {
-        "name": "Connor McDavid",
-        "position": "Centers",
-        "jersey": "97",
-        "player_id": "3895074"
-      },
-      {
-        "name": "Owen Michaels",
-        "position": "Centers",
-        "jersey": "27",
-        "player_id": "5206840"
-      },
-      {
-        "name": "Ryan Nugent-Hopkins",
-        "position": "Centers",
-        "jersey": "93",
-        "player_id": "2562624"
-      },
-      {
-        "name": "Josh Samanski",
-        "position": "Centers",
-        "jersey": "81",
-        "player_id": "5278080"
-      },
-      {
-        "name": "Matt Savoie",
-        "position": "Centers",
-        "jersey": "22",
-        "player_id": "5080153"
-      },
-      {
-        "name": "Zach Hyman",
-        "position": "Left Wings",
-        "jersey": "18",
-        "player_id": "5509"
-      },
-      {
-        "name": "Max Jones",
-        "position": "Left Wings",
-        "jersey": "46",
-        "player_id": "4024980"
-      },
-      {
-        "name": "Quinn Hutson",
-        "position": "Right Wings",
-        "jersey": "28",
-        "player_id": "5136660"
-      },
-      {
-        "name": "Mathieu Joseph",
-        "position": "Right Wings",
-        "jersey": "",
-        "player_id": "3941965"
-      },
-      {
-        "name": "Kasperi Kapanen",
-        "position": "Right Wings",
-        "jersey": "42",
-        "player_id": "3114775"
-      },
-      {
-        "name": "Vasily Podkolzin",
-        "position": "Right Wings",
-        "jersey": "92",
-        "player_id": "4565231"
-      },
-      {
-        "name": "David Tomasek",
-        "position": "Right Wings",
-        "jersey": "86",
-        "player_id": "5278081"
-      },
-      {
-        "name": "Evan Bouchard",
-        "position": "Defense",
-        "jersey": "2",
-        "player_id": "4352722"
-      },
-      {
-        "name": "Mattias Ekholm",
-        "position": "Defense",
-        "jersey": "14",
-        "player_id": "2558631"
-      },
-      {
-        "name": "Ty Emberson",
-        "position": "Defense",
-        "jersey": "49",
-        "player_id": "4587566"
-      },
-      {
-        "name": "Connor Murphy",
-        "position": "Defense",
-        "jersey": "5",
-        "player_id": "2562618"
-      },
-      {
-        "name": "Ryan Shea",
-        "position": "Defense",
-        "jersey": "",
-        "player_id": "3942033"
-      },
-      {
-        "name": "Spencer Stastney",
-        "position": "Defense",
-        "jersey": "24",
-        "player_id": "4393406"
-      },
-      {
-        "name": "Jake Walman",
-        "position": "Defense",
-        "jersey": "96",
-        "player_id": "3151136"
-      },
-      {
-        "name": "Frederik Andersen",
-        "position": "Goalies",
-        "jersey": "",
-        "player_id": "2517899"
-      },
-      {
-        "name": "Connor Ingram",
-        "position": "Goalies",
-        "jersey": "39",
-        "player_id": "4063522"
-      },
-      {
-        "name": "Tristan Jarry",
-        "position": "Goalies",
-        "jersey": "35",
-        "player_id": "3042020"
-      },
-      {
-        "name": "Devon Levi",
-        "position": "Goalies",
-        "jersey": "",
-        "player_id": "4894487"
-      },
-      {
-        "name": "Connor Ungar",
-        "position": "Goalies",
-        "jersey": "32",
-        "player_id": "4894422"
-      },
-      {
-        "name": "Connor Ungar",
-        "position": "Goalies",
-        "jersey": "32",
-        "player_id": "4894422"
-      }
-    ]
-  },
-  "FLA": {
-    "abbreviation": "FLA",
-    "name": "Florida Panthers",
-    "slug": "florida-panthers",
-    "team_id": "26",
-    "players": [
-      {
-        "name": "Aleksander Barkov",
-        "position": "Centers",
-        "jersey": "16",
-        "player_id": "3041970"
-      },
-      {
-        "name": "John Beecher",
-        "position": "Centers",
-        "jersey": "",
-        "player_id": "4565251"
-      },
-      {
-        "name": "Sam Bennett",
-        "position": "Centers",
-        "jersey": "9",
-        "player_id": "3114732"
-      },
-      {
-        "name": "Lars Eller",
-        "position": "Centers",
-        "jersey": "",
-        "player_id": "3946"
-      },
-      {
-        "name": "Luke Kunin",
-        "position": "Centers",
-        "jersey": "71",
-        "player_id": "4024933"
-      },
-      {
-        "name": "Sam Lafferty",
-        "position": "Centers",
-        "jersey": "",
-        "player_id": "3151322"
-      },
-      {
-        "name": "Anton Lundell",
-        "position": "Centers",
-        "jersey": "15",
-        "player_id": "4697395"
-      },
-      {
-        "name": "Eetu Luostarinen",
-        "position": "Centers",
-        "jersey": "27",
-        "player_id": "4233877"
-      },
-      {
-        "name": "Sam Reinhart",
-        "position": "Centers",
-        "jersey": "13",
-        "player_id": "3114722"
-      },
-      {
-        "name": "Carter Verhaeghe",
-        "position": "Centers",
-        "jersey": "23",
-        "player_id": "3042088"
-      },
-      {
-        "name": "Angus Crookshank",
-        "position": "Left Wings",
-        "jersey": "",
-        "player_id": "4588209"
-      },
-      {
-        "name": "Jonah Gadjovich",
-        "position": "Left Wings",
-        "jersey": "12",
-        "player_id": "4233890"
-      },
-      {
-        "name": "Bokondji Imama",
-        "position": "Left Wings",
-        "jersey": "",
-        "player_id": "3939856"
-      },
-      {
-        "name": "Brad Marchand",
-        "position": "Left Wings",
-        "jersey": "63",
-        "player_id": "3852"
-      },
-      {
-        "name": "Tomas Nosek",
-        "position": "Left Wings",
-        "jersey": "92",
-        "player_id": "3112266"
-      },
-      {
-        "name": "Cole Reinhardt",
-        "position": "Left Wings",
-        "jersey": "29",
-        "player_id": "4894702"
-      },
-      {
-        "name": "Brady Tkachuk",
-        "position": "Left Wings",
-        "jersey": "7",
-        "player_id": "4319858"
-      },
-      {
-        "name": "Matthew Tkachuk",
-        "position": "Left Wings",
-        "jersey": "19",
-        "player_id": "4024854"
-      },
-      {
-        "name": "Sandis Vilmanis",
-        "position": "Left Wings",
-        "jersey": "95",
-        "player_id": "5103599"
-      },
-      {
-        "name": "Garnet Hathaway",
-        "position": "Right Wings",
-        "jersey": "",
-        "player_id": "3149633"
-      },
-      {
-        "name": "Cole Schwindt",
-        "position": "Right Wings",
-        "jersey": "79",
-        "player_id": "4845286"
-      },
-      {
-        "name": "Uvis Balinskis",
-        "position": "Defense",
-        "jersey": "26",
-        "player_id": "5142461"
-      },
-      {
-        "name": "Mike Benning",
-        "position": "Defense",
-        "jersey": "20",
-        "player_id": "4997019"
-      },
-      {
-        "name": "Tobias Bjornfot",
-        "position": "Defense",
-        "jersey": "",
-        "player_id": "4565243"
-      },
-      {
-        "name": "Aaron Ekblad",
-        "position": "Defense",
-        "jersey": "5",
-        "player_id": "3114717"
-      },
-      {
-        "name": "Gustav Forsling",
-        "position": "Defense",
-        "jersey": "42",
-        "player_id": "3151784"
-      },
-      {
-        "name": "Radko Gudas",
-        "position": "Defense",
-        "jersey": "7",
-        "player_id": "5502"
-      },
-      {
-        "name": "Mikulas Hovorka",
-        "position": "Defense",
-        "jersey": "96",
-        "player_id": "5209557"
-      },
-      {
-        "name": "Seth Jones",
-        "position": "Defense",
-        "jersey": "3",
-        "player_id": "3041992"
-      },
-      {
-        "name": "Dmitry Kulikov",
-        "position": "Defense",
-        "jersey": "7",
-        "player_id": "5328"
-      },
-      {
-        "name": "Niko Mikkola",
-        "position": "Defense",
-        "jersey": "77",
-        "player_id": "3942354"
-      },
-      {
-        "name": "Alexander Petrovic",
-        "position": "Defense",
-        "jersey": "",
-        "player_id": "5620"
-      },
-      {
-        "name": "Emil Pieniniemi",
-        "position": "Defense",
-        "jersey": "79",
-        "player_id": "5188386"
-      },
-      {
-        "name": "Donovan Sebrango",
-        "position": "Defense",
-        "jersey": "6",
-        "player_id": "4697791"
-      },
-      {
-        "name": "Cooper Black",
-        "position": "Goalies",
-        "jersey": "31",
-        "player_id": "5206956"
-      },
-      {
-        "name": "Jacob Markstrom",
-        "position": "Goalies",
-        "jersey": "",
-        "player_id": "5452"
-      },
-      {
-        "name": "Akira Schmid",
-        "position": "Goalies",
-        "jersey": "40",
-        "player_id": "4587845"
-      }
-    ]
-  },
-  "LA": {
-    "abbreviation": "LA",
-    "name": "Los Angeles Kings",
-    "slug": "los-angeles-kings",
-    "team_id": "8",
-    "players": [
-      {
-        "name": "Kenny Connors",
-        "position": "Centers",
-        "jersey": "34",
-        "player_id": "5104190"
-      },
-      {
-        "name": "Cole Guttman",
-        "position": "Centers",
-        "jersey": "82",
-        "player_id": "4588042"
-      },
-      {
-        "name": "Samuel Helenius",
-        "position": "Centers",
-        "jersey": "79",
-        "player_id": "4874923"
-      },
-      {
-        "name": "Jan Jenik",
-        "position": "Centers",
-        "jersey": "",
-        "player_id": "4587568"
-      },
-      {
-        "name": "Anze Kopitar",
-        "position": "Centers",
-        "jersey": "11",
-        "player_id": "3183"
-      },
-      {
-        "name": "Scott Laughton",
-        "position": "Centers",
-        "jersey": "24",
-        "player_id": "2976848"
-      },
-      {
-        "name": "Lane Pederson",
-        "position": "Centers",
-        "jersey": "",
-        "player_id": "4063496"
-      },
-      {
-        "name": "Alex Turcotte",
-        "position": "Centers",
-        "jersey": "15",
-        "player_id": "4565226"
-      },
-      {
-        "name": "Kevin Fiala",
-        "position": "Left Wings",
-        "jersey": "22",
-        "player_id": "3114743"
-      },
-      {
-        "name": "Erik Haula",
-        "position": "Left Wings",
-        "jersey": "",
-        "player_id": "2593311"
-      },
-      {
-        "name": "Trevor Moore",
-        "position": "Left Wings",
-        "jersey": "12",
-        "player_id": "3096186"
-      },
-      {
-        "name": "Artemi Panarin",
-        "position": "Left Wings",
-        "jersey": "10",
-        "player_id": "3891952"
-      },
-      {
-        "name": "Joel Armia",
-        "position": "Right Wings",
-        "jersey": "40",
-        "player_id": "2562596"
-      },
-      {
-        "name": "Quinton Byfield",
-        "position": "Right Wings",
-        "jersey": "55",
-        "player_id": "4697383"
-      },
-      {
-        "name": "Adrian Kempe",
-        "position": "Right Wings",
-        "jersey": "9",
-        "player_id": "3114802"
-      },
-      {
-        "name": "Alex Laferriere",
-        "position": "Right Wings",
-        "jersey": "14",
-        "player_id": "4697725"
-      },
-      {
-        "name": "Corey Perry",
-        "position": "Right Wings",
-        "jersey": "",
-        "player_id": "2273"
-      },
-      {
-        "name": "Taylor Ward",
-        "position": "Right Wings",
-        "jersey": "52",
-        "player_id": "4781650"
-      },
-      {
-        "name": "Mats Zuccarello",
-        "position": "Right Wings",
-        "jersey": "",
-        "player_id": "5560"
-      },
-      {
-        "name": "Mikey Anderson",
-        "position": "Defense",
-        "jersey": "44",
-        "player_id": "4588178"
-      },
-      {
-        "name": "Cody Ceci",
-        "position": "Defense",
-        "jersey": "5",
-        "player_id": "2976843"
-      },
-      {
-        "name": "Brandt Clarke",
-        "position": "Defense",
-        "jersey": "92",
-        "player_id": "4874722"
-      },
-      {
-        "name": "Drew Doughty",
-        "position": "Defense",
-        "jersey": "8",
-        "player_id": "3995"
-      },
-      {
-        "name": "Brian Dumoulin",
-        "position": "Defense",
-        "jersey": "2",
-        "player_id": "5738"
-      },
-      {
-        "name": "Joel Edmundson",
-        "position": "Defense",
-        "jersey": "6",
-        "player_id": "2563034"
-      },
-      {
-        "name": "Erik Gustafsson",
-        "position": "Defense",
-        "jersey": "",
-        "player_id": "3891922"
-      },
-      {
-        "name": "Joe Hicketts",
-        "position": "Defense",
-        "jersey": "27",
-        "player_id": "3150480"
-      },
-      {
-        "name": "Kirill Kirsanov",
-        "position": "Defense",
-        "jersey": "78",
-        "player_id": "5188566"
-      },
-      {
-        "name": "Jacob Moverare",
-        "position": "Defense",
-        "jersey": "43",
-        "player_id": "4063280"
-      },
-      {
-        "name": "Scott Perunovich",
-        "position": "Defense",
-        "jersey": "",
-        "player_id": "4320665"
-      },
-      {
-        "name": "Anton Forsberg",
-        "position": "Goalies",
-        "jersey": "31",
-        "player_id": "3036851"
-      },
-      {
-        "name": "Carter George",
-        "position": "Goalies",
-        "jersey": "40",
-        "player_id": "5216932"
-      },
-      {
-        "name": "Darcy Kuemper",
-        "position": "Goalies",
-        "jersey": "35",
-        "player_id": "2610321"
-      }
-    ]
-  },
-  "MIN": {
-    "abbreviation": "MIN",
-    "name": "Minnesota Wild",
-    "slug": "minnesota-wild",
-    "team_id": "30",
-    "players": [
-      {
-        "name": "Caedan Bankier",
-        "position": "Centers",
-        "jersey": "76",
-        "player_id": "5103531"
-      },
-      {
-        "name": "Joel Eriksson Ek",
-        "position": "Centers",
-        "jersey": "14",
-        "player_id": "3904091"
-      },
-      {
-        "name": "Robby Fabbri",
-        "position": "Centers",
-        "jersey": "21",
-        "player_id": "3114774"
-      },
-      {
-        "name": "Dylan Gambrell",
-        "position": "Centers",
-        "jersey": "",
-        "player_id": "3988778"
-      },
-      {
-        "name": "Justin Kirkland",
-        "position": "Centers",
-        "jersey": "",
-        "player_id": "3149659"
-      },
-      {
-        "name": "Michael McCarron",
-        "position": "Centers",
-        "jersey": "47",
-        "player_id": "3042048"
-      },
-      {
-        "name": "Mason Shaw",
-        "position": "Centers",
-        "jersey": "",
-        "player_id": "4392879"
-      },
-      {
-        "name": "Nico Sturm",
-        "position": "Centers",
-        "jersey": "78",
-        "player_id": "4320625"
-      },
-      {
-        "name": "Yakov Trenin",
-        "position": "Centers",
-        "jersey": "13",
-        "player_id": "3904188"
-      },
-      {
-        "name": "Matt Boldy",
-        "position": "Left Wings",
-        "jersey": "12",
-        "player_id": "4565233"
-      },
-      {
-        "name": "Blake Coleman",
-        "position": "Left Wings",
-        "jersey": "20",
-        "player_id": "2563026"
-      },
-      {
-        "name": "Marcus Foligno",
-        "position": "Left Wings",
-        "jersey": "17",
-        "player_id": "5172"
-      },
-      {
-        "name": "Nick Foligno",
-        "position": "Left Wings",
-        "jersey": "71",
-        "player_id": "3535"
-      },
-      {
-        "name": "Marcus Johansson",
-        "position": "Left Wings",
-        "jersey": "90",
-        "player_id": "5714"
-      },
-      {
-        "name": "Jagger Joshua",
-        "position": "Left Wings",
-        "jersey": "",
-        "player_id": "5172803"
-      },
-      {
-        "name": "Kirill Kaprizov",
-        "position": "Left Wings",
-        "jersey": "97",
-        "player_id": "3942335"
-      },
-      {
-        "name": "Nicolas Aube-Kubel",
-        "position": "Right Wings",
-        "jersey": "16",
-        "player_id": "3115014"
-      },
-      {
-        "name": "Bobby Brink",
-        "position": "Right Wings",
-        "jersey": "10",
-        "player_id": "4565257"
-      },
-      {
-        "name": "Ryan Hartman",
-        "position": "Right Wings",
-        "jersey": "38",
-        "player_id": "3042063"
-      },
-      {
-        "name": "Maxim Shabanov",
-        "position": "Right Wings",
-        "jersey": "49",
-        "player_id": "5302535"
-      },
-      {
-        "name": "Vladimir Tarasenko",
-        "position": "Right Wings",
-        "jersey": "91",
-        "player_id": "5837"
-      },
-      {
-        "name": "Danila Yurov",
-        "position": "Right Wings",
-        "jersey": "22",
-        "player_id": "5080172"
-      },
-      {
-        "name": "Zach Bogosian",
-        "position": "Defense",
-        "jersey": "24",
-        "player_id": "4002"
-      },
-      {
-        "name": "Jonas Brodin",
-        "position": "Defense",
-        "jersey": "25",
-        "player_id": "2562600"
-      },
-      {
-        "name": "Brock Faber",
-        "position": "Defense",
-        "jersey": "7",
-        "player_id": "4697449"
-      },
-      {
-        "name": "Viking Gustafsson Nyberg",
-        "position": "Defense",
-        "jersey": "6",
-        "player_id": "5275403"
-      },
-      {
-        "name": "Quinn Hughes",
-        "position": "Defense",
-        "jersey": "43",
-        "player_id": "4320548"
-      },
-      {
-        "name": "Daemon Hunt",
-        "position": "Defense",
-        "jersey": "48",
-        "player_id": "4697711"
-      },
-      {
-        "name": "Matt Kiersted",
-        "position": "Defense",
-        "jersey": "26",
-        "player_id": "4799741"
-      },
-      {
-        "name": "Carson Lambos",
-        "position": "Defense",
-        "jersey": "71",
-        "player_id": "4874743"
-      },
-      {
-        "name": "Olli Maatta",
-        "position": "Defense",
-        "jersey": "3",
-        "player_id": "2976850"
-      },
-      {
-        "name": "Jeff Petry",
-        "position": "Defense",
-        "jersey": "2",
-        "player_id": "5407"
-      },
-      {
-        "name": "Roman Schmidt",
-        "position": "Defense",
-        "jersey": "76",
-        "player_id": "4894629"
-      },
-      {
-        "name": "David Spacek",
-        "position": "Defense",
-        "jersey": "82",
-        "player_id": "5103533"
-      },
-      {
-        "name": "Jared Spurgeon",
-        "position": "Defense",
-        "jersey": "46",
-        "player_id": "5079"
-      },
-      {
-        "name": "Filip Gustavsson",
-        "position": "Goalies",
-        "jersey": "32",
-        "player_id": "4272674"
-      },
-      {
-        "name": "Riley Mercer",
-        "position": "Goalies",
-        "jersey": "37",
-        "player_id": "5279712"
-      },
-      {
-        "name": "Cal Petersen",
-        "position": "Goalies",
-        "jersey": "40",
-        "player_id": "3042182"
-      },
-      {
-        "name": "Calvin Pickard",
-        "position": "Goalies",
-        "jersey": "",
-        "player_id": "5524"
-      },
-      {
-        "name": "Jesper Wallstedt",
-        "position": "Goalies",
-        "jersey": "30",
-        "player_id": "4874737"
-      },
-      {
-        "name": "Chase Wutzke",
-        "position": "Goalies",
-        "jersey": "",
-        "player_id": "5310549"
-      }
-    ]
-  },
-  "MTL": {
-    "abbreviation": "MTL",
-    "name": "Montreal Canadiens",
-    "slug": "montreal-canadiens",
-    "team_id": "10",
-    "players": [
-      {
-        "name": "Owen Beck",
-        "position": "Centers",
-        "jersey": "62",
-        "player_id": "5080202"
-      },
-      {
-        "name": "Kirby Dach",
-        "position": "Centers",
-        "jersey": "77",
-        "player_id": "4565224"
-      },
-      {
-        "name": "Phillip Danault",
-        "position": "Centers",
-        "jersey": "24",
-        "player_id": "2562602"
-      },
-      {
-        "name": "Jared Davidson",
-        "position": "Centers",
-        "jersey": "49",
-        "player_id": "5173616"
-      },
-      {
-        "name": "Jake Evans",
-        "position": "Centers",
-        "jersey": "71",
-        "player_id": "4393049"
-      },
-      {
-        "name": "Oliver Kapanen",
-        "position": "Centers",
-        "jersey": "91",
-        "player_id": "4874943"
-      },
-      {
-        "name": "Alex Newhook",
-        "position": "Centers",
-        "jersey": "15",
-        "player_id": "4565237"
-      },
-      {
-        "name": "Nick Suzuki",
-        "position": "Centers",
-        "jersey": "14",
-        "player_id": "4233594"
-      },
-      {
-        "name": "Brett Berard",
-        "position": "Left Wings",
-        "jersey": "",
-        "player_id": "4697654"
-      },
-      {
-        "name": "Juraj Slafkovsky",
-        "position": "Left Wings",
-        "jersey": "20",
-        "player_id": "4915349"
-      },
-      {
-        "name": "Alexandre Texier",
-        "position": "Left Wings",
-        "jersey": "85",
-        "player_id": "4233880"
-      },
-      {
-        "name": "Florian Xhekaj",
-        "position": "Left Wings",
-        "jersey": "63",
-        "player_id": "5188457"
-      },
-      {
-        "name": "Josh Anderson",
-        "position": "Right Wings",
-        "jersey": "17",
-        "player_id": "3069687"
-      },
-      {
-        "name": "Alex Belzile",
-        "position": "Right Wings",
-        "jersey": "60",
-        "player_id": "3069294"
-      },
-      {
-        "name": "Zack Bolduc",
-        "position": "Right Wings",
-        "jersey": "76",
-        "player_id": "4874734"
-      },
-      {
-        "name": "Cole Caufield",
-        "position": "Right Wings",
-        "jersey": "13",
-        "player_id": "4565236"
-      },
-      {
-        "name": "Ivan Demidov",
-        "position": "Right Wings",
-        "jersey": "93",
-        "player_id": "5216860"
-      },
-      {
-        "name": "Patrik Laine",
-        "position": "Right Wings",
-        "jersey": "92",
-        "player_id": "4024820"
-      },
-      {
-        "name": "Sam Poulin",
-        "position": "Right Wings",
-        "jersey": "",
-        "player_id": "4565242"
-      },
-      {
-        "name": "Alexandre Carrier",
-        "position": "Defense",
-        "jersey": "45",
-        "player_id": "3942064"
-      },
-      {
-        "name": "Noah Dobson",
-        "position": "Defense",
-        "jersey": "53",
-        "player_id": "4352732"
-      },
-      {
-        "name": "Adam Engstrom",
-        "position": "Defense",
-        "jersey": "42",
-        "player_id": "5188450"
-      },
-      {
-        "name": "Kaiden Guhle",
-        "position": "Defense",
-        "jersey": "21",
-        "player_id": "4697399"
-      },
-      {
-        "name": "Lane Hutson",
-        "position": "Defense",
-        "jersey": "48",
-        "player_id": "5080230"
-      },
-      {
-        "name": "Mike Matheson",
-        "position": "Defense",
-        "jersey": "8",
-        "player_id": "2976851"
-      },
-      {
-        "name": "Owen Protz",
-        "position": "Defense",
-        "jersey": "68",
-        "player_id": "5344178"
-      },
-      {
-        "name": "David Reinbacher",
-        "position": "Defense",
-        "jersey": "64",
-        "player_id": "5149157"
-      },
-      {
-        "name": "Ethan Samson",
-        "position": "Defense",
-        "jersey": "",
-        "player_id": "5188404"
-      },
-      {
-        "name": "Jayden Struble",
-        "position": "Defense",
-        "jersey": "47",
-        "player_id": "4565269"
-      },
-      {
-        "name": "Maksymilian Szuber",
-        "position": "Defense",
-        "jersey": "55",
-        "player_id": "5103534"
-      },
-      {
-        "name": "Arber Xhekaj",
-        "position": "Defense",
-        "jersey": "72",
-        "player_id": "4893969"
-      },
-      {
-        "name": "Jakub Dobes",
-        "position": "Goalies",
-        "jersey": "75",
-        "player_id": "4697686"
-      },
-      {
-        "name": "Jacob Fowler",
-        "position": "Goalies",
-        "jersey": "32",
-        "player_id": "5188437"
-      },
-      {
-        "name": "Kaapo Kahkonen",
-        "position": "Goalies",
-        "jersey": "34",
-        "player_id": "3151341"
-      },
-      {
-        "name": "Sam Montembeault",
-        "position": "Goalies",
-        "jersey": "35",
-        "player_id": "3942714"
-      }
-    ]
-  },
-  "NSH": {
-    "abbreviation": "NSH",
-    "name": "Nashville Predators",
-    "slug": "nashville-predators",
-    "team_id": "27",
-    "players": [
-      {
-        "name": "Ross Colton",
-        "position": "Centers",
-        "jersey": "20",
-        "player_id": "4392471"
-      },
-      {
-        "name": "Jack Drury",
-        "position": "Centers",
-        "jersey": "",
-        "player_id": "4378671"
-      },
-      {
-        "name": "Adam Edstrom",
-        "position": "Centers",
-        "jersey": "84",
-        "player_id": "4894222"
-      },
-      {
-        "name": "Tyson Jost",
-        "position": "Centers",
-        "jersey": "17",
-        "player_id": "4024879"
-      },
-      {
-        "name": "Alexander Kerfoot",
-        "position": "Centers",
-        "jersey": "",
-        "player_id": "3069394"
-      },
-      {
-        "name": "Ryan O'Reilly",
-        "position": "Centers",
-        "jersey": "90",
-        "player_id": "5208"
-      },
-      {
-        "name": "Steven Stamkos",
-        "position": "Centers",
-        "jersey": "91",
-        "player_id": "5037"
-      },
-      {
-        "name": "Oasiz Wiesblatt",
-        "position": "Centers",
-        "jersey": "97",
-        "player_id": "5311224"
-      },
-      {
-        "name": "Ozzy Wiesblatt",
-        "position": "Centers",
-        "jersey": "89",
-        "player_id": "4697414"
-      },
-      {
-        "name": "Chase Bradley",
-        "position": "Left Wings",
-        "jersey": "38",
-        "player_id": "4697664"
-      },
-      {
-        "name": "Filip Forsberg",
-        "position": "Left Wings",
-        "jersey": "9",
-        "player_id": "2968772"
-      },
-      {
-        "name": "Nils Hoglander",
-        "position": "Left Wings",
-        "jersey": "21",
-        "player_id": "4565263"
-      },
-      {
-        "name": "Isaac Ratcliffe",
-        "position": "Left Wings",
-        "jersey": "76",
-        "player_id": "4233871"
-      },
-      {
-        "name": "Reid Schaefer",
-        "position": "Left Wings",
-        "jersey": "49",
-        "player_id": "5080180"
-      },
-      {
-        "name": "Luke Evangelista",
-        "position": "Right Wings",
-        "jersey": "77",
-        "player_id": "4697446"
-      },
-      {
-        "name": "Aiden Fink",
-        "position": "Right Wings",
-        "jersey": "18",
-        "player_id": "5188503"
-      },
-      {
-        "name": "Joakim Kemell",
-        "position": "Right Wings",
-        "jersey": "25",
-        "player_id": "5080161"
-      },
-      {
-        "name": "Ryker Lee",
-        "position": "Right Wings",
-        "jersey": "",
-        "player_id": "5291964"
-      },
-      {
-        "name": "Jonathan Marchessault",
-        "position": "Right Wings",
-        "jersey": "81",
-        "player_id": "2967072"
-      },
-      {
-        "name": "Cole O'Hara",
-        "position": "Right Wings",
-        "jersey": "65",
-        "player_id": "5104221"
-      },
-      {
-        "name": "Matthew Wood",
-        "position": "Right Wings",
-        "jersey": "71",
-        "player_id": "5149189"
-      },
-      {
-        "name": "Jack Ahcan",
-        "position": "Defense",
-        "jersey": "",
-        "player_id": "4316979"
-      },
-      {
-        "name": "Justin Barron",
-        "position": "Defense",
-        "jersey": "20",
-        "player_id": "4697408"
-      },
-      {
-        "name": "Kevin Gravel",
-        "position": "Defense",
-        "jersey": "5",
-        "player_id": "3025602"
-      },
-      {
-        "name": "Nicolas Hague",
-        "position": "Defense",
-        "jersey": "41",
-        "player_id": "4233870"
-      },
-      {
-        "name": "Roman Josi",
-        "position": "Defense",
-        "jersey": "59",
-        "player_id": "5436"
-      },
-      {
-        "name": "Ilya Lyubushkin",
-        "position": "Defense",
-        "jersey": "",
-        "player_id": "4342107"
-      },
-      {
-        "name": "Nick Perbix",
-        "position": "Defense",
-        "jersey": "48",
-        "player_id": "4419638"
-      },
-      {
-        "name": "Christoffer Sedoff",
-        "position": "Defense",
-        "jersey": "44",
-        "player_id": "5172810"
-      },
-      {
-        "name": "Hunter Skinner",
-        "position": "Defense",
-        "jersey": "",
-        "player_id": "4894345"
-      },
-      {
-        "name": "Brady Skjei",
-        "position": "Defense",
-        "jersey": "76",
-        "player_id": "2976856"
-      },
-      {
-        "name": "Ryan Ufko",
-        "position": "Defense",
-        "jersey": "85",
-        "player_id": "5188493"
-      },
-      {
-        "name": "Adam Wilsby",
-        "position": "Defense",
-        "jersey": "83",
-        "player_id": "4697765"
-      },
-      {
-        "name": "Justus Annunen",
-        "position": "Goalies",
-        "jersey": "29",
-        "player_id": "4393408"
-      },
-      {
-        "name": "Isak Posch",
-        "position": "Goalies",
-        "jersey": "35",
-        "player_id": "5206898"
-      },
-      {
-        "name": "Juuse Saros",
-        "position": "Goalies",
-        "jersey": "74",
-        "player_id": "3042109"
-      }
-    ]
-  },
-  "NJ": {
-    "abbreviation": "NJ",
-    "name": "New Jersey Devils",
-    "slug": "new-jersey-devils",
-    "team_id": "11",
-    "players": [
-      {
-        "name": "Nick Bjugstad",
-        "position": "Centers",
-        "jersey": "72",
-        "player_id": "5828"
-      },
-      {
-        "name": "Jesper Boqvist",
-        "position": "Centers",
-        "jersey": "",
-        "player_id": "4233872"
-      },
-      {
-        "name": "Cody Glass",
-        "position": "Centers",
-        "jersey": "12",
-        "player_id": "4233568"
-      },
-      {
-        "name": "Nico Hischier",
-        "position": "Centers",
-        "jersey": "13",
-        "player_id": "4233555"
-      },
-      {
-        "name": "Jack Hughes",
-        "position": "Centers",
-        "jersey": "86",
-        "player_id": "4565222"
-      },
-      {
-        "name": "Marc McLaughlin",
-        "position": "Centers",
-        "jersey": "21",
-        "player_id": "4755704"
-      },
-      {
-        "name": "Dawson Mercer",
-        "position": "Centers",
-        "jersey": "91",
-        "player_id": "4697401"
-      },
-      {
-        "name": "Xavier Parent",
-        "position": "Centers",
-        "jersey": "67",
-        "player_id": "5238077"
-      },
-      {
-        "name": "Evan Rodrigues",
-        "position": "Centers",
-        "jersey": "",
-        "player_id": "3648008"
-      },
-      {
-        "name": "Jesper Bratt",
-        "position": "Left Wings",
-        "jersey": "63",
-        "player_id": "4268771"
-      },
-      {
-        "name": "Evgenii Dadonov",
-        "position": "Left Wings",
-        "jersey": "33",
-        "player_id": "4969"
-      },
-      {
-        "name": "Riley Tufte",
-        "position": "Left Wings",
-        "jersey": "",
-        "player_id": "4024985"
-      },
-      {
-        "name": "Connor Brown",
-        "position": "Right Wings",
-        "jersey": "16",
-        "player_id": "3067951"
-      },
-      {
-        "name": "Arseny Gritsyuk",
-        "position": "Right Wings",
-        "jersey": "81",
-        "player_id": "4915855"
-      },
-      {
-        "name": "Anthony Mantha",
-        "position": "Right Wings",
-        "jersey": "",
-        "player_id": "3042037"
-      },
-      {
-        "name": "Timo Meier",
-        "position": "Right Wings",
-        "jersey": "28",
-        "player_id": "3899978"
-      },
-      {
-        "name": "Stefan Noesen",
-        "position": "Right Wings",
-        "jersey": "11",
-        "player_id": "2562623"
-      },
-      {
-        "name": "Declan Chisholm",
-        "position": "Defense",
-        "jersey": "",
-        "player_id": "4587929"
-      },
-      {
-        "name": "Brenden Dillon",
-        "position": "Defense",
-        "jersey": "5",
-        "player_id": "2554903"
-      },
-      {
-        "name": "Dougie Hamilton",
-        "position": "Defense",
-        "jersey": "7",
-        "player_id": "2562605"
-      },
-      {
-        "name": "Luke Hughes",
-        "position": "Defense",
-        "jersey": "43",
-        "player_id": "4874719"
-      },
-      {
-        "name": "Vladislav Kolyachonok",
-        "position": "Defense",
-        "jersey": "",
-        "player_id": "4565274"
-      },
-      {
-        "name": "Johnathan Kovacevic",
-        "position": "Defense",
-        "jersey": "8",
-        "player_id": "4587933"
-      },
-      {
-        "name": "Etienne Morin",
-        "position": "Defense",
-        "jersey": "",
-        "player_id": "5149235"
-      },
-      {
-        "name": "Brett Pesce",
-        "position": "Defense",
-        "jersey": "22",
-        "player_id": "3025535"
-      },
-      {
-        "name": "Jonas Siegenthaler",
-        "position": "Defense",
-        "jersey": "71",
-        "player_id": "3904190"
-      },
-      {
-        "name": "Topias Vilen",
-        "position": "Defense",
-        "jersey": "38",
-        "player_id": "5103595"
-      },
-      {
-        "name": "Jake Allen",
-        "position": "Goalies",
-        "jersey": "34",
-        "player_id": "5111"
-      },
-      {
-        "name": "Nico Daws",
-        "position": "Goalies",
-        "jersey": "50",
-        "player_id": "4697683"
-      },
-      {
-        "name": "David Rittich",
-        "position": "Goalies",
-        "jersey": "",
-        "player_id": "4063288"
-      }
-    ]
-  },
-  "NYI": {
-    "abbreviation": "NYI",
-    "name": "New York Islanders",
-    "slug": "new-york-islanders",
-    "team_id": "12",
-    "players": [
-      {
-        "name": "Mathew Barzal",
-        "position": "Centers",
-        "jersey": "13",
-        "player_id": "3899946"
-      },
-      {
-        "name": "Casey Cizikas",
-        "position": "Centers",
-        "jersey": "53",
-        "player_id": "5262"
-      },
-      {
-        "name": "Liam Foudy",
-        "position": "Centers",
-        "jersey": "43",
-        "player_id": "4352758"
-      },
-      {
-        "name": "Bo Horvat",
-        "position": "Centers",
-        "jersey": "14",
-        "player_id": "3042002"
-      },
-      {
-        "name": "Kyle MacLean",
-        "position": "Centers",
-        "jersey": "32",
-        "player_id": "4393199"
-      },
-      {
-        "name": "Jean-Gabriel Pageau",
-        "position": "Centers",
-        "jersey": "44",
-        "player_id": "2593131"
-      },
-      {
-        "name": "Kyle Palmieri",
-        "position": "Centers",
-        "jersey": "21",
-        "player_id": "5517"
-      },
-      {
-        "name": "Calum Ritchie",
-        "position": "Centers",
-        "jersey": "64",
-        "player_id": "5149210"
-      },
-      {
-        "name": "Brayden Schenn",
-        "position": "Centers",
-        "jersey": "10",
-        "player_id": "5219"
-      },
-      {
-        "name": "Anthony Duclair",
-        "position": "Left Wings",
-        "jersey": "11",
-        "player_id": "3042086"
-      },
-      {
-        "name": "Victor Eklund",
-        "position": "Left Wings",
-        "jersey": "73",
-        "player_id": "5291952"
-      },
-      {
-        "name": "Emil Heineman",
-        "position": "Left Wings",
-        "jersey": "51",
-        "player_id": "4697447"
-      },
-      {
-        "name": "Alex Jefferies",
-        "position": "Left Wings",
-        "jersey": "45",
-        "player_id": "4894268"
-      },
-      {
-        "name": "Matias Maccelli",
-        "position": "Left Wings",
-        "jersey": "",
-        "player_id": "4587580"
-      },
-      {
-        "name": "Ondrej Palat",
-        "position": "Left Wings",
-        "jersey": "81",
-        "player_id": "2590389"
-      },
-      {
-        "name": "Mitchell Chaffee",
-        "position": "Right Wings",
-        "jersey": "",
-        "player_id": "4419646"
-      },
-      {
-        "name": "Simon Holmstrom",
-        "position": "Right Wings",
-        "jersey": "92",
-        "player_id": "4565244"
-      },
-      {
-        "name": "Matt Luff",
-        "position": "Right Wings",
-        "jersey": "39",
-        "player_id": "4062234"
-      },
-      {
-        "name": "Ethan Bear",
-        "position": "Defense",
-        "jersey": "74",
-        "player_id": "3941966"
-      },
-      {
-        "name": "Adam Boqvist",
-        "position": "Defense",
-        "jersey": "34",
-        "player_id": "4352706"
-      },
-      {
-        "name": "Tony DeAngelo",
-        "position": "Defense",
-        "jersey": "77",
-        "player_id": "3114769"
-      },
-      {
-        "name": "Isaiah George",
-        "position": "Defense",
-        "jersey": "36",
-        "player_id": "5171570"
-      },
-      {
-        "name": "Matthew Kessel",
-        "position": "Defense",
-        "jersey": "",
-        "player_id": "4697719"
-      },
-      {
-        "name": "Scott Mayfield",
-        "position": "Defense",
-        "jersey": "24",
-        "player_id": "2563069"
-      },
-      {
-        "name": "Adam Pelech",
-        "position": "Defense",
-        "jersey": "3",
-        "player_id": "3069621"
-      },
-      {
-        "name": "Ryan Pulock",
-        "position": "Defense",
-        "jersey": "6",
-        "player_id": "3042019"
-      },
-      {
-        "name": "Alexander Romanov",
-        "position": "Defense",
-        "jersey": "28",
-        "player_id": "4587854"
-      },
-      {
-        "name": "Matthew Schaefer",
-        "position": "Defense",
-        "jersey": "48",
-        "player_id": "5291933"
-      },
-      {
-        "name": "Carson Soucy",
-        "position": "Defense",
-        "jersey": "4",
-        "player_id": "3042198"
-      },
-      {
-        "name": "Ilya Sorokin",
-        "position": "Goalies",
-        "jersey": "30",
-        "player_id": "3151981"
-      },
-      {
-        "name": "Vitek Vanecek",
-        "position": "Goalies",
-        "jersey": "",
-        "player_id": "3114996"
-      },
-      {
-        "name": "Semyon Varlamov",
-        "position": "Goalies",
-        "jersey": "40",
-        "player_id": "3759"
-      }
-    ]
-  },
-  "NYR": {
-    "abbreviation": "NYR",
-    "name": "New York Rangers",
-    "slug": "new-york-rangers",
-    "team_id": "13",
-    "players": [
-      {
-        "name": "Cole Beaudoin",
-        "position": "Centers",
-        "jersey": "",
-        "player_id": "5216892"
-      },
-      {
-        "name": "Noah Laba",
-        "position": "Centers",
-        "jersey": "42",
-        "player_id": "5188370"
-      },
-      {
-        "name": "Matt Rempe",
-        "position": "Centers",
-        "jersey": "73",
-        "player_id": "4697820"
-      },
-      {
-        "name": "Massimo Rizzo",
-        "position": "Centers",
-        "jersey": "",
-        "player_id": "4997017"
-      },
-      {
-        "name": "Joe Veleno",
-        "position": "Centers",
-        "jersey": "",
-        "player_id": "4352804"
-      },
-      {
-        "name": "Mika Zibanejad",
-        "position": "Centers",
-        "jersey": "93",
-        "player_id": "2562637"
-      },
-      {
-        "name": "Anton Blidh",
-        "position": "Left Wings",
-        "jersey": "25",
-        "player_id": "3042283"
-      },
-      {
-        "name": "Will Cuylle",
-        "position": "Left Wings",
-        "jersey": "50",
-        "player_id": "4697468"
-      },
-      {
-        "name": "Tye Kartye",
-        "position": "Left Wings",
-        "jersey": "24",
-        "player_id": "4588750"
-      },
-      {
-        "name": "Alexis Lafreniere",
-        "position": "Left Wings",
-        "jersey": "13",
-        "player_id": "4697382"
-      },
-      {
-        "name": "J.T. Miller",
-        "position": "Left Wings",
-        "jersey": "8",
-        "player_id": "2590852"
-      },
-      {
-        "name": "Adam Sykora",
-        "position": "Left Wings",
-        "jersey": "38",
-        "player_id": "5080232"
-      },
-      {
-        "name": "Oliver Bjorkstrand",
-        "position": "Right Wings",
-        "jersey": "",
-        "player_id": "3042095"
-      },
-      {
-        "name": "Jaroslav Chmelar",
-        "position": "Right Wings",
-        "jersey": "49",
-        "player_id": "5188348"
-      },
-      {
-        "name": "Pavel Dorofeyev",
-        "position": "Right Wings",
-        "jersey": "16",
-        "player_id": "4587588"
-      },
-      {
-        "name": "Gabe Perreault",
-        "position": "Right Wings",
-        "jersey": "94",
-        "player_id": "5149204"
-      },
-      {
-        "name": "Taylor Raddysh",
-        "position": "Right Wings",
-        "jersey": "14",
-        "player_id": "4063502"
-      },
-      {
-        "name": "Dennis Cholowski",
-        "position": "Defense",
-        "jersey": "44",
-        "player_id": "4024972"
-      },
-      {
-        "name": "Marc Del Gaizo",
-        "position": "Defense",
-        "jersey": "",
-        "player_id": "4419649"
-      },
-      {
-        "name": "Sean Durzi",
-        "position": "Defense",
-        "jersey": "",
-        "player_id": "4378683"
-      },
-      {
-        "name": "Drew Fortescue",
-        "position": "Defense",
-        "jersey": "45",
-        "player_id": "5188394"
-      },
-      {
-        "name": "Adam Fox",
-        "position": "Defense",
-        "jersey": "23",
-        "player_id": "4197146"
-      },
-      {
-        "name": "Vladislav Gavrikov",
-        "position": "Defense",
-        "jersey": "44",
-        "player_id": "3942292"
-      },
-      {
-        "name": "Vincent Iorio",
-        "position": "Defense",
-        "jersey": "6",
-        "player_id": "4874915"
-      },
-      {
-        "name": "Marcus Pettersson",
-        "position": "Defense",
-        "jersey": "",
-        "player_id": "3114995"
-      },
-      {
-        "name": "Matthew Robertson",
-        "position": "Defense",
-        "jersey": "29",
-        "player_id": "4565272"
-      },
-      {
-        "name": "Braden Schneider",
-        "position": "Defense",
-        "jersey": "4",
-        "player_id": "4697402"
-      },
-      {
-        "name": "William Trudeau",
-        "position": "Defense",
-        "jersey": "",
-        "player_id": "5103808"
-      },
-      {
-        "name": "Urho Vaakanainen",
-        "position": "Defense",
-        "jersey": "18",
-        "player_id": "4233619"
-      },
-      {
-        "name": "Dylan Garand",
-        "position": "Goalies",
-        "jersey": "33",
-        "player_id": "4697705"
-      },
-      {
-        "name": "Joonas Korpisalo",
-        "position": "Goalies",
-        "jersey": "",
-        "player_id": "3069266"
-      },
-      {
-        "name": "Spencer Martin",
-        "position": "Goalies",
-        "jersey": "41",
-        "player_id": "3042069"
-      },
-      {
-        "name": "Jonathan Quick",
-        "position": "Goalies",
-        "jersey": "32",
-        "player_id": "3634"
-      },
-      {
-        "name": "Igor Shesterkin",
-        "position": "Goalies",
-        "jersey": "31",
-        "player_id": "3151297"
-      }
-    ]
-  },
-  "OTT": {
-    "abbreviation": "OTT",
-    "name": "Ottawa Senators",
-    "slug": "ottawa-senators",
-    "team_id": "14",
-    "players": [
-      {
-        "name": "Nick Cousins",
-        "position": "Centers",
-        "jersey": "21",
-        "player_id": "2563027"
-      },
-      {
-        "name": "Dylan Cozens",
-        "position": "Centers",
-        "jersey": "24",
-        "player_id": "4565228"
-      },
-      {
-        "name": "Philippe Daoust",
-        "position": "Centers",
-        "jersey": "",
-        "player_id": "4697682"
-      },
-      {
-        "name": "Ridly Greig",
-        "position": "Centers",
-        "jersey": "71",
-        "player_id": "4697411"
-      },
-      {
-        "name": "Stephen Halliday",
-        "position": "Centers",
-        "jersey": "83",
-        "player_id": "5136706"
-      },
-      {
-        "name": "Shane Pinto",
-        "position": "Centers",
-        "jersey": "12",
-        "player_id": "4565255"
-      },
-      {
-        "name": "Tim Stutzle",
-        "position": "Centers",
-        "jersey": "18",
-        "player_id": "4697384"
-      },
-      {
-        "name": "Ryan Suzuki",
-        "position": "Centers",
-        "jersey": "",
-        "player_id": "4565249"
-      },
-      {
-        "name": "Philip Tomasino",
-        "position": "Centers",
-        "jersey": "",
-        "player_id": "4565245"
-      },
-      {
-        "name": "Sammy Blais",
-        "position": "Left Wings",
-        "jersey": "",
-        "player_id": "3149697"
-      },
-      {
-        "name": "Andre Burakovsky",
-        "position": "Left Wings",
-        "jersey": "",
-        "player_id": "3042044"
-      },
-      {
-        "name": "William Eklund",
-        "position": "Left Wings",
-        "jersey": "72",
-        "player_id": "4874721"
-      },
-      {
-        "name": "Warren Foegele",
-        "position": "Left Wings",
-        "jersey": "37",
-        "player_id": "3151036"
-      },
-      {
-        "name": "Kurtis MacDermid",
-        "position": "Left Wings",
-        "jersey": "23",
-        "player_id": "2992930"
-      },
-      {
-        "name": "Fabian Zetterlund",
-        "position": "Left Wings",
-        "jersey": "20",
-        "player_id": "4587837"
-      },
-      {
-        "name": "Michael Amadio",
-        "position": "Right Wings",
-        "jersey": "22",
-        "player_id": "3149829"
-      },
-      {
-        "name": "Drake Batherson",
-        "position": "Right Wings",
-        "jersey": "19",
-        "player_id": "4271734"
-      },
-      {
-        "name": "Tyler Boucher",
-        "position": "Right Wings",
-        "jersey": "54",
-        "player_id": "4874724"
-      },
-      {
-        "name": "Xavier Bourgault",
-        "position": "Right Wings",
-        "jersey": "53",
-        "player_id": "4874739"
-      },
-      {
-        "name": "Graeme Clarke",
-        "position": "Right Wings",
-        "jersey": "49",
-        "player_id": "4587944"
-      },
-      {
-        "name": "Claude Giroux",
-        "position": "Right Wings",
-        "jersey": "28",
-        "player_id": "3775"
-      },
-      {
-        "name": "Hayden Hodgson",
-        "position": "Right Wings",
-        "jersey": "42",
-        "player_id": "3150479"
-      },
-      {
-        "name": "Arthur Kaliyev",
-        "position": "Right Wings",
-        "jersey": "34",
-        "player_id": "4565256"
-      },
-      {
-        "name": "Olle Lycksell",
-        "position": "Right Wings",
-        "jersey": "15",
-        "player_id": "4587805"
-      },
-      {
-        "name": "Oskar Pettersson",
-        "position": "Right Wings",
-        "jersey": "63",
-        "player_id": "5188471"
-      },
-      {
-        "name": "Thomas Chabot",
-        "position": "Defense",
-        "jersey": "72",
-        "player_id": "3900219"
-      },
-      {
-        "name": "Cameron Crotty",
-        "position": "Defense",
-        "jersey": "5",
-        "player_id": "4587571"
-      },
-      {
-        "name": "Tyler Kleven",
-        "position": "Defense",
-        "jersey": "43",
-        "player_id": "4697448"
-      },
-      {
-        "name": "Christian Kyrou",
-        "position": "Defense",
-        "jersey": "",
-        "player_id": "5080218"
-      },
-      {
-        "name": "Nikolas Matinpalo",
-        "position": "Defense",
-        "jersey": "33",
-        "player_id": "5174232"
-      },
-      {
-        "name": "Jake Sanderson",
-        "position": "Defense",
-        "jersey": "85",
-        "player_id": "4697386"
-      },
-      {
-        "name": "Jordan Spence",
-        "position": "Defense",
-        "jersey": "10",
-        "player_id": "4588190"
-      },
-      {
-        "name": "Lassi Thomson",
-        "position": "Defense",
-        "jersey": "60",
-        "player_id": "4565240"
-      },
-      {
-        "name": "Carter Yakemchuk",
-        "position": "Defense",
-        "jersey": "58",
-        "player_id": "5216868"
-      },
-      {
-        "name": "Artem Zub",
-        "position": "Defense",
-        "jersey": "2",
-        "player_id": "4712021"
-      },
-      {
-        "name": "Samuel Ersson",
-        "position": "Goalies",
-        "jersey": "",
-        "player_id": "4587815"
-      },
-      {
-        "name": "Leevi Merilainen",
-        "position": "Goalies",
-        "jersey": "1",
-        "player_id": "4894703"
-      },
-      {
-        "name": "James Reimer",
-        "position": "Goalies",
-        "jersey": "47",
-        "player_id": "3870"
-      },
-      {
-        "name": "Linus Ullmark",
-        "position": "Goalies",
-        "jersey": "35",
-        "player_id": "3069285"
-      }
-    ]
-  },
-  "PHI": {
-    "abbreviation": "PHI",
-    "name": "Philadelphia Flyers",
-    "slug": "philadelphia-flyers",
-    "team_id": "15",
-    "players": [
-      {
-        "name": "Noel Acciari",
-        "position": "Centers",
-        "jersey": "",
-        "player_id": "3096237"
-      },
-      {
-        "name": "Denver Barkey",
-        "position": "Centers",
-        "jersey": "52",
-        "player_id": "5173105"
-      },
-      {
-        "name": "Sean Couturier",
-        "position": "Centers",
-        "jersey": "14",
-        "player_id": "2562601"
-      },
-      {
-        "name": "Christian Dvorak",
-        "position": "Centers",
-        "jersey": "22",
-        "player_id": "3115035"
-      },
-      {
-        "name": "Jacob Gaucher",
-        "position": "Centers",
-        "jersey": "78",
-        "player_id": "5104158"
-      },
-      {
-        "name": "Luke Glendening",
-        "position": "Centers",
-        "jersey": "41",
-        "player_id": "2335062"
-      },
-      {
-        "name": "Jett Luchanko",
-        "position": "Centers",
-        "jersey": "17",
-        "player_id": "5216881"
-      },
-      {
-        "name": "Anthony Richard",
-        "position": "Centers",
-        "jersey": "90",
-        "player_id": "3942058"
-      },
-      {
-        "name": "Trevor Zegras",
-        "position": "Centers",
-        "jersey": "46",
-        "player_id": "4565230"
-      },
-      {
-        "name": "Alex Bump",
-        "position": "Left Wings",
-        "jersey": "20",
-        "player_id": "5188356"
-      },
-      {
-        "name": "Noah Cates",
-        "position": "Left Wings",
-        "jersey": "27",
-        "player_id": "4419682"
-      },
-      {
-        "name": "Oscar Eklind",
-        "position": "Left Wings",
-        "jersey": "43",
-        "player_id": "5229135"
-      },
-      {
-        "name": "Garrett Wilson",
-        "position": "Left Wings",
-        "jersey": "10",
-        "player_id": "5337"
-      },
-      {
-        "name": "Tyson Foerster",
-        "position": "Right Wings",
-        "jersey": "71",
-        "player_id": "4697406"
-      },
-      {
-        "name": "Nikita Grebenkin",
-        "position": "Right Wings",
-        "jersey": "29",
-        "player_id": "5188490"
-      },
-      {
-        "name": "Carl Grundstrom",
-        "position": "Right Wings",
-        "jersey": "91",
-        "player_id": "4271565"
-      },
-      {
-        "name": "Danila Klimovich",
-        "position": "Right Wings",
-        "jersey": "",
-        "player_id": "4874883"
-      },
-      {
-        "name": "Travis Konecny",
-        "position": "Right Wings",
-        "jersey": "11",
-        "player_id": "3900169"
-      },
-      {
-        "name": "Porter Martone",
-        "position": "Right Wings",
-        "jersey": "94",
-        "player_id": "5291941"
-      },
-      {
-        "name": "Matvei Michkov",
-        "position": "Right Wings",
-        "jersey": "39",
-        "player_id": "5149170"
-      },
-      {
-        "name": "Owen Tippett",
-        "position": "Right Wings",
-        "jersey": "74",
-        "player_id": "4392072"
-      },
-      {
-        "name": "Simon Benoit",
-        "position": "Defense",
-        "jersey": "",
-        "player_id": "4392642"
-      },
-      {
-        "name": "Oliver Bonk",
-        "position": "Defense",
-        "jersey": "59",
-        "player_id": "5149199"
-      },
-      {
-        "name": "Jamie Drysdale",
-        "position": "Defense",
-        "jersey": "9",
-        "player_id": "4697387"
-      },
-      {
-        "name": "Helge Grans",
-        "position": "Defense",
-        "jersey": "3",
-        "player_id": "4697440"
-      },
-      {
-        "name": "David Jiricek",
-        "position": "Defense",
-        "jersey": "5",
-        "player_id": "5080147"
-      },
-      {
-        "name": "Hunter McDonald",
-        "position": "Defense",
-        "jersey": "75",
-        "player_id": "5103725"
-      },
-      {
-        "name": "Rasmus Ristolainen",
-        "position": "Defense",
-        "jersey": "55",
-        "player_id": "3041999"
-      },
-      {
-        "name": "Travis Sanheim",
-        "position": "Defense",
-        "jersey": "6",
-        "player_id": "3114757"
-      },
-      {
-        "name": "Nick Seeler",
-        "position": "Defense",
-        "jersey": "24",
-        "player_id": "2564164"
-      },
-      {
-        "name": "Cam York",
-        "position": "Defense",
-        "jersey": "8",
-        "player_id": "4565235"
-      },
-      {
-        "name": "Carson Bjarnason",
-        "position": "Goalies",
-        "jersey": "64",
-        "player_id": "5149238"
-      },
-      {
-        "name": "Aleksei Kolosov",
-        "position": "Goalies",
-        "jersey": "35",
-        "player_id": "5188331"
-      },
-      {
-        "name": "Dan Vladar",
-        "position": "Goalies",
-        "jersey": "80",
-        "player_id": "3942459"
-      },
-      {
-        "name": "Joseph Woll",
-        "position": "Goalies",
-        "jersey": "",
-        "player_id": "4271575"
-      }
-    ]
-  },
-  "PIT": {
-    "abbreviation": "PIT",
-    "name": "Pittsburgh Penguins",
-    "slug": "pittsburgh-penguins",
-    "team_id": "16",
-    "players": [
-      {
-        "name": "Sidney Crosby",
-        "position": "Centers",
-        "jersey": "87",
-        "player_id": "3114"
-      },
-      {
-        "name": "Connor Dewar",
-        "position": "Centers",
-        "jersey": "19",
-        "player_id": "4588004"
-      },
-      {
-        "name": "David Gustafsson",
-        "position": "Centers",
-        "jersey": "41",
-        "player_id": "4378695"
-      },
-      {
-        "name": "Filip Hallander",
-        "position": "Centers",
-        "jersey": "11",
-        "player_id": "4588331"
-      },
-      {
-        "name": "Ben Kindel",
-        "position": "Centers",
-        "jersey": "81",
-        "player_id": "5291947"
-      },
-      {
-        "name": "Hendrix Lapierre",
-        "position": "Centers",
-        "jersey": "",
-        "player_id": "4697405"
-      },
-      {
-        "name": "Blake Lizotte",
-        "position": "Centers",
-        "jersey": "46",
-        "player_id": "4316983"
-      },
-      {
-        "name": "Evgeni Malkin",
-        "position": "Centers",
-        "jersey": "71",
-        "player_id": "3124"
-      },
-      {
-        "name": "Tommy Novak",
-        "position": "Centers",
-        "jersey": "18",
-        "player_id": "3942061"
-      },
-      {
-        "name": "Rafael Harvey-Pinard",
-        "position": "Left Wings",
-        "jersey": "48",
-        "player_id": "4391250"
-      },
-      {
-        "name": "Joona Koppanen",
-        "position": "Left Wings",
-        "jersey": "15",
-        "player_id": "4268746"
-      },
-      {
-        "name": "Andrei Kuzmenko",
-        "position": "Left Wings",
-        "jersey": "",
-        "player_id": "5077308"
-      },
-      {
-        "name": "Oliver Okuliar",
-        "position": "Left Wings",
-        "jersey": "",
-        "player_id": "5209662"
-      },
-      {
-        "name": "Nicholas Robertson",
-        "position": "Left Wings",
-        "jersey": "",
-        "player_id": "4565275"
-      },
-      {
-        "name": "Elmer Soderblom",
-        "position": "Left Wings",
-        "jersey": "25",
-        "player_id": "5075840"
-      },
-      {
-        "name": "Justin Brazeau",
-        "position": "Right Wings",
-        "jersey": "16",
-        "player_id": "4063605"
-      },
-      {
-        "name": "Egor Chinakhov",
-        "position": "Right Wings",
-        "jersey": "59",
-        "player_id": "4697404"
-      },
-      {
-        "name": "Avery Hayes",
-        "position": "Right Wings",
-        "jersey": "85",
-        "player_id": "5172806"
-      },
-      {
-        "name": "Kevin Hayes",
-        "position": "Right Wings",
-        "jersey": "13",
-        "player_id": "5767"
-      },
-      {
-        "name": "Ville Koivunen",
-        "position": "Right Wings",
-        "jersey": "41",
-        "player_id": "4874911"
-      },
-      {
-        "name": "Rutger McGroarty",
-        "position": "Right Wings",
-        "jersey": "2",
-        "player_id": "5080158"
-      },
-      {
-        "name": "Rickard Rakell",
-        "position": "Right Wings",
-        "jersey": "67",
-        "player_id": "2562629"
-      },
-      {
-        "name": "Bryan Rust",
-        "position": "Right Wings",
-        "jersey": "17",
-        "player_id": "2591155"
-      },
-      {
-        "name": "Declan Carlile",
-        "position": "Defense",
-        "jersey": "",
-        "player_id": "5103825"
-      },
-      {
-        "name": "Samuel Girard",
-        "position": "Defense",
-        "jersey": "49",
-        "player_id": "4063401"
-      },
-      {
-        "name": "Ryan Graves",
-        "position": "Defense",
-        "jersey": "27",
-        "player_id": "3042122"
-      },
-      {
-        "name": "Caleb Jones",
-        "position": "Defense",
-        "jersey": "82",
-        "player_id": "3941970"
-      },
-      {
-        "name": "Erik Karlsson",
-        "position": "Defense",
-        "jersey": "65",
-        "player_id": "5164"
-      },
-      {
-        "name": "Kaedan Korczak",
-        "position": "Defense",
-        "jersey": "",
-        "player_id": "4565264"
-      },
-      {
-        "name": "Kris Letang",
-        "position": "Defense",
-        "jersey": "58",
-        "player_id": "3539"
-      },
-      {
-        "name": "Jake Livanavage",
-        "position": "Defense",
-        "jersey": "57",
-        "player_id": "5206630"
-      },
-      {
-        "name": "Ilya Solovyov",
-        "position": "Defense",
-        "jersey": "7",
-        "player_id": "4697784"
-      },
-      {
-        "name": "Trevor van Riemsdyk",
-        "position": "Defense",
-        "jersey": "",
-        "player_id": "3025524"
-      },
-      {
-        "name": "Taylor Gauthier",
-        "position": "Goalies",
-        "jersey": "33",
-        "player_id": "5122230"
-      },
-      {
-        "name": "Arturs Silovs",
-        "position": "Goalies",
-        "jersey": "37",
-        "player_id": "4576894"
-      }
-    ]
-  },
-  "SJ": {
-    "abbreviation": "SJ",
-    "name": "San Jose Sharks",
-    "slug": "san-jose-sharks",
-    "team_id": "18",
-    "players": [
-      {
-        "name": "Macklin Celebrini",
-        "position": "Centers",
-        "jersey": "71",
-        "player_id": "5206628"
-      },
-      {
-        "name": "Ty Dellandrea",
-        "position": "Centers",
-        "jersey": "10",
-        "player_id": "4352747"
-      },
-      {
-        "name": "Andre Gasseau",
-        "position": "Centers",
-        "jersey": "",
-        "player_id": "5104226"
-      },
-      {
-        "name": "Barclay Goodrow",
-        "position": "Centers",
-        "jersey": "23",
-        "player_id": "3069411"
-      },
-      {
-        "name": "Philipp Kurashev",
-        "position": "Centers",
-        "jersey": "96",
-        "player_id": "4392541"
-      },
-      {
-        "name": "Michael Misa",
-        "position": "Centers",
-        "jersey": "77",
-        "player_id": "5291934"
-      },
-      {
-        "name": "Zack Ostapchuk",
-        "position": "Centers",
-        "jersey": "63",
-        "player_id": "4874881"
-      },
-      {
-        "name": "Will Smith",
-        "position": "Centers",
-        "jersey": "2",
-        "player_id": "5149155"
-      },
-      {
-        "name": "Tyler Toffoli",
-        "position": "Centers",
-        "jersey": "73",
-        "player_id": "5550"
-      },
-      {
-        "name": "Alexander Wennberg",
-        "position": "Centers",
-        "jersey": "21",
-        "player_id": "3042017"
-      },
-      {
-        "name": "Mason Marchment",
-        "position": "Left Wings",
-        "jersey": "",
-        "player_id": "4272192"
-      },
-      {
-        "name": "Pavol Regenda",
-        "position": "Left Wings",
-        "jersey": "84",
-        "player_id": "4915348"
-      },
-      {
-        "name": "Kiefer Sherwood",
-        "position": "Left Wings",
-        "jersey": "44",
-        "player_id": "4391255"
-      },
-      {
-        "name": "Ethan Cardwell",
-        "position": "Right Wings",
-        "jersey": "56",
-        "player_id": "5142131"
-      },
-      {
-        "name": "Adam Gaudette",
-        "position": "Right Wings",
-        "jersey": "81",
-        "player_id": "3942868"
-      },
-      {
-        "name": "Collin Graf",
-        "position": "Right Wings",
-        "jersey": "51",
-        "player_id": "5136607"
-      },
-      {
-        "name": "Brett Leason",
-        "position": "Right Wings",
-        "jersey": "20",
-        "player_id": "4565278"
-      },
-      {
-        "name": "Ryan Reaves",
-        "position": "Right Wings",
-        "jersey": "75",
-        "player_id": "3683"
-      },
-      {
-        "name": "Nolan Allan",
-        "position": "Defense",
-        "jersey": "7",
-        "player_id": "4874749"
-      },
-      {
-        "name": "Sam Dickinson",
-        "position": "Defense",
-        "jersey": "6",
-        "player_id": "5216880"
-      },
-      {
-        "name": "Michael Kesselring",
-        "position": "Defense",
-        "jersey": "8",
-        "player_id": "4331604"
-      },
-      {
-        "name": "John Klingberg",
-        "position": "Defense",
-        "jersey": "3",
-        "player_id": "2590751"
-      },
-      {
-        "name": "Nick Leddy",
-        "position": "Defense",
-        "jersey": "4",
-        "player_id": "5447"
-      },
-      {
-        "name": "Darnell Nurse",
-        "position": "Defense",
-        "jersey": "25",
-        "player_id": "3041997"
-      },
-      {
-        "name": "Dmitry Orlov",
-        "position": "Defense",
-        "jersey": "9",
-        "player_id": "5646"
-      },
-      {
-        "name": "Jacob Trouba",
-        "position": "Defense",
-        "jersey": "",
-        "player_id": "2976839"
-      },
-      {
-        "name": "Yaroslav Askarov",
-        "position": "Goalies",
-        "jersey": "30",
-        "player_id": "4697394"
-      },
-      {
-        "name": "Eric Comrie",
-        "position": "Goalies",
-        "jersey": "",
-        "player_id": "3042057"
-      },
-      {
-        "name": "Kyle Keyser",
-        "position": "Goalies",
-        "jersey": "85",
-        "player_id": "4329962"
-      },
-      {
-        "name": "Alex Nedeljkovic",
-        "position": "Goalies",
-        "jersey": "33",
-        "player_id": "3114994"
-      }
-    ]
-  },
-  "SEA": {
-    "abbreviation": "SEA",
-    "name": "Seattle Kraken",
-    "slug": "seattle-kraken",
-    "team_id": "124292",
-    "players": [
-      {
-        "name": "Matty Beniers",
-        "position": "Centers",
-        "jersey": "10",
-        "player_id": "4781552"
-      },
-      {
-        "name": "Berkly Catton",
-        "position": "Centers",
-        "jersey": "27",
-        "player_id": "5216877"
-      },
-      {
-        "name": "Curtis Douglas",
-        "position": "Centers",
-        "jersey": "",
-        "player_id": "4331586"
-      },
-      {
-        "name": "Oscar Fisker Molgaard",
-        "position": "Centers",
-        "jersey": "78",
-        "player_id": "5149239"
-      },
-      {
-        "name": "Frederick Gaudreau",
-        "position": "Centers",
-        "jersey": "89",
-        "player_id": "3149649"
-      },
-      {
-        "name": "Bobby McMann",
-        "position": "Centers",
-        "jersey": "74",
-        "player_id": "5048894"
-      },
-      {
-        "name": "Ben Meyers",
-        "position": "Centers",
-        "jersey": "59",
-        "player_id": "4755729"
-      },
-      {
-        "name": "Logan Morrison",
-        "position": "Centers",
-        "jersey": "96",
-        "player_id": "4894822"
-      },
-      {
-        "name": "Chandler Stephenson",
-        "position": "Centers",
-        "jersey": "9",
-        "player_id": "3067858"
-      },
-      {
-        "name": "Ryan Winterton",
-        "position": "Centers",
-        "jersey": "26",
-        "player_id": "4894928"
-      },
-      {
-        "name": "Shane Wright",
-        "position": "Centers",
-        "jersey": "51",
-        "player_id": "5080144"
-      },
-      {
-        "name": "Jared McCann",
-        "position": "Left Wings",
-        "jersey": "19",
-        "player_id": "3114777"
-      },
-      {
-        "name": "Jordan Eberle",
-        "position": "Right Wings",
-        "jersey": "7",
-        "player_id": "5032"
-      },
-      {
-        "name": "Kaapo Kakko",
-        "position": "Right Wings",
-        "jersey": "84",
-        "player_id": "4565223"
-      },
-      {
-        "name": "Jacob Melanson",
-        "position": "Right Wings",
-        "jersey": "63",
-        "player_id": "4894747"
-      },
-      {
-        "name": "Jani Nyman",
-        "position": "Right Wings",
-        "jersey": "38",
-        "player_id": "5080217"
-      },
-      {
-        "name": "Mackie Samoskevich",
-        "position": "Right Wings",
-        "jersey": "11",
-        "player_id": "4874741"
-      },
-      {
-        "name": "Eeli Tolvanen",
-        "position": "Right Wings",
-        "jersey": "20",
-        "player_id": "4233720"
-      },
-      {
-        "name": "Vince Dunn",
-        "position": "Defense",
-        "jersey": "29",
-        "player_id": "3904189"
-      },
-      {
-        "name": "Ryker Evans",
-        "position": "Defense",
-        "jersey": "41",
-        "player_id": "4874864"
-      },
-      {
-        "name": "Cale Fleury",
-        "position": "Defense",
-        "jersey": "8",
-        "player_id": "4393055"
-      },
-      {
-        "name": "Adam Larsson",
-        "position": "Defense",
-        "jersey": "6",
-        "player_id": "2562610"
-      },
-      {
-        "name": "Ryan Lindgren",
-        "position": "Defense",
-        "jersey": "55",
-        "player_id": "4271998"
-      },
-      {
-        "name": "Joshua Mahura",
-        "position": "Defense",
-        "jersey": "28",
-        "player_id": "4063504"
-      },
-      {
-        "name": "Brandon Montour",
-        "position": "Defense",
-        "jersey": "62",
-        "player_id": "3115032"
-      },
-      {
-        "name": "Joey Daccord",
-        "position": "Goalies",
-        "jersey": "35",
-        "player_id": "3942073"
-      },
-      {
-        "name": "Philipp Grubauer",
-        "position": "Goalies",
-        "jersey": "31",
-        "player_id": "5657"
-      },
-      {
-        "name": "Nikke Kokko",
-        "position": "Goalies",
-        "jersey": "39",
-        "player_id": "5080225"
-      },
-      {
-        "name": "Matt Murray",
-        "position": "Goalies",
-        "jersey": "30",
-        "player_id": "3067862"
-      },
-      {
-        "name": "Victor Ostman",
-        "position": "Goalies",
-        "jersey": "1",
-        "player_id": "5206691"
-      }
-    ]
-  },
-  "STL": {
-    "abbreviation": "STL",
-    "name": "St. Louis Blues",
-    "slug": "st-louis-blues",
-    "team_id": "19",
-    "players": [
-      {
-        "name": "Dillon Dube",
-        "position": "Centers",
-        "jersey": "",
-        "player_id": "4063268"
-      },
-      {
-        "name": "Jack Finley",
-        "position": "Centers",
-        "jersey": "37",
-        "player_id": "4697460"
-      },
-      {
-        "name": "Connor McMichael",
-        "position": "Centers",
-        "jersey": "24",
-        "player_id": "4565246"
-      },
-      {
-        "name": "Mason McTavish",
-        "position": "Centers",
-        "jersey": "23",
-        "player_id": "4874718"
-      },
-      {
-        "name": "Dylan Peterson",
-        "position": "Centers",
-        "jersey": "39",
-        "player_id": "4781712"
-      },
-      {
-        "name": "Oskar Sundqvist",
-        "position": "Centers",
-        "jersey": "70",
-        "player_id": "3069277"
-      },
-      {
-        "name": "Pius Suter",
-        "position": "Centers",
-        "jersey": "22",
-        "player_id": "4271732"
-      },
-      {
-        "name": "Robert Thomas",
-        "position": "Centers",
-        "jersey": "18",
-        "player_id": "4233637"
-      },
-      {
-        "name": "Pavel Buchnevich",
-        "position": "Left Wings",
-        "jersey": "89",
-        "player_id": "3042081"
-      },
-      {
-        "name": "Dylan Holloway",
-        "position": "Left Wings",
-        "jersey": "81",
-        "player_id": "4697397"
-      },
-      {
-        "name": "Ross Johnston",
-        "position": "Left Wings",
-        "jersey": "",
-        "player_id": "3067822"
-      },
-      {
-        "name": "Jake Neighbours",
-        "position": "Left Wings",
-        "jersey": "63",
-        "player_id": "4697409"
-      },
-      {
-        "name": "Nathan Walker",
-        "position": "Left Wings",
-        "jersey": "26",
-        "player_id": "3067860"
-      },
-      {
-        "name": "Jonatan Berggren",
-        "position": "Right Wings",
-        "jersey": "29",
-        "player_id": "4378660"
-      },
-      {
-        "name": "Dalibor Dvorsky",
-        "position": "Right Wings",
-        "jersey": "54",
-        "player_id": "5149178"
-      },
-      {
-        "name": "Julien Gauthier",
-        "position": "Right Wings",
-        "jersey": "26",
-        "player_id": "4024975"
-      },
-      {
-        "name": "Hugh McGing",
-        "position": "Right Wings",
-        "jersey": "56",
-        "player_id": "4392880"
-      },
-      {
-        "name": "Jimmy Snuggerud",
-        "position": "Right Wings",
-        "jersey": "21",
-        "player_id": "5080171"
-      },
-      {
-        "name": "Alexey Toropchenko",
-        "position": "Right Wings",
-        "jersey": "13",
-        "player_id": "4392454"
-      },
-      {
-        "name": "Philip Broberg",
-        "position": "Defense",
-        "jersey": "6",
-        "player_id": "4565229"
-      },
-      {
-        "name": "Brandon Carlo",
-        "position": "Defense",
-        "jersey": "25",
-        "player_id": "3904175"
-      },
-      {
-        "name": "Cam Fowler",
-        "position": "Defense",
-        "jersey": "17",
-        "player_id": "5495"
-      },
-      {
-        "name": "Logan Mailloux",
-        "position": "Defense",
-        "jersey": "23",
-        "player_id": "4874748"
-      },
-      {
-        "name": "Colton Parayko",
-        "position": "Defense",
-        "jersey": "55",
-        "player_id": "3069341"
-      },
-      {
-        "name": "Calle Rosen",
-        "position": "Defense",
-        "jersey": "43",
-        "player_id": "4220707"
-      },
-      {
-        "name": "Tyler Tucker",
-        "position": "Defense",
-        "jersey": "75",
-        "player_id": "4587904"
-      },
-      {
-        "name": "Jordan Binnington",
-        "position": "Goalies",
-        "jersey": "50",
-        "player_id": "2590874"
-      },
-      {
-        "name": "Joel Hofer",
-        "position": "Goalies",
-        "jersey": "30",
-        "player_id": "4587909"
-      },
-      {
-        "name": "Georgi Romanov",
-        "position": "Goalies",
-        "jersey": "",
-        "player_id": "5144058"
-      }
-    ]
-  },
-  "TB": {
-    "abbreviation": "TB",
-    "name": "Tampa Bay Lightning",
-    "slug": "tampa-bay-lightning",
-    "team_id": "20",
-    "players": [
-      {
-        "name": "Nick Abruzzese",
-        "position": "Centers",
-        "jersey": "26",
-        "player_id": "4588746"
-      },
-      {
-        "name": "Anthony Cirelli",
-        "position": "Centers",
-        "jersey": "71",
-        "player_id": "3941973"
-      },
-      {
-        "name": "Conor Geekie",
-        "position": "Centers",
-        "jersey": "14",
-        "player_id": "5080155"
-      },
-      {
-        "name": "Zemgus Girgensons",
-        "position": "Centers",
-        "jersey": "28",
-        "player_id": "2968829"
-      },
-      {
-        "name": "Gage Goncalves",
-        "position": "Centers",
-        "jersey": "93",
-        "player_id": "4697470"
-      },
-      {
-        "name": "Yanni Gourde",
-        "position": "Centers",
-        "jersey": "37",
-        "player_id": "3094261"
-      },
-      {
-        "name": "Jake Guentzel",
-        "position": "Centers",
-        "jersey": "59",
-        "player_id": "3042083"
-      },
-      {
-        "name": "Jansen Harkins",
-        "position": "Centers",
-        "jersey": "",
-        "player_id": "3900154"
-      },
-      {
-        "name": "Dominic James",
-        "position": "Centers",
-        "jersey": "17",
-        "player_id": "4997033"
-      },
-      {
-        "name": "Brayden Point",
-        "position": "Centers",
-        "jersey": "21",
-        "player_id": "3151187"
-      },
-      {
-        "name": "Brandon Hagel",
-        "position": "Left Wings",
-        "jersey": "38",
-        "player_id": "4065019"
-      },
-      {
-        "name": "Jeffrey Viel",
-        "position": "Left Wings",
-        "jersey": "",
-        "player_id": "4588188"
-      },
-      {
-        "name": "Pontus Holmberg",
-        "position": "Right Wings",
-        "jersey": "29",
-        "player_id": "4588205"
-      },
-      {
-        "name": "Nikita Kucherov",
-        "position": "Right Wings",
-        "jersey": "86",
-        "player_id": "2563060"
-      },
-      {
-        "name": "Ilya Mikheyev",
-        "position": "Right Wings",
-        "jersey": "",
-        "player_id": "4422415"
-      },
-      {
-        "name": "Scott Sabourin",
-        "position": "Right Wings",
-        "jersey": "46",
-        "player_id": "3067840"
-      },
-      {
-        "name": "Michael Callahan",
-        "position": "Defense",
-        "jersey": "",
-        "player_id": "4587574"
-      },
-      {
-        "name": "John Carlson",
-        "position": "Defense",
-        "jersey": "74",
-        "player_id": "5118"
-      },
-      {
-        "name": "Erik Cernak",
-        "position": "Defense",
-        "jersey": "81",
-        "player_id": "3904178"
-      },
-      {
-        "name": "Maxwell Crozier",
-        "position": "Defense",
-        "jersey": "24",
-        "player_id": "5104716"
-      },
-      {
-        "name": "Charle-Edouard D'Astous",
-        "position": "Defense",
-        "jersey": "51",
-        "player_id": "4588175"
-      },
-      {
-        "name": "Maxim Groshev",
-        "position": "Defense",
-        "jersey": "52",
-        "player_id": "4697707"
-      },
-      {
-        "name": "Victor Hedman",
-        "position": "Defense",
-        "jersey": "77",
-        "player_id": "5157"
-      },
-      {
-        "name": "Emil Lilleberg",
-        "position": "Defense",
-        "jersey": "78",
-        "player_id": "5146599"
-      },
-      {
-        "name": "Ryan McDonagh",
-        "position": "Defense",
-        "jersey": "27",
-        "player_id": "4954"
-      },
-      {
-        "name": "J.J. Moser",
-        "position": "Defense",
-        "jersey": "90",
-        "player_id": "4874929"
-      },
-      {
-        "name": "Dennis Hildeby",
-        "position": "Goalies",
-        "jersey": "",
-        "player_id": "5174160"
-      },
-      {
-        "name": "Jonas Johansson",
-        "position": "Goalies",
-        "jersey": "31",
-        "player_id": "3115546"
-      },
-      {
-        "name": "Kyle Konin",
-        "position": "Goalies",
-        "jersey": "30",
-        "player_id": "4909207"
-      },
-      {
-        "name": "Harrison Meneghin",
-        "position": "Goalies",
-        "jersey": "1",
-        "player_id": "5302542"
-      },
-      {
-        "name": "Olivier Rodrigue",
-        "position": "Goalies",
-        "jersey": "",
-        "player_id": "4378697"
-      },
-      {
-        "name": "Mads Sogaard",
-        "position": "Goalies",
-        "jersey": "",
-        "player_id": "4565260"
-      },
-      {
-        "name": "Andrei Vasilevskiy",
-        "position": "Goalies",
-        "jersey": "88",
-        "player_id": "2976847"
-      }
-    ]
-  },
-  "TOR": {
-    "abbreviation": "TOR",
-    "name": "Toronto Maple Leafs",
-    "slug": "toronto-maple-leafs",
-    "team_id": "21",
-    "players": [
-      {
-        "name": "Teddy Blueger",
-        "position": "Centers",
-        "jersey": "",
-        "player_id": "3024916"
-      },
-      {
-        "name": "Max Domi",
-        "position": "Centers",
-        "jersey": "11",
-        "player_id": "3042014"
-      },
-      {
-        "name": "Bo Groulx",
-        "position": "Centers",
-        "jersey": "29",
-        "player_id": "4378685"
-      },
-      {
-        "name": "Calle Jarnkrok",
-        "position": "Centers",
-        "jersey": "19",
-        "player_id": "2555316"
-      },
-      {
-        "name": "Dakota Joshua",
-        "position": "Centers",
-        "jersey": "81",
-        "player_id": "4588638"
-      },
-      {
-        "name": "Vinni Lettieri",
-        "position": "Centers",
-        "jersey": "95",
-        "player_id": "3095892"
-      },
-      {
-        "name": "Steven Lorentz",
-        "position": "Centers",
-        "jersey": "18",
-        "player_id": "3939658"
-      },
-      {
-        "name": "Zack MacEwen",
-        "position": "Centers",
-        "jersey": "",
-        "player_id": "4063569"
-      },
-      {
-        "name": "Auston Matthews",
-        "position": "Centers",
-        "jersey": "34",
-        "player_id": "4024123"
-      },
-      {
-        "name": "Jack Roslovic",
-        "position": "Centers",
-        "jersey": "",
-        "player_id": "3904098"
-      },
-      {
-        "name": "Colton Sissons",
-        "position": "Centers",
-        "jersey": "",
-        "player_id": "2993474"
-      },
-      {
-        "name": "John Tavares",
-        "position": "Centers",
-        "jersey": "91",
-        "player_id": "5160"
-      },
-      {
-        "name": "Ryan Tverberg",
-        "position": "Centers",
-        "jersey": "77",
-        "player_id": "4697771"
-      },
-      {
-        "name": "Matthew Knies",
-        "position": "Left Wings",
-        "jersey": "23",
-        "player_id": "4874919"
-      },
-      {
-        "name": "Nick Paul",
-        "position": "Left Wings",
-        "jersey": "",
-        "player_id": "3042111"
-      },
-      {
-        "name": "Brandon Duhaime",
-        "position": "Right Wings",
-        "jersey": "",
-        "player_id": "4197009"
-      },
-      {
-        "name": "William Nylander",
-        "position": "Right Wings",
-        "jersey": "88",
-        "player_id": "3114736"
-      },
-      {
-        "name": "Henrik Rybinski",
-        "position": "Right Wings",
-        "jersey": "58",
-        "player_id": "4954361"
-      },
-      {
-        "name": "Emil Andrae",
-        "position": "Defense",
-        "jersey": "",
-        "player_id": "4697457"
-      },
-      {
-        "name": "Oliver Ekman-Larsson",
-        "position": "Defense",
-        "jersey": "95",
-        "player_id": "5488"
-      },
-      {
-        "name": "Jake McCabe",
-        "position": "Defense",
-        "jersey": "22",
-        "player_id": "3020803"
-      },
-      {
-        "name": "Cole McWard",
-        "position": "Defense",
-        "jersey": "4",
-        "player_id": "5136696"
-      },
-      {
-        "name": "Philippe Myers",
-        "position": "Defense",
-        "jersey": "51",
-        "player_id": "3941140"
-      },
-      {
-        "name": "Darren Raddysh",
-        "position": "Defense",
-        "jersey": "43",
-        "player_id": "3149843"
-      },
-      {
-        "name": "Morgan Rielly",
-        "position": "Defense",
-        "jersey": "44",
-        "player_id": "2976833"
-      },
-      {
-        "name": "Troy Stecher",
-        "position": "Defense",
-        "jersey": "28",
-        "player_id": "3096102"
-      },
-      {
-        "name": "Chris Tanev",
-        "position": "Defense",
-        "jersey": "8",
-        "player_id": "5592"
-      },
-      {
-        "name": "Sergei Bobrovsky",
-        "position": "Goalies",
-        "jersey": "",
-        "player_id": "5571"
-      },
-      {
-        "name": "Samuel Hlavaj",
-        "position": "Goalies",
-        "jersey": "",
-        "player_id": "5209248"
-      },
-      {
-        "name": "Anthony Stolarz",
-        "position": "Goalies",
-        "jersey": "41",
-        "player_id": "3067313"
-      }
-    ]
-  },
-  "UTAH": {
-    "abbreviation": "UTAH",
-    "name": "Utah Mammoth",
-    "slug": "utah-mammoth",
-    "team_id": "129764",
-    "players": [
-      {
-        "name": "Logan Cooley",
-        "position": "Centers",
-        "jersey": "92",
-        "player_id": "5080143"
-      },
-      {
-        "name": "Barrett Hayton",
-        "position": "Centers",
-        "jersey": "27",
-        "player_id": "4352699"
-      },
-      {
-        "name": "Cameron Hebig",
-        "position": "Centers",
-        "jersey": "78",
-        "player_id": "4392297"
-      },
-      {
-        "name": "Jack McBain",
-        "position": "Centers",
-        "jersey": "22",
-        "player_id": "4755695"
-      },
-      {
-        "name": "Liam O'Brien",
-        "position": "Centers",
-        "jersey": "38",
-        "player_id": "3150468"
-      },
-      {
-        "name": "Kevin Rooney",
-        "position": "Centers",
-        "jersey": "25",
-        "player_id": "3096235"
-      },
-      {
-        "name": "Nick Schmaltz",
-        "position": "Centers",
-        "jersey": "8",
-        "player_id": "3114770"
-      },
-      {
-        "name": "Kevin Stenlund",
-        "position": "Centers",
-        "jersey": "82",
-        "player_id": "3904191"
-      },
-      {
-        "name": "Vincent Trocheck",
-        "position": "Centers",
-        "jersey": "",
-        "player_id": "2563036"
-      },
-      {
-        "name": "Andrew Agozzino",
-        "position": "Left Wings",
-        "jersey": "36",
-        "player_id": "5393"
-      },
-      {
-        "name": "Daniil But",
-        "position": "Left Wings",
-        "jersey": "19",
-        "player_id": "5149183"
-      },
-      {
-        "name": "Michael Carcone",
-        "position": "Left Wings",
-        "jersey": "53",
-        "player_id": "4031645"
-      },
-      {
-        "name": "Lawson Crouse",
-        "position": "Left Wings",
-        "jersey": "67",
-        "player_id": "3899951"
-      },
-      {
-        "name": "Anders Lee",
-        "position": "Left Wings",
-        "jersey": "",
-        "player_id": "5793"
-      },
-      {
-        "name": "Ben McCartney",
-        "position": "Left Wings",
-        "jersey": "62",
-        "player_id": "4586827"
-      },
-      {
-        "name": "Brandon Tanev",
-        "position": "Left Wings",
-        "jersey": "13",
-        "player_id": "3096236"
-      },
-      {
-        "name": "Dylan Guenther",
-        "position": "Right Wings",
-        "jersey": "11",
-        "player_id": "4874723"
-      },
-      {
-        "name": "Clayton Keller",
-        "position": "Right Wings",
-        "jersey": "9",
-        "player_id": "4024857"
-      },
-      {
-        "name": "Joshua Roy",
-        "position": "Right Wings",
-        "jersey": "89",
-        "player_id": "5012030"
-      },
-      {
-        "name": "Kailer Yamamoto",
-        "position": "Right Wings",
-        "jersey": "56",
-        "player_id": "4233648"
-      },
-      {
-        "name": "Nick DeSimone",
-        "position": "Defense",
-        "jersey": "57",
-        "player_id": "4196959"
-      },
-      {
-        "name": "Terrell Goldsmith",
-        "position": "Defense",
-        "jersey": "54",
-        "player_id": "5172626"
-      },
-      {
-        "name": "Maveric Lamoureux",
-        "position": "Defense",
-        "jersey": "10",
-        "player_id": "5080177"
-      },
-      {
-        "name": "John Marino",
-        "position": "Defense",
-        "jersey": "6",
-        "player_id": "3941974"
-      },
-      {
-        "name": "Andrew Peeke",
-        "position": "Defense",
-        "jersey": "",
-        "player_id": "4064936"
-      },
-      {
-        "name": "Nate Schmidt",
-        "position": "Defense",
-        "jersey": "88",
-        "player_id": "3024798"
-      },
-      {
-        "name": "Mikhail Sergachev",
-        "position": "Defense",
-        "jersey": "98",
-        "player_id": "4024868"
-      },
-      {
-        "name": "Dmitri Simashev",
-        "position": "Defense",
-        "jersey": "26",
-        "player_id": "5149158"
-      },
-      {
-        "name": "MacKenzie Weegar",
-        "position": "Defense",
-        "jersey": "52",
-        "player_id": "3042269"
-      },
-      {
-        "name": "Colten McIntyre",
-        "position": "Goalies",
-        "jersey": "33",
-        "player_id": "5329622"
-      },
-      {
-        "name": "Jaxson Stauber",
-        "position": "Goalies",
-        "jersey": "33",
-        "player_id": "5120237"
-      },
-      {
-        "name": "Anson Thornton",
-        "position": "Goalies",
-        "jersey": "34",
-        "player_id": "4894401"
-      },
-      {
-        "name": "Karel Vejmelka",
-        "position": "Goalies",
-        "jersey": "70",
-        "player_id": "3942065"
-      }
-    ]
-  },
-  "VAN": {
-    "abbreviation": "VAN",
-    "name": "Vancouver Canucks",
-    "slug": "vancouver-canucks",
-    "team_id": "22",
-    "players": [
-      {
-        "name": "Nils Aman",
-        "position": "Centers",
-        "jersey": "88",
-        "player_id": "4697579"
-      },
-      {
-        "name": "Filip Chytil",
-        "position": "Centers",
-        "jersey": "72",
-        "player_id": "4233643"
-      },
-      {
-        "name": "Braeden Cootes",
-        "position": "Centers",
-        "jersey": "80",
-        "player_id": "5291951"
-      },
-      {
-        "name": "Linus Karlsson",
-        "position": "Centers",
-        "jersey": "94",
-        "player_id": "4587713"
-      },
-      {
-        "name": "Elias Pettersson",
-        "position": "Centers",
-        "jersey": "40",
-        "player_id": "4233566"
-      },
-      {
-        "name": "Aatu Raty",
-        "position": "Centers",
-        "jersey": "54",
-        "player_id": "4874912"
-      },
-      {
-        "name": "Marco Rossi",
-        "position": "Centers",
-        "jersey": "93",
-        "player_id": "4697391"
-      },
-      {
-        "name": "Ilya Safonov",
-        "position": "Centers",
-        "jersey": "",
-        "player_id": "4894721"
-      },
-      {
-        "name": "Max Sasson",
-        "position": "Centers",
-        "jersey": "63",
-        "player_id": "4996099"
-      },
-      {
-        "name": "Matt Stienburg",
-        "position": "Centers",
-        "jersey": "36",
-        "player_id": "5136731"
-      },
-      {
-        "name": "Akil Thomas",
-        "position": "Centers",
-        "jersey": "",
-        "player_id": "4378682"
-      },
-      {
-        "name": "Paul Cotter",
-        "position": "Left Wings",
-        "jersey": "",
-        "player_id": "4331579"
-      },
-      {
-        "name": "Jake DeBrusk",
-        "position": "Left Wings",
-        "jersey": "74",
-        "player_id": "3900240"
-      },
-      {
-        "name": "Evander Kane",
-        "position": "Left Wings",
-        "jersey": "91",
-        "player_id": "5251"
-      },
-      {
-        "name": "Drew O'Connor",
-        "position": "Left Wings",
-        "jersey": "18",
-        "player_id": "4712146"
-      },
-      {
-        "name": "Liam Ohgren",
-        "position": "Left Wings",
-        "jersey": "92",
-        "player_id": "5080163"
-      },
-      {
-        "name": "Brock Boeser",
-        "position": "Right Wings",
-        "jersey": "6",
-        "player_id": "3899979"
-      },
-      {
-        "name": "Trey Fix-Wolansky",
-        "position": "Right Wings",
-        "jersey": "",
-        "player_id": "4588844"
-      },
-      {
-        "name": "Brendan Gallagher",
-        "position": "Right Wings",
-        "jersey": "11",
-        "player_id": "5614"
-      },
-      {
-        "name": "Zeev Buium",
-        "position": "Defense",
-        "jersey": "24",
-        "player_id": "5206642"
-      },
-      {
-        "name": "Cole Clayton",
-        "position": "Defense",
-        "jersey": "34",
-        "player_id": "4894614"
-      },
-      {
-        "name": "Derek Forbort",
-        "position": "Defense",
-        "jersey": "27",
-        "player_id": "5829"
-      },
-      {
-        "name": "Filip Hronek",
-        "position": "Defense",
-        "jersey": "17",
-        "player_id": "4063607"
-      },
-      {
-        "name": "Pierre-Olivier Joseph",
-        "position": "Defense",
-        "jersey": "7",
-        "player_id": "4233653"
-      },
-      {
-        "name": "Victor Mancini",
-        "position": "Defense",
-        "jersey": "90",
-        "player_id": "5188334"
-      },
-      {
-        "name": "Jamie Oleksiak",
-        "position": "Defense",
-        "jersey": "",
-        "player_id": "2562625"
-      },
-      {
-        "name": "Elias N. Pettersson",
-        "position": "Defense",
-        "jersey": "25",
-        "player_id": "5238086"
-      },
-      {
-        "name": "Luke Schenn",
-        "position": "Defense",
-        "jersey": "",
-        "player_id": "5092"
-      },
-      {
-        "name": "Tom Willander",
-        "position": "Defense",
-        "jersey": "5",
-        "player_id": "5149180"
-      },
-      {
-        "name": "Thatcher Demko",
-        "position": "Goalies",
-        "jersey": "35",
-        "player_id": "3096217"
-      },
-      {
-        "name": "Kevin Lankinen",
-        "position": "Goalies",
-        "jersey": "32",
-        "player_id": "4341584"
-      },
-      {
-        "name": "Nikita Tolopilo",
-        "position": "Goalies",
-        "jersey": "60",
-        "player_id": "5188534"
-      }
-    ]
-  },
-  "VGK": {
-    "abbreviation": "VGK",
-    "name": "Vegas Golden Knights",
-    "slug": "vegas-golden-knights",
-    "team_id": "37",
-    "players": [
-      {
-        "name": "Nic Dowd",
-        "position": "Centers",
-        "jersey": "26",
-        "player_id": "3025616"
-      },
-      {
-        "name": "Jack Eichel",
-        "position": "Centers",
-        "jersey": "9",
-        "player_id": "3648002"
-      },
-      {
-        "name": "Marc Gatcomb",
-        "position": "Centers",
-        "jersey": "",
-        "player_id": "5103547"
-      },
-      {
-        "name": "Tomas Hertl",
-        "position": "Centers",
-        "jersey": "48",
-        "player_id": "2976844"
-      },
-      {
-        "name": "Brett Howden",
-        "position": "Centers",
-        "jersey": "21",
-        "player_id": "4024989"
-      },
-      {
-        "name": "William Karlsson",
-        "position": "Centers",
-        "jersey": "71",
-        "player_id": "2563057"
-      },
-      {
-        "name": "Tanner Laczynski",
-        "position": "Centers",
-        "jersey": "28",
-        "player_id": "4392137"
-      },
-      {
-        "name": "Raphael Lavoie",
-        "position": "Centers",
-        "jersey": "36",
-        "player_id": "4565261"
-      },
-      {
-        "name": "Kai Uchacz",
-        "position": "Centers",
-        "jersey": "77",
-        "player_id": "5239180"
-      },
-      {
-        "name": "Ivan Barbashev",
-        "position": "Left Wings",
-        "jersey": "49",
-        "player_id": "3114985"
-      },
-      {
-        "name": "Trevor Connelly",
-        "position": "Left Wings",
-        "jersey": "24",
-        "player_id": "5216887"
-      },
-      {
-        "name": "Victor Olofsson",
-        "position": "Left Wings",
-        "jersey": "",
-        "player_id": "3151096"
-      },
-      {
-        "name": "Brandon Saad",
-        "position": "Left Wings",
-        "jersey": "20",
-        "player_id": "2563065"
-      },
-      {
-        "name": "Braeden Bowman",
-        "position": "Right Wings",
-        "jersey": "42",
-        "player_id": "5272307"
-      },
-      {
-        "name": "Alexander Holtz",
-        "position": "Right Wings",
-        "jersey": "11",
-        "player_id": "4697388"
-      },
-      {
-        "name": "Mitch Marner",
-        "position": "Right Wings",
-        "jersey": "93",
-        "player_id": "3899937"
-      },
-      {
-        "name": "Jonas Rondbjerg",
-        "position": "Right Wings",
-        "jersey": "46",
-        "player_id": "4425678"
-      },
-      {
-        "name": "Reilly Smith",
-        "position": "Right Wings",
-        "jersey": "19",
-        "player_id": "2500990"
-      },
-      {
-        "name": "Mark Stone",
-        "position": "Right Wings",
-        "jersey": "61",
-        "player_id": "5545"
-      },
-      {
-        "name": "Rasmus Andersson",
-        "position": "Defense",
-        "jersey": "4",
-        "player_id": "3904186"
-      },
-      {
-        "name": "Dylan Coghlan",
-        "position": "Defense",
-        "jersey": "52",
-        "player_id": "4063606"
-      },
-      {
-        "name": "Lukas Cormier",
-        "position": "Defense",
-        "jersey": "51",
-        "player_id": "4697678"
-      },
-      {
-        "name": "Jeremy Davies",
-        "position": "Defense",
-        "jersey": "84",
-        "player_id": "4271542"
-      },
-      {
-        "name": "Adam Ginning",
-        "position": "Defense",
-        "jersey": "",
-        "player_id": "4587818"
-      },
-      {
-        "name": "Noah Hanifin",
-        "position": "Defense",
-        "jersey": "15",
-        "player_id": "3652964"
-      },
-      {
-        "name": "Ville Heinola",
-        "position": "Defense",
-        "jersey": "",
-        "player_id": "4565241"
-      },
-      {
-        "name": "Ben Hutton",
-        "position": "Defense",
-        "jersey": "17",
-        "player_id": "3571762"
-      },
-      {
-        "name": "Jeremy Lauzon",
-        "position": "Defense",
-        "jersey": "5",
-        "player_id": "3904185"
-      },
-      {
-        "name": "Brayden McNabb",
-        "position": "Defense",
-        "jersey": "3",
-        "player_id": "5202"
-      },
-      {
-        "name": "Jaycob Megna",
-        "position": "Defense",
-        "jersey": "88",
-        "player_id": "3020228"
-      },
-      {
-        "name": "Shea Theodore",
-        "position": "Defense",
-        "jersey": "27",
-        "player_id": "3042055"
-      },
-      {
-        "name": "Antti Tuomisto",
-        "position": "Defense",
-        "jersey": "",
-        "player_id": "4565258"
-      },
-      {
-        "name": "Parker Wotherspoon",
-        "position": "Defense",
-        "jersey": "",
-        "player_id": "3942638"
-      },
-      {
-        "name": "Carter Hart",
-        "position": "Goalies",
-        "jersey": "79",
-        "player_id": "4064582"
-      },
-      {
-        "name": "Adin Hill",
-        "position": "Goalies",
-        "jersey": "33",
-        "player_id": "3939714"
-      },
-      {
-        "name": "Carl Lindbom",
-        "position": "Goalies",
-        "jersey": "30",
-        "player_id": "5188581"
-      }
-    ]
-  },
-  "WSH": {
-    "abbreviation": "WSH",
-    "name": "Washington Capitals",
-    "slug": "washington-capitals",
-    "team_id": "23",
-    "players": [
-      {
-        "name": "Jonny Brodzinski",
-        "position": "Centers",
-        "jersey": "",
-        "player_id": "3025614"
-      },
-      {
-        "name": "Josh Dunne",
-        "position": "Centers",
-        "jersey": "",
-        "player_id": "4419752"
-      },
-      {
-        "name": "Ethen Frank",
-        "position": "Centers",
-        "jersey": "53",
-        "player_id": "4996093"
-      },
-      {
-        "name": "Boone Jenner",
-        "position": "Centers",
-        "jersey": "",
-        "player_id": "2563054"
-      },
-      {
-        "name": "David Kampf",
-        "position": "Centers",
-        "jersey": "64",
-        "player_id": "4267976"
-      },
-      {
-        "name": "Aliaksei Protas",
-        "position": "Centers",
-        "jersey": "21",
-        "player_id": "4587943"
-      },
-      {
-        "name": "Dylan Strome",
-        "position": "Centers",
-        "jersey": "17",
-        "player_id": "3899933"
-      },
-      {
-        "name": "Anthony Beauvillier",
-        "position": "Left Wings",
-        "jersey": "72",
-        "player_id": "3904107"
-      },
-      {
-        "name": "Pierre-Luc Dubois",
-        "position": "Left Wings",
-        "jersey": "80",
-        "player_id": "4024833"
-      },
-      {
-        "name": "Ivan Miroshnichenko",
-        "position": "Left Wings",
-        "jersey": "63",
-        "player_id": "5080168"
-      },
-      {
-        "name": "Alex Ovechkin",
-        "position": "Left Wings",
-        "jersey": "8",
-        "player_id": "3101"
-      },
-      {
-        "name": "Ilya Protas",
-        "position": "Left Wings",
-        "jersey": "62",
-        "player_id": "5229146"
-      },
-      {
-        "name": "Jordan Kyrou",
-        "position": "Right Wings",
-        "jersey": "25",
-        "player_id": "4062251"
-      },
-      {
-        "name": "Ryan Leonard",
-        "position": "Right Wings",
-        "jersey": "9",
-        "player_id": "5149172"
-      },
-      {
-        "name": "Justin Sourdif",
-        "position": "Right Wings",
-        "jersey": "34",
-        "player_id": "4697783"
-      },
-      {
-        "name": "Alex Tuch",
-        "position": "Right Wings",
-        "jersey": "",
-        "player_id": "3114766"
-      },
-      {
-        "name": "Tom Wilson",
-        "position": "Right Wings",
-        "jersey": "43",
-        "player_id": "2970615"
-      },
-      {
-        "name": "Jakob Chychrun",
-        "position": "Defense",
-        "jersey": "6",
-        "player_id": "4024950"
-      },
-      {
-        "name": "Vincent Desharnais",
-        "position": "Defense",
-        "jersey": "",
-        "player_id": "4392260"
-      },
-      {
-        "name": "Martin Fehervary",
-        "position": "Defense",
-        "jersey": "42",
-        "player_id": "4378677"
-      },
-      {
-        "name": "Justin Holl",
-        "position": "Defense",
-        "jersey": "",
-        "player_id": "5763"
-      },
-      {
-        "name": "Cole Hutson",
-        "position": "Defense",
-        "jersey": "44",
-        "player_id": "5216918"
-      },
-      {
-        "name": "Timothy Liljegren",
-        "position": "Defense",
-        "jersey": "37",
-        "player_id": "4233618"
-      },
-      {
-        "name": "Dylan McIlrath",
-        "position": "Defense",
-        "jersey": "52",
-        "player_id": "2529256"
-      },
-      {
-        "name": "Matt Roy",
-        "position": "Defense",
-        "jersey": "3",
-        "player_id": "3942924"
-      },
-      {
-        "name": "Rasmus Sandin",
-        "position": "Defense",
-        "jersey": "38",
-        "player_id": "4352803"
-      },
-      {
-        "name": "Charlie Lindgren",
-        "position": "Goalies",
-        "jersey": "79",
-        "player_id": "3095975"
-      },
-      {
-        "name": "Clay Stevenson",
-        "position": "Goalies",
-        "jersey": "33",
-        "player_id": "5104602"
-      },
-      {
-        "name": "Logan Thompson",
-        "position": "Goalies",
-        "jersey": "48",
-        "player_id": "4272888"
-      },
-      {
-        "name": "Jesper Vikman",
-        "position": "Goalies",
-        "jersey": "32",
-        "player_id": "4894322"
-      }
-    ]
-  },
-  "WPG": {
-    "abbreviation": "WPG",
-    "name": "Winnipeg Jets",
-    "slug": "winnipeg-jets",
-    "team_id": "28",
-    "players": [
-      {
-        "name": "Morgan Barron",
-        "position": "Centers",
-        "jersey": "36",
-        "player_id": "4316970"
-      },
-      {
-        "name": "Viggo Bjorck",
-        "position": "Centers",
-        "jersey": "",
-        "player_id": "5361711"
-      },
-      {
-        "name": "Parker Ford",
-        "position": "Centers",
-        "jersey": "25",
-        "player_id": "5173114"
-      },
-      {
-        "name": "Adam Lowry",
-        "position": "Centers",
-        "jersey": "17",
-        "player_id": "2563066"
-      },
-      {
-        "name": "Vladislav Namestnikov",
-        "position": "Centers",
-        "jersey": "7",
-        "player_id": "2562622"
-      },
-      {
-        "name": "Cole Perfetti",
-        "position": "Centers",
-        "jersey": "91",
-        "player_id": "4697392"
-      },
-      {
-        "name": "Mark Scheifele",
-        "position": "Centers",
-        "jersey": "55",
-        "player_id": "2562632"
-      },
-      {
-        "name": "Gabriel Vilardi",
-        "position": "Centers",
-        "jersey": "13",
-        "player_id": "4233583"
-      },
-      {
-        "name": "Kyle Connor",
-        "position": "Left Wings",
-        "jersey": "81",
-        "player_id": "3899952"
-      },
-      {
-        "name": "Noah Gregor",
-        "position": "Left Wings",
-        "jersey": "",
-        "player_id": "4063460"
-      },
-      {
-        "name": "Alex Iafallo",
-        "position": "Left Wings",
-        "jersey": "9",
-        "player_id": "3652598"
-      },
-      {
-        "name": "Cole Koepke",
-        "position": "Left Wings",
-        "jersey": "45",
-        "player_id": "4419679"
-      },
-      {
-        "name": "Nikita Chibrikov",
-        "position": "Right Wings",
-        "jersey": "90",
-        "player_id": "4874903"
-      },
-      {
-        "name": "Walker Duehr",
-        "position": "Right Wings",
-        "jersey": "71",
-        "player_id": "4319940"
-      },
-      {
-        "name": "Nino Niederreiter",
-        "position": "Right Wings",
-        "jersey": "62",
-        "player_id": "5511"
-      },
-      {
-        "name": "Gustav Nyquist",
-        "position": "Right Wings",
-        "jersey": "14",
-        "player_id": "5823"
-      },
-      {
-        "name": "Isak Rosen",
-        "position": "Right Wings",
-        "jersey": "27",
-        "player_id": "4874731"
-      },
-      {
-        "name": "Dylan DeMelo",
-        "position": "Defense",
-        "jersey": "2",
-        "player_id": "2590861"
-      },
-      {
-        "name": "Mario Ferraro",
-        "position": "Defense",
-        "jersey": "",
-        "player_id": "4233884"
-      },
-      {
-        "name": "Haydn Fleury",
-        "position": "Defense",
-        "jersey": "24",
-        "player_id": "3114735"
-      },
-      {
-        "name": "Colin Miller",
-        "position": "Defense",
-        "jersey": "6",
-        "player_id": "2590796"
-      },
-      {
-        "name": "Josh Morrissey",
-        "position": "Defense",
-        "jersey": "44",
-        "player_id": "3042016"
-      },
-      {
-        "name": "Isaak Phillips",
-        "position": "Defense",
-        "jersey": "3",
-        "player_id": "4697831"
-      },
-      {
-        "name": "Neal Pionk",
-        "position": "Defense",
-        "jersey": "4",
-        "player_id": "3988847"
-      },
-      {
-        "name": "Dylan Samberg",
-        "position": "Defense",
-        "jersey": "54",
-        "player_id": "4233878"
-      },
-      {
-        "name": "Jack St. Ivany",
-        "position": "Defense",
-        "jersey": "3",
-        "player_id": "4755690"
-      },
-      {
-        "name": "Connor Hellebuyck",
-        "position": "Goalies",
-        "jersey": "37",
-        "player_id": "3020225"
-      },
-      {
-        "name": "Isaac Poulter",
-        "position": "Goalies",
-        "jersey": "30",
-        "player_id": "5174951"
-      },
-      {
-        "name": "Stuart Skinner",
-        "position": "Goalies",
-        "jersey": "",
-        "player_id": "4268767"
-      }
-    ]
+  "sport": "NHL",
+  "season": "2026",
+  "fetched": "2026-07-25",
+  "teams": 32,
+  "total_players": 160,
+  "rosters": {
+    "Anaheim Ducks": {
+      "team_name": "Anaheim Ducks",
+      "players": [
+        {
+          "fullName": "",
+          "position": "C",
+          "jerseyNumber": "91"
+        },
+        {
+          "fullName": "",
+          "position": "LW",
+          "jerseyNumber": "61"
+        },
+        {
+          "fullName": "",
+          "position": "RW",
+          "jerseyNumber": "75"
+        },
+        {
+          "fullName": "",
+          "position": "D",
+          "jerseyNumber": "14"
+        },
+        {
+          "fullName": "",
+          "position": "G",
+          "jerseyNumber": ""
+        }
+      ]
+    },
+    "Boston Bruins": {
+      "team_name": "Boston Bruins",
+      "players": [
+        {
+          "fullName": "",
+          "position": "C",
+          "jerseyNumber": ""
+        },
+        {
+          "fullName": "",
+          "position": "LW",
+          "jerseyNumber": ""
+        },
+        {
+          "fullName": "",
+          "position": "RW",
+          "jerseyNumber": "88"
+        },
+        {
+          "fullName": "",
+          "position": "D",
+          "jerseyNumber": "45"
+        },
+        {
+          "fullName": "",
+          "position": "G",
+          "jerseyNumber": "60"
+        }
+      ]
+    },
+    "Buffalo Sabres": {
+      "team_name": "Buffalo Sabres",
+      "players": [
+        {
+          "fullName": "",
+          "position": "C",
+          "jerseyNumber": "10"
+        },
+        {
+          "fullName": "",
+          "position": "LW",
+          "jerseyNumber": "6"
+        },
+        {
+          "fullName": "",
+          "position": "RW",
+          "jerseyNumber": "15"
+        },
+        {
+          "fullName": "",
+          "position": "D",
+          "jerseyNumber": "46"
+        },
+        {
+          "fullName": "",
+          "position": "G",
+          "jerseyNumber": "92"
+        }
+      ]
+    },
+    "Calgary Flames": {
+      "team_name": "Calgary Flames",
+      "players": [
+        {
+          "fullName": "",
+          "position": "C",
+          "jerseyNumber": "11"
+        },
+        {
+          "fullName": "",
+          "position": "LW",
+          "jerseyNumber": "86"
+        },
+        {
+          "fullName": "",
+          "position": "RW",
+          "jerseyNumber": "27"
+        },
+        {
+          "fullName": "",
+          "position": "D",
+          "jerseyNumber": "7"
+        },
+        {
+          "fullName": "",
+          "position": "G",
+          "jerseyNumber": "1"
+        }
+      ]
+    },
+    "Carolina Hurricanes": {
+      "team_name": "Carolina Hurricanes",
+      "players": [
+        {
+          "fullName": "",
+          "position": "C",
+          "jerseyNumber": "20"
+        },
+        {
+          "fullName": "",
+          "position": "LW",
+          "jerseyNumber": "28"
+        },
+        {
+          "fullName": "",
+          "position": "RW",
+          "jerseyNumber": "53"
+        },
+        {
+          "fullName": "",
+          "position": "D",
+          "jerseyNumber": "5"
+        },
+        {
+          "fullName": "",
+          "position": "G",
+          "jerseyNumber": "32"
+        }
+      ]
+    },
+    "Chicago Blackhawks": {
+      "team_name": "Chicago Blackhawks",
+      "players": [
+        {
+          "fullName": "",
+          "position": "C",
+          "jerseyNumber": "98"
+        },
+        {
+          "fullName": "",
+          "position": "LW",
+          "jerseyNumber": "59"
+        },
+        {
+          "fullName": "",
+          "position": "RW",
+          "jerseyNumber": ""
+        },
+        {
+          "fullName": "",
+          "position": "D",
+          "jerseyNumber": ""
+        },
+        {
+          "fullName": "",
+          "position": "G",
+          "jerseyNumber": "30"
+        }
+      ]
+    },
+    "Colorado Avalanche": {
+      "team_name": "Colorado Avalanche",
+      "players": [
+        {
+          "fullName": "",
+          "position": "C",
+          "jerseyNumber": "93"
+        },
+        {
+          "fullName": "",
+          "position": "LW",
+          "jerseyNumber": ""
+        },
+        {
+          "fullName": "",
+          "position": "RW",
+          "jerseyNumber": "23"
+        },
+        {
+          "fullName": "",
+          "position": "D",
+          "jerseyNumber": "37"
+        },
+        {
+          "fullName": "",
+          "position": "G",
+          "jerseyNumber": "39"
+        }
+      ]
+    },
+    "Columbus Blue Jackets": {
+      "team_name": "Columbus Blue Jackets",
+      "players": [
+        {
+          "fullName": "",
+          "position": "C",
+          "jerseyNumber": "3"
+        },
+        {
+          "fullName": "",
+          "position": "LW",
+          "jerseyNumber": "43"
+        },
+        {
+          "fullName": "",
+          "position": "RW",
+          "jerseyNumber": ""
+        },
+        {
+          "fullName": "",
+          "position": "D",
+          "jerseyNumber": "2"
+        },
+        {
+          "fullName": "",
+          "position": "G",
+          "jerseyNumber": ""
+        }
+      ]
+    },
+    "Dallas Stars": {
+      "team_name": "Dallas Stars",
+      "players": [
+        {
+          "fullName": "",
+          "position": "C",
+          "jerseyNumber": "10"
+        },
+        {
+          "fullName": "",
+          "position": "LW",
+          "jerseyNumber": "14"
+        },
+        {
+          "fullName": "",
+          "position": "RW",
+          "jerseyNumber": "11"
+        },
+        {
+          "fullName": "",
+          "position": "D",
+          "jerseyNumber": "6"
+        },
+        {
+          "fullName": "",
+          "position": "G",
+          "jerseyNumber": "1"
+        }
+      ]
+    },
+    "Detroit Red Wings": {
+      "team_name": "Detroit Red Wings",
+      "players": [
+        {
+          "fullName": "",
+          "position": "C",
+          "jerseyNumber": "22"
+        },
+        {
+          "fullName": "",
+          "position": "LW",
+          "jerseyNumber": ""
+        },
+        {
+          "fullName": "",
+          "position": "RW",
+          "jerseyNumber": ""
+        },
+        {
+          "fullName": "",
+          "position": "D",
+          "jerseyNumber": ""
+        },
+        {
+          "fullName": "",
+          "position": "G",
+          "jerseyNumber": "36"
+        }
+      ]
+    },
+    "Edmonton Oilers": {
+      "team_name": "Edmonton Oilers",
+      "players": [
+        {
+          "fullName": "",
+          "position": "C",
+          "jerseyNumber": "34"
+        },
+        {
+          "fullName": "",
+          "position": "LW",
+          "jerseyNumber": "18"
+        },
+        {
+          "fullName": "",
+          "position": "RW",
+          "jerseyNumber": "28"
+        },
+        {
+          "fullName": "",
+          "position": "D",
+          "jerseyNumber": "2"
+        },
+        {
+          "fullName": "",
+          "position": "G",
+          "jerseyNumber": ""
+        }
+      ]
+    },
+    "Florida Panthers": {
+      "team_name": "Florida Panthers",
+      "players": [
+        {
+          "fullName": "",
+          "position": "C",
+          "jerseyNumber": "16"
+        },
+        {
+          "fullName": "",
+          "position": "LW",
+          "jerseyNumber": ""
+        },
+        {
+          "fullName": "",
+          "position": "RW",
+          "jerseyNumber": ""
+        },
+        {
+          "fullName": "",
+          "position": "D",
+          "jerseyNumber": "26"
+        },
+        {
+          "fullName": "",
+          "position": "G",
+          "jerseyNumber": "31"
+        }
+      ]
+    },
+    "Los Angeles Kings": {
+      "team_name": "Los Angeles Kings",
+      "players": [
+        {
+          "fullName": "",
+          "position": "C",
+          "jerseyNumber": "34"
+        },
+        {
+          "fullName": "",
+          "position": "LW",
+          "jerseyNumber": "22"
+        },
+        {
+          "fullName": "",
+          "position": "RW",
+          "jerseyNumber": "40"
+        },
+        {
+          "fullName": "",
+          "position": "D",
+          "jerseyNumber": "44"
+        },
+        {
+          "fullName": "",
+          "position": "G",
+          "jerseyNumber": "31"
+        }
+      ]
+    },
+    "Minnesota Wild": {
+      "team_name": "Minnesota Wild",
+      "players": [
+        {
+          "fullName": "",
+          "position": "C",
+          "jerseyNumber": "76"
+        },
+        {
+          "fullName": "",
+          "position": "LW",
+          "jerseyNumber": "12"
+        },
+        {
+          "fullName": "",
+          "position": "RW",
+          "jerseyNumber": "16"
+        },
+        {
+          "fullName": "",
+          "position": "D",
+          "jerseyNumber": "24"
+        },
+        {
+          "fullName": "",
+          "position": "G",
+          "jerseyNumber": "32"
+        }
+      ]
+    },
+    "Montreal Canadiens": {
+      "team_name": "Montreal Canadiens",
+      "players": [
+        {
+          "fullName": "",
+          "position": "C",
+          "jerseyNumber": "62"
+        },
+        {
+          "fullName": "",
+          "position": "LW",
+          "jerseyNumber": ""
+        },
+        {
+          "fullName": "",
+          "position": "RW",
+          "jerseyNumber": "17"
+        },
+        {
+          "fullName": "",
+          "position": "D",
+          "jerseyNumber": "45"
+        },
+        {
+          "fullName": "",
+          "position": "G",
+          "jerseyNumber": "75"
+        }
+      ]
+    },
+    "Nashville Predators": {
+      "team_name": "Nashville Predators",
+      "players": [
+        {
+          "fullName": "",
+          "position": "C",
+          "jerseyNumber": "20"
+        },
+        {
+          "fullName": "",
+          "position": "LW",
+          "jerseyNumber": "38"
+        },
+        {
+          "fullName": "",
+          "position": "RW",
+          "jerseyNumber": "77"
+        },
+        {
+          "fullName": "",
+          "position": "D",
+          "jerseyNumber": ""
+        },
+        {
+          "fullName": "",
+          "position": "G",
+          "jerseyNumber": "29"
+        }
+      ]
+    },
+    "New Jersey Devils": {
+      "team_name": "New Jersey Devils",
+      "players": [
+        {
+          "fullName": "",
+          "position": "C",
+          "jerseyNumber": "72"
+        },
+        {
+          "fullName": "",
+          "position": "LW",
+          "jerseyNumber": "63"
+        },
+        {
+          "fullName": "",
+          "position": "RW",
+          "jerseyNumber": "16"
+        },
+        {
+          "fullName": "",
+          "position": "D",
+          "jerseyNumber": ""
+        },
+        {
+          "fullName": "",
+          "position": "G",
+          "jerseyNumber": "34"
+        }
+      ]
+    },
+    "New York Islanders": {
+      "team_name": "New York Islanders",
+      "players": [
+        {
+          "fullName": "",
+          "position": "C",
+          "jerseyNumber": "13"
+        },
+        {
+          "fullName": "",
+          "position": "LW",
+          "jerseyNumber": "11"
+        },
+        {
+          "fullName": "",
+          "position": "RW",
+          "jerseyNumber": ""
+        },
+        {
+          "fullName": "",
+          "position": "D",
+          "jerseyNumber": "74"
+        },
+        {
+          "fullName": "",
+          "position": "G",
+          "jerseyNumber": "30"
+        }
+      ]
+    },
+    "New York Rangers": {
+      "team_name": "New York Rangers",
+      "players": [
+        {
+          "fullName": "",
+          "position": "C",
+          "jerseyNumber": ""
+        },
+        {
+          "fullName": "",
+          "position": "LW",
+          "jerseyNumber": "25"
+        },
+        {
+          "fullName": "",
+          "position": "RW",
+          "jerseyNumber": ""
+        },
+        {
+          "fullName": "",
+          "position": "D",
+          "jerseyNumber": "44"
+        },
+        {
+          "fullName": "",
+          "position": "G",
+          "jerseyNumber": "33"
+        }
+      ]
+    },
+    "Ottawa Senators": {
+      "team_name": "Ottawa Senators",
+      "players": [
+        {
+          "fullName": "",
+          "position": "C",
+          "jerseyNumber": "21"
+        },
+        {
+          "fullName": "",
+          "position": "LW",
+          "jerseyNumber": ""
+        },
+        {
+          "fullName": "",
+          "position": "RW",
+          "jerseyNumber": "22"
+        },
+        {
+          "fullName": "",
+          "position": "D",
+          "jerseyNumber": "72"
+        },
+        {
+          "fullName": "",
+          "position": "G",
+          "jerseyNumber": ""
+        }
+      ]
+    },
+    "Philadelphia Flyers": {
+      "team_name": "Philadelphia Flyers",
+      "players": [
+        {
+          "fullName": "",
+          "position": "C",
+          "jerseyNumber": ""
+        },
+        {
+          "fullName": "",
+          "position": "LW",
+          "jerseyNumber": "20"
+        },
+        {
+          "fullName": "",
+          "position": "RW",
+          "jerseyNumber": "71"
+        },
+        {
+          "fullName": "",
+          "position": "D",
+          "jerseyNumber": ""
+        },
+        {
+          "fullName": "",
+          "position": "G",
+          "jerseyNumber": "64"
+        }
+      ]
+    },
+    "Pittsburgh Penguins": {
+      "team_name": "Pittsburgh Penguins",
+      "players": [
+        {
+          "fullName": "",
+          "position": "C",
+          "jerseyNumber": "87"
+        },
+        {
+          "fullName": "",
+          "position": "LW",
+          "jerseyNumber": "48"
+        },
+        {
+          "fullName": "",
+          "position": "RW",
+          "jerseyNumber": "16"
+        },
+        {
+          "fullName": "",
+          "position": "D",
+          "jerseyNumber": ""
+        },
+        {
+          "fullName": "",
+          "position": "G",
+          "jerseyNumber": "33"
+        }
+      ]
+    },
+    "San Jose Sharks": {
+      "team_name": "San Jose Sharks",
+      "players": [
+        {
+          "fullName": "",
+          "position": "C",
+          "jerseyNumber": "71"
+        },
+        {
+          "fullName": "",
+          "position": "LW",
+          "jerseyNumber": ""
+        },
+        {
+          "fullName": "",
+          "position": "RW",
+          "jerseyNumber": "56"
+        },
+        {
+          "fullName": "",
+          "position": "D",
+          "jerseyNumber": "7"
+        },
+        {
+          "fullName": "",
+          "position": "G",
+          "jerseyNumber": "30"
+        }
+      ]
+    },
+    "Seattle Kraken": {
+      "team_name": "Seattle Kraken",
+      "players": [
+        {
+          "fullName": "",
+          "position": "C",
+          "jerseyNumber": "10"
+        },
+        {
+          "fullName": "",
+          "position": "LW",
+          "jerseyNumber": "19"
+        },
+        {
+          "fullName": "",
+          "position": "RW",
+          "jerseyNumber": "7"
+        },
+        {
+          "fullName": "",
+          "position": "D",
+          "jerseyNumber": "29"
+        },
+        {
+          "fullName": "",
+          "position": "G",
+          "jerseyNumber": "35"
+        }
+      ]
+    },
+    "St. Louis Blues": {
+      "team_name": "St. Louis Blues",
+      "players": [
+        {
+          "fullName": "",
+          "position": "C",
+          "jerseyNumber": ""
+        },
+        {
+          "fullName": "",
+          "position": "LW",
+          "jerseyNumber": "89"
+        },
+        {
+          "fullName": "",
+          "position": "RW",
+          "jerseyNumber": "29"
+        },
+        {
+          "fullName": "",
+          "position": "D",
+          "jerseyNumber": "6"
+        },
+        {
+          "fullName": "",
+          "position": "G",
+          "jerseyNumber": "50"
+        }
+      ]
+    },
+    "Tampa Bay Lightning": {
+      "team_name": "Tampa Bay Lightning",
+      "players": [
+        {
+          "fullName": "",
+          "position": "C",
+          "jerseyNumber": "26"
+        },
+        {
+          "fullName": "",
+          "position": "LW",
+          "jerseyNumber": "38"
+        },
+        {
+          "fullName": "",
+          "position": "RW",
+          "jerseyNumber": "29"
+        },
+        {
+          "fullName": "",
+          "position": "D",
+          "jerseyNumber": ""
+        },
+        {
+          "fullName": "",
+          "position": "G",
+          "jerseyNumber": ""
+        }
+      ]
+    },
+    "Toronto Maple Leafs": {
+      "team_name": "Toronto Maple Leafs",
+      "players": [
+        {
+          "fullName": "",
+          "position": "C",
+          "jerseyNumber": ""
+        },
+        {
+          "fullName": "",
+          "position": "LW",
+          "jerseyNumber": "23"
+        },
+        {
+          "fullName": "",
+          "position": "RW",
+          "jerseyNumber": ""
+        },
+        {
+          "fullName": "",
+          "position": "D",
+          "jerseyNumber": ""
+        },
+        {
+          "fullName": "",
+          "position": "G",
+          "jerseyNumber": ""
+        }
+      ]
+    },
+    "Utah Mammoth": {
+      "team_name": "Utah Mammoth",
+      "players": [
+        {
+          "fullName": "",
+          "position": "C",
+          "jerseyNumber": "92"
+        },
+        {
+          "fullName": "",
+          "position": "LW",
+          "jerseyNumber": "36"
+        },
+        {
+          "fullName": "",
+          "position": "RW",
+          "jerseyNumber": "11"
+        },
+        {
+          "fullName": "",
+          "position": "D",
+          "jerseyNumber": "57"
+        },
+        {
+          "fullName": "",
+          "position": "G",
+          "jerseyNumber": "33"
+        }
+      ]
+    },
+    "Vancouver Canucks": {
+      "team_name": "Vancouver Canucks",
+      "players": [
+        {
+          "fullName": "",
+          "position": "C",
+          "jerseyNumber": "88"
+        },
+        {
+          "fullName": "",
+          "position": "LW",
+          "jerseyNumber": ""
+        },
+        {
+          "fullName": "",
+          "position": "RW",
+          "jerseyNumber": "6"
+        },
+        {
+          "fullName": "",
+          "position": "D",
+          "jerseyNumber": "24"
+        },
+        {
+          "fullName": "",
+          "position": "G",
+          "jerseyNumber": "35"
+        }
+      ]
+    },
+    "Vegas Golden Knights": {
+      "team_name": "Vegas Golden Knights",
+      "players": [
+        {
+          "fullName": "",
+          "position": "C",
+          "jerseyNumber": "26"
+        },
+        {
+          "fullName": "",
+          "position": "LW",
+          "jerseyNumber": "49"
+        },
+        {
+          "fullName": "",
+          "position": "RW",
+          "jerseyNumber": "42"
+        },
+        {
+          "fullName": "",
+          "position": "D",
+          "jerseyNumber": "4"
+        },
+        {
+          "fullName": "",
+          "position": "G",
+          "jerseyNumber": "79"
+        }
+      ]
+    },
+    "Washington Capitals": {
+      "team_name": "Washington Capitals",
+      "players": [
+        {
+          "fullName": "",
+          "position": "C",
+          "jerseyNumber": ""
+        },
+        {
+          "fullName": "",
+          "position": "LW",
+          "jerseyNumber": "72"
+        },
+        {
+          "fullName": "",
+          "position": "RW",
+          "jerseyNumber": "25"
+        },
+        {
+          "fullName": "",
+          "position": "D",
+          "jerseyNumber": "6"
+        },
+        {
+          "fullName": "",
+          "position": "G",
+          "jerseyNumber": "79"
+        }
+      ]
+    },
+    "Winnipeg Jets": {
+      "team_name": "Winnipeg Jets",
+      "players": [
+        {
+          "fullName": "",
+          "position": "C",
+          "jerseyNumber": "36"
+        },
+        {
+          "fullName": "",
+          "position": "LW",
+          "jerseyNumber": "81"
+        },
+        {
+          "fullName": "",
+          "position": "RW",
+          "jerseyNumber": "90"
+        },
+        {
+          "fullName": "",
+          "position": "D",
+          "jerseyNumber": "2"
+        },
+        {
+          "fullName": "",
+          "position": "G",
+          "jerseyNumber": "37"
+        }
+      ]
+    }
   }
 }

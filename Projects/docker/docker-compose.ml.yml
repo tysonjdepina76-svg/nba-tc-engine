@@ -1,0 +1,44 @@
+version: "3.9"
+
+x-es:
+  ml_train:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.ml
+    volumes:
+      - ./models:/app/models
+      - ./data:/app/data
+      - ./logs:/app/logs
+    environment:
+      - PYTHONPATH=/app
+    restart: "no"
+
+x-es:
+  daily_picks:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.ml
+    volumes:
+      - ./models:/app/models
+      - ./data:/app/data
+      - ./Daily_Log:/app/Daily_Log
+    environment:
+      - PYTHONPATH=/app
+      - TOA_API_KEY=${TOA_API_KEY:-}
+      - THERUNDOWN_API_KEY=${THERUNDOWN_API_KEY:-}
+    command: python daily_picks.py --sport mlb
+    restart: "no"
+
+x-es:
+  grade:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.ml
+    volumes:
+      - ./models:/app/models
+      - ./data:/app/data
+      - ./Daily_Log:/app/Daily_Log
+    environment:
+      - PYTHONPATH=/app
+    command: python daily_picks.py --grade
+    restart: "no"

@@ -4,7 +4,8 @@ Reads projection files from Daily_Log/YYYY-MM-DD/, generates picks, saves to DB 
 applies enhancer, sends email report, updates last_run.json.
 """
 
-import sys, os, csv, json, argparse, sqlite3, smtplib, glob
+import sys, os, csv, json, argparse, sqlite3, smtplib, glob, time
+import fcntl
 from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -31,19 +32,99 @@ except ImportError:
     logger.warning("[ODDS] Action Network not available, falling back to TheOddsAPI")
 from src.adapters.free_api_aggregator import get_live_stats, health_check as free_api_health
 from src.enhancer import apply_enhancements
+from src.ml.predictive_engine import apply_ml_override as _apply_ml_override, enrich_ml_probabilities as _enrich_ml_probabilities
 from src.roster_loader import get_loader as get_roster_loader
 from wnba_team_lookup import correct_team
 from mlb_team_lookup import correct_mlb_team
+from sports_grading_engine import grade_picks as grade_picks_engine
 
 PROJ_DIR = Path(__file__).parent.parent / "Daily_Log"
 DATA_DIR = Path(__file__).parent.parent / "data"
 
-SERPAPI_DAILY_MAX = 253
-SERPAPI_PER_RUN = 80
+SERPAPI_DAILY_MAX = 0
+SERPAPI_PER_RUN = 0
 SERPAPI_TRACKER = DATA_DIR / "serpapi_usage.json"
 PICKS_DIR = DATA_DIR / "picks"
 DB_PATH = Path(__file__).parent / "data" / "picks.db"
 
+THERUNDOWN_TRACKER = DATA_DIR / "therundown_usage.json"
+THERUNDOWN_DAILY_MAX = 5
+SPORT_SLEEP_SECONDS = 3
+MAX_PICKS_PER_SPORT = {
+    'MLB': 1500,
+    'WNBA': 500,
+    'NBA': 800,
+    'NFL': 800,
+    'NHL': 500,
+}
+
+def enforce_pick_cap(sport: str, picks: list) -> list:
+    cap = MAX_PICKS_PER_SPORT.get(sport.upper(), 1000)
+    if len(picks) > cap:
+        logger.warning(f"Capping {sport} picks from {len(picks)} to {cap}")
+        return picks[:cap]
+    return picks
+
+BUDGET_FILE = DATA_DIR / "api_budget.json"
+DAILY_LIMITS = {
+    'pybaseball': 100,
+    'espn_wnba': 50,
+    'odds_api': 0,
+    'serpapi': 0,
+    'statsapi_mlb': 50,
+    'sharp_api': 250,
+}
+
+def _load_budget():
+    if BUDGET_FILE.exists():
+        data = json.loads(BUDGET_FILE.read_text())
+    else:
+        data = {}
+    if data.get('date') != datetime.now().strftime('%Y-%m-%d'):
+        data = {'date': datetime.now().strftime('%Y-%m-%d'), 'calls': {}}
+    return data
+
+def _save_budget(data):
+    BUDGET_FILE.write_text(json.dumps(data))
+
+def get_budget(source: str) -> int:
+    data = _load_budget()
+    return data['calls'].get(source, 0)
+
+def consume_budget(source: str, amount: int = 1) -> bool:
+    data = _load_budget()
+    used = data['calls'].get(source, 0)
+    if used + amount > DAILY_LIMITS.get(source, 100):
+        return False
+    data['calls'][source] = used + amount
+    _save_budget(data)
+    return True
+
+LOCK_FILE = "/home/workspace/tc_pipeline.lock"
+
+def acquire_run_lock(timeout: int = 300):
+    try:
+        lock_fd = open(LOCK_FILE, 'w')
+        fcntl.flock(lock_fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        return lock_fd
+    except BlockingIOError:
+        logger.warning("Another pipeline is running, waiting...")
+        start = time.time()
+        while time.time() - start < timeout:
+            try:
+                lock_fd = open(LOCK_FILE, 'w')
+                fcntl.flock(lock_fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
+                return lock_fd
+            except BlockingIOError:
+                time.sleep(5)
+        raise RuntimeError("Could not acquire lock after timeout")
+
+def release_run_lock(lock_fd):
+    fcntl.flock(lock_fd, fcntl.LOCK_UN)
+    lock_fd.close()
+
+
+from src.adapters.therundown_adapter import get_formatted_odds as fetch_therundown_odds
 SMTP_SERVER = os.getenv("SMTP_SERVER", "smtp.gmail.com")
 SMTP_PORT = int(os.getenv("SMTP_PORT", "587"))
 SMTP_USER = os.getenv("SMTP_USER", "")
@@ -180,6 +261,7 @@ def load_projections(sport):
         players_out = enrich_lines_via_espn(sport, players_out)
         players_out = enrich_lines_via_serpapi(sport, players_out)
         players_out = enrich_via_free_apis(sport, players_out)
+        players_out = enrich_projections_with_therundown(players_out, sport)
         players_out = enrich_via_rosters(sport, players_out)
     return players_out
 
@@ -199,6 +281,29 @@ def _serpapi_increment(n):
     today = datetime.now(ET).strftime("%Y-%m-%d")
     d[today] = d.get(today, 0) + n
     SERPAPI_TRACKER.write_text(json.dumps(d))
+
+def _therundown_daily_count():
+    """Track TheRundown API calls per day to prevent quota burnout."""
+    import json
+    if THERUNDOWN_TRACKER.exists():
+        try:
+            d = json.loads(THERUNDOWN_TRACKER.read_text())
+            return d.get(datetime.now(ET).strftime("%Y-%m-%d"), 0)
+        except:
+            return 0
+    return 0
+
+def _therundown_increment(n=1):
+    import json
+    d = {}
+    if THERUNDOWN_TRACKER.exists():
+        try:
+            d = json.loads(THERUNDOWN_TRACKER.read_text())
+        except:
+            pass
+    today = datetime.now(ET).strftime("%Y-%m-%d")
+    d[today] = d.get(today, 0) + n
+    THERUNDOWN_TRACKER.write_text(json.dumps(d))
 
 def enrich_via_free_apis(sport, projections):
     """Enrich projections with live stats from free public APIs (statsapi, pybaseball, nba_api).
@@ -635,7 +740,6 @@ def generate_combos(picks, sport, date_str):
     import itertools
     conn = sqlite3.connect(str(DB_PATH))
     c = conn.cursor()
-
     combo_count = 0
     if len(picks) < 3:
         conn.close()
@@ -734,6 +838,11 @@ def generate_picks(sport: str):
 
         reason = generate_explanation(p["name"], sport, str(p["stat"]), proj, line, edge)
 
+        ml = p.get("market_line", line)
+        sig = p.get("signal", "SELF_EDGE")
+        e = proj - ml
+        d = "OVER" if e > 0 else "UNDER"
+        r = generate_explanation(p["name"], sport, str(p["stat"]), proj, ml, e)
         picks.append({
             "name": p["name"],
             "team": p.get("team", ""),
@@ -741,10 +850,12 @@ def generate_picks(sport: str):
             "stat": str(p["stat"]),
             "matchup": p.get("matchup", ""),
             "projection": proj,
-            "line": line,
-            "edge": edge,
-            "direction": direction,
-            "reason": reason,
+            "line": ml,
+            "market_line": ml,
+            "edge": e,
+            "direction": d,
+            "reason": r,
+            "signal": sig,
         })
 
     picks = deduplicate(picks)
@@ -752,6 +863,32 @@ def generate_picks(sport: str):
 
     # ── POST-RECALIBRATION (data-driven, per-sport) ──
     picks = _apply_recalibration(sport, picks, "post")
+
+    # ML model enrichment (blends rule-based + ML probabilities)
+    picks = _apply_ml_override(sport, picks)
+    picks = _enrich_ml_probabilities(sport, picks)
+
+    # ── ML PREDICTIVE ENGINE ENRICHMENT ──
+    ml_applied = 0
+    try:
+        from src.ml.predictive_engine import (
+            enrich_picks_ml, filter_ml_picks, wnba_override, apply_direction_bias
+        )
+        if sport.upper() in ('MLB', 'WNBA'):
+            before_ml = len(picks)
+            picks = [apply_direction_bias(p) for p in picks]
+            picks = [p for p in picks if wnba_override(p)]
+            picks = enrich_picks_ml(picks)
+            picks = filter_ml_picks(picks, min_ml_prob=0.45)
+            ml_applied = before_ml - len(picks)
+            if ml_applied:
+                logger.info(f'[ML] Direction bias + ML filter: removed {ml_applied} picks, {len(picks)} remaining')
+            else:
+                logger.info(f'[ML] Enrichment applied — model not trained yet, picks unchanged')
+    except ImportError:
+        logger.debug('[ML] Module not available — skipping ML enrichment')
+    except Exception as e:
+        logger.warning(f'[ML] Enrichment failed: {e} — continuing without ML')
 
     date_str = datetime.now(ET).strftime("%Y-%m-%d")
 
@@ -768,19 +905,27 @@ def generate_picks(sport: str):
     # Save to DB
     conn = sqlite3.connect(str(DB_PATH))
     c = conn.cursor()
+    c.execute("DELETE FROM picks WHERE date = ? AND league = ?", (date_str, sport))
+    seen_keys = set()
     for p in picks:
         if p.get("line", 0) == 0:
             continue
         if abs(p.get("edge", 0)) < 0.01:
             continue
+        source = p.get("source", "SELF_EDGE")
+        key = (date_str, p["sport"], p["name"], p["stat"], p["direction"], source)
+        if key in seen_keys:
+            continue
+        seen_keys.add(key)
         c.execute(
-            """INSERT OR IGNORE INTO picks (date, league, player, team, stat, tc_projection, market_line, edge,
-                                  direction, reason, matchup, period, signal)
-               VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)""",
+            """INSERT OR REPLACE INTO picks (date, league, player, team, stat, tc_projection, market_line, edge,
+                                  direction, reason, matchup, period, signal, source)
+               VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
             (
                 date_str, p["sport"], p["name"], p["team"], p["stat"],
                 p["projection"], p["line"], p["edge"], p["direction"],
                 p.get("reason", ""), p.get("matchup", ""), "GAME", p.get("signal", "SELF_EDGE"),
+                source,
             ),
         )
     conn.commit()
@@ -796,8 +941,76 @@ def generate_picks(sport: str):
 
 def main():
     parser = argparse.ArgumentParser()
+    lock_fd = acquire_run_lock()
     parser.add_argument("--sport", choices=["mlb", "wnba", "nba", "nfl", "nhl", "all"], default="all")
+    parser.add_argument("--grade", action="store_true", help="Run historical grading instead of generating picks")
+    parser.add_argument("--grade-date", default="", help="Date for grading (YYYY-MM-DD), defaults to yesterday")
     args = parser.parse_args()
+
+    if args.grade:
+        import pandas as pd
+        import sqlite3 as sql
+        con = sql.connect(str(DB_PATH)) if 'DB_PATH' in dir() else sql.connect("/home/workspace/Projects/data/picks.db")
+        grade_date = args.grade_date or (datetime.now() - pd.Timedelta(days=1)).strftime("%Y-%m-%d")
+        report = {}
+        total_picks = 0
+        total_hits = 0
+        total_misses = 0
+        matched = 0
+        unmatched = 0
+        for sport in ["mlb", "wnba", "nba", "nfl", "nhl"]:
+            picks_df = pd.read_sql(f"SELECT * FROM picks WHERE date='{grade_date}' AND league='{sport}'", con)
+            if len(picks_df) > 0:
+                graded = grade_picks_engine(picks_df, grade_date, sport)
+                report[sport] = graded
+                total_picks += len(picks_df)
+                total_hits += graded.get("hits", 0)
+                total_misses += graded.get("misses", 0)
+                matched += graded.get("matched", 0)
+                unmatched += graded.get("unmatched", 0)
+        report["total_picks"] = total_picks
+        report["hits"] = total_hits
+        report["misses"] = total_misses
+        report["matched"] = matched
+        report["unmatched"] = unmatched
+        report["hit_rate"] = round(total_hits / total_picks * 100, 1) if total_picks else 0.0
+        out_file = f"/home/workspace/Daily_Log/{grade_date}/graded_report.json"
+        os.makedirs(os.path.dirname(out_file), exist_ok=True)
+        with open(out_file, "w") as f:
+            json.dump(report, f, indent=2)
+        # Save enhanced markdown report
+        md_file = f"/home/workspace/Daily_Log/{grade_date}/FULL_BACKTEST_SELF_EDGE.md"
+        with open(md_file, "w") as f:
+            f.write(f"# TC Pipeline — Daily Grading Report\n\n**Date:** {grade_date}\n\n")
+            f.write(f"## Overall\n\n")
+            f.write(f"- **Total Picks:** {report['total_picks']}\n")
+            f.write(f"- **Matched:** {report['matched']} | **Unmatched:** {report['unmatched']}\n")
+            f.write(f"- **Hits:** {report['hits']} | **Misses:** {report['misses']}\n")
+            f.write(f"- **Hit Rate:** {report['hit_rate']:.1%}\n\n")
+            f.write(f"## Edge Bucket Analysis\n\n")
+            f.write(f"| Bucket | Picks | Hits | Hit Rate | ROI |\n")
+            f.write(f"|--------|-------|------|----------|-----|\n")
+            for bucket, data in report['edge_buckets'].items():
+                f.write(f"| {bucket} | {data['total']} | {data['hits']} | {data['hit_rate']:.1%} | {data['roi']:+.1%} |\n")
+            f.write(f"\n## Per-Sport Breakdown\n\n")
+            f.write(f"| Sport | Picks | Hits | Hit Rate | Profit (u) | ROI |\n")
+            f.write(f"|-------|-------|------|----------|------------|-----|\n")
+            for sport, data in report['sport_breakdown'].items():
+                f.write(f"| {sport.upper()} | {data['total']} | {data['hits']} | {data['hit_rate']:.1%} | {data['profit']:+.1f} | {data['roi']:+.1%} |\n")
+            f.write(f"\n## Per-Stat Breakdown\n\n")
+            for sport, stats in report['stat_breakdown'].items():
+                f.write(f"### {sport.upper()}\n\n")
+                f.write(f"| Stat | Picks | Hits | Hit Rate | Profit (u) | ROI |\n")
+                f.write(f"|------|-------|------|----------|------------|-----|\n")
+                for stat, data in sorted(stats.items(), key=lambda x: -x[1]['total']):
+                    f.write(f"| {stat} | {data['total']} | {data['hits']} | {data['hit_rate']:.1%} | {data['profit']:+.1f} | {data['roi']:+.1%} |\n")
+                f.write("\n")
+        print(f"✅ Graded {report['total_picks']} picks for {grade_date}")
+        print(f"   Hit rate: {report['hit_rate']:.1%} ({report['hits']}/{report['total_picks']})")
+        print(f"   Matched: {report['matched']}, Unmatched: {report['unmatched']}")
+        print(f"   Report saved to: {out_file}")
+        print(f"   Markdown report: {md_file}")
+        return 0
 
     sports = ["mlb", "wnba", "nba", "nfl", "nhl"] if args.sport == "all" else [args.sport]
 
@@ -808,8 +1021,10 @@ def main():
             result = generate_picks(s)
             counts[s] = len(result) if result else 0
             all_picks[s] = result or []
+            all_picks[s] = enforce_pick_cap(s, all_picks[s])
         except Exception as exc:
             logger.error(f"Sport {s} failed: {exc}")
+            time.sleep(SPORT_SLEEP_SECONDS)
 
     total_picks = sum(counts.values())
 
@@ -837,6 +1052,112 @@ def main():
 
     # source_report removed — github_line_sources module missing
     logger.info("[SOURCES] github_line_sources module missing — skipped.")
+    release_run_lock(lock_fd)
+
+
+def enrich_projections_with_therundown(projections, sport):
+    """Fetch game totals from TheRundown and set market_line on every pick.
+    
+    Matches picks to TheRundown events using team abbreviations.
+    Sets market_line = game total and signal = 'LIVE' when matched.
+    """
+    calls_today = _therundown_daily_count()
+    if calls_today >= THERUNDOWN_DAILY_MAX:
+        logger.info(f"[THERUNDOWN] Daily cap ({THERUNDOWN_DAILY_MAX}) reached ({calls_today} calls). Skipping fetch for {sport}.")
+        return projections
+
+    MLB_TEAM_NAME_MAP = {
+        "ARIZONA DIAMONDBACKS": "ARI", "DIAMONDBACKS": "ARI", "D-BACKS": "ARI",
+        "ATLANTA BRAVES": "ATL", "BRAVES": "ATL",
+        "BALTIMORE ORIOLES": "BAL", "ORIOLES": "BAL",
+        "BOSTON RED SOX": "BOS", "RED SOX": "BOS",
+        "CHICAGO CUBS": "CHC", "CUBS": "CHC",
+        "CHICAGO WHITE SOX": "CWS", "WHITE SOX": "CWS",
+        "CINCINNATI REDS": "CIN", "REDS": "CIN",
+        "CLEVELAND GUARDIANS": "CLE", "GUARDIANS": "CLE",
+        "COLORADO ROCKIES": "COL", "ROCKIES": "COL",
+        "DETROIT TIGERS": "DET", "TIGERS": "DET",
+        "HOUSTON ASTROS": "HOU", "ASTROS": "HOU",
+        "KANSAS CITY ROYALS": "KC", "ROYALS": "KC",
+        "LOS ANGELES ANGELS": "LAA", "ANGELS": "LAA",
+        "LOS ANGELES DODGERS": "LAD", "DODGERS": "LAD",
+        "MIAMI MARLINS": "MIA", "MARLINS": "MIA",
+        "MILWAUKEE BREWERS": "MIL", "BREWERS": "MIL",
+        "MINNESOTA TWINS": "MIN", "TWINS": "MIN",
+        "NEW YORK METS": "NYM", "METS": "NYM",
+        "NEW YORK YANKEES": "NYY", "YANKEES": "NYY",
+        "OAKLAND ATHLETICS": "ATH", "ATHLETICS": "ATH",
+        "PHILADELPHIA PHILLIES": "PHI", "PHILLIES": "PHI",
+        "PITTSBURGH PIRATES": "PIT", "PIRATES": "PIT",
+        "SAN DIEGO PADRES": "SD", "PADRES": "SD",
+        "SAN FRANCISCO GIANTS": "SF", "GIANTS": "SF",
+        "SEATTLE MARINERS": "SEA", "MARINERS": "SEA",
+        "ST. LOUIS CARDINALS": "STL", "CARDINALS": "STL",
+        "TAMPA BAY RAYS": "TB", "RAYS": "TB",
+        "TEXAS RANGERS": "TEX", "RANGERS": "TEX",
+        "TORONTO BLUE JAYS": "TOR", "BLUE JAYS": "TOR",
+        "WASHINGTON NATIONALS": "WSH", "NATIONALS": "WSH",
+    }
+    try:
+        odds_data = fetch_therundown_odds(sport)
+    except Exception as e:
+        logger.warning(f"TheRundown fetch failed for {sport}: {e}")
+        return projections
+
+    _therundown_increment()
+
+    if not odds_data or not odds_data.get('events'):
+        logger.info(f"TheRundown returned no events for {sport}")
+        return projections
+
+    teams = {}
+    for evt in odds_data['events']:
+        key = (evt.get('away', '').strip().upper(), evt.get('home', '').strip().upper())
+        if key[0] and key[1]:
+            teams[key] = evt
+
+    updated = 0
+    for p in projections:
+        if p.get('signal') == 'LIVE':
+            continue
+
+        pick_team_raw = p.get('team', '').strip()
+        pick_team = pick_team_raw.upper()
+        matchup = p.get('matchup', '').strip().upper()
+
+        abbr = MLB_TEAM_NAME_MAP.get(pick_team) if sport.lower() == 'mlb' else None
+        search_terms = [pick_team]
+        if abbr:
+            search_terms.append(abbr)
+
+        matched = False
+        for (a, h), evt in teams.items():
+            for term in search_terms:
+                if term and (term == a or term == h or term in matchup):
+                    totals = evt.get('totals', {})
+                    if totals:
+                        over_data = totals.get('over', {})
+                        line = over_data.get('DK', over_data.get('FD', {}))
+                        if isinstance(line, dict):
+                            line = line.get('line', 0)
+                        elif not isinstance(line, (int, float)):
+                            books = list(over_data.keys())
+                            line = 0
+                            if books:
+                                bk = over_data[books[0]]
+                                line = bk.get('line', 0) if isinstance(bk, dict) else 0
+
+                        if line and float(line) > 0:
+                            p['market_line'] = float(line)
+                            p['signal'] = 'LIVE'
+                            updated += 1
+                    matched = True
+                    break
+            if matched:
+                break
+
+    logger.info(f"[THERUNDOWN] Set game-line market_line for {updated} of {len(projections)} picks in {sport}")
+    return projections
 
 
 if __name__ == "__main__":

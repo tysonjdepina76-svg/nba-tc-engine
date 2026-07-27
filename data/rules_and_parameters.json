@@ -1,0 +1,113 @@
+{
+  "global_parameters": {
+    "consensus_blend": {
+      "own_model_weight": 0.60,
+      "sharp_consensus_weight": 0.30,
+      "public_fade_weight": 0.10,
+      "fade_trigger": "invert the 10% public weight if public_bet_pct > 70% on one side"
+    },
+    "edge_calculation": "(ModelProjection - SportsbookLine) / SportsbookLine",
+    "minimum_edge_to_fire": 0.05,
+    "real_time_triggers": {
+      "injury_update": "re-run projection 90 mins pre-game using official inactive list",
+      "weather_override": "wind > 15mph = passing props -15%; rain = under on total points"
+    },
+    "confidence_logic": {
+      "High": "model_variance < 10% AND sharp_agrees AND weather_neutral",
+      "Medium": "variance 10-20% OR one external factor disagrees",
+      "Low": "variance > 20% OR preseason_snap_uncertain OR weather_extreme"
+    },
+    "output_schema": [
+      "Sport",
+      "Player",
+      "Prop",
+      "ModelProjection",
+      "SportsbookLine",
+      "Edge%",
+      "Confidence"
+    ]
+  },
+  "sports": {
+    "MLB": {
+      "parameters": {
+        "core_stats": ["xBA", "xSLG", "K%", "BB%", "HardHit%", "Barrel%"],
+        "props": ["Hits", "Strikeouts", "RBI", "TotalBases", "HR"],
+        "data_sources": ["retrosheet.org", "baseball-savant (Statcast)"]
+      },
+      "rules": {
+        "park_factor": "Coors +20%, Petco -12%, Fenway +8% (LHB), Yankee +10% (LHB)",
+        "wind": "outbound wind > 10mph = +10% HR/xBH; > 15mph = +15% HR",
+        "umpire_zone": "expanded strike zone (umpire top-10 in K%) = +15% Ks for pitcher",
+        "platoon_splits": "heavy weight on LHB vs RHP (+12%) and RHB vs LHP (+8%)",
+        "bullpen_usage": "if starter pitch count > 100 last outing, reduce projection -10% (fatigue)"
+      }
+    },
+    "WNBA": {
+      "parameters": {
+        "core_stats": ["Usage%", "Pace", "OppDefRating", "MinutesPerGame"],
+        "props": ["Points", "Rebounds", "Assists", "3PM"],
+        "data_sources": ["basketball-reference.com (WNBA section)"]
+      },
+      "rules": {
+        "back_to_back": "-8% projection (shorter season, less recovery)",
+        "small_sample_regression": "shrink 40% toward league mean for ALL players (season < 40 games)",
+        "home_away": "+2% at home, -2% on road (smaller venue effect)",
+        "international_break": "reduce projection -10% if player just returned from FIBA duties"
+      }
+    },
+    "NBA": {
+      "parameters": {
+        "core_stats": ["Usage%", "OppDefRating", "Pace", "MinutesPerGame"],
+        "props": ["Points", "Rebounds", "Assists", "3PM"],
+        "data_sources": ["basketball-reference.com"]
+      },
+      "rules": {
+        "back_to_back": "-5% projection if team played previous day",
+        "home_away": "+3% at home, -3% on road",
+        "rest_advantage": "+5% if opponent played previous day and team did not",
+        "foul_trouble": "reduce projection -20% if player has >3 fouls in 1st half (in-game only)"
+      }
+    },
+    "NFL_Regular": {
+      "parameters": {
+        "core_stats": ["OL_WinRate", "DL_WinRate", "WR_Separation", "CB_CoverageRating", "Pace", "AvgPossessions"],
+        "props": ["PassYards", "RushYards", "RecYards", "PassTDs", "RushTDs", "RecTDs"],
+        "data_sources": ["nfldata", "PFF_scrape_proxy (pressure rates)"]
+      },
+      "rules": {
+        "possession_adjustment": "project drives using league-average (10-12 per team), adjust by pace",
+        "wind_penalty": "passing props -15% if wind > 15mph",
+        "home_field": "+5% for offense if home, -5% for away",
+        "injury_boost": "if WR1 out, WR2 gets +15% target share; if RB1 out, RB2 gets +20% rush share"
+      }
+    },
+    "NFL_Preseason": {
+      "parameters": {
+        "core_stats": ["career_preseason_avg", "projected_snap_pct", "draft_round"],
+        "props": ["PassYards", "RushAttempts", "RecYards"],
+        "data_sources": ["beat_writer_reports", "team_depth_charts"]
+      },
+      "rules": {
+        "starters_game1": "0% snaps (fade entirely)",
+        "starters_game2": "25% snaps",
+        "starters_game3": "50% snaps",
+        "starters_game4": "0% snaps (rest entirely)",
+        "backups": "use 3-year preseason mean, regress 30% toward league mean",
+        "rookie_boost": "+10% projection if drafted Round 1-3"
+      }
+    },
+    "NHL": {
+      "parameters": {
+        "core_stats": ["Corsi%", "HighDangerChances", "GoalieSV%_last10", "PowerPlay%", "PenaltyKill%"],
+        "props": ["ShotsOnGoal", "Points", "Saves"],
+        "data_sources": ["naturalstattrick.com", "hockey-reference.com"]
+      },
+      "rules": {
+        "travel_distance": "> 2000 miles traveled = -10% projection (cross-country fatigue)",
+        "back_to_back_goalie": "if goalie started previous night, -15% Saves projection",
+        "home_ice": "+5% for home team (last change advantage)",
+        "playoff_intensity": "if playoff game, reduce scoring -10% (tighter defense)"
+      }
+    }
+  }
+}

@@ -357,3 +357,89 @@ def mlb_over_under_signal(projection: float, line: float = None, market_line: fl
     """
     actual_line = market_line if market_line is not None else line
     return over_under_signal(projection, actual_line, min_abs_edge=0.05, max_edge=0.5)
+
+# ============= JSON-Driven Sport Rules Engine =============
+
+import json
+import os
+
+_RULES_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data", "rules_and_parameters.json")
+
+with open(_RULES_PATH, "r") as _f:
+    _RULES = json.load(_f)
+
+_GLOBAL_PARAMS = _RULES["global_parameters"]
+_SPORT_RULES = _RULES["sports"]
+
+def get_sport_rules(sport: str, is_preseason: bool = False) -> dict:
+    if sport == "NFL" and is_preseason:
+        return _SPORT_RULES["NFL_Preseason"]
+    elif sport == "NFL":
+        return _SPORT_RULES["NFL_Regular"]
+    sport_key = sport.upper() if len(sport) <= 4 else sport
+    return _SPORT_RULES.get(sport_key, {})
+
+def apply_sport_adjustments(sport: str, raw_proj: float, stat_values: dict, is_preseason: bool = False) -> float:
+    config = get_sport_rules(sport, is_preseason)
+    adjusted = raw_proj
+    import re
+    for rule_name, rule_value in config.get("rules", {}).items():
+        if not isinstance(rule_value, str):
+            continue
+        pct_match = re.search(r'([+-]?\d+(?:\.\d+)?)\s*%', rule_value)
+        if not pct_match:
+            continue
+        pct = float(pct_match.group(1)) / 100
+        if rule_name == "wind_penalty" and stat_values.get("wind_speed", 0) > 15:
+            adjusted *= (1 + pct)
+        elif rule_name == "back_to_back" and stat_values.get("back_to_back", False):
+            adjusted *= (1 + pct)
+        elif rule_name == "back_to_back_goalie" and stat_values.get("back_to_back_goalie", False):
+            adjusted *= (1 + pct)
+        elif rule_name == "home_field" and stat_values.get("home", False):
+            adjusted *= (1 + pct)
+        elif rule_name == "travel_distance" and stat_values.get("travel_miles", 0) > 2000:
+            adjusted *= (1 + pct)
+        elif rule_name == "rest_advantage" and stat_values.get("rest_advantage", False):
+            adjusted *= (1 + pct)
+        elif rule_name == "small_sample_regression" and stat_values.get("small_sample", False):
+            adjusted *= (1 + pct)
+        elif rule_name == "playoff_intensity" and stat_values.get("playoff", False):
+            adjusted *= (1 + pct)
+        elif rule_name == "possession_adjustment" and stat_values.get("pace", 0) > 0:
+            league_avg = 11.0
+            adjusted *= stat_values["pace"] / league_avg
+    return adjusted
+
+def sport_prop_signal(
+    sport: str,
+    player: str,
+    prop: str,
+    model_proj: float,
+    book_line: float,
+    is_preseason: bool = False,
+    stat_values: dict = None
+) -> dict:
+    if stat_values is None:
+        stat_values = {}
+    if book_line <= 0 or model_proj <= 0:
+        return {"pick": "NO_PICK", "edge": 0.0, "confidence": "Low", "final_projection": model_proj}
+    final_proj = apply_sport_adjustments(sport, model_proj, stat_values, is_preseason)
+    edge = (final_proj - book_line) / book_line
+    min_edge = _GLOBAL_PARAMS["minimum_edge_to_fire"]
+    if abs(edge) >= min_edge * 2:
+        conf = "High"
+    elif abs(edge) >= min_edge:
+        conf = "Medium"
+    else:
+        conf = "Low"
+    if abs(edge) >= min_edge:
+        pick = "OVER" if edge > 0 else "UNDER"
+    else:
+        pick = "NO_PICK"
+    return {
+        "pick": pick,
+        "edge": round(edge * 100, 2),
+        "confidence": conf,
+        "final_projection": round(final_proj, 1)
+    }

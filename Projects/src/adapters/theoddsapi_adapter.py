@@ -17,12 +17,16 @@ CACHE_TTL = 120  # 2-minute cache for live odds
 
 
 def _load_key() -> str:
+    for var in ("THEODDSAPI", "THEODDSAPI_KEY"):
+        val = os.environ.get(var, "")
+        if val:
+            return val
     env_file = Path("/root/.zo/secrets.env")
     if env_file.exists():
         for line in env_file.read_text().splitlines():
-            if line.startswith("THEODDSAPI_KEY="):
+            if line.startswith("THEODDSAPI_KEY=") or line.startswith("THEODDSAPI="):
                 return line.split("=", 1)[1].strip()
-    return os.getenv("THEODDSAPI_KEY", "")
+    return ""
 
 
 def _cache_path(sport_key: str) -> Path:
