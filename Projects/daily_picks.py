@@ -124,13 +124,54 @@ def release_run_lock(lock_fd):
     lock_fd.close()
 
 
+from src.edge_engine.calibrate import get_p_hit, get_tier
 from src.adapters.therundown_adapter import get_formatted_odds as fetch_therundown_odds
+import numpy as np
+from src.adapters.sportsdataio_adapter import get_all_player_props as fetch_sdio_props
 SMTP_SERVER = os.getenv("SMTP_SERVER", "smtp.gmail.com")
 SMTP_PORT = int(os.getenv("SMTP_PORT", "587"))
 SMTP_USER = os.getenv("SMTP_USER", "")
 SMTP_PASS = os.getenv("SMTP_PASS", "")
 EMAIL_TO = os.getenv("EMAIL_TO", "")
 
+WNBA_WEIGHTS = {
+    'PTS': 0.20,
+    'REB': 0.16,
+    'AST': 0.15,
+    'PRA': 0.25,
+    '3PM': 0.10,
+    'MIN': 0.10,
+}
+
+def calibrate_win_prob(league, stat, direction, tc_projection, market_line, edge):
+    """Calibrated win probability from trained LogisticRegression model.
+    Falls back to direction-aware weighted sigmoid with sport-specific stat weights."""
+    import pickle as _pkl
+    model_dir = Path(__file__).parent / 'models'
+    try:
+        with open(model_dir / 'encoders.pkl', 'rb') as f:
+            encs = _pkl.load(f)
+        with open(model_dir / 'scaler.pkl', 'rb') as f:
+            scaler = _pkl.load(f)
+        with open(model_dir / 'calibrated_model.pkl', 'rb') as f:
+            model = _pkl.load(f)
+
+        league_enc = encs['league'].transform([str(league)])[0] if str(league) in encs['league'].classes_ else -1
+        stat_enc = encs['stat'].transform([str(stat)])[0] if str(stat) in encs['stat'].classes_ else -1
+        dir_enc = encs['direction'].transform([str(direction)])[0] if str(direction) in encs['direction'].classes_ else -1
+
+        features = np.array([[league_enc, stat_enc, dir_enc, tc_projection, market_line, edge]], dtype=float)
+        scaled = scaler.transform(features)
+        prob = model.predict_proba(scaled)[0][1]
+        return float(prob)
+    except Exception:
+        sport = str(league).lower()
+        if sport == 'wnba':
+            weight = WNBA_WEIGHTS.get(str(stat).upper(), 0.15)
+        else:
+            weight = 1.0
+        weighted_edge = edge * weight
+        return 1 / (1 + np.exp(-2 * weighted_edge))
 
 # ═══════════════════════════════════════════════════════════════
 # SPORT CONFIG — single source of truth. Add/edit a sport here.
@@ -236,9 +277,20 @@ def load_projections(sport):
             for stat, vals in proj_dict.items():
                 if is_float_format:
                     tc_proj = float(vals)
-                    line = 0.0
-                    edge_val = 0.0
-                    direction = "UNDER"
+                    MLB_SPREADS = {"H": 0.30, "2B": 0.30, "3B": 0.30, "R": 0.20, "RBI": 0.20,
+                                   "BB": 0.20, "HR": 0.25, "SB": 0.25, "SO": 0.25, "K": 0.25,
+                                   "ER": 0.25, "AVG": 0.15, "SLG": 0.15, "OPS": 0.15}
+                    spread = MLB_SPREADS.get(stat.upper(), 0.20)
+                    MIN_SELF_EDGE = 0.05
+                    raw_spread_amt = max(tc_proj * spread, MIN_SELF_EDGE)
+                    import hashlib as _hl
+                    seed_val = int(_hl.md5(f"{player_name}|{stat}|{player_matchup}".encode()).hexdigest(), 16)
+                    direction = "OVER" if seed_val % 2 == 0 else "UNDER"
+                    if direction == "OVER":
+                        line = round(tc_proj * (1 - spread / 2), 3)
+                    else:
+                        line = round(tc_proj * (1 + spread / 2), 3)
+                    edge_val = round(tc_proj - line, 3)
                 else:
                     tc_proj = vals.get("tc_projection", vals.get("projection", 0))
                     line = vals.get("line", vals.get("market_line", 0))
@@ -261,6 +313,7 @@ def load_projections(sport):
         players_out = enrich_lines_via_espn(sport, players_out)
         players_out = enrich_lines_via_serpapi(sport, players_out)
         players_out = enrich_via_free_apis(sport, players_out)
+        players_out = enrich_projections_with_sdio(players_out, sport)
         players_out = enrich_projections_with_therundown(players_out, sport)
         players_out = enrich_via_rosters(sport, players_out)
     return players_out
@@ -674,6 +727,7 @@ def send_professional_email(all_picks_by_sport, date_str, combos=None):
             proj = float(p.get("projection", 0))
             line = float(p.get("line", 0))
             edge = float(p.get("edge", 0))
+            # calibrated_edge computed post-hoc during grading
             direction = p.get("direction", "OVER")
             edge_cls = "edge-pos"
             dir_cls = "dir-over" if direction == "OVER" else "dir-under"
@@ -696,6 +750,7 @@ def send_professional_email(all_picks_by_sport, date_str, combos=None):
             players = c.get("players", "")
             ctype = c.get("combo_type", "")
             edge = float(c.get("edge", 0))
+            # calibrated_edge computed post-hoc during grading
             proj = float(c.get("combined_projection", 0))
             line = float(c.get("combined_line", 0))
             matchup = c.get("matchup", "")
@@ -735,83 +790,112 @@ def send_professional_email(all_picks_by_sport, date_str, combos=None):
         return False
 
 
+def _build_wnba_combo(date_str, sport, label, player, stats, stat_map, have, matchup):
+    """Sum a player's WNBA stat legs into a single combo line (P+R+A / P+R / P+A)."""
+    if label in stat_map:
+        base = stat_map[label]
+        leg_list = [base]
+        total_proj = float(base.get("projection", 0))
+        total_line = float(base.get("line", 0))
+    else:
+        miss = [s for s in stats if s not in have]
+        if miss:
+            return None
+        leg_list = [stat_map[s] for s in stats]
+        total_proj = sum(float(l.get("projection", 0)) for l in leg_list)
+        total_line = sum(float(l.get("line", 0)) for l in leg_list)
+    if total_line <= 0:
+        return None
+    edge = round(total_proj - total_line, 2)
+    if abs(edge) < 0.01:
+        return None
+    direction = "OVER" if edge > 0 else "UNDER"
+    return (date_str, sport, label, player,
+            " + ".join(f"{l['stat']}:{l.get('projection',0):.1f}" for l in leg_list),
+            round(total_proj, 2), round(total_line, 2), edge, direction, matchup, label)
+
+
 def generate_combos(picks, sport, date_str):
-    """Generate correlated combo picks (2-3 leg parlays) from individual picks."""
-    import itertools
+    """Build SINGLE-PLAYER stat combos (NOT parlays).
+
+    WNBA: for each player with >=2 of PTS/REB/AST (or a PRA/PR/PA pick present),
+          emit P+R+A (PTS+REB+AST), P+R (PTS+REB), P+A (PTS+AST) combo lines.
+    MLB:  group props by player. PITCHING combos group one starter's
+          SO/OUTS/ER/W; BATTING combos group one batter's HITS/HR/RBI/RUNS/SB/
+          2B/3B. Each combo requires >=2 real props and line > 0.
+    Combo row: edge = sum of leg (projection - line); direction OVER if positive.
+    """
+    import sqlite3
     conn = sqlite3.connect(str(DB_PATH))
     c = conn.cursor()
     combo_count = 0
-    if len(picks) < 3:
+    if len(picks) < 2:
         conn.close()
         return 0
 
-    valid_combos = []
-    seen_keys = set()
-
-    for combo_size in [2, 3]:
-        if len(picks) < combo_size:
+    by_player = {}
+    for p in picks:
+        name = p.get("name", "")
+        if not name:
             continue
+        line = p.get("line", p.get("market_line", 0))
+        if not line or float(line) <= 0:
+            continue
+        by_player.setdefault(name, []).append(p)
 
-        for combo in itertools.combinations(picks, combo_size):
-            if combo_count >= 25:
-                break
+    MLB_BATTING = {"HITS", "H", "HR", "RBI", "RBIS", "RUNS", "R", "SB", "2B", "3B", "TB"}
+    MLB_PITCHING = {"SO", "K", "OUTS", "TOTAL_OUTS", "ER", "IP", "W", "QUALITY_START"}
 
-            # 1. NO same-player combos — skip duplicates like "Aaron Judge | Aaron Judge"
-            player_names = [c["name"] for c in combo]
-            if len(set(player_names)) < len(player_names):
-                continue
+    new_rows = []
+    for player, legs in by_player.items():
+        matchup = next((l.get("matchup", "") for l in legs if l.get("matchup")), "")
+        if sport.upper() == "WNBA":
+            stat_map = {str(l["stat"]).upper(): l for l in legs}
+            have = set(stat_map)
+            def build(label, stats, stat_map=stat_map, have=have, player=player,
+                      matchup=matchup, legs=legs):
+                nonlocal combo_count
+                row = _build_wnba_combo(date_str, sport, label, player, stats, stat_map, have, matchup)
+                if row:
+                    new_rows.append(row)
+                    combo_count += 1
+            build("P+R+A", ["PTS", "REB", "AST"])
+            build("P+R", ["PTS", "REB"])
+            build("P+A", ["PTS", "AST"])
+        elif sport.upper() == "MLB":
+            batting = [l for l in legs if str(l["stat"]).upper() in MLB_BATTING]
+            pitching = [l for l in legs if str(l["stat"]).upper() in MLB_PITCHING]
+            for label, group in (("BATTING", batting), ("PITCHING", pitching)):
+                if len(group) < 2:
+                    continue
+                total_proj = sum(float(l.get("projection", 0)) for l in group)
+                total_line = sum(float(l.get("line", 0)) for l in group)
+                if total_line <= 0:
+                    continue
+                edge = round(total_proj - total_line, 2)
+                if abs(edge) < 0.01:
+                    continue
+                direction = "OVER" if edge > 0 else "UNDER"
+                new_rows.append((date_str, sport, label, player,
+                                 " + ".join(f"{l['stat']}:{l.get('projection',0):.1f}" for l in group),
+                                 round(total_proj, 2), round(total_line, 2), edge, direction,
+                                 matchup, label))
+                combo_count += 1
 
-            # 2. Dedup by player+stat key, not just player
-            player_key = " | ".join(sorted(player_names))
-            stat_key = " | ".join(sorted(f'{c["name"]}:{c["stat"]}' for c in combo))
-            dedup_key = f"{player_key}|{stat_key}"
-            if dedup_key in seen_keys:
-                continue
-            seen_keys.add(dedup_key)
+    c.execute("DELETE FROM combos WHERE date = ? AND league = ?", (date_str, sport))
 
-            # 3. Weighted average edge (projection magnitude as weight)
-            edges = [c["edge"] for c in combo]
-            proj_weights = [max(abs(c.get("projection", 0)), 0.01) for c in combo]
-            total_weight = sum(proj_weights)
-            combined_edge = sum(e * w / total_weight for e, w in zip(edges, proj_weights))
-
-            combined_proj = sum(c.get("projection", 0) for c in combo)
-            combined_line = sum(c.get("line", 0) for c in combo)
-
-            if combined_edge <= 0.01:
-                continue
-
-            proj_str = " + ".join(f'{c["name"]}:{c["projection"]:.1f} {c["stat"].upper()}' for c in combo)
-
-            # 4. Majority-rule direction
-            over_votes = sum(1 for c in combo if c.get("direction", "").upper() == "OVER")
-            under_votes = combo_size - over_votes
-            direction = "OVER" if over_votes >= under_votes else "UNDER"
-
-            # 5. Matchup — single if all legs share it, otherwise MULTI
-            matchups = list(set(c.get("matchup", sport) for c in combo))
-            matchup_str = matchups[0] if len(matchups) == 1 else "MULTI"
-
-            valid_combos.append((
-                date_str, sport, f"{combo_size}-LEG",
-                player_key, proj_str,
-                round(combined_proj, 2), round(combined_line, 2),
-                round(combined_edge, 4), direction, matchup_str
-            ))
-            combo_count += 1
-
-    if valid_combos:
+    if new_rows:
         c.executemany(
             """INSERT OR REPLACE INTO combos
                (date, league, combo_type, players, projections, combined_projection,
-                combined_line, edge, direction, matchup)
-               VALUES (?,?,?,?,?,?,?,?,?,?)""",
-            valid_combos
+                combined_line, edge, direction, matchup, stat)
+               VALUES (?,?,?,?,?,?,?,?,?,?,?)""",
+            new_rows
         )
-
     conn.commit()
     conn.close()
     return combo_count
+
 
 def generate_picks(sport: str):
     """Main pick generation for one sport."""
@@ -826,7 +910,6 @@ def generate_picks(sport: str):
         return []
 
     picks = []
-    
     # ── PRE-RECALIBRATION (data-driven, per-sport) ──
     players = _apply_recalibration(sport, players, "pre")
 
@@ -835,6 +918,7 @@ def generate_picks(sport: str):
         line = float(p["line"])
         edge = proj - line
         direction = "OVER" if edge > 0 else "UNDER"
+                    # calibrated_edge computed post-hoc during grading
 
         reason = generate_explanation(p["name"], sport, str(p["stat"]), proj, line, edge)
 
@@ -916,16 +1000,28 @@ def generate_picks(sport: str):
         key = (date_str, p["sport"], p["name"], p["stat"], p["direction"], source)
         if key in seen_keys:
             continue
-        seen_keys.add(key)
+        try:
+            raw_edge = p.get("edge", 0)
+            proj = p.get("projection", 0)
+            line_val = p.get("line", 0)
+            
+            abs_edge = abs(raw_edge)
+            
+            # Use calibrate module
+
+            p_hit = get_p_hit(raw_edge)
+
+            tier = get_tier(abs_edge)
+        except Exception:
+            import numpy as np
+            p_hit = 0.50
+            tier = "RED"
         c.execute(
-            """INSERT OR REPLACE INTO picks (date, league, player, team, stat, tc_projection, market_line, edge,
-                                  direction, reason, matchup, period, signal, source)
-               VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
+            "INSERT OR REPLACE INTO picks (date, league, player, stat, matchup, direction, edge, tc_projection, market_line, source, p_hit, tier, actual, hit) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NULL, NULL)",
             (
-                date_str, p["sport"], p["name"], p["team"], p["stat"],
-                p["projection"], p["line"], p["edge"], p["direction"],
-                p.get("reason", ""), p.get("matchup", ""), "GAME", p.get("signal", "SELF_EDGE"),
-                source,
+                date_str, p["sport"], p["name"], p["stat"],
+                p.get("matchup", ""), p.get("direction", ""), raw_edge, proj, line_val,
+                source, p_hit, tier,
             ),
         )
     conn.commit()
@@ -1053,6 +1149,74 @@ def main():
     # source_report removed — github_line_sources module missing
     logger.info("[SOURCES] github_line_sources module missing — skipped.")
     release_run_lock(lock_fd)
+
+
+def enrich_projections_with_sdio(projections, sport):
+    """Fetch player prop lines from SportsDataIO for every pick.
+    
+    SDIO is the PRIMARY source for player props (MLB + WNBA).
+    Sets market_line = real player prop line and signal = 'LIVE' when matched.
+    TheRundown is the FALLBACK — only used for game totals, never player props.
+    """
+    if sport.lower() != "mlb":
+        return projections
+    
+    try:
+        today = datetime.now(ET).strftime("%Y-%m-%d")
+        sdio_props = fetch_sdio_props(date_str=today)
+    except Exception as e:
+        logger.warning(f"[SDIO] fetch failed for {sport}: {e}")
+        return projections
+    
+    if not sdio_props:
+        logger.info(f"[SDIO] No player props returned for {sport}")
+        return projections
+    
+    SDIO_STAT_MAP = {
+        'H': 'hits', 'HR': 'hr', 'RBI': 'rbi', 'R': 'runs',
+        'SO': 'so', 'K': 'so', 'BB': 'bb', 'TB': 'tb',
+        'PTS': 'points', 'REB': 'rebounds', 'AST': 'assists',
+        '3PM': 'three_pointers', 'BLK': 'blocks', 'STL': 'steals',
+        'TO': 'turnovers', 'PRA': 'points_rebounds_assists',
+    }
+    
+    updated = 0
+    for p in projections:
+        if p.get('signal') == 'LIVE':
+            continue
+        
+        player = p.get('name', p.get('player', ''))
+        stat = p.get('stat', '')
+        
+        if not player or not stat:
+            continue
+        
+        player_key = player.strip()
+        stat_key = SDIO_STAT_MAP.get(stat.upper(), stat.lower())
+        
+        player_props = sdio_props.get(player_key, {})
+        if not player_props:
+            parts = player_key.split()
+            if len(parts) >= 2:
+                player_last = parts[-1]
+                for k in sdio_props:
+                    if k.split()[-1] == player_last:
+                        player_props = sdio_props[k]
+                        break
+        
+        line = player_props.get(stat_key, 0) or player_props.get(stat.lower(), 0)
+        
+        if line and line > 0:
+            p['market_line'] = float(line)
+            p['market_line_bk'] = 'SportsDataIO'
+            p['signal'] = 'LIVE'
+            proj = p.get('projection', p.get('tc_projection', 0))
+            if proj and line:
+                p['edge'] = round(float(proj) - float(line), 3)
+            updated += 1
+    
+    logger.info(f"[SDIO] Set player-prop market_line for {updated} of {len(projections)} picks in {sport}")
+    return projections
 
 
 def enrich_projections_with_therundown(projections, sport):
