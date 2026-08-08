@@ -104,7 +104,18 @@ Daily + hourly + monthly caps. All 3 stale tracker files purged. No more uncappe
 6. ESPN (boxscores/grading only)
 7. Derived Lines (final fallback: proj - 0.5)
 
+### ✅ FIXED 8/8 — NFL zo.space REACT ERROR #31
+- [x] `/nfl` route renders `key_dates` safely (object values -> `start → end`) and handles `phases` whether array or object via `Array.isArray()`. Space error log cleared — verified clean against live endpoint.
+
 ### 🟡 NEEDS ATTENTION
+- [ ] **8/7 + 8/8 DB rows all `hit=0`/`actual=0`** — today's and tomorrow's picks show as losses
+      in picks.db before games are graded. Cause: schema DEFAULT 0 on actual/hit/profit.
+      Fix path: set actual/hit/profit DEFAULT NULL (pending) and let graders set them.
+- [ ] **8/7 grading ran with graded=0 / missing=902** — historical_grader matched names (864/902)
+      but produced 0 graded hits. Verify actuals crosswalk (name-match → boxscore stat) before
+      trusting any 8/7 hit rate. Re-run: historical_grader.py --sport mlb --since 2026-08-07.
+- [ ] **graded_picks table (2,142 rows) vs picks table (18,836)** — two grading/accuracy paths
+      drift; /api/accuracy-data reads graded_picks, autograder writes into picks. Reconcile.
 - [ ] P2: Backfill remaining 4 athletes + full 2025 season for WNBA minutes model
 - [ ] Discovery Labs key f573 returns 401 — contact Discovery Labs to activate subscription
 - [ ] 8/3 WNBA picks need grading once boxscores available
