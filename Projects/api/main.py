@@ -9,7 +9,12 @@ from zoneinfo import ZoneInfo
 from fastapi import FastAPI, Request, Query
 from fastapi.middleware.cors import CORSMiddleware
 from src.api_cap_tracker import cap_check
-from streamer_engine import start_streamer, stop_streamer, get_status, get_latest_data
+try:
+    from streamer_engine import start_streamer, stop_streamer, get_status, get_latest_data
+    _HAS_STREAMER = True
+except ImportError:
+    _HAS_STREAMER = False
+    start_streamer = stop_streamer = get_status = get_latest_data = None
 import pandas as pd
 
 sys.path.insert(0, "/home/workspace/Projects")
@@ -167,12 +172,31 @@ def get_top_picks(limit: int = 50, sport: str = None, min_edge: float = -100.0):
         c.execute(query, params)
         rows = c.fetchall()
         conn.close()
-        return [{
-            "player": r["player"], "sport": r["league"], "stat": r["stat"],
-            "projection": r["tc_projection"], "line": r["market_line"],
-            "edge": r["edge"], "direction": r["direction"],
-            "reason": r["reason"], "matchup": r["matchup"] or "", "team": r["team"] or ""
-        } for r in rows]
+        out = []
+        for r in rows:
+            if _is_combo_stat(r["stat"], r["league"] or ""):
+                continue
+            _k, label = _game_key(r["matchup"] or "")
+            out.append({
+                "player": r["player"], "sport": r["league"], "stat": r["stat"],
+                "projection": r["tc_projection"], "line": r["market_line"],
+                "edge": r["edge"], "direction": r["direction"],
+                "reason": r["reason"], "matchup": label, "team": r["team"] or ""
+            })
+        # Emit one uniform label per canonical game so reversed duplicates
+        # (e.g. 'DAL @ GS' vs 'GS @ DAL') collapse and client-side dedup works.
+        label_by_key = {}
+        freq = {}
+        for p in out:
+            k = _game_key(p["matchup"])[0]
+            freq.setdefault(k, {})
+            lab = p["matchup"]
+            freq[k][lab] = freq[k].get(lab, 0) + 1
+        for k, labels in freq.items():
+            label_by_key[k] = max(labels, key=labels.get)
+        for p in out:
+            p["matchup"] = label_by_key[_game_key(p["matchup"])[0]]
+        return out
     except Exception as e:
         return {"error": str(e)}
 
@@ -211,7 +235,7 @@ def live_dashboard(sport: str = "all"):
 @app.get("/api/accuracy-data")
 def accuracy_data():
     try:
-        conn = sqlite3.connect(str(PIPELINE_DB))
+        conn = sqlite3.connect(str(PICKS_DB))
         conn.row_factory = sqlite3.Row
         c = conn.cursor()
         c.execute("""
@@ -279,6 +303,39 @@ def system_data():
     return result
 
 
+def _game_key(m):
+    """Collapse reversed/renamed matchups into ONE canonical game.
+    Prevents the same game (e.g. 'GS_at_DAL' vs 'DAL_at_GS') showing
+    twice as two cards. Returns (canonical_key, display_label)."""
+    m = (m or "").strip()
+    if not m:
+        return ("tdb", "TBD")
+    m = m.replace("@", "_at_")
+    parts = [p.strip() for p in m.split("_at_") if p.strip()]
+    if len(parts) < 2:
+        return (m.upper(), m)
+    canon = "@".join(sorted(p.upper() for p in parts))
+    label = " @ ".join(parts)
+    return (canon, label)
+
+
+
+def _is_combo_stat(stat, league):
+    """True for derived COMBOS that must live only under the combos tab.
+    WNBA: P+R+A / P+R / P+A (aliased PRA/PR/PA). MLB: BATTING/PITCHING."""
+    s = (stat or "").upper().strip()
+    if not s:
+        return False
+    if "+" in s:
+        return True
+    if league and league.upper() == "WNBA":
+        if s in {"PRA", "PR", "PA", "P+R+A", "P+R", "P+A"}:
+            return True
+    if league and league.upper() == "MLB":
+        if s in {"BATTING", "PITCHING", "PITCH+BAT", "SO+K", "H+RBI", "R+RBI", "H+R", "HR+RBI"}:
+            return True
+    return False
+
 @app.get("/api/picks/by-game-structured")
 def picks_by_game_structured(sport: str = None):
     try:
@@ -287,9 +344,46 @@ def picks_by_game_structured(sport: str = None):
         ET = ZoneInfo("America/New_York")
         today = datetime.now(ET).strftime("%Y-%m-%d")
 
+        sports_map = {}
+
+        def absorb_rows(rows):
+            for r in rows:
+                sp = r["league"].upper()
+                m = r["matchup"] or "TBD"
+                key, label = _game_key(m)
+                if sp not in sports_map:
+                    sports_map[sp] = {}
+                g = sports_map[sp].get(key)
+                if g is None:
+                    g = {"matchup": label, "picks": {}, "total_picks": 0, "max_edge": 0, "_label_count": {}}
+                    sports_map[sp][key] = g
+                g["_label_count"][label] = g["_label_count"].get(label, 0) + 1
+                player = (r["player"] or "").strip()
+                if not player:
+                    continue
+                if _is_combo_stat(r["stat"], sp):
+                    continue
+                pick = {
+                    "player": player,
+                    "team": r["team"] or "",
+                    "stat": r["stat"],
+                    "projection": r["tc_projection"] if r["tc_projection"] is not None else None,
+                    "line": r["market_line"] if r["market_line"] is not None else None,
+                    "edge": r["edge"] or 0,
+                    "direction": r["direction"],
+                    "reason": r["reason"] or "",
+                    "role": r["role"] if "role" in r.keys() else "",
+                }
+                # dedupe same (player, stat) in a game, keeping the single strongest
+                # lean (kills reversed-game doubles AND contradictory OVER/UNDER pairs)
+                dkey = (player, pick["stat"].upper() if pick["stat"] else "")
+                existing = g["picks"].get(dkey)
+                if existing is None or abs(pick["edge"]) > abs(existing["edge"]):
+                    g["picks"][dkey] = pick
+
         query = """
             SELECT player, league, team, stat, tc_projection, market_line,
-                   edge, direction, reason, matchup
+                   edge, direction, reason, matchup, role
             FROM picks WHERE date = ?
         """
         params = [today]
@@ -299,90 +393,42 @@ def picks_by_game_structured(sport: str = None):
         query += " ORDER BY league, matchup, ABS(edge) DESC"
 
         c.execute(query, params)
-        rows = c.fetchall()
+        absorb_rows(c.fetchall())
 
-        sports_map = {}
-        for r in rows:
-            sp = r["league"].upper()
-            m = r["matchup"] or "TBD"
-            if sp not in sports_map:
-                sports_map[sp] = {}
-            if m not in sports_map[sp]:
-                sports_map[sp][m] = {"matchup": m, "picks": [], "total_picks": 0, "max_edge": 0}
-
-            pick = {
-                "player": r["player"],
-                "team": r["team"] or "",
-                "stat": r["stat"],
-                "projection": r["tc_projection"],
-                "line": r["market_line"],
-                "edge": r["edge"],
-                "direction": r["direction"],
-                "reason": r["reason"]
-            }
-            sports_map[sp][m]["picks"].append(pick)
-            sports_map[sp][m]["total_picks"] += 1
-            if abs(r["edge"]) > abs(sports_map[sp][m]["max_edge"]):
-                sports_map[sp][m]["max_edge"] = r["edge"]
-
-        # AFTER building sports_map from today, fill gaps per-sport
-        # Find the latest date that has picks for a sport if today has none
-        all_leagues = ["wnba", "mlb"]
-        if sport and sport.lower() != "all":
-            all_leagues = [sport.lower()]
-        
-        for lg in all_leagues:
+        for lg in ["wnba", "mlb"] if (not sport or sport.lower() == "all") else [sport.lower()]:
             sp_key = lg.upper()
             if sp_key in sports_map and sports_map[sp_key]:
                 continue  # Today already has picks for this sport
-            
-            # This sport has no picks today — find latest date for this sport
-            c.execute(
-                "SELECT date FROM picks WHERE LOWER(league) = ? ORDER BY date DESC LIMIT 1",
-                [lg]
-            )
+            c.execute("SELECT date FROM picks WHERE LOWER(league) = ? ORDER BY date DESC LIMIT 1", [lg])
             row = c.fetchone()
             if not row:
                 continue
-            fallback_date = row[0]
-            
             c.execute(
                 """SELECT player, league, team, stat, tc_projection, market_line,
-                          edge, direction, reason, matchup
+                          edge, direction, reason, matchup, role
                    FROM picks WHERE date = ? AND LOWER(league) = ?
                    ORDER BY matchup, ABS(edge) DESC""",
-                [fallback_date, lg]
+                [row[0], lg],
             )
-            fb_rows = c.fetchall()
-            for r in fb_rows:
-                sp = r["league"].upper()
-                m = r["matchup"] or "TBD"
-                if sp not in sports_map:
-                    sports_map[sp] = {}
-                if m not in sports_map[sp]:
-                    sports_map[sp][m] = {"matchup": m, "picks": [], "total_picks": 0, "max_edge": 0}
-                pick = {
-                    "player": r["player"],
-                    "team": r["team"] or "",
-                    "stat": r["stat"],
-                    "projection": r["tc_projection"] or 0,
-                    "line": r["market_line"] or 0,
-                    "edge": r["edge"] or 0,
-                    "direction": r["direction"] or "OVER",
-                    "reason": r["reason"] or "",
-                }
-                sports_map[sp][m]["picks"].append(pick)
-                sports_map[sp][m]["total_picks"] += 1
-                if abs(pick["edge"]) > abs(sports_map[sp][m]["max_edge"]):
-                    sports_map[sp][m]["max_edge"] = pick["edge"]
+            absorb_rows(c.fetchall())
 
         conn.close()
 
         result = {"date": today, "sports": {}}
         for sp_name, matchups in sports_map.items():
-            games_list = sorted(matchups.values(), key=lambda g: -abs(g["max_edge"]))
-            for g in games_list:
+            games_list = []
+            for key, g in matchups.items():
+                picks = list(g["picks"].values())
+                g["picks"] = picks
+                g["total_picks"] = len(picks)
+                g["max_edge"] = max([abs(p["edge"]) for p in picks], default=0)
+                # prefer display label with the most source rows
+                if g["_label_count"]:
+                    g["matchup"] = max(g["_label_count"], key=lambda k: g["_label_count"][k])
                 g["picks"].sort(key=lambda p: -abs(p["edge"]))
+                del g["_label_count"]
+                games_list.append(g)
+            games_list.sort(key=lambda g: -abs(g["max_edge"]))
             result["sports"][sp_name] = {
                 "games": games_list,
                 "game_count": len(games_list),
@@ -392,6 +438,7 @@ def picks_by_game_structured(sport: str = None):
         return result
     except Exception as e:
         return {"error": str(e)}
+
 
 @app.get("/api/box-scores")
 def box_scores(sport: str = "all", refresh: str = "false"):
@@ -435,6 +482,8 @@ def tc_alerts(limit: int = 50, min_edge: float = 0.02, sport: str = "all"):
     conn.close()
     alerts = []
     for r in rows:
+        if _is_combo_stat(r["stat"], r["league"] or ""):
+            continue
         edge = r["edge"]
         abs_edge = abs(edge)
         if abs_edge >= 0.06:
@@ -448,7 +497,7 @@ def tc_alerts(limit: int = 50, min_edge: float = 0.02, sport: str = "all"):
             "league": r["league"],
             "stat": r["stat"],
             "direction": r["direction"],
-            "matchup": r["matchup"] or "",
+            "matchup": _game_key(r["matchup"])[1],
             "market_line": r["market_line"],
             "tc_projection": r["tc_projection"],
             "edge": round(edge, 4),
@@ -457,7 +506,19 @@ def tc_alerts(limit: int = 50, min_edge: float = 0.02, sport: str = "all"):
             "signal": r["signal"] or level,
             "team": r["team"] or "",
         })
-    return {"generated": today, "total": len(alerts), "alerts": alerts}
+    # Uniform label per canonical game so reversed duplicates collapse
+    for a in alerts:
+        _k, lab = _game_key(a["matchup"])
+        a["matchup"] = lab
+    seen = set()
+    uniq = []
+    for a in alerts:
+        dk = (_game_key(a["matchup"])[0], a["player"], a["stat"], str(a["direction"]))
+        if dk in seen:
+            continue
+        seen.add(dk)
+        uniq.append(a)
+    return {"generated": today, "total": len(uniq), "alerts": uniq}
 
 
 @app.get("/api/injuries")
@@ -551,6 +612,23 @@ COMBO_DEFS = {
 }
 
 
+def _dedupe_combos(results):
+    """Collapse reversed/renamed matchup labels in combos and drop exact dupes
+    (same game key + players + combo_type, collapsing reversed labels and OVER/UNDER duplicates). Keep highest abs edge."""
+    seen = {}
+    out = []
+    for c in results:
+        key, _ = _game_key(c.get("matchup") or "")
+        dkey = (key, c.get("players") or "", c.get("combo_type") or "")
+        if dkey in seen:
+            # keep higher |edge|
+            if abs(c.get("edge") or 0) <= abs(seen[dkey].get("edge") or 0):
+                continue
+            out = [x for x in out if id(x) != id(seen[dkey])]
+        seen[dkey] = c
+        out.append(c)
+    return out
+
 def _fetch_combos_from_table(league=None, min_edge=0.5, limit=50):
     """Read pre-computed combos from combos table — fast, no on-the-fly math."""
     db_path = PICKS_DB
@@ -558,36 +636,62 @@ def _fetch_combos_from_table(league=None, min_edge=0.5, limit=50):
         return []
     conn = sqlite3.connect(str(db_path))
     conn.row_factory = sqlite3.Row
-    today = datetime.now().strftime("%Y-%m-%d")
-    where_clauses = []
+    from zoneinfo import ZoneInfo
+    today = datetime.now(ZoneInfo("America/New_York")).strftime("%Y-%m-%d")
+    where_clauses = ["date = ?"]
     params = [today]
     if league:
         where_clauses.append("LOWER(league) = LOWER(?)")
         params.append(league)
-    if where_clauses:
-        query = f"SELECT * FROM combos WHERE {' AND '.join(where_clauses)} ORDER BY ABS(edge) DESC LIMIT ?"
-    else:
-        query = f"SELECT * FROM combos ORDER BY ABS(edge) DESC LIMIT ?"
+    query = f"SELECT * FROM combos WHERE {' AND '.join(where_clauses)} ORDER BY ABS(edge) DESC LIMIT ?"
     params.append(limit)
     try:
         rows = conn.execute(query, params).fetchall()
+        if not rows:
+            latest = conn.execute("SELECT MAX(date) as d FROM combos").fetchone()
+            if latest and latest["d"]:
+                params[0] = latest["d"]
+                rows = conn.execute(query, params).fetchall()
     except:
         conn.close()
         return []
     results = []
     for r in rows:
+        players_str = r["players"]
+        projections_str = r["projections"] if "projections" in r.keys() else ""
+        first_player = players_str.split(" | ")[0] if players_str else ""
+        matchup_val = r["matchup"] if "matchup" in r.keys() else ""
+        edge_val = r["edge"] or 0
+        combined_line_val = r["combined_line"] or 0
+        combined_proj_val = r["combined_projection"] or 0
+        combo_label = r["combo_type"]
+        if "PITCH+BAT" in str(r["combo_type"]):
+            combo_label = "PITCHING+BATTING"
+        elif "FULL" in str(r["combo_type"]):
+            combo_label = "FULL GAME"
+        elif matchup_val and matchup_val != "MULTI":
+            combo_label = "SAME GAME " + r["combo_type"]
         results.append({
             "combo_type": r["combo_type"],
-            "players": r["players"],
+            "combo_label": combo_label,
+            "player": first_player,
+            "players": players_str,
             "league": r["league"],
             "date": r["date"],
-            "combined_projection": r["combined_projection"],
-            "combined_line": r["combined_line"],
-            "edge": r["edge"],
-            "projections": r["projections"] if "projections" in r.keys() else "",
+            "tc_projection": round(combined_proj_val, 1),
+            "market_line": round(combined_line_val, 1),
+            "combined_projection": combined_proj_val,
+            "combined_line": combined_line_val,
+            "edge": edge_val,
+            "edge_pct": round((edge_val / combined_line_val * 100), 1) if combined_line_val > 0 else 0,
+            "direction": r["direction"] if "direction" in r.keys() else "OVER",
+            "matchup": matchup_val,
+            "projections": projections_str,
+            "role": r["role"] if "role" in r.keys() else "",
+            "stat": r["stat"] if "stat" in r.keys() else "",
         })
     conn.close()
-    return results
+    return _dedupe_combos(results)
 
 def _build_combos_from_db(league=None, matchup=None, min_edge=0.5):
     """Read combos table directly — no recomputation from picks."""
@@ -596,8 +700,10 @@ def _build_combos_from_db(league=None, matchup=None, min_edge=0.5):
         return []
     conn = sqlite3.connect(str(db_path))
     conn.row_factory = sqlite3.Row
-    today = datetime.now().strftime("%Y-%m-%d")
-    where_clauses = ["1=1"]
+    from datetime import timezone, timedelta
+    ET = timezone(timedelta(hours=-4))
+    today = datetime.now(ET).strftime("%Y-%m-%d")
+    where_clauses = ["date = ?"]
     params = [today]
     if league:
         where_clauses.append("LOWER(league) = LOWER(?)")
@@ -606,9 +712,23 @@ def _build_combos_from_db(league=None, matchup=None, min_edge=0.5):
         where_clauses.append("matchup = ?")
         params.append(matchup)
     query = f"""SELECT id, date, league, combo_type, players, projections,
-                       combined_projection, combined_line, edge, direction, matchup, created_at
+                       combined_projection, combined_line, edge, direction, matchup, role, stat, created_at
                 FROM combos WHERE {' AND '.join(where_clauses)}
                 ORDER BY ABS(edge) DESC LIMIT 50"""
+    rows = []
+    try:
+        rows = conn.execute(query, params).fetchall()
+    except Exception:
+        rows = []
+    if not rows and not league and not matchup:
+        try:
+            latest = conn.execute("SELECT MAX(date) as d FROM combos").fetchone()
+            if latest and latest["d"]:
+                params[0] = latest["d"]
+                query = query.replace("date = ?", "date = ?")
+                rows = conn.execute(query, params).fetchall()
+        except Exception:
+            rows = []
     rows = conn.execute(query, params).fetchall()
     conn.close()
     results = []
@@ -626,10 +746,12 @@ def _build_combos_from_db(league=None, matchup=None, min_edge=0.5):
             "edge": r["edge"] or 0,
             "edge_pct": round((r["edge"] / r["combined_line"] * 100), 1) if r["combined_line"] and r["combined_line"] > 0 else 0,
             "direction": r["direction"] or "OVER",
-            "matchup": r["matchup"] or "",
+            "matchup": _game_key(r["matchup"])[1],
+            "role": r["role"] if "role" in r.keys() else "",
+            "stat": r["stat"] if "stat" in r.keys() else "",
             "created_at": r["created_at"],
         })
-    return results
+    return _dedupe_combos(results)
 
 MLB_ABBREV_MAP = {"KCR":"KC","SFG":"SF","WAS":"WSH","TBR":"TB","SDP":"SD","CHW":"CWS","ANA":"LAA"}
 NFL_ABBREV_MAP = {"LA":"LAR","JAC":"JAX"}
@@ -679,6 +801,15 @@ def combos(request: Request):
     matchup = request.query_params.get("matchup", "") or None
     min_edge = float(request.query_params.get("min_edge", "0.5"))
     result = _fetch_combos_from_table(league=league, min_edge=min_edge)
+    # Collapse reversed matchups into one game + drop exact duplicate combos
+    seen = {}
+    for c in result:
+        key, label = _game_key(c.get("matchup", ""))
+        c["matchup"] = label
+        dkey = (key, c.get("combo_type"), c.get("players"), c.get("direction"))
+        if dkey not in seen or abs(c.get("edge") or 0) > abs(seen[dkey].get("edge") or 0):
+            seen[dkey] = c
+    result = sorted(seen.values(), key=lambda x: -abs(x.get("edge") or 0))
     return {"combos": result, "total": len(result), "filters": {"league": league, "matchup": matchup, "min_edge": min_edge}}
 
 
@@ -717,6 +848,8 @@ _streamer_running = False
 
 @app.post("/api/streamer/toggle")
 def streamer_toggle(sport: str = "all"):
+    if not _HAS_STREAMER:
+        return {"error": "Streamer module not installed"}
     global _streamer_running
     if _streamer_running:
         stop_streamer()
@@ -729,10 +862,14 @@ def streamer_toggle(sport: str = "all"):
 
 @app.get("/api/streamer/status")
 def streamer_status():
+    if not _HAS_STREAMER:
+        return {"error": "Streamer module not installed"}
     return {"running": _streamer_running, "status": get_status()}
 
 @app.get("/api/streamer/data")
 def streamer_data(sport: str = "all", limit: int = 20):
+    if not _HAS_STREAMER:
+        return {"error": "Streamer module not installed"}
     return {"data": get_latest_data(sport, limit)}
 
 # ── GRADING LOG ──
