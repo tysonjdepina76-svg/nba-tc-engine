@@ -1,0 +1,1947 @@
+{
+  "game_id": "824078",
+  "away": "Chicago Cubs",
+  "home": "Kansas City Royals",
+  "start_time": "",
+  "generated_at": "2026-08-09T00:14:16.944786-04:00",
+  "players": [
+    {
+      "name": "Alex Bregman",
+      "player_id": "608324",
+      "team": "Chicago Cubs",
+      "venue": "away",
+      "games_played": 103,
+      "season_stats": {
+        "G": 103,
+        "H": 98,
+        "R": 53,
+        "RBI": 46,
+        "HR": 11,
+        "2B": 17,
+        "3B": 1,
+        "BB": 53,
+        "SB": 2,
+        "AVG": 0.241,
+        "OBP": 0.336,
+        "SLG": 0.369,
+        "OPS": 0.705
+      },
+      "projections": {
+        "H": {
+          "projection": 0.95,
+          "line": 1.23,
+          "edge": 0.2276,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "R": {
+          "projection": 0.51,
+          "line": 0.61,
+          "edge": 0.1639,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "RBI": {
+          "projection": 0.45,
+          "line": 0.36,
+          "edge": 0.25,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "HR": {
+          "projection": 0.11,
+          "line": 0.06,
+          "edge": 0.8333,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "2B": {
+          "projection": 0.17,
+          "line": 0.12,
+          "edge": 0.4167,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "3B": {
+          "projection": 0.01,
+          "line": 0.01,
+          "edge": 0.0,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "BB": {
+          "projection": 0.51,
+          "line": 0.41,
+          "edge": 0.2439,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "SB": {
+          "projection": 0.02,
+          "line": 0.07,
+          "edge": 0.7143,
+          "direction": "UNDER",
+          "source": "self_edge"
+        }
+      }
+    },
+    {
+      "name": "Carson Kelly",
+      "player_id": "608348",
+      "team": "Chicago Cubs",
+      "venue": "away",
+      "games_played": 78,
+      "season_stats": {
+        "G": 78,
+        "H": 64,
+        "R": 37,
+        "RBI": 36,
+        "HR": 6,
+        "2B": 10,
+        "3B": 0,
+        "BB": 31,
+        "SB": 0,
+        "AVG": 0.26,
+        "OBP": 0.35,
+        "SLG": 0.374,
+        "OPS": 0.724
+      },
+      "projections": {
+        "H": {
+          "projection": 0.82,
+          "line": 0.57,
+          "edge": 0.4386,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "R": {
+          "projection": 0.47,
+          "line": 0.38,
+          "edge": 0.2368,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "RBI": {
+          "projection": 0.46,
+          "line": 0.55,
+          "edge": 0.1636,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "HR": {
+          "projection": 0.08,
+          "line": 0.03,
+          "edge": 1.6667,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "2B": {
+          "projection": 0.13,
+          "line": 0.08,
+          "edge": 0.625,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "BB": {
+          "projection": 0.4,
+          "line": 0.48,
+          "edge": 0.1667,
+          "direction": "UNDER",
+          "source": "self_edge"
+        }
+      }
+    },
+    {
+      "name": "Dansby Swanson",
+      "player_id": "621020",
+      "team": "Chicago Cubs",
+      "venue": "away",
+      "games_played": 102,
+      "season_stats": {
+        "G": 102,
+        "H": 77,
+        "R": 66,
+        "RBI": 61,
+        "HR": 16,
+        "2B": 13,
+        "3B": 3,
+        "BB": 40,
+        "SB": 14,
+        "AVG": 0.22,
+        "OBP": 0.299,
+        "SLG": 0.411,
+        "OPS": 0.71
+      },
+      "projections": {
+        "H": {
+          "projection": 0.75,
+          "line": 0.97,
+          "edge": 0.2268,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "R": {
+          "projection": 0.65,
+          "line": 0.78,
+          "edge": 0.1667,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "RBI": {
+          "projection": 0.6,
+          "line": 0.48,
+          "edge": 0.25,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "HR": {
+          "projection": 0.16,
+          "line": 0.11,
+          "edge": 0.4545,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "2B": {
+          "projection": 0.13,
+          "line": 0.18,
+          "edge": 0.2778,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "3B": {
+          "projection": 0.03,
+          "line": 0.01,
+          "edge": 2.0,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "BB": {
+          "projection": 0.39,
+          "line": 0.47,
+          "edge": 0.1702,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "SB": {
+          "projection": 0.14,
+          "line": 0.09,
+          "edge": 0.5556,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      }
+    },
+    {
+      "name": "Ian Happ",
+      "player_id": "664023",
+      "team": "Chicago Cubs",
+      "venue": "away",
+      "games_played": 102,
+      "season_stats": {
+        "G": 102,
+        "H": 82,
+        "R": 64,
+        "RBI": 45,
+        "HR": 18,
+        "2B": 18,
+        "3B": 2,
+        "BB": 58,
+        "SB": 4,
+        "AVG": 0.218,
+        "OBP": 0.331,
+        "SLG": 0.42,
+        "OPS": 0.751
+      },
+      "projections": {
+        "H": {
+          "projection": 0.8,
+          "line": 0.56,
+          "edge": 0.4286,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "R": {
+          "projection": 0.63,
+          "line": 0.76,
+          "edge": 0.1711,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "RBI": {
+          "projection": 0.44,
+          "line": 0.53,
+          "edge": 0.1698,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "HR": {
+          "projection": 0.18,
+          "line": 0.13,
+          "edge": 0.3846,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "2B": {
+          "projection": 0.18,
+          "line": 0.23,
+          "edge": 0.2174,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "3B": {
+          "projection": 0.02,
+          "line": 0.07,
+          "edge": 0.7143,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "BB": {
+          "projection": 0.57,
+          "line": 0.68,
+          "edge": 0.1618,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "SB": {
+          "projection": 0.04,
+          "line": 0.01,
+          "edge": 3.0,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      }
+    },
+    {
+      "name": "Justin Dean",
+      "player_id": "681909",
+      "team": "Chicago Cubs",
+      "venue": "away",
+      "games_played": 13,
+      "season_stats": {
+        "G": 13,
+        "H": 2,
+        "R": 3,
+        "RBI": 3,
+        "HR": 0,
+        "2B": 0,
+        "3B": 1,
+        "BB": 2,
+        "SB": 0,
+        "AVG": 0.286,
+        "OBP": 0.444,
+        "SLG": 0.571,
+        "OPS": 1.015
+      },
+      "projections": {
+        "H": {
+          "projection": 0.15,
+          "line": 0.2,
+          "edge": 0.25,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "R": {
+          "projection": 0.23,
+          "line": 0.28,
+          "edge": 0.1786,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "RBI": {
+          "projection": 0.23,
+          "line": 0.28,
+          "edge": 0.1786,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "3B": {
+          "projection": 0.08,
+          "line": 0.13,
+          "edge": 0.3846,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "BB": {
+          "projection": 0.15,
+          "line": 0.2,
+          "edge": 0.25,
+          "direction": "UNDER",
+          "source": "self_edge"
+        }
+      }
+    },
+    {
+      "name": "Michael Busch",
+      "player_id": "683737",
+      "team": "Chicago Cubs",
+      "venue": "away",
+      "games_played": 105,
+      "season_stats": {
+        "G": 105,
+        "H": 96,
+        "R": 47,
+        "RBI": 56,
+        "HR": 13,
+        "2B": 18,
+        "3B": 2,
+        "BB": 66,
+        "SB": 2,
+        "AVG": 0.244,
+        "OBP": 0.364,
+        "SLG": 0.399,
+        "OPS": 0.763
+      },
+      "projections": {
+        "H": {
+          "projection": 0.91,
+          "line": 1.18,
+          "edge": 0.2288,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "R": {
+          "projection": 0.45,
+          "line": 0.54,
+          "edge": 0.1667,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "RBI": {
+          "projection": 0.53,
+          "line": 0.42,
+          "edge": 0.2619,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "HR": {
+          "projection": 0.12,
+          "line": 0.07,
+          "edge": 0.7143,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "2B": {
+          "projection": 0.17,
+          "line": 0.12,
+          "edge": 0.4167,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "3B": {
+          "projection": 0.02,
+          "line": 0.01,
+          "edge": 1.0,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "BB": {
+          "projection": 0.63,
+          "line": 0.5,
+          "edge": 0.26,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "SB": {
+          "projection": 0.02,
+          "line": 0.01,
+          "edge": 1.0,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      }
+    },
+    {
+      "name": "Michael Conforto",
+      "player_id": "624424",
+      "team": "Chicago Cubs",
+      "venue": "away",
+      "games_played": 70,
+      "season_stats": {
+        "G": 70,
+        "H": 37,
+        "R": 23,
+        "RBI": 24,
+        "HR": 9,
+        "2B": 11,
+        "3B": 0,
+        "BB": 21,
+        "SB": 1,
+        "AVG": 0.237,
+        "OBP": 0.326,
+        "SLG": 0.481,
+        "OPS": 0.807
+      },
+      "projections": {
+        "H": {
+          "projection": 0.53,
+          "line": 0.37,
+          "edge": 0.4324,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "R": {
+          "projection": 0.33,
+          "line": 0.4,
+          "edge": 0.175,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "RBI": {
+          "projection": 0.34,
+          "line": 0.27,
+          "edge": 0.2593,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "HR": {
+          "projection": 0.13,
+          "line": 0.18,
+          "edge": 0.2778,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "2B": {
+          "projection": 0.16,
+          "line": 0.21,
+          "edge": 0.2381,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "BB": {
+          "projection": 0.3,
+          "line": 0.24,
+          "edge": 0.25,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "SB": {
+          "projection": 0.01,
+          "line": 0.06,
+          "edge": 0.8333,
+          "direction": "UNDER",
+          "source": "self_edge"
+        }
+      }
+    },
+    {
+      "name": "Miguel Amaya",
+      "player_id": "665804",
+      "team": "Chicago Cubs",
+      "venue": "away",
+      "games_played": 57,
+      "season_stats": {
+        "G": 57,
+        "H": 36,
+        "R": 28,
+        "RBI": 18,
+        "HR": 3,
+        "2B": 8,
+        "3B": 0,
+        "BB": 18,
+        "SB": 0,
+        "AVG": 0.247,
+        "OBP": 0.36,
+        "SLG": 0.363,
+        "OPS": 0.723
+      },
+      "projections": {
+        "H": {
+          "projection": 0.63,
+          "line": 0.82,
+          "edge": 0.2317,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "R": {
+          "projection": 0.49,
+          "line": 0.39,
+          "edge": 0.2564,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "RBI": {
+          "projection": 0.32,
+          "line": 0.26,
+          "edge": 0.2308,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "HR": {
+          "projection": 0.05,
+          "line": 0.1,
+          "edge": 0.5,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "2B": {
+          "projection": 0.14,
+          "line": 0.19,
+          "edge": 0.2632,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "BB": {
+          "projection": 0.32,
+          "line": 0.38,
+          "edge": 0.1579,
+          "direction": "UNDER",
+          "source": "self_edge"
+        }
+      }
+    },
+    {
+      "name": "Nico Hoerner",
+      "player_id": "663538",
+      "team": "Chicago Cubs",
+      "venue": "away",
+      "games_played": 104,
+      "season_stats": {
+        "G": 104,
+        "H": 106,
+        "R": 44,
+        "RBI": 48,
+        "HR": 5,
+        "2B": 23,
+        "3B": 1,
+        "BB": 36,
+        "SB": 14,
+        "AVG": 0.254,
+        "OBP": 0.317,
+        "SLG": 0.349,
+        "OPS": 0.666
+      },
+      "projections": {
+        "H": {
+          "projection": 1.02,
+          "line": 1.33,
+          "edge": 0.2331,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "R": {
+          "projection": 0.42,
+          "line": 0.5,
+          "edge": 0.16,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "RBI": {
+          "projection": 0.46,
+          "line": 0.37,
+          "edge": 0.2432,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "HR": {
+          "projection": 0.05,
+          "line": 0.1,
+          "edge": 0.5,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "2B": {
+          "projection": 0.22,
+          "line": 0.29,
+          "edge": 0.2414,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "3B": {
+          "projection": 0.01,
+          "line": 0.01,
+          "edge": 0.0,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "BB": {
+          "projection": 0.35,
+          "line": 0.42,
+          "edge": 0.1667,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "SB": {
+          "projection": 0.13,
+          "line": 0.18,
+          "edge": 0.2778,
+          "direction": "UNDER",
+          "source": "self_edge"
+        }
+      }
+    },
+    {
+      "name": "Pedro Ram\u00edrez",
+      "player_id": "699393",
+      "team": "Chicago Cubs",
+      "venue": "away",
+      "games_played": 33,
+      "season_stats": {
+        "G": 33,
+        "H": 25,
+        "R": 13,
+        "RBI": 13,
+        "HR": 1,
+        "2B": 7,
+        "3B": 1,
+        "BB": 6,
+        "SB": 3,
+        "AVG": 0.305,
+        "OBP": 0.348,
+        "SLG": 0.451,
+        "OPS": 0.799
+      },
+      "projections": {
+        "H": {
+          "projection": 0.76,
+          "line": 0.53,
+          "edge": 0.434,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "R": {
+          "projection": 0.39,
+          "line": 0.31,
+          "edge": 0.2581,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "RBI": {
+          "projection": 0.39,
+          "line": 0.47,
+          "edge": 0.1702,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "HR": {
+          "projection": 0.03,
+          "line": 0.08,
+          "edge": 0.625,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "2B": {
+          "projection": 0.21,
+          "line": 0.15,
+          "edge": 0.4,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "3B": {
+          "projection": 0.03,
+          "line": 0.08,
+          "edge": 0.625,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "BB": {
+          "projection": 0.18,
+          "line": 0.23,
+          "edge": 0.2174,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "SB": {
+          "projection": 0.09,
+          "line": 0.14,
+          "edge": 0.3571,
+          "direction": "UNDER",
+          "source": "self_edge"
+        }
+      }
+    },
+    {
+      "name": "Pete Crow-Armstrong",
+      "player_id": "691718",
+      "team": "Chicago Cubs",
+      "venue": "away",
+      "games_played": 106,
+      "season_stats": {
+        "G": 106,
+        "H": 114,
+        "R": 70,
+        "RBI": 60,
+        "HR": 23,
+        "2B": 19,
+        "3B": 6,
+        "BB": 55,
+        "SB": 26,
+        "AVG": 0.288,
+        "OBP": 0.388,
+        "SLG": 0.54,
+        "OPS": 0.928
+      },
+      "projections": {
+        "H": {
+          "projection": 1.08,
+          "line": 0.76,
+          "edge": 0.4211,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "R": {
+          "projection": 0.66,
+          "line": 0.79,
+          "edge": 0.1646,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "RBI": {
+          "projection": 0.57,
+          "line": 0.68,
+          "edge": 0.1618,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "HR": {
+          "projection": 0.22,
+          "line": 0.28,
+          "edge": 0.2143,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "2B": {
+          "projection": 0.18,
+          "line": 0.23,
+          "edge": 0.2174,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "3B": {
+          "projection": 0.06,
+          "line": 0.01,
+          "edge": 5.0,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "BB": {
+          "projection": 0.52,
+          "line": 0.62,
+          "edge": 0.1613,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "SB": {
+          "projection": 0.25,
+          "line": 0.31,
+          "edge": 0.1935,
+          "direction": "UNDER",
+          "source": "self_edge"
+        }
+      }
+    },
+    {
+      "name": "Seiya Suzuki",
+      "player_id": "673548",
+      "team": "Chicago Cubs",
+      "venue": "away",
+      "games_played": 90,
+      "season_stats": {
+        "G": 90,
+        "H": 90,
+        "R": 56,
+        "RBI": 58,
+        "HR": 18,
+        "2B": 17,
+        "3B": 0,
+        "BB": 44,
+        "SB": 1,
+        "AVG": 0.264,
+        "OBP": 0.352,
+        "SLG": 0.472,
+        "OPS": 0.824
+      },
+      "projections": {
+        "H": {
+          "projection": 1.0,
+          "line": 0.7,
+          "edge": 0.4286,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "R": {
+          "projection": 0.62,
+          "line": 0.74,
+          "edge": 0.1622,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "RBI": {
+          "projection": 0.64,
+          "line": 0.77,
+          "edge": 0.1688,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "HR": {
+          "projection": 0.2,
+          "line": 0.25,
+          "edge": 0.2,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "2B": {
+          "projection": 0.19,
+          "line": 0.13,
+          "edge": 0.4615,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "BB": {
+          "projection": 0.49,
+          "line": 0.59,
+          "edge": 0.1695,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "SB": {
+          "projection": 0.01,
+          "line": 0.06,
+          "edge": 0.8333,
+          "direction": "UNDER",
+          "source": "self_edge"
+        }
+      }
+    },
+    {
+      "name": "Colin Rea",
+      "player_id": "607067",
+      "team": "Chicago Cubs",
+      "venue": "away",
+      "games_played": 17,
+      "season_stats": {
+        "GS": 17,
+        "IP": 105.2,
+        "SO": 81,
+        "BB": 38,
+        "ER": 57,
+        "H": 112,
+        "K": 81
+      },
+      "projections": {
+        "SO": {
+          "projection": 4.76,
+          "line": 3.57,
+          "edge": 0.3333,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "K": {
+          "projection": 4.76,
+          "line": 5.95,
+          "edge": 0.2,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "BB": {
+          "projection": 2.24,
+          "line": 2.69,
+          "edge": 0.1673,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "ER": {
+          "projection": 3.35,
+          "line": 4.19,
+          "edge": 0.2005,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "H": {
+          "projection": 6.59,
+          "line": 4.61,
+          "edge": 0.4295,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "IP": {
+          "projection": 6.19,
+          "line": 7.12,
+          "edge": 0.1306,
+          "direction": "UNDER",
+          "source": "self_edge"
+        }
+      }
+    },
+    {
+      "name": "Andrew Velazquez",
+      "player_id": "623205",
+      "team": "Kansas City Royals",
+      "venue": "home",
+      "games_played": 4,
+      "season_stats": {
+        "G": 4,
+        "H": 1,
+        "R": 0,
+        "RBI": 0,
+        "HR": 0,
+        "2B": 0,
+        "3B": 0,
+        "BB": 0,
+        "SB": 1,
+        "AVG": 0.077,
+        "OBP": 0.077,
+        "SLG": 0.077,
+        "OPS": 0.154
+      },
+      "projections": {
+        "H": {
+          "projection": 0.25,
+          "line": 0.33,
+          "edge": 0.2424,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "SB": {
+          "projection": 0.25,
+          "line": 0.19,
+          "edge": 0.3158,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      }
+    },
+    {
+      "name": "Carter Jensen",
+      "player_id": "695600",
+      "team": "Kansas City Royals",
+      "venue": "home",
+      "games_played": 99,
+      "season_stats": {
+        "G": 99,
+        "H": 83,
+        "R": 44,
+        "RBI": 52,
+        "HR": 14,
+        "2B": 23,
+        "3B": 0,
+        "BB": 36,
+        "SB": 1,
+        "AVG": 0.24,
+        "OBP": 0.309,
+        "SLG": 0.428,
+        "OPS": 0.737
+      },
+      "projections": {
+        "H": {
+          "projection": 0.84,
+          "line": 1.09,
+          "edge": 0.2294,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "R": {
+          "projection": 0.44,
+          "line": 0.53,
+          "edge": 0.1698,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "RBI": {
+          "projection": 0.53,
+          "line": 0.42,
+          "edge": 0.2619,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "HR": {
+          "projection": 0.14,
+          "line": 0.19,
+          "edge": 0.2632,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "2B": {
+          "projection": 0.23,
+          "line": 0.16,
+          "edge": 0.4375,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "BB": {
+          "projection": 0.36,
+          "line": 0.43,
+          "edge": 0.1628,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "SB": {
+          "projection": 0.01,
+          "line": 0.06,
+          "edge": 0.8333,
+          "direction": "UNDER",
+          "source": "self_edge"
+        }
+      }
+    },
+    {
+      "name": "Isaac Collins",
+      "player_id": "686555",
+      "team": "Kansas City Royals",
+      "venue": "home",
+      "games_played": 96,
+      "season_stats": {
+        "G": 96,
+        "H": 73,
+        "R": 38,
+        "RBI": 34,
+        "HR": 6,
+        "2B": 18,
+        "3B": 1,
+        "BB": 41,
+        "SB": 6,
+        "AVG": 0.243,
+        "OBP": 0.344,
+        "SLG": 0.37,
+        "OPS": 0.714
+      },
+      "projections": {
+        "H": {
+          "projection": 0.76,
+          "line": 0.53,
+          "edge": 0.434,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "R": {
+          "projection": 0.4,
+          "line": 0.32,
+          "edge": 0.25,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "RBI": {
+          "projection": 0.35,
+          "line": 0.28,
+          "edge": 0.25,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "HR": {
+          "projection": 0.06,
+          "line": 0.01,
+          "edge": 5.0,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "2B": {
+          "projection": 0.19,
+          "line": 0.13,
+          "edge": 0.4615,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "3B": {
+          "projection": 0.01,
+          "line": 0.06,
+          "edge": 0.8333,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "BB": {
+          "projection": 0.43,
+          "line": 0.52,
+          "edge": 0.1731,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "SB": {
+          "projection": 0.06,
+          "line": 0.01,
+          "edge": 5.0,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      }
+    },
+    {
+      "name": "Jac Caglianone",
+      "player_id": "695506",
+      "team": "Kansas City Royals",
+      "venue": "home",
+      "games_played": 98,
+      "season_stats": {
+        "G": 98,
+        "H": 87,
+        "R": 46,
+        "RBI": 37,
+        "HR": 16,
+        "2B": 17,
+        "3B": 2,
+        "BB": 25,
+        "SB": 3,
+        "AVG": 0.251,
+        "OBP": 0.308,
+        "SLG": 0.45,
+        "OPS": 0.758
+      },
+      "projections": {
+        "H": {
+          "projection": 0.89,
+          "line": 0.62,
+          "edge": 0.4355,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "R": {
+          "projection": 0.47,
+          "line": 0.56,
+          "edge": 0.1607,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "RBI": {
+          "projection": 0.38,
+          "line": 0.46,
+          "edge": 0.1739,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "HR": {
+          "projection": 0.16,
+          "line": 0.21,
+          "edge": 0.2381,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "2B": {
+          "projection": 0.17,
+          "line": 0.12,
+          "edge": 0.4167,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "3B": {
+          "projection": 0.02,
+          "line": 0.01,
+          "edge": 1.0,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "BB": {
+          "projection": 0.26,
+          "line": 0.31,
+          "edge": 0.1613,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "SB": {
+          "projection": 0.03,
+          "line": 0.01,
+          "edge": 2.0,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      }
+    },
+    {
+      "name": "Josh Rojas",
+      "player_id": "668942",
+      "team": "Kansas City Royals",
+      "venue": "home",
+      "games_played": 20,
+      "season_stats": {
+        "G": 20,
+        "H": 13,
+        "R": 5,
+        "RBI": 6,
+        "HR": 1,
+        "2B": 3,
+        "3B": 0,
+        "BB": 1,
+        "SB": 0,
+        "AVG": 0.265,
+        "OBP": 0.28,
+        "SLG": 0.388,
+        "OPS": 0.668
+      },
+      "projections": {
+        "H": {
+          "projection": 0.65,
+          "line": 0.46,
+          "edge": 0.413,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "R": {
+          "projection": 0.25,
+          "line": 0.2,
+          "edge": 0.25,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "RBI": {
+          "projection": 0.3,
+          "line": 0.24,
+          "edge": 0.25,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "HR": {
+          "projection": 0.05,
+          "line": 0.1,
+          "edge": 0.5,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "2B": {
+          "projection": 0.15,
+          "line": 0.1,
+          "edge": 0.5,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "BB": {
+          "projection": 0.05,
+          "line": 0.1,
+          "edge": 0.5,
+          "direction": "UNDER",
+          "source": "self_edge"
+        }
+      }
+    },
+    {
+      "name": "Lane Thomas",
+      "player_id": "657041",
+      "team": "Kansas City Royals",
+      "venue": "home",
+      "games_played": 92,
+      "season_stats": {
+        "G": 92,
+        "H": 62,
+        "R": 30,
+        "RBI": 37,
+        "HR": 10,
+        "2B": 16,
+        "3B": 0,
+        "BB": 38,
+        "SB": 6,
+        "AVG": 0.23,
+        "OBP": 0.327,
+        "SLG": 0.4,
+        "OPS": 0.727
+      },
+      "projections": {
+        "H": {
+          "projection": 0.67,
+          "line": 0.47,
+          "edge": 0.4255,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "R": {
+          "projection": 0.33,
+          "line": 0.4,
+          "edge": 0.175,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "RBI": {
+          "projection": 0.4,
+          "line": 0.32,
+          "edge": 0.25,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "HR": {
+          "projection": 0.11,
+          "line": 0.16,
+          "edge": 0.3125,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "2B": {
+          "projection": 0.17,
+          "line": 0.12,
+          "edge": 0.4167,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "BB": {
+          "projection": 0.41,
+          "line": 0.33,
+          "edge": 0.2424,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "SB": {
+          "projection": 0.07,
+          "line": 0.02,
+          "edge": 2.5,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      }
+    },
+    {
+      "name": "Luke Maile",
+      "player_id": "571912",
+      "team": "Kansas City Royals",
+      "venue": "home",
+      "games_played": 4,
+      "season_stats": {
+        "G": 4,
+        "H": 3,
+        "R": 2,
+        "RBI": 4,
+        "HR": 1,
+        "2B": 1,
+        "3B": 0,
+        "BB": 1,
+        "SB": 0,
+        "AVG": 0.25,
+        "OBP": 0.308,
+        "SLG": 0.583,
+        "OPS": 0.891
+      },
+      "projections": {
+        "H": {
+          "projection": 0.75,
+          "line": 0.97,
+          "edge": 0.2268,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "R": {
+          "projection": 0.5,
+          "line": 0.4,
+          "edge": 0.25,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "RBI": {
+          "projection": 1.0,
+          "line": 0.8,
+          "edge": 0.25,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "HR": {
+          "projection": 0.25,
+          "line": 0.31,
+          "edge": 0.1935,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "2B": {
+          "projection": 0.25,
+          "line": 0.17,
+          "edge": 0.4706,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "BB": {
+          "projection": 0.25,
+          "line": 0.2,
+          "edge": 0.25,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      }
+    },
+    {
+      "name": "Michael Massey",
+      "player_id": "686681",
+      "team": "Kansas City Royals",
+      "venue": "home",
+      "games_played": 87,
+      "season_stats": {
+        "G": 87,
+        "H": 71,
+        "R": 36,
+        "RBI": 36,
+        "HR": 8,
+        "2B": 19,
+        "3B": 0,
+        "BB": 16,
+        "SB": 2,
+        "AVG": 0.274,
+        "OBP": 0.312,
+        "SLG": 0.44,
+        "OPS": 0.752
+      },
+      "projections": {
+        "H": {
+          "projection": 0.82,
+          "line": 0.57,
+          "edge": 0.4386,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "R": {
+          "projection": 0.41,
+          "line": 0.49,
+          "edge": 0.1633,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "RBI": {
+          "projection": 0.41,
+          "line": 0.33,
+          "edge": 0.2424,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "HR": {
+          "projection": 0.09,
+          "line": 0.14,
+          "edge": 0.3571,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "2B": {
+          "projection": 0.22,
+          "line": 0.15,
+          "edge": 0.4667,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "BB": {
+          "projection": 0.18,
+          "line": 0.23,
+          "edge": 0.2174,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "SB": {
+          "projection": 0.02,
+          "line": 0.01,
+          "edge": 1.0,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      }
+    },
+    {
+      "name": "Nick Loftin",
+      "player_id": "679845",
+      "team": "Kansas City Royals",
+      "venue": "home",
+      "games_played": 69,
+      "season_stats": {
+        "G": 69,
+        "H": 52,
+        "R": 30,
+        "RBI": 34,
+        "HR": 5,
+        "2B": 16,
+        "3B": 1,
+        "BB": 22,
+        "SB": 1,
+        "AVG": 0.249,
+        "OBP": 0.331,
+        "SLG": 0.407,
+        "OPS": 0.738
+      },
+      "projections": {
+        "H": {
+          "projection": 0.75,
+          "line": 0.97,
+          "edge": 0.2268,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "R": {
+          "projection": 0.43,
+          "line": 0.52,
+          "edge": 0.1731,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "RBI": {
+          "projection": 0.49,
+          "line": 0.39,
+          "edge": 0.2564,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "HR": {
+          "projection": 0.07,
+          "line": 0.12,
+          "edge": 0.4167,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "2B": {
+          "projection": 0.23,
+          "line": 0.3,
+          "edge": 0.2333,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "3B": {
+          "projection": 0.01,
+          "line": 0.06,
+          "edge": 0.8333,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "BB": {
+          "projection": 0.32,
+          "line": 0.26,
+          "edge": 0.2308,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "SB": {
+          "projection": 0.01,
+          "line": 0.06,
+          "edge": 0.8333,
+          "direction": "UNDER",
+          "source": "self_edge"
+        }
+      }
+    },
+    {
+      "name": "Salvador Perez",
+      "player_id": "521692",
+      "team": "Kansas City Royals",
+      "venue": "home",
+      "games_played": 99,
+      "season_stats": {
+        "G": 99,
+        "H": 80,
+        "R": 38,
+        "RBI": 44,
+        "HR": 15,
+        "2B": 15,
+        "3B": 0,
+        "BB": 17,
+        "SB": 0,
+        "AVG": 0.208,
+        "OBP": 0.259,
+        "SLG": 0.365,
+        "OPS": 0.624
+      },
+      "projections": {
+        "H": {
+          "projection": 0.81,
+          "line": 0.57,
+          "edge": 0.4211,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "R": {
+          "projection": 0.38,
+          "line": 0.3,
+          "edge": 0.2667,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "RBI": {
+          "projection": 0.44,
+          "line": 0.35,
+          "edge": 0.2571,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "HR": {
+          "projection": 0.15,
+          "line": 0.1,
+          "edge": 0.5,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "2B": {
+          "projection": 0.15,
+          "line": 0.2,
+          "edge": 0.25,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "BB": {
+          "projection": 0.17,
+          "line": 0.12,
+          "edge": 0.4167,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      }
+    },
+    {
+      "name": "Starling Marte",
+      "player_id": "516782",
+      "team": "Kansas City Royals",
+      "venue": "home",
+      "games_played": 49,
+      "season_stats": {
+        "G": 49,
+        "H": 33,
+        "R": 13,
+        "RBI": 9,
+        "HR": 1,
+        "2B": 4,
+        "3B": 0,
+        "BB": 8,
+        "SB": 2,
+        "AVG": 0.26,
+        "OBP": 0.319,
+        "SLG": 0.315,
+        "OPS": 0.634
+      },
+      "projections": {
+        "H": {
+          "projection": 0.67,
+          "line": 0.47,
+          "edge": 0.4255,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "R": {
+          "projection": 0.27,
+          "line": 0.32,
+          "edge": 0.1562,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "RBI": {
+          "projection": 0.18,
+          "line": 0.23,
+          "edge": 0.2174,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "HR": {
+          "projection": 0.02,
+          "line": 0.01,
+          "edge": 1.0,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "2B": {
+          "projection": 0.08,
+          "line": 0.03,
+          "edge": 1.6667,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "BB": {
+          "projection": 0.16,
+          "line": 0.21,
+          "edge": 0.2381,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "SB": {
+          "projection": 0.04,
+          "line": 0.01,
+          "edge": 3.0,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      }
+    },
+    {
+      "name": "Tyler Tolbert",
+      "player_id": "686475",
+      "team": "Kansas City Royals",
+      "venue": "home",
+      "games_played": 43,
+      "season_stats": {
+        "G": 43,
+        "H": 20,
+        "R": 19,
+        "RBI": 5,
+        "HR": 2,
+        "2B": 1,
+        "3B": 0,
+        "BB": 5,
+        "SB": 12,
+        "AVG": 0.313,
+        "OBP": 0.357,
+        "SLG": 0.422,
+        "OPS": 0.779
+      },
+      "projections": {
+        "H": {
+          "projection": 0.47,
+          "line": 0.61,
+          "edge": 0.2295,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "R": {
+          "projection": 0.44,
+          "line": 0.53,
+          "edge": 0.1698,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "RBI": {
+          "projection": 0.12,
+          "line": 0.07,
+          "edge": 0.7143,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "HR": {
+          "projection": 0.05,
+          "line": 0.1,
+          "edge": 0.5,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "2B": {
+          "projection": 0.02,
+          "line": 0.07,
+          "edge": 0.7143,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "BB": {
+          "projection": 0.12,
+          "line": 0.07,
+          "edge": 0.7143,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "SB": {
+          "projection": 0.28,
+          "line": 0.21,
+          "edge": 0.3333,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      }
+    },
+    {
+      "name": "Vinnie Pasquantino",
+      "player_id": "686469",
+      "team": "Kansas City Royals",
+      "venue": "home",
+      "games_played": 78,
+      "season_stats": {
+        "G": 78,
+        "H": 68,
+        "R": 34,
+        "RBI": 33,
+        "HR": 6,
+        "2B": 11,
+        "3B": 2,
+        "BB": 37,
+        "SB": 4,
+        "AVG": 0.234,
+        "OBP": 0.321,
+        "SLG": 0.348,
+        "OPS": 0.669
+      },
+      "projections": {
+        "H": {
+          "projection": 0.87,
+          "line": 1.13,
+          "edge": 0.2301,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "R": {
+          "projection": 0.44,
+          "line": 0.35,
+          "edge": 0.2571,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "RBI": {
+          "projection": 0.42,
+          "line": 0.34,
+          "edge": 0.2353,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "HR": {
+          "projection": 0.08,
+          "line": 0.03,
+          "edge": 1.6667,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "2B": {
+          "projection": 0.14,
+          "line": 0.19,
+          "edge": 0.2632,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "3B": {
+          "projection": 0.03,
+          "line": 0.01,
+          "edge": 2.0,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "BB": {
+          "projection": 0.47,
+          "line": 0.38,
+          "edge": 0.2368,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "SB": {
+          "projection": 0.05,
+          "line": 0.01,
+          "edge": 4.0,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      }
+    },
+    {
+      "name": "Seth Lugo",
+      "player_id": "607625",
+      "team": "Kansas City Royals",
+      "venue": "home",
+      "games_played": 21,
+      "season_stats": {
+        "GS": 21,
+        "IP": 117.2,
+        "SO": 94,
+        "BB": 38,
+        "ER": 57,
+        "H": 123,
+        "K": 94
+      },
+      "projections": {
+        "SO": {
+          "projection": 4.48,
+          "line": 5.6,
+          "edge": 0.2,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "K": {
+          "projection": 4.48,
+          "line": 3.36,
+          "edge": 0.3333,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "BB": {
+          "projection": 1.81,
+          "line": 1.45,
+          "edge": 0.2483,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "ER": {
+          "projection": 2.71,
+          "line": 2.03,
+          "edge": 0.335,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "H": {
+          "projection": 5.86,
+          "line": 4.1,
+          "edge": 0.4293,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "IP": {
+          "projection": 5.58,
+          "line": 4.74,
+          "edge": 0.1772,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      }
+    }
+  ]
+}

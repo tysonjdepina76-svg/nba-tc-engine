@@ -1,0 +1,2020 @@
+{
+  "game_id": "822700",
+  "away": "Cincinnati Reds",
+  "home": "Washington Nationals",
+  "start_time": "",
+  "generated_at": "2026-08-09T00:14:16.923810-04:00",
+  "players": [
+    {
+      "name": "Dane Myers",
+      "player_id": "667472",
+      "team": "Cincinnati Reds",
+      "venue": "away",
+      "games_played": 72,
+      "season_stats": {
+        "G": 72,
+        "H": 38,
+        "R": 19,
+        "RBI": 15,
+        "HR": 3,
+        "2B": 7,
+        "3B": 0,
+        "BB": 20,
+        "SB": 6,
+        "AVG": 0.264,
+        "OBP": 0.359,
+        "SLG": 0.375,
+        "OPS": 0.734
+      },
+      "projections": {
+        "H": {
+          "projection": 0.53,
+          "line": 0.37,
+          "edge": 0.4324,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "R": {
+          "projection": 0.26,
+          "line": 0.21,
+          "edge": 0.2381,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "RBI": {
+          "projection": 0.21,
+          "line": 0.16,
+          "edge": 0.3125,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "HR": {
+          "projection": 0.04,
+          "line": 0.01,
+          "edge": 3.0,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "2B": {
+          "projection": 0.1,
+          "line": 0.15,
+          "edge": 0.3333,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "BB": {
+          "projection": 0.28,
+          "line": 0.22,
+          "edge": 0.2727,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "SB": {
+          "projection": 0.08,
+          "line": 0.03,
+          "edge": 1.6667,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      }
+    },
+    {
+      "name": "Edwin Arroyo",
+      "player_id": "695490",
+      "team": "Cincinnati Reds",
+      "venue": "away",
+      "games_played": 43,
+      "season_stats": {
+        "G": 43,
+        "H": 31,
+        "R": 13,
+        "RBI": 5,
+        "HR": 0,
+        "2B": 3,
+        "3B": 1,
+        "BB": 5,
+        "SB": 0,
+        "AVG": 0.244,
+        "OBP": 0.287,
+        "SLG": 0.283,
+        "OPS": 0.57
+      },
+      "projections": {
+        "H": {
+          "projection": 0.72,
+          "line": 0.5,
+          "edge": 0.44,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "R": {
+          "projection": 0.3,
+          "line": 0.24,
+          "edge": 0.25,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "RBI": {
+          "projection": 0.12,
+          "line": 0.07,
+          "edge": 0.7143,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "2B": {
+          "projection": 0.07,
+          "line": 0.12,
+          "edge": 0.4167,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "3B": {
+          "projection": 0.02,
+          "line": 0.01,
+          "edge": 1.0,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "BB": {
+          "projection": 0.12,
+          "line": 0.07,
+          "edge": 0.7143,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      }
+    },
+    {
+      "name": "Elly De La Cruz",
+      "player_id": "682829",
+      "team": "Cincinnati Reds",
+      "venue": "away",
+      "games_played": 86,
+      "season_stats": {
+        "G": 86,
+        "H": 96,
+        "R": 59,
+        "RBI": 47,
+        "HR": 18,
+        "2B": 15,
+        "3B": 4,
+        "BB": 39,
+        "SB": 18,
+        "AVG": 0.28,
+        "OBP": 0.355,
+        "SLG": 0.504,
+        "OPS": 0.859
+      },
+      "projections": {
+        "H": {
+          "projection": 1.12,
+          "line": 1.46,
+          "edge": 0.2329,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "R": {
+          "projection": 0.69,
+          "line": 0.83,
+          "edge": 0.1687,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "RBI": {
+          "projection": 0.55,
+          "line": 0.66,
+          "edge": 0.1667,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "HR": {
+          "projection": 0.21,
+          "line": 0.16,
+          "edge": 0.3125,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "2B": {
+          "projection": 0.17,
+          "line": 0.12,
+          "edge": 0.4167,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "3B": {
+          "projection": 0.05,
+          "line": 0.1,
+          "edge": 0.5,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "BB": {
+          "projection": 0.45,
+          "line": 0.36,
+          "edge": 0.25,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "SB": {
+          "projection": 0.21,
+          "line": 0.16,
+          "edge": 0.3125,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      }
+    },
+    {
+      "name": "Eugenio Su\u00e1rez",
+      "player_id": "553993",
+      "team": "Cincinnati Reds",
+      "venue": "away",
+      "games_played": 76,
+      "season_stats": {
+        "G": 76,
+        "H": 56,
+        "R": 27,
+        "RBI": 39,
+        "HR": 14,
+        "2B": 11,
+        "3B": 0,
+        "BB": 26,
+        "SB": 0,
+        "AVG": 0.204,
+        "OBP": 0.276,
+        "SLG": 0.396,
+        "OPS": 0.672
+      },
+      "projections": {
+        "H": {
+          "projection": 0.74,
+          "line": 0.96,
+          "edge": 0.2292,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "R": {
+          "projection": 0.36,
+          "line": 0.43,
+          "edge": 0.1628,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "RBI": {
+          "projection": 0.51,
+          "line": 0.61,
+          "edge": 0.1639,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "HR": {
+          "projection": 0.18,
+          "line": 0.23,
+          "edge": 0.2174,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "2B": {
+          "projection": 0.14,
+          "line": 0.19,
+          "edge": 0.2632,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "BB": {
+          "projection": 0.34,
+          "line": 0.41,
+          "edge": 0.1707,
+          "direction": "UNDER",
+          "source": "self_edge"
+        }
+      }
+    },
+    {
+      "name": "Ivan Johnson",
+      "player_id": "671155",
+      "team": "Cincinnati Reds",
+      "venue": "away",
+      "games_played": 5,
+      "season_stats": {
+        "G": 5,
+        "H": 0,
+        "R": 0,
+        "RBI": 0,
+        "HR": 0,
+        "2B": 0,
+        "3B": 0,
+        "BB": 1,
+        "SB": 0,
+        "AVG": 0.0,
+        "OBP": 0.167,
+        "SLG": 0.0,
+        "OPS": 0.167
+      },
+      "projections": {
+        "BB": {
+          "projection": 0.2,
+          "line": 0.25,
+          "edge": 0.2,
+          "direction": "UNDER",
+          "source": "self_edge"
+        }
+      }
+    },
+    {
+      "name": "JJ Bleday",
+      "player_id": "668709",
+      "team": "Cincinnati Reds",
+      "venue": "away",
+      "games_played": 77,
+      "season_stats": {
+        "G": 77,
+        "H": 64,
+        "R": 39,
+        "RBI": 44,
+        "HR": 17,
+        "2B": 11,
+        "3B": 1,
+        "BB": 44,
+        "SB": 6,
+        "AVG": 0.23,
+        "OBP": 0.337,
+        "SLG": 0.46,
+        "OPS": 0.797
+      },
+      "projections": {
+        "H": {
+          "projection": 0.83,
+          "line": 1.08,
+          "edge": 0.2315,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "R": {
+          "projection": 0.51,
+          "line": 0.41,
+          "edge": 0.2439,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "RBI": {
+          "projection": 0.57,
+          "line": 0.46,
+          "edge": 0.2391,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "HR": {
+          "projection": 0.22,
+          "line": 0.17,
+          "edge": 0.2941,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "2B": {
+          "projection": 0.14,
+          "line": 0.19,
+          "edge": 0.2632,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "3B": {
+          "projection": 0.01,
+          "line": 0.06,
+          "edge": 0.8333,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "BB": {
+          "projection": 0.57,
+          "line": 0.46,
+          "edge": 0.2391,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "SB": {
+          "projection": 0.08,
+          "line": 0.13,
+          "edge": 0.3846,
+          "direction": "UNDER",
+          "source": "self_edge"
+        }
+      }
+    },
+    {
+      "name": "Jose Trevino",
+      "player_id": "624431",
+      "team": "Cincinnati Reds",
+      "venue": "away",
+      "games_played": 28,
+      "season_stats": {
+        "G": 28,
+        "H": 20,
+        "R": 9,
+        "RBI": 10,
+        "HR": 3,
+        "2B": 3,
+        "3B": 0,
+        "BB": 1,
+        "SB": 0,
+        "AVG": 0.256,
+        "OBP": 0.266,
+        "SLG": 0.41,
+        "OPS": 0.676
+      },
+      "projections": {
+        "H": {
+          "projection": 0.71,
+          "line": 0.5,
+          "edge": 0.42,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "R": {
+          "projection": 0.32,
+          "line": 0.38,
+          "edge": 0.1579,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "RBI": {
+          "projection": 0.36,
+          "line": 0.43,
+          "edge": 0.1628,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "HR": {
+          "projection": 0.11,
+          "line": 0.06,
+          "edge": 0.8333,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "2B": {
+          "projection": 0.11,
+          "line": 0.06,
+          "edge": 0.8333,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "BB": {
+          "projection": 0.04,
+          "line": 0.01,
+          "edge": 3.0,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      }
+    },
+    {
+      "name": "Ke'Bryan Hayes",
+      "player_id": "663647",
+      "team": "Cincinnati Reds",
+      "venue": "away",
+      "games_played": 54,
+      "season_stats": {
+        "G": 54,
+        "H": 21,
+        "R": 13,
+        "RBI": 6,
+        "HR": 3,
+        "2B": 2,
+        "3B": 1,
+        "BB": 9,
+        "SB": 1,
+        "AVG": 0.148,
+        "OBP": 0.204,
+        "SLG": 0.239,
+        "OPS": 0.443
+      },
+      "projections": {
+        "H": {
+          "projection": 0.39,
+          "line": 0.27,
+          "edge": 0.4444,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "R": {
+          "projection": 0.24,
+          "line": 0.19,
+          "edge": 0.2632,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "RBI": {
+          "projection": 0.11,
+          "line": 0.06,
+          "edge": 0.8333,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "HR": {
+          "projection": 0.06,
+          "line": 0.01,
+          "edge": 5.0,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "2B": {
+          "projection": 0.04,
+          "line": 0.01,
+          "edge": 3.0,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "3B": {
+          "projection": 0.02,
+          "line": 0.01,
+          "edge": 1.0,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "BB": {
+          "projection": 0.17,
+          "line": 0.22,
+          "edge": 0.2273,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "SB": {
+          "projection": 0.02,
+          "line": 0.01,
+          "edge": 1.0,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      }
+    },
+    {
+      "name": "Nathaniel Lowe",
+      "player_id": "663993",
+      "team": "Cincinnati Reds",
+      "venue": "away",
+      "games_played": 77,
+      "season_stats": {
+        "G": 77,
+        "H": 59,
+        "R": 24,
+        "RBI": 33,
+        "HR": 12,
+        "2B": 14,
+        "3B": 0,
+        "BB": 26,
+        "SB": 0,
+        "AVG": 0.26,
+        "OBP": 0.336,
+        "SLG": 0.48,
+        "OPS": 0.816
+      },
+      "projections": {
+        "H": {
+          "projection": 0.77,
+          "line": 0.54,
+          "edge": 0.4259,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "R": {
+          "projection": 0.31,
+          "line": 0.25,
+          "edge": 0.24,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "RBI": {
+          "projection": 0.43,
+          "line": 0.34,
+          "edge": 0.2647,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "HR": {
+          "projection": 0.16,
+          "line": 0.11,
+          "edge": 0.4545,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "2B": {
+          "projection": 0.18,
+          "line": 0.13,
+          "edge": 0.3846,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "BB": {
+          "projection": 0.34,
+          "line": 0.27,
+          "edge": 0.2593,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      }
+    },
+    {
+      "name": "Noelvi Marte",
+      "player_id": "682622",
+      "team": "Cincinnati Reds",
+      "venue": "away",
+      "games_played": 47,
+      "season_stats": {
+        "G": 47,
+        "H": 28,
+        "R": 16,
+        "RBI": 13,
+        "HR": 6,
+        "2B": 6,
+        "3B": 0,
+        "BB": 9,
+        "SB": 5,
+        "AVG": 0.193,
+        "OBP": 0.24,
+        "SLG": 0.359,
+        "OPS": 0.599
+      },
+      "projections": {
+        "H": {
+          "projection": 0.6,
+          "line": 0.42,
+          "edge": 0.4286,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "R": {
+          "projection": 0.34,
+          "line": 0.27,
+          "edge": 0.2593,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "RBI": {
+          "projection": 0.28,
+          "line": 0.22,
+          "edge": 0.2727,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "HR": {
+          "projection": 0.13,
+          "line": 0.08,
+          "edge": 0.625,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "2B": {
+          "projection": 0.13,
+          "line": 0.08,
+          "edge": 0.625,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "BB": {
+          "projection": 0.19,
+          "line": 0.24,
+          "edge": 0.2083,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "SB": {
+          "projection": 0.11,
+          "line": 0.06,
+          "edge": 0.8333,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      }
+    },
+    {
+      "name": "Sal Stewart",
+      "player_id": "701398",
+      "team": "Cincinnati Reds",
+      "venue": "away",
+      "games_played": 105,
+      "season_stats": {
+        "G": 105,
+        "H": 102,
+        "R": 56,
+        "RBI": 79,
+        "HR": 22,
+        "2B": 23,
+        "3B": 0,
+        "BB": 48,
+        "SB": 12,
+        "AVG": 0.256,
+        "OBP": 0.334,
+        "SLG": 0.479,
+        "OPS": 0.813
+      },
+      "projections": {
+        "H": {
+          "projection": 0.97,
+          "line": 1.26,
+          "edge": 0.2302,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "R": {
+          "projection": 0.53,
+          "line": 0.42,
+          "edge": 0.2619,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "RBI": {
+          "projection": 0.75,
+          "line": 0.6,
+          "edge": 0.25,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "HR": {
+          "projection": 0.21,
+          "line": 0.26,
+          "edge": 0.1923,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "2B": {
+          "projection": 0.22,
+          "line": 0.15,
+          "edge": 0.4667,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "BB": {
+          "projection": 0.46,
+          "line": 0.55,
+          "edge": 0.1636,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "SB": {
+          "projection": 0.11,
+          "line": 0.16,
+          "edge": 0.3125,
+          "direction": "UNDER",
+          "source": "self_edge"
+        }
+      }
+    },
+    {
+      "name": "TJ Friedl",
+      "player_id": "670770",
+      "team": "Cincinnati Reds",
+      "venue": "away",
+      "games_played": 64,
+      "season_stats": {
+        "G": 64,
+        "H": 34,
+        "R": 19,
+        "RBI": 11,
+        "HR": 3,
+        "2B": 6,
+        "3B": 1,
+        "BB": 20,
+        "SB": 5,
+        "AVG": 0.167,
+        "OBP": 0.254,
+        "SLG": 0.251,
+        "OPS": 0.505
+      },
+      "projections": {
+        "H": {
+          "projection": 0.53,
+          "line": 0.69,
+          "edge": 0.2319,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "R": {
+          "projection": 0.3,
+          "line": 0.36,
+          "edge": 0.1667,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "RBI": {
+          "projection": 0.17,
+          "line": 0.22,
+          "edge": 0.2273,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "HR": {
+          "projection": 0.05,
+          "line": 0.1,
+          "edge": 0.5,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "2B": {
+          "projection": 0.09,
+          "line": 0.14,
+          "edge": 0.3571,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "3B": {
+          "projection": 0.02,
+          "line": 0.01,
+          "edge": 1.0,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "BB": {
+          "projection": 0.31,
+          "line": 0.25,
+          "edge": 0.24,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "SB": {
+          "projection": 0.08,
+          "line": 0.13,
+          "edge": 0.3846,
+          "direction": "UNDER",
+          "source": "self_edge"
+        }
+      }
+    },
+    {
+      "name": "Tyler Stephenson",
+      "player_id": "663886",
+      "team": "Cincinnati Reds",
+      "venue": "away",
+      "games_played": 81,
+      "season_stats": {
+        "G": 81,
+        "H": 63,
+        "R": 23,
+        "RBI": 29,
+        "HR": 8,
+        "2B": 14,
+        "3B": 0,
+        "BB": 28,
+        "SB": 0,
+        "AVG": 0.248,
+        "OBP": 0.323,
+        "SLG": 0.398,
+        "OPS": 0.721
+      },
+      "projections": {
+        "H": {
+          "projection": 0.78,
+          "line": 0.55,
+          "edge": 0.4182,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "R": {
+          "projection": 0.28,
+          "line": 0.34,
+          "edge": 0.1765,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "RBI": {
+          "projection": 0.36,
+          "line": 0.29,
+          "edge": 0.2414,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "HR": {
+          "projection": 0.1,
+          "line": 0.05,
+          "edge": 1.0,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "2B": {
+          "projection": 0.17,
+          "line": 0.22,
+          "edge": 0.2273,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "BB": {
+          "projection": 0.35,
+          "line": 0.42,
+          "edge": 0.1667,
+          "direction": "UNDER",
+          "source": "self_edge"
+        }
+      }
+    },
+    {
+      "name": "Chase Burns",
+      "player_id": "695505",
+      "team": "Cincinnati Reds",
+      "venue": "away",
+      "games_played": 20,
+      "season_stats": {
+        "GS": 20,
+        "IP": 112.2,
+        "SO": 128,
+        "BB": 41,
+        "ER": 30,
+        "H": 85,
+        "K": 128
+      },
+      "projections": {
+        "SO": {
+          "projection": 6.4,
+          "line": 8.0,
+          "edge": 0.2,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "K": {
+          "projection": 6.4,
+          "line": 8.0,
+          "edge": 0.2,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "BB": {
+          "projection": 2.05,
+          "line": 2.46,
+          "edge": 0.1667,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "ER": {
+          "projection": 1.5,
+          "line": 1.12,
+          "edge": 0.3393,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "H": {
+          "projection": 4.25,
+          "line": 2.98,
+          "edge": 0.4262,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "IP": {
+          "projection": 5.61,
+          "line": 4.77,
+          "edge": 0.1761,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      }
+    },
+    {
+      "name": "Andr\u00e9s Chaparro",
+      "player_id": "665953",
+      "team": "Washington Nationals",
+      "venue": "home",
+      "games_played": 39,
+      "season_stats": {
+        "G": 39,
+        "H": 17,
+        "R": 16,
+        "RBI": 19,
+        "HR": 5,
+        "2B": 5,
+        "3B": 0,
+        "BB": 12,
+        "SB": 0,
+        "AVG": 0.224,
+        "OBP": 0.337,
+        "SLG": 0.487,
+        "OPS": 0.824
+      },
+      "projections": {
+        "H": {
+          "projection": 0.44,
+          "line": 0.31,
+          "edge": 0.4194,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "R": {
+          "projection": 0.41,
+          "line": 0.33,
+          "edge": 0.2424,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "RBI": {
+          "projection": 0.49,
+          "line": 0.59,
+          "edge": 0.1695,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "HR": {
+          "projection": 0.13,
+          "line": 0.08,
+          "edge": 0.625,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "2B": {
+          "projection": 0.13,
+          "line": 0.08,
+          "edge": 0.625,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "BB": {
+          "projection": 0.31,
+          "line": 0.37,
+          "edge": 0.1622,
+          "direction": "UNDER",
+          "source": "self_edge"
+        }
+      }
+    },
+    {
+      "name": "Brady House",
+      "player_id": "691781",
+      "team": "Washington Nationals",
+      "venue": "home",
+      "games_played": 45,
+      "season_stats": {
+        "G": 45,
+        "H": 39,
+        "R": 24,
+        "RBI": 26,
+        "HR": 7,
+        "2B": 9,
+        "3B": 0,
+        "BB": 13,
+        "SB": 1,
+        "AVG": 0.232,
+        "OBP": 0.286,
+        "SLG": 0.411,
+        "OPS": 0.697
+      },
+      "projections": {
+        "H": {
+          "projection": 0.87,
+          "line": 1.13,
+          "edge": 0.2301,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "R": {
+          "projection": 0.53,
+          "line": 0.42,
+          "edge": 0.2619,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "RBI": {
+          "projection": 0.58,
+          "line": 0.7,
+          "edge": 0.1714,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "HR": {
+          "projection": 0.16,
+          "line": 0.11,
+          "edge": 0.4545,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "2B": {
+          "projection": 0.2,
+          "line": 0.14,
+          "edge": 0.4286,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "BB": {
+          "projection": 0.29,
+          "line": 0.35,
+          "edge": 0.1714,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "SB": {
+          "projection": 0.02,
+          "line": 0.01,
+          "edge": 1.0,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      }
+    },
+    {
+      "name": "CJ Abrams",
+      "player_id": "682928",
+      "team": "Washington Nationals",
+      "venue": "home",
+      "games_played": 103,
+      "season_stats": {
+        "G": 103,
+        "H": 114,
+        "R": 66,
+        "RBI": 82,
+        "HR": 27,
+        "2B": 21,
+        "3B": 2,
+        "BB": 38,
+        "SB": 19,
+        "AVG": 0.295,
+        "OBP": 0.368,
+        "SLG": 0.57,
+        "OPS": 0.938
+      },
+      "projections": {
+        "H": {
+          "projection": 1.11,
+          "line": 0.78,
+          "edge": 0.4231,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "R": {
+          "projection": 0.64,
+          "line": 0.51,
+          "edge": 0.2549,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "RBI": {
+          "projection": 0.8,
+          "line": 0.64,
+          "edge": 0.25,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "HR": {
+          "projection": 0.26,
+          "line": 0.2,
+          "edge": 0.3,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "2B": {
+          "projection": 0.2,
+          "line": 0.14,
+          "edge": 0.4286,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "3B": {
+          "projection": 0.02,
+          "line": 0.07,
+          "edge": 0.7143,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "BB": {
+          "projection": 0.37,
+          "line": 0.3,
+          "edge": 0.2333,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "SB": {
+          "projection": 0.18,
+          "line": 0.13,
+          "edge": 0.3846,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      }
+    },
+    {
+      "name": "Daylen Lile",
+      "player_id": "695734",
+      "team": "Washington Nationals",
+      "venue": "home",
+      "games_played": 105,
+      "season_stats": {
+        "G": 105,
+        "H": 99,
+        "R": 53,
+        "RBI": 51,
+        "HR": 11,
+        "2B": 22,
+        "3B": 5,
+        "BB": 26,
+        "SB": 10,
+        "AVG": 0.244,
+        "OBP": 0.295,
+        "SLG": 0.405,
+        "OPS": 0.7
+      },
+      "projections": {
+        "H": {
+          "projection": 0.94,
+          "line": 0.66,
+          "edge": 0.4242,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "R": {
+          "projection": 0.5,
+          "line": 0.6,
+          "edge": 0.1667,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "RBI": {
+          "projection": 0.49,
+          "line": 0.59,
+          "edge": 0.1695,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "HR": {
+          "projection": 0.1,
+          "line": 0.05,
+          "edge": 1.0,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "2B": {
+          "projection": 0.21,
+          "line": 0.27,
+          "edge": 0.2222,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "3B": {
+          "projection": 0.05,
+          "line": 0.1,
+          "edge": 0.5,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "BB": {
+          "projection": 0.25,
+          "line": 0.3,
+          "edge": 0.1667,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "SB": {
+          "projection": 0.1,
+          "line": 0.15,
+          "edge": 0.3333,
+          "direction": "UNDER",
+          "source": "self_edge"
+        }
+      }
+    },
+    {
+      "name": "Dylan Crews",
+      "player_id": "686611",
+      "team": "Washington Nationals",
+      "venue": "home",
+      "games_played": 56,
+      "season_stats": {
+        "G": 56,
+        "H": 47,
+        "R": 32,
+        "RBI": 23,
+        "HR": 8,
+        "2B": 8,
+        "3B": 0,
+        "BB": 17,
+        "SB": 6,
+        "AVG": 0.228,
+        "OBP": 0.309,
+        "SLG": 0.383,
+        "OPS": 0.692
+      },
+      "projections": {
+        "H": {
+          "projection": 0.84,
+          "line": 0.59,
+          "edge": 0.4237,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "R": {
+          "projection": 0.57,
+          "line": 0.46,
+          "edge": 0.2391,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "RBI": {
+          "projection": 0.41,
+          "line": 0.49,
+          "edge": 0.1633,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "HR": {
+          "projection": 0.14,
+          "line": 0.19,
+          "edge": 0.2632,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "2B": {
+          "projection": 0.14,
+          "line": 0.19,
+          "edge": 0.2632,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "BB": {
+          "projection": 0.3,
+          "line": 0.24,
+          "edge": 0.25,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "SB": {
+          "projection": 0.11,
+          "line": 0.06,
+          "edge": 0.8333,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      }
+    },
+    {
+      "name": "Harry Ford",
+      "player_id": "695670",
+      "team": "Washington Nationals",
+      "venue": "home",
+      "games_played": 5,
+      "season_stats": {
+        "G": 5,
+        "H": 4,
+        "R": 3,
+        "RBI": 4,
+        "HR": 1,
+        "2B": 1,
+        "3B": 0,
+        "BB": 2,
+        "SB": 1,
+        "AVG": 0.235,
+        "OBP": 0.35,
+        "SLG": 0.471,
+        "OPS": 0.821
+      },
+      "projections": {
+        "H": {
+          "projection": 0.8,
+          "line": 0.56,
+          "edge": 0.4286,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "R": {
+          "projection": 0.6,
+          "line": 0.72,
+          "edge": 0.1667,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "RBI": {
+          "projection": 0.8,
+          "line": 0.64,
+          "edge": 0.25,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "HR": {
+          "projection": 0.2,
+          "line": 0.15,
+          "edge": 0.3333,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "2B": {
+          "projection": 0.2,
+          "line": 0.26,
+          "edge": 0.2308,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "BB": {
+          "projection": 0.4,
+          "line": 0.32,
+          "edge": 0.25,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "SB": {
+          "projection": 0.2,
+          "line": 0.15,
+          "edge": 0.3333,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      }
+    },
+    {
+      "name": "Jacob Young",
+      "player_id": "696285",
+      "team": "Washington Nationals",
+      "venue": "home",
+      "games_played": 94,
+      "season_stats": {
+        "G": 94,
+        "H": 69,
+        "R": 39,
+        "RBI": 35,
+        "HR": 9,
+        "2B": 13,
+        "3B": 2,
+        "BB": 17,
+        "SB": 13,
+        "AVG": 0.235,
+        "OBP": 0.289,
+        "SLG": 0.386,
+        "OPS": 0.675
+      },
+      "projections": {
+        "H": {
+          "projection": 0.73,
+          "line": 0.95,
+          "edge": 0.2316,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "R": {
+          "projection": 0.41,
+          "line": 0.33,
+          "edge": 0.2424,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "RBI": {
+          "projection": 0.37,
+          "line": 0.44,
+          "edge": 0.1591,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "HR": {
+          "projection": 0.1,
+          "line": 0.15,
+          "edge": 0.3333,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "2B": {
+          "projection": 0.14,
+          "line": 0.09,
+          "edge": 0.5556,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "3B": {
+          "projection": 0.02,
+          "line": 0.07,
+          "edge": 0.7143,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "BB": {
+          "projection": 0.18,
+          "line": 0.13,
+          "edge": 0.3846,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "SB": {
+          "projection": 0.14,
+          "line": 0.09,
+          "edge": 0.5556,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      }
+    },
+    {
+      "name": "James Wood",
+      "player_id": "695578",
+      "team": "Washington Nationals",
+      "venue": "home",
+      "games_played": 107,
+      "season_stats": {
+        "G": 107,
+        "H": 112,
+        "R": 96,
+        "RBI": 72,
+        "HR": 30,
+        "2B": 25,
+        "3B": 1,
+        "BB": 84,
+        "SB": 16,
+        "AVG": 0.272,
+        "OBP": 0.398,
+        "SLG": 0.556,
+        "OPS": 0.954
+      },
+      "projections": {
+        "H": {
+          "projection": 1.05,
+          "line": 0.74,
+          "edge": 0.4189,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "R": {
+          "projection": 0.9,
+          "line": 1.08,
+          "edge": 0.1667,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "RBI": {
+          "projection": 0.67,
+          "line": 0.8,
+          "edge": 0.1625,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "HR": {
+          "projection": 0.28,
+          "line": 0.35,
+          "edge": 0.2,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "2B": {
+          "projection": 0.23,
+          "line": 0.3,
+          "edge": 0.2333,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "3B": {
+          "projection": 0.01,
+          "line": 0.01,
+          "edge": 0.0,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "BB": {
+          "projection": 0.79,
+          "line": 0.95,
+          "edge": 0.1684,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "SB": {
+          "projection": 0.15,
+          "line": 0.2,
+          "edge": 0.25,
+          "direction": "UNDER",
+          "source": "self_edge"
+        }
+      }
+    },
+    {
+      "name": "Jorbit Vivas",
+      "player_id": "678391",
+      "team": "Washington Nationals",
+      "venue": "home",
+      "games_played": 77,
+      "season_stats": {
+        "G": 77,
+        "H": 46,
+        "R": 23,
+        "RBI": 18,
+        "HR": 3,
+        "2B": 8,
+        "3B": 1,
+        "BB": 21,
+        "SB": 0,
+        "AVG": 0.24,
+        "OBP": 0.321,
+        "SLG": 0.339,
+        "OPS": 0.66
+      },
+      "projections": {
+        "H": {
+          "projection": 0.6,
+          "line": 0.42,
+          "edge": 0.4286,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "R": {
+          "projection": 0.3,
+          "line": 0.36,
+          "edge": 0.1667,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "RBI": {
+          "projection": 0.23,
+          "line": 0.28,
+          "edge": 0.1786,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "HR": {
+          "projection": 0.04,
+          "line": 0.09,
+          "edge": 0.5556,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "2B": {
+          "projection": 0.1,
+          "line": 0.15,
+          "edge": 0.3333,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "3B": {
+          "projection": 0.01,
+          "line": 0.01,
+          "edge": 0.0,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "BB": {
+          "projection": 0.27,
+          "line": 0.22,
+          "edge": 0.2273,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      }
+    },
+    {
+      "name": "Jos\u00e9 Tena",
+      "player_id": "677588",
+      "team": "Washington Nationals",
+      "venue": "home",
+      "games_played": 78,
+      "season_stats": {
+        "G": 78,
+        "H": 45,
+        "R": 27,
+        "RBI": 20,
+        "HR": 5,
+        "2B": 10,
+        "3B": 2,
+        "BB": 15,
+        "SB": 3,
+        "AVG": 0.243,
+        "OBP": 0.307,
+        "SLG": 0.4,
+        "OPS": 0.707
+      },
+      "projections": {
+        "H": {
+          "projection": 0.58,
+          "line": 0.75,
+          "edge": 0.2267,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "R": {
+          "projection": 0.35,
+          "line": 0.28,
+          "edge": 0.25,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "RBI": {
+          "projection": 0.26,
+          "line": 0.31,
+          "edge": 0.1613,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "HR": {
+          "projection": 0.06,
+          "line": 0.11,
+          "edge": 0.4545,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "2B": {
+          "projection": 0.13,
+          "line": 0.18,
+          "edge": 0.2778,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "3B": {
+          "projection": 0.03,
+          "line": 0.01,
+          "edge": 2.0,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "BB": {
+          "projection": 0.19,
+          "line": 0.14,
+          "edge": 0.3571,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "SB": {
+          "projection": 0.04,
+          "line": 0.09,
+          "edge": 0.5556,
+          "direction": "UNDER",
+          "source": "self_edge"
+        }
+      }
+    },
+    {
+      "name": "Keibert Ruiz",
+      "player_id": "660688",
+      "team": "Washington Nationals",
+      "venue": "home",
+      "games_played": 69,
+      "season_stats": {
+        "G": 69,
+        "H": 59,
+        "R": 32,
+        "RBI": 35,
+        "HR": 7,
+        "2B": 20,
+        "3B": 0,
+        "BB": 8,
+        "SB": 2,
+        "AVG": 0.267,
+        "OBP": 0.295,
+        "SLG": 0.452,
+        "OPS": 0.747
+      },
+      "projections": {
+        "H": {
+          "projection": 0.86,
+          "line": 0.6,
+          "edge": 0.4333,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "R": {
+          "projection": 0.46,
+          "line": 0.37,
+          "edge": 0.2432,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "RBI": {
+          "projection": 0.51,
+          "line": 0.61,
+          "edge": 0.1639,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "HR": {
+          "projection": 0.1,
+          "line": 0.05,
+          "edge": 1.0,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "2B": {
+          "projection": 0.29,
+          "line": 0.2,
+          "edge": 0.45,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "BB": {
+          "projection": 0.12,
+          "line": 0.07,
+          "edge": 0.7143,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "SB": {
+          "projection": 0.03,
+          "line": 0.01,
+          "edge": 2.0,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      }
+    },
+    {
+      "name": "Luis Garc\u00eda Jr.",
+      "player_id": "671277",
+      "team": "Washington Nationals",
+      "venue": "home",
+      "games_played": 99,
+      "season_stats": {
+        "G": 99,
+        "H": 94,
+        "R": 46,
+        "RBI": 71,
+        "HR": 21,
+        "2B": 18,
+        "3B": 4,
+        "BB": 16,
+        "SB": 4,
+        "AVG": 0.28,
+        "OBP": 0.312,
+        "SLG": 0.545,
+        "OPS": 0.857
+      },
+      "projections": {
+        "H": {
+          "projection": 0.95,
+          "line": 0.67,
+          "edge": 0.4179,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "R": {
+          "projection": 0.46,
+          "line": 0.55,
+          "edge": 0.1636,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "RBI": {
+          "projection": 0.72,
+          "line": 0.58,
+          "edge": 0.2414,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "HR": {
+          "projection": 0.21,
+          "line": 0.16,
+          "edge": 0.3125,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "2B": {
+          "projection": 0.18,
+          "line": 0.13,
+          "edge": 0.3846,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "3B": {
+          "projection": 0.04,
+          "line": 0.01,
+          "edge": 3.0,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "BB": {
+          "projection": 0.16,
+          "line": 0.11,
+          "edge": 0.4545,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "SB": {
+          "projection": 0.04,
+          "line": 0.09,
+          "edge": 0.5556,
+          "direction": "UNDER",
+          "source": "self_edge"
+        }
+      }
+    },
+    {
+      "name": "Nasim Nu\u00f1ez",
+      "player_id": "683083",
+      "team": "Washington Nationals",
+      "venue": "home",
+      "games_played": 99,
+      "season_stats": {
+        "G": 99,
+        "H": 75,
+        "R": 46,
+        "RBI": 30,
+        "HR": 1,
+        "2B": 4,
+        "3B": 3,
+        "BB": 37,
+        "SB": 38,
+        "AVG": 0.25,
+        "OBP": 0.333,
+        "SLG": 0.293,
+        "OPS": 0.626
+      },
+      "projections": {
+        "H": {
+          "projection": 0.76,
+          "line": 0.53,
+          "edge": 0.434,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "R": {
+          "projection": 0.46,
+          "line": 0.55,
+          "edge": 0.1636,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "RBI": {
+          "projection": 0.3,
+          "line": 0.24,
+          "edge": 0.25,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "HR": {
+          "projection": 0.01,
+          "line": 0.01,
+          "edge": 0.0,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "2B": {
+          "projection": 0.04,
+          "line": 0.01,
+          "edge": 3.0,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "3B": {
+          "projection": 0.03,
+          "line": 0.08,
+          "edge": 0.625,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "BB": {
+          "projection": 0.37,
+          "line": 0.44,
+          "edge": 0.1591,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "SB": {
+          "projection": 0.38,
+          "line": 0.47,
+          "edge": 0.1915,
+          "direction": "UNDER",
+          "source": "self_edge"
+        }
+      }
+    },
+    {
+      "name": "Cade Cavalli",
+      "player_id": "676917",
+      "team": "Washington Nationals",
+      "venue": "home",
+      "games_played": 22,
+      "season_stats": {
+        "GS": 22,
+        "IP": 110.2,
+        "SO": 127,
+        "BB": 34,
+        "ER": 44,
+        "H": 109,
+        "K": 127
+      },
+      "projections": {
+        "SO": {
+          "projection": 5.77,
+          "line": 4.33,
+          "edge": 0.3326,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "K": {
+          "projection": 5.77,
+          "line": 4.33,
+          "edge": 0.3326,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "BB": {
+          "projection": 1.55,
+          "line": 1.24,
+          "edge": 0.25,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "ER": {
+          "projection": 2.0,
+          "line": 2.5,
+          "edge": 0.2,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        "H": {
+          "projection": 4.95,
+          "line": 3.46,
+          "edge": 0.4306,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        "IP": {
+          "projection": 5.01,
+          "line": 4.26,
+          "edge": 0.1761,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      }
+    }
+  ]
+}

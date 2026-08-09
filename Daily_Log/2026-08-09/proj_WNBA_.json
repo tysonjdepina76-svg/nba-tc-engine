@@ -1,0 +1,6351 @@
+{
+  "date": "2026-08-09",
+  "sport": "WNBA",
+  "per_game_files": [
+    "/home/workspace/Daily_Log/2026-08-09/proj_WNBA_LV_at_NY.json",
+    "/home/workspace/Daily_Log/2026-08-09/proj_WNBA_PHX_at_WSH.json",
+    "/home/workspace/Daily_Log/2026-08-09/proj_WNBA_DAL_at_MIN.json",
+    "/home/workspace/Daily_Log/2026-08-09/proj_WNBA_GS_at_LA.json"
+  ],
+  "players": [
+    {
+      "player": "Kierstan Bell",
+      "team": "LV",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 2.4,
+          "line": 2.88,
+          "edge": 0.48,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 1.8,
+          "line": 1.404,
+          "edge": 0.396,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 0.6,
+          "line": 0.75,
+          "edge": 0.15,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 0.1,
+          "line": 0.15,
+          "edge": 0.05,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "BLK",
+          "projection": 0.5,
+          "line": 0.35,
+          "edge": 0.15,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 0.4,
+          "line": 0.512,
+          "edge": 0.112,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 4.8,
+          "line": 5.664,
+          "edge": 0.864,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 4.2,
+          "line": 3.444,
+          "edge": 0.756,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 3.0,
+          "line": 3.54,
+          "edge": 0.54,
+          "direction": "UNDER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "LV_at_NY"
+    },
+    {
+      "player": "Jewell Loyd",
+      "team": "LV",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 7.2,
+          "line": 5.76,
+          "edge": 1.44,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 2.2,
+          "line": 2.684,
+          "edge": 0.484,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 0.8,
+          "line": 0.6,
+          "edge": 0.2,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 1.9,
+          "line": 2.47,
+          "edge": 0.57,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "BLK",
+          "projection": 0.1,
+          "line": 0.15,
+          "edge": 0.05,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 1.6,
+          "line": 1.152,
+          "edge": 0.448,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 10.2,
+          "line": 12.036,
+          "edge": 1.836,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 9.4,
+          "line": 11.092,
+          "edge": 1.692,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 8.0,
+          "line": 9.44,
+          "edge": 1.44,
+          "direction": "UNDER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "LV_at_NY"
+    },
+    {
+      "player": "Cheyenne Parker-Tyus",
+      "team": "LV",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 4.1,
+          "line": 3.28,
+          "edge": 0.82,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 2.9,
+          "line": 2.262,
+          "edge": 0.638,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 0.7,
+          "line": 0.875,
+          "edge": 0.175,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 0.6,
+          "line": 0.42,
+          "edge": 0.18,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "BLK",
+          "projection": 0.5,
+          "line": 0.35,
+          "edge": 0.15,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 0.2,
+          "line": 0.144,
+          "edge": 0.056,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 7.7,
+          "line": 9.086,
+          "edge": 1.386,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 7.0,
+          "line": 8.26,
+          "edge": 1.26,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 4.8,
+          "line": 3.936,
+          "edge": 0.864,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "LV_at_NY"
+    },
+    {
+      "player": "NaLyssa Smith",
+      "team": "LV",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 13.7,
+          "line": 10.96,
+          "edge": 2.74,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 5.8,
+          "line": 4.524,
+          "edge": 1.276,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 1.2,
+          "line": 1.5,
+          "edge": 0.3,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 0.5,
+          "line": 0.65,
+          "edge": 0.15,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "BLK",
+          "projection": 0.3,
+          "line": 0.39,
+          "edge": 0.09,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 20.7,
+          "line": 24.426,
+          "edge": 3.726,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 19.5,
+          "line": 15.99,
+          "edge": 3.51,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 14.9,
+          "line": 17.582,
+          "edge": 2.682,
+          "direction": "UNDER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "LV_at_NY"
+    },
+    {
+      "player": "Stephanie Talbot",
+      "team": "LV",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 3.6,
+          "line": 2.88,
+          "edge": 0.72,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 4.1,
+          "line": 5.002,
+          "edge": 0.902,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 1.5,
+          "line": 1.875,
+          "edge": 0.375,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 1.0,
+          "line": 1.3,
+          "edge": 0.3,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "BLK",
+          "projection": 0.2,
+          "line": 0.14,
+          "edge": 0.06,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 0.7,
+          "line": 0.896,
+          "edge": 0.196,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 9.2,
+          "line": 7.544,
+          "edge": 1.656,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 7.7,
+          "line": 9.086,
+          "edge": 1.386,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 5.1,
+          "line": 6.018,
+          "edge": 0.918,
+          "direction": "UNDER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "LV_at_NY"
+    },
+    {
+      "player": "Brianna Turner",
+      "team": "LV",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 0.6,
+          "line": 0.72,
+          "edge": 0.12,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 0.8,
+          "line": 0.624,
+          "edge": 0.176,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 0.1,
+          "line": 0.05,
+          "edge": 0.05,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "BLK",
+          "projection": 0.3,
+          "line": 0.39,
+          "edge": 0.09,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 1.4,
+          "line": 1.148,
+          "edge": 0.252,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 1.4,
+          "line": 1.148,
+          "edge": 0.252,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 0.6,
+          "line": 0.492,
+          "edge": 0.108,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "LV_at_NY"
+    },
+    {
+      "player": "A'ja Wilson",
+      "team": "LV",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 28.4,
+          "line": 22.72,
+          "edge": 5.68,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 8.9,
+          "line": 6.942,
+          "edge": 1.958,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 3.9,
+          "line": 4.875,
+          "edge": 0.975,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 2.4,
+          "line": 1.68,
+          "edge": 0.72,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "BLK",
+          "projection": 1.8,
+          "line": 1.26,
+          "edge": 0.54,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 0.9,
+          "line": 1.152,
+          "edge": 0.252,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 41.2,
+          "line": 48.616,
+          "edge": 7.416,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 37.3,
+          "line": 44.014,
+          "edge": 6.714,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 32.3,
+          "line": 26.486,
+          "edge": 5.814,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "LV_at_NY"
+    },
+    {
+      "player": "Jackie Young",
+      "team": "LV",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 20.4,
+          "line": 16.32,
+          "edge": 4.08,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 4.5,
+          "line": 5.49,
+          "edge": 0.99,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 7.8,
+          "line": 5.85,
+          "edge": 1.95,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 1.4,
+          "line": 0.98,
+          "edge": 0.42,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "BLK",
+          "projection": 0.6,
+          "line": 0.42,
+          "edge": 0.18,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 2.3,
+          "line": 2.944,
+          "edge": 0.644,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 32.7,
+          "line": 26.814,
+          "edge": 5.886,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 24.9,
+          "line": 20.418,
+          "edge": 4.482,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 28.2,
+          "line": 33.276,
+          "edge": 5.076,
+          "direction": "UNDER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "LV_at_NY"
+    },
+    {
+      "player": "Rebecca Allen",
+      "team": "NY",
+      "projections": [
+        {
+          "stat": "REB",
+          "projection": 0.2,
+          "line": 0.25,
+          "edge": 0.05,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 0.2,
+          "line": 0.25,
+          "edge": 0.05,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "BLK",
+          "projection": 0.1,
+          "line": 0.15,
+          "edge": 0.05,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 0.4,
+          "line": 0.328,
+          "edge": 0.072,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 0.2,
+          "line": 0.15,
+          "edge": 0.05,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 0.2,
+          "line": 0.15,
+          "edge": 0.05,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "LV_at_NY"
+    },
+    {
+      "player": "Pauline Astier",
+      "team": "NY",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 9.6,
+          "line": 7.68,
+          "edge": 1.92,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 3.5,
+          "line": 4.27,
+          "edge": 0.77,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 3.7,
+          "line": 2.775,
+          "edge": 0.925,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 0.4,
+          "line": 0.28,
+          "edge": 0.12,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "BLK",
+          "projection": 0.1,
+          "line": 0.05,
+          "edge": 0.05,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 0.4,
+          "line": 0.512,
+          "edge": 0.112,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 16.8,
+          "line": 13.776,
+          "edge": 3.024,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 13.1,
+          "line": 15.458,
+          "edge": 2.358,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 13.3,
+          "line": 15.694,
+          "edge": 2.394,
+          "direction": "UNDER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "LV_at_NY"
+    },
+    {
+      "player": "Raquel Carrera",
+      "team": "NY",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 1.7,
+          "line": 1.36,
+          "edge": 0.34,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 0.9,
+          "line": 0.702,
+          "edge": 0.198,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 0.2,
+          "line": 0.15,
+          "edge": 0.05,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 0.1,
+          "line": 0.05,
+          "edge": 0.05,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "BLK",
+          "projection": 0.1,
+          "line": 0.15,
+          "edge": 0.05,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 0.2,
+          "line": 0.144,
+          "edge": 0.056,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 2.8,
+          "line": 2.296,
+          "edge": 0.504,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 2.6,
+          "line": 2.132,
+          "edge": 0.468,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 1.9,
+          "line": 1.558,
+          "edge": 0.342,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "LV_at_NY"
+    },
+    {
+      "player": "Marine Fauthoux",
+      "team": "NY",
+      "projections": [
+        {
+          "stat": "AST",
+          "projection": 1.0,
+          "line": 1.25,
+          "edge": 0.25,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 1.0,
+          "line": 1.18,
+          "edge": 0.18,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 1.0,
+          "line": 0.82,
+          "edge": 0.18,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "LV_at_NY"
+    },
+    {
+      "player": "Leonie Fiebich",
+      "team": "NY",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 6.6,
+          "line": 5.28,
+          "edge": 1.32,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 3.4,
+          "line": 4.148,
+          "edge": 0.748,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 1.6,
+          "line": 2.0,
+          "edge": 0.4,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 0.8,
+          "line": 1.04,
+          "edge": 0.24,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "BLK",
+          "projection": 0.1,
+          "line": 0.15,
+          "edge": 0.05,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 1.4,
+          "line": 1.792,
+          "edge": 0.392,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 11.6,
+          "line": 9.512,
+          "edge": 2.088,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 10.0,
+          "line": 8.2,
+          "edge": 1.8,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 8.2,
+          "line": 6.724,
+          "edge": 1.476,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "LV_at_NY"
+    },
+    {
+      "player": "Rebekah Gardner",
+      "team": "NY",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 4.3,
+          "line": 5.16,
+          "edge": 0.86,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 1.8,
+          "line": 1.404,
+          "edge": 0.396,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 0.9,
+          "line": 1.125,
+          "edge": 0.225,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 0.4,
+          "line": 0.52,
+          "edge": 0.12,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 0.2,
+          "line": 0.256,
+          "edge": 0.056,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 7.0,
+          "line": 5.74,
+          "edge": 1.26,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 6.1,
+          "line": 7.198,
+          "edge": 1.098,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 5.2,
+          "line": 4.264,
+          "edge": 0.936,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "LV_at_NY"
+    },
+    {
+      "player": "Sabrina Ionescu",
+      "team": "NY",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 11.7,
+          "line": 9.36,
+          "edge": 2.34,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 3.4,
+          "line": 2.652,
+          "edge": 0.748,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 2.8,
+          "line": 3.5,
+          "edge": 0.7,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 0.5,
+          "line": 0.35,
+          "edge": 0.15,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "BLK",
+          "projection": 0.3,
+          "line": 0.39,
+          "edge": 0.09,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 1.9,
+          "line": 1.368,
+          "edge": 0.532,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 17.9,
+          "line": 21.122,
+          "edge": 3.222,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 15.1,
+          "line": 12.382,
+          "edge": 2.718,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 14.5,
+          "line": 11.89,
+          "edge": 2.61,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "LV_at_NY"
+    },
+    {
+      "player": "Marine Johannes",
+      "team": "NY",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 8.1,
+          "line": 6.48,
+          "edge": 1.62,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 2.2,
+          "line": 1.716,
+          "edge": 0.484,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 1.7,
+          "line": 2.125,
+          "edge": 0.425,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 0.9,
+          "line": 1.17,
+          "edge": 0.27,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "BLK",
+          "projection": 0.1,
+          "line": 0.15,
+          "edge": 0.05,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 1.4,
+          "line": 1.792,
+          "edge": 0.392,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 12.0,
+          "line": 14.16,
+          "edge": 2.16,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 10.3,
+          "line": 8.446,
+          "edge": 1.854,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 9.8,
+          "line": 11.564,
+          "edge": 1.764,
+          "direction": "UNDER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "LV_at_NY"
+    },
+    {
+      "player": "Jonquel Jones",
+      "team": "NY",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 14.1,
+          "line": 11.28,
+          "edge": 2.82,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 8.8,
+          "line": 6.864,
+          "edge": 1.936,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 3.0,
+          "line": 3.75,
+          "edge": 0.75,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 0.3,
+          "line": 0.39,
+          "edge": 0.09,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "BLK",
+          "projection": 1.2,
+          "line": 1.56,
+          "edge": 0.36,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 2.2,
+          "line": 2.816,
+          "edge": 0.616,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 25.9,
+          "line": 30.562,
+          "edge": 4.662,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 22.9,
+          "line": 27.022,
+          "edge": 4.122,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 17.1,
+          "line": 20.178,
+          "edge": 3.078,
+          "direction": "UNDER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "LV_at_NY"
+    },
+    {
+      "player": "Satou Sabally",
+      "team": "NY",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 10.7,
+          "line": 8.56,
+          "edge": 2.14,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 2.2,
+          "line": 2.684,
+          "edge": 0.484,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 0.8,
+          "line": 0.6,
+          "edge": 0.2,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "BLK",
+          "projection": 0.2,
+          "line": 0.14,
+          "edge": 0.06,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 2.0,
+          "line": 1.44,
+          "edge": 0.56,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 13.7,
+          "line": 16.166,
+          "edge": 2.466,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 12.9,
+          "line": 15.222,
+          "edge": 2.322,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 11.5,
+          "line": 13.57,
+          "edge": 2.07,
+          "direction": "UNDER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "LV_at_NY"
+    },
+    {
+      "player": "Breanna Stewart",
+      "team": "NY",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 22.5,
+          "line": 18.0,
+          "edge": 4.5,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 8.1,
+          "line": 6.318,
+          "edge": 1.782,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 3.1,
+          "line": 2.325,
+          "edge": 0.775,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 1.5,
+          "line": 1.05,
+          "edge": 0.45,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "BLK",
+          "projection": 1.1,
+          "line": 1.43,
+          "edge": 0.33,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 0.9,
+          "line": 1.152,
+          "edge": 0.252,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 33.7,
+          "line": 27.634,
+          "edge": 6.066,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 30.6,
+          "line": 25.092,
+          "edge": 5.508,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 25.6,
+          "line": 30.208,
+          "edge": 4.608,
+          "direction": "UNDER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "LV_at_NY"
+    },
+    {
+      "player": "Han Xu",
+      "team": "NY",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 4.7,
+          "line": 5.64,
+          "edge": 0.94,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 1.5,
+          "line": 1.17,
+          "edge": 0.33,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 0.9,
+          "line": 0.675,
+          "edge": 0.225,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "BLK",
+          "projection": 0.7,
+          "line": 0.91,
+          "edge": 0.21,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 0.6,
+          "line": 0.432,
+          "edge": 0.168,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 7.1,
+          "line": 5.822,
+          "edge": 1.278,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 6.2,
+          "line": 7.316,
+          "edge": 1.116,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 5.6,
+          "line": 4.592,
+          "edge": 1.008,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "LV_at_NY"
+    },
+    {
+      "player": "Valeriane Ayayi",
+      "team": "PHX",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 7.2,
+          "line": 8.64,
+          "edge": 1.44,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 2.0,
+          "line": 2.44,
+          "edge": 0.44,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 1.3,
+          "line": 1.625,
+          "edge": 0.325,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 0.3,
+          "line": 0.21,
+          "edge": 0.09,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "BLK",
+          "projection": 0.2,
+          "line": 0.14,
+          "edge": 0.06,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 0.8,
+          "line": 1.024,
+          "edge": 0.224,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 10.5,
+          "line": 8.61,
+          "edge": 1.89,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 9.2,
+          "line": 10.856,
+          "edge": 1.656,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 8.5,
+          "line": 6.97,
+          "edge": 1.53,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "PHX_at_WSH"
+    },
+    {
+      "player": "DeWanna Bonner",
+      "team": "PHX",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 8.7,
+          "line": 6.96,
+          "edge": 1.74,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 6.0,
+          "line": 7.32,
+          "edge": 1.32,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 0.9,
+          "line": 1.125,
+          "edge": 0.225,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 1.6,
+          "line": 2.08,
+          "edge": 0.48,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "BLK",
+          "projection": 0.7,
+          "line": 0.91,
+          "edge": 0.21,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 1.0,
+          "line": 1.28,
+          "edge": 0.28,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 15.6,
+          "line": 18.408,
+          "edge": 2.808,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 14.7,
+          "line": 12.054,
+          "edge": 2.646,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 9.6,
+          "line": 11.328,
+          "edge": 1.728,
+          "direction": "UNDER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "PHX_at_WSH"
+    },
+    {
+      "player": "Noemie Brochant",
+      "team": "PHX",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 4.6,
+          "line": 3.68,
+          "edge": 0.92,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 2.2,
+          "line": 1.716,
+          "edge": 0.484,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 2.4,
+          "line": 3.0,
+          "edge": 0.6,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 1.4,
+          "line": 1.82,
+          "edge": 0.42,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 0.6,
+          "line": 0.768,
+          "edge": 0.168,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 9.2,
+          "line": 10.856,
+          "edge": 1.656,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 6.8,
+          "line": 5.576,
+          "edge": 1.224,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 7.0,
+          "line": 8.26,
+          "edge": 1.26,
+          "direction": "UNDER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "PHX_at_WSH"
+    },
+    {
+      "player": "Kahleah Copper",
+      "team": "PHX",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 20.7,
+          "line": 24.84,
+          "edge": 4.14,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 3.8,
+          "line": 2.964,
+          "edge": 0.836,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 1.9,
+          "line": 1.425,
+          "edge": 0.475,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 0.7,
+          "line": 0.49,
+          "edge": 0.21,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 2.0,
+          "line": 1.44,
+          "edge": 0.56,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 26.4,
+          "line": 31.152,
+          "edge": 4.752,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 24.5,
+          "line": 20.09,
+          "edge": 4.41,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 22.6,
+          "line": 26.668,
+          "edge": 4.068,
+          "direction": "UNDER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "PHX_at_WSH"
+    },
+    {
+      "player": "Lexi Held",
+      "team": "PHX",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 8.4,
+          "line": 10.08,
+          "edge": 1.68,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 2.2,
+          "line": 1.716,
+          "edge": 0.484,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 1.7,
+          "line": 1.275,
+          "edge": 0.425,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 0.7,
+          "line": 0.91,
+          "edge": 0.21,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "BLK",
+          "projection": 0.1,
+          "line": 0.05,
+          "edge": 0.05,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 1.6,
+          "line": 1.152,
+          "edge": 0.448,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 12.3,
+          "line": 14.514,
+          "edge": 2.214,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 10.6,
+          "line": 8.692,
+          "edge": 1.908,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 10.1,
+          "line": 11.918,
+          "edge": 1.818,
+          "direction": "UNDER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "PHX_at_WSH"
+    },
+    {
+      "player": "Kyara Linskens",
+      "team": "PHX",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 0.8,
+          "line": 0.64,
+          "edge": 0.16,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 0.8,
+          "line": 0.624,
+          "edge": 0.176,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 0.1,
+          "line": 0.15,
+          "edge": 0.05,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 0.1,
+          "line": 0.15,
+          "edge": 0.05,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "BLK",
+          "projection": 0.2,
+          "line": 0.26,
+          "edge": 0.06,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 0.1,
+          "line": 0.05,
+          "edge": 0.05,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 1.7,
+          "line": 2.006,
+          "edge": 0.306,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 1.6,
+          "line": 1.888,
+          "edge": 0.288,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 0.9,
+          "line": 1.062,
+          "edge": 0.162,
+          "direction": "UNDER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "PHX_at_WSH"
+    },
+    {
+      "player": "Natasha Mack",
+      "team": "PHX",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 3.2,
+          "line": 2.56,
+          "edge": 0.64,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 3.4,
+          "line": 2.652,
+          "edge": 0.748,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 0.7,
+          "line": 0.875,
+          "edge": 0.175,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "BLK",
+          "projection": 0.2,
+          "line": 0.26,
+          "edge": 0.06,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 0.1,
+          "line": 0.05,
+          "edge": 0.05,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 7.3,
+          "line": 8.614,
+          "edge": 1.314,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 6.6,
+          "line": 7.788,
+          "edge": 1.188,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 3.9,
+          "line": 3.198,
+          "edge": 0.702,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "PHX_at_WSH"
+    },
+    {
+      "player": "Jovana Nogic",
+      "team": "PHX",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 7.0,
+          "line": 5.6,
+          "edge": 1.4,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 1.0,
+          "line": 0.78,
+          "edge": 0.22,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 0.8,
+          "line": 0.6,
+          "edge": 0.2,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 0.8,
+          "line": 0.56,
+          "edge": 0.24,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 1.5,
+          "line": 1.08,
+          "edge": 0.42,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 8.8,
+          "line": 7.216,
+          "edge": 1.584,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 8.0,
+          "line": 6.56,
+          "edge": 1.44,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 7.8,
+          "line": 6.396,
+          "edge": 1.404,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "PHX_at_WSH"
+    },
+    {
+      "player": "Marta Suarez",
+      "team": "PHX",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 5.5,
+          "line": 6.6,
+          "edge": 1.1,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 2.0,
+          "line": 2.44,
+          "edge": 0.44,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 0.5,
+          "line": 0.64,
+          "edge": 0.14,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 7.5,
+          "line": 8.85,
+          "edge": 1.35,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 7.5,
+          "line": 8.85,
+          "edge": 1.35,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 5.5,
+          "line": 6.49,
+          "edge": 0.99,
+          "direction": "UNDER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "PHX_at_WSH"
+    },
+    {
+      "player": "Alyssa Thomas",
+      "team": "PHX",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 14.3,
+          "line": 17.16,
+          "edge": 2.86,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 7.3,
+          "line": 8.906,
+          "edge": 1.606,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 8.7,
+          "line": 6.525,
+          "edge": 2.175,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 1.6,
+          "line": 1.12,
+          "edge": 0.48,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "BLK",
+          "projection": 0.6,
+          "line": 0.78,
+          "edge": 0.18,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 30.3,
+          "line": 24.846,
+          "edge": 5.454,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 21.6,
+          "line": 25.488,
+          "edge": 3.888,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 23.0,
+          "line": 18.86,
+          "edge": 4.14,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "PHX_at_WSH"
+    },
+    {
+      "player": "Georgia Amoore",
+      "team": "WSH",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 6.1,
+          "line": 4.88,
+          "edge": 1.22,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 0.7,
+          "line": 0.854,
+          "edge": 0.154,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 3.8,
+          "line": 2.85,
+          "edge": 0.95,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 0.1,
+          "line": 0.05,
+          "edge": 0.05,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "BLK",
+          "projection": 0.1,
+          "line": 0.15,
+          "edge": 0.05,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 1.3,
+          "line": 1.664,
+          "edge": 0.364,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 10.6,
+          "line": 8.692,
+          "edge": 1.908,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 6.8,
+          "line": 8.024,
+          "edge": 1.224,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 9.9,
+          "line": 8.118,
+          "edge": 1.782,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "PHX_at_WSH"
+    },
+    {
+      "player": "Shakira Austin",
+      "team": "WSH",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 10.4,
+          "line": 8.32,
+          "edge": 2.08,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 10.3,
+          "line": 8.034,
+          "edge": 2.266,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 2.6,
+          "line": 1.95,
+          "edge": 0.65,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 0.1,
+          "line": 0.05,
+          "edge": 0.05,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "BLK",
+          "projection": 1.7,
+          "line": 1.19,
+          "edge": 0.51,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 0.4,
+          "line": 0.288,
+          "edge": 0.112,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 23.3,
+          "line": 27.494,
+          "edge": 4.194,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 20.7,
+          "line": 24.426,
+          "edge": 3.726,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 13.0,
+          "line": 15.34,
+          "edge": 2.34,
+          "direction": "UNDER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "PHX_at_WSH"
+    },
+    {
+      "player": "Lauren Betts",
+      "team": "WSH",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 9.9,
+          "line": 7.92,
+          "edge": 1.98,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 4.3,
+          "line": 3.354,
+          "edge": 0.946,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 1.5,
+          "line": 1.125,
+          "edge": 0.375,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 0.8,
+          "line": 1.04,
+          "edge": 0.24,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "BLK",
+          "projection": 0.3,
+          "line": 0.21,
+          "edge": 0.09,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 15.7,
+          "line": 12.874,
+          "edge": 2.826,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 14.2,
+          "line": 16.756,
+          "edge": 2.556,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 11.4,
+          "line": 9.348,
+          "edge": 2.052,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "PHX_at_WSH"
+    },
+    {
+      "player": "Sonia Citron",
+      "team": "WSH",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 16.0,
+          "line": 12.8,
+          "edge": 3.2,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 4.2,
+          "line": 5.124,
+          "edge": 0.924,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 2.8,
+          "line": 3.5,
+          "edge": 0.7,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 0.9,
+          "line": 0.63,
+          "edge": 0.27,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "BLK",
+          "projection": 0.6,
+          "line": 0.42,
+          "edge": 0.18,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 1.0,
+          "line": 0.72,
+          "edge": 0.28,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 23.0,
+          "line": 18.86,
+          "edge": 4.14,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 20.2,
+          "line": 16.564,
+          "edge": 3.636,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 18.8,
+          "line": 22.184,
+          "edge": 3.384,
+          "direction": "UNDER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "PHX_at_WSH"
+    },
+    {
+      "player": "Angela Dugalic",
+      "team": "WSH",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 5.3,
+          "line": 4.24,
+          "edge": 1.06,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 2.9,
+          "line": 2.262,
+          "edge": 0.638,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 0.8,
+          "line": 0.6,
+          "edge": 0.2,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 0.2,
+          "line": 0.26,
+          "edge": 0.06,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "BLK",
+          "projection": 0.3,
+          "line": 0.39,
+          "edge": 0.09,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 9.0,
+          "line": 7.38,
+          "edge": 1.62,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 8.2,
+          "line": 6.724,
+          "edge": 1.476,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 6.1,
+          "line": 7.198,
+          "edge": 1.098,
+          "direction": "UNDER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "PHX_at_WSH"
+    },
+    {
+      "player": "Alicia Florez",
+      "team": "WSH",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 2.8,
+          "line": 3.36,
+          "edge": 0.56,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 2.3,
+          "line": 1.794,
+          "edge": 0.506,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 2.7,
+          "line": 2.025,
+          "edge": 0.675,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 0.9,
+          "line": 0.63,
+          "edge": 0.27,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "BLK",
+          "projection": 0.2,
+          "line": 0.14,
+          "edge": 0.06,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 0.2,
+          "line": 0.144,
+          "edge": 0.056,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 7.8,
+          "line": 9.204,
+          "edge": 1.404,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 5.1,
+          "line": 4.182,
+          "edge": 0.918,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 5.5,
+          "line": 6.49,
+          "edge": 0.99,
+          "direction": "UNDER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "PHX_at_WSH"
+    },
+    {
+      "player": "Kiki Iriafen",
+      "team": "WSH",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 7.9,
+          "line": 6.32,
+          "edge": 1.58,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 5.7,
+          "line": 4.446,
+          "edge": 1.254,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 1.3,
+          "line": 1.625,
+          "edge": 0.325,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 0.5,
+          "line": 0.35,
+          "edge": 0.15,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "BLK",
+          "projection": 0.1,
+          "line": 0.15,
+          "edge": 0.05,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 0.2,
+          "line": 0.256,
+          "edge": 0.056,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 14.9,
+          "line": 17.582,
+          "edge": 2.682,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 13.6,
+          "line": 16.048,
+          "edge": 2.448,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 9.2,
+          "line": 7.544,
+          "edge": 1.656,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "PHX_at_WSH"
+    },
+    {
+      "player": "Cotie McMahon",
+      "team": "WSH",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 6.7,
+          "line": 5.36,
+          "edge": 1.34,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 3.3,
+          "line": 4.026,
+          "edge": 0.726,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 2.6,
+          "line": 1.95,
+          "edge": 0.65,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 0.7,
+          "line": 0.49,
+          "edge": 0.21,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 0.4,
+          "line": 0.512,
+          "edge": 0.112,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 12.6,
+          "line": 10.332,
+          "edge": 2.268,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 10.0,
+          "line": 11.8,
+          "edge": 1.8,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 9.3,
+          "line": 10.974,
+          "edge": 1.674,
+          "direction": "UNDER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "PHX_at_WSH"
+    },
+    {
+      "player": "Lucy Olsen",
+      "team": "WSH",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 2.0,
+          "line": 2.4,
+          "edge": 0.4,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 0.5,
+          "line": 0.61,
+          "edge": 0.11,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 0.7,
+          "line": 0.525,
+          "edge": 0.175,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 0.2,
+          "line": 0.26,
+          "edge": 0.06,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 0.2,
+          "line": 0.256,
+          "edge": 0.056,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 3.2,
+          "line": 3.776,
+          "edge": 0.576,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 2.5,
+          "line": 2.95,
+          "edge": 0.45,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 2.7,
+          "line": 2.214,
+          "edge": 0.486,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "PHX_at_WSH"
+    },
+    {
+      "player": "Michaela Onyenwere",
+      "team": "WSH",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 13.2,
+          "line": 15.84,
+          "edge": 2.64,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 4.3,
+          "line": 5.246,
+          "edge": 0.946,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 1.5,
+          "line": 1.125,
+          "edge": 0.375,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 0.7,
+          "line": 0.91,
+          "edge": 0.21,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "BLK",
+          "projection": 0.1,
+          "line": 0.15,
+          "edge": 0.05,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 1.6,
+          "line": 2.048,
+          "edge": 0.448,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 19.0,
+          "line": 15.58,
+          "edge": 3.42,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 17.5,
+          "line": 14.35,
+          "edge": 3.15,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 14.7,
+          "line": 17.346,
+          "edge": 2.646,
+          "direction": "UNDER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "PHX_at_WSH"
+    },
+    {
+      "player": "Cassandre Prosper",
+      "team": "WSH",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 0.6,
+          "line": 0.48,
+          "edge": 0.12,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 0.6,
+          "line": 0.732,
+          "edge": 0.132,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 0.1,
+          "line": 0.15,
+          "edge": 0.05,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 0.1,
+          "line": 0.15,
+          "edge": 0.05,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 1.3,
+          "line": 1.066,
+          "edge": 0.234,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 1.2,
+          "line": 1.416,
+          "edge": 0.216,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 0.7,
+          "line": 0.826,
+          "edge": 0.126,
+          "direction": "UNDER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "PHX_at_WSH"
+    },
+    {
+      "player": "Paige Bueckers",
+      "team": "DAL",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 23.6,
+          "line": 18.88,
+          "edge": 4.72,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 4.9,
+          "line": 3.822,
+          "edge": 1.078,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 5.5,
+          "line": 4.125,
+          "edge": 1.375,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 0.8,
+          "line": 1.04,
+          "edge": 0.24,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "BLK",
+          "projection": 0.5,
+          "line": 0.35,
+          "edge": 0.15,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 2.2,
+          "line": 1.584,
+          "edge": 0.616,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 34.0,
+          "line": 27.88,
+          "edge": 6.12,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 28.5,
+          "line": 33.63,
+          "edge": 5.13,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 29.1,
+          "line": 23.862,
+          "edge": 5.238,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "DAL_at_MIN"
+    },
+    {
+      "player": "Alysha Clark",
+      "team": "DAL",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 1.0,
+          "line": 1.2,
+          "edge": 0.2,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 0.2,
+          "line": 0.25,
+          "edge": 0.05,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 0.4,
+          "line": 0.3,
+          "edge": 0.1,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 0.1,
+          "line": 0.15,
+          "edge": 0.05,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 0.2,
+          "line": 0.256,
+          "edge": 0.056,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 1.6,
+          "line": 1.312,
+          "edge": 0.288,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 1.2,
+          "line": 0.984,
+          "edge": 0.216,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 1.4,
+          "line": 1.652,
+          "edge": 0.252,
+          "direction": "UNDER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "DAL_at_MIN"
+    },
+    {
+      "player": "Azzi Fudd",
+      "team": "DAL",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 14.5,
+          "line": 17.4,
+          "edge": 2.9,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 1.7,
+          "line": 2.074,
+          "edge": 0.374,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 2.5,
+          "line": 1.875,
+          "edge": 0.625,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 2.0,
+          "line": 1.4,
+          "edge": 0.6,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "BLK",
+          "projection": 0.8,
+          "line": 0.56,
+          "edge": 0.24,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 1.6,
+          "line": 2.048,
+          "edge": 0.448,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 18.7,
+          "line": 22.066,
+          "edge": 3.366,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 16.2,
+          "line": 13.284,
+          "edge": 2.916,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 17.0,
+          "line": 13.94,
+          "edge": 3.06,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "DAL_at_MIN"
+    },
+    {
+      "player": "Aziaha James",
+      "team": "DAL",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 6.4,
+          "line": 7.68,
+          "edge": 1.28,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 2.5,
+          "line": 3.05,
+          "edge": 0.55,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 1.6,
+          "line": 2.0,
+          "edge": 0.4,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 1.2,
+          "line": 1.56,
+          "edge": 0.36,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 0.3,
+          "line": 0.384,
+          "edge": 0.084,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 10.5,
+          "line": 8.61,
+          "edge": 1.89,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 8.9,
+          "line": 7.298,
+          "edge": 1.602,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 8.0,
+          "line": 9.44,
+          "edge": 1.44,
+          "direction": "UNDER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "DAL_at_MIN"
+    },
+    {
+      "player": "Awak Kuier",
+      "team": "DAL",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 4.4,
+          "line": 5.28,
+          "edge": 0.88,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 3.2,
+          "line": 2.496,
+          "edge": 0.704,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 1.1,
+          "line": 0.825,
+          "edge": 0.275,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 0.4,
+          "line": 0.52,
+          "edge": 0.12,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "BLK",
+          "projection": 1.1,
+          "line": 1.43,
+          "edge": 0.33,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 0.5,
+          "line": 0.36,
+          "edge": 0.14,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 8.7,
+          "line": 7.134,
+          "edge": 1.566,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 7.6,
+          "line": 8.968,
+          "edge": 1.368,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 5.5,
+          "line": 4.51,
+          "edge": 0.99,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "DAL_at_MIN"
+    },
+    {
+      "player": "Arike Ogunbowale",
+      "team": "DAL",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 10.9,
+          "line": 13.08,
+          "edge": 2.18,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 3.3,
+          "line": 2.574,
+          "edge": 0.726,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 3.1,
+          "line": 2.325,
+          "edge": 0.775,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 1.3,
+          "line": 1.69,
+          "edge": 0.39,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 1.5,
+          "line": 1.92,
+          "edge": 0.42,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 17.3,
+          "line": 20.414,
+          "edge": 3.114,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 14.2,
+          "line": 11.644,
+          "edge": 2.556,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 14.0,
+          "line": 16.52,
+          "edge": 2.52,
+          "direction": "UNDER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "DAL_at_MIN"
+    },
+    {
+      "player": "Jessica Shepard",
+      "team": "DAL",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 15.3,
+          "line": 18.36,
+          "edge": 3.06,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 11.4,
+          "line": 8.892,
+          "edge": 2.508,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 5.7,
+          "line": 4.275,
+          "edge": 1.425,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 0.9,
+          "line": 1.17,
+          "edge": 0.27,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 32.4,
+          "line": 26.568,
+          "edge": 5.832,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 26.7,
+          "line": 21.894,
+          "edge": 4.806,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 21.0,
+          "line": 17.22,
+          "edge": 3.78,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "DAL_at_MIN"
+    },
+    {
+      "player": "Maddy Siegrist",
+      "team": "DAL",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 3.6,
+          "line": 4.32,
+          "edge": 0.72,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 2.2,
+          "line": 2.684,
+          "edge": 0.484,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 0.5,
+          "line": 0.375,
+          "edge": 0.125,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 0.3,
+          "line": 0.39,
+          "edge": 0.09,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "BLK",
+          "projection": 0.2,
+          "line": 0.14,
+          "edge": 0.06,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 0.3,
+          "line": 0.384,
+          "edge": 0.084,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 6.3,
+          "line": 7.434,
+          "edge": 1.134,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 5.8,
+          "line": 4.756,
+          "edge": 1.044,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 4.1,
+          "line": 4.838,
+          "edge": 0.738,
+          "direction": "UNDER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "DAL_at_MIN"
+    },
+    {
+      "player": "Odyssey Sims",
+      "team": "DAL",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 3.6,
+          "line": 4.32,
+          "edge": 0.72,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 0.6,
+          "line": 0.468,
+          "edge": 0.132,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 0.8,
+          "line": 0.6,
+          "edge": 0.2,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "BLK",
+          "projection": 0.4,
+          "line": 0.28,
+          "edge": 0.12,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 0.4,
+          "line": 0.512,
+          "edge": 0.112,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 5.0,
+          "line": 5.9,
+          "edge": 0.9,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 4.2,
+          "line": 3.444,
+          "edge": 0.756,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 4.4,
+          "line": 3.608,
+          "edge": 0.792,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "DAL_at_MIN"
+    },
+    {
+      "player": "Alanna Smith",
+      "team": "DAL",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 3.6,
+          "line": 2.88,
+          "edge": 0.72,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 2.7,
+          "line": 3.294,
+          "edge": 0.594,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 0.4,
+          "line": 0.5,
+          "edge": 0.1,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 0.2,
+          "line": 0.14,
+          "edge": 0.06,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "BLK",
+          "projection": 0.1,
+          "line": 0.05,
+          "edge": 0.05,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 0.4,
+          "line": 0.288,
+          "edge": 0.112,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 6.7,
+          "line": 5.494,
+          "edge": 1.206,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 6.3,
+          "line": 5.166,
+          "edge": 1.134,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 4.0,
+          "line": 4.72,
+          "edge": 0.72,
+          "direction": "UNDER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "DAL_at_MIN"
+    },
+    {
+      "player": "Sug Sutton",
+      "team": "DAL",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 2.1,
+          "line": 1.68,
+          "edge": 0.42,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 0.7,
+          "line": 0.854,
+          "edge": 0.154,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 1.3,
+          "line": 1.625,
+          "edge": 0.325,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 0.4,
+          "line": 0.28,
+          "edge": 0.12,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "BLK",
+          "projection": 0.1,
+          "line": 0.15,
+          "edge": 0.05,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 0.3,
+          "line": 0.216,
+          "edge": 0.084,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 4.1,
+          "line": 4.838,
+          "edge": 0.738,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 2.8,
+          "line": 2.296,
+          "edge": 0.504,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 3.4,
+          "line": 2.788,
+          "edge": 0.612,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "DAL_at_MIN"
+    },
+    {
+      "player": "Li Yueru",
+      "team": "DAL",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 2.3,
+          "line": 1.84,
+          "edge": 0.46,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 1.7,
+          "line": 1.326,
+          "edge": 0.374,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 0.3,
+          "line": 0.225,
+          "edge": 0.075,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 0.3,
+          "line": 0.216,
+          "edge": 0.084,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 4.3,
+          "line": 3.526,
+          "edge": 0.774,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 4.0,
+          "line": 3.28,
+          "edge": 0.72,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 2.6,
+          "line": 2.132,
+          "edge": 0.468,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "DAL_at_MIN"
+    },
+    {
+      "player": "Maya Caldwell",
+      "team": "MIN",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 5.2,
+          "line": 4.16,
+          "edge": 1.04,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 2.8,
+          "line": 2.184,
+          "edge": 0.616,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 1.4,
+          "line": 1.05,
+          "edge": 0.35,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 0.8,
+          "line": 1.04,
+          "edge": 0.24,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "BLK",
+          "projection": 0.1,
+          "line": 0.05,
+          "edge": 0.05,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 0.8,
+          "line": 0.576,
+          "edge": 0.224,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 9.4,
+          "line": 7.708,
+          "edge": 1.692,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 8.0,
+          "line": 6.56,
+          "edge": 1.44,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 6.6,
+          "line": 7.788,
+          "edge": 1.188,
+          "direction": "UNDER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "DAL_at_MIN"
+    },
+    {
+      "player": "Nia Coffey",
+      "team": "MIN",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 6.1,
+          "line": 7.32,
+          "edge": 1.22,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 5.2,
+          "line": 4.056,
+          "edge": 1.144,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 2.8,
+          "line": 2.1,
+          "edge": 0.7,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 1.4,
+          "line": 0.98,
+          "edge": 0.42,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "BLK",
+          "projection": 1.4,
+          "line": 1.82,
+          "edge": 0.42,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 1.0,
+          "line": 0.72,
+          "edge": 0.28,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 14.1,
+          "line": 11.562,
+          "edge": 2.538,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 11.3,
+          "line": 13.334,
+          "edge": 2.034,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 8.9,
+          "line": 7.298,
+          "edge": 1.602,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "DAL_at_MIN"
+    },
+    {
+      "player": "Antonia Delaere",
+      "team": "MIN",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 4.9,
+          "line": 5.88,
+          "edge": 0.98,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 0.8,
+          "line": 0.976,
+          "edge": 0.176,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 1.4,
+          "line": 1.05,
+          "edge": 0.35,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 0.9,
+          "line": 0.63,
+          "edge": 0.27,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 1.2,
+          "line": 1.536,
+          "edge": 0.336,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 7.1,
+          "line": 8.378,
+          "edge": 1.278,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 5.7,
+          "line": 6.726,
+          "edge": 1.026,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 6.3,
+          "line": 7.434,
+          "edge": 1.134,
+          "direction": "UNDER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "DAL_at_MIN"
+    },
+    {
+      "player": "Natasha Howard",
+      "team": "MIN",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 16.6,
+          "line": 13.28,
+          "edge": 3.32,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 8.8,
+          "line": 10.736,
+          "edge": 1.936,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 2.4,
+          "line": 1.8,
+          "edge": 0.6,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 1.6,
+          "line": 1.12,
+          "edge": 0.48,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "BLK",
+          "projection": 1.0,
+          "line": 0.7,
+          "edge": 0.3,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 0.2,
+          "line": 0.256,
+          "edge": 0.056,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 27.8,
+          "line": 32.804,
+          "edge": 5.004,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 25.4,
+          "line": 20.828,
+          "edge": 4.572,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 19.0,
+          "line": 15.58,
+          "edge": 3.42,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "DAL_at_MIN"
+    },
+    {
+      "player": "Dorka Juhasz",
+      "team": "MIN",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 2.5,
+          "line": 2.0,
+          "edge": 0.5,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 2.2,
+          "line": 1.716,
+          "edge": 0.484,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 0.8,
+          "line": 1.0,
+          "edge": 0.2,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "BLK",
+          "projection": 0.5,
+          "line": 0.35,
+          "edge": 0.15,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 0.8,
+          "line": 0.576,
+          "edge": 0.224,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 5.5,
+          "line": 6.49,
+          "edge": 0.99,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 4.7,
+          "line": 5.546,
+          "edge": 0.846,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 3.3,
+          "line": 2.706,
+          "edge": 0.594,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "DAL_at_MIN"
+    },
+    {
+      "player": "Anastasiia Olairi Kosu",
+      "team": "MIN",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 4.4,
+          "line": 3.52,
+          "edge": 0.88,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 2.3,
+          "line": 1.794,
+          "edge": 0.506,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 1.3,
+          "line": 1.625,
+          "edge": 0.325,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 0.4,
+          "line": 0.52,
+          "edge": 0.12,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "BLK",
+          "projection": 0.4,
+          "line": 0.28,
+          "edge": 0.12,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 0.1,
+          "line": 0.05,
+          "edge": 0.05,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 8.0,
+          "line": 9.44,
+          "edge": 1.44,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 6.7,
+          "line": 5.494,
+          "edge": 1.206,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 5.7,
+          "line": 4.674,
+          "edge": 1.026,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "DAL_at_MIN"
+    },
+    {
+      "player": "Kayla McBride",
+      "team": "MIN",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 20.0,
+          "line": 16.0,
+          "edge": 4.0,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 3.8,
+          "line": 4.636,
+          "edge": 0.836,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 2.3,
+          "line": 2.875,
+          "edge": 0.575,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 1.7,
+          "line": 1.19,
+          "edge": 0.51,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "BLK",
+          "projection": 0.2,
+          "line": 0.14,
+          "edge": 0.06,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 3.4,
+          "line": 2.448,
+          "edge": 0.952,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 26.1,
+          "line": 30.798,
+          "edge": 4.698,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 23.8,
+          "line": 19.516,
+          "edge": 4.284,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 22.3,
+          "line": 18.286,
+          "edge": 4.014,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "DAL_at_MIN"
+    },
+    {
+      "player": "Olivia Miles",
+      "team": "MIN",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 16.2,
+          "line": 12.96,
+          "edge": 3.24,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 3.6,
+          "line": 4.392,
+          "edge": 0.792,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 4.1,
+          "line": 3.075,
+          "edge": 1.025,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 0.9,
+          "line": 0.63,
+          "edge": 0.27,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "BLK",
+          "projection": 0.3,
+          "line": 0.39,
+          "edge": 0.09,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 1.1,
+          "line": 0.792,
+          "edge": 0.308,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 23.9,
+          "line": 28.202,
+          "edge": 4.302,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 19.8,
+          "line": 16.236,
+          "edge": 3.564,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 20.3,
+          "line": 16.646,
+          "edge": 3.654,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "DAL_at_MIN"
+    },
+    {
+      "player": "Courtney Williams",
+      "team": "MIN",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 13.9,
+          "line": 11.12,
+          "edge": 2.78,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 5.7,
+          "line": 6.954,
+          "edge": 1.254,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 3.9,
+          "line": 2.925,
+          "edge": 0.975,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 1.1,
+          "line": 0.77,
+          "edge": 0.33,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "BLK",
+          "projection": 0.2,
+          "line": 0.14,
+          "edge": 0.06,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 1.2,
+          "line": 1.536,
+          "edge": 0.336,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 23.5,
+          "line": 19.27,
+          "edge": 4.23,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 19.6,
+          "line": 16.072,
+          "edge": 3.528,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 17.8,
+          "line": 14.596,
+          "edge": 3.204,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "DAL_at_MIN"
+    },
+    {
+      "player": "Laeticia Amihere",
+      "team": "GS",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 1.3,
+          "line": 1.56,
+          "edge": 0.26,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 2.3,
+          "line": 1.794,
+          "edge": 0.506,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 0.8,
+          "line": 0.6,
+          "edge": 0.2,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 0.3,
+          "line": 0.39,
+          "edge": 0.09,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "BLK",
+          "projection": 0.4,
+          "line": 0.52,
+          "edge": 0.12,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 0.1,
+          "line": 0.15,
+          "edge": 0.05,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 4.4,
+          "line": 5.192,
+          "edge": 0.792,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 3.6,
+          "line": 4.248,
+          "edge": 0.648,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 2.1,
+          "line": 1.722,
+          "edge": 0.378,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "GS_at_LA"
+    },
+    {
+      "player": "Veronica Burton",
+      "team": "GS",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 12.2,
+          "line": 9.76,
+          "edge": 2.44,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 3.8,
+          "line": 4.636,
+          "edge": 0.836,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 5.8,
+          "line": 4.35,
+          "edge": 1.45,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 1.7,
+          "line": 1.19,
+          "edge": 0.51,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "BLK",
+          "projection": 0.7,
+          "line": 0.91,
+          "edge": 0.21,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 1.1,
+          "line": 1.408,
+          "edge": 0.308,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 21.8,
+          "line": 25.724,
+          "edge": 3.924,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 16.0,
+          "line": 13.12,
+          "edge": 2.88,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 18.0,
+          "line": 14.76,
+          "edge": 3.24,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "GS_at_LA"
+    },
+    {
+      "player": "Kaila Charles",
+      "team": "GS",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 5.5,
+          "line": 6.6,
+          "edge": 1.1,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 4.6,
+          "line": 5.612,
+          "edge": 1.012,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 1.2,
+          "line": 0.9,
+          "edge": 0.3,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 0.5,
+          "line": 0.35,
+          "edge": 0.15,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "BLK",
+          "projection": 0.4,
+          "line": 0.28,
+          "edge": 0.12,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 0.4,
+          "line": 0.512,
+          "edge": 0.112,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 11.3,
+          "line": 9.266,
+          "edge": 2.034,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 10.1,
+          "line": 11.918,
+          "edge": 1.818,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 6.7,
+          "line": 5.494,
+          "edge": 1.206,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "GS_at_LA"
+    },
+    {
+      "player": "Kaitlyn Chen",
+      "team": "GS",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 6.5,
+          "line": 5.2,
+          "edge": 1.3,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 1.3,
+          "line": 1.586,
+          "edge": 0.286,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 1.2,
+          "line": 0.9,
+          "edge": 0.3,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 0.4,
+          "line": 0.28,
+          "edge": 0.12,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 0.2,
+          "line": 0.256,
+          "edge": 0.056,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 9.0,
+          "line": 7.38,
+          "edge": 1.62,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 7.8,
+          "line": 6.396,
+          "edge": 1.404,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 7.7,
+          "line": 9.086,
+          "edge": 1.386,
+          "direction": "UNDER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "GS_at_LA"
+    },
+    {
+      "player": "Nadia Fingall",
+      "team": "GS",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 0.2,
+          "line": 0.25,
+          "edge": 0.05,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 0.1,
+          "line": 0.05,
+          "edge": 0.05,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 0.2,
+          "line": 0.25,
+          "edge": 0.05,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 0.2,
+          "line": 0.25,
+          "edge": 0.05,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 0.2,
+          "line": 0.15,
+          "edge": 0.05,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "GS_at_LA"
+    },
+    {
+      "player": "Tiffany Hayes",
+      "team": "GS",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 9.0,
+          "line": 7.2,
+          "edge": 1.8,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 1.5,
+          "line": 1.83,
+          "edge": 0.33,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 2.5,
+          "line": 1.875,
+          "edge": 0.625,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 0.5,
+          "line": 0.35,
+          "edge": 0.15,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "BLK",
+          "projection": 0.3,
+          "line": 0.21,
+          "edge": 0.09,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 0.5,
+          "line": 0.64,
+          "edge": 0.14,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 13.0,
+          "line": 10.66,
+          "edge": 2.34,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 10.5,
+          "line": 12.39,
+          "edge": 1.89,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 11.5,
+          "line": 9.43,
+          "edge": 2.07,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "GS_at_LA"
+    },
+    {
+      "player": "Janelle Salaun",
+      "team": "GS",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 14.2,
+          "line": 11.36,
+          "edge": 2.84,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 4.8,
+          "line": 5.856,
+          "edge": 1.056,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 0.8,
+          "line": 1.0,
+          "edge": 0.2,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 0.5,
+          "line": 0.35,
+          "edge": 0.15,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "BLK",
+          "projection": 0.2,
+          "line": 0.14,
+          "edge": 0.06,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 2.9,
+          "line": 2.088,
+          "edge": 0.812,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 19.8,
+          "line": 23.364,
+          "edge": 3.564,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 19.0,
+          "line": 22.42,
+          "edge": 3.42,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 15.0,
+          "line": 17.7,
+          "edge": 2.7,
+          "direction": "UNDER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "GS_at_LA"
+    },
+    {
+      "player": "Kiah Stokes",
+      "team": "GS",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 3.5,
+          "line": 2.8,
+          "edge": 0.7,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 5.3,
+          "line": 6.466,
+          "edge": 1.166,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 1.2,
+          "line": 0.9,
+          "edge": 0.3,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 0.9,
+          "line": 0.63,
+          "edge": 0.27,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "BLK",
+          "projection": 1.9,
+          "line": 2.47,
+          "edge": 0.57,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 0.6,
+          "line": 0.768,
+          "edge": 0.168,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 10.0,
+          "line": 8.2,
+          "edge": 1.8,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 8.8,
+          "line": 7.216,
+          "edge": 1.584,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 4.7,
+          "line": 5.546,
+          "edge": 0.846,
+          "direction": "UNDER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "GS_at_LA"
+    },
+    {
+      "player": "Kayla Thornton",
+      "team": "GS",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 6.2,
+          "line": 7.44,
+          "edge": 1.24,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 4.4,
+          "line": 5.368,
+          "edge": 0.968,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 0.8,
+          "line": 1.0,
+          "edge": 0.2,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 0.8,
+          "line": 1.04,
+          "edge": 0.24,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "BLK",
+          "projection": 0.6,
+          "line": 0.78,
+          "edge": 0.18,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 1.1,
+          "line": 1.408,
+          "edge": 0.308,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 11.4,
+          "line": 13.452,
+          "edge": 2.052,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 10.6,
+          "line": 12.508,
+          "edge": 1.908,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 7.0,
+          "line": 5.74,
+          "edge": 1.26,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "GS_at_LA"
+    },
+    {
+      "player": "Gabby Williams",
+      "team": "GS",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 15.2,
+          "line": 18.24,
+          "edge": 3.04,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 2.3,
+          "line": 2.806,
+          "edge": 0.506,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 2.3,
+          "line": 1.725,
+          "edge": 0.575,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 1.2,
+          "line": 0.84,
+          "edge": 0.36,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "BLK",
+          "projection": 0.1,
+          "line": 0.05,
+          "edge": 0.05,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 1.6,
+          "line": 1.152,
+          "edge": 0.448,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 19.8,
+          "line": 23.364,
+          "edge": 3.564,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 17.5,
+          "line": 14.35,
+          "edge": 3.15,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 17.5,
+          "line": 14.35,
+          "edge": 3.15,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "GS_at_LA"
+    },
+    {
+      "player": "Cecilia Zandalasini",
+      "team": "GS",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 5.2,
+          "line": 4.16,
+          "edge": 1.04,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 1.6,
+          "line": 1.952,
+          "edge": 0.352,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 1.3,
+          "line": 0.975,
+          "edge": 0.325,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 1.0,
+          "line": 1.3,
+          "edge": 0.3,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "BLK",
+          "projection": 0.3,
+          "line": 0.21,
+          "edge": 0.09,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 0.5,
+          "line": 0.64,
+          "edge": 0.14,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 8.1,
+          "line": 6.642,
+          "edge": 1.458,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 6.8,
+          "line": 5.576,
+          "edge": 1.224,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 6.5,
+          "line": 7.67,
+          "edge": 1.17,
+          "direction": "UNDER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "GS_at_LA"
+    },
+    {
+      "player": "Ariel Atkins",
+      "team": "LA",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 8.1,
+          "line": 6.48,
+          "edge": 1.62,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 2.9,
+          "line": 2.262,
+          "edge": 0.638,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 2.4,
+          "line": 3.0,
+          "edge": 0.6,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 1.9,
+          "line": 2.47,
+          "edge": 0.57,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 0.7,
+          "line": 0.896,
+          "edge": 0.196,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 13.4,
+          "line": 15.812,
+          "edge": 2.412,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 11.0,
+          "line": 12.98,
+          "edge": 1.98,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 10.5,
+          "line": 8.61,
+          "edge": 1.89,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "GS_at_LA"
+    },
+    {
+      "player": "Cameron Brink",
+      "team": "LA",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 9.0,
+          "line": 7.2,
+          "edge": 1.8,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 2.7,
+          "line": 3.294,
+          "edge": 0.594,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 0.3,
+          "line": 0.375,
+          "edge": 0.075,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 0.3,
+          "line": 0.21,
+          "edge": 0.09,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "BLK",
+          "projection": 1.3,
+          "line": 1.69,
+          "edge": 0.39,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 0.7,
+          "line": 0.504,
+          "edge": 0.196,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 12.0,
+          "line": 9.84,
+          "edge": 2.16,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 11.7,
+          "line": 9.594,
+          "edge": 2.106,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 9.3,
+          "line": 10.974,
+          "edge": 1.674,
+          "direction": "UNDER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "GS_at_LA"
+    },
+    {
+      "player": "Rae Burrell",
+      "team": "LA",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 12.9,
+          "line": 15.48,
+          "edge": 2.58,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 1.6,
+          "line": 1.248,
+          "edge": 0.352,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 2.0,
+          "line": 1.5,
+          "edge": 0.5,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 0.4,
+          "line": 0.28,
+          "edge": 0.12,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "BLK",
+          "projection": 1.0,
+          "line": 1.3,
+          "edge": 0.3,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 1.6,
+          "line": 1.152,
+          "edge": 0.448,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 16.5,
+          "line": 19.47,
+          "edge": 2.97,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 14.5,
+          "line": 17.11,
+          "edge": 2.61,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 14.9,
+          "line": 17.582,
+          "edge": 2.682,
+          "direction": "UNDER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "GS_at_LA"
+    },
+    {
+      "player": "Emma Cannon",
+      "team": "LA",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 3.1,
+          "line": 2.48,
+          "edge": 0.62,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 1.1,
+          "line": 1.342,
+          "edge": 0.242,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 0.6,
+          "line": 0.75,
+          "edge": 0.15,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "BLK",
+          "projection": 0.1,
+          "line": 0.05,
+          "edge": 0.05,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 0.6,
+          "line": 0.432,
+          "edge": 0.168,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 4.8,
+          "line": 5.664,
+          "edge": 0.864,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 4.2,
+          "line": 4.956,
+          "edge": 0.756,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 3.7,
+          "line": 4.366,
+          "edge": 0.666,
+          "direction": "UNDER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "GS_at_LA"
+    },
+    {
+      "player": "Chance Gray",
+      "team": "LA",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 9.0,
+          "line": 7.2,
+          "edge": 1.8,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 3.1,
+          "line": 3.782,
+          "edge": 0.682,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 4.2,
+          "line": 3.15,
+          "edge": 1.05,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 0.7,
+          "line": 0.91,
+          "edge": 0.21,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "BLK",
+          "projection": 0.1,
+          "line": 0.15,
+          "edge": 0.05,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 1.6,
+          "line": 2.048,
+          "edge": 0.448,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 16.3,
+          "line": 19.234,
+          "edge": 2.934,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 12.1,
+          "line": 9.922,
+          "edge": 2.178,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 13.2,
+          "line": 15.576,
+          "edge": 2.376,
+          "direction": "UNDER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "GS_at_LA"
+    },
+    {
+      "player": "Dearica Hamby",
+      "team": "LA",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 14.4,
+          "line": 11.52,
+          "edge": 2.88,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 8.7,
+          "line": 10.614,
+          "edge": 1.914,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 1.7,
+          "line": 1.275,
+          "edge": 0.425,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 2.1,
+          "line": 2.73,
+          "edge": 0.63,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "BLK",
+          "projection": 0.4,
+          "line": 0.28,
+          "edge": 0.12,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 0.3,
+          "line": 0.384,
+          "edge": 0.084,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 24.8,
+          "line": 29.264,
+          "edge": 4.464,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 23.1,
+          "line": 27.258,
+          "edge": 4.158,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 16.1,
+          "line": 18.998,
+          "edge": 2.898,
+          "direction": "UNDER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "GS_at_LA"
+    },
+    {
+      "player": "Kate Martin",
+      "team": "LA",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 3.0,
+          "line": 2.4,
+          "edge": 0.6,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 2.0,
+          "line": 2.44,
+          "edge": 0.44,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 0.7,
+          "line": 0.875,
+          "edge": 0.175,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 0.2,
+          "line": 0.14,
+          "edge": 0.06,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "BLK",
+          "projection": 0.3,
+          "line": 0.39,
+          "edge": 0.09,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 0.5,
+          "line": 0.36,
+          "edge": 0.14,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 5.7,
+          "line": 6.726,
+          "edge": 1.026,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 5.0,
+          "line": 4.1,
+          "edge": 0.9,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 3.7,
+          "line": 3.034,
+          "edge": 0.666,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "GS_at_LA"
+    },
+    {
+      "player": "Nneka Ogwumike",
+      "team": "LA",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 18.0,
+          "line": 21.6,
+          "edge": 3.6,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 10.3,
+          "line": 8.034,
+          "edge": 2.266,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 2.7,
+          "line": 2.025,
+          "edge": 0.675,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 1.0,
+          "line": 1.3,
+          "edge": 0.3,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "BLK",
+          "projection": 0.1,
+          "line": 0.15,
+          "edge": 0.05,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 1.4,
+          "line": 1.792,
+          "edge": 0.392,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 31.0,
+          "line": 36.58,
+          "edge": 5.58,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 28.3,
+          "line": 33.394,
+          "edge": 5.094,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 20.7,
+          "line": 24.426,
+          "edge": 3.726,
+          "direction": "UNDER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "GS_at_LA"
+    },
+    {
+      "player": "Erica Wheeler",
+      "team": "LA",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 7.4,
+          "line": 5.92,
+          "edge": 1.48,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 2.0,
+          "line": 1.56,
+          "edge": 0.44,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 5.0,
+          "line": 3.75,
+          "edge": 1.25,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 1.1,
+          "line": 0.77,
+          "edge": 0.33,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 1.3,
+          "line": 0.936,
+          "edge": 0.364,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 14.4,
+          "line": 11.808,
+          "edge": 2.592,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 9.4,
+          "line": 7.708,
+          "edge": 1.692,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 12.4,
+          "line": 10.168,
+          "edge": 2.232,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "GS_at_LA"
+    },
+    {
+      "player": "Kiana Williams",
+      "team": "LA",
+      "projections": [
+        {
+          "stat": "PTS",
+          "projection": 3.0,
+          "line": 3.6,
+          "edge": 0.6,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "REB",
+          "projection": 0.3,
+          "line": 0.234,
+          "edge": 0.066,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "AST",
+          "projection": 4.0,
+          "line": 3.0,
+          "edge": 1.0,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "STL",
+          "projection": 0.7,
+          "line": 0.91,
+          "edge": 0.21,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "3PM",
+          "projection": 0.3,
+          "line": 0.384,
+          "edge": 0.084,
+          "direction": "UNDER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "PRA",
+          "projection": 7.3,
+          "line": 5.986,
+          "edge": 1.314,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+R",
+          "projection": 3.3,
+          "line": 2.706,
+          "edge": 0.594,
+          "direction": "OVER",
+          "source": "self_edge"
+        },
+        {
+          "stat": "P+A",
+          "projection": 7.0,
+          "line": 5.74,
+          "edge": 1.26,
+          "direction": "OVER",
+          "source": "self_edge"
+        }
+      ],
+      "status": "Active",
+      "source": "season_avg",
+      "matchup": "GS_at_LA"
+    }
+  ]
+}
