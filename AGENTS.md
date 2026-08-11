@@ -1,33 +1,26 @@
-## Current Status (2026-08-09 01:05 ET) — FULLY WIRED & SAVED
+## Current Status (2026-08-11 00:10 ET) — PIPELINE LIVE · 3,151 PICKS
 
-### 📊 TODAY'S PIPELINE (8/9)
+### 📊 TODAY'S PIPELINE (8/11 00:10 ET)
 | Sport | Picks | Combos | Games | Projections |
 |-------|-------|--------|-------|-------------|
-| MLB | 2,649 | 413 | 15 | 16 proj files (784 players) |
-| WNBA | 421 | 134 | 4 (LV@NY, DAL@MIN, GS@LA, PHX@WSH) | 5 proj files (83 players) |
-| **TOTAL** | **3,070** | **547** | 19 | 21 proj files |
+| MLB | 2,705 | — | 15 | 15 proj files (419 players) |
+| WNBA | 446 | — | 3 (NY@IND, WSH@LV, PHX@LA) | 1 proj file (63 players) |
+| NBA | 0 | — | 0 (offseason) | 0 |
+| NFL | 0 | — | 0 (preseason) | 0 |
+| NHL | 0 | — | 0 (offseason) | 0 |
+| TOTAL | 3,151 | — | 18 | 16 proj files |
 
-### 🌐 ZO.SPACE — 25 ROUTES · 0 ERRORS
-- **25 routes deployed** — 1 homepage + 11 page routes + 13 API routes
-- **0 runtime errors** — space server clean, all routes compile
-- Dashboard URLs: /, /nfl, /nba-tc, /mlb, /wnba, /nhl, /live-games, /pick-cards, /live-stats, /dashboard, /combos
+### ✅ FIXED 8/10–11
+- [x] 8/10 pipeline: 1,963 MLB + 306 WNBA = 2,269 picks. Graded: MLB 56.3%, WNBA 67.6%
+- [x] DK pitcher screenshot OCR → cross-referenced → 10 games matched, full report saved
+- [x] fix_all_gaps.py created + all 7 gap files (odds/client.py, regrade, sync, cleanup, bet_exec, gradel loop)
+- [x] 8/11 pipeline: 2,705 MLB + 446 WNBA = 3,151 picks. 15 MLB games, 3 WNBA games.
+- [x] api_cap_tracker reset + re-capped: 16 modules active, 3 hard-blocked
 
-### 🖥️ STREAMLIT SERVICES — 7 UP
-| Service | Port | URL | Theme |
-|---------|------|-----|-------|
-| tc-api | 8000 | tc-api-true.zocomputer.io | API |
-| tc-mlb-dashboard | 8510 | tc-mlb-dashboard-true.zocomputer.io | ⚾ Yankees |
-| tc-wnba-dashboard | 8511 | tc-wnba-dashboard-true.zocomputer.io | 🏀 Lynx |
-| tc-nfl-dashboard | 8512 | tc-nfl-dashboard-true.zocomputer.io | 🏈 Cowboys |
-| tc-nba-dashboard | 8513 | tc-nba-dashboard-true.zocomputer.io | 🏀 Celtics |
-| tc-nhl-dashboard | 8514 | tc-nhl-dashboard-true.zocomputer.io | 🏒 Knights |
-| tc-streamer | 8001 | tc-streamer-true.zocomputer.io | Real-time |
-
-### ✅ FIXED 8/9
-- [x] /api/pick-cards-data rewritten — proxied to tc-api, removed bun:sqlite
-- [x] WNBA projections built 8/9 (83 players, 4 games)
-- [x] Space restarted — 0 errors, 25 routes synced
-- [x] MLB 2,649 picks + WNBA 421 picks in DB
+### 🟡 REMAINING
+- [ ] Supabase table creation (sync fails 404)
+- [ ] WNBA 8/2 grading (sportypy fallback available)
+- [ ] fix_all_gaps.py: regrade + cleanup working, sync_to_supabase fails 404 (no table)
 
 ## Current Status (historical) (2026-08-08 13:35 ET) — ALL GAPS CLOSED
 
@@ -178,6 +171,13 @@ Daily + hourly + monthly caps. All 3 stale tracker files purged. No more uncappe
 - [x] `api/main.py`: `_is_combo_stat()` strips WNBA PRA/PR/PA/P+R+A/P+R/P+A and MLB BATTING/PITCHING/'+' from `/api/picks/by-game-structured`, `/api/picks/top`, `/api/tc-alerts`. Combos endpoints (`/api/v1/combos`) unchanged — carry combined_projection + combined_line + direction.
 - [x] Streamlit `tc_dashboard.py`: `load_today_picks` + tab1 filter combo stats.
 - [x] Verified live: WNBA top = PTS/REB/AST/3PM/STL only (no PA/PR/PRA). Applies to ALL sport dashboards fed by tc-api incl. NFL (pre-season).
+
+### 🧪 API TESTS — WIRED 8/10
+- **31/37 pass (84%)** — 24 endpoints return 200, 2 known 500s, 4 wrapper-shape mismatches
+- **Test file**: `Projects/tests/test_api.py` — 124 lines, covers all 27 tc-api endpoints
+- **Run**: `cd /home/workspace/Projects && python3 -m pytest tests/test_api.py -v`
+- **Known bugs**: `/api/live-picks` 500, `/api/streamer/data` 500 — to investigate
+- **API is read-only analytics** — no POST/PUT/DELETE /picks CRUD. Tests reflect actual surface.
 - Combos (WNBA PR/PA/PRA=P+R/A/P+A, MLB BATTING/PITCHING and any '+'-joined stat) are now STRICTLY under the combos tab/section ONLY.
 - `api/main.py`: `_is_combo_stat(stat, league)` filters derived combos out of `/api/picks/top`, `/api/picks/by-game-structured`, `/api/tc-alerts`, `/api/v1/combos`. Regular WNBA picks = PTS/REB/AST/3PM/STL/BLK only.
 - `tc_dashboard.py` (streamlit): `load_today_picks()` + Tab1 strip the same combo stats from the picks table.
@@ -187,7 +187,7 @@ Daily + hourly + monthly caps. All 3 stale tracker files purged. No more uncappe
 | Sport | Package | Status | Latest Data |
 |-------|---------|--------|--------------|
 | MLB | statsapi | ✅ LIVE | 8/3: 8 games |
-| WNBA | sportypy | ✅ LIVE | 8/3: 3 games |
+| WNBA | nba_api (WNBA LeagueID=10) + ESPN summary API | ✅ LIVE | 8/10: 148 graded, 67.6% |
 | NBA | nba_api | ✅ (offseason) | 0 games |
 | NFL | nfl_data_py | ✅ LIVE | 272 games (preseason) |
 | NHL | nhlpy | ⚠️ API mismatch | 0 games |
@@ -205,3 +205,11 @@ Daily + hourly + monthly caps. All 3 stale tracker files purged. No more uncappe
 - [x] Added `TEAM_SLUGS` + `Logo` component mapping all 32 NFL teams to ESPN CDN logos (`https://a.espncdn.com/i/teamlogos/nfl/500/{slug}.png`). Rendered on TODAY'S MATCHUPS and UPCOMING GAMES cards.
 - [x] Verified live: dal/phi/gb/sf/kc/buf all return 200 on ESPN CDN.
 - [x] All prior sections preserved: SEASON PHASES (6), KEY DATES, UPCOMING GAMES, QUICK FACTS. Zero runtime errors.
+### ✅ WNBA GRADER — BUILT 8/11
+- [x] `grade_wnba_sportypy.py` — ESPN summary API → nba_api boxscoretraditionalv2 for player stats
+- [x] Fuzzy name matching (first name + last name cross-reference)
+- [x] Stat mapping: PTS→PTS, REB→REB, AST→AST, STL→STL, BLK→BLK, 3PM→FG3M
+- [x] Graded 47/50 WNBA picks: 6/13 (72.7%), 7/3 (0%), 7/11 (65.7%) — OVERALL 66.0%
+- [x] DB schema: actual/hit/profit NOW DEFAULT NULL (was DEFAULT 0 causing false 0-values)
+- [x] 421 junk empty-date WNBA combo rows purged
+- [x] Results saved: `Daily_Log/wnba_graded.json`
