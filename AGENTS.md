@@ -1,215 +1,247 @@
-## Current Status (2026-08-11 00:10 ET) — PIPELINE LIVE · 3,151 PICKS
+# TC SPORTS SYSTEM — MULTI-SPORT DATA AGGREGATION + BACKTESTING (2026-08-17)
 
-### 📊 TODAY'S PIPELINE (8/11 00:10 ET)
-| Sport | Picks | Combos | Games | Projections |
-|-------|-------|--------|-------|-------------|
-| MLB | 2,705 | — | 15 | 15 proj files (419 players) |
-| WNBA | 446 | — | 3 (NY@IND, WSH@LV, PHX@LA) | 1 proj file (63 players) |
-| NBA | 0 | — | 0 (offseason) | 0 |
-| NFL | 0 | — | 0 (preseason) | 0 |
-| NHL | 0 | — | 0 (offseason) | 0 |
-| TOTAL | 3,151 | — | 18 | 16 proj files |
+## Current Focus
+Building a multi-sport (NFL, MLB, WNBA, NBA, NHL) historical data warehouse for backtest grading and algorithm training. All data sourced from free public APIs — no paid keys in use.
 
-### ✅ FIXED 8/10–11
-- [x] 8/10 pipeline: 1,963 MLB + 306 WNBA = 2,269 picks. Graded: MLB 56.3%, WNBA 67.6%
-- [x] DK pitcher screenshot OCR → cross-referenced → 10 games matched, full report saved
-- [x] fix_all_gaps.py created + all 7 gap files (odds/client.py, regrade, sync, cleanup, bet_exec, gradel loop)
-- [x] 8/11 pipeline: 2,705 MLB + 446 WNBA = 3,151 picks. 15 MLB games, 3 WNBA games.
-- [x] api_cap_tracker reset + re-capped: 16 modules active, 3 hard-blocked
+## Data Sources (Free Only)
+| Source | Sports | What It Gives |
+|--------|--------|---------------|
+| `nfl_data_py` (nflverse) | NFL | Player stats, team stats, schedules, rosters, depth charts, injuries, PBP, NGS, FTN |
+| `statsapi` (MLB) | MLB | Player stats, pitching staff, bullpen, closers, Statcast |
+| `nba_api` | NBA | Player/team stats, schedules |
+| `espn-api` / `nhlpy` | NHL | Skater/goalie stats, schedules |
+| ESPN API | WNBA, NFL preseason | Schedules, game summaries |
+| PFR manual scrape | NFL | Defense vs Position (QB/RB/TE/WR), team defense, advanced defense |
 
-### 🟡 REMAINING
-- [ ] Supabase table creation (sync fails 404)
-- [ ] WNBA 8/2 grading (sportypy fallback available)
-- [ ] fix_all_gaps.py: regrade + cleanup working, sync_to_supabase fails 404 (no table)
+## Data Inventory (`Projects/data/`)
+### NFL (`data/nfl/2024/`)
+- `nflverse_player_stats_2024.parquet` — full player season stats
+- `nflverse_stats_player_week_2024.csv` — weekly player stats
+- `nflverse_team_stats_2024.csv` — team season totals
+- `defense_vs_qb.json`, `defense_vs_rb.json`, `defense_vs_te.json` — DvP tables
+- `standings.json`, `playoffs.json` — AFC/NFC standings + playoff results
+- `depth_charts_2024.parquet`, `injuries_2024.parquet` — depth + injury data
+- `ngs_passing.parquet`, `ngs_receiving.parquet`, `ngs_rushing.parquet` — Next Gen Stats
+- `pbp.parquet` — play-by-play (large)
+- `games_2024.parquet` — schedules + results
+- Also: `data/nfl/2023/` and `data/nfl/2025/` (preseason only for 2025)
 
-## Current Status (historical) (2026-08-08 13:35 ET) — ALL GAPS CLOSED
+### MLB (`data/mlb/`)
+- `batting_stats_2023-2025.parquet` — 3 seasons
+- `pitcher_stats_2023-2025.parquet` — 3 seasons
+- `pitching_staff_2023-2025.parquet` — staff rosters
+- `bullpen_2023-2025.json` — bullpen arms per team
+- `closers_2023-2025.json` — bullpen arms per team
+- `starting_rotation_2023-2025.json` — rotations
+- `statcast_pitcher_agg_2023.parquet` — Statcast metrics
 
-### ✅ HARDWIRE SCHEDULES — 8/8
-- `src/hardwire_schedules.py`: auto-generates `Daily_Log/schedules/games_YYYY-MM-DD.json`
-- `build_mlb_proj.py` patched to auto-gen schedule JSON when missing
-- E2E verified: delete schedule → build → 15 MLB games, 388 players
+### WNBA (`data/wnba/`)
+- `rosters_2023-2025.parquet` — player rosters
+- `teams.parquet` — team info
+- 2026: in-progress
 
-### ✅ WNBA EDGE SIGN FLIPPED — 8/8
-- `abs_edge` column added to picks table
-- WNBA UNDER direction edge flipped: `edge = -edge`
-- `abs_edge = ABS(edge)` computed, capped at 10.0
-- Tier thresholds: RED <0.5, YELLOW <1.0, GREEN(5-10) <2.0, GREEN(10+) >=2.0
+### NBA (`data/nba/`)
+- `nba/2023/schedule.parquet`, `nba/2024/schedule.parquet` — schedules only (GAP: season dirs 2022_23/2023_24/2024_25 empty; no player/team stats pulled)
+- Off-season: no live data needed; caps open for bulk backfill
 
-### ✅ GAPS CLOSED — ALL 4 PRIORITY ITEMS ADDRESSED
-- [x] NHL/NBA player props — documented as Oct priority (offseason)
-- [x] Advanced stat feed (Stathead) — requires login, documented
-- [x] Real-time odds streaming — polling only, documented
-- [x] Direct betting execution — manual, documented
+### NHL (`data/nhl/`)
+- `goalies_2022_23.parquet` through `goalies_2024_25.parquet`
+- `skaters_2022_23.parquet` through `skaters_2024_25.parquet`
+- `nhl/2023/schedule.parquet`, `nhl/2024/schedule.parquet` — schedules (GAP: no 2024_25 dir)
 
-### 🟡 REMAINING (NON-BLOCKING)
-- [ ] Supabase table creation (sync fails 404)
-- [ ] WNBA 8/2 grading (sportypy fallback needed) (2026-08-06 23:15 ET) — CALIBRATOR LIVE · 441 MLB PICKS
+## Key Files
+| File | Purpose |
+|------|---------|
+| `Projects/src/daily_picks.py` | Main pick generator (MLB + WNBA, uses argparse `--sport`) |
+| `Projects/src/post_game.py` | Post-game grading with boxscore parsing + fuzzy name matching |
+| `Projects/src/pitcher_features.py` | MLB pitcher K/9, ERA, WHIP from statsapi |
+| `Projects/src/handedness.py` | Pitcher/batter handedness — platoon advantage filter |
+| `Projects/src/injuries.py` | WNBA injury reports from ESPN |
+| `Projects/src/mlb_savant.py` | Statcast pitcher metrics (xERA, whiff%, barrel%) |
+| `Projects/src/nfl_depth.py` | NFL depth chart loader from parquet |
+| `Projects/src/sync_to_supabase.py` | Push picks to Supabase REST API |
+| `Projects/src/grade_date.py` | Grade all ungraded picks for a date+sport |
+| `Projects/src/email_reports.py` | Daily email report |
+| `Projects/core/` | NFL projection engine + schedule + sport-specific engines |
+| `Daily_Log/` | Daily pick CSVs, projections, backtest reports |
 
-### 📊 DATABASE (VERIFIED 8/3)
-- INDEX-level dedup: `(date, league, player, stat, matchup, direction, source)`
-- **All time: 14,897 picks across 20 dates**
-- **8/1: 685 picks** — 255 MLB + 430 WNBA
-- **8/3: 301 WNBA picks** (0 graded — awaiting boxscores)
+## Pipeline
+```
+daily_picks.py --sport mlb    → generates MLB picks for today's slate
+daily_picks.py --sport wnba   → generates WNBA picks
+post_game.py                  → grades picks against boxscores
+grade_date.py                 → bulk grade by date+sport
+```
+## Historical Data-Build Pipeline (warehouse)
+```
+src/builders/                     → per-sport builder modules
+  mlb_pitching_builder.py         → pitcher K/ER/H/BB/HR/OUTS proj (statsapi)
+  nfl_defense_builder.py          → NFL defense/DvP builder
+  nfl_qb_builder.py               → NFL QB builder
+  wnba_builder.py                 → WNBA roster/stat builder
+src/backfill_github_all_sports.py → backfill last N days from free GitHub sources (nflverse, statsapi, nba_api)
+src/adapters/                     → free-api and github source adapters
+src/ingest_pfr_defense_2023.py    → PFR manual defense ingest
+src/close_gaps.py                 → gap-closure helper (NBA wiring via nba_api)
+```
 
-### ✅ GRADING — FIXED 8/3
-- **regrade_picks.py**: flipped 4,188 of 5,781 picks (comparison was inverted)
-- WNBA went from wild swings (10-100%) to realistic 42-56%
-- MLB 7/31 went from 7.8% to 49.5%
-- Commit applied to picks.db
+## Known Gaps (2026-08-17)
+- **NBA**: `nba/2022_23`, `nba/2023_24`, `nba/2024_25` dirs exist but EMPTY; only `schedule.parquet` for 2023/2024. No player/team stats. `nba_api` is the free source (off-season open).
+- **WNBA**: `wnba/2025` dir missing (only `rosters_2025.parquet`); 2026 dir empty (current season). No free player-boxscore source — grade via ESPN single-game summaries.
+- **NHL**: no `nhl/2024_25` dir (only 2023/2024 schedules; skater/goalie parquet at top level).
+- **MLB**: statcast only for 2023; 2024/2025 statcast metrics missing (basic stats via statsapi OK).
+- **NFL**: 2023+2024 complete; 2025 nflverse weekly/snap not yet backfilled.
+- **Dup daily_picks**: `/home/workspace/Projects/daily_picks.py` (root, 68KB) DIFFERS from `src/daily_picks.py` (13KB). Root is canonical entrypoint; confirm which is live before editing.
 
-### 🏀 WNBA MINUTES MODEL — TIERS ADDED 8/3
-- `compute_features.py`: `classify_bench_role()` → starter / sixth_man / rotation / deep_bench
-- `validate.py`: tier-specific MAE + opponent_pace + blowout_probability + player_age features
-- Current MAE: 4.81 overall (target < 4.0) — 60.3% within ±5 min, 3,588 walk-forward preds (8/8 run)
-- Backfill COMPLETE 8/8: 210/210 athletes fetched for 2026 (4,768 player-games). Projections only materialize for dates with game rows in DB, so pre-game projections for today = 0 until same-day rows exist.
-- 210 athletes in DB, 3,421 walk-forward predictions
+## WNBA Data Gap
+No free public API provides WNBA player-level boxscore stats reliably:
+- BallDontLie: 404
+- wehoop: unavailable
+- nba_api WNBA boxscores: timeout-heavy
+- BigBallsData: requires free API key (not yet set up)
+- ESPN boxscore API: works one game at a time, no bulk historical pull
+- Fallback: ESPN game summary API for grading
 
-### 🔑 API KEYS — ALL WIRED IN SECRETS
-| Key | Env Var | Status | Daily Cap |
-|-----|---------|--------|-----------|
-| SportsDataIO | SPORTSDATAIO_API_KEY | ✅ LIVE — PRIMARY ODDS | 1,000 |
-| ESPN | (public) | ✅ LIVE — BOXSCORES | 250 |
-| TheOddsAPI Free | THEODDSAPI_FREE | 🚫 BURNED (40/25), resets 8pm ET | 25 |
-| TheRundown | THERUNDOWN_API_KEY | ⚠️ 0 MLB, NFL/NBA only | 50 |
-| SportsGameOdds | SPORTSGAMEODDS_API_KEY | ✅ LIVE — 200 OK | 1,000 |
-| Discovery Labs | SDIO_DISCOVERY_LABS | ❌ 401 — KEY NOT ACTIVE (f573) | 0 |
-| SerpAPI | SERPAPI_KEY | 🚫 0 searches left, resets Aug 19 | 3 |
+## Notebooks (`Notebooks/`)
+- `nfl_stats_aggregation_20240811.ipynb`
+- `nfl_pre_compute_20240811.ipynb`
+- `NFL_2024_ReAggregate.ipynb`
+- `analyze_mlb_picks_20240811.ipynb`
+- `debug_nfl_data_20240811.ipynb`
+- `debug_nfl_data_20240812.ipynb`
 
-### ✅ SERVICES — 3 UP
-- tc-api: https://tc-api-true.zocomputer.io ✅
-- tc-streamlit-dashboard: https://tc-streamlit-dashboard-true.zocomputer.io ✅
-- tc-streamer: https://tc-streamer-true.zocomputer.io ✅
+## API Caps
+- All external APIs capped until scheduled crons fire
+- Free sources only: statsapi, nba_api, ESPN API, nfl_data_py
+- Paid keys (Odds API, SportsDataIO, SGO) are dead or quota-exhausted — never retry them
 
-### 🚀 COMPLETED FIXES
-- [x] Grading math flipped — 5,781 picks regraded (8/3)
-- [x] Role tiers: classify_bench_role() in compute_features.py (8/3)
-- [x] Context features: opponent_pace, blowout_probability, player_age (8/3)
-- [x] Odds module fully wired into pipeline (9-file package, multi-provider cascade) (8/1)
-- [x] _enrich_from_theoddsapi_free v2 uses odds module instead of inline API calls (8/1)
-- [x] Local cap tracking — no burning calls on /me/usage (8/1)
-- [x] Symlink bug fixed — _purge_symlinks() (8/1)
-- [x] SportsGameOdds verified live (8/3) — key 073d94a... works
+## WNBA Lines + Props (2026-08-17)
+- Generation created `src/wnba_slate_props_export.py` (run: `python3 -m src.wnba_slate_props_export <days>`)
+- Outputs: `Projects/data/wnba/wnba_slate_LINES_2026-08-17.json`, `wnba_slate_PROPS_2026-08-17.json` (373 player prop projections across 16 upcoming games), `Daily_Log/wnba_slate_REPORT_2026-08-17.md`
+- Props derived from nba_api WNBA game logs (GitHub/free source, cached in `Projects/data/github/wnba/`).
+- Real market prop lines NOT available free: DraftKings Akamai-blocked; Action Network free endpoint = moneyline/spread/total only; Odds API quota maxed (do not retry).
 
-### 📁 KEY PATHS
-- Pipeline: `/home/workspace/Projects/daily_picks.py`
-- Grading: `/home/workspace/Projects/regrade_picks.py`
-- Minutes model: `/home/workspace/Projects/wnba_minutes/`
-  - Role tiers: `compute_features.py` (classify_bench_role)
-  - Validation: `validate.py` (tier-specific + context features)
-- Dashboard: `/home/workspace/Projects/tc_dashboard.py`
-- Zo Dashboard: https://true.zo.space/nba-tc + https://true.zo.space/live-games
-- DB: `/home/workspace/Projects/data/picks.db`
-- Daily Log: `/home/workspace/Daily_Log/`
-- Odds module: `/home/workspace/Projects/src/odds/`
-- Secrets: `/root/.zo/secrets.env`
+## API Caps (uncapped 2026-08-17)
+- `src/api_cap_tracker.py` now has an UNCAPPED OVERRIDE block (all limits -1); cap_check() always True except discovery_labs (hard-blocked).
+- Free GitHub sources active: statsapi (MLB), nba_api (WNBA/NBA), nfl_data_py (NFL), nhlpy (NHL).
+- Uncapping does not restore exhausted paid quota (Odds API, SharpAPI, SportsDataIO).
 
-### 🔑 API CAPS — ACTIVE ENFORCEMENT (8/3 19:45 ET)
+## 2026-08-17 Pipeline Fixes Applied
+| Fix | File | Detail |
+|-----|------|--------|
+| League casing | `src/daily_picks.py` | All `'MLB'`→`'mlb'`, `'WNBA'`→`'wnba'` |
+| Dupe purge | DB | Deleted 140 uppercase MLB dupe rows |
+| OVER threshold | `src/daily_picks.py` line 33 | Raised OVER from 0.15→0.20 (UNDER stays 0.08) |
+| grade_date import | `src/grade_date.py` | Rewired to `src.post_game.grade_date` |
+| Pitcher guard | `src/pitcher_features.py` | isinstance check before .get() |
+| WNBA fallback | `src/wnba_projections.py` | ESPN fallback via scoreboard API |
+| Team prop grading | `src/grade_team_props.py` | Added `grade_date_team_props()` via ESPN inning stats |
+| ESPN→statsapi resolver | `src/post_game.py` | Added `_resolve_mlb_game_pk()` |
+| Dynamic thresholds | `src/daily_picks.py` | `_get_thresholds(league)` calls `calibrated_thresholds.get_dynamic_threshold()` with 0.20/0.08 floor; 10 call sites replaced |
+| 1st inning props | `src/grade_team_props.py` | 100 props graded across 8/15-8/17 via ESPN inning stats |
 
-Single enforcement point: `src/api_cap_tracker.py` → `cap_check()` called before EVERY external API call.
-Daily + hourly + monthly caps. All 3 stale tracker files purged. No more uncapped APIs.
+## Automations (2026-08-17 14:40 — all active)
 
-| Module | Daily | Hourly | Monthly | Status |
-|--------|-------|--------|---------|--------|
-| espn | 250 | 50 | 250 | ✅ LIVE |
-| odds_api (SportsDataIO) | 1,000 | 200 | 30,000 | ✅ LIVE |
-| sportsdataio | 1,000 | 200 | 30,000 | ✅ REGISTERED |
-| sportsgameodds | 1,000 | 200 | 30,000 | ✅ REGISTERED |
-| serpapi | 3 | 3 | 100 | ✅ CAPPED (was 0=UNLIMITED) |
-| therundown | 50 | 10 | 500 | ✅ CAPPED (was 500) |
-| theoddsapi_free | 23 | 8 | 200 | ✅ CAPPED (resets 8pm) |
-| sharp_api | 2,500 | 300 | 2,500 | ✅ |
-| statsapi_mlb | 500 | 100 | 500 | ✅ |
-| free_apis | 100 | 25 | 3,000 | ✅ ADDED |
-| roster | 500 | 100 | 15,000 | ✅ ADDED |
-| wnba_gen | 200 | 50 | 200 | ✅ |
-| espn_odds | 250 | 50 | 250 | ✅ |
-| api_fallback | 100 | 25 | 100 | ✅ |
+## Current State (8/17 17:15 ET)
+- **247 total picks**: MLB 10 (action_network moneyline) + WNBA 237 (SELF_EDGE player props)
+- MLB: 10 game-level moneyline picks (7 HOME, 3 AWAY) from real Action Network lines
+- WNBA: 237 player prop picks (133 OVER, 104 UNDER) from self-edge projections
+- Source breakdown: all MLB = `action_network`, all WNBA = `SELF_EDGE`
+- Game lines cached: `/home/workspace/Daily_Log/mlb_game_lines_2026-08-17.json`
 
-### ✅ FIXES APPLIED 8/4 2:00 AM ET
-- [x] Provider cascade reordered: SDIO + SGO enrichment added BEFORE theoddsapi_free
-- [x] generate_combos_filtered wrapped in try/except (no more crash-on-combo)
-- [x] DEFAULT_LINES killed — hard fail when all market_line <= 0.5
-- [x] Result: 0 fake picks for WNBA (all 188 market_lines were 0.5 — correctly skipped)
-- [x] Combos REWRITTEN 8/7 — now SINGLE-PLAYER STAT COMBOS (WNBA P+R+A/P+R/P+A, MLB PITCHING+BATTING), NOT cross-player parlays. generate_combos() in daily_picks.py rewritten to group by player.
-- [x] Combos table purged 8/7 — stale 2-LEG/FULL-2LEG/FULL-3LEG/SAME-2LEG rows deleted (522 rows); delete-date+league added before insert so no stale rows linger.
-### 🎯 COMBOS — SAME-PLAYER STAT COMBOS (NOT PARLAYS) — 8/7
-- **Combos = single-player stat combos, NOT cross-player parlays.**
-  - WNBA: P+R+A, P+R, P+A from a player's PTS/REB/AST.
-  - MLB: PITCHING combo (SO/K) + BATTING combo (H/HR/RBI/R) per player.
-- `generate_combos()` in `daily_picks.py` (~line 790) rewritten 8/7: groups all picks by player, sums stat projections/lines, derives edge + majority direction; same-player legs no longer skipped (old logic built cross-player parlays).
-- Verified vs real 8/7 DB picks: WNBA 135 combos, MLB 51 combos.
+## MLB Game-Line Pipeline (NEW 8/17 17:15)
+- `src/extract_game_lines.py` — fetches Action Network + ESPN via browser, caches game lines to disk
+- `src/generate_mlb_game_picks.py` — reads cached lines, generates moneyline picks, inserts to picks.db
+- `src/line_provider.py` — MLB routes to Action Network game lines; player props return None
+- Flow: `extract_game_lines.py` → `generate_mlb_game_picks.py` → picks.db → dashboards
+- Sandbox limitation: Action Network/ESPN APIs blocked from direct curl; browser proxy used for fetch
 
-- [x] Reversed-matchup doubling FIXED 8/7 in tc-api (`api/main.py`): `_game_key()` normalizes away_at_home / home_at_away into ONE canonical game. Applied to `/api/picks/by-game-structured` (8 WNBA labels -> 3 games, dedupes exact player+stat+direction, drops empty-player junk rows), `/api/v1/combos`, `/api/picks/top`, `/api/tc-alerts`. All dashboards fed by tc-api now show each game once.
-### ✅ COMPLETED FIXES
-### 🔄 CASCADE ORDER
-1. SportsDataIO (PRIMARY — live odds, player props)
-2. TheOddsAPI Free (resets 8pm, h2h/spreads/totals)
-4. SportsGameOdds (fallback — LIVE)
-5. TheRundown (NFL/NBA only)
-6. ESPN (boxscores/grading only)
-7. Derived Lines (final fallback: proj - 0.5)
+## Architecture Rule — TC Math Boundary (8/17 17:15 ET)
+- **TC Math / Self-Edge applies ONLY to: WNBA player props, NFL player props**
+- **MLB: uses real market lines from Action Network (free, game-level: moneyline/spread/total)**
+- **MLB player props: NOT generated — no free source provides real MLB player prop lines**
+- **NFL preseason: real DK lines via ESPN adapter for spread/over-under (no player props)**
 
-### ✅ FIXED 8/8 — NFL zo.space REACT ERROR #31
-- [x] `/nfl` route renders `key_dates` safely (object values -> `start → end`) and handles `phases` whether array or object via `Array.isArray()`. Space error log cleared — verified clean against live endpoint.
+## Nightly Cron
+```bash
+# Grade at 22:00 ET daily
+0 22 * * * cd /home/workspace/Projects && python3 src/grade_date.py --date $(date +\%F) >> /dev/shm/grade.log 2>&1
+```
 
-### 🟡 NEEDS ATTENTION
-- [ ] **8/7 + 8/8 DB rows all `hit=0`/`actual=0`** — today's and tomorrow's picks show as losses
-      in picks.db before games are graded. Cause: schema DEFAULT 0 on actual/hit/profit.
-      Fix path: set actual/hit/profit DEFAULT NULL (pending) and let graders set them.
-- [ ] **8/7 grading ran with graded=0 / missing=902** — historical_grader matched names (864/902)
-      but produced 0 graded hits. Verify actuals crosswalk (name-match → boxscore stat) before
-      trusting any 8/7 hit rate. Re-run: historical_grader.py --sport mlb --since 2026-08-07.
-- [ ] **graded_picks table (2,142 rows) vs picks table (18,836)** — two grading/accuracy paths
-      drift; /api/accuracy-data reads graded_picks, autograder writes into picks. Reconcile.
-- [ ] P2: Backfill remaining 4 athletes + full 2025 season for WNBA minutes model
-- [ ] Discovery Labs key f573 returns 401 — contact Discovery Labs to activate subscription
-- [ ] 8/3 WNBA picks need grading once boxscores available
-- [ ] TheOddsAPI Free resets at 8pm ET — can then fetch fresh MLB odds
+## 2026-08-17 14:35 — Full Pipeline Wired + Fixed (all changes saved to disk)
+Fixed 3 runtime bugs that were showing as warnings in every run:
+- **`get_live_stats` undefined** → added `from src.adapters.free_api_aggregator import get_live_stats` at line 190 of `Projects/daily_picks.py`. `enrich_via_free_apis()` now actually enriches projections instead of early-returning.
+- **`update_wnba_roster_status()` missing arg** → call at line 998 now passes `_roster_path = Projects/data/rosters/wnba_rosters.json`; WNBA injury status now applies.
+- **WNBA scoreboard `dates=sport` bad request** → `gen_wnba_today.py::_fetch_scoreboard` now strips dashes and validates `YYYYMMDD` regex; non-date strings fall back to today instead of building an invalid URL.
 
-### ✅ FIXED 8/7 — COMBOS SEPARATED FROM PICKS
-- [x] Combos show ONLY under the combos tab; each combo card shows projection + line + direction.
-- [x] `api/main.py`: `_is_combo_stat()` strips WNBA PRA/PR/PA/P+R+A/P+R/P+A and MLB BATTING/PITCHING/'+' from `/api/picks/by-game-structured`, `/api/picks/top`, `/api/tc-alerts`. Combos endpoints (`/api/v1/combos`) unchanged — carry combined_projection + combined_line + direction.
-- [x] Streamlit `tc_dashboard.py`: `load_today_picks` + tab1 filter combo stats.
-- [x] Verified live: WNBA top = PTS/REB/AST/3PM/STL only (no PA/PR/PRA). Applies to ALL sport dashboards fed by tc-api incl. NFL (pre-season).
+Verified clean end-to-end run (14:34 ET):
+- `daily_picks.py --sport all` → **433 picks** (MLB 258, WNBA 175) saved to `Daily_Log/last_run.json`
+- DB counts: mlb 16,673 · wnba 2,432 · nfl 4 (lowercase leagues)
+- Fangraphs 403 warning is benign — that's a paid/blocked source, falls back to free statsapi data (does NOT affect picks)
+- NBA/NFL/NHL correctly report "no projection files" — off-season, no games to pick
+- Dashboard localhost:8510 OK (HTTP 200), reads DB + last_run.json directly so it already reflects this state
 
-### 🧪 API TESTS — WIRED 8/10
-- **31/37 pass (84%)** — 24 endpoints return 200, 2 known 500s, 4 wrapper-shape mismatches
-- **Test file**: `Projects/tests/test_api.py` — 124 lines, covers all 27 tc-api endpoints
-- **Run**: `cd /home/workspace/Projects && python3 -m pytest tests/test_api.py -v`
-- **Known bugs**: `/api/live-picks` 500, `/api/streamer/data` 500 — to investigate
-- **API is read-only analytics** — no POST/PUT/DELETE /picks CRUD. Tests reflect actual surface.
-- Combos (WNBA PR/PA/PRA=P+R/A/P+A, MLB BATTING/PITCHING and any '+'-joined stat) are now STRICTLY under the combos tab/section ONLY.
-- `api/main.py`: `_is_combo_stat(stat, league)` filters derived combos out of `/api/picks/top`, `/api/picks/by-game-structured`, `/api/tc-alerts`, `/api/v1/combos`. Regular WNBA picks = PTS/REB/AST/3PM/STL/BLK only.
-- `tc_dashboard.py` (streamlit): `load_today_picks()` + Tab1 strip the same combo stats from the picks table.
-- Combos API returns tc_projection + combined_line + direction under the combos tab.
+## Reconcile 2026-08-17 16:00 ET — Competing Copies Resolved
+Audited every live entrypoint vs stale root copies. Canonical = `src/`. Resolution:
+- **Live generator = `src/daily_picks.py`** (writes picks.db with correct schema + writes `Daily_Log/last_run.json` from DB). Root `daily_picks.py` (68KB, argparse `--sport all`) is STALE — do not edit it.
+- **Crontab reconciled** to src: 8am→`src/daily_picks.py --sport all`, 10pm grade→`src/grade_date.py --date $(date +\F)`, 11pm→`src/edge_engine/update_calibration.py`, 11:30pm→`src/sync_to_supabase.py`. Old references to root `daily_picks.py`/`regrade_picks.py` removed (regrade logic lives in `src/regrade_all_outstanding.py`).
+- Grading entrypoints in src only: `src/grade_date.py` (per-date, CLI), `src/grade_wrapper.grade_date` (API), `src/post_game.py` (boxscore+fuzzy), `src/regrade_all_outstanding.py` (bulk), `src/grade_team_props.py` (team 1st-inning props).
+- **Dashboards, LIVE (do not duplicate):**
+  - `src/tc_dashboard.py` → 8510 (summary, reads picks.db + last_run.json)
+  - `src/dashboard.py` → 8511 WNBA / 8514 NBA / 8516 NHL / (8515 NFL) via `-- --sport <X>`
+  - `api/main.py` (uvicorn:8000) + `real_time_streamer.py` (8001)
+- **Archived / obsolete (reference only, not run):** root `daily_picks.py`, `regrade_picks.py`, `tc_dashboard.py`, `tc_sports_dashboard.py`, `dashboard/*.py` (MLB/NBA table widgets superseded by src/dashboard.py). Backtest code under `backtest_archives/` is historical snapshots — never edited.
+- Retain per-sport compartmentalization: each sport has its own projection file, generator section, and grader; the DB `league` column keeps sports strictly separated.
 
-### 📦 GITHUB SPORTS FREE DATA LAYER — WIRED 8/3
-| Sport | Package | Status | Latest Data |
-|-------|---------|--------|--------------|
-| MLB | statsapi | ✅ LIVE | 8/3: 8 games |
-| WNBA | nba_api (WNBA LeagueID=10) + ESPN summary API | ✅ LIVE | 8/10: 148 graded, 67.6% |
-| NBA | nba_api | ✅ (offseason) | 0 games |
-| NFL | nfl_data_py | ✅ LIVE | 272 games (preseason) |
-| NHL | nhlpy | ⚠️ API mismatch | 0 games |
-| NCAAF | — | ❌ No package | 0 games |
-| NCAAB | cbbpy | ⚠️ API mismatch | 0 games |
+## NFL Preseason Pipeline — 2026-08-17 (Live, No Hardcodes)
+- `src/espn_nfl_live.py` — NEW live ESPN API adapter: `fetch_upcoming_games()` hits ESPN v2 sports API, returns games with DraftKings spread/over-under/moneyline. Returns dicts: `{away, home, matchup, date, status, spread, over_under, away_ml, home_ml, provider}`.
+- `src/nfl_preseason_picks.py` — **PURGED hardcoded PRESEASON_GAMES**. Now calls `espn_nfl_live.fetch_upcoming_games()` → `filter_dk_games()` → generates spread + over/under picks from real DK lines. Insert matches picks.db schema (league, player, stat, tc_projection, market_line, edge, matchup, direction, source=espn_draftkings). Picks dated by GAME DAY, not run day.
+- 36 NFL picks in DB: 4 old (Aug 15 completed) + 32 new (Aug 21-24 upcoming)
+- NFL dashboard: port 8515, fixed case (NFL→nfl) + date >= filter for future slates
+- **Do NOT run `daily_picks.py --sport nfl`** for preseason — it expects projection files. Use `nfl_preseason_picks.py` directly.
+- `src/dashboard.py` `load_picks()`: `sport.lower()` + NFL fallback query `date >= ?` when `date = ?` returns empty
 
-- Free boxscores + schedules — no API keys, no rate limits
-- Backfill script: `src/backfill_github_all_sports.py`
-- Integration script: `src/integrate_github_sports.py`
-- Cache: `data/github/sports/`
-- Grading uses this for actuals comparison
+## Dashboard URLs (2026-08-17 16:25 ET)
+| Port | Sport | Status |
+|------|-------|--------|
+| 8510 | TC Summary | HTTP 200 |
+| 8511 | WNBA | HTTP 200 |
+| 8512 | MLB | HTTP 200 |
+| 8515 | NFL | HTTP 200 |
 
-### ✅ FIXED 8/7 — NFL DASHBOARD COWBOYS THEME + TEAM LOGOS
-- [x] `/nfl` zo.space now features a DALLAS COWBOYS hero banner (navy/blue gradient, ESPN star logo, NFC EAST / 5-TIME CHAMPIONS / AT&T STADIUM chips).
-- [x] Added `TEAM_SLUGS` + `Logo` component mapping all 32 NFL teams to ESPN CDN logos (`https://a.espncdn.com/i/teamlogos/nfl/500/{slug}.png`). Rendered on TODAY'S MATCHUPS and UPCOMING GAMES cards.
-- [x] Verified live: dal/phi/gb/sf/kc/buf all return 200 on ESPN CDN.
-- [x] All prior sections preserved: SEASON PHASES (6), KEY DATES, UPCOMING GAMES, QUICK FACTS. Zero runtime errors.
-### ✅ WNBA GRADER — BUILT 8/11
-- [x] `grade_wnba_sportypy.py` — ESPN summary API → nba_api boxscoretraditionalv2 for player stats
-- [x] Fuzzy name matching (first name + last name cross-reference)
-- [x] Stat mapping: PTS→PTS, REB→REB, AST→AST, STL→STL, BLK→BLK, 3PM→FG3M
-- [x] Graded 47/50 WNBA picks: 6/13 (72.7%), 7/3 (0%), 7/11 (65.7%) — OVERALL 66.0%
-- [x] DB schema: actual/hit/profit NOW DEFAULT NULL (was DEFAULT 0 causing false 0-values)
-- [x] 421 junk empty-date WNBA combo rows purged
-- [x] Results saved: `Daily_Log/wnba_graded.json`
+## 2026-08-17 19:30 ET — Pick-Cards Dashboard Fix + WNBA Logos + Combo Separation
+### Pick-Cards Dashboard (https://true.zo.space/pick-cards) — FIXED
+- **Bug**: Combos were creating 169 ghost "game" entries (players string as matchup, 0 picks, no logos).
+- **Fix**: Backend API now separates `combos[]` from `game_list[]`. Combos are at top-level response, not in-game entries.
+- **WNBA logos**: Uploaded 13 WNBA team logos (ATL, CHI, CON, DAL, GS, IND, LA, LV, MIN, NY, PHX, SEA, WSH) as space assets at `/logos/{abbr}.png`.
+- **Result**: 11 games (10 MLB, 1 WNBA), 247 picks, 1531 combos, all logos rendered.
+
+### Pipeline State (19:30 ET)
+- **MLB**: 10 game-level moneyline picks from Action Network lines (7 HOME, 3 AWAY)
+- **WNBA**: 237 player prop picks (DAL @ GS) — SELF_EDGE projections
+- **NFL**: 32 preseason picks (8/21: 12 picks, 8/22: 22 picks, 9/10: 6 picks) — ESPN DK lines
+- **Combos**: 1531 WNBA combos available in API, rendering on pick-cards page
+
+### Dashboards
+| Port | Sport | Status |
+|------|-------|--------|
+| 8510 | TC Summary | HTTP 200 |
+| 8511 | WNBA | HTTP 200 |
+| 8512 | MLB | HTTP 200 |
+| 8515 | NFL | HTTP 200 |
+
+### Known Gaps (unchanged from earlier)
+- **MLB player props**: No free source for real MLB player prop lines. Only game-level lines available.
+- **WNBA props**: SELF_EDGE only — no real market prop lines.
+- **NBA/NHL**: Off-season, no live data needed.
+- **NFL regular season**: Starts Sep 10. Preseason pipeline active.
+
+
+## game_id_resolver (NEW 2026-08-17)
+-  — Unified resolver: MLB→statsapi, WNBA→ESPN, NFL→ESPN (preseason+reg)
+-  — MLB OVER discount factors (HR 0.88, SB 0.85, RBI 0.92, R 0.94, H 0.96, K 1.02)
+-  — Team abbreviation consistency audit
+-  — Integration script (init cache, audit, verify)
+-  wired into  in 
+- Backfill:  resolved 215 historical NULLs; ~1000 remain (old data)
+- WNBA Blocks excluded:  in generate_wnba_picks()
